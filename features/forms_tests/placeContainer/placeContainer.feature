@@ -21,17 +21,23 @@ Feature: Basic Test for PlaceContainer Form Page
 #    And Is application name is "בקשה להנחת מכולה אגף אכיפה ושיטור"
 #    And Is application status is "סטטוס: חדש"
 #    And Did application filled in "תאריך מילוי הטופס: 13/02/2023"
-#    When Click on "מידע" button
-#    And I wait for "2" seconds
-#    And Close the information tab
+    When Click on information button
+    And I wait for "2" seconds
+    And Close the information tab
 #    And Is application information tittle is "הסבר למילוי הטופס:"
-#    When Click on "שמור" button
+#    When Click on save button
 #    And Accept the alert
 #    And I wait for "3" seconds
-    When Click on "הדפס" button
-    And Cancel the print option
+#    When Click on print button
+#    And Cancel the print option
 #    And Does information have text
 #    When Does application explanation have text
+#     When Click on next button
+#     When Click on prev button
+
+
+
+
 
 
 

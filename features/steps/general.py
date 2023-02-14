@@ -400,15 +400,55 @@ def search_in_select(context, expected_date):
     assert widget.check_header_paper_filled(expected_date), "Error This Application fill date is not correct"
 
 
-@when('Click on "{btn}" button')
-def search_in_select(context, btn):
-    widget_name = "newHeader"
+@when('Click on print button')
+def search_in_select(context):
+    widget_name = "הדפס"
     widget = context._config.current_page.widgets[widget_name]
     if widget.get_web_element() is None:
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickable_btn(btn)
+    widget.clickBtn()
+
+@when('Click on save button')
+def search_in_select(context):
+    widget_name = "שמור"
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        widget.set_web_element(web_element)
+
+    widget.clickBtn()
+
+@when('Click on information button')
+def search_in_select(context):
+    widget_name = "מידע"
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        widget.set_web_element(web_element)
+
+    widget.clickBtn()
+
+@when('Click on next button')
+def search_in_select(context):
+    widget_name = "המשך"
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        widget.set_web_element(web_element)
+
+    widget.clickBtn()
+
+@when('Click on prev button')
+def search_in_select(context):
+    widget_name = "חזור"
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        widget.set_web_element(web_element)
+
+    widget.clickBtn()
 
 
 

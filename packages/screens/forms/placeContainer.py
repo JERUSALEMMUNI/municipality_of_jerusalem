@@ -15,6 +15,9 @@ class PlaceContainer(BasePage):
         self.widgets['page_steps'] = Application_steps_field('page_steps')
         self.widgets['המשך'] = NewBtnField('המשך')
         self.widgets['חזור'] = NewBtnField('חזור')
+        self.widgets['מידע'] = NewBtnField('מידע')
+        self.widgets['שמור'] = NewBtnField('שמור')
+        self.widgets['הדפס'] = NewBtnField('הדפס')
 
         self.main_elements_to_wait_when_load = [
 

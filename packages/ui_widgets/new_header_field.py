@@ -56,10 +56,6 @@ class New_Header_field(BaseWidget):
     def check_header_paper_filled(self, expected_date):
         return expected_date == self.get_header_paper_filled()
 
-    def clickable_btn(self, btn_name):
-        btn = self.web_element.find_element(by=By.XPATH, value=f"./nav/following-sibling::div/following-sibling::div/div/following-sibling::core-action-buttons/div/div/button[span='{btn_name}']")
-        btn.click()
-
     def get_info_tab_content(self):
         info_tab_content = self.web_element.find_element(by=By.XPATH, value=f"//div[contains(@class,'ng-trigger ng-trigger-animation ng-tns-c36-1 ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-dialog-draggable ui-dialog-resizable ng-star-inserted')]/div/following-sibling::div")
         return info_tab_content.text
