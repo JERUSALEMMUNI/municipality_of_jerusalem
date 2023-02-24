@@ -86,6 +86,8 @@ def test():
     try:
         f = os.path.join(Path(__file__).parent, f)
         args = f"'{f}' -f allure_behave.formatter:AllureFormatter -o '{runner.Context.result_folder_path}'"
+        if runner.Context.opt_dict.get('tags'):
+            args += " --tags="+" --tags=".join(runner.Context.opt_dict.get("tags").split("/"))
         log.debug('^^^^^^^ before calling Configuration(args) ^^^^^^^^')
         runner_config = Configuration(args)
         log.debug('^^^^^^^ after calling Configuration(args) ^^^^^^^^')

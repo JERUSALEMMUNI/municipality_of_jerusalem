@@ -26,7 +26,6 @@ from pathlib import Path
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
 
-
 def main():
     """
     A Python module that includes functions to be used with infra (shells, preferences, caches).
@@ -37,7 +36,6 @@ def main():
     res = find_best_available_resolution()
     set_screen_resolution(res)
     get_available_resolutions()
-    is_soundgrid_driver_running()
     csv_path1 = r'C:\Users\idoa\Desktop\DchuFolderScan_DCHULogs\4.3.0.9.09381_20180118061537_DchuCheckingLogs\4.3.0.9.09381_20180118061614_ThirdPartyDevices_DchuCheckingResults.csv'
     res1 = list(csv2dict(csv_path1))
 
