@@ -13,6 +13,7 @@ logging.getLogger("http.cookiejar").setLevel(logging.ERROR)  # Disable debug mes
 logging.getLogger("urllib3.connectionpool").setLevel(logging.ERROR)  # Disable debug messages from connectionpool module
 logging.getLogger("requests.packages.urllib3.connectionpool").setLevel(logging.ERROR)  # Disable debug messages from connectionpool module
 logging.getLogger("selenium.webdriver").setLevel(logging.ERROR)
+logging.getLogger("selenium.webdriver.remote.remote_connection").setLevel(logging.ERROR)
 logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
 
 from infra import logging_classes

@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.button_field import BtnField
+from ui_widgets.button_field import ButtonField
 from ui_widgets.footer_field import Footer_field
 from ui_widgets.header_field import Header_field
-from ui_widgets.new_btn_field import NewBtnField
+from ui_widgets.new_btn_field import NewButtonField
 from ui_widgets.page_number_field import Page_number_field
 
 
@@ -12,15 +12,15 @@ class BasePage(object):
         self.main_url = 'https://jeronlineforms.jerusalem.muni.il/'
         self.url_postfix = ''
         self.widgets = {}
-        self.widgets['המשך'] = BtnField('המשך')
-        self.widgets['חזור'] = BtnField('חזור')
-        self.widgets['שמור טיוטה'] = BtnField('שמור טיוטה')
-        self.widgets['שלח'] = BtnField('שלח')
+        self.widgets['המשך'] = ButtonField('המשך')
+        self.widgets['חזור'] = ButtonField('חזור')
+        self.widgets['שמור טיוטה'] = ButtonField('שמור טיוטה')
+        self.widgets['שלח'] = ButtonField('שלח')
         self.widgets['header'] = Header_field('header')
         self.widgets['footer'] = Footer_field('footer')
         self.widgets['pages'] = Page_number_field('pages')
-        self.widgets['המשך'] = NewBtnField('המשך')
-        self.widgets['חזור'] = NewBtnField('חזור')
+        self.widgets['המשך'] = NewButtonField('המשך')
+        self.widgets['חזור'] = NewButtonField('חזור')
         self.main_elements_to_wait_when_load = []
 
     def navigate_to_page_url(self):

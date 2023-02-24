@@ -3,20 +3,20 @@ Feature: Basic Test for FreedomInfo Form Page
 
   Scenario: general test for all fields with type in input in the address
     Given I navigate to "FreedomInfo" page
-#    When I write "332796184" in "זיהוי"
-#    And I write "פראס" in "שם פרטי"
-#    And I write "אבו סנינה" in "שם משפחה"
-#    And I entered "077-8078687" in "טלפון נייד"
-#    And I entered "04-7987688" in "טלפון קווי"
-#    And I write "firas@ab.com" in "דוא"ל"
-#    And I select "דרכון" in "סוג זיהוי"
-#    When I write address as "ירושלים" in "יישוב"
-#    When I write address as "א טור" in "רחוב"
-#    And I write "30" in "מספר בית"
-#    And I write "34" in "מיקוד"
-#    And Am I in the "1" page
-#    And We have "3" pages in this screen
-#    Then I click on "המשך" button
+    When I write "332796184" in "זיהוי"
+    And I write "פראס" in "שם פרטי"
+    And I write "אבו סנינה" in "שם משפחה"
+    And I entered "077-8078687" in "טלפון נייד"
+    And I entered "04-7987688" in "טלפון קווי"
+    And I write "firas@ab.com" in "דוא"ל"
+    And I select "דרכון" in "סוג זיהוי"
+    When I write address as "ירושלים" in "יישוב"
+    When I write address as "א טור" in "רחוב"
+    And I write "30" in "מספר בית"
+    And I write "34" in "מיקוד"
+    And Am I in the "1" page
+    And We have "3" pages in this screen
+    Then I click on "המשך" button
 #
 #
 # Scenario: general test for all fields with search in input in the address

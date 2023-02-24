@@ -5,7 +5,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class NewBtnField(BaseWidget):
+class NewButtonField(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
 

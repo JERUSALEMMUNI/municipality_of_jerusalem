@@ -25,7 +25,6 @@ def navigate_to_screen(context, screen_name):
 
 @when('I write "{text}" in "{widget_name}"')
 def write_into_text_field(context, text, widget_name):
-
     widget = context._config.current_page.widgets[widget_name]
     if widget.get_web_element() is None:
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])

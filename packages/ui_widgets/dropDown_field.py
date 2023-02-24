@@ -28,7 +28,7 @@ class DropDown_field(BaseWidget):
     def select_listbox_item(self, id_type):
 
         if self.label == "סוג זיהוי":
-            wanted_xpath = "//ul[@class='p-dropdown-items ng-tns-c57-1']/p-dropdownitem/li"
+            wanted_xpath = "//ul[@class='p-dropdown-items']/p-dropdownitem/li"
         elif self.label == "טלפון נייד":
             wanted_xpath = "//ul//p-dropdownitem"
         elif self.label == "טלפון קווי":
