@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.btn_field import BtnField
+from ui_widgets.button_field import BtnField
 from ui_widgets.footer_field import Footer_field
 from ui_widgets.header_field import Header_field
 from ui_widgets.new_btn_field import NewBtnField

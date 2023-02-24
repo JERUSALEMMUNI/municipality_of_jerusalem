@@ -29,10 +29,11 @@ class BaseWidget(object):
     def is_displayed(self):
         return self.web_element.is_displayed()
 
-    def check_error_text(self, error_expectation, type):
-        if type == "text":
+    def check_error_text(self, error_expectation, widget_type):
+        error_msg = ''
+        if widget_type == "text":
             error_msg = self.web_element.find_element(by=By.XPATH, value=f"./following-sibling::div/div")
-        elif type == "phone":
+        elif widget_type == "phone":
             error_msg = self.web_element.find_element(by=By.XPATH, value=f"./following-sibling::div/following-sibling::div")
 
         if "-" in error_expectation and "\n" in error_msg.text:
@@ -45,7 +46,3 @@ class BaseWidget(object):
             second_real_error = real_err[1]
             return first_expectation_error == first_real_error and second_expectation_error == second_real_error
         return error_expectation == error_msg.text
-
-
-
-

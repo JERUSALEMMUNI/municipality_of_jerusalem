@@ -5,7 +5,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class BtnField(BaseWidget):
+class ButtonField(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
 
@@ -20,9 +20,6 @@ class BtnField(BaseWidget):
              'Value': f"//span[contains(text(),'{self.label}')]"
         }
 
-    def clickBtn(self):
-        log.info(f'You clicked on {self.label} button')
+    def click_button(self):
         self.web_element.click()
-
-
-
+        log.debug(f'{self.label} button clicked')
