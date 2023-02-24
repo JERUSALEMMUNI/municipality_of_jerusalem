@@ -11,7 +11,7 @@ log = logger.get_logger(__name__)
 @given('I navigate to "{screen_name}" page')
 def navigate_to_screen(context, screen_name):
     #create a screen
-    current_page = context.screens_manager.create_screen([screen_name], driver=context.driver)
+    current_page = context.screens_manager.create_screen([screen_name], driver=context._config.driver)
     #check if we opened the browser and if yes check if the tittle we need is the one who opened , or if there is
     # no tittle opened then go to the url
     if (context._config.current_page and context._config.current_page.page_title != current_page.page_title) or context._config.current_page is None:

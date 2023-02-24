@@ -22,6 +22,18 @@ class MJTimeOutError(MJBaseError):
     pass
 
 
+class MJPlistReadError(MJBaseError):
+    pass
+
+
+class MJKeyError(MJBaseError):
+    pass
+
+
+class MJTypeError(MJBaseError):
+    pass
+
+
 class MJConfigurationError(MJBaseError):
     pass
 
@@ -38,6 +50,14 @@ class MJValueError(MJBaseError):
     pass
 
 
+class MJRuntimeError(MJBaseError):
+    pass
+
+
+class MJIndexError(MJBaseError):
+    pass
+
+
 class MJIOError(MJBaseError):
     pass
 
@@ -45,6 +65,3 @@ class MJIOError(MJBaseError):
 class MJOSError(MJBaseError):
     pass
 
-
-class MJKeyError:
-    pass

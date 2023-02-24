@@ -6,9 +6,7 @@ import traceback
 from argparse import ArgumentParser
 from pathlib import Path
 from behave import runner
-from behave import runner_util
 from behave.configuration import Configuration
-
 
 script_folder = os.path.dirname(__file__)
 project_folder = os.path.abspath(os.path.join(script_folder, os.pardir))
@@ -30,71 +28,59 @@ exit_code = 0
 
 
 def setup():
-    # find external params not for opt_dict, to be used in test.
-    try:
-        external_params_index = sys.argv.index('-D')
-    except ValueError:
-        external_params_index = None
-
-    user_data = {}
-    if external_params_index is not None:
-        args_len = len(sys.argv)
-        for i in range(external_params_index + 1, args_len):
-            k, v = sys.argv[i].split('=')
-            user_data[k] = v
-
-    sys.argv = sys.argv[:external_params_index]
+    # Read run options from command
     opt_dict = set_opt_dict()
     runner.Context.opt_dict = opt_dict
 
     global feature_path
     feature_path = opt_dict['feature_file_path'].replace('\\', '/')
-    # Get full path for Feature file, and extract only the path relative to Features folder
-    if 'Features' in feature_path:
-        feature_path = feature_path.split('Features/')[1]
-    else:
-        feature_path = feature_path
     runner.Context.feature_file_path = feature_path
-    runner.Context.server_report_path = runner.Context.opt_dict.get('results_path')
-    runner.Context.report_path = runner.Context.opt_dict.get('results_path')
     runner.Context.feature_file_name = Path(runner.Context.feature_file_path).stem
     runner.Context.result_folder_path = runner.Context.opt_dict['results_path']
+
+    # Create or clear results path
     files_utils.clear_or_create_folder(runner.Context.result_folder_path)
-    init_logger(opt_dict)
+
+    # Init logger and report
+    init_logger_reporter(opt_dict)
+
+    # Init ScreensFactory
     runner.Context.screens_manager = ScreensFactory()
 
+    # context._config.driver = None
 
-def init_logger(opt_dict):
+
+def init_logger_reporter(opt_dict):
     # Init log
     log_files = [
         {'levelname': 'DEBUG',
-         'path': os.path.join(runner.Context.report_path, f'{runner.Context.feature_file_name}_debug.txt'),
+         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_debug.txt'),
          'summary': False},
         {'levelname': 'INFO',
-         'path': os.path.join(runner.Context.report_path, f'{runner.Context.feature_file_name}_info.txt'),
+         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_info.txt'),
          'summary': False, 'use_for_collect': True},
         {'levelname': 'ERROR',
-         'path': os.path.join(runner.Context.report_path, f'{runner.Context.feature_file_name}_error.txt'),
+         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_error.txt'),
          'tempfile': True, 'log_same_level': True},
         {'levelname': 'WARNING',
-         'path': os.path.join(runner.Context.report_path, f'{runner.Context.feature_file_name}_warning.txt'),
+         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_warning.txt'),
          'tempfile': True, 'log_same_level': True},
         {'levelname': 'CRITICAL',
-         'path': os.path.join(runner.Context.report_path, f'{runner.Context.feature_file_name}_critical.txt'),
+         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_critical.txt'),
          'tempfile': True, 'log_same_level': True}]
 
     logger.set_logger(log_files, debug_to_stdout=opt_dict.get('verbose', False))
     log.info('Starting - Logger created - start logging...')
     runner.Context.log_files = log_files
 
-    rep.set_hdlr(runner.Context.report_path, runner.Context.feature_file_name, create_fail_report=True)
+    rep.set_hdlr(runner.Context.result_folder_path, runner.Context.feature_file_name, create_fail_report=True)
     rep.set_headers_title(runner.Context.feature_file_name)
 
 
 def test():
     global exit_code
-    log.info(f'*** Starting BDD test: {runner.Context.opt_dict.get("host", "")} {Path(feature_path).stem} ***')
-    log.debug('^^^^^^^ starting test() ^^^^^^')
+    log.info(
+        f'*** Starting Test: {runner.Context.opt_dict.get("browser", "chrome")} {runner.Context.feature_file_name} ***')
     f = feature_path.replace('\\', '/')
     failed = True
     try:
@@ -117,22 +103,22 @@ def test():
 
 def teardown():
     global exit_code
-    cmd = f'{config.local_allure_executable} generate --clean "{runner.Context.server_report_path}" -o "{runner.Context.server_report_path}/report"'
+    cmd = f'{config.local_allure_executable} generate --clean "{runner.Context.result_folder_path}" -o "{runner.Context.result_folder_path}/report"'
     log.info(f'Local Allure report cmd: {cmd}')
     if config.current_os == 'Mac':
         sub_process.sub_popen('chmod', '+x', config.local_allure_executable)
-    create_environment_properties({'Computer': config.client_name}, os.path.join(runner.Context.server_report_path))
-    create_executor_properties(runner.Context.server_report_path)
+    create_environment_properties({'Computer': config.client_name}, os.path.join(runner.Context.result_folder_path))
+    create_executor_properties(runner.Context.result_folder_path)
     result, error = sub_process.sub_popen(cmd, shell=True, return_err=True)
     if 'successfully generated' not in result:
         log.error(f'Error in generating allure report {result}')
         log.error(f'Error in allure report {error}')
     else:
-        update_report_name(os.path.join(runner.Context.server_report_path), runner.Context.feature_file_name)
-        add_support_to_change_iframe_height(os.path.join(runner.Context.server_report_path))
-        cmd_to_open_report = f'{config.local_allure_executable} open "{runner.Context.server_report_path}/report"'
+        update_report_name(os.path.join(runner.Context.result_folder_path), runner.Context.feature_file_name)
+        add_support_to_change_iframe_height(os.path.join(runner.Context.result_folder_path))
+        cmd_to_open_report = f'{config.local_allure_executable} open "{runner.Context.result_folder_path}/report"'
         log.info(f'Open Report: {cmd_to_open_report}')
-        url = f'{runner.Context.server_report_path}/report/'
+        url = f'{runner.Context.result_folder_path}/report/'
         log.info(f'Report Link: {url}')
     log.debug('^^^^^^^ starting teardown() ^^^^^^')
 
@@ -224,59 +210,6 @@ def read_options(parser):
 
     return opt_dict, unknown
 
-
-def test_history_exists(opt_dict):
-    have_history = False
-    if runner.Context.is_nightly:
-
-        if sys.platform == 'win32':
-            platform = 'WIN%'
-        else:
-            platform = 'XCODE%'
-
-        query = ['SELECT res_http_link From automation_t',
-                 f'WHERE test_type = "{opt_dict["test_code"]}"',
-                 f'and job_id < {opt_dict["job_id"]}',
-                 f'and branch = "{opt_dict["branch"]}"',
-                 f'and configuration = "{opt_dict["configuration"]}"',
-                 f'and platform like "{platform}"',
-                 'and res_http_link like "%/report"',
-                 'order by job_id desc limit 1']
-        try:
-            res = runner.Context.sql_build_machine_db_obj.execute_query('\n'.join(query))[0]['res_http_link']
-            if sys.platform == 'win32':
-                res = res.replace('http:', '\\\\becks') + '/history'
-            else:
-                res = runner.Context.report_path.split('Job_')[0] + 'Job_' + res.split('Job_')[1] + '/history'
-            runner.Context.latest_report_time_folder_history_for_feature = res
-            have_history = os.path.exists(runner.Context.latest_report_time_folder_history_for_feature)
-        except IndexError:
-            pass
-
-    else:
-        try:
-            latest_report_day_folder_for_feature = max(
-                [os.path.join(runner.Context.server_report_path_for_feature, d) for d in
-                 os.listdir(runner.Context.server_report_path_for_feature) if d != '.DS_Store'], key=os.path.getmtime)
-            runner.Context.latest_report_time_folder_history_for_feature = os.path.join(
-                latest_report_day_folder_for_feature, 'report', 'history')
-            have_history = os.path.exists(runner.Context.latest_report_time_folder_history_for_feature)
-        except Exception as e:
-            log.warning('No Report History Founded!')
-
-    return have_history
-
-#
-# def copy_history_to_current_report_folder():
-#     try:
-#         history_folder = os.path.join(runner.Context.report_path, 'history')
-#         os.makedirs(history_folder, exist_ok=True)
-#         copy_tree(runner.Context.latest_report_time_folder_history_for_feature, history_folder)
-#         log.debug(f'Copied history from path: {runner.Context.latest_report_time_folder_history_for_feature}')
-#     except Exception as e:
-#         log.warning(
-#             f'Failed to copy history from path: {runner.Context.latest_report_time_folder_history_for_feature} ; Exception: {e}')
-#
 
 def main():
     global exit_code

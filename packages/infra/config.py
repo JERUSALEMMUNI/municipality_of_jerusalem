@@ -26,7 +26,6 @@ elif sys.platform == 'win32' and platform.architecture()[0] == '64bit':
     except:
         is_windows_11 = False
     applications_exec = '.exe'
-    trash_path = os.path.join('C:\$Recycle.Bin')
     temp_folder = os.environ['TMP']
     platform_machine = 'Win'
 else:
@@ -43,16 +42,5 @@ if current_os == 'Win':
 else:
     local_allure_executable = os.path.join(allure_utils_path, 'bin', 'allure')
 
-field_error = {
-    "empty_field_error": "שדה חובה",
-    "language_error": "יש להזין אותיות בעברית בלבד ותווים מיוחדים",
-    "enter_letters_error": "יש להזין ספרות בלבד",
-    "unclean_id_error": "מספר זהות לא תקין",
-    "empty_unclean_id_error": "שדה חובה-יש להזין ספרות בלבד",
-    "incomplete_phone_number_error": "יש להשלים את הספרות החסרות",
-    "incomplete_unclean_phone_number_error": "יש להזין ספרות בלבד-יש להשלים את הספרות החסרות",
-    "unclean_email_error": "שדה לא תקין",
-    "incomplete_unclean_email_error": "שדה חובה-שדה לא תקין"
-}
-
 explicit_wait = 30
+implicit_wait = 10

@@ -1,7 +1,4 @@
-import traceback
 import uuid
-import allure
-from allure_commons.types import AttachmentType
 from behave.model_core import Status
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -11,27 +8,25 @@ from infra import reporter, logger, config
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
-# if there is a failed step in the scenario, the scenario will continue
-def before_scenario(context, scenario):
-    scenario.continue_after_failed_step = True
-
-
-
 
 def before_all(context):
     context._config.current_page = None
     browser = context.opt_dict.get('browser', 'chrome')
     if browser == 'chrome':
-        context.driver = webdriver.Chrome(ChromeDriverManager().install())
-        context.driver.implicitly_wait(10)
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver.implicitly_wait(config.implicit_wait)
+        context._config.driver = driver
 
 
 def before_scenario(context, scenario):
-    scenario.starting_scenario_msg = f'----- Starting Scenario - {scenario.name} -----'
+    scenario.starting_scenario_msg = f'----- Start Scenario - {scenario.name} -----'
     log.info(scenario.starting_scenario_msg)
+    # if there is a failed step in the scenario, the scenario will continue
+    scenario.continue_after_failed_step = True
+
 
 def before_step(context, step):
-    log.info(f'----- Starting Step - {step.name} -----')
+    log.info(f'----- Start Step - {step.name} -----')
 
 
 def after_step(context, step):
@@ -45,8 +40,9 @@ def after_step(context, step):
     if not step_pass:
         log.debug(f'Take ScreenShot after failure for step {step.name}')
         screenshot = f'{context.result_folder_path}/screenshot_after_failure.png'
-        context.driver.save_screenshot(screenshot)
+        context._config.driver.save_screenshot(screenshot)
         rep.add_image_to_step(screenshot, "ScreenShot After Failure")
+    log.info(f'----- End Step - {step.name} -----')
 
 
 def after_scenario(context, scenario):
@@ -64,9 +60,10 @@ def after_scenario(context, scenario):
             rep.add_text_file_to_step(scenario_log_file, 'scenario log')
         except PermissionError as e:
             log.warning(f'{scenario_log_file} - {e.args[0]}')
+    log.info(f'----- End Scenario - {scenario.name} -----')
 
 
 def after_all(context):
-    if context.driver:
+    if hasattr(context._config, 'driver'):
         log.info('Close Browser')
-        context.driver.quit()
+        context._config.driver.quit()

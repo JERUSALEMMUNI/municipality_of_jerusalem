@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 def main():
     '''A Python module that includes custom logging classes.
 
-Written by nira@waves.com'''
+Written by amr.shaloudi'''
 
 
 class LogWithFailure(logging.Logger):

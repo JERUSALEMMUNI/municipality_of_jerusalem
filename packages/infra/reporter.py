@@ -23,6 +23,7 @@ report_resources_folder = os.path.join(config.utilities_folder, 'report_resource
 def main():
     pass
 
+
 def get_reporter():
     """A getter function that returns an instance of the main reporter object."""
     return _reporter
@@ -41,7 +42,6 @@ class Reporter(object):
         self._xml_tables_count = 0
         self._hdlr = None
         self.write_html_prev_time = time.time()
-
 
     @property
     def xml_tables_count(self):
@@ -71,7 +71,7 @@ class Reporter(object):
         self.xml_tables_count = len(self._xml_tables)
 
     def create_hdlr(self, create_fail_report, report_folder_path, reporter_name):
-        self._hdlr = ReporterFileHander(report_folder_path, reporter_name, create_fail_report=create_fail_report)
+        self._hdlr = ReporterFileHandler(report_folder_path, reporter_name, create_fail_report=create_fail_report)
         atexit.register(self.write_xml)
         atexit.register(lambda: self.write_html(force=True))
 
@@ -108,18 +108,19 @@ class Reporter(object):
             try:
                 return elements[-1]
             except IndexError:
-                raise ce.WEKeyError('%s - %s not found in report' % (element_type, element_name))
+                raise ce.MJKeyError('%s - %s not found in report' % (element_type, element_name))
 
     def is_table_exists(self, table_name):
         return len(self.get_table(table_name, return_all=True)) > 0
 
     def get_table(self, table_name, **kwargs):
-        """Returns xml element object from the "Tables" tree. If more than one table exists, it returns the last table"""
+        """Returns xml element object from the "Tables" tree.If more than one table exists, it returns the last table"""
         return self.get_element('Table', root=self._xml_tables, element_name=table_name, **kwargs)
 
     def get_tables(self) -> list:
         """Returns a list of all available tables"""
-        return [attrib.attrib.get('name') for attrib in self.get_element('Table', root=self._xml_tables, return_all=True)]
+        return [attrib.attrib.get('name') for attrib in
+                self.get_element('Table', root=self._xml_tables, return_all=True)]
 
     def get_table_index(self, table_name):
         """Returns index of table (by name)"""
@@ -132,20 +133,20 @@ class Reporter(object):
 
         if header_type == 'all':
             if len(self._xml_headers) == 0:
-                raise ce.WEValueError('No headers defined in report')
+                raise ce.MJValueError('No headers defined in report')
             return self._xml_headers
         else:
             try:
                 return [self._xml_headers.xpath("Header[@type='%s']" % header_type)[0]]
             except IndexError:
-                raise ce.WEValueError('Header not defined in report - %s' % header_type)
+                raise ce.MJValueError('Header not defined in report - %s' % header_type)
 
     def get_xml_columns(self, table_name):
         table = self.get_table(table_name)
         try:
             xml_columns = table.xpath('Columns')[0]
         except IndexError:
-            raise ce.WEIndexError('No columns defined in report - %s' % table_name)
+            raise ce.MJIndexError('No columns defined in report - %s' % table_name)
         return xml_columns
 
     def get_columns(self, table_name):
@@ -215,7 +216,7 @@ class Reporter(object):
         try:
             return self.get_headers(header_type='full')[0].attrib['title']
         except (IndexError, KeyError, AttributeError) as e:
-            raise ce.WERunTimeError('Get title failed - %s' % e)
+            raise ce.MJRunTimeError('Get title failed - %s' % e)
 
     def set_headers_title(self, title, header_type='all', add_client_name=True):
         """Sets a "title" attribute to the report headers"""
@@ -246,7 +247,7 @@ class Reporter(object):
                index - To insert a column (not at the end)"""
         try:
             table = self.get_table(table_name)
-        except ce.WEKeyError:
+        except ce.MJKeyError:
             table = self.add_table(table_name)
         xml_columns = table.xpath('Columns')[0]
 
@@ -254,10 +255,11 @@ class Reporter(object):
         for i, column in enumerate(columns):
             log.debug('Adding column "%s" to %s' % (column[1], table_name))
             if type(column) not in (list, tuple):
-                raise ce.WEValueError('Columns must be tuple or list - %s' % column)
+                raise ce.MJValueError('Columns must be tuple or list - %s' % column)
             if column[0][0].isdigit():
-                raise ce.WEValueError('column key must not start with a digit - %s' % column[0])
-            self.add_element('Column', root=xml_columns, name=column[0], text=column[1], index=index+i if index is not None else None, **kwargs)
+                raise ce.MJValueError('column key must not start with a digit - %s' % column[0])
+            self.add_element('Column', root=xml_columns, name=column[0], text=column[1],
+                             index=index + i if index is not None else None, **kwargs)
 
         # Adding empty cells to existing rows
         rows = table.xpath('Rows')[0]
@@ -265,7 +267,7 @@ class Reporter(object):
             for xml_row in rows:
                 for i, col in enumerate(columns):
                     # An empty list with a 0 index is used to trigger IndexError thus inserting None values in the cells
-                    self._add_row_cell([], 0, col[0], xml_row, index=index+i if index is not None else None, **kwargs)
+                    self._add_row_cell([], 0, col[0], xml_row, index=index + i if index is not None else None, **kwargs)
 
         if self._hdlr is not None:
             self.write_html()
@@ -277,7 +279,7 @@ class Reporter(object):
         except IndexError:
             return []
 
-    def add_row(self, table_name: str, row: (list, tuple), col_index: int=0, row_index: int=None, **tags):
+    def add_row(self, table_name: str, row: (list, tuple), col_index: int = 0, row_index: int = None, **tags):
         """Adds a row element to an existing table element.
            Each row is a list with one or multiple items which can be either string or dictionary.
            In case of a dict - each key will define a tag for the row element, and "text" key will be the text of the cell element.
@@ -299,15 +301,15 @@ class Reporter(object):
 
         row = copy.deepcopy(row)
         if type(row) not in (tuple, list):
-            raise ce.WETypeError('row must be a list - %s' % row)
+            raise ce.MJTypeError('row must be a list - %s' % row)
         try:
             table = self.get_table(table_name)
-        except ce.WEKeyError:
+        except ce.MJKeyError:
             table = self.add_table(table_name)
 
         columns, col_text = self.get_columns_info(table_name)
         if len(row) > len(columns):
-            raise ce.WEIndexError('%s table - row has more columns than defined in table - (%s)' % (table_name, row))
+            raise ce.MJIndexError('%s table - row has more columns than defined in table - (%s)' % (table_name, row))
 
         rows = table.xpath('Rows')[0]
         if row_index is None:
@@ -320,14 +322,6 @@ class Reporter(object):
         if self._hdlr is not None:
             self.write_html()
 
-    def add_screenshot_to_header(self, screenshot_path=None, screenshot_name='screenshot', msg=''):
-        from utils.image_utils import capture_screen
-        if not screenshot_path:
-            screenshot_path = self.get_html_folderpath()
-        screenshot_file = os.path.join(screenshot_path, screenshot_name)
-        msg += 'Click here to view screenshot '
-        self.add_header_rows({'text': msg, 'href': self.get_relative_path(capture_screen(screenshot_file, dated_file=True))})
-
     def set_row_values(self, table_name, row, row_index, col_index, **tags):
         """A function that modifies values of an existing row.
            Args:
@@ -339,15 +333,15 @@ class Reporter(object):
 
         row = copy.deepcopy(row)
         if type(row) not in (tuple, list):
-            raise ce.WETypeError('row must be a list - %s' % row)
+            raise ce.MJTypeError('row must be a list - %s' % row)
         table = self.get_table(table_name)
 
         columns, col_text = self.get_columns_info(table_name)
         if len(row) > len(columns):
-            raise ce.WEIndexError('%s table - row has more columns than defined in table - (%s)' % (table_name, row))
+            raise ce.MJIndexError('%s table - row has more columns than defined in table - (%s)' % (table_name, row))
 
         xml_row = self.get_element('Rows', root=table)[row_index]
-        for i, key in enumerate(columns[col_index:col_index+len(row)]):
+        for i, key in enumerate(columns[col_index:col_index + len(row)]):
             text, row_tags = self._convert_cell(row, i)
             xml_row[i + col_index].text = text
             for k, v in list(row_tags.items()):
@@ -397,7 +391,7 @@ class Reporter(object):
         try:
             row = self.get_element('Rows', root=table)[row_index]
         except IndexError:
-            raise ce.WEIndexError('Row %s does not exist in table - %s' % (row_index, table_name))
+            raise ce.MJIndexError('Row %s does not exist in table - %s' % (row_index, table_name))
         if cell_name is None:
             item_to_set = row
         else:
@@ -450,10 +444,12 @@ class Reporter(object):
         if len(sorting_columns) == 0:
             sorting_columns = list(range(len(self.get_element('Columns', root=table))))
         elif len(sorting_columns) == 1:
-            sorting_columns = (sorting_columns[0], sorting_columns[0])  # Hack: to force the itemgetter to return a tuple
+            sorting_columns = (
+            sorting_columns[0], sorting_columns[0])  # Hack: to force the itemgetter to return a tuple
         rows = self.get_element('Rows', root=table)
         # Sort rows in the table by columns, ignoring cells that are None
-        rows[:] = sorted(rows, key=lambda x: [(x.text or '') for x in operator.itemgetter(*sorting_columns)(x)], reverse=reverse)
+        rows[:] = sorted(rows, key=lambda x: [(x.text or '') for x in operator.itemgetter(*sorting_columns)(x)],
+                         reverse=reverse)
         if self._hdlr is not None:
             self.write_html()
 
@@ -462,13 +458,13 @@ class Reporter(object):
         try:
             return self._hdlr.get_html_filepath(report_name=report_name)
         except (AttributeError, KeyError) as e:
-            raise ce.WEIOError('Report file not defined - %s' % e)
+            raise ce.MJIOError('Report file not defined - %s' % e)
 
     def get_html_folderpath(self):
         try:
             return self._hdlr.report_folder_path
         except (AttributeError) as e:
-            raise ce.WEIOError('Report file not defined - %s' % e)
+            raise ce.MJIOError('Report file not defined - %s' % e)
 
     def get_relative_path(self, the_path):
         """Returns a relative path to the report folder"""
@@ -476,11 +472,11 @@ class Reporter(object):
         return files_utils.get_relative_path(the_path, self.get_html_folderpath()).replace('\\', '/')
 
     def write_xml(self, **kwargs):
-        """Calls ReporterFileHander.write_xml using self._xml_tree"""
+        """Calls ReporterFileHandler.write_xml using self._xml_tree"""
         try:
             self._hdlr.write_xml(self._xml_tree, **kwargs)
         except AttributeError as e:
-            raise ce.WEIOError('Report file not defined - %s' % e)
+            raise ce.MJIOError('Report file not defined - %s' % e)
 
     def write_html(self, force=False, update_rate=0.6, **kwargs):
         elapsed_time = time.time() - self.write_html_prev_time
@@ -491,7 +487,7 @@ class Reporter(object):
                 self._hdlr.write_html(self._xml_tree, **kwargs)
                 self.write_html_prev_time = time.time()
             except AttributeError as e:
-                raise ce.WEIOError('Report file not defined - %s' % e)
+                raise ce.MJIOError('Report file not defined - %s' % e)
             except IOError as e:
                 if force:
                     raise
@@ -499,15 +495,15 @@ class Reporter(object):
 
     def get_html(self, table_name, **kwargs):
         html_content = ''
-        table_string = f'<!DOCTYPE html><html lang="en">'\
+        table_string = f'<!DOCTYPE html><html lang="en">' \
                        '<head>' \
-        f'  <title>{table_name}</title>' \
-        '  <meta charset="utf-8">' \
-        '  <meta name="viewport" content="width=device-width, initial-scale=1">' \
-        '  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">' \
-        '  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>' \
-        '  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>' \
-        '</head>' \
+                       f'  <title>{table_name}</title>' \
+                       '  <meta charset="utf-8">' \
+                       '  <meta name="viewport" content="width=device-width, initial-scale=1">' \
+                       '  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">' \
+                       '  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>' \
+                       '  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>' \
+                       '</head>' \
                        '<body>'
         try:
             table_index = self.get_table_tag(table_name, 'id')
@@ -515,309 +511,63 @@ class Reporter(object):
             table_string += html_content[html_content.index(f'<table id="tbl-{table_index}">'):]
             table_string = table_string.replace(f'<table id="tbl-{table_index}">',
                                                 f'<table id="tbl-{table_index}" class="table table-hover">')
-            table_string = table_string[: table_string.index('</table>')+8]
+            table_string = table_string[: table_string.index('</table>') + 8]
             table_string += '</body></html>'
-            table_string = table_string.replace('.wav<', '.wav"/></audio><')
-            table_string = table_string.replace('.mp3<', '.mp3"/></audio><')
-            table_string = table_string.replace('audiohttps://artifactory.waves.com', '<audio controls><source src="https://artifactory.waves.com')
-            table_string = table_string.replace('audiohttp://Automation', '<audio controls><source src="http://Automation')
-            table_string = table_string.replace('audiohttp://automation', '<audio controls><source src="http://automation')
-            table_string = table_string.replace('audioresources', '<audio controls><source src="resources')
         except Exception as e:
-            raise ce.WEIOError(f'Cannot find table {table_name} - {e}')
+            raise ce.MJIOError(f'Cannot find table {table_name} - {e}')
         return table_string
 
     def add_table_to_step(self, table_name):
         allure.attach(self.get_html(table_name), table_name, attachment_type=allure.attachment_type.HTML)
 
-    def add_empty_table_to_step(self, table_name):
-        allure.attach("", table_name, attachment_type=allure.attachment_type.HTML)
-
-    def add_html_to_step(self):
-        
-        table_string = f'<!DOCTYPE html><html lang="en">' \
-                       '<head>' \
-                       f'  <title>file</title>' \
-                       '  <meta charset="utf-8">' \
-                       '  <meta name="viewport" content="width=device-width, initial-scale=1">' \
-                       '  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">' \
-                       '  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>' \
-                       '  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>' \
-                       '</head>' \
-                       '<body>'
-        table_string += '<a href="./../../IOCancellation.txt">file</a>'
-        table_string += '</body></html>'
-
-        allure.attach(table_string, 'file', attachment_type=allure.attachment_type.HTML)
-
-    def add_audio_player_to_step(self, audio_links_dict, audio_names='Audio Files Players'):
-        table_string = f'<!DOCTYPE html><html lang="en">' \
-                       '<head>' \
-                       f'  <title>file</title>' \
-                       '  <meta charset="utf-8">' \
-                       '  <meta name="viewport" content="width=device-width, initial-scale=1">' \
-                       '  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">' \
-                       '  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>' \
-                       '  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>' \
-                       '</head>' \
-                       '<body>'
-        for audio_name, audio_link in audio_links_dict.items():
-            audio_link2 = self.get_arti_download_link(audio_link)
-            table_string += f'<p>{audio_name}: </p><audio controls><source src="{audio_link2}" /></audio><br/>'
-        table_string += '</body></html>'
-
-        allure.attach(table_string, audio_names, attachment_type=allure.attachment_type.HTML)
-
-    def get_audio_player_for_table_cell(self, link):
-        if link == '---':
-            return link
-        if not str(link).startswith('audiohttp'):
-            return f'audio{self.get_arti_download_link(link)}'
-
-    def get_arti_download_link(self, arti_link):
-        down_art_link = str(arti_link).replace('artifactory.waves.com/artifactory/',
-                                              'artifactory.waves.com/ui/api/v1/download?repoKey=').replace(' ',
-                                                                                                           '%20')
-        down_art_link = down_art_link.replace('artifactory.waves.com/ui/repos/tree/General/', 'artifactory.waves.com/ui/api/v1/download?repoKey=')
-        down_art_link = down_art_link.replace('pa-ref-prod-local/', 'pa-ref-prod-local&path=')
-        down_art_link = down_art_link.replace('pa-ref-beta-local/', 'pa-ref-beta-local&path=')
-        down_art_link = down_art_link.replace('pa-auto-utilities-local/', 'pa-auto-utilities-local&path=')
-        return down_art_link
-
     def add_label_to_step(self, label_name, label_content):
         allure.attach(label_content, label_name, allure.attachment_type.TEXT)
-
-    def add_exception_image_to_step(self, image_path, image_name = 'Exception Screen Shot'):
-        allure.attach.file(image_path, image_name, attachment_type=allure.attachment_type.JPG)
 
     def add_images_to_step(self, images):
         for image_path, image_name in images:
             self.add_image_to_step(image_path, image_name)
 
-    def add_image_to_step(self, image_path, image_name = 'Screen Shot'):
+    def add_image_to_step(self, image_path, image_name='Screen Shot'):
         allure.attach.file(image_path, image_name, attachment_type=allure.attachment_type.PNG)
 
-    def add_text_file_to_step(self, image_path, image_name = 'Attached file'):
+    def add_text_file_to_step(self, image_path, image_name='Attached file'):
         allure.attach.file(image_path, image_name, attachment_type=allure.attachment_type.TEXT)
 
     def add_zip_file_to_step(self, zip_path, zip_name='Attached file'):
         allure.attach.file(zip_path, zip_name, attachment_type="application/zip", extension='zip')
 
-    def add_wav_file_to_step(self, audio_file, audio_name = 'Attached file'):
+    def add_wav_file_to_step(self, audio_file, audio_name='Attached file'):
         allure.attach.file(audio_file, audio_name, attachment_type="audio/wav", extension='wav')
 
-    def add_json_file_to_step(self, image_path, image_name = 'Attached file'):
+    def add_json_file_to_step(self, image_path, image_name='Attached file'):
         allure.attach.file(image_path, image_name, attachment_type="application/json", extension='txt')
 
-    def add_txt_file_as_link_to_step(self, image_path, image_name = 'Attached file'):
+    def add_txt_file_as_link_to_step(self, image_path, image_name='Attached file'):
         allure.attach.file(image_path, image_name, attachment_type="text/x-json", extension='txt')
 
-    def add_excel_file_as_link_to_step(self, image_path, file_name = 'Attached file'):
+    def add_excel_file_as_link_to_step(self, image_path, file_name='Attached file'):
         allure.attach.file(image_path, file_name, attachment_type="application/vnd.ms-excel", extension='csv')
 
-    def add_txt_file_content_to_step(self, image_path, image_name = 'Attached file'):
+    def add_txt_file_content_to_step(self, image_path, image_name='Attached file'):
         allure.attach.file(image_path, image_name, attachment_type="text/plain", extension='txt')
 
-    def add_link_to_step(self, file_path, lable_name='Screen Shot', file_type=allure.attachment_type.PNG):
+    def add_link_to_step(self, file_path, lable_name='Link', file_type=allure.attachment_type.PNG):
         allure.attach(file_path, lable_name, file_type)
-
-    def add_img_from_arti_link_to_step(self, image_name='Image', image_link='Screen Shot'):
-        image_download_link = self.get_arti_download_link(image_link)
-        img_html = f"""
-        <!DOCTYPE html>
-        <html>
-        <body>
-            <a href='{image_link}' target="_blank">
-            <img src='{image_download_link}'
-            title='Click to open in Artifactory'>
-            </a>
-        </body>
-        </html>
-        """
-        allure.attach(img_html, image_name, attachment_type=allure.attachment_type.HTML)
-
-    def add_slideshow_img_from_arti_links_to_step(self, images_dict, slide_show_desc='Slide Show'):
-        total_slide = len(images_dict)
-
-        test = '''
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-        * {box-sizing: border-box}
-        body {font-family: Verdana, sans-serif; margin:0}
-        .mySlides {display: none}
-        img {vertical-align: middle;}
-
-        /* Slideshow container */
-        .slideshow-container {
-          max-width: 1000px;
-          position: relative;
-          margin: auto;
-        }
-
-        /* Next & previous buttons */
-        .prev, .next {
-          cursor: pointer;
-          position: absolute;
-          top: 50%;
-          width: auto;
-          padding: 16px;
-          margin-top: -22px;
-          color: white;
-          font-weight: bold;
-          font-size: 18px;
-          transition: 0.6s ease;
-          border-radius: 0 3px 3px 0;
-          user-select: none;
-        }
-
-        /* Position the "next button" to the right */
-        .next {
-          right: 0;
-          border-radius: 3px 0 0 3px;
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover, .next:hover {
-          background-color: rgba(0,0,0,0.8);
-        }
-
-        /* Caption text */
-        .text {
-          color: green;
-          font-size: 15px;
-          padding: 8px 12px;
-          bottom: 8px;
-          width: 100%;
-          text-align: center;
-        }
-
-        /* Number text (1/3 etc) */
-        .numbertext {
-          color: green;
-          font-size: 12px;
-          padding: 8px 12px;
-          position: absolute;
-          top: 0;
-        }
-
-        /* The dots/bullets/indicators */
-        .dot {
-          cursor: pointer;
-          height: 15px;
-          width: 15px;
-          margin: 0 2px;
-          background-color: #bbb;
-          border-radius: 50%;
-          display: inline-block;
-          transition: background-color 0.6s ease;
-        }
-
-        .active, .dot:hover {
-          background-color: #717171;
-        }
-
-        /* Fading animation */
-        .fade {
-          animation-name: fade;
-          animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-          from {opacity: .4} 
-          to {opacity: 1}
-        }
-
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-          .prev, .next,.text {font-size: 11px}
-        }
-        </style>
-        </head>
-        <body style="height:100%">
-
-        <div class="slideshow-container">'''
-
-        i = 1
-        for image_name, image_link in images_dict.items():
-            image_link_edited = self.get_arti_download_link(image_link)
-            test += '''   <div class="mySlides fade">'''
-            test += f'''   <div class="text">{image_name}</div>'''
-            test += f'''  <div class="numbertext">{i} / {total_slide}</div>'''
-            test += f'''  <img src="{image_link_edited}" style="width:100%">'''
-            test += f'''
-                    </div>'''
-            i += 1
-
-        test +='''<a class="prev" onclick="plusSlides(-1)">PREV</a>
-        <a class="next" onclick="plusSlides(1)">NEXT</a>
-
-        </div>
-        <br>
-
-        <div style="text-align:center">'''
-        for j in range(total_slide):
-            test += f'''<span class="dot" onclick="currentSlide({j+1})"></span>'''
-        test += '''</div>
-
-        <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-        }
-        </script>
-
-        </body>
-        </html> 
-        '''
-        allure.attach(test, slide_show_desc, attachment_type=allure.attachment_type.HTML)
-
-    def add_jira_issue_link_to_step(self, issue_links_dict, label='Jira issues'):
-        link_template = '<a href="LINK_URL_PLACEHOLDER" target="_blank" title="LINK_HINT_PLACEHOLDER">LINK_NAME_PLACEHOLDER</a>'
-        ll = ''
-        for link_name, [link_url, link_summary] in issue_links_dict.items():
-            ll += link_template.replace('LINK_URL_PLACEHOLDER', link_url).replace('LINK_NAME_PLACEHOLDER', link_name).replace("LINK_HINT_PLACEHOLDER", link_summary) +', '
-        links_html = f'<!DOCTYPE html style="height:50px"><html style="height:50px"><body>{ll[:-2]}</body></html>'
-        allure.attach(links_html, label, attachment_type=allure.attachment_type.HTML)
 
     def add_links_to_step(self, links_dict, label='Links'):
         link_template = '<a href="LINK_URL_PLACEHOLDER" target="_blank">LINK_NAME_PLACEHOLDER</a>'
         ll = ''
         for link_name, link_url in links_dict.items():
-            ll += link_template.replace('LINK_URL_PLACEHOLDER', link_url).replace('LINK_NAME_PLACEHOLDER', link_name) +', '
+            ll += link_template.replace('LINK_URL_PLACEHOLDER', link_url).replace('LINK_NAME_PLACEHOLDER',
+                                                                                  link_name) + ', '
         links_html = f'<!DOCTYPE html style="height:50px"><html style="height:50px"><body>{ll[:-2]}</body></html>'
         allure.attach(links_html, label, attachment_type=allure.attachment_type.HTML)
-
 
     def create_run_command_link(self, report_folder_path, reporter_name):
         """Add a link on report to command with arguments"""
         argv = list(sys.argv)
         py_file = argv.pop(0)
-        if '--bdd_args' in argv: #wrap the bdd args in double quote
+        if '--bdd_args' in argv:  # wrap the bdd args in double quote
             argv[argv.index('--bdd_args') + 1] = f'\"{argv[argv.index("--bdd_args") + 1]}\"'
         run_command_file = os.path.join(report_folder_path, reporter_name + '_command.txt')
         self.add_header_rows({'text': 'Run command', 'href': self.get_relative_path(run_command_file)})
@@ -836,8 +586,9 @@ class Reporter(object):
         return all_rows_info
 
 
-class ReporterFileHander(object):
+class ReporterFileHandler(object):
     """A helper class that sets up report files - xml, xslt, html"""
+
     def __init__(self, report_folder_path, report_name, create_fail_report=False):
         self.report_folder_path = report_folder_path
         os.makedirs(os.path.join(self.report_folder_path, 'resources'), exist_ok=True)
@@ -856,7 +607,7 @@ class ReporterFileHander(object):
             report_name = self.report_name
         return self.html_report_files[report_name]
 
-    @retry(2, exceptions=(OSError, ), delay=10)
+    @retry(2, exceptions=(OSError,), delay=10)
     def read_xml(self):
         """Reads xml file and returns an xml tree"""
         xml_tree = ET.parse(self.xml_report_file, parser=ET.XMLParser(remove_blank_text=True))
@@ -881,7 +632,7 @@ class ReporterFileHander(object):
                 stream.write(ET.tostring(transform_root, encoding='unicode', method='html', pretty_print=True))
 
     def get_html(self, xml_tree):
-        """Get an html file using xslt tree"""
+        """Get html file using xslt tree"""
         for resource_name in self.html_report_files:
             transform_root = ET.XSLT(self.xslt_trees[resource_name])(xml_tree)
             html_file = self.html_report_files[resource_name]
@@ -901,7 +652,6 @@ class ReporterFileHander(object):
 
 
 _reporter = Reporter()
-
 
 if __name__ == '__main__':
     main()
