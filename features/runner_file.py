@@ -87,7 +87,14 @@ def test():
         f = os.path.join(Path(__file__).parent, f)
         args = f"'{f}' -f allure_behave.formatter:AllureFormatter -o '{runner.Context.result_folder_path}'"
         if runner.Context.opt_dict.get('tags'):
-            args += " --tags="+" --tags=".join(runner.Context.opt_dict.get("tags").split("/"))
+            to_join = " --tags="
+            tags_from_args = runner.Context.opt_dict.get("tags")
+            split_by = "&"
+            if "|" in tags_from_args:
+                to_join = ","
+                split_by = "|"
+            args += " --tags="+to_join.join(tags_from_args.split(split_by))
+        log.info(args)
         log.debug('^^^^^^^ before calling Configuration(args) ^^^^^^^^')
         runner_config = Configuration(args)
         log.debug('^^^^^^^ after calling Configuration(args) ^^^^^^^^')
