@@ -1,17 +1,22 @@
 from selenium.webdriver.common.by import By
 from ui_widgets.button_field import ButtonField
 from ui_widgets.footer_field import Footer_field
-from ui_widgets.header_field import Header_field
+from ui_widgets.new_style.header_field import Header_field
 from ui_widgets.old_button_field import OldButtonField
 from ui_widgets.page_number_field import Page_number_field
 
 
 class BasePage(object):
-    def __init__(self, driver):
+    def __init__(self, driver, style='new'):
         self.driver = driver
+        self.style = style
         self.main_url = 'https://jeronlineforms.jerusalem.muni.il/'
         self.url_postfix = ''
         self.widgets = {}
+        self.init_widgets()
+        self.main_elements_to_wait_when_load = []
+
+    def init_widgets(self):
         self.widgets['המשך'] = ButtonField('המשך')
         self.widgets['חזור'] = ButtonField('חזור')
         self.widgets['שמור טיוטה'] = ButtonField('שמור טיוטה')
@@ -19,9 +24,9 @@ class BasePage(object):
         self.widgets['header'] = Header_field('header')
         self.widgets['footer'] = Footer_field('footer')
         self.widgets['pages'] = Page_number_field('pages')
-        self.widgets['המשך'] = OldButtonField('המשך')
-        self.widgets['חזור'] = OldButtonField('חזור')
-        self.main_elements_to_wait_when_load = []
+        if self.style == 'old':
+            self.widgets['המשך'] = OldButtonField('המשך')
+            self.widgets['חזור'] = OldButtonField('חזור')
 
     def navigate_to_page_url(self):
         self.driver.get(self.main_url + self.url_postfix)
