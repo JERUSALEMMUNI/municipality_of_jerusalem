@@ -1,7 +1,4 @@
 from screens.forms.base_page import BasePage
-from ui_widgets.application_steps_field import Application_steps_field
-from ui_widgets.old_button_field import OldButtonField
-from ui_widgets.new_header_field import New_Header_field
 from ui_widgets.radio_button_field import RadioButtonField
 
 

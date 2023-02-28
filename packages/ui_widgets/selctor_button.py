@@ -13,10 +13,9 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 class SelctorButton(BaseWidget):
-    def __init__(self, label,driver,path ="/following-sibling::p-dropdown"):
+    def __init__(self, label, path ="/following-sibling::p-dropdown"):
         super().__init__(label)
         self.path = path
-        self.driver = driver
 
     @property
     def locator(self):
@@ -56,9 +55,9 @@ class SelctorButton(BaseWidget):
                     desired_option = option
                     break
                 else:
-                    doc = self.driver.find_element(By.XPATH,path)
-                    WebDriverWait(self.driver, 30).until(EC.visibility_of((doc)))
-                    self.driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
+                    doc = self.web_element.find_element(By.XPATH,path)
+                    WebDriverWait(self.web_element, 30).until(EC.visibility_of((doc)))
+                    # self.driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
         WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable((desired_option))).click()
 
     def has_text(self, text):

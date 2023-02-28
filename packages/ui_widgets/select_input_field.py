@@ -8,9 +8,8 @@ log = logger.get_logger(__name__)
 
 
 class SelectInputField(DropDown_field):
-    def __init__(self, label, driver):
+    def __init__(self, label):
         super().__init__(label)
-        self.driver = driver
 
     @property
     def locator(self):
@@ -48,8 +47,8 @@ class SelectInputField(DropDown_field):
                     city_li = city
                     break
                 else:
-                    doc = self.driver.find_element(By.XPATH,
+                    doc = self.web_element.find_element(By.XPATH,
                                                    f'//div/following-sibling::div/ul/cdk-virtual-scroll-viewport')
-                    self.driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
+                    # self.driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
         WebDriverWait(self.web_element, config.explicit_wait).until(EC.element_to_be_clickable((city_li))).click()
         return True

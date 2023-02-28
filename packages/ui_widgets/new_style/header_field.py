@@ -6,7 +6,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class New_Header_field(BaseWidget):
+class Header_field(BaseWidget):
     def __init__(self, label, driver):
         super().__init__(label)
         self.driver = driver
