@@ -1,6 +1,7 @@
 from screens.forms.base_page import BasePage
 from ui_widgets.alert_window_field import Alert_window_field
 from ui_widgets.mobile_field import Mobile_Field
+from ui_widgets.selctor_button import SelctorButton
 from ui_widgets.select_field import SelectField
 from ui_widgets.select_input_field import SelectInputField
 from ui_widgets.text_field import TextField
@@ -16,6 +17,7 @@ class FreedomInfo(BasePage):
         self.widgets["זיהוי"] = TextField("זיהוי")
         self.widgets['דוא"ל'] = TextField('דוא"ל')
         self.widgets["סוג זיהוי"] = SelectField("סוג זיהוי")
+        self.widgets["סוג זיהוי"] = SelctorButton("סוג זיהוי",driver)
         self.widgets["מספר בית"] = TextField("מספר בית")
         self.widgets["מיקוד"] = TextField("מיקוד")
         self.widgets['טלפון נייד'] = Mobile_Field('טלפון נייד')

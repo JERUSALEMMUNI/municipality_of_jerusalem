@@ -20,7 +20,7 @@ class BigButtonField(BaseWidget):
              'Value': f"//p-selectbutton/div/div[span='{self.label}']"
         }
 
-    def clickBtn(self):
+    def click_button(self):
         self.web_element.click()
 
 

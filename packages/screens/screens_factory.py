@@ -1,5 +1,6 @@
 from infra import logger, reporter
-from screens.forms import confirmation_for_structure, placeContainer, eduInstituteRegistration, parking
+from screens.forms import confirmation_for_structure, placeContainer, eduInstituteRegistration, parking, \
+    contractor_emp_rights
 from screens.forms import freedomInfo
 
 
@@ -28,7 +29,8 @@ class ScreensFactory(object):
             'FreedomInfo': freedomInfo.FreedomInfo,
             'PlaceContainer': placeContainer.PlaceContainer,
             'EduInstituteRegistration': eduInstituteRegistration.EduInstituteRegistration,
-            'Parking': parking.Parking
+            'Parking': parking.Parking,
+            'ContractorEmpRights': contractor_emp_rights.ContractorEmpRights
         }
 
         screens = []

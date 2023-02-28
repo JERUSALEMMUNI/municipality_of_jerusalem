@@ -1,3 +1,5 @@
+from time import sleep
+
 from behave import *
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -105,7 +107,7 @@ def click_button(context, widget_name):
     if widget.get_web_element() is None:
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
-    widget.clickBtn()
+    widget.click_button()
 
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
@@ -407,7 +409,7 @@ def search_in_select(context):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
 
 @when('Click on save button')
 def search_in_select(context):
@@ -417,7 +419,7 @@ def search_in_select(context):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
 
 @when('Click on information button')
 def search_in_select(context):
@@ -427,7 +429,7 @@ def search_in_select(context):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
 
 @when('Click on next button')
 def search_in_select(context):
@@ -437,7 +439,7 @@ def search_in_select(context):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
 
 @when('Click on prev button')
 def search_in_select(context):
@@ -447,7 +449,7 @@ def search_in_select(context):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
 
 
 
@@ -525,4 +527,30 @@ def choose_in_search(context, widget_name):
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
 
-    widget.clickBtn()
+    widget.click_button()
+
+
+@when('search on "{text}" in "{widget_name}"')
+def search_on_text(context,text, widget_name):
+    """
+    :param widget_name:
+    :param text:
+    :type context: behave.runner.Context
+    """
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        # web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        web_element = WebDriverWait(context._config.current_page.driver, config.implicit_wait).until(
+            EC.element_to_be_clickable((widget.locator['By'], widget.locator['Value'])))
+        widget.set_web_element(web_element)
+    widget.search_on(text)
+
+# @When('choose "value_name" from "widget_name"')
+# def choose_value(context,value_name, widget_name):
+#     widget = context._config.current_page.widgets[widget_name]
+#     if widget.get_web_element() is None:
+#         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+#         widget.set_web_element(web_element)
+#     widget.choose_value(value_name)
+
+

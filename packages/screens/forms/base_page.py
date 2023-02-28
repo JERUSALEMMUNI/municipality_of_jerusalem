@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from ui_widgets.button_field import ButtonField
 from ui_widgets.footer_field import Footer_field
 from ui_widgets.header_field import Header_field
-from ui_widgets.new_btn_field import NewButtonField
+from ui_widgets.old_button_field import OldButtonField
 from ui_widgets.page_number_field import Page_number_field
 
 
@@ -19,8 +19,8 @@ class BasePage(object):
         self.widgets['header'] = Header_field('header')
         self.widgets['footer'] = Footer_field('footer')
         self.widgets['pages'] = Page_number_field('pages')
-        self.widgets['המשך'] = NewButtonField('המשך')
-        self.widgets['חזור'] = NewButtonField('חזור')
+        self.widgets['המשך'] = OldButtonField('המשך')
+        self.widgets['חזור'] = OldButtonField('חזור')
         self.main_elements_to_wait_when_load = []
 
     def navigate_to_page_url(self):

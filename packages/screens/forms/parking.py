@@ -1,5 +1,5 @@
 from screens.forms.base_page import BasePage
-from ui_widgets.big_btn_field import BigButtonField
+from ui_widgets.big_button_field import BigButtonField
 
 
 class Parking(BasePage):

@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver.common.by import By
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
@@ -5,7 +7,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class Radio_button_field(BaseWidget):
+class RadioButtonField(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
 
@@ -13,33 +15,47 @@ class Radio_button_field(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::div",
+            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::div/p-radiobutton/label",
         }
 
-    def select_radio_btn(self, selected_item):
-        wanted_btn = self.web_element.find_element(by=By.XPATH, value=f"./p-radiobutton/label[contains(text(),'{selected_item}')]")
+    def choose_value(self, selected_item):
+        wanted_btn = self.web_element.find_element(self.locator['By'], self.locator[
+            'Value'] + f"[contains(text(),'{selected_item}')]/parent::p-radiobutton/div")
         wanted_btn.click()
 
-    def who_is_selected(self):
-        options = self.web_element.find_elements(by=By.XPATH, value=f"./p-radiobutton/label")
-        for option in options:
+    def get_label(self, selected_item):
+        return self.web_element.find_element(self.locator['By'], self.locator[
+            'Value'] + f"[contains(text(),'{selected_item}')]")
+
+    def get_lists(self):
+        return self.web_element.find_elements(self.locator['By'], self.locator['Value'])
+
+    def inactive_count(self):
+        count = 0
+        for option in self.get_lists():
+            if "active" not in option.get_attribute('class'):
+                count += 1
+        return count
+
+    def get_choosen_value(self):
+        for option in self.get_lists():
             if "active" in option.get_attribute('class'):
                 return option.text
         return -1
 
-    def check_if_selected(self, selected_item):
-        option = self.web_element.find_element(by=By.XPATH, value=f"./p-radiobutton/label[contains(text(),'{selected_item}')]")
-        return "active" in option.get_attribute('class')
+    def is_choosen(self, selected_item):
+        return "active" in self.get_label(selected_item).get_attribute('class')
 
-    def get_error_mgs(self, error_expected):
-        error_msg = self.web_element.find_element(by=By.XPATH, value=f"./following-sibling::span")
-        return error_msg.text == error_expected
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(self.locator['By'],
+                                                      "./parent::p-radiobutton/parent::div/following-sibling::span")
+            return error_msg.text == error_expected
+        except:
+            log.info("there is no label error here")
 
     def is_invalid(self):
-        return self.web_element.get_attribute('aria-invalid') == "true"
+        return 'invalid' in self.web_element.get_attribute('class')
 
     def is_valid(self):
-        return self.web_element.get_attribute('aria-invalid') == "false" or 'aria-invalid' not in self.web_element.get_attribute('class')
-
-
-
+        return 'valid' in self.web_element.get_attribute('class')

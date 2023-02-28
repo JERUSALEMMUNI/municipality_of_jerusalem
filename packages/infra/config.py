@@ -42,5 +42,21 @@ if current_os == 'Win':
 else:
     local_allure_executable = os.path.join(allure_utils_path, 'bin', 'allure')
 
+
+months = {"1": "ינואר",
+          "2": "פברואר",
+          "3": "מרץ",
+          "4": "אפריל",
+          "5": "מאי",
+          "6": "יוני",
+          "7": "יולי",
+          "8": "אוגוסט",
+          "9": "ספטמבר",
+          "10": "אוקטובר",
+          "11": "נובמבר",
+          "12": "דצמבר"
+
+          }
+
 explicit_wait = 30
 implicit_wait = 10

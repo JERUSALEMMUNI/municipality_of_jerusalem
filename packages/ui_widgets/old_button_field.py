@@ -5,7 +5,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class NewButtonField(BaseWidget):
+class OldButtonField(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
 
@@ -20,7 +20,7 @@ class NewButtonField(BaseWidget):
              'Value': f"//button[contains(@title, '{self.label}')]"
         }
 
-    def clickBtn(self):
+    def click_button(self):
         self.web_element.click()
 
 
