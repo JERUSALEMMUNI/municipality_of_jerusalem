@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 from behave import runner
 from behave.configuration import Configuration
+from onesecmail import OneSecMail
 
 script_folder = os.path.dirname(__file__)
 project_folder = os.path.abspath(os.path.join(script_folder, os.pardir))
@@ -47,7 +48,8 @@ def setup():
     # Init ScreensFactory
     runner.Context.screens_manager = ScreensFactory()
 
-    # context._config.driver = None
+    runner.Context.mailbox = OneSecMail.get_random_mailbox()
+    log.info(f'TEMP Email will be: {runner.Context.mailbox.address}')
 
 
 def init_logger_reporter(opt_dict):

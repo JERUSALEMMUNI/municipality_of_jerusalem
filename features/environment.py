@@ -17,6 +17,11 @@ def before_all(context):
         driver.implicitly_wait(config.implicit_wait)
         context._config.driver = driver
 
+    for feature in context._runner.features:
+        for scenario in feature.scenarios:
+            for step in scenario.steps:
+                step.name = step.name.replace('@TEMP_EMAIL_ADDRESS', context.mailbox.address)
+
 
 def before_scenario(context, scenario):
     scenario.starting_scenario_msg = f'----- Start Scenario - {scenario.name} -----'
