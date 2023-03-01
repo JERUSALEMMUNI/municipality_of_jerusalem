@@ -1,9 +1,9 @@
 from screens.forms.base_page import BasePage
-from ui_widgets.calendar_field import CalendarField
+from ui_widgets.old_style.calendar_field import CalendarField
 
 
 class MedicalAssistant(BasePage):
-    def __init__(self, driver,lang):
+    def __init__(self, driver):
         super().__init__(driver)
         self.page_title = 'MedicalAssistant'
         self.url_postfix = 'MedicalAssistant'

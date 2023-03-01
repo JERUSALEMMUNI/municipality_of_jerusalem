@@ -1,11 +1,9 @@
 Feature: Basic Test for contractoremprights Form Page
 
-Scenario:test first name empty and invalid
+  Scenario: Validate information dialog
     Given I navigate to "ContractorEmpRights" page
-    When pick "27/10/2019" from calendar of "תאריך לידה:"
-    When choose "כן" from "האם היתה"
-    When click on "המשך" button
-#    And I wait for "6" seconds
-#    Then validate "האם היתה" has error "יש לסמן האם היתה פניה למעסיק קודם הגשת תלונה זו"
-    Then validate chosen choice of "האם היתה" is "כן"
-    Then validate picked date of "תאריך לידה:" is "27/10/2019"
+    When click on "מידע" icon
+    Then Validate information dialog is opened
+    Then Validate information dialog text in old header exists and contains/ at least "10" chars
+    Then Validate information dialog contains "טופס זה הוא"
+    #Then Validate information dialog is closed

@@ -5,6 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from packages.infra import logger, config
 from packages.ui_widgets.text_field import TextField
 from packages.ui_widgets.base_widget import BaseWidget
+from ui_widgets.old_style.widget_locators.calender_locators import CalenderLocators
 
 log = logger.get_logger(__name__)
 
@@ -19,8 +20,6 @@ class CalendarField(BaseWidget):
         return {
             'By': By.XPATH,
             'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::p-calendar/span/input",
-            'year': "//select[starts-with(@class,'ui-datepicker-year')]",
-            'month': "//*[starts-with(@class,'ui-datepicker-month')]"
         }
 
     def initial_widgets(self):
@@ -28,10 +27,11 @@ class CalendarField(BaseWidget):
         self.text_widget.set_web_element(text_field_element)
 
     def date_by_select_day_year(self, day, year):
-        select_year = self.web_element.find_element(self.locator['By'], self.locator['year'])
+        select_year = self.web_element.find_element(*CalenderLocators.year)
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
         WebDriverWait(self.web_element, 10).until(
+            #Todo: it should be in a locator file
             EC.element_to_be_clickable((By.XPATH, f"//a[text()='{day}']"))).click()
 
     def select_all_date(self, date):
@@ -40,7 +40,7 @@ class CalendarField(BaseWidget):
         day = new_date[0]
         month = new_date[1]
         year = new_date[2]
-        select_month = self.web_element.find_element(self.locator['By'], self.locator['month'])
+        select_month = self.web_element.find_element(*CalenderLocators.month)
         month_selected = Select(select_month)
         month_selected.select_by_visible_text(config.months[month])
         self.date_by_select_day_year(day, year)
@@ -48,13 +48,14 @@ class CalendarField(BaseWidget):
     def date_by_write(self, date):
         self.text_widget.set_text(date)
         WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[contains(@class,'active')]"))).click()
+            EC.element_to_be_clickable(CalenderLocators.active_day)).click()
+
 
     def dialog_alert(self):
         try:
-            self.web_element.find_element(By.XPATH, "//i[@class='fa fa-times-circle']").is_displayed()
+            self.web_element.find_element(*CalenderLocators.dialog).is_displayed()
             WebDriverWait(self.web_element, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//div[@class='generalBtn']"))
+                EC.element_to_be_clickable(CalenderLocators.accept_alert)
             ).click()
             return True
         except:

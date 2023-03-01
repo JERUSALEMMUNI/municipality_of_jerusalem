@@ -310,15 +310,6 @@ def search_in_select(context, selected_input, widget_name):
     assert widget.select_input_without_writing(selected_input), "Error, the selected address is not available"
 
 
-@when('I pick "{selected_input}" in "{widget_name}"')
-def search_in_select(context, selected_input, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.select_radio_btn(selected_input)
-
-
 @when('Is "{selected_input}" selected in "{widget_name}"')
 def search_in_select(context, selected_input, widget_name):
     widget = context._config.current_page.widgets[widget_name]
