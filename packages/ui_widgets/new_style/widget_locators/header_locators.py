@@ -1,3 +1,6 @@
+from selenium.webdriver.common.by import By
+
+
 class HeaderLocators:
     title = (By.XPATH, f"./div/div/div/nav/div/div")
     picture = (By.XPATH, f"./div/div/div/nav/div/following-sibling::a")
