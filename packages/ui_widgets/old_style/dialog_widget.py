@@ -20,7 +20,7 @@ class Dialog(BaseWidget):
     def get_text(self):
         return self.web_element.find_element(*DialogLocators.text)
 
-    def validate_dialog_text(self, text):
+    def validate_dialog_text(self, text:str):
         return text in self.get_text().text
 
     def get_close_button(self):
@@ -39,5 +39,5 @@ class Dialog(BaseWidget):
     def validate_dialog_is_not_display(self):
         return not self.validate_dialog_is_displayed()
 
-    def validate_dialog_text_contains_at_least_chars(self, number):
-        return len(self.get_text().text) > int(number)
+    def validate_dialog_text_contains_at_least_chars(self, number:int):
+        return len(self.get_text().text) > number

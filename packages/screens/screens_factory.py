@@ -1,8 +1,6 @@
 from infra import logger, reporter
-from screens.forms import confirmation_for_structure, placeContainer, eduInstituteRegistration, parking, \
-    contractor_emp_rights, business_license_exists, medical_assistant
-from screens.forms import freedomInfo
-
+from screens.forms import contractor_emp_rights, place_container, collective_life_insurance, transfer_dog_ownership, \
+    better_tax_ptor
 
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
@@ -25,14 +23,12 @@ class ScreensFactory(object):
             force_create:force to create it"""
 
         screens_dict = {
-            'ConfirmationForStructure': confirmation_for_structure.ConfirmationForStructure,
-            'FreedomInfo': freedomInfo.FreedomInfo,
-            'PlaceContainer': placeContainer.PlaceContainer,
-            'EduInstituteRegistration': eduInstituteRegistration.EduInstituteRegistration,
-            'Parking': parking.Parking,
+            'PlaceContainer': place_container.PlaceContainer,
             'ContractorEmpRights': contractor_emp_rights.ContractorEmpRights,
-            'BusinessLicenseExists': business_license_exists.BusinessLicenseExists,
-            'MedicalAssistant': medical_assistant.MedicalAssistant,
+            'CollectiveLifeInsurance': collective_life_insurance.CollectiveLifeInsurance,
+            'TransferDogOwnership': transfer_dog_ownership.TransferDogOwnership,
+            'BetterTaxPtor': better_tax_ptor.BetterTaxPtor,
+
         }
 
         screens = []
