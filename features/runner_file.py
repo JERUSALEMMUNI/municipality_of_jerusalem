@@ -33,7 +33,6 @@ def setup():
     opt_dict = set_opt_dict()
     runner.Context.opt_dict = opt_dict
 
-    global feature_path
     feature_path = opt_dict['feature_file_path'].replace('\\', '/')
     runner.Context.feature_file_path = feature_path
     runner.Context.feature_file_name = Path(runner.Context.feature_file_path).stem
@@ -83,7 +82,7 @@ def test():
     global exit_code
     log.info(
         f'*** Starting Test: {runner.Context.opt_dict.get("browser", "chrome")} {runner.Context.feature_file_name} ***')
-    f = feature_path.replace('\\', '/')
+    f = runner.Context.feature_file_path.replace('\\', '/')
     failed = True
     try:
         f = os.path.join(Path(__file__).parent, f)
@@ -95,7 +94,7 @@ def test():
             if "|" in tags_from_args:
                 to_join = ","
                 split_by = "|"
-            args += " --tags="+to_join.join(tags_from_args.split(split_by))
+            args += " --tags=" + to_join.join(tags_from_args.split(split_by))
         log.info(args)
         log.debug('^^^^^^^ before calling Configuration(args) ^^^^^^^^')
         runner_config = Configuration(args)
@@ -135,7 +134,7 @@ def teardown():
 
 
 def update_report_name(allure_report_path, name):
-    ''' Add to Allure report header the feature file name '''
+    """ Add to Allure report header the feature file name """
     summary_file_path = os.path.join(allure_report_path, 'report', 'widgets', 'summary.json')
     if os.path.exists(summary_file_path):
         with open(summary_file_path) as f:
@@ -167,7 +166,7 @@ def add_support_to_change_iframe_height(allure_report_path):
 
 
 def create_environment_properties(res_dict, allure_report_path):
-    ''' Generate a properties file, to be used by Allure report, with basic info '''
+    """ Generate a properties file, to be used by Allure report, with basic info """
     text_to_file = ''
 
     for k, v in res_dict.items():
@@ -179,7 +178,7 @@ def create_environment_properties(res_dict, allure_report_path):
 
 
 def create_executor_properties(allure_report_path):
-    ''' Generate an executor info file to be used in allure report '''
+    """ Generate an executor info file to be used in allure report """
     text_to_file = '{ "name" : "%s","type": "jenkins","buildName": "Report Folder","buildUrl": "../" }' % misc_utils.get_host_name()
 
     with open(os.path.join(allure_report_path, 'executor.json'), "w") as executor:
@@ -217,7 +216,8 @@ def read_options(parser):
         raise
     except SyntaxError:
         log.error(
-            'There is something wrong with the arguments. make sure to wrap the bdd_args like this: \"{\'key\':\'value\'}\"')
+            'There is something wrong with the arguments. make sure to wrap the bdd_args like this: \"{'
+            '\'key\':\'value\'}\"')
 
     return opt_dict, unknown
 
