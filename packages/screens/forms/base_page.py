@@ -1,5 +1,5 @@
 from ui_widgets.new_style.button_field import ButtonField
-from ui_widgets.old_style.button_field import ButtonField
+from ui_widgets.old_style.button_field import ButtonField as oldButton
 from ui_widgets.new_style.header_field import HeaderField
 from ui_widgets.new_style.footer_field import FooterField
 from ui_widgets.old_style.header_field import HeaderField as OldHeaderField
@@ -25,8 +25,8 @@ class BasePage(object):
         self.widgets["footer"] = FooterField("footer")
         if self.style == 'old':
             self.widgets['header'] = OldHeaderField()
-            self.widgets['המשך'] = ButtonField('המשך')
-            self.widgets['חזור'] = ButtonField('חזור')
+            self.widgets['המשך'] = oldButton('המשך')
+            self.widgets['חזור'] = oldButton('חזור')
             self.widgets['footer'] = OldFooterField('footer', self.driver)
 
 

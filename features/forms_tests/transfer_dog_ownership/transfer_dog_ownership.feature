@@ -1,4 +1,5 @@
 Feature: Test Scenarios for TransferDogOwnership Page
+  # add description of feature file for all the feature files
 
   Scenario: general test for all fields
     Given Navigate to "TransferDogOwnership" form
@@ -57,6 +58,7 @@ Feature: Test Scenarios for TransferDogOwnership Page
     When write a valid value "VALUE" in "גזע"
     When write a valid value "VALUE" in "מספר שבב"
     When click on "לחץ למידע חיפוש כלב" button
+    # use the number in the scenarios of sofiya
        """
        לחץ על קישור
         לחץ על קישור "למאגר הארצי לרישום כלבים"> בדף שנפתח הזן שם בעלים הכלב לדוגמא: פופוב אלכסנדר> לחץ "SEARCH"
