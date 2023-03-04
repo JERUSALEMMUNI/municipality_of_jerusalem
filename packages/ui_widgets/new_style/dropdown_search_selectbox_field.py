@@ -1,3 +1,6 @@
+import time
+
+import allure
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -104,4 +107,31 @@ class DropdownSearchSelectBox(DropdownSearch):
             list.append(i.text)
         log.info(self.list)
         log.info(list)
-        return self.list == list
+        self.discription =[]
+        for i in range(0,len(list)):
+            if self.list[i]!=list[i]:
+                self.discription.append(["no. "+ str(i),self.list[i] , list[i]])
+        return self.list == list, self.discription
+
+    def table_for_allure(self,table,table_headers):
+        table_rows = [list(row) for row in table]
+        allure.dynamic.title(f"List of items appeared incorrectly")
+        # Create the HTML table
+        table_html = "<table style='border-collapse: collapse; margin: 25px 0; font-size: 0.9em; font-family: sans-serif; min-width: 400px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);'><tr>"
+        for header in table_headers:
+            table_html += f"<th style='background-color: #009879; color: #ffffff; text-align: left;padding: 12px 15px;'>{header}</th>"
+        table_html += "</tr>"
+        for i, row in enumerate(table_rows):
+            if i % 2 == 0:
+                # Even rows are white
+                bg_color = "#ffffff"
+            else:
+                # Odd rows are light gray
+                bg_color = "#f2f2f2"
+            table_html += f"<tr style='background-color: {bg_color}; border-bottom: 1px solid #dddddd;'>"
+            for cell in row:
+                table_html += f"<td style='padding: 12px 15px;'>{cell}</td>"
+            table_html += "</tr>"
+        table_html += "</table>"
+        # Attach the table to the Allure report
+        allure.attach(table_html, "table_of_incorrect_entries", allure.attachment_type.HTML)

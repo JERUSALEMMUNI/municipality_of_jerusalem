@@ -38,7 +38,7 @@ class DropdownSearch(Dropdown):
             element = element.text
             if text in element:
                 i = i + 1
-            if text in element and i == 3:
+            if text in element and i == 4:
                 chosenElement = driver.find_element(by=By.XPATH, value=f"//li[@aria-label='{text}']")
                 return chosenElement.text, element
 

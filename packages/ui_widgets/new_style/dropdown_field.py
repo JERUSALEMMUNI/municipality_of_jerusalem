@@ -20,15 +20,9 @@ class Dropdown(BaseWidget):
                 'Value': f"//label[contains(text(),'{self.label}')]{self.base_path}"}
 
     def click_button(self):
-        dropDown_open = self.web_element.get_attribute('aria-expanded')
-        if dropDown_open == (None, "false"):
-            self.web_element.click()
-
-    def click_button_old(self):
-        dropDown_open = self.web_element.find_element(By.XPATH, "//p-dropdown/div").get_attribute('class')
-        if "dropdown-open" in dropDown_open:
-            pass
-        else:
+        time.sleep(1)
+        dropDown_open = self.web_element.find_element(By.XPATH,"(//p-dropdown/div/div)[2]").get_attribute('aria-expanded')
+        if dropDown_open in (None,"false"):
             self.web_element.click()
 
     def item_search_scroll(self, driver, option_value):
@@ -40,7 +34,7 @@ class Dropdown(BaseWidget):
             element = driver.find_element(by=By.XPATH, value=f"//div/div/div/ul")
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             elementslist = element.text
-            log.info(element)
+            log.info(elementslist)
             if option_value in elementslist:
                 chosenElement = driver.find_element(by=By.XPATH, value=f"//li[@aria-label='{option_value}']")
                 return chosenElement.text, elementslist
@@ -53,10 +47,11 @@ class Dropdown(BaseWidget):
         self.value = prefix
         if "highlight" in self.value.get_attribute('class'):
             self.list.append(self.value.text)
-        else:
-            self.list.remove(self.value.text)
+        else: self.list.remove(self.value.text)
+        log.info("after removing")
         log.info(self.list)
         return prefix.text
+
 
     def validate_selected(self):
         result = self.web_element.text
