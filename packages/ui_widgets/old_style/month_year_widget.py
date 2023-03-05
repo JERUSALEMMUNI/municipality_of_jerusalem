@@ -35,8 +35,9 @@ class MonthYear(BaseWidget):
     def set_year(self, path, year):
         dropdown = self.web_element.find_element(By.XPATH,
                                                  f"{path}//following-sibling::div/div[{self.label}]//p-dropdown[@formcontrolname='year']")
-        self.year_dropdown.set_custom_dropdown(dropdown)
-        self.year_dropdown.set_text(year, False)
+        self.year_dropdown.set_web_element(dropdown)
+        self.year_dropdown.web_element.click()
+        self.year_dropdown.select_element(year)
 
     def set_month(self, path, month, driver):
         multiselect = self.web_element.find_element(By.XPATH,

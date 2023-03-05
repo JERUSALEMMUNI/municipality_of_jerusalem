@@ -11,10 +11,8 @@ def choose_in_search(context, widget_name):
     if widget.get_web_element() is None:
         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
         widget.set_web_element(web_element)
-    try:
-        widget.check_box()
-    except Exception as e:
-        log.debug(e)
+
+    widget.check_box()
 
 
 @when('uncheck the box of "{widget_name}"')

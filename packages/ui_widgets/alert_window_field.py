@@ -5,7 +5,7 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class Alert_window_field(BaseWidget):
+class AlertWindowField(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
 

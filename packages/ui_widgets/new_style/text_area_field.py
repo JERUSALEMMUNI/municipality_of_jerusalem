@@ -5,10 +5,10 @@ from infra import logger
 log = logger.get_logger(__name__)
 
 
-class TextField(BaseWidget):
-    def __init__(self, label, path_locator="following-sibling::input"):
+class TextAreaField(BaseWidget):
+    def __init__(self, label):
         super().__init__(label)
-        self.path_locator = path_locator
+
 
     @property
     def get_text(self):
@@ -18,15 +18,13 @@ class TextField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/{self.path_locator}"
+            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::textarea"
         }
 
-    def check_text(self, entered_text):
-        checker = self.web_element.get_attribute('value') == entered_text
-        return checker
+    def validate_text(self, text):
+        return self.web_element.get_attribute('value') == text
 
     def set_text(self, text):
-        self.clear()
         self.web_element.send_keys(text)
 
     def clear(self):
@@ -42,13 +40,3 @@ class TextField(BaseWidget):
     @property
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
-
-
-
-
-
-
-
-
-
-

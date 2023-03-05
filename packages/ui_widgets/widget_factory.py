@@ -1,9 +1,10 @@
 from infra import logger
 from infra.enums import UIStyle
 from ui_widgets.new_style import button_field, header_field, footer_field, text_field, phone_field, \
-    dropdown_search_selectbox_field
+    dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
-    footer_field as old_footer_field, calender_time
+    footer_field as old_footer_field, calender_time, check_box_field, calendar_field, month_year_list, \
+    radio_button_field, application_steps_field
 
 log = logger.get_logger(__name__)
 
@@ -33,6 +34,33 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None):
         },
         'CalendarClock': {
             UIStyle.OLD: calender_time.CalendarClock
+        },
+        'CalendarField': {
+            UIStyle.OLD: calendar_field.CalendarField
+        },
+        'CheckBox': {
+            UIStyle.OLD: check_box_field.CheckBox
+        },
+        'Dropdown': {
+            UIStyle.NEW: dropdown_field.Dropdown
+        },
+        'DropdownSearch': {
+            UIStyle.NEW: dropdown_search_field.DropdownSearch
+        },
+        'TextAreaField': {
+            UIStyle.NEW: text_area_field.TextAreaField
+        },
+        'MonthYearList': {
+            UIStyle.OLD: month_year_list.MonthYearList
+        },
+        'RadioButtonField': {
+            UIStyle.OLD: radio_button_field.RadioButtonField
+        },
+        'ApplicationStepsField': {
+            UIStyle.OLD: application_steps_field.ApplicationStepsField
+        },
+        'UploadFile': {
+            UIStyle.NEW: upload_file.UploadFile
         }
     }
 

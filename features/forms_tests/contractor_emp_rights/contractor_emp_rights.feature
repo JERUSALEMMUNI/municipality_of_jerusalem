@@ -1,240 +1,224 @@
-Feature: Test Scenarios for ContractorEmpRights Page
+Feature: Test Scenarios for functionality and validation of ContractorEmpRights form
+"""
+  - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
+  - Feature file name: contractor_emp_rights.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/ContractorEmpRights
+  - Number of Pages is : 2, We are at Page: 1
+  - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
+  - Page Information:
+  -
+"""
+  # Todo: Add the scenario name from excel file of sofiya
 
-
-  Scenario: general test for all fields
+  Scenario: Test all mandatory fields with valid values
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרטי"
-    When write a valid value "VALUE" in "שם משפחה"
-    When write a valid value "VALUE" in "אימייל"
-    When fill "058-8078687" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "תד"
-    When click on "שמור" Button
-#   Then validate new email received
-#   click on the link from the mail
-    When click on "המשך" Button
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "סאמר" in "שם פרטי"
+    And write a valid value "אבו סלום" in "שם משפחה"
+    And write a valid value "salem_salom@hotmail.com" in "אימייל"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "1" in "מספר בית"
+    And write a valid value "3" in "מספר דירה"
+#    BUG with the save button after clicking on save it take us to empty page
+#    When click on "שמור" Button
+#    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+#    Then validate new email received
+#    click on the link from the mail
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
 
-  Scenario: general test for all fields
+  Scenario: Test first and last name with invalid values
     Given Navigate to "ContractorEmpRights" form
-    When write an invalid value "VALUE" in "שם פרטי"
-    When write an invalid value "VALUE" in "שם משפחה"
+    When write an invalid value "Firas" in "שם פרטי"
+    And write an invalid value "أبوسنينة" in "שם משפחה"
 
 
-  Scenario: general test for all fields
+  Scenario: Test information dialog
     Given Navigate to "ContractorEmpRights" form
-    When click on "מידע" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
+    When click on "מידע" icon
+    Then validate information dialog is opened
+    And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב"
+    And validate information dialog text in old header exists and contains at least "20" chars
     When click on X Button
-    When click on "שמור" Button
-    When click on "הדפס" Button
+    # TODO: we need to add wait untill he close the dialog
+    When I wait for "1" seconds
+    Then validate information dialog is closed
+#   When click on "שמור" Button
+#   When click on "הדפס" Button
 
 
-  Scenario: general test for all fields
+
+  Scenario: Test all mandatory fields and date with valid values
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When click on "שמור" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
-    When click on "המשך" Button
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "פראס" in "שם פרטי"
+    And write a valid value "אבוסדד" in "שם משפחה"
+    And pick "8/3/1996" from calendar of "תאריך לידה"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "2" in "מספר בית"
+    And write a valid value "1" in "מספר דירה"
+    And write a valid value "026282068" in "מספר טלפון"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "asd@wwf.com" in "אימייל"
+#    When click on "שמור" Button
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
 
 
-  Scenario: general test for all fields
+ Scenario: Test fields with valid values One
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "ניקיון" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוניE"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When click on "שמור" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
-    When click on "המשך" Button
-
-
-  Scenario: general test for all fields
-    Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "הסעדה" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוני"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When click on "שמור" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
-    When click on "המשך" Button
-
-
-  Scenario: general test for all fields
-    Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "הסעדה" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוני"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When pick "ניהול פנקס שעות עבודה" from "נושא התלונה"
-    When write "TEXT" into "פרטי התלונה"
-    When pick year ""2022" in widget "חודשים לבדיקה" at index "1"
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "דני" in "שם פרטי"
+    And write a valid value "גלעד" in "שם משפחה"
+    And pick "8/8/1996" from calendar of "תאריך לידה"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "1" in "מספר בית"
+    And write a valid value "2" in "מספר דירה"
+    And write a valid value "026282068" in "מספר טלפון"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "asd@wwf.com" in "אימייל"
+    And pick "ניקיון" from "ענף"
+    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When choose "כן" from "האם הייתה"
-    When write "TEXT" into "התשובה שקיבלתי"
-    When click on "שמור" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
-    When click on "המשך" Button
+    When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+    And write a valid value "דגדדד" in "התשובה שקיבלתי"
+#    When click on "שמור" Button
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
 
-  Scenario: general test for all fields
+  Scenario: Test fields with valid values Two
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "הסעדה" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוני"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When pick "Mult" from "נושא התלונה"
-    When write "TEXT" into "פרטי התלונה"
-    When pick year ""2022" in widget "חודשים לבדיקה" at index "1"
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "דני" in "שם פרטי"
+    And write a valid value "גלעד" in "שם משפחה"
+    And pick "8/8/1996" from calendar of "תאריך לידה"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "1" in "מספר בית"
+    And write a valid value "2" in "מספר דירה"
+    And write a valid value "026282068" in "מספר טלפון"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "asd@wwf.com" in "אימייל"
+    And pick "ניקיון" from "ענף"
+    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When pick "2022" from "חודשים לבדיקה"
-    When choose "לא" from "האם הייתה"
-    When pick year ""2020" in widget "חודשים לבדיקה" at index "1"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When pick "2021" from "חודשים לבדיקה"
-    When click on "שמור" Button
-#   When check email inbox
-#   When click on link in email
-#   When enter bin password
-#   Then Validate you are in correct step
-    When click on "המשך" Button
+    When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+#    When click on "שמור" Button
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
 
 
-  Scenario: general test for all fields
+  Scenario: Upload file test
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "הסעדה" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוני"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When pick "Mult" from "נושא התלונה"
-    When write "TEXT" into "פרטי התלונה"
-    When pick year ""2022" in widget "חודשים לבדיקה" at index "1"
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "דני" in "שם פרטי"
+    And write a valid value "גלעד" in "שם משפחה"
+    And pick "8/8/1996" from calendar of "תאריך לידה"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "1" in "מספר בית"
+    And write a valid value "2" in "מספר דירה"
+    And write a valid value "026282068" in "מספר טלפון"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "asd@wwf.com" in "אימייל"
+    And pick "ניקיון" from "ענף"
+    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When choose "לא" from "האם הייתה"
-    When pick year ""2021" in widget "חודשים לבדיקה" at index "1"
-    When pick a group of months "{months}" in widget "חודשים לבדיקה" at index "1"
-    When click on "המשך" Button
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "תלושי שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אסמכתאות לתשלום שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אחר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אימות"
-    When click on "שלח" Button
+    When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+##    When click on "שמור" Button
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
+#    When Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Excel_try_file.xlsx" file in "תלושי שכר"
+#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\pdf_try_file.pdf" file in "דוחו"ת נוכחות"
+#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\png_try_file.png" file in "אסמכתאות לתשלום שכר"
+#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Word_try_file.docx" file in "אחר"
+##    When click on "שלח" Button
 
 
-  Scenario: general test for all fields
+  Scenario: Declaration test
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "VALUE" in "מספר זהות"
-    When write a valid value "VALUE" in "שם פרט"
-    When write a valid value "VALUE" in "שם פרט"
-    When pick "{date}" from calendar of "תאריך לידה"
-    When write a valid value "VALUE" in "רחוב"
-    When write a valid value "VALUE" in "מספר בית"
-    When write a valid value "VALUE" in "מספר דירה"
-    When write a valid value "VALUE" in "מספר טלפון"
-    When write a valid value "VALUE" in "מספר טלפון נייד"
-    When write a valid value "VALUE" in "אימייל"
-    When pick "הסעדה" from "ענף"
-    When write "SEARCH_VALUE" in search field "שם חברה"
-    When write "TEXT" into "שם אתר עירוני"
-    When pick "{date}" from calendar of "תאריך תחילת העבודה בחברה"
-    When pick "Mult" from "נושא התלונה"
-    When write "TEXT" into "פרטי התלונה"
-    When pick year ""2022" in widget "חודשים לבדיקה" at index "1"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When choose "לא" from "האם הייתה"
-    When pick year ""2021" in widget "חודשים לבדיקה" at index "1"
-    When pick a group of months "{months}" in widget "חודשים לבדיקה" at index "1"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "תלושי שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "תלושי שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אסמכתאות לתשלום שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אסמכתאות לתשלום שכר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אחר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אחר"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אימות"
-    When Upload ""C:\Users\LENOVO\Desktop\Screenshot 2023-02-26 110309.png"" file in "אימות"
-    When Check the box of "הנני מצהיר\ה"
+    When write a valid value "3327" in "מספר זהות"
+    And write a valid value "דני" in "שם פרטי"
+    And write a valid value "גלעד" in "שם משפחה"
+    And pick "8/8/1996" from calendar of "תאריך לידה"
+    And write a valid value "א טור" in "רחוב"
+    And write a valid value "1" in "מספר בית"
+    And write a valid value "2" in "מספר דירה"
+    And write a valid value "026282068" in "מספר טלפון"
+    And fill "058-8078687" in "מספר טלפון נייד"
+    And write a valid value "asd@wwf.com" in "אימייל"
+    And pick "ניקיון" from "ענף"
+    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+    And pick year "2022" in widget "חודשים לבדיקה" at index "1"
+    And write "קיבלתי מכה בעבודה " into "פרטי התלונה"
+    And pick month "9" in widget "חודשים לבדיקה" at index "1"
+    And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+    And click on "המשך" Button
+    Then validate current step is "צרופות והצהרה"
+    When Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Excel_try_file.xlsx" file in "תלושי שכר"
+    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\pdf_try_file.pdf" file in "דוחו"ת נוכחות"
+    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\png_try_file.png" file in "אסמכתאות לתשלום שכר"
+    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Word_try_file.docx" file in "אחר"
+    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
 
 
-  Scenario: general test for all fields
+  Scenario: Header elements test
     Given Navigate to "ContractorEmpRights" form
-    When write an invalid value "VALUE" in "שם פרטי"
-    When write an invalid value "VALUE" in "שם משפחה"
+    Then validate municipality logo is displayed in old header
+    And validate old header title is default
+    And validate form Title in old header is "שרותים דיגיטליים"
+    And validate form explanation in old header contains "טופס זה נועד לסייע לך בהגשת תלונה בגין פגיעה "
+    And validate form explanation in old header exists and contains at least "20" chars
 
+
+  Scenario: Footer elements test
+    Given Navigate to "ContractorEmpRights" form
+    Then Validate Facebook Logo is displayed in old footer
+    Then Validate Instagram Logo is displayed in old footer
+    Then Validate Twitter Logo is displayed in old footer
+    Then Validate old footer call us is displayed
+    Then Validate old footer follow us is displayed
+    Then Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+    Then Validate old footer follow us text is "עקבו אחרינו"
+    Then Validate old footer call us has the default text
+    Then Validate old footer follow us has the default text
+
+
+  Scenario: footer facebook url test
+    Given Navigate to "ContractorEmpRights" form
+    Then Validate facebook url in old footer
+    Then Back to previous page
+    Then Validate current page is "ContractorEmpRights"
+
+  # TODO: Solve, there is a problem after the browser come back from another website page like facebook
+#  Scenario: footer instagram url test
+#    Given Navigate to "ContractorEmpRights" form
+#    Then Validate instagram url in old footer
+#    Then Back to previous page
+#    Then Validate current page is "ContractorEmpRights"
+#
+#  Scenario: footer twitter url test
+#    Given Navigate to "ContractorEmpRights" form
+#    Then Validate twitter url in old footer
+#    Then Back to previous page
+#    Then Validate current page is "ContractorEmpRights"
 
 
 

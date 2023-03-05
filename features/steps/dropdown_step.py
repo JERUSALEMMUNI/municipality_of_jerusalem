@@ -8,7 +8,7 @@ rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
 
-@when('I click on "{widget_name}"')
+@when('click on "{widget_name}"')
 def click_on_element(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     if widget.get_web_element() is None:
@@ -17,7 +17,7 @@ def click_on_element(context, widget_name):
     widget.click_button()
 
 
-@when('I choose "{widget_name}" in search')
+@when('choose "{widget_name}" in search')
 def choose_in_search(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     if widget.get_web_element() is None:
@@ -35,15 +35,6 @@ def pick_element(context, option_value, widget_name):
     widget.click_button()
     widget.select_element(option_value)
 
-
-#
-# @then('validate if all checked options appeared in selection order under "{widget_name}"')
-# def pick_element(context, widget_name):
-#     widget = context._config.current_page.widgets[widget_name]
-#     if widget.get_web_element() is None:
-#         web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-#         widget.set_web_element(web_element)
-#     assert widget.validate_checked_list_count(), 'The selected items doesnt equal the list created'
 
 @when('write "{option_value}" in search field "{widget_name}"')
 def write_in_search_field(context, option_value, widget_name):

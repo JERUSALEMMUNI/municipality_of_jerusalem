@@ -3,8 +3,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from packages.infra import logger, config
-from packages.ui_widgets.text_field import TextField
 from packages.ui_widgets.base_widget import BaseWidget
+from ui_widgets.new_style.text_field import TextField
 from ui_widgets.old_style.widget_locators.calender_locators import CalenderLocators
 
 log = logger.get_logger(__name__)

@@ -4,12 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
+from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
 
 log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, base_path="/following-sibling::div/p-dropdown"):
+    def __init__(self, label, base_path="/following-sibling::p-dropdown"):
         super().__init__(label)
         self.base_path = base_path
         self.list = []
@@ -20,38 +21,37 @@ class Dropdown(BaseWidget):
                 'Value': f"//label[contains(text(),'{self.label}')]{self.base_path}"}
 
     def click_button(self):
-        time.sleep(1)
-        dropDown_open = self.web_element.find_element(By.XPATH,"(//p-dropdown/div/div)[2]").get_attribute('aria-expanded')
-        if dropDown_open in (None,"false"):
+        dropDown_open = self.web_element.find_element(By.XPATH, "./div/div/input").get_attribute('aria-expanded')
+        if dropDown_open in (None, "false"):
             self.web_element.click()
 
     def item_search_scroll(self, driver, option_value):
         element = None
         i = 0
         while True:
-            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(
-                (By.XPATH, "//div/div/div/ul")))
+            #todo: use driver.waitLong (max)
+            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
             element = driver.find_element(by=By.XPATH, value=f"//div/div/div/ul")
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
-            elementslist = element.text
-            log.info(elementslist)
-            if option_value in elementslist:
+            elements_list = element.text
+            log.info(elements_list)
+            if option_value in elements_list:
                 chosenElement = driver.find_element(by=By.XPATH, value=f"//li[@aria-label='{option_value}']")
-                return chosenElement.text, elementslist
+                return chosenElement.text, elements_list
 
     def select_element(self, pre):
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((By.XPATH, f"//li[@aria-label='{pre}']")))
-        prefix = self.web_element.find_element(by=By.XPATH, value=f"//li[@aria-label='{pre}']")
+            EC.presence_of_element_located((By.XPATH, f".//li[@aria-label='{pre}']")))
+        prefix = self.web_element.find_element(by=By.XPATH, value=f".//li[@aria-label='{pre}']")
         prefix.click()
         self.value = prefix
         if "highlight" in self.value.get_attribute('class'):
             self.list.append(self.value.text)
-        else: self.list.remove(self.value.text)
+        else:
+            self.list.remove(self.value.text)
         log.info("after removing")
         log.info(self.list)
         return prefix.text
-
 
     def validate_selected(self):
         result = self.web_element.text

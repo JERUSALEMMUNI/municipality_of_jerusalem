@@ -14,8 +14,11 @@ class UploadFile(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/parent::div/following::div/following::div//input"
+            # prev xpath
+            # 'Value': f"//label[contains(text(),'{self.label}')]/parent::div/following::div/following::div//input"
+            'Value': f"//label[contains(text(),'{self.label}')]/parent::div/following-sibling::div/p-fileupload/div/div/span/input"
         }
+
 
     def upload_file(self, path):
         file_input = self.driver.find_element(self.locator["By"], self.locator["Value"])

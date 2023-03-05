@@ -80,7 +80,8 @@ class MultiSelect(BaseWidget):
                     doc = driver.find_element(By.XPATH, path)
                     WebDriverWait(driver, 30).until(EC.visibility_of((doc)))
                     driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
-        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(desired_option)).click()
+        clickable = WebDriverWait(self.web_element, 50).until(EC.element_to_be_clickable(desired_option))
+        clickable.click()
         self.click_close_button()
 
     def select_listbox_items(self, month_list, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):

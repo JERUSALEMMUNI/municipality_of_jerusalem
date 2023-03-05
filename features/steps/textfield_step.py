@@ -24,7 +24,18 @@ def write_into_field(context, text, widget_name):
         widget.set_web_element(web_element)
     widget.clear()
     widget.set_text(text)
-    widget.is_valid()
+    assert widget.is_valid, "This value is invalid"
+
+
+@when('write a valid value "{text}" in textarea of "{widget_name}"')
+def write_into_field(context, text, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.get_web_element() is None:
+        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+        widget.set_web_element(web_element)
+    widget.clear()
+    widget.set_text(text)
+    assert widget.is_valid, "This value is invalid"
 
 
 @when('write an invalid value "{text}" in "{widget_name}"')
@@ -35,8 +46,7 @@ def write_into_field(context, text, widget_name):
         widget.set_web_element(web_element)
     widget.clear()
     widget.set_text(text)
-    # todo: false syntax!
-    widget.is_invalid()
+    assert widget.is_invalid, "This value is valid"
 
 
 @when('clear "{widget_name}"')
