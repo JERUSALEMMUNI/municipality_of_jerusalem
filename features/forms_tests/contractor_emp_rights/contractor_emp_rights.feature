@@ -171,6 +171,7 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And pick month "9" in widget "חודשים לבדיקה" at index "1"
     And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And click on "המשך" Button
+    #TODO: need to add page 2 of feature file for this page
     Then validate current step is "צרופות והצהרה"
     When Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Excel_try_file.xlsx" file in "תלושי שכר"
     And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\pdf_try_file.pdf" file in "דוחו"ת נוכחות"
