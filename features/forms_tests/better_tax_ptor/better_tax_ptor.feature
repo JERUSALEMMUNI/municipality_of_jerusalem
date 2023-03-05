@@ -1,4 +1,12 @@
-Feature: BetterTaxPtor Page fields test
+Feature: Test Scenarios for functionality and validation of BetterTaxPtor form
+
+  - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
+  - Feature file name: better_tax_ptor.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/BetterTaxPtor
+  - Number of Pages is : 1, We are at Page: 1
+  - All fields are mandatory
+  - Page Information:
+  -
 
 
   Scenario: general test for all fields
@@ -9,28 +17,28 @@ Feature: BetterTaxPtor Page fields test
   Scenario: general test for all fields
     Given Navigate to "BetterTaxPtor" form
     When write an invalid value "23456yudj" in "מספר תיק בנין"
-    When click on "בדיקת אופציה לפטור" Button
+    And click on "בדיקת אופציה לפטור" Button
 
 
   Scenario: general test for all fields
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "1234567884" in ""מספר תיק בנין""
-    When click on "שמור" icon
+    And click on "שמור" icon
 
 
 
   Scenario: general test for all fields
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "<string>" in ""מספר תיק בנין""
-    When click on "הדפס" icon
+    And click on "הדפס" icon
 
 
   Scenario: general test for all fields
     Given Navigate to "BetterTaxPtor" form
     When click on "מידע" icon
     Then validate information dialog is opened
-    Then validate information dialog contains "טופס זה הוא טופס מקוון,"
-    Then validate information dialog text in old header exists and contains at least "20" chars
+    And validate information dialog contains "טופס זה הוא טופס מקוון,"
+    And validate information dialog text in old header exists and contains at least "20" chars
     When click on X Button
 
 
@@ -47,34 +55,34 @@ Feature: BetterTaxPtor Page fields test
   Scenario: Footer elements test
     Given Navigate to "BetterTaxPtor" form
     Then Validate Facebook Logo is displayed in old footer
-    Then Validate Instagram Logo is displayed in old footer
-    Then Validate Twitter Logo is displayed in old footer
-    Then Validate old footer call us is displayed
-    Then Validate old footer follow us is displayed
-    Then Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
-    Then Validate old footer follow us text is "עקבו אחרינו"
-    Then Validate old footer call us has the default text
-    Then Validate old footer follow us has the default text
+    And Validate Instagram Logo is displayed in old footer
+    And Validate Twitter Logo is displayed in old footer
+    And Validate old footer call us is displayed
+    And Validate old footer follow us is displayed
+    And Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+    And Validate old footer follow us text is "עקבו אחרינו"
+    And Validate old footer call us has the default text
+    And Validate old footer follow us has the default text
 
 
   Scenario: footer facebook url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate facebook url in old footer
-    Then Back to previous page
-    Then Validate current page is "BetterTaxPtor"
+    And Back to previous page
+    And Validate current page is "BetterTaxPtor"
 
 
   Scenario: footer instagram url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate instagram url in old footer
-    Then Back to previous page
-    Then Validate current page is "BetterTaxPtor"
+    And Back to previous page
+    And Validate current page is "BetterTaxPtor"
 
   Scenario: footer twitter url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate twitter url in old footer
-    Then Back to previous page
-    Then Validate current page is "BetterTaxPtor"
+    And Back to previous page
+    And Validate current page is "BetterTaxPtor"
 
 
 

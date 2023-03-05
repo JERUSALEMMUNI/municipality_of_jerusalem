@@ -1,5 +1,12 @@
-Feature: Test Scenarios for TransferDogOwnership Page
-  # add description of feature file for all the feature files
+Feature: Test Scenarios for functionality and validation of TransferDogOwnership form
+
+  - Form name: בקשה להחזקת כלב - העברת בעלות
+  - Feature file name: transfer_dog_ownership.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
+  - Number of Pages is : 3, We are at Page: 1
+  - All fields are mandatory except (.ספר דירה, ת.ד )
+  - Page Information:
+  -
 
   Scenario: general test for all fields
     Given Navigate to "TransferDogOwnership" form

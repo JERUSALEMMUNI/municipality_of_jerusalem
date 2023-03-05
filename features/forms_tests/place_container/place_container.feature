@@ -1,4 +1,12 @@
-Feature: Test Scenarios for PlaceContainer Page
+Feature: Test Scenarios for functionality and validation of PlaceContainer form
+
+  - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
+  - Feature file name: place_container.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/PlaceContainer
+  - Number of Pages is : 2, We are at Page: 1
+  - All fields are mandatory
+  - Page Information:
+  -
 
 
   Scenario: general test for all fields

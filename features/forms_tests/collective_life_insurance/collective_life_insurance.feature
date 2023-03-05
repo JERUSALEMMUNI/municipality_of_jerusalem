@@ -1,4 +1,12 @@
-Feature: Test Scenarios for CollectiveLifeInsurance Page
+Feature: Test Scenarios for functionality and validation of CollectiveLifeInsurance form
+
+  - Form name: טופס הצטרפות לביטוח חיים קולקטיבי לעובדי העירייה
+  - Feature file name: collective_life_insurance.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/CollectiveLifeInsurance
+  - Number of Pages is : 1, We are at Page: 1
+  - All fields are mandatory except
+  - Page Information:
+  -
 
 
   Scenario: general test for all fields
