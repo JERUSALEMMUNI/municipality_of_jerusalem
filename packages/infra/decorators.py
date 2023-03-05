@@ -17,6 +17,7 @@ def main():
     def funcx():
         log.info('run')
         raise IOError('fff')
+
     funcx()
 
 
@@ -40,24 +41,28 @@ def retry(tries, exceptions=default_exceptions, delay=0, exp_handle_func=None, r
     def decorate(func):
         @functools.wraps(func)
         def _wrapper(*args, **kwargs):
-            for retry in range(1, tries+2):
+            for retry in range(1, tries + 2):
                 try:
                     return func(*args, **kwargs)
                 except exceptions as e:
-                    log.log(retry_log_level, 'Decorator Retry (for function %s) @ try no. %s, exception: %s' % (func.__name__, retry, e))
+                    log.log(retry_log_level,
+                            'Decorator Retry (for function %s) @ try no. %s, exception: %s' % (func.__name__, retry, e))
                     if exp_handle_func is not None:
                         exp_handle_func()
                     time.sleep(delay)
 
-                    if retry == tries+1:
+                    if retry == tries + 1:
                         raise
+
         return _wrapper
+
     return decorate
 
 
 def clock(func):
     '''A decorator that measures the time it takes to run the original function that was decorated.
        The decorator will print a debug log msg with 8 decimal points, and will work even if an exception was raised.'''
+
     @functools.wraps(func)
     def clocked(*args, **kwargs):
         name = func.__name__

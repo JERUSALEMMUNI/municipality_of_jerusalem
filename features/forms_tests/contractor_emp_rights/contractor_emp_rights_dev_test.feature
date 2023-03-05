@@ -1,7 +1,9 @@
 Feature: Basic Test for contractoremprights Form Page
-
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
   Scenario: dropdown search with checkbox
+    asdasdqweqwewqewqe
+    sdfsdf
     Given Navigate to "ContractorEmpRights" form
     When select all options of " נושא התלונה:"
 #    When deselect all options of " נושא התלונה:"

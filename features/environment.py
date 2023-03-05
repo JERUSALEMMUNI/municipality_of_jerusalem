@@ -4,6 +4,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 from infra import reporter, logger, config
+from infra.jm_chrome_webdriver import JMChromeWebDriver
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -13,8 +14,7 @@ def before_all(context):
     context._config.current_page = None
     browser = context.opt_dict.get('browser', 'chrome')
     if browser == 'chrome':
-        driver = webdriver.Chrome(ChromeDriverManager().install())
-        driver.implicitly_wait(config.implicit_wait)
+        driver = JMChromeWebDriver(ChromeDriverManager().install())
         context._config.driver = driver
 
     for feature in context._runner.features:
@@ -45,9 +45,7 @@ def after_step(context, step):
     if not step_pass:
         log.debug(f'Take ScreenShot after failure for step {step.name}')
         screenshot = f'{context.result_folder_path}/screenshot_after_failure.png'
-        log.info('-' * 150)
         context._config.driver.save_screenshot(screenshot)
-        log.info('-' * 150)
         rep.add_image_to_step(screenshot, "ScreenShot After Failure")
     log.info(f'----- End Step - {step.name} -----')
 

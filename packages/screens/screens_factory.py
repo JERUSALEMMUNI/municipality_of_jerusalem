@@ -43,7 +43,7 @@ class ScreensFactory(object):
                 # if store_screen is true then save it in the screen dict
                 if store_screen:
                     # example : 'ConfirmationForStructure': confirmation_for_structure.ConfirmationForStructure,
-                    self.screens[screen_name] = screen
+                    self.screens = {screen_name: screen}
             # Getting existing object from list
             else:
                 screen = self.screens[screen_name]

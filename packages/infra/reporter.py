@@ -628,8 +628,8 @@ class ReporterFileHandler(object):
             transform_root = ET.XSLT(self.xslt_trees[resource_name])(xml_tree)
             html_file = self.html_report_files[resource_name]
             os.makedirs(os.path.dirname(html_file), exist_ok=True)
-            with open(html_file, 'w') as stream:
-                stream.write(ET.tostring(transform_root, encoding='unicode', method='html', pretty_print=True))
+            with open(html_file, 'wb') as stream:
+                stream.write(ET.tostring(transform_root, encoding='utf-16', method='html', pretty_print=True))
 
     def get_html(self, xml_tree):
         """Get html file using xslt tree"""

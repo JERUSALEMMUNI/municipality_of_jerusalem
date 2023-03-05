@@ -12,15 +12,14 @@ log = logger.get_logger(__name__)
 @given('Navigate to "{screen_name}" form')
 def navigate_to_screen(context, screen_name):
     current_page = context.screens_manager.create_screen([screen_name], driver=context._config.driver)
-    if (
-            context._config.current_page and context._config.current_page.page_title != current_page.page_title) or context._config.current_page is None:
+    if (context._config.current_page and context._config.current_page.page_title != current_page.page_title) \
+            or context._config.current_page is None:
         context._config.current_page = current_page
         current_page.navigate_to_page_url()
         driver = current_page.driver
         for element in current_page.main_elements_to_wait_when_load:
             # wait method to wait the element
-            WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((element.locator['By'], element.locator['Value'])))
+            driver.wait_long_for_presence_of_element(element.locator['By'], element.locator['Value'])
 
 
 @when('I checked if "{text}" is the text of "{widget_name}"')

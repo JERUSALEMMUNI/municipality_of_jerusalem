@@ -57,6 +57,3 @@ months = {"1": "ינואר",
           "12": "דצמבר"
 
           }
-
-explicit_wait = 30
-implicit_wait = 10

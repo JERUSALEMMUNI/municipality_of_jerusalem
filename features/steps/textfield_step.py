@@ -35,6 +35,7 @@ def write_into_field(context, text, widget_name):
         widget.set_web_element(web_element)
     widget.clear()
     widget.set_text(text)
+    # todo: false syntax!
     widget.is_invalid()
 
 

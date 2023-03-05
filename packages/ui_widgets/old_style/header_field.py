@@ -23,7 +23,6 @@ class HeaderField(BaseWidget):
         self.header_explanation_title = 'הסבר למילוי הטופס:'
         self.default_explanation_text = 'טופס זה נועד לסייע לך בהגשת תלונה בגין פגיעה בשכרך ובזכויותיך הסוציאליות על-פי החוק להגברת האכיפה של דיני עבודה, התשע"ב – 2011 כעובד קבלן של מזמין שירות בתחומי ניקיון, שמירה והסעדה.'
 
-
     @property
     def locator(self):
         return {

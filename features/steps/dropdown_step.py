@@ -131,9 +131,6 @@ def select_element_after_scroll(context, widget_name, element):
 @when('select all options of "{widget_name}"')
 def select_all_elements(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
     widget.click_button()
     widget.select_all_checkbox()
 
@@ -161,9 +158,9 @@ def deselect_all(context, option_value, widget_name):
 @Then('validate option "{option}" from "{widget_name}" list is checked')
 def validate_if_option_is_selected(context, option, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
+    # if widget.get_web_element() is None:
+    #     web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
+    #     widget.set_web_element(web_element)
     widget.click_button()
     assert widget.validate_selected_option(option), 'Selected item is not chosen correctly'
 
@@ -182,15 +179,21 @@ def deselect_element(context, option, widget_name):
 @then('validate if all checked options appeared in selection order under "{widget_name}"')
 def validate_if_option_is_selected(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
     widget.click_button()
     table_headers = ['  option no.  ','  Selected option  ', '  Appeared under field as  ']
+    #todo: move this to report
+    #todo: what happen if all ok?
+    #todo: why not already implemented table?
     context.table = widget.validate_checked_list_count()[1]
     table = context.table
     widget.table_for_allure(table,table_headers)
+    # rep.add_table('list of failures')
+    # rep.add_columns('list of failures', ('no', 'option no.'), ('option', 'Selected option'), ('appeared', 'Appeared under field as'))
+    # table_rows = [list(row) for row in table]
+    # for row in table_rows:
+    #     rep.add_row('list of failures', row)
+    # rep.add_table_to_step('list of failures')
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}',"Step link","click here to see the link of tested step")
-    allure.dynamic.description(f"In this test, we will validate number of items, validate if selected correctly and"
-                               f" appeared correctly, also we will create a table of incorrect values")
+    # allure.dynamic.description(f"In this test, we will validate number of items, validate if selected correctly and"
+    #                            f" appeared correctly, also we will create a table of incorrect values")
     assert widget.validate_checked_list_count()[0], 'Selected item did not appear correctly'

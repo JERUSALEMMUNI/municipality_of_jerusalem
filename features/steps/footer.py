@@ -46,10 +46,6 @@ def validate_facebook_url(context):
     #old footer:
     widget_name = "footer"
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-
     assert widget.validate_facebook_url(), "Error This page is not Facebook web page"
 
 
