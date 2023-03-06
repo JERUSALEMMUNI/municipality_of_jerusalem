@@ -26,7 +26,7 @@ elif sys.platform == 'win32' and platform.architecture()[0] == '64bit':
     except:
         is_windows_11 = False
     applications_exec = '.exe'
-    temp_folder = os.environ['TMP']
+    temp_folder = os.path.join(os.environ['TMP'], 'automation')
     platform_machine = 'Win'
 else:
     current_os = 'Linux'

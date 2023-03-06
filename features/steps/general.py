@@ -10,12 +10,12 @@ log = logger.get_logger(__name__)
 
 @given('Navigate to "{screen_name}" form')
 def navigate_to_screen(context, screen_name):
-    current_page = context.screens_manager.create_screen([screen_name], driver=context._config.driver)
+    driver = context._config.driver
+    current_page = context.screens_manager.create_screen([screen_name], driver=driver)
     if (context._config.current_page and context._config.current_page.page_title != current_page.page_title) \
             or context._config.current_page is None:
         context._config.current_page = current_page
         current_page.navigate_to_page_url()
-        driver = current_page.driver
         for element in current_page.main_elements_to_wait_when_load:
             # wait method to wait the element
             driver.wait_long_for_presence_of_element(element.locator['By'], element.locator['Value'])
@@ -90,3 +90,15 @@ def open_special_list(context):
 @when('close disabled list')
 def close_special_list(context):
     context._config.current_page.close_disabled_list()
+
+
+@When('Back to previous page')
+def back_to_prev_page(context):
+    context._config.driver.execute_script("window.history.go(-1)")
+    context.screens_manager.screens = {}
+    context._config.current_page = None
+
+
+@Then('Validate current page is "{page_name}"')
+def back_to_prev_page(context, page_name):
+    assert context._config.current_page.url_postfix in context._config.driver.current_url, "Error, Wrong page url"

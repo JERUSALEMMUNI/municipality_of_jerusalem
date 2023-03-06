@@ -81,10 +81,3 @@ class FooterField(BaseWidget):
         twitter_logo.click()
         url = self.driver.current_url
         return "https://twitter.com/Jlm_city" == url
-
-    def go_back_tp_prev_page(self):
-        self.driver.execute_script("window.history.go(-1)")
-
-    def validate_current_url(self, page_name):
-        url = self.driver.current_url
-        return page_name in url

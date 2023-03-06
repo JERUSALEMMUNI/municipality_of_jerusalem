@@ -50,6 +50,9 @@ def setup():
     runner.Context.mailbox = OneSecMail.get_random_mailbox()
     log.info(f'TEMP Email will be: {runner.Context.mailbox.address}')
 
+    runner.Context.user_data = {}
+    files_utils.remove_paths(config.temp_folder)
+
 
 def init_logger_reporter(opt_dict):
     # Init log

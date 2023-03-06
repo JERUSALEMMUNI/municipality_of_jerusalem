@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import pyautogui
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -191,13 +192,22 @@ class HeaderField(BaseWidget):
             temp_btn = self.web_element.find_element(button.locator['By'], button.locator['Value'])
             button.set_web_element(temp_btn)
 
-    def click_header_button(self, label: str):
+    def click_header_button(self, label: str, chrome_driver):
         """
         initialise button form text then click on it
         """
         button = ButtonField(label)
         self.init_buttons_widgets(button)
-        button.click_button()
+        if 'הדפס' != label:
+            button.click_button()
+        else:
+            chrome_driver.execute_script("window.scrollTo(0,0)")
+            rect = button.web_element.rect
+            browser_navigation_panel_height = chrome_driver.execute_script(
+                'return window.outerHeight - window.innerHeight;')
+            y_absolute_coord = button.web_element.location['y'] + browser_navigation_panel_height
+            x_absolute_coord = button.web_element.location['x']
+            pyautogui.click(x_absolute_coord + rect['width'] / 2, y_absolute_coord + rect['height'] / 2)
         log.info("clicking on button")
         log.debug(f"the button you clicked is : {label}")
 
@@ -216,6 +226,9 @@ class HeaderField(BaseWidget):
         click on X button of information dialog
         """
         self.info_dialog.click_close_button()
+        WebDriverWait(driver, 30).until(
+            EC.invisibility_of_element((self.web_element.find_element(self.info_dialog.locator['By'],
+                                                            self.info_dialog.locator['Value']))))
 
     def validate_info_dialog_is_opened(self) -> bool:
         """
