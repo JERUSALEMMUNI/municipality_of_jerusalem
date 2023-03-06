@@ -10,4 +10,7 @@ class HeaderLocators:
     explanation = (By.XPATH, "//div[contains(@class,'explain')]")
     explanation_title = (By.XPATH, "//div[contains(@class,'explain')]/div[1]")
     explanation_text = (By.XPATH, "//div[contains(@class,'explain')]/div[2]")
+    save_dialog = (By.XPATH,"//div[@class='alert-dialog ng-tns-c36-2']")
+    save_dialog_text = (By.XPATH,"//div[@class='alert-body']")
+    save_dialog_continue_button = (By.XPATH,"//div[@class='generalBtn']")
 

@@ -3,8 +3,6 @@ import time
 
 import pyautogui
 from behave import *
-from pip._internal.utils import misc
-
 from infra import logger, reporter, config
 from utils import files_utils, misc_utils
 
@@ -79,6 +77,7 @@ def click_button(context, button_name):
 
 # ------------------------------------------------------------ old header -----------------------------------------------
 
+# information dialog and button
 @then('validate information dialog is opened')
 def validate_information_dialog_is_displayed(context):
     widget = context._config.current_page.widgets["header"]
@@ -121,6 +120,9 @@ def validate_information_dialog_is_displayed(context):
     widget.init_info_dialog()
 
     assert widget.validate_info_dialog_is_closed(), "Information dialog in not closed"
+
+
+# save dialog and button
 
 
 @then('validate municipality logo is displayed in old header')
@@ -176,7 +178,8 @@ def close_error_message(context):
 @when("I click on cancel button")
 def step_impl(context):
     time.sleep(1)
-    cancel_button = pyautogui.locateOnScreen(os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_cancel.PNG'))
+    cancel_button = pyautogui.locateOnScreen(
+        os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_cancel.PNG'))
     buttonx, buttony = pyautogui.center(cancel_button)
     pyautogui.click(buttonx, buttony)
     time.sleep(1)
@@ -187,7 +190,8 @@ def step_impl(context):
     time.sleep(1)
     for i in range(10):
         try:
-            print_button = pyautogui.locateOnScreen(os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_print.PNG'))
+            print_button = pyautogui.locateOnScreen(
+                os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_print.PNG'))
             break
         except:
             time.sleep(2)
@@ -231,3 +235,54 @@ def step_impl(context, new_file, reference_pdf):
     res, message = files_utils.compare_pdfs(file1_path, file2_path)
     if not res:
         raise AssertionError(message)
+
+
+# save button dialog
+@when("click ok button of alert popup")
+def click_alert_accept(context):
+    widget = context._config.current_page.widgets["header"]
+    widget.click_alert_accept(context._config.driver)
+
+
+@then('validate alert popup text in old header contains "{explanation_text}"')
+def validation_alert_popup_text(context, explanation_text):
+    widget = context._config.current_page.widgets["header"]
+    assert widget.validate_alert_text(context._config.driver,
+                                      explanation_text), "alert popup text doesnt contain the expected text"
+
+
+# save form dialog and button
+@then('validate save form dialog is opened')
+def validate_save_dialog_is_displayed(context):
+    widget = context._config.current_page.widgets["header"]
+    widget.init_save_dialog()
+
+    assert widget.validate_save_dialog_is_opened(), "Header save dialog in not opened"
+
+
+@then('validate save dialog contains "{explanation_text}"')
+def validate_save_dialog_contains_text(context, explanation_text):
+    widget = context._config.current_page.widgets["header"]
+    widget.init_save_dialog()
+
+    assert widget.validate_save_dialog_contains_text(explanation_text), f"Explanation_text is not in save dialog"
+
+
+@then('validate save dialog text in old header exists and contains at least "{count_chars}" chars')
+def validate_header_explanation_contains_text(context, count_chars):
+    widget = context._config.current_page.widgets["header"]
+    widget.init_save_dialog()
+
+    assert widget.validate_save_dialog_is_opened() and widget.validate_save_dialog_text_contains_at_least_chars(
+        int(count_chars)), f"save dialog is not displayed or it doesnt contain at least the expected chars"
+
+
+@When('click on Continue button')
+def click_continue_button(context):
+    widget = context._config.current_page.widgets["header"]
+
+    try:
+        widget.init_save_dialog()
+        widget.click_continue_button()
+    except Exception as e:
+        log.debug(e)
