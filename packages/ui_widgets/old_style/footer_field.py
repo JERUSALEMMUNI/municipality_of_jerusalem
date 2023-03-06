@@ -57,7 +57,7 @@ class FooterField(BaseWidget):
         return facebook_logo.is_displayed()
 
     def validate_facebook_url(self):
-        facebook_logo = self.web_element.find_element(*FooterLocators.facebook_clicker)
+        facebook_logo = self.driver.find_element(*FooterLocators.facebook_clicker)
         facebook_logo.click()
         url = self.driver.current_url
         return "https://www.facebook.com/Jerusalem?fref=ts" == url
