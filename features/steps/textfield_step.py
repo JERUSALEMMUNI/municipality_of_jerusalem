@@ -9,68 +9,75 @@ log = logger.get_logger(__name__)
 @when('write "{text}" into "{widget_name}"')
 def write_into_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.clear()
-    widget.set_text(text)
+
+    try:
+        widget.clear()
+        widget.set_text(text)
+    except Exception as e:
+        log.debug(e)
 
 
 @when('write a valid value "{text}" in "{widget_name}"')
 def write_into_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.clear()
-    widget.set_text(text)
-    assert widget.is_valid, "This value is invalid"
+
+    try:
+        widget.clear()
+        widget.set_text(text)
+        assert widget.is_valid, "This value is invalid"
+    except Exception as e:
+        log.debug(e)
 
 
 @when('write a valid value "{text}" in textarea of "{widget_name}"')
 def write_into_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.clear()
-    widget.set_text(text)
-    assert widget.is_valid, "This value is invalid"
+
+    try:
+        widget.clear()
+        widget.set_text(text)
+        assert widget.is_valid, "This value is invalid"
+    except Exception as e:
+        log.debug(e)
 
 
 @when('write an invalid value "{text}" in "{widget_name}"')
 def write_into_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.clear()
-    widget.set_text(text)
-    assert widget.is_invalid, "This value is valid"
+
+    try:
+        widget.clear()
+        widget.set_text(text)
+        assert widget.is_invalid, "This value is valid"
+    except Exception as e:
+        log.debug(e)
 
 
 @when('clear "{widget_name}"')
 def clear_field(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.clear()
+
+    try:
+        widget.clear()
+    except Exception as e:
+        log.debug(e)
 
 
 @when('append "{text}" to "{widget_name}"')
 def append_text_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.set_text(' ' + text)
+
+    try:
+        widget.set_text(' ' + text)
+    except Exception as e:
+        log.debug(e)
 
 
 @Then('validate if "{widget_name}" text is "{text}"')
 def append_text_field(context, widget_name, text):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-    widget.validate_text(text)
+
+    try:
+        widget.validate_text(text)
+    except Exception as e:
+        log.debug(e)

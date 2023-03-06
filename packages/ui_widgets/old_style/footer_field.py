@@ -67,7 +67,7 @@ class FooterField(BaseWidget):
         return instagram_logo.is_displayed()
 
     def validate_instagram_url(self):
-        instagram_logo = self.web_element.find_element(*FooterLocators.instagram_clicker)
+        instagram_logo = self.driver.find_element(*FooterLocators.instagram_clicker)
         instagram_logo.click()
         url = self.driver.current_url
         return "https://www.instagram.com/jerusalem_city/" == url
@@ -77,7 +77,7 @@ class FooterField(BaseWidget):
         return twitter_logo.is_displayed()
 
     def validate_twitter_url(self):
-        twitter_logo = self.web_element.find_element(*FooterLocators.twitter_clicker)
+        twitter_logo = self.driver.find_element(*FooterLocators.twitter_clicker)
         twitter_logo.click()
         url = self.driver.current_url
         return "https://twitter.com/Jlm_city" == url

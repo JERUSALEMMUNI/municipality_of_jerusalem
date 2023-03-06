@@ -82,9 +82,9 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And write "עיריית ירושלים" into "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    When pick year "2021" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+    When pick month "7" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
 #    When click on "שמור" Button
@@ -107,13 +107,15 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And write "עיריית ירושלים" into "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    When pick year "2018" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+    When pick month "8" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
 #    When click on "שמור" Button
 #    And click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
+
+
   Scenario: Upload file test
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "3327" in "מספר זהות"
@@ -131,9 +133,9 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And write "עיריית ירושלים" into "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    When pick year "2018" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+    When pick month "5" in widget "חודשים לבדיקה" at index "1"
     When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
 ##    When click on "שמור" Button
 #    And click on "המשך" Button
@@ -161,10 +163,10 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
     And write "עיריית ירושלים" into "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+    And pick "צבירת ימי מחלה" from "נושא התלונה"
     And pick year "2022" in widget "חודשים לבדיקה" at index "1"
     And write "קיבלתי מכה בעבודה " into "פרטי התלונה"
-    And pick month "9" in widget "חודשים לבדיקה" at index "1"
+    And pick month "2" in widget "חודשים לבדיקה" at index "1"
     And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And click on "המשך" Button
     #TODO: need to add page 2 of feature file for this page
@@ -204,18 +206,19 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     Then Back to previous page
     Then Validate current page is "ContractorEmpRights"
 
-  # TODO: Solve, there is a problem after the browser come back from another website page like facebook
-#  Scenario: footer instagram url test
-#    Given Navigate to "ContractorEmpRights" form
-#    Then Validate instagram url in old footer
-#    Then Back to previous page
-#    Then Validate current page is "ContractorEmpRights"
-#
-#  Scenario: footer twitter url test
-#    Given Navigate to "ContractorEmpRights" form
-#    Then Validate twitter url in old footer
-#    Then Back to previous page
-#    Then Validate current page is "ContractorEmpRights"
+   # TODO: Solve, there is a problem after the browser come back from another website page like facebook
+  # solved the problem by using the driver in the footer field instead of web_element
+  Scenario: footer instagram url test
+    Given Navigate to "ContractorEmpRights" form
+    Then Validate instagram url in old footer
+    Then Back to previous page
+    Then Validate current page is "ContractorEmpRights"
+
+  Scenario: footer twitter url test
+    Given Navigate to "ContractorEmpRights" form
+    Then Validate twitter url in old footer
+    Then Back to previous page
+    Then Validate current page is "ContractorEmpRights"
 
 
 

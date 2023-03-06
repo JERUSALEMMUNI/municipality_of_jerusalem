@@ -1,8 +1,7 @@
 import time
-from behave import *
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
+import allure
+from behave import *
 from infra import logger, reporter, config
 
 rep = reporter.get_reporter()
@@ -20,33 +19,27 @@ def navigate_to_screen(context, screen_name):
         for element in current_page.main_elements_to_wait_when_load:
             # wait method to wait the element
             driver.wait_long_for_presence_of_element(element.locator['By'], element.locator['Value'])
+    allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
+                        "click here to see the link of tested step")
 
 
-@when('I checked if "{text}" is the text of "{widget_name}"')
+@when('checked if "{text}" is the text of "{widget_name}"')
 def check_text_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
+
     assert widget.check_text(text, False)
 
 
 @then('field "{widget_name}" has invalid value')
 def field_has_invalid_value(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
+
     assert widget.is_invalid is True and widget.is_valid is False, "Field considered as valid"
 
 
 @then('field "{widget_name}" has valid value')
 def field_has_valid_value(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
-
     loop = widget.is_invalid()
     log.info(loop)
     noop = widget.is_valid()
@@ -85,9 +78,7 @@ def error_msg(context, widget_name, error_expectation):
         type = "text"
 
     widget = context._config.current_page.widgets[widget_name]
-    if widget.get_web_element() is None:
-        web_element = context._config.current_page.driver.find_element(widget.locator['By'], widget.locator['Value'])
-        widget.set_web_element(web_element)
+
     assert widget.check_error_text(config.field_error[error_expectation], type), "Incorrect error expectation message"
 
 
