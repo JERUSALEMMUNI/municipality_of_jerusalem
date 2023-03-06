@@ -39,3 +39,4 @@ class ContractorEmpRights(BasePage):
         self.widgets['אסמכתאות לתשלום שכר'] = create_widget('UploadFile', style=self.style, label='אסמכתאות לתשלום שכר', driver=self.driver)
         self.widgets['דוחו"ת נוכחות'] = create_widget('UploadFile', style=self.style, label='דוחו"ת נוכחות', driver=self.driver)
         self.widgets['תלושי שכר'] = create_widget('UploadFile', style=self.style, label='תלושי שכר', driver=self.driver)
+

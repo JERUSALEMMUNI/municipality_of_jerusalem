@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.new_style.dropdown_search_field import DropdownSearch
+from ui_widgets.old_style.alert_message_field import AlertMessageField
 
 log = logger.get_logger(__name__)
 
@@ -14,6 +15,7 @@ class DropdownSearchSelectBox(DropdownSearch):
     def __init__(self, label, base_path="/following-sibling::p-multiselect"):
         super().__init__(label)
         self.base_path = base_path
+        self.alert_error_message = AlertMessageField(self.label)
 
     @property
     def read_text_value(self):
@@ -129,3 +131,16 @@ class DropdownSearchSelectBox(DropdownSearch):
         table_html += "</table>"
         # Attach the table to the Allure report
         allure.attach(table_html, "table_of_incorrect_entries", allure.attachment_type.HTML)
+
+    def initial_error(self):
+        error_message_element = self.web_element.find_element(By.XPATH, "./following-sibling::div/following-sibling::span")
+        self.alert_error_message.set_web_element(error_message_element)
+
+    def get_error_message(self):
+        self.initial_error()
+        self.alert_error_message.get_error_message()
+
+    def check_error_message(self, expected_error):
+        self.initial_error()
+        self.alert_error_message.check_expected_error(expected_error)
+

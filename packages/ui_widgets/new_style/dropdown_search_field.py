@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.new_style.dropdown_field import Dropdown
+from ui_widgets.old_style.alert_message_field import AlertMessageField
 
 log = logger.get_logger(__name__)
 
@@ -12,6 +13,7 @@ class DropdownSearch(Dropdown):
     def __init__(self, label, base_path="/following-sibling::p-dropdown"):
         super().__init__(label)
         self.base_path = base_path
+        self.alert_error_message = AlertMessageField(self.label)
 
     def search_element(self, value_selected):
         dropDown_open = self.web_element.get_attribute('aria-expanded')
@@ -79,4 +81,16 @@ class DropdownSearch(Dropdown):
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located((By.XPATH, f".//div/div/div//li")))
         return element.text
+
+    def initial_error(self):
+        error_message_element = self.web_element.find_element(By.XPATH, "./following-sibling::span")
+        self.alert_error_message.set_web_element(error_message_element)
+
+    def get_error_message(self):
+        self.initial_error()
+        self.alert_error_message.get_error_message()
+
+    def check_error_message(self, expected_error):
+        self.initial_error()
+        self.alert_error_message.check_expected_error(expected_error)
 

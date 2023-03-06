@@ -3,6 +3,7 @@ from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.dropdown_field import Dropdown
 from ui_widgets.new_style.text_field import TextField
+from ui_widgets.old_style.alert_message_field import AlertMessageField
 
 log = logger.get_logger(__name__)
 
@@ -12,6 +13,7 @@ class PhoneField(BaseWidget):
         super().__init__(label)
         self.dropdown_widget = Dropdown(label)
         self.text_widget = TextField(label)
+        self.alert_error_message = AlertMessageField(self.label)
 
     @property
     def locator(self):
@@ -43,3 +45,16 @@ class PhoneField(BaseWidget):
     @property
     def is_valid(self):
         return self.text_widget.is_valid is True
+
+    def initial_error(self):
+        error_message_element = self.web_element.find_element(By.XPATH, "./following-sibling::div/following-sibling::span")
+        self.alert_error_message.set_web_element(error_message_element)
+
+    def get_error_message(self):
+        self.initial_error()
+        self.alert_error_message.get_error_message()
+
+    def check_error_message(self, expected_error):
+        self.initial_error()
+        self.alert_error_message.check_expected_error(expected_error)
+

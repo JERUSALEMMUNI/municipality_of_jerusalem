@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from infra import logger, custom_exceptions as ce
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.old_style.alert_message_field import AlertMessageField
 from ui_widgets.old_style.button_icon_widget import ButtonIcon
 from ui_widgets.old_style.month_year_widget import MonthYear
 
@@ -11,6 +12,7 @@ class MonthYearList(BaseWidget):
     def __init__(self, label):
         super().__init__(label)
         self.addItemButton = ButtonIcon('הוסף')
+        self.alert_error_message = AlertMessageField(self.label)
 
     @property
     def locator(self):
@@ -59,3 +61,15 @@ class MonthYearList(BaseWidget):
     def validate_months(self, month, index):
         widget = self.create_widget(index)
         assert widget.validate_months(self.locator['Value'], month), "the selected months are not shown as selected"
+
+    def initial_error(self):
+        error_message_element = self.web_element.find_element(By.XPATH, "./following-sibling::div/div[1]/div/div/following-sibling::div")
+        self.alert_error_message.set_web_element(error_message_element)
+
+    def get_error_message(self):
+        self.initial_error()
+        self.alert_error_message.get_error_message()
+
+    def check_error_message(self, expected_error):
+        self.initial_error()
+        self.alert_error_message.check_expected_error(expected_error)
