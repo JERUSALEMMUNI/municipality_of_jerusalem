@@ -68,30 +68,6 @@ class MultiSelect(BaseWidget):
     def is_open(self):
         return 'ui-inputwrapper-focus' in self.web_element.get_attribute('class')
 
-    # def select_listbox_item(self, pre, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
-    #     # if not self.is_open():
-    #     #     self.click()
-    #     # desired_option = None
-    #     # elements = self.get_multiselect_list()
-    #     # while not desired_option:
-    #     #     for option in elements:
-    #     #         if option.text == txt:
-    #     #             desired_option = option
-    #     #             clickable = WebDriverWait(self.web_element, 10).until(EC.element_to_be_clickable(desired_option))
-    #     #             clickable.click()
-    #     #             break
-    #     #         # else:
-    #     #         #     x = WebDriverWait(driver, 30).until((EC.visibility_of_element_located((By.XPATH, path))))
-    #     #         #     driver.execute_script("arguments[0].scrollBy(0, 30);", x)
-    #     #
-    #     # self.click_close_button()
-    #     WebDriverWait(self.web_element, 5).until(
-    #         EC.presence_of_element_located((DropdownLocators.select(pre))))
-    #     prefix = self.web_element.find_element(*DropdownLocators.select(pre))
-    #     prefix.click()
-    #     self.value = prefix
-    #     self.click_close_button()
-
     def select_listbox_item(self, txt, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
         if not self.is_open():
             self.click()
@@ -102,10 +78,6 @@ class MultiSelect(BaseWidget):
                 if option.text == txt:
                     desired_option = option
                     break
-                # else:
-                #     doc = driver.find_element(By.XPATH, path)
-                #     WebDriverWait(driver, 30).until(EC.visibility_of((doc)))
-                #     driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
         WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(desired_option)).click()
 
         self.click_close_button()
