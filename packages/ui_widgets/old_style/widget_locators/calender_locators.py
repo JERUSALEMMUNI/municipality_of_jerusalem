@@ -9,4 +9,7 @@ class CalenderLocators:
     dialog = (By.XPATH, "//i[@class='fa fa-times-circle']")
     accept_alert = (By.XPATH, "//div[@class='generalBtn']")
 
+    @staticmethod
+    def day(day):
+        return By.XPATH, f"//a[text()='{day}']"
 

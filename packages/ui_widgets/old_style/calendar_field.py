@@ -23,8 +23,8 @@ class CalendarField(BaseWidget):
         }
 
     def initial_widgets(self):
-        text_field_element = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        self.text_widget.set_web_element(text_field_element)
+        # text_field_element = self.web_element.find_element(self.locator['By'], self.locator['Value'])
+        self.text_widget.set_web_element(self.web_element)
 
     def date_by_select_day_year(self, day, year):
         select_year = self.web_element.find_element(*CalenderLocators.year)
@@ -32,7 +32,7 @@ class CalendarField(BaseWidget):
         year_selected.select_by_visible_text(year)
         WebDriverWait(self.web_element, 10).until(
             #Todo: it should be in a locator file
-            EC.element_to_be_clickable((By.XPATH, f"//a[text()='{day}']"))).click()
+            EC.element_to_be_clickable((CalenderLocators.day(day)))).click()
 
     def select_all_date(self, date):
         self.click_on()
@@ -63,7 +63,7 @@ class CalendarField(BaseWidget):
 
     def click_on(self):
         WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((self.web_element))
+            EC.element_to_be_clickable(self.web_element)
         ).click()
 
     def get_date(self):
