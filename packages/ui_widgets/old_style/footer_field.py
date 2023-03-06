@@ -23,14 +23,25 @@ class FooterField(BaseWidget):
 
     def init_widget_texts(self):
         self.call_us = "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+        self.follow_us = "עקבו אחרינו"
+        self.facebook_url = "https://www.facebook.com/Jerusalem?fref=ts"
+        self.instagram_url = "https://www.instagram.com/jerusalem_city/"
+        self.twitter_url = "https://twitter.com/Jlm_city"
+
+
+
+    def get_call_us_element(self):
+        return self.web_element.find_element(*FooterLocators.call_us)
+    def get_folow_us_element(self):
+        return self.web_element.find_element(*FooterLocators.follow_us)
+
+
 
     def validate_old_call_us_is_displayed(self):
-        footer_call_us = self.web_element.find_element(by=By.XPATH, value=f"./div/div")
-        return footer_call_us.is_displayed()
+        return self.get_call_us_element().is_displayed()
 
     def get_old_call_us(self):
-        footer_call_us = self.web_element.find_element(by=By.XPATH, value=f"./div/div")
-        return footer_call_us.text
+        return self.get_call_us_element().text
 
     def validate_old_call_us_text(self, call_us):
         return self.get_old_call_us() == call_us
@@ -39,18 +50,16 @@ class FooterField(BaseWidget):
         return self.get_old_call_us() == self.call_us
 
     def validate_old_follow_us_is_displayed(self):
-        follow_us = self.web_element.find_element(*FooterLocators.follow_us)
-        return follow_us.is_displayed()
+        return self.get_folow_us_element().is_displayed()
 
     def get_old_follow_us(self):
-        follow_us = self.web_element.find_element(*FooterLocators.follow_us)
-        return follow_us.text
+        return self.get_folow_us_element().text
 
     def validate_old_follow_us(self, follow_us):
         return self.get_old_follow_us() == follow_us
 
     def validate_old_follow_us_with_default(self):
-        return self.get_old_follow_us() == "עקבו אחרינו"
+        return self.get_old_follow_us() == self.follow_us
 
     def is_facebook_displayed(self):
         facebook_logo = self.web_element.find_element(*FooterLocators.facebook_logo)
@@ -60,7 +69,7 @@ class FooterField(BaseWidget):
         facebook_logo = self.web_element.find_element(*FooterLocators.facebook_clicker)
         facebook_logo.click()
         url = self.driver.current_url
-        return "https://www.facebook.com/Jerusalem?fref=ts" == url
+        return self.facebook_url == url
 
     def is_instagram_displayed(self):
         instagram_logo = self.web_element.find_element(*FooterLocators.instagram_logo)
@@ -70,7 +79,7 @@ class FooterField(BaseWidget):
         instagram_logo = self.driver.find_element(*FooterLocators.instagram_clicker)
         instagram_logo.click()
         url = self.driver.current_url
-        return "https://www.instagram.com/jerusalem_city/" == url
+        return self.instagram_url == url
 
     def is_twitter_displayed(self):
         twitter_logo = self.web_element.find_element(*FooterLocators.twitter_logo)
@@ -80,7 +89,7 @@ class FooterField(BaseWidget):
         twitter_logo = self.driver.find_element(*FooterLocators.twitter_clicker)
         twitter_logo.click()
         url = self.driver.current_url
-        return "https://twitter.com/Jlm_city" == url
+        return self.twitter_url == url
 
     def go_back_tp_prev_page(self):
         self.driver.execute_script("window.history.go(-1)")

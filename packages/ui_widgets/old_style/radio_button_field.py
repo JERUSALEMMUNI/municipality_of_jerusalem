@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.old_style.widget_locators.radio_button_locators import RadioButtonLocators
 
 log = logger.get_logger(__name__)
 
@@ -51,16 +52,15 @@ class RadioButtonField(BaseWidget):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(self.locator['By'],
-                                                      "./parent::p-radiobutton/parent::div/following-sibling::span")
+            error_msg = self.web_element.find_element(*RadioButtonLocators.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("there is no label error here")
 
     def is_invalid(self):
-        x = self.web_element.find_element(self.locator['By'], "./parent::p-radiobutton")
+        x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'invalid' in x.get_attribute('class')
 
     def is_valid(self):
-        x = self.web_element.find_element(self.locator['By'], "./parent::p-radiobutton")
+        x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'valid' in x.get_attribute('class')

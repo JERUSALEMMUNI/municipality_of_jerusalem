@@ -17,19 +17,15 @@ class CheckBox(BaseWidget):
         }
 
     def check_box(self):
-        box = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        if box.get_attribute('aria-checked') in ("false", None):
+        if self.web_element.get_attribute('aria-checked') in ("false", None):
             self.web_element.click()
 
     def uncheck_box(self):
-        box = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        if box.get_attribute('aria-checked') == "true":
+        if self.web_element.get_attribute('aria-checked') == "true":
             self.web_element.click()
 
     def validate_box_is_checked(self):
-        box = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        return box.get_attribute('aria-checked') == "true"
+        return self.web_element.get_attribute('aria-checked') == "true"
 
     def validate_box_is_unchecked(self):
-        box = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        return box.get_attribute('aria-checked') in ("false" or None)
+        return self.web_element.get_attribute('aria-checked') in ("false" or None)

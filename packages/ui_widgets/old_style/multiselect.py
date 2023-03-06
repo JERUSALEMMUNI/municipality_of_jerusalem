@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
 
 log = logger.get_logger(__name__)
 
@@ -49,6 +50,7 @@ class MultiSelect(BaseWidget):
     def click_close_button(self):
         if self.close_button is None:
             self.set_close_button()
+        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable( self.close_button)).click()
         self.close_button.click()
 
     def click(self):
@@ -56,7 +58,7 @@ class MultiSelect(BaseWidget):
 
     def get_multiselect_list(self):
         list = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_any_elements_located((self.locator['By'], self.locator['List'])))
+            EC.presence_of_all_elements_located((self.locator['By'], self.locator['List'])))
         return list
 
     def set_custom_multiselect(self, web_element):
@@ -65,6 +67,30 @@ class MultiSelect(BaseWidget):
 
     def is_open(self):
         return 'ui-inputwrapper-focus' in self.web_element.get_attribute('class')
+
+    # def select_listbox_item(self, pre, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
+    #     # if not self.is_open():
+    #     #     self.click()
+    #     # desired_option = None
+    #     # elements = self.get_multiselect_list()
+    #     # while not desired_option:
+    #     #     for option in elements:
+    #     #         if option.text == txt:
+    #     #             desired_option = option
+    #     #             clickable = WebDriverWait(self.web_element, 10).until(EC.element_to_be_clickable(desired_option))
+    #     #             clickable.click()
+    #     #             break
+    #     #         # else:
+    #     #         #     x = WebDriverWait(driver, 30).until((EC.visibility_of_element_located((By.XPATH, path))))
+    #     #         #     driver.execute_script("arguments[0].scrollBy(0, 30);", x)
+    #     #
+    #     # self.click_close_button()
+    #     WebDriverWait(self.web_element, 5).until(
+    #         EC.presence_of_element_located((DropdownLocators.select(pre))))
+    #     prefix = self.web_element.find_element(*DropdownLocators.select(pre))
+    #     prefix.click()
+    #     self.value = prefix
+    #     self.click_close_button()
 
     def select_listbox_item(self, txt, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
         if not self.is_open():
@@ -76,13 +102,14 @@ class MultiSelect(BaseWidget):
                 if option.text == txt:
                     desired_option = option
                     break
-                else:
-                    doc = driver.find_element(By.XPATH, path)
-                    WebDriverWait(driver, 30).until(EC.visibility_of((doc)))
-                    driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
-        clickable = WebDriverWait(self.web_element, 50).until(EC.element_to_be_clickable(desired_option))
-        clickable.click()
+                # else:
+                #     doc = driver.find_element(By.XPATH, path)
+                #     WebDriverWait(driver, 30).until(EC.visibility_of((doc)))
+                #     driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
+        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(desired_option)).click()
+
         self.click_close_button()
+
 
     def select_listbox_items(self, month_list, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
         if not self.is_open():
@@ -92,9 +119,8 @@ class MultiSelect(BaseWidget):
             if option.text in month_list and "ui-state-highlight" not in option.get_attribute('class'):
                 WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(option)).click()
             else:
-                doc = driver.find_element(By.XPATH, path)
-                WebDriverWait(driver, 30).until(EC.visibility_of((doc)))
-                driver.execute_script("arguments[0].scrollBy(0, 30);", doc)
+                x = WebDriverWait(driver, 30).until(EC.visibility_of((By.XPATH, path)))
+                driver.execute_script("arguments[0].scrollBy(0, 30);", x)
         self.click_close_button()
 
     def set_month(self, month, driver):

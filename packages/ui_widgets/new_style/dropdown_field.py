@@ -21,28 +21,26 @@ class Dropdown(BaseWidget):
                 'Value': f"//label[contains(text(),'{self.label}')]{self.base_path}"}
 
     def click_button(self):
-        dropDown_open = self.web_element.find_element(By.XPATH, "./div/div/input").get_attribute('aria-expanded')
+        dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
 
     def item_search_scroll(self, driver, option_value):
-        element = None
-        i = 0
         while True:
             #todo: use driver.waitLong (max)
             WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
-            element = driver.find_element(by=By.XPATH, value=f"//div/div/div/ul")
+            element = driver.find_element(*DropdownLocators.item_search_scroll_element)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             elements_list = element.text
             log.info(elements_list)
             if option_value in elements_list:
-                chosenElement = driver.find_element(by=By.XPATH, value=f"//li[@aria-label='{option_value}']")
+                chosenElement = driver.find_element(*DropdownLocators.chosen_element(option_value))
                 return chosenElement.text, elements_list
 
     def select_element(self, pre):
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((By.XPATH, f".//li[@aria-label='{pre}']")))
-        prefix = self.web_element.find_element(by=By.XPATH, value=f".//li[@aria-label='{pre}']")
+            EC.presence_of_element_located((DropdownLocators.select(pre))))
+        prefix = self.web_element.find_element(*DropdownLocators.select(pre))
         prefix.click()
         self.value = prefix
         if "highlight" in self.value.get_attribute('class'):
@@ -60,11 +58,11 @@ class Dropdown(BaseWidget):
 
     @property
     def read_text_value(self):
-        return self.web_element.find_element(By.XPATH, value="./div/span").text
+        return self.web_element.find_element(*DropdownLocators.read_text).text
 
     @property
     def check_if_open(self):
-        return 'open' in self.web_element.find_element(By.XPATH, value="./div").get_attribute('class')
+        return 'open' in self.web_element.find_element(*DropdownLocators.check_if_open).get_attribute('class')
 
     @property
     def get_text(self):

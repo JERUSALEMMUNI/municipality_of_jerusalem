@@ -10,7 +10,3 @@ class CalenderLocators:
     accept_alert = (By.XPATH, "//div[@class='generalBtn']")
 
 
-    @staticmethod
-    def language(language):
-        return By.XPATH, f"./div/div/div/nav/div/ul/li/a[contains(text(),'{language}')]"
-

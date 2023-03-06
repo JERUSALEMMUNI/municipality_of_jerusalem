@@ -40,9 +40,9 @@ def field_has_invalid_value(context, widget_name):
 @then('field "{widget_name}" has valid value')
 def field_has_valid_value(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    loop = widget.is_invalid()
+    loop = widget.is_invalid
     log.info(loop)
-    noop = widget.is_valid()
+    noop = widget.is_valid
     log.info(noop)
 
     assert widget.is_invalid is False and widget.is_valid is True, "Field considered as invalid"

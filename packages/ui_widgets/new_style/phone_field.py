@@ -3,6 +3,7 @@ from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.dropdown_field import Dropdown
 from ui_widgets.new_style.text_field import TextField
+from ui_widgets.new_style.widget_locators.phone_field_locator import PhoneFieldLocators
 
 log = logger.get_logger(__name__)
 
@@ -17,14 +18,14 @@ class PhoneField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]",
+            'Value': f"//label[contains(text(),'{self.label}')]"
 
         }
 
     def initial_widgets(self):
-        dropdown_element = self.web_element.find_element(By.XPATH, "following-sibling::div//p-dropdown")
+        dropdown_element = self.web_element.find_element(*PhoneFieldLocators.drop_down)
         self.dropdown_widget.set_web_element(dropdown_element)
-        text_element = self.web_element.find_element(By.XPATH, "following-sibling::div/input")
+        text_element = self.web_element.find_element(*PhoneFieldLocators.text_element)
         self.text_widget.set_web_element(text_element)
 
     def set_text(self, text):

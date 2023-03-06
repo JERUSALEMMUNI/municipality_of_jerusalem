@@ -9,6 +9,79 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
   -
 # Todo: Add the scenario name from excel file of sofiya
 
+
+
+  Scenario Outline: first name (valid)
+    Given Navigate to "ContractorEmpRights" form
+    When write "<first_name>" into "שם פרטי"
+    Then field "שם פרטי" has valid value
+    Examples:
+    | first_name  |
+    | פראס  |
+    | סנינה_אבו_פראס  |
+    | סנינה-אבו-פראס  |
+    | (פראס)  |
+    | פראס`אבו סנינה  |
+    | פראס,אבו,סנינה  |
+    | פראס.אבו.סנינה  |
+    | סנינה"אבו"פראס  |
+    | אבו/פראס/סנינה  |
+    | פראס()_-אבו סנינה  |
+    | ככגךגדחדלגמגלחגלגדךלגלגלגךלגךגךגךגךגךגתגגתג   |
+    | פ    |
+    | פ)(_-.,ץשדג |
+
+  Scenario Outline: first name (invalid)
+    Given Navigate to "ContractorEmpRights" form
+    When write "<first_name>" into "שם פרטי"
+    Then field "שם פרטי" has invalid value
+    Examples:
+    | first_name  |
+    | فراس  |
+    | firas   |
+    | 1234    |
+    | !@#$%%  |
+    | פראסضض  |
+    | פראסwdd  |
+    | פראס123  |
+    | פראס!@##  |
+
+  Scenario Outline: last name (valid)
+    Given Navigate to "ContractorEmpRights" form
+    When write "<last_name>" into "שם משפחה"
+    Then field "שם משפחה" has valid value
+    Examples:
+    | last_name  |
+    | פראס  |
+    | סנינה_אבו_פראס  |
+    | סנינה-אבו-פראס  |
+    | (פראס)  |
+    | פראס`אבו סנינה  |
+    | פראס,אבו,סנינה  |
+    | פראס.אבו.סנינה  |
+    | סנינה"אבו"פראס  |
+    | אבו/פראס/סנינה  |
+    | פראס()_-אבו סנינה  |
+    | ככגךגדחדלגמגלחגלגדךלגלגלגךלגךגךגךגךגךגתגגתג   |
+    | פ    |
+    | פ)(_-.,ץשדג |
+
+  Scenario Outline: last name (invalid)
+    Given Navigate to "ContractorEmpRights" form
+    When write "<last_name>" into "שם משפחה"
+    Then field "שם משפחה" has invalid value
+    Examples:
+    | last_name  |
+    | فراس  |
+    | firas   |
+    | 1234    |
+    | !@#$%%  |
+    | פראסضض  |
+    | פראסwdd  |
+    | פראס123  |
+    | פראס!@##  |
+
+
   Scenario: Test all mandatory fields with valid values
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "3327" in "מספר זהות"
@@ -135,7 +208,7 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
     When pick year "2018" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "5" in widget "חודשים לבדיקה" at index "1"
+    When pick month "11" in widget "חודשים לבדיקה" at index "1"
     When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
 ##    When click on "שמור" Button
 #    And click on "המשך" Button
@@ -166,7 +239,7 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And pick "צבירת ימי מחלה" from "נושא התלונה"
     And pick year "2022" in widget "חודשים לבדיקה" at index "1"
     And write "קיבלתי מכה בעבודה " into "פרטי התלונה"
-    And pick month "2" in widget "חודשים לבדיקה" at index "1"
+    And pick month "12" in widget "חודשים לבדיקה" at index "1"
     And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And click on "המשך" Button
     #TODO: need to add page 2 of feature file for this page

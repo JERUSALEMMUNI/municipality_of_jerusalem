@@ -5,6 +5,7 @@ import re
 from ui_widgets.new_style.dropdown_field import Dropdown
 from ui_widgets.old_style.button_icon_widget import ButtonIcon
 from ui_widgets.old_style.multiselect import MultiSelect
+from ui_widgets.old_style.widget_locators.month_year_widget_locator import MonthYearWidgetLocators
 
 log = logger.get_logger(__name__)
 
@@ -24,31 +25,27 @@ class MonthYear(BaseWidget):
         }
 
     def get_validation_text(self, path):
-        return self.web_element.find_element(By.XPATH,
-                                             f"{path}//following-sibling::div/div[{self.label}]/div/div[2]")
+        return self.web_element.find_element(*MonthYearWidgetLocators.valid_text(path, self.label))
 
     def removeItem(self, path):
-        remove_button = self.web_element.find_element(By.XPATH,
-                                                      f"{path}//following-sibling::div/div[{self.label}]//button[@title='הסר']//i[@class='pi pi-times-circle']")
+        remove_button = self.web_element.find_element(*MonthYearWidgetLocators.remove_item(path, self.label))
         remove_button.click()
 
     def set_year(self, path, year):
-        dropdown = self.web_element.find_element(By.XPATH,
-                                                 f"{path}//following-sibling::div/div[{self.label}]//p-dropdown[@formcontrolname='year']")
+        dropdown = self.web_element.find_element(*MonthYearWidgetLocators.set_yaer(path, self.label))
         self.year_dropdown.set_web_element(dropdown)
         self.year_dropdown.web_element.click()
         self.year_dropdown.select_element(year)
 
+    def get_month_element(self,path):
+        return self.web_element.find_element(*MonthYearWidgetLocators.set_month(path, self.label))
+
     def set_month(self, path, month, driver):
-        multiselect = self.web_element.find_element(By.XPATH,
-                                                    f"{path}//following-sibling::div/div[{self.label}]//p-multiselect[@formcontrolname='months']")
-        self.month_multiselect.set_custom_multiselect(multiselect)
+        self.month_multiselect.set_custom_multiselect(self.get_month_element(path))
         self.month_multiselect.set_month(config.months[month], driver)
 
     def set_months(self, path, months, driver):
-        multiselect = self.web_element.find_element(By.XPATH,
-                                                    f"{path}//following-sibling::div/div[{self.label}]//p-multiselect[@formcontrolname='months']")
-        self.month_multiselect.set_custom_multiselect(multiselect)
+        self.month_multiselect.set_custom_multiselect(self.get_month_element(path))
         month_list = []
         for num in months.split(","):
             month_list.append(config.months[num])

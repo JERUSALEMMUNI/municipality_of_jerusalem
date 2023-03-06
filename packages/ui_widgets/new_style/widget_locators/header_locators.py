@@ -8,6 +8,7 @@ class HeaderLocators:
     stepper = (By.XPATH, "./div/div/following-sibling::div/div/lib-stepper")
     explanation = (By.XPATH, "//div[contains(@class,'lib-header__form-explanation')]/div/div[1]")
     rules = (By.XPATH, "//div[contains(@class,'lib-header__form-explanation')]/div/div[2]")
+    language_parent = (By.XPATH, "//parent::li[contains(@class,'active')]")
 
 
 

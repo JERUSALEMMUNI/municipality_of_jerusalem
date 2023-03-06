@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.new_style.dropdown_field import Dropdown
+from ui_widgets.new_style.widget_locators.dropdown_search_locators import DropdownSearchLocators
 
 log = logger.get_logger(__name__)
 
@@ -17,10 +18,8 @@ class DropdownSearch(Dropdown):
         dropDown_open = self.web_element.get_attribute('aria-expanded')
         if dropDown_open in ('false', None):
             self.web_element.click()
-        self.web_element.find_element(by=By.XPATH,
-                                      value=f"//label[contains(text(),'{self.label}')]/following-sibling::p-dropdown//*/*/div/input[@type='text']")\
-                                      .send_keys(value_selected)
-        drop = self.web_element.find_element(by=By.XPATH, value="//p-dropdownitem")
+        self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label)).send_keys(value_selected)
+        drop = self.web_element.find_element(*DropdownSearchLocators.drop)
         drop.click()
         result = self.web_element.text
         returnResult = result.splitlines()[0]
@@ -33,13 +32,13 @@ class DropdownSearch(Dropdown):
         while True:
             WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(
                 (By.XPATH, "//div//ul/cdk-virtual-scroll-viewport")))
-            element = driver.find_element(by=By.XPATH, value=f"//div//ul/cdk-virtual-scroll-viewport")
+            element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             element = element.text
             if text in element:
                 i = i + 1
             if text in element and i == 4:
-                chosenElement = driver.find_element(by=By.XPATH, value=f"//li[@aria-label='{text}']")
+                chosenElement = driver.find_element(*DropdownSearchLocators.chosen_element(text))
                 return chosenElement.text, element
 
     @property
