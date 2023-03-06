@@ -159,6 +159,7 @@ log dict arguments:
 def prepare_file_hdlr(log_dict, formatter):
     '''A function that prepares a log file handler, sets its level, a formatter and additional filters from logging_classes.py'''
     rotating_fh = log_dict.pop('rotating', False)
+    log_dict['encoding'] = 'utf-16'
     if 'path' in log_dict:
         # Creating a rotating file handler that rotates every 100MB and stores 100 backups == 10GB
         handler = logging_classes.RotatingFileHandlerPlus(maxBytes=100000000,

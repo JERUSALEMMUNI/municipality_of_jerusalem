@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import pyautogui
+from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -17,6 +19,7 @@ class HeaderField(BaseWidget):
     def __init__(self):
         super().__init__(self)
         self.info_dialog = Dialog()
+        self.save_dialog = Dialog()
         self.main_title = 'שרותים דיגיטליים'
         self.header_status_text = 'סטטוס:'
         self.header_date_text = 'תאריך מילוי הטופס'
@@ -191,13 +194,22 @@ class HeaderField(BaseWidget):
             temp_btn = self.web_element.find_element(button.locator['By'], button.locator['Value'])
             button.set_web_element(temp_btn)
 
-    def click_header_button(self, label: str):
+    def click_header_button(self, label: str, chrome_driver):
         """
         initialise button form text then click on it
         """
         button = ButtonField(label)
         self.init_buttons_widgets(button)
-        button.click_button()
+        if 'הדפס' != label:
+            button.click_button()
+        else:
+            chrome_driver.execute_script("window.scrollTo(0,0)")
+            rect = button.web_element.rect
+            browser_navigation_panel_height = chrome_driver.execute_script(
+                'return window.outerHeight - window.innerHeight;')
+            y_absolute_coord = button.web_element.location['y'] + browser_navigation_panel_height
+            x_absolute_coord = button.web_element.location['x']
+            pyautogui.click(x_absolute_coord + rect['width'] / 2, y_absolute_coord + rect['height'] / 2)
         log.info("clicking on button")
         log.debug(f"the button you clicked is : {label}")
 
@@ -206,7 +218,7 @@ class HeaderField(BaseWidget):
         initialise information dialog when its displayed
         """
         if self.info_dialog.get_web_element() is None:
-            info_dialog = WebDriverWait(driver, 30).until(
+            info_dialog = WebDriverWait(driver, 10).until(
                 EC.visibility_of((self.web_element.find_element(self.info_dialog.locator['By'],
                                                                 self.info_dialog.locator['Value']))))
             self.info_dialog.set_web_element(info_dialog)
@@ -216,6 +228,9 @@ class HeaderField(BaseWidget):
         click on X button of information dialog
         """
         self.info_dialog.click_close_button()
+        WebDriverWait(driver, 10).until(
+            EC.invisibility_of_element((self.web_element.find_element(self.info_dialog.locator['By'],
+                                                                      self.info_dialog.locator['Value']))))
 
     def validate_info_dialog_is_opened(self) -> bool:
         """
@@ -240,7 +255,7 @@ class HeaderField(BaseWidget):
             return self.info_dialog.validate_dialog_text(text)
         return False
 
-    def validate_info_dialog_text_contains_at_least_chars(self, number:int) -> bool:
+    def validate_info_dialog_text_contains_at_least_chars(self, number: int) -> bool:
         """
         :number:number of chars
         :return: bool if length of information dialog text big or equal to input number
@@ -312,7 +327,7 @@ class HeaderField(BaseWidget):
         explanation_title = self.get_header_explanation_text().text
         return explanation_title == self.default_explanation_text
 
-    def validate_header_explanation_text(self, text:str) -> bool:
+    def validate_header_explanation_text(self, text: str) -> bool:
         """
         :return: bool if header explanation text same as input text
         """
@@ -326,7 +341,7 @@ class HeaderField(BaseWidget):
         """
         return self.get_header_explanation_text().is_displayed()
 
-    def validate_header_explanation_contains_at_least_chars(self, number:int) -> bool:
+    def validate_header_explanation_contains_at_least_chars(self, number: int) -> bool:
         """
         :number:number of chars
         :return: bool if length of header explanation text big or equal to input number
@@ -335,3 +350,65 @@ class HeaderField(BaseWidget):
         log.debug(f"validating if header explanation text length bigger or equal to {number}")
         explanation = self.get_header_explanation_text()
         return len(explanation.text) >= number
+
+    # save button and dialog
+    def get_alert_text(self, driver) -> str:
+        alert = Alert(driver)
+        return alert.text
+
+    def click_alert_accept(self, driver):
+        alert = Alert(driver)
+        alert.accept()
+
+    def validate_alert_text(self, driver, expected_text: str) -> bool:
+        actual_text = self.get_alert_text(driver)
+        return actual_text in expected_text
+
+    def init_save_dialog(self):
+        """
+        initialise save form dialog when its displayed
+        """
+        if self.save_dialog.get_web_element() is None:
+            save_dialog = WebDriverWait(driver, 10).until(
+                EC.visibility_of((self.web_element.find_element(*HeaderLocators.save_dialog))))
+            self.save_dialog.set_web_element(save_dialog)
+
+    def get_save_dialog_text(self):
+        return self.save_dialog.web_element.find_element(*HeaderLocators.save_dialog_text).text
+
+    def click_continue_button(self):
+        self.save_dialog.web_element.find_element(*HeaderLocators.save_dialog_continue_button).click()
+
+    def validate_save_dialog_is_opened(self) -> bool:
+        """
+        :return:bool if save from dialog is displayed
+        """
+        return self.save_dialog.validate_dialog_is_displayed()
+
+    def validate_save_dialog_is_closed(self) -> bool:
+        """
+        :return: bool if save form dialog is closed
+        """
+        return self.save_dialog.validate_dialog_is_not_display()
+
+    def validate_save_dialog_contains_text(self, text: str) -> bool:
+        """
+        :text: should be part of save form dialog text
+        :return: bool if save dialog text contains input text
+        """
+        log.info("validating if save form dialog text contains input text")
+        log.debug(f"validating if save from dialog text contains {text}")
+        if self.validate_save_dialog_is_opened():
+            return text in self.get_save_dialog_text()
+        return False
+
+    def validate_save_dialog_text_contains_at_least_chars(self, number: int) -> bool:
+        """
+        :number:number of chars
+        :return: bool if length of save form dialog text big or equal to input number
+        """
+        log.info("validating if save form dialog text length bigger or equal to input number")
+        log.debug(f"validating if save from dialog text length bigger or equal to {number}")
+        if self.validate_save_dialog_is_opened():
+            return len(self.get_save_dialog_text()) >= number
+        return False

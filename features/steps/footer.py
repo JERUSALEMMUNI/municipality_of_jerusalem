@@ -82,18 +82,6 @@ def validate_footer_follow_us_default_text(context):
     assert widget.validate_old_follow_us_with_default(), "This is not follow us default text!"
 
 
-@Then('Back to previous page')
-def back_to_prev_page(context):
-    widget = context._config.current_page.widgets[widget_name]
-    widget.go_back_tp_prev_page()
-
-
-@Then('Validate current page is "{page_name}"')
-def back_to_prev_page(context, page_name):
-    widget = context._config.current_page.widgets[widget_name]
-    assert widget.validate_current_url(page_name), "Wrong page"
-
-
 @Then('Validate footer call us is displayed')
 def validate_footer_call_us(context):
     widget = context._config.current_page.widgets[widget_name]
