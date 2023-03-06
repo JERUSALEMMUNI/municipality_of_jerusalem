@@ -149,7 +149,7 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
     And write "עיריית ירושלים" into "שם אתר עירוני"
@@ -160,7 +160,8 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     When pick month "7" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-#    When click on "שמור" Button
+    When click on "שמור" icon
+    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    And click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
   Scenario: Test fields with valid values Two

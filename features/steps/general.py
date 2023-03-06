@@ -85,7 +85,7 @@ def close_special_list(context):
     context._config.current_page.close_disabled_list()
 
 
-@When('Back to previous page')
+@Then('Back to previous page')
 def back_to_prev_page(context):
     context._config.driver.execute_script("window.history.go(-1)")
     context.screens_manager.screens = {}
@@ -94,4 +94,55 @@ def back_to_prev_page(context):
 
 @Then('Validate current page is "{page_name}"')
 def back_to_prev_page(context, page_name):
-    assert context._config.current_page.url_postfix in context._config.driver.current_url, "Error, Wrong page url"
+    assert page_name in context._config.driver.current_url, "Error, Wrong page url"
+
+@Then('validate new email received "{email}"')
+def click_on_link_email(context, email):
+    emails = context.mailbox.get_messages()
+    count_of_emails = len(emails)
+    from selenium.webdriver.common.by import By
+    while len(context.mailbox.get_messages()) != count_of_emails + 1:
+        time.sleep(3)
+    context.mailbox.get_messages()[-1].html_body
+    email_body = context.mailbox.get_messages()[-1].html_body
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(email_body, 'html.parser')
+    value_div = soup.find('div', {
+        'style': 'direction: rtl; text-align: right;font-size: 20px;font-weight: bold;color : #ec9f0a;'})
+    value = value_div.text.strip()
+    click_here = "https://jerequestatusapi.jerusalem.muni.il/JerSiteStatusApp/#/status/3"
+    # Open the URL in a new window
+    context._config.driver.execute_script("window.open('{}', '_blank');".format(click_here))
+    context._config.driver
+    context._config.driver.switch_to.window(context._config.driver.window_handles[1])
+    context._config.driver.current_url
+    pass
+    context._config.driver.find_element(By.XPATH,
+                                        '//*[contains(text(),"מספר אסמכתא")]//preceding-sibling::input').send_keys(
+        value)
+    context._config.driver.find_element(By.XPATH,
+                                        '//*[contains(text(),"מספר תעודת זהות /דרכון*")]//preceding-sibling::input').send_keys(
+        "3327")
+    context._config.driver.find_element(By.XPATH, '//*[contains(text(),"מייל")]//preceding-sibling::input').send_keys(
+        email)
+    context._config.driver.find_element(By.XPATH, '//input[@value="שלח הזדהות"]').click()
+    count_of_emails = 0
+    while len(context.mailbox.get_messages()) != count_of_emails + 2:
+        time.sleep(3)
+    email_body2 = context.mailbox.get_messages()[-2].html_body
+    value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
+    context._config.driver.find_element(By.XPATH,
+                                        '//*[contains(text(),"הזן את הקוד")]//preceding-sibling::input').send_keys(
+        value2)
+    time.sleep(3)
+    context._config.driver.find_element(By.XPATH, '//input[@value="אתר בקשה"]').click()
+    time.sleep(3)
+    context._config.driver.find_element(By.XPATH,
+                                        '//span[contains(text()," לצפייה בטופס > ")]').click()
+    pass
+    context._config.driver.switch_to.window(context._config.driver.window_handles[2])
+    # checkId = context._config.driver.find_element(By.XPATH,f"//*[contains(text(),'מספר בקשה: {value}')]")
+    # assert checkId.is_displayed(), 'The form number is not avaliable'
+    # form_body = context._config.driver.find_element(By.XPATH,f"//*[contains(text(),'מספר בקשה: ')]")
+    # actual_code = form_body.split('מספר בקשה: ')[1].split('</div>')[0]
+    # assert actual_code == value ,'not the correct form'
