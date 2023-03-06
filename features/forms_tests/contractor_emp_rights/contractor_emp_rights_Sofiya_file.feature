@@ -5,68 +5,50 @@
 #  - Form link: https://jeronlineforms.jerusalem.muni.il/ContractorEmpRights
 #  - Number of Pages is : 2, We are at Page: 1
 #  - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
-#  - Page Information:
-#  -
-#
-#  # Todo: Add the scenario name from excel file of sofiya
-#  # Test information from sofiya excel file
-#  # File name: בקשה להחזקת כלב - העברת בעלות
-#  # test id: TC_DOGOWNER_01
-#  Scenario: TC_DOGOWNER_01 Test
-#    Given Navigate to "ContractorEmpRights" form
-#    When write a valid value "3327" in "מספר זהות"
-#    And write a valid value "סאמר" in "שם פרטי"
-#    And write a valid value "אבו סלום" in "שם משפחה"
-#    And write a valid value "salem_salom@hotmail.com" in "אימייל"
-#    And fill "058-8078687" in "מספר טלפון נייד"
-#    And write a valid value "א טור" in "רחוב"
-#    And write a valid value "1" in "מספר בית"
-#    And write a valid value "3" in "מספר דירה"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-##    Then validate new email received
-##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
 #
 #
-#
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_01
-#  Scenario: TC_EMPCOMP_01 Test
+#  Scenario: TC_EMPCOMP_01 - Click on "מידע" button after form opened
 #    Given Navigate to "ContractorEmpRights" form
 #    When click on "מידע" icon
 #    Then validate information dialog is opened
-#    #BUG: There is no tittle for the information dialog
-#    #And Verify the title on message header is "מידע"
 #    And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב"
 #    And validate information dialog text in old header exists and contains at least "20" chars
 #    When click on X Button
-#    # TODO: we need to add wait untill he close the dialog
-#    When I wait for "1" seconds
 #    Then validate information dialog is closed
 #
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_02
-#  Scenario: TC_EMPCOMP_02 Test
+#
+#  Scenario: TC_EMPCOMP_02 - Click on "שמור" button before entering the required details
 #    Given Navigate to "ContractorEmpRights" form
 #    When click on "שמור" icon
+#    Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
+#    When close error message
 #
 #
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_03
-#  Scenario: TC_EMPCOMP_03 Test
-#    Given Navigate to "ContractorEmpRights" form
-#    When click on "הדפס" icon
+##  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
+##    Given Navigate to "ContractorEmpRights" form
+##    When click on "הדפס" icon
+##    When I click on cancel button
+##    When click on "הדפס" icon
+##    When I click on print button
+##    # alias
+##    When I save the document as "new_file1"
+##    When click on "הדפס" icon
+##    When I click on print button
+##    When I save the document as "new_file2"
+##    Then both files "new_file1" and "new_file2" should be the same
+##    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+##    Then I compare "new_file2" with reference pdf file "ContractorEmpRights_empty_form"
+##    When write a valid value "3327" in "מספר זהות"
+##    And I wait for "5" seconds
+##    #todo: scroll to element
+##    When click on "הדפס" icon
+##    When I click on print button
+##    When I save the document as "new_file3"
+##    #todo: compare context
+##    Then both files "new_file1" and "new_file3" should be the same
 #
 #
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_04
-#  Scenario: TC_EMPCOMP_04 Test
+#  Scenario: TC_EMPCOMP_04 - Enter a correct employee details
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "פראס" in "שם פרטי"
@@ -78,17 +60,14 @@
 #    And write a valid value "026282068" in "מספר טלפון"
 #    And fill "058-8078687" in "מספר טלפון נייד"
 #    And write a valid value "asd@wwf.com" in "אימייל"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
 ##    Then validate new email received
 ##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_05
-#  Scenario: TC_EMPCOMP_05 Test
+#
+#  Scenario: TC_EMPCOMP_05 - Enter correct employer details from cleaning department
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "דני" in "שם פרטי"
@@ -104,20 +83,14 @@
 #    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
 #    And write "עיריית ירושלים" into "שם אתר עירוני"
 #    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
 ##    Then validate new email received
 ##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #
 #
-#
-#
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_06
-#  Scenario: TC_EMPCOMP_06 Test
+#  Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "דני" in "שם פרטי"
@@ -129,22 +102,18 @@
 #    And write a valid value "026282068" in "מספר טלפון"
 #    And fill "058-8078687" in "מספר טלפון נייד"
 #    And write a valid value "asd@wwf.com" in "אימייל"
-#    And pick "ניקיון" from "ענף"
-#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+#    And pick "שמירה" from "ענף"
+#    And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
 #    And write "עיריית ירושלים" into "שם אתר עירוני"
 #    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
 ##    Then validate new email received
 ##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #
 #
-#  # Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_07
-#  Scenario: TC_EMPCOMP_07 Test
+#  Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "דני" in "שם פרטי"
@@ -156,22 +125,18 @@
 #    And write a valid value "026282068" in "מספר טלפון"
 #    And fill "058-8078687" in "מספר טלפון נייד"
 #    And write a valid value "asd@wwf.com" in "אימייל"
-#    And pick "ניקיון" from "ענף"
-#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+#    And pick "הסעדה" from "ענף"
+#    And pick "גורמה ארוחות בע"מ" from "שם חברה"
 #    And write "עיריית ירושלים" into "שם אתר עירוני"
 #    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
 ##    Then validate new email received
 ##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #
 #
-## Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_08
-#  Scenario: TC_EMPCOMP_08 Test
+#  Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "דני" in "שם פרטי"
@@ -193,18 +158,14 @@
 #    When pick month "9" in widget "חודשים לבדיקה" at index "1"
 #    When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
 #    And write a valid value "דגדדד" in "התשובה שקיבלתי"
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
 ##    Then validate new email received
 ##    click on the link from the mail
-##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #
 #
-## Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_09
-#  Scenario: TC_EMPCOMP_09 Test
+#  Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
 #    Given Navigate to "ContractorEmpRights" form
 #    When write a valid value "3327" in "מספר זהות"
 #    And write a valid value "דני" in "שם פרטי"
@@ -213,6 +174,44 @@
 #    And write a valid value "א טור" in "רחוב"
 #    And write a valid value "1" in "מספר בית"
 #    And write a valid value "2" in "מספר דירה"
+#    And write a valid value "026282068" in "מספר טלפון"
+#    And fill "058-8078687" in "מספר טלפון נייד"
+#    And write a valid value "asd@wwf.com" in "אימייל"
+#    And pick "ניקיון" from "ענף"
+#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+#    And write "עיריית ירושלים" into "שם אתר עירוני"
+#    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+#    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
+#    And pick "צבירת ימי מחלה" from "נושא התלונה"
+#    And pick "תשלומי שכר בגין השתתפות במטווחים, השתלמויות וקורסי ריענון ירי" from "נושא התלונה"
+#    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+#    And write a valid value "א טור" in textarea of "פרטי התלונה"
+#    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+#    When pick month "7" in widget "חודשים לבדיקה" at index "1"
+#    When pick month "4" in widget "חודשים לבדיקה" at index "1"
+#    When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+#    When add "1" in widget "חודשים לבדיקה"
+#    When pick year "2019" in widget "חודשים לבדיקה" at index "2"
+#    When pick month "5" in widget "חודשים לבדיקה" at index "2"
+#    When pick month "1" in widget "חודשים לבדיקה" at index "2"
+#    When pick month "8" in widget "חודשים לבדיקה" at index "2"
+#    When remove "1" in widget "חודשים לבדיקה"
+##    And click on "שמור" icon
+##    And click on "המשך" Button
+##    Then validate new email received
+##    click on the link from the mail
+##    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#
+#
+#  Scenario: TC_EMPCOMP_10 - Upload one file to each section
+#    Given Navigate to "ContractorEmpRights" form
+#    When write a valid value "3327" in "מספר זהות"
+#    And write a valid value "פראס" in "שם פרטי"
+#    And write a valid value "אבוסדד" in "שם משפחה"
+#    And pick "8/3/1996" from calendar of "תאריך לידה"
+#    And write a valid value "א טור" in "רחוב"
+#    And write a valid value "2" in "מספר בית"
+#    And write a valid value "1" in "מספר דירה"
 #    And write a valid value "026282068" in "מספר טלפון"
 #    And fill "058-8078687" in "מספר טלפון נייד"
 #    And write a valid value "asd@wwf.com" in "אימייל"
@@ -224,94 +223,56 @@
 #    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
 #    And write a valid value "א טור" in textarea of "פרטי התלונה"
 #    When pick month "9" in widget "חודשים לבדיקה" at index "1"
-#    When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+#    When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+#    And write a valid value "דגדדד" in "התשובה שקיבלתי"
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
+#    When Upload "png_to_upload.png" file in "תלושי שכר"
+#    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
+#    And Upload "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+#    And Upload "png_to_upload.png" file in "אחר"
+#    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
+##    not able to do this steps
+##    Click on "אני לא רובוט" in "אימות" field
+##    Click on "שלח" button
+#
+#
+#  Scenario: TC_EMPCOMP_11 - Upload several files to each section
+#    Given Navigate to "ContractorEmpRights" form
+#    When write a valid value "3327" in "מספר זהות"
+#    And write a valid value "פראס" in "שם פרטי"
+#    And write a valid value "אבוסדד" in "שם משפחה"
+#    And pick "8/3/1996" from calendar of "תאריך לידה"
+#    And write a valid value "א טור" in "רחוב"
+#    And write a valid value "2" in "מספר בית"
+#    And write a valid value "1" in "מספר דירה"
+#    And write a valid value "026282068" in "מספר טלפון"
+#    And fill "058-8078687" in "מספר טלפון נייד"
+#    And write a valid value "asd@wwf.com" in "אימייל"
+#    And pick "ניקיון" from "ענף"
+#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
+#    And write "עיריית ירושלים" into "שם אתר עירוני"
+#    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
+#    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
 #    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+#    And write a valid value "א טור" in textarea of "פרטי התלונה"
 #    When pick month "9" in widget "חודשים לבדיקה" at index "1"
-#    When pick month "5" in widget "חודשים לבדיקה" at index "1"
-##    not understood step
-##    When Remove the first period form Step 5
-##    When click on "שמור" Button
-##    And write "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-##    Then validate new email received
-##    click on the link from the mail
+#    When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
+#    And write a valid value "דגדדד" in "התשובה שקיבלתי"
+#    And click on "המשך" Button
+#    Then validate current step is "צרופות והצהרה"
+#    When Upload "png_to_upload.png" file in "תלושי שכר"
+#    When Upload "word_to_upload.docx" file in "תלושי שכר"
+#    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
+#    When Upload "png_to_upload.png" file in "דוחו"ת נוכחות"
+#    And Upload "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+#    And Upload "png_to_upload.png" file in "אסמכתאות לתשלום שכר"
+#    And Upload "png_to_upload.png" file in "אחר"
+#    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
+##    not able to do this steps
+##    Click on "אני לא רובוט" in "אימות" field
 ##    And click on "המשך" Button
-##    Then validate current step is "צרופות והצהרה"
 #
-#
-#
-## Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_10
-#  Scenario: TC_EMPCOMP_10 Test
-#    Given Navigate to "ContractorEmpRights" form
-#    When write a valid value "3327" in "מספר זהות"
-#    And write a valid value "דני" in "שם פרטי"
-#    And write a valid value "גלעד" in "שם משפחה"
-#    And pick "8/8/1996" from calendar of "תאריך לידה"
-#    And write a valid value "א טור" in "רחוב"
-#    And write a valid value "1" in "מספר בית"
-#    And write a valid value "2" in "מספר דירה"
-#    And write a valid value "026282068" in "מספר טלפון"
-#    And fill "058-8078687" in "מספר טלפון נייד"
-#    And write a valid value "asd@wwf.com" in "אימייל"
-#    And pick "ניקיון" from "ענף"
-#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-#    And write "עיריית ירושלים" into "שם אתר עירוני"
-#    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-#    And pick year "2022" in widget "חודשים לבדיקה" at index "1"
-#    And write "קיבלתי מכה בעבודה " into "פרטי התלונה"
-#    And pick month "9" in widget "חודשים לבדיקה" at index "1"
-#    And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-#    And click on "המשך" Button
-#    #TODO: need to add page 2 of feature file for this page
-#    Then validate current step is "צרופות והצהרה"
-#    When Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Excel_try_file.xlsx" file in "תלושי שכר"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\pdf_try_file.pdf" file in "דוחו"ת נוכחות"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\png_try_file.png" file in "אסמכתאות לתשלום שכר"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Word_try_file.docx" file in "אחר"
-#    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
-#    #undiefind step
-#    #And click on "אני לא רובוט" in "אימות" field
-#    #And click on "שלח" Button
-#
-#
-#
-## Test information from sofiya excel file
-#  # File name: תלונה בגין פגיעה בזכויות עובד קבלן
-#  # test id: TC_EMPCOMP_11
-#  Scenario: TC_EMPCOMP_11 Test
-#    Given Navigate to "ContractorEmpRights" form
-#    When write a valid value "3327" in "מספר זהות"
-#    And write a valid value "דני" in "שם פרטי"
-#    And write a valid value "גלעד" in "שם משפחה"
-#    And pick "8/8/1996" from calendar of "תאריך לידה"
-#    And write a valid value "א טור" in "רחוב"
-#    And write a valid value "1" in "מספר בית"
-#    And write a valid value "2" in "מספר דירה"
-#    And write a valid value "026282068" in "מספר טלפון"
-#    And fill "058-8078687" in "מספר טלפון נייד"
-#    And write a valid value "asd@wwf.com" in "אימייל"
-#    And pick "ניקיון" from "ענף"
-#    And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-#    And write "עיריית ירושלים" into "שם אתר עירוני"
-#    And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-#    And pick year "2022" in widget "חודשים לבדיקה" at index "1"
-#    And write "קיבלתי מכה בעבודה " into "פרטי התלונה"
-#    And pick month "9" in widget "חודשים לבדיקה" at index "1"
-#    And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-#    And click on "המשך" Button
-#    #TODO: need to add page 2 of feature file for this page
-#    Then validate current step is "צרופות והצהרה"
-#    When Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Excel_try_file.xlsx" file in "תלושי שכר"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\pdf_try_file.pdf" file in "דוחו"ת נוכחות"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\png_try_file.png" file in "אסמכתאות לתשלום שכר"
-#    And Upload "C:\Users\LENOVO\Documents\municipality_of_jerusalem\media\Word_try_file.docx" file in "אחר"
-#    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
-#    #undiefind step
-#    #And click on "אני לא רובוט" in "אימות" field
-#    And click on "המשך" Button
 #
 #
 #

@@ -187,19 +187,13 @@ def deselect_element(context, option, widget_name):
 def validate_if_option_is_selected(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
-    table_headers = ['  option no.  ','  Selected option  ', '  Appeared under field as  ']
-    #todo: move this to report
     #todo: what happen if all ok?
-    #todo: why not already implemented table?
     context.table = widget.validate_checked_list_count()[1]
     table = context.table
-    widget.table_for_allure(table,table_headers)
-    # rep.add_table('list of failures')
-    # rep.add_columns('list of failures', ('no', 'option no.'), ('option', 'Selected option'), ('appeared', 'Appeared under field as'))
-    # table_rows = [list(row) for row in table]
-    # for row in table_rows:
-    #     rep.add_row('list of failures', row)
-    # rep.add_table_to_step('list of failures')
-    # allure.dynamic.description(f"In this test, we will validate number of items, validate if selected correctly and"
-    #                            f" appeared correctly, also we will create a table of incorrect values")
+    rep.add_table('list of failures')
+    rep.add_columns('list of failures', ('no', 'option no.'), ('option', 'Selected option'), ('appeared', 'Appeared under field as'))
+    table_rows = [list(row) for row in table]
+    for row in table_rows:
+        rep.add_row('list of failures', row)
+    rep.add_table_to_step('list of failures')
     assert widget.validate_checked_list_count()[0], 'Selected item did not appear correctly'

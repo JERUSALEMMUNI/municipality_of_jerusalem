@@ -70,16 +70,9 @@ def click_buttonsdfsdfsd(context):
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
-    if widget_name == "טלפון נייד":
-        type = "phone"
-    elif widget_name == "טלפון קווי":
-        type = "phone"
-    else:
-        type = "text"
-
     widget = context._config.current_page.widgets[widget_name]
 
-    assert widget.check_error_text(config.field_error[error_expectation], type), "Incorrect error expectation message"
+    assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
 
 
 @when('open disabled list')

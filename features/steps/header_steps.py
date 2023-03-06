@@ -170,7 +170,7 @@ def validate_alert_popup_message(context, message):
         raise AssertionError('alert message is not as expected')
 
 
-@when("I close error message")
+@when("close error message")
 def close_error_message(context):
     context._config.driver.switch_to.alert.accept()
 

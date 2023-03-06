@@ -21,7 +21,7 @@ def validate_choosen(context, widget_name, value_name):
     widget = context._config.current_page.widgets[widget_name]
 
     assert widget.is_valid(), "Invalid radio button"
-    assert widget.is_choosen(value_name), "Incorrect choice"
+    assert widget.is_chosen(value_name), "Incorrect choice"
 
 
 @Then('validate count of not chosen values of "{widget_name}" are "{number:d}"')

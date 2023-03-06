@@ -16,6 +16,7 @@ class MonthYear(BaseWidget):
         self.year_dropdown = Dropdown('חודשים לבדיקה')
         self.month_multiselect = MultiSelect('חודשים לבדיקה')
 
+
     @property
     def locator(self):
         return {
@@ -59,4 +60,5 @@ class MonthYear(BaseWidget):
         numbers = re.findall(r'\d+', from_text.text)
         new_months = re.findall(r'\d+', months)
         return set(new_months) == set(numbers)
+
 
