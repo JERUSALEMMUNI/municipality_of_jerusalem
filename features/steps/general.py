@@ -100,6 +100,7 @@ def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
 
+
 @Then('validate new email received "{email}"')
 def click_on_link_email(context, email):
     emails = context.mailbox.get_messages()
@@ -143,7 +144,7 @@ def click_on_link_email(context, email):
 
 
 def wait_for_new_email(context, count_of_emails):
-    for i in range(30):
+    for i in range(15):
         if len(context.mailbox.get_messages()) == count_of_emails + 1:
             break
         log.info('wait for email')

@@ -122,7 +122,11 @@ def deselect_element(context, option, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     widget.select_element(option)
-    assert widget.validate_option_is_not_selected(option), 'Option is still selected'
+    if not widget.validate_option_is_not_selected(option):
+        log.info("The dropdown checkbox list is still selected")
+        rep.add_label_to_step('failure description',
+                              "The dropdown checkbox list is still selected")
+        raise AssertionError("The dropdown checkbox list is still selected")
 
 
 @then('validate if all checked options appeared in selection order under "{widget_name}"')
@@ -140,6 +144,6 @@ def validate_if_option_is_selected(context, widget_name):
     if not widget.validate_checked_list_count()[0]:
         rep.add_table_to_step('list of failures')
         log.info(f"Selected values doesn't equal the shown list of values under field")
-        rep.add_label_to_step('failure description ',
+        rep.add_label_to_step('failure description',
                               "Selected values doesn't equal the shown list of values under field")
         raise AssertionError("Selected values doesn't equal the shown list of values under field")
