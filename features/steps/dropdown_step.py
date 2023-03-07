@@ -130,7 +130,7 @@ def select_element_after_scroll(context, widget_name, element):
 @when('select all options of "{widget_name}"')
 def select_all_elements(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-
+    #todo: why catching exceptions in step!!
     try:
         widget.click_button()
         widget.select_all_checkbox()

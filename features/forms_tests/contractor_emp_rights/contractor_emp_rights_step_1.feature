@@ -1,4 +1,4 @@
-Feature: Test Scenarios for functionality and validation of ContractorEmpRights form
+Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
   - Feature file name: contractor_emp_rights.feature
@@ -24,28 +24,16 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     When close error message
 
 
-#  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
-#    Given Navigate to "ContractorEmpRights" form
-#    When click on "הדפס" icon
-#    When I click on cancel button
-#    When click on "הדפס" icon
-#    When I click on print button
-#    # alias
-#    When I save the document as "new_file1"
-#    When click on "הדפס" icon
-#    When I click on print button
-#    When I save the document as "new_file2"
-#    Then both files "new_file1" and "new_file2" should be the same
-#    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
-#    Then I compare "new_file2" with reference pdf file "ContractorEmpRights_empty_form"
-#    When write a valid value "3327" in "מספר זהות"
-#    And I wait for "5" seconds
-#    #todo: scroll to element
-#    When click on "הדפס" icon
-#    When I click on print button
-#    When I save the document as "new_file3"
-#    #todo: compare context
-#    Then both files "new_file1" and "new_file3" should be the same
+    @pdf
+  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
+    Given Navigate to "ContractorEmpRights" form
+    When click on "הדפס" icon
+    When I click on cancel button
+    When click on "הדפס" icon
+    When I click on print button
+    # alias
+    When I save the document as "new_file1"
+    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details

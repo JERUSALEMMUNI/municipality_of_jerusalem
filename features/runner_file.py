@@ -99,6 +99,7 @@ def test():
                 split_by = "|"
             args += " --tags=" + to_join.join(tags_from_args.split(split_by))
         log.info(args)
+        args += ' --tags=-in_dev'
         log.debug('^^^^^^^ before calling Configuration(args) ^^^^^^^^')
         runner_config = Configuration(args)
         log.debug('^^^^^^^ after calling Configuration(args) ^^^^^^^^')

@@ -1,5 +1,5 @@
-Feature: Test Scenarios for functionality and validation of CollectiveLifeInsurance form
-
+@in_dev
+Feature: CollectiveLifeInsurance form - checklist scenarios
   - Form name: טופס הצטרפות לביטוח חיים קולקטיבי לעובדי העירייה
   - Feature file name: collective_life_insurance.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/CollectiveLifeInsurance

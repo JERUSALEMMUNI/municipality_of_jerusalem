@@ -641,30 +641,24 @@ def copy_func(src, dst, **kwargs):
 
 
 def compare_pdfs(file1, file2):
-    # Open the two PDF files
-    with open(file1, 'rb') as f1, open(file2, 'rb') as f2:
-        # Create PDF reader objects for both files
-        pdf1 = PyPDF2.PdfReader(f1)
-        pdf2 = PyPDF2.PdfReader(f2)
-        # Get the number of pages in each file
-        num_pages1 = len(pdf1.pages)
-        num_pages2 = len(pdf2.pages)
-        # Compare the number of pages in each file
-        if num_pages1 != num_pages2:
-            log.info("The two PDF files have a different number of pages.")
-            return False, "The two PDF files have a different number of pages."
-        # Compare the contents of each page in both files
-        for i in range(num_pages1):
-            page1 = pdf1.pages[i]
-            page2 = pdf2.pages[i]
-            if page1.extract_text() != page2.extract_text():
-                log.info(f"The contents of page {i+1} are different.")
-                return False, f"The contents of page {i+1} are different."
-        # If we made it this far, the files are the same
-        log.info("The two PDF files are the same.")
-        return True, "The two PDF files are the same."
-# Call the function to compare two PDF files
-# compare_pdfs(r'C:\Users\user\Documents\asd.pdf', r'C:\Users\user\AppData\Local\Temp\test.pdf')
+    import aspose.words as aw
+    from datetime import date
+    # Load PDF files
+    PDF1 = aw.Document(file1)
+    PDF2 = aw.Document(file2)
+
+    options = aw.comparing.CompareOptions()
+    options.ignore_formatting = True
+    options.ignore_headers_and_footers = True
+    options.ignore_case_changes = True
+    options.ignore_tables = True
+    options.ignore_fields = True
+    options.ignore_comments = True
+    options.ignore_textboxes = True
+    options.ignore_footnotes = True
+    # DOC1 will contain changes as revisions after comparison
+    PDF1.compare(PDF2, "user", date.today(), options)
+    return PDF1.revisions.count == 0
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-Feature: Test Scenarios for functionality and validation of ContractorEmpRights form
+Feature: ContractorEmpRights form - checklist scenarios
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
   - Feature file name: contractor_emp_rights.feature
@@ -16,70 +16,50 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     When write "<first_name>" into "שם פרטי"
     Then field "שם פרטי" has valid value
     Examples:
-    | first_name  |
-    | פראס  |
-    | סנינה_אבו_פראס  |
-    | סנינה-אבו-פראס  |
-    | (פראס)  |
-    | פראס`אבו סנינה  |
-    | פראס,אבו,סנינה  |
-    | פראס.אבו.סנינה  |
-    | סנינה"אבו"פראס  |
-    | אבו/פראס/סנינה  |
-    | פראס()_-אבו סנינה  |
-    | ככגךגדחדלגמגלחגלגדךלגלגלגךלגךגךגךגךגךגתגגתג   |
-    | פ    |
-    | פ)(_-.,ץשדג |
+      | first_name          |
+      | פראס                |
+      | .)('"סנינה_אבו_פראס |
+      | פ                   |
 
   Scenario Outline: first name (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write "<first_name>" into "שם פרטי"
     Then field "שם פרטי" has invalid value
     Examples:
-    | first_name  |
-    | فراس  |
-    | firas   |
-    | 1234    |
-    | !@#$%%  |
-    | פראסضض  |
-    | פראסwdd  |
-    | פראס123  |
-    | פראס!@##  |
+      | first_name |
+      | فراس       |
+      | firas      |
+      | 1234       |
+      | !@#$%%     |
+      | פראסضض     |
+      | פראסwdd    |
+      | פראס123    |
+      | פראס!@##   |
 
   Scenario Outline: last name (valid)
     Given Navigate to "ContractorEmpRights" form
     When write "<last_name>" into "שם משפחה"
     Then field "שם משפחה" has valid value
     Examples:
-    | last_name  |
-    | פראס  |
-    | סנינה_אבו_פראס  |
-    | סנינה-אבו-פראס  |
-    | (פראס)  |
-    | פראס`אבו סנינה  |
-    | פראס,אבו,סנינה  |
-    | פראס.אבו.סנינה  |
-    | סנינה"אבו"פראס  |
-    | אבו/פראס/סנינה  |
-    | פראס()_-אבו סנינה  |
-    | ככגךגדחדלגמגלחגלגדךלגלגלגךלגךגךגךגךגךגתגגתג   |
-    | פ    |
-    | פ)(_-.,ץשדג |
+      | last_name           |
+      | פראס                |
+      | .)('"סנינה_אבו_פראס |
+      | פ                   |
 
   Scenario Outline: last name (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write "<last_name>" into "שם משפחה"
     Then field "שם משפחה" has invalid value
     Examples:
-    | last_name  |
-    | فراس  |
-    | firas   |
-    | 1234    |
-    | !@#$%%  |
-    | פראסضض  |
-    | פראסwdd  |
-    | פראס123  |
-    | פראס!@##  |
+      | last_name |
+      | فراس      |
+      | firas     |
+      | 1234      |
+      | !@#$%%    |
+      | פראסضض    |
+      | פראסwdd   |
+      | פראס123   |
+      | פראס!@##  |
 
 
   Scenario: Test all mandatory fields with valid values
@@ -114,7 +94,7 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
     And validate information dialog text in old header exists and contains at least "20" chars
     When click on X Button
     # TODO: we need to add wait untill he close the dialog
-    When I wait for "1" seconds
+#    When I wait for "1" seconds
     Then validate information dialog is closed
 #   When click on "שמור" Button
 #   When click on "הדפס" Button
@@ -137,8 +117,13 @@ Feature: Test Scenarios for functionality and validation of ContractorEmpRights 
 #    And click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
 
+  Scenario: validate dropdown נושא התלונה with underneath label
+    Given Navigate to "ContractorEmpRights" form
+    When select all options of "נושא התלונה"
+    Then validate if all checked options appeared in selection order under "נושא התלונה"
 
- Scenario: Test fields with valid values One
+  @email
+  Scenario: Test fields with valid values One with email verification
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "3327" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"

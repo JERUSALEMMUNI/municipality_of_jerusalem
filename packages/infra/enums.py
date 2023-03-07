@@ -16,3 +16,4 @@ class WaitInterval(Enum):
     SHORT = 5
     MEDIUM = 10
     LONG = 30
+    TOO_LONG = 180

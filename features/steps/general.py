@@ -1,8 +1,12 @@
 import time
-
+from bs4 import BeautifulSoup
 import allure
 from behave import *
-from infra import logger, reporter, config
+from selenium.webdriver.common.by import By
+
+from infra import logger, reporter, config, custom_exceptions as ce
+from infra.enums import WaitInterval
+from utils import misc_utils
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -33,7 +37,6 @@ def check_text_field(context, text, widget_name):
 @then('field "{widget_name}" has invalid value')
 def field_has_invalid_value(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.is_invalid is True and widget.is_valid is False, "Field considered as valid"
 
 
@@ -96,16 +99,14 @@ def back_to_prev_page(context):
 def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
+
 @Then('validate new email received "{email}"')
 def click_on_link_email(context, email):
     emails = context.mailbox.get_messages()
     count_of_emails = len(emails)
-    from selenium.webdriver.common.by import By
-    while len(context.mailbox.get_messages()) != count_of_emails + 1:
-        time.sleep(3)
-    context.mailbox.get_messages()[-1].html_body
-    email_body = context.mailbox.get_messages()[-1].html_body
-    from bs4 import BeautifulSoup
+    # misc_utils.while_timeout(len, count_of_emails + 1, WaitInterval.TOO_LONG.value, 'Email didnt reach within time', context.mailbox.get_messages())
+    wait_for_new_email(context, count_of_emails)
+    email_body = context.mailbox.get_messages()[0].html_body
     soup = BeautifulSoup(email_body, 'html.parser')
     value_div = soup.find('div', {
         'style': 'direction: rtl; text-align: right;font-size: 20px;font-weight: bold;color : #ec9f0a;'})
@@ -113,10 +114,7 @@ def click_on_link_email(context, email):
     click_here = "https://jerequestatusapi.jerusalem.muni.il/JerSiteStatusApp/#/status/3"
     # Open the URL in a new window
     context._config.driver.execute_script("window.open('{}', '_blank');".format(click_here))
-    context._config.driver
-    context._config.driver.switch_to.window(context._config.driver.window_handles[1])
-    context._config.driver.current_url
-    pass
+    context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
     context._config.driver.find_element(By.XPATH,
                                         '//*[contains(text(),"מספר אסמכתא")]//preceding-sibling::input').send_keys(
         value)
@@ -126,10 +124,8 @@ def click_on_link_email(context, email):
     context._config.driver.find_element(By.XPATH, '//*[contains(text(),"מייל")]//preceding-sibling::input').send_keys(
         email)
     context._config.driver.find_element(By.XPATH, '//input[@value="שלח הזדהות"]').click()
-    count_of_emails = 0
-    while len(context.mailbox.get_messages()) != count_of_emails + 2:
-        time.sleep(3)
-    email_body2 = context.mailbox.get_messages()[-2].html_body
+    wait_for_new_email(context, count_of_emails+1)
+    email_body2 = context.mailbox.get_messages()[0].html_body
     value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
     context._config.driver.find_element(By.XPATH,
                                         '//*[contains(text(),"הזן את הקוד")]//preceding-sibling::input').send_keys(
@@ -139,10 +135,18 @@ def click_on_link_email(context, email):
     time.sleep(3)
     context._config.driver.find_element(By.XPATH,
                                         '//span[contains(text()," לצפייה בטופס > ")]').click()
-    pass
-    context._config.driver.switch_to.window(context._config.driver.window_handles[2])
-    # checkId = context._config.driver.find_element(By.XPATH,f"//*[contains(text(),'מספר בקשה: {value}')]")
-    # assert checkId.is_displayed(), 'The form number is not avaliable'
-    # form_body = context._config.driver.find_element(By.XPATH,f"//*[contains(text(),'מספר בקשה: ')]")
-    # actual_code = form_body.split('מספר בקשה: ')[1].split('</div>')[0]
-    # assert actual_code == value ,'not the correct form'
+    time.sleep(3)
+    context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
+    checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {value}')]")
+    checkId.is_displayed()
+    assert checkId.is_displayed(), 'The form number is not avaliable'
+
+
+def wait_for_new_email(context, count_of_emails):
+    for i in range(30):
+        if len(context.mailbox.get_messages()) == count_of_emails + 1:
+            break
+        log.info('wait for email')
+        time.sleep(3)
+    else:
+        raise ce.MJTimeOutError('no new email received')

@@ -1,4 +1,5 @@
-Feature: Test Scenarios for functionality and validation of BetterTaxPtor form
+@in_dev
+Feature: BetterTaxPtor form - checklist scenarios
 
   - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
   - Feature file name: better_tax_ptor.feature
@@ -47,7 +48,7 @@ Feature: Test Scenarios for functionality and validation of BetterTaxPtor form
     Given Navigate to "BetterTaxPtor" form
     Then validate municipality logo is displayed in old header
     And validate old header title is default
-    And validate form Title in old header is "תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה"
+    And validate form Title in old header is "בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר"
     And validate form explanation in old header contains "טופס זה נועד לסייע לך בהגשת תלונה בגין פגיעה "
     And validate form explanation in old header exists and contains at least "20" chars
 

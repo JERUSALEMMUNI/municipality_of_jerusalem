@@ -187,7 +187,9 @@ def step_impl(context):
 
 @when("I click on print button")
 def step_impl(context):
-    time.sleep(1)
+    #todo: make it with whiletimeout
+    # misc_utils.while_timeout()
+    time.sleep(2)
     for i in range(10):
         try:
             print_button = pyautogui.locateOnScreen(
@@ -223,18 +225,22 @@ def step_impl(context, new_file):
 def step_impl(context, new_file1, new_file2):
     new_file1_path = context.user_data[new_file1]
     new_file2_path = context.user_data[new_file2]
-    res, message = files_utils.compare_pdfs(new_file1_path, new_file2_path)
+    res = files_utils.compare_pdfs(new_file1_path, new_file2_path)
     if not res:
-        raise AssertionError(message)
+        rep.add_pdf_file_to_step(new_file1_path, f'{new_file1}')
+        rep.add_pdf_file_to_step(new_file2_path, f'{new_file2}')
+        raise AssertionError('files are not the same')
 
 
 @then('I compare "{new_file}" with reference pdf file "{reference_pdf}"')
 def step_impl(context, new_file, reference_pdf):
     file1_path = context.user_data[new_file]
     file2_path = os.path.join(config.utilities_folder, 'expected_references', 'pdf_files', f'{reference_pdf}.pdf')
-    res, message = files_utils.compare_pdfs(file1_path, file2_path)
+    res = files_utils.compare_pdfs(file1_path, file2_path)
     if not res:
-        raise AssertionError(message)
+        rep.add_pdf_file_to_step(file1_path, f'new file - {new_file}')
+        rep.add_pdf_file_to_step(file2_path, f'reference file - {reference_pdf}')
+        raise AssertionError('files are not the same as reference')
 
 
 # save button dialog

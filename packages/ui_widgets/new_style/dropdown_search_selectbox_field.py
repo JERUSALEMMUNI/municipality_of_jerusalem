@@ -66,6 +66,7 @@ class DropdownSearchSelectBox(DropdownSearch):
         # We should clear the search field first, so we can uncheck all the list
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located((By.XPATH, f"//p-multiselect/div/div/div/div/input")))
+        self.list = []
         element.click()
         element.clear()
         # If the status of the checkbox is false (unchecked) then we have to check it twice.

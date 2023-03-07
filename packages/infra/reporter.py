@@ -533,6 +533,9 @@ class Reporter(object):
     def add_text_file_to_step(self, image_path, image_name='Attached file'):
         allure.attach.file(image_path, image_name, attachment_type=allure.attachment_type.TEXT)
 
+    def add_pdf_file_to_step(self, image_path, image_name='Attached file'):
+        allure.attach.file(image_path, image_name, attachment_type=allure.attachment_type.PDF)
+
     def add_zip_file_to_step(self, zip_path, zip_name='Attached file'):
         allure.attach.file(zip_path, zip_name, attachment_type="application/zip", extension='zip')
 

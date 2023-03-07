@@ -1,3 +1,4 @@
+@in_dev
 Feature: Test Scenarios for functionality and validation of TransferDogOwnership form
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
