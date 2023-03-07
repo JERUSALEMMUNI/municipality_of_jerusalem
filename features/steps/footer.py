@@ -6,44 +6,43 @@ log = logger.get_logger(__name__)
 widget_name = "footer"
 
 
-@Then('Validate Facebook Logo is displayed in old footer')
+@Then('Validate Facebook Logo is displayed in footer')
 def validate_facebook_logo(context):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.is_facebook_displayed(), "Facebook logo is not available"
 
 
-@Then('Validate Instagram Logo is displayed in old footer')
+@Then('Validate Instagram Logo is displayed in footer')
 def validate_instagram_logo(context):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.is_instagram_displayed(), "Instagram logo is not available"
 
 
-@Then('Validate Twitter Logo is displayed in old footer')
+@Then('Validate Twitter Logo is displayed in footer')
 def validate_twitter_logo(context):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.is_twitter_displayed(), "Twitter logo is not available"
 
 
-@Then('Validate facebook url in old footer')
+@Then('Validate facebook url in footer')
 def validate_facebook_url(context):
+    driver = context._config.driver
     widget = context._config.current_page.widgets[widget_name]
+    assert widget.validate_facebook_url(driver), "This page is not Facebook web page"
 
-    assert widget.validate_facebook_url(), "This page is not Facebook web page"
 
-
-@Then('Validate instagram url in old footer')
+@Then('Validate instagram url in footer')
 def validate_instagram_url(context):
+    driver = context._config.driver
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.validate_instagram_url(), "This page is not Instagram web page"
+    assert widget.validate_instagram_url(driver), "This page is not Instagram web page"
 
 
-@Then('Validate twitter url in old footer')
+@Then('Validate twitter url in footer')
 def validate_twitter_url(context):
+    driver = context._config.driver
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.validate_twitter_url(), "This page is not Twitter web page"
+    assert widget.validate_twitter_url(driver), "This page is not Twitter web page"
 
 
 @Then('Validate old footer call us is displayed')

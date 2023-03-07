@@ -3,10 +3,8 @@ from bs4 import BeautifulSoup
 import allure
 from behave import *
 from selenium.webdriver.common.by import By
+from infra import logger, reporter, custom_exceptions as ce
 
-from infra import logger, reporter, config, custom_exceptions as ce
-from infra.enums import WaitInterval
-from utils import misc_utils
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -30,7 +28,6 @@ def navigate_to_screen(context, screen_name):
 @when('checked if "{text}" is the text of "{widget_name}"')
 def check_text_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.check_text(text, False)
 
 
@@ -52,7 +49,6 @@ def field_has_valid_value(context, widget_name):
     log.info(loop)
     noop = widget.is_valid
     log.info(noop)
-
     assert widget.is_invalid is False and widget.is_valid is True, "Field considered as invalid"
 
 
@@ -79,7 +75,6 @@ def click_buttonsdfsdfsd(context):
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
-
     assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
 
 

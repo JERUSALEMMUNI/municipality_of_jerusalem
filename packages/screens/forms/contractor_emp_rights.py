@@ -11,6 +11,8 @@ class ContractorEmpRights(BasePage):
         self.driver = driver
 
         self.main_elements_to_wait_when_load = [
+            # self.widgets['שם פרטי']
+
         ]
 
     def create_page_widgets(self):

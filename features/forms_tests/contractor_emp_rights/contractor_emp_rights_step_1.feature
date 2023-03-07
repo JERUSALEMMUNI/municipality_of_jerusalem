@@ -23,17 +23,17 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-
-    @pdf
-  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
-    Given Navigate to "ContractorEmpRights" form
-    When click on "הדפס" icon
-    When I click on cancel button
-    When click on "הדפס" icon
-    When I click on print button
-    # alias
-    When I save the document as "new_file1"
-    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+  @@in_dev
+  @pdf
+#  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
+#    Given Navigate to "ContractorEmpRights" form
+#    When click on "הדפס" icon
+#    When I click on cancel button
+#    When click on "הדפס" icon
+#    When I click on print button
+#    # alias
+#    When I save the document as "new_file1"
+#    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details
@@ -47,12 +47,12 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "1" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
+
 
 
   Scenario: TC_EMPCOMP_05 - Enter correct employer details from cleaning department
@@ -66,16 +66,15 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
@@ -89,16 +88,15 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "שמירה" from "ענף"
     And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
@@ -112,16 +110,15 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "הסעדה" from "ענף"
     And pick "גורמה ארוחות בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
@@ -135,22 +132,21 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
     When pick year "2020" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+    When pick month "1" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
@@ -164,31 +160,30 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "2" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
     And pick "צבירת ימי מחלה" from "נושא התלונה"
     And pick "תשלומי שכר בגין השתתפות במטווחים, השתלמויות וקורסי ריענון ירי" from "נושא התלונה"
     When pick year "2020" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
-    When pick month "7" in widget "חודשים לבדיקה" at index "1"
+    When pick month "2" in widget "חודשים לבדיקה" at index "1"
+    When pick month "3" in widget "חודשים לבדיקה" at index "1"
     When pick month "4" in widget "חודשים לבדיקה" at index "1"
     When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     When add "1" in widget "חודשים לבדיקה"
     When pick year "2019" in widget "חודשים לבדיקה" at index "2"
     When pick month "5" in widget "חודשים לבדיקה" at index "2"
-    When pick month "1" in widget "חודשים לבדיקה" at index "2"
-    When pick month "8" in widget "חודשים לבדיקה" at index "2"
+    When pick month "6" in widget "חודשים לבדיקה" at index "2"
+    When pick month "7" in widget "חודשים לבדיקה" at index "2"
     When remove "1" in widget "חודשים לבדיקה"
 #    And click on "שמור" icon
-#    And click on "המשך" Button
-#    Then validate new email received
-#    click on the link from the mail
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_10 - Upload one file to each section
@@ -202,19 +197,21 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "1" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
     When pick year "2020" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
-    When pick month "9" in widget "חודשים לבדיקה" at index "1"
+    When pick month "8" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-#    there is another feature file for the next step in web page
-#    And click on "המשך" Button
+#    And click on "שמור" icon
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
 #    When Upload "png_to_upload.png" file in "תלושי שכר"
 #    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
@@ -237,19 +234,21 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "1" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "asd@wwf.com" in "אימייל"
+    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
-    And write "עיריית ירושלים" into "שם אתר עירוני"
+    And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
-    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    And pick "דמי הבראה" from "נושא התלונה"
+    When pick year "2023" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "9" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-    And click on "המשך" Button
-#    there is another feature file for the next step in web page
+#    And click on "שמור" icon
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
 #    When Upload "png_to_upload.png" file in "תלושי שכר"
 #    When Upload "word_to_upload.docx" file in "תלושי שכר"

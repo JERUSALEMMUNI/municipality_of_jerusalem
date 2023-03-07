@@ -12,12 +12,17 @@ def click_on_element(context, widget_name):
     widget.click_button()
 
 
+@when('choose "{widget_name}" in search')
+def choose_in_search(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.clickBtn()
+
+
 @when('pick "{option_value}" from "{widget_name}"')
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     widget.select_element(option_value)
-
 
 
 @when('write "{option_value}" in search field "{widget_name}"')
@@ -47,7 +52,7 @@ def scroll_to_element(context, widget_name, option_value):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     driver = context._config.current_page.driver
-    assert option_value in widget.item_search_scroll(driver, option_value)[1],'field has no desired value'
+    assert option_value in widget.item_search_scroll(driver, option_value)[1], 'field has no desired value'
 
 
 @then('validate "{widget_name}" has no options')
@@ -55,7 +60,6 @@ def scroll_to_element(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     assert "No results found" in widget.get_search_result_if_empty()
-
 
 
 @when('goto "{option_value}" from "{widget_name}"')
@@ -73,7 +77,7 @@ def scroll_to_element(context, widget_name, option_value):
         log.info(f"This value [{option_value}] at field {widget_name} is not "
                  f" found in the dropdown list")
         rep.add_label_to_step(f"This value [{option_value}] at field {widget_name} is not "
-                 f" found in the dropdown list")
+                              f" found in the dropdown list")
         raise AssertionError("Option is not found at the list")
 
 
@@ -90,6 +94,7 @@ def select_all_elements(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     widget.select_all_checkbox()
+
 
 @when('deselect all options of "{widget_name}"')
 def deselect_all(context, widget_name):
@@ -111,6 +116,7 @@ def validate_if_option_is_selected(context, option, widget_name):
     widget.click_button()
     assert widget.validate_selected_option(option), 'Selected item is not chosen correctly'
 
+
 @when('deselect option "{option}" from "{widget_name}"')
 def deselect_element(context, option, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -126,12 +132,14 @@ def validate_if_option_is_selected(context, widget_name):
     context.table = widget.validate_checked_list_count()[1]
     table = context.table
     rep.add_table('list of failures')
-    rep.add_columns('list of failures', ('no', 'option no.'), ('option', 'Selected option'), ('appeared', 'Appeared under field as'))
+    rep.add_columns('list of failures', ('no', 'option no.'), ('option', 'Selected option'),
+                    ('appeared', 'Appeared under field as'))
     table_rows = [list(row) for row in table]
     for row in table_rows:
         rep.add_row('list of failures', row)
     if not widget.validate_checked_list_count()[0]:
         rep.add_table_to_step('list of failures')
         log.info(f"Selected values doesn't equal the shown list of values under field")
-        rep.add_label_to_step('failure description ',"Selected values doesn't equal the shown list of values under field")
+        rep.add_label_to_step('failure description ',
+                              "Selected values doesn't equal the shown list of values under field")
         raise AssertionError("Selected values doesn't equal the shown list of values under field")

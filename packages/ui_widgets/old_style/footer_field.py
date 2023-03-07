@@ -6,12 +6,9 @@ from ui_widgets.old_style.widget_locators.footer_locators import FooterLocators
 log = logger.get_logger(__name__)
 
 
-# todo: if we can drop the driver from init
-
 class FooterField(BaseWidget):
-    def __init__(self, label, driver):
+    def __init__(self, label):
         super().__init__(label)
-        self.driver = driver
         self.init_widget_texts()
 
     @property
@@ -28,14 +25,11 @@ class FooterField(BaseWidget):
         self.instagram_url = "https://www.instagram.com/jerusalem_city/"
         self.twitter_url = "https://twitter.com/Jlm_city"
 
-
-
     def get_call_us_element(self):
         return self.web_element.find_element(*FooterLocators.call_us)
+
     def get_folow_us_element(self):
         return self.web_element.find_element(*FooterLocators.follow_us)
-
-
 
     def validate_old_call_us_is_displayed(self):
         return self.get_call_us_element().is_displayed()
@@ -65,35 +59,32 @@ class FooterField(BaseWidget):
         facebook_logo = self.web_element.find_element(*FooterLocators.facebook_logo)
         return facebook_logo.is_displayed()
 
-    def validate_facebook_url(self):
+    def validate_facebook_url(self, driver):
         facebook_logo = self.web_element.find_element(*FooterLocators.facebook_clicker)
         facebook_logo.click()
-        url = self.driver.current_url
+        url = driver.current_url
         return self.facebook_url == url
 
     def is_instagram_displayed(self):
         instagram_logo = self.web_element.find_element(*FooterLocators.instagram_logo)
         return instagram_logo.is_displayed()
 
-    def validate_instagram_url(self):
-        instagram_logo = self.driver.find_element(*FooterLocators.instagram_clicker)
+    def validate_instagram_url(self, driver):
+        instagram_logo = self.web_element.find_element(*FooterLocators.instagram_clicker)
         instagram_logo.click()
-        url = self.driver.current_url
+        url = driver.current_url
         return self.instagram_url == url
 
     def is_twitter_displayed(self):
         twitter_logo = self.web_element.find_element(*FooterLocators.twitter_logo)
         return twitter_logo.is_displayed()
 
-    def validate_twitter_url(self):
-        twitter_logo = self.driver.find_element(*FooterLocators.twitter_clicker)
+    def validate_twitter_url(self, driver):
+        twitter_logo = self.web_element.find_element(*FooterLocators.twitter_clicker)
         twitter_logo.click()
-        url = self.driver.current_url
+        url = driver.current_url
         return self.twitter_url == url
 
-    def go_back_tp_prev_page(self):
-        self.driver.execute_script("window.history.go(-1)")
-
-    def validate_current_url(self, page_name):
-        url = self.driver.current_url
+    def validate_current_url(self, page_name, driver):
+        url = driver.current_url
         return page_name in url

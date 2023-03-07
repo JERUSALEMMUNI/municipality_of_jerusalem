@@ -1,3 +1,4 @@
+#@in_dev
 #Feature: ContractorEmpRights form
 #
 #  - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -20,8 +21,9 @@
 #    Given Navigate to "ContractorEmpRights" form
 #    When click on "שמור" icon
 #    Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
-#    When I close error message
+#    When close error message
 #
+#  @in_dev
 #  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
 #    Given Navigate to "ContractorEmpRights" form
 #    When click on "הדפס" icon
@@ -45,11 +47,11 @@
 #    #todo: compare context
 #    Then both files "new_file1" and "new_file3" should be the same
 #
-##  Scenario: TC_EMPCOMP_04 - Enter a correct employee details
-##    Given Navigate to "ContractorEmpRights" form
-##    When click on "שמור" icon
-##    Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
-##    When I close error message
+#  Scenario: TC_EMPCOMP_04 - Enter a correct employee details
+#    Given Navigate to "ContractorEmpRights" form
+#    When click on "שמור" icon
+#    Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
+#    When close error message
 #
 #
 #

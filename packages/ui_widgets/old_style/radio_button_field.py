@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.old_style.alert_message_field import AlertMessageField
 from ui_widgets.old_style.widget_locators.radio_button_locators import RadioButtonLocators
 
 log = logger.get_logger(__name__)
@@ -10,6 +11,8 @@ log = logger.get_logger(__name__)
 class RadioButtonField(BaseWidget):
     def _init_(self, label):
         super().__init__(label)
+        self.alert_error_message = AlertMessageField(self.label)
+
 
     @property
     def locator(self):
@@ -18,18 +21,17 @@ class RadioButtonField(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::div/p-radiobutton/label",
         }
 
-    def choose_value(self, selected_item,index=1):
+    def choose_value(self, selected_item, index=1):
         try:
             wanted_btn = self.web_element.find_elements(self.locator['By'], self.locator[
                 'Value'] + f"[contains(text(),'{selected_item}')]/parent::p-radiobutton/div")
-            wanted_btn[index-1].click()
+            wanted_btn[index - 1].click()
         except:
             log.info(f"{selected_item} not exists in radio button to chose")
 
     def get_label(self, selected_item):
-            return self.web_element.find_element(self.locator['By'], self.locator[
-                'Value'] + f"[contains(text(),'{selected_item}')]")
-
+        return self.web_element.find_element(self.locator['By'], self.locator[
+            'Value'] + f"[contains(text(),'{selected_item}')]")
 
     def get_lists(self):
         return self.web_element.find_elements(self.locator['By'], self.locator['Value'])
@@ -41,13 +43,13 @@ class RadioButtonField(BaseWidget):
                 count += 1
         return count
 
-    def get_choosen_value(self):
+    def get_chosen_value(self):
         for option in self.get_lists():
             if "active" in option.get_attribute('class'):
                 return option.text
         return -1
 
-    def is_choosen(self, selected_item):
+    def is_chosen(self, selected_item):
         return "active" in self.get_label(selected_item).get_attribute('class')
 
     def get_error_message(self, error_expected):
@@ -64,3 +66,6 @@ class RadioButtonField(BaseWidget):
     def is_valid(self):
         x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'valid' in x.get_attribute('class')
+
+
+
