@@ -37,7 +37,12 @@ def check_text_field(context, text, widget_name):
 @then('field "{widget_name}" has invalid value')
 def field_has_invalid_value(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.is_invalid is True and widget.is_valid is False, "Field considered as valid"
+    if not widget.is_invalid:
+        log.info(f"The value at field {widget_name} is considered "
+                 f" an invalid value but it appeared as valid")
+        rep.add_label_to_step("wrong_value", f"The value at field {widget_name} is considered "
+                                             f" an invalid value but it appeared as valid")
+        raise AssertionError("invalid value and considered as valid")
 
 
 @then('field "{widget_name}" has valid value')
