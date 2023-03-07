@@ -1,5 +1,5 @@
 @in_dev
-Feature: BetterTaxPtor form - checklist scenarios
+Feature: BetterTaxPtor form
 
   - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
   - Feature file name: better_tax_ptor.feature
