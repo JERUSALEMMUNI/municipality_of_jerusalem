@@ -5,9 +5,8 @@ Feature: CollectiveLifeInsurance form - checklist scenarios
   - Form link: https://jeronlineforms.jerusalem.muni.il/CollectiveLifeInsurance
   - Number of Pages is : 1, We are at Page: 1
   - All fields are mandatory except
-  - Page Information:
+  - Page Information: same feature with multi values
   -
-
 
 #  Scenario: general test for all fields
 #    Given Navigate to "CollectiveLifeInsurance" form
@@ -49,32 +48,47 @@ Feature: CollectiveLifeInsurance form - checklist scenarios
     Given Navigate to "CollectiveLifeInsurance" form
     When click on "הדפס" icon
 
-  Scenario: TC_IDENT_04 - Enter an employee ID to the "מספר זהות" field
+  Scenario Outline: TC_IDENT_04 - Enter an employee ID to the "מספר זהות" field
     Given Navigate to "CollectiveLifeInsurance" form
-    When write a valid value "VALUE" in "מספר זהות"
+    When write a valid value "<id>" in "מספר זהות"
     When click on "שלח קוד זיהוי" button
+    Examples:
+      | id  |
+      | 111 |
 
-  Scenario: TC_IDENT_05 - Enter a none employee ID to the "מספר זהות" field
+  Scenario Outline: TC_IDENT_05 - Enter a none employee ID to the "מספר זהות" field
     Given Navigate to "CollectiveLifeInsurance" form
-    When write a valid value "315456848" in "מספר זהות"
+    When write a valid value "<id>" in "מספר זהות"
     When click on "שלח קוד זיהוי" button
+    Examples:
+      | id        |
+      | 315456848 |
+      | 080348238 |
 
-
-  Scenario: TC_IDENT_06 - Enter a partial employee/none employee ID to the "מספר זהות" field
+  Scenario Outline: TC_IDENT_06 - Enter a partial employee/none employee ID to the "מספר זהות" field
     Given Navigate to "CollectiveLifeInsurance" form
-    When write a valid value " " in "מספר זהות"
+    When write a valid value "<id>" in "מספר זהות"
     When click on "שלח קוד זיהוי" button
+    Examples:
+      | id      |
+      | 1111111 |
+      | 315456  |
 
-  Scenario: TC_IDENT_07 - Click on "שמור" button after entering the employee ID
+  Scenario Outline: TC_IDENT_07 - Click on "שמור" button after entering the employee ID
     Given Navigate to "CollectiveLifeInsurance" form
-    When write a valid value "VALUE" in "מספר זהות"
+    When write a valid value "<id>" in "מספר זהות"
     When click on "שמור" icon
+    Examples:
+      | id   |
+      | 1234 |
 
-  Scenario: TC_IDENT_08 - Click on "הדפס" button after entering the employee ID
+  Scenario Outline: TC_IDENT_08 - Click on "הדפס" button after entering the employee ID
     Given Navigate to "CollectiveLifeInsurance" form
-    When write a valid value "VALUE" in "מספר זהות"
+    When write a valid value "<id>" in "מספר זהות"
     When click on "הדפס" icon
-
+    Examples:
+      | id   |
+      | 1234 |
 
 #------------------------------------------------------------------------------------------------
 

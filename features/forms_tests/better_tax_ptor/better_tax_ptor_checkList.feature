@@ -6,7 +6,7 @@ Feature: BetterTaxPtor form - checklist scenarios
   - Form link: https://jeronlineforms.jerusalem.muni.il/BetterTaxPtor
   - Number of Pages is : 1, We are at Page: 1
   - All fields are mandatory
-  - Page Information:
+  - Page Information: same feature with multi values
   -
 
 
@@ -61,32 +61,45 @@ Feature: BetterTaxPtor form - checklist scenarios
     When click on "הדפס" icon
 
 
-  Scenario: TC_IDENT_04 - Enter a correct file number to the "מספר תיק בנין" field
+  Scenario Outline: TC_IDENT_04 - Enter a correct file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "VALUE" in "מספר תיק בנין"
+    When write a valid value "<id>" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
+    Examples:
+      | id  |
+      | 111 |
 
-  Scenario: TC_IDENT_05 - Enter an incorrect file number to the "מספר תיק בנין" field
+  Scenario Outline: TC_IDENT_05 - Enter an incorrect file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "315456848" in "מספר תיק בנין"
+    When write a valid value "<id>" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
+    Examples:
+      | id  |
+      | 111 |
 
-
-  Scenario: TC_IDENT_06 - Enter a partial file number to the "מספר תיק בנין" field
+  Scenario Outline: TC_IDENT_06 - Enter a partial file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value " " in "מספר תיק בנין"
+    When write a valid value "<id>" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
+    Examples:
+      | id  |
+      | 111 |
 
-  Scenario: TC_IDENT_07 - Click on "שמור" button after entering the file number
+  Scenario Outline: TC_IDENT_07 - Click on "שמור" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "VALUE" in "מספר תיק בנין"
+    When write a valid value "<id>" in "מספר תיק בנין"
     When click on "שמור" icon
+    Examples:
+      | id  |
+      | 111 |
 
-  Scenario: TC_IDENT_08 - Click on "הדפס" button after entering the file number
+  Scenario Outline: TC_IDENT_08 - Click on "הדפס" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "VALUE" in "מספר תיק בנין"
+    When write a valid value "<id>" in "מספר תיק בנין"
     When click on "הדפס" icon
-
+    Examples:
+      | id  |
+      | 111 |
 
 #------------------------------------------------------------------------------------------------
   Scenario: Header elements test
