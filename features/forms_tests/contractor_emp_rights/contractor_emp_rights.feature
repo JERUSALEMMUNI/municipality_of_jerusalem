@@ -153,13 +153,12 @@ Feature: ContractorEmpRights form - checklist scenarios
     When pick month "7" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-#    When click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+    When click on "שמור" icon
+    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #    When click on "המשך" Button
 
 
-#check if
   Scenario: Test fields with valid values Two
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"
