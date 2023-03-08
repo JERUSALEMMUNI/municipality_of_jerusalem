@@ -38,7 +38,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "פראס" in "שם פרטי"
     And write a valid value "אבוסדד" in "שם משפחה"
     And pick "8/3/1996" from calendar of "תאריך לידה"
@@ -57,7 +57,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_05 - Enter correct employer details from cleaning department
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -79,7 +79,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -101,7 +101,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -123,7 +123,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -151,7 +151,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -184,7 +184,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_10 - Upload one file to each section
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "פראס" in "שם פרטי"
     And write a valid value "אבוסדד" in "שם משפחה"
     And pick "8/3/1996" from calendar of "תאריך לידה"
@@ -221,7 +221,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 
   Scenario: TC_EMPCOMP_11 - Upload several files to each section
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "פראס" in "שם פרטי"
     And write a valid value "אבוסדד" in "שם משפחה"
     And pick "8/3/1996" from calendar of "תאריך לידה"

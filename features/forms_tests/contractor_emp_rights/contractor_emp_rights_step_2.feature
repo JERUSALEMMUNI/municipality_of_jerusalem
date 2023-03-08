@@ -10,7 +10,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 2
 
   Background: Background Scenario
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And fill "058-8078687" in "מספר טלפון נייד"
