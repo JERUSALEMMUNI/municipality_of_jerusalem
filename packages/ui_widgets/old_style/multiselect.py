@@ -68,19 +68,15 @@ class MultiSelect(BaseWidget):
     def is_open(self):
         return 'ui-inputwrapper-focus' in self.web_element.get_attribute('class')
 
-    def select_listbox_item(self, txt, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
+    def select_listbox_item(self, txt):
         if not self.is_open():
             self.click()
-        desired_option = None
-        elements = self.get_multiselect_list()
-        while not desired_option:
-            for option in elements:
-                if option.text == txt:
-                    desired_option = option
-                    break
-        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(desired_option)).click()
-
-        self.click_close_button()
+        WebDriverWait(self.web_element, 5).until(
+            EC.presence_of_element_located((DropdownLocators.select(txt))))
+        prefix = self.web_element.find_element(*DropdownLocators.select(txt))
+        prefix.click()
+        self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
+        self.close_button.click()
 
 
     def select_listbox_items(self, month_list, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
@@ -91,12 +87,13 @@ class MultiSelect(BaseWidget):
             if option.text in month_list and "ui-state-highlight" not in option.get_attribute('class'):
                 WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(option)).click()
             else:
-                x = WebDriverWait(driver, 30).until(EC.visibility_of((By.XPATH, path)))
+                x = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, path)))
                 driver.execute_script("arguments[0].scrollBy(0, 30);", x)
-        self.click_close_button()
+        self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
+        self.close_button.click()
 
-    def set_month(self, month, driver):
-        self.select_listbox_item(month, driver)
+    def set_month(self, month):
+        self.select_listbox_item(month)
 
     def set_months(self, month_list, driver):
         self.select_listbox_items(month_list, driver)

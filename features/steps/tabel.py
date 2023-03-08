@@ -31,7 +31,7 @@ def add_items_month_year_list(context, year, widget_name, number):
 def add_items_month_year_list(context, month, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     widget.init_widget()
-    widget.set_month(month, number, context._config.current_page.driver)
+    widget.set_month(month, number)
 
 
 @when('pick a group of months "{months}" in widget "{widget_name}" at index "{number}"')
