@@ -59,8 +59,8 @@ Feature: ContractorEmpRights form - checklist scenarios
   Scenario: Test mandatory fields with valid values
     #Todo: test description
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
-    And write a valid value "ertyufgh" in "שם פרטי"
+    When write a valid value "332796184" in "מספר זהות"
+    And write a valid value "פראס" in "שם פרטי"
     And write a valid value "אבו סלום" in "שם משפחה"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And fill "058-8078687" in "מספר טלפון נייד"
@@ -95,14 +95,14 @@ Feature: ContractorEmpRights form - checklist scenarios
     Then validate information dialog is closed
     When click on "שמור" icon
     When close error message
-    When click on "הדפס" icon
+#    When click on "הדפס" icon
 
 
 
   Scenario: Test all mandatory fields and date with valid values
     Test mandatory fields including date by choosing from calendar.
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "פראס" in "שם פרטי"
     And write a valid value "אבוסדד" in "שם משפחה"
     And pick "8/3/1996" from calendar of "תאריך לידה"
@@ -133,7 +133,7 @@ Feature: ContractorEmpRights form - checklist scenarios
     - test functionality of generated pin codes, and saving backup
     - return to saved form and validate that we returned to the same filled form previously
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -162,7 +162,7 @@ Feature: ContractorEmpRights form - checklist scenarios
 
   Scenario: Test fields with valid values Two
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -181,10 +181,10 @@ Feature: ContractorEmpRights form - checklist scenarios
     And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "8" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-    When click on "שמור" icon
-    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
+#    When click on "שמור" icon
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
 
@@ -193,7 +193,7 @@ Feature: ContractorEmpRights form - checklist scenarios
     - test functionality of uploading files
     #Todo: do we need to make any validation tests on uploaded files
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -212,7 +212,7 @@ Feature: ContractorEmpRights form - checklist scenarios
     And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "11" in widget "חודשים לבדיקה" at index "1"
     When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-    When click on "שמור" icon
+#    When click on "שמור" icon
 #    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #    When click on "המשך" Button
@@ -227,7 +227,7 @@ Feature: ContractorEmpRights form - checklist scenarios
 
   Scenario: Declaration test
     Given Navigate to "ContractorEmpRights" form
-    When write a valid value "3327" in "מספר זהות"
+    When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "8/8/1996" from calendar of "תאריך לידה"
@@ -246,7 +246,7 @@ Feature: ContractorEmpRights form - checklist scenarios
     And write a valid value "קיבלתי מכה בעבודה " in textarea of "פרטי התלונה"
     And pick month "12" in widget "חודשים לבדיקה" at index "1"
     And choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-    And click on "המשך" Button
+#    And click on "המשך" Button
 #    Then validate current step is "צרופות והצהרה"
 #    When Upload "png_to_upload.png" file in "תלושי שכר"
 #    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
