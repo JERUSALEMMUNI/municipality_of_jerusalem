@@ -9,8 +9,8 @@ log = logger.get_logger(__name__)
 
 
 class MultiSelect(BaseWidget):
-    def __init__(self, label, base_path="/following-sibling::p-multiselect"):
-        super().__init__(label)
+    def __init__(self, label,index, base_path="/following-sibling::p-multiselect"):
+        super().__init__(label,index)
         self.base_path = base_path
         self.multiselect = None
         self.close_button = None
@@ -50,7 +50,7 @@ class MultiSelect(BaseWidget):
     def click_close_button(self):
         if self.close_button is None:
             self.set_close_button()
-        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable( self.close_button)).click()
+        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(self.close_button)).click()
         self.close_button.click()
 
     def click(self):
@@ -77,7 +77,6 @@ class MultiSelect(BaseWidget):
         prefix.click()
         self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
         self.close_button.click()
-
 
     def select_listbox_items(self, month_list, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
         if not self.is_open():

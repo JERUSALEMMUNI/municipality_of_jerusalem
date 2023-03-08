@@ -8,8 +8,10 @@ class WidgetsDict(dict):
 
     def __getitem__(self, key):
         widget = super().__getitem__(key)
+        # Todo:add index with find elements
         if widget.get_web_element() is None:
-            web_element = self.driver.find_element(widget.locator['By'], widget.locator['Value'])
+            # Todo:add index here
+            web_element = self.driver.find_elements(widget.locator['By'], widget.locator['Value'])[widget.index-1]
             widget.set_web_element(web_element)
         return widget
 

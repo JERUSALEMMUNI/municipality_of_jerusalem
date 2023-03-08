@@ -11,9 +11,8 @@ log = logger.get_logger(__name__)
 
 
 class CalendarClock(CalendarField):
-    def __init__(self, label):
-        super().__init__(label)
-
+    def __init__(self, label, index):
+        super().__init__(label, index)
 
     def with_time(self, date):
         new_date = date.split("/")
@@ -32,9 +31,9 @@ class CalendarClock(CalendarField):
 
             else:
                 break
-        self.date_by_select_day_year(day,year)
+        self.date_by_select_day_year(day, year)
 
-    def select_time(self,date,time):
+    def select_time(self, date, time):
         new_time = time.split(":")
         hour = new_time[0]
         minute = new_time[1]
@@ -60,5 +59,3 @@ class CalendarClock(CalendarField):
                 break
 
         self.with_time(date)
-
-

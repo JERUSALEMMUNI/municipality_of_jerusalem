@@ -6,8 +6,8 @@ log = logger.get_logger(__name__)
 
 
 class UploadFile(BaseWidget):
-    def __init__(self, label, driver):
-        super().__init__(label)
+    def __init__(self, label,index, driver):
+        super().__init__(label,index)
         self.driver = driver
 
     @property

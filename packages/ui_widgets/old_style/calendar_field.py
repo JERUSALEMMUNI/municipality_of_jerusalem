@@ -12,10 +12,10 @@ log = logger.get_logger(__name__)
 
 
 class CalendarField(BaseWidget):
-    def __init__(self, label):
-        super().__init__(label)
-        self.text_widget = TextField(label)
-        self.alert_error_message = AlertMessageField(self.label)
+    def __init__(self, label,index):
+        super().__init__(label,index)
+        self.text_widget = TextField(label,index)
+        self.alert_error_message = AlertMessageField(self.label,index)
 
     @property
     def locator(self):

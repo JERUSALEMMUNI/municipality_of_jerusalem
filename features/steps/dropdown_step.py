@@ -25,6 +25,13 @@ def pick_element(context, option_value, widget_name):
     widget.select_element(option_value)
 
 
+@when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
+def pick_element(context,parent, option_value, widget_name):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    widget.click_button()
+    widget.select_element(option_value)
+
+
 @when('write "{option_value}" in search field "{widget_name}"')
 def write_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]

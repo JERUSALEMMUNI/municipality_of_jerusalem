@@ -9,10 +9,9 @@ log = logger.get_logger(__name__)
 
 
 class RadioButtonField(BaseWidget):
-    def _init_(self, label):
-        super().__init__(label)
-        self.alert_error_message = AlertMessageField(self.label)
-
+    def __init__(self, label, index):
+        super().__init__(label, index)
+        self.alert_error_message = AlertMessageField(self.label, index)
 
     @property
     def locator(self):
@@ -66,6 +65,3 @@ class RadioButtonField(BaseWidget):
     def is_valid(self):
         x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'valid' in x.get_attribute('class')
-
-
-

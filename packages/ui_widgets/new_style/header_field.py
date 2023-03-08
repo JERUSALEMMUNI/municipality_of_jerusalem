@@ -8,9 +8,9 @@ log = logger.get_logger(__name__)
 
 
 class HeaderField(BaseWidget):
-    def __init__(self):
-        super().__init__(self)
-        self.form_number = ApplicationStepsField()
+    def __init__(self,index):
+        super().__init__(self,index)
+        self.form_number = ApplicationStepsField(index)
         self.main_title = 'שרותים דיגיטליים'
 
     @property

@@ -20,6 +20,33 @@ def write_into_field(context, text, widget_name):
         raise AssertionError("valid value and considered as invalid")
 
 
+@when('from parent "{parent}" write a valid value "{text}" in "{widget_name}"')
+def write_into_field_valid_value(context, parent, text, widget_name):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    widget.clear()
+    widget.set_text(text)
+    if not widget.is_valid:
+        log.info(f"This value {text} from parent {parent} at field {widget_name} is considered "
+                 f" an valid value but it appeared as invalid")
+        rep.add_label_to_step("wrong_value",
+                              f"This value {text} from parent {parent} at field {widget_name} is considered "
+                              f" an valid value but it appeared as invalid")
+        raise AssertionError("valid value and considered as invalid")
+
+
+@when('from parent "{parent}" write an invalid value "{text}" in "{widget_name}"')
+def write_into_field_invalid_value(context,parent, text, widget_name):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    widget.clear()
+    widget.set_text(text)
+    if not widget.is_invalid:
+        log.info(f"This value {text} from parent {parent} at field {widget_name} is considered "
+                 f" an invalid value but it appeared as valid")
+        rep.add_label_to_step("wrong_value", f"This value {text} from parent {parent} at field {widget_name} is considered "
+                                             f" an invalid value but it appeared as valid")
+        raise AssertionError("invalid value and considered as valid")
+
+
 @when('write an invalid value "{text}" in "{widget_name}"')
 def write_into_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]

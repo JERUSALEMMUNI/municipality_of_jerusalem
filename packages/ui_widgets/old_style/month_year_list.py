@@ -10,10 +10,10 @@ log = logger.get_logger(__name__)
 
 
 class MonthYearList(BaseWidget):
-    def __init__(self, label):
-        super().__init__(label)
-        self.addItemButton = ButtonIcon('הוסף')
-        self.alert_error_message = AlertMessageField(self.label)
+    def __init__(self, label,index):
+        super().__init__(label,index)
+        self.addItemButton = ButtonIcon('הוסף',index)
+        self.alert_error_message = AlertMessageField(self.label,index)
 
     @property
     def locator(self):

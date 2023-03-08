@@ -9,7 +9,8 @@ from ui_widgets.old_style import button_field as old_button_field, header_field 
 log = logger.get_logger(__name__)
 
 
-def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None):
+# Todo: add index as input
+def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1):
     widget_mapping = {
         'ButtonField': {
             UIStyle.NEW: button_field.ButtonField,
@@ -65,14 +66,16 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None):
     }
 
     log.info(f'Creating {widget_type} widget obj')
-    kwargs = prepare_args(driver, label)
+    kwargs = prepare_args(driver, label,index)
     return widget_mapping[widget_type].get(style, widget_mapping[widget_type].get(UIStyle(3 - style.value)))(**kwargs)
 
 
-def prepare_args(driver, label):
+def prepare_args(driver, label, index):
     kwargs = {}
     if label:
         kwargs['label'] = label
     if driver:
         kwargs['driver'] = driver
+    if index:
+        kwargs['index'] = index
     return kwargs

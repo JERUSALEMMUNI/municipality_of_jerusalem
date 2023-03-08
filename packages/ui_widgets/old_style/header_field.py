@@ -16,10 +16,10 @@ log = logger.get_logger(__name__)
 
 
 class HeaderField(BaseWidget):
-    def __init__(self):
-        super().__init__(self)
-        self.info_dialog = Dialog()
-        self.save_dialog = Dialog()
+    def __init__(self,index):
+        super().__init__(self,index)
+        self.info_dialog = Dialog(index)
+        self.save_dialog = Dialog(index)
         self.main_title = 'שרותים דיגיטליים'
         self.header_status_text = 'סטטוס:'
         self.header_date_text = 'תאריך מילוי הטופס'

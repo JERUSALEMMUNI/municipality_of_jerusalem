@@ -12,10 +12,10 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearchSelectBox(DropdownSearch):
-    def __init__(self, label, base_path="/following-sibling::p-multiselect"):
-        super().__init__(label)
+    def __init__(self, label,index, base_path="/following-sibling::p-multiselect"):
+        super().__init__(label,index)
         self.base_path = base_path
-        self.alert_error_message = AlertMessageField(self.label)
+        self.alert_error_message = AlertMessageField(self.label,index)
 
     @property
     def read_text_value(self):

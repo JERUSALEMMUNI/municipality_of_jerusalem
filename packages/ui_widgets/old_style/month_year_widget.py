@@ -11,12 +11,11 @@ log = logger.get_logger(__name__)
 
 
 class MonthYear(BaseWidget):
-    def __init__(self, label):
-        super().__init__(label)
-        self.removeItemButton = ButtonIcon('הסר')
-        self.year_dropdown = Dropdown('חודשים לבדיקה')
-        self.month_multiselect = MultiSelect('חודשים לבדיקה')
-
+    def __init__(self, label, index):
+        super().__init__(label, index)
+        self.removeItemButton = ButtonIcon('הסר', index)
+        self.year_dropdown = Dropdown('חודשים לבדיקה', index)
+        self.month_multiselect = MultiSelect('חודשים לבדיקה',index)
 
     @property
     def locator(self):
@@ -38,7 +37,7 @@ class MonthYear(BaseWidget):
         self.year_dropdown.web_element.click()
         self.year_dropdown.select_element(year)
 
-    def get_month_element(self,path):
+    def get_month_element(self, path):
         return self.web_element.find_element(*MonthYearWidgetLocators.set_month(path, self.label))
 
     def set_month(self, path, month):
@@ -57,5 +56,3 @@ class MonthYear(BaseWidget):
         numbers = re.findall(r'\d+', from_text.text)
         new_months = re.findall(r'\d+', months)
         return set(new_months) == set(numbers)
-
-

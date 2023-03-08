@@ -9,10 +9,10 @@ log = logger.get_logger(__name__)
 
 
 class PhoneField(BaseWidget):
-    def __init__(self, label):
-        super().__init__(label)
-        self.dropdown_widget = Dropdown(label)
-        self.text_widget = TextField(label)
+    def __init__(self, label,index):
+        super().__init__(label,index)
+        self.dropdown_widget = Dropdown(label,index)
+        self.text_widget = TextField(label,index)
 
     @property
     def locator(self):

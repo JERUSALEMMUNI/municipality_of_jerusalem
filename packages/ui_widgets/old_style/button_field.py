@@ -6,8 +6,8 @@ log = logger.get_logger(__name__)
 
 
 class ButtonField(BaseWidget):
-    def __init__(self, label):
-        super().__init__(label)
+    def __init__(self, label, index):
+        super().__init__(label, index)
 
     @property
     def get_text(self):
@@ -16,12 +16,9 @@ class ButtonField(BaseWidget):
     @property
     def locator(self):
         return {
-             'By': By.XPATH,
-             'Value': f"//button[contains(@title, '{self.label}')]"
+            'By': By.XPATH,
+            'Value': f"//button[contains(@title, '{self.label}')]"
         }
 
     def click_button(self):
         self.web_element.click()
-
-
-
