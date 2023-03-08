@@ -95,7 +95,7 @@ Feature: ContractorEmpRights form - checklist scenarios
     Then validate information dialog is closed
     When click on "שמור" icon
     When close error message
-    When click on "הדפס" Button
+    When click on "הדפס" icon
 
 
 
