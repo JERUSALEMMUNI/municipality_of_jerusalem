@@ -14,3 +14,12 @@ class PlaceContainer(BasePage):
 
     def create_page_widgets(self):
         self.widgets['מתאריך:'] = create_widget('CalendarClock', style=self.style, label='מתאריך:')
+        self.widgets['סוג זהות:'] = create_widget('RadioButtonField', style=self.style, label='סוג זהות:')
+        self.widgets['שם פרטי'] = create_widget('TextField', style=self.style, label='שם פרטי')
+        self.widgets['שם משפחה'] = create_widget('TextField', style=self.style, label='שם משפחה')
+        self.widgets['מספר מזהה'] = create_widget('TextField', style=self.style, label='מספר מזהה')
+        self.widgets['מספר טלפון נייד'] = create_widget('PhoneField', style=self.style, label='מספר טלפון נייד')
+        self.widgets['אימייל:'] = create_widget('TextField', style=self.style, label='אימייל:')
+
+
+

@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 Feature: Test Scenarios for functionality and validation of PlaceContainer form
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
@@ -205,7 +205,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
   Scenario: TC_CONTAINER_02 - Click on "שמור" button before entering the required details
     Given Navigate to "PlaceContainer" form
     When click on "שמור" icon
-    Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
+    Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה טלפון נייד ואימייל"
     When close error message
 
 
@@ -231,7 +231,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
     And click on "שמור" icon
-    And click on "המשך" icon
+    And click on "המשך" Button
 
 
   Scenario: TC_CONTAINER_05 - Enter a incorrect ID number
@@ -326,7 +326,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write a valid value "א טברי" in "רחוב"
+    And write "א טברי" in search field "רחוב"
     And write a valid value "1" in "מספר בית"
     And write a valid value "3" in "מספר דירה"
     And click on "שמור" icon
@@ -354,7 +354,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write a valid value "א טברי" in "רחוב"
+    And write "א טברי" in search field "רחוב"
     And write a valid value "1" in "מספר בית"
     And write a valid value "3" in "מספר דירה"
     And write a valid value "א טברי" in "רחוב הצבת המכולה:"
