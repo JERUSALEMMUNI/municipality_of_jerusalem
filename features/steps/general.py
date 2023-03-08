@@ -5,7 +5,6 @@ from behave import *
 from selenium.webdriver.common.by import By
 from infra import logger, reporter, custom_exceptions as ce
 
-
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
@@ -79,6 +78,12 @@ def error_msg(context, widget_name, error_expectation):
     assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
 
 
+@then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
+def error_msg(context,parent, widget_name, error_expectation):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
+
+
 @when('open disabled list')
 def open_special_list(context):
     context._config.current_page.open_disabled_list()
@@ -99,7 +104,6 @@ def back_to_prev_page(context):
 @Then('Validate current page is "{page_name}"')
 def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
-
 
 
 @Then('validate new email received "{email}"')
@@ -125,7 +129,7 @@ def click_on_link_email(context, email):
     context._config.driver.find_element(By.XPATH, '//*[contains(text(),"מייל")]//preceding-sibling::input').send_keys(
         email)
     context._config.driver.find_element(By.XPATH, '//input[@value="שלח הזדהות"]').click()
-    wait_for_new_email(context, count_of_emails+1)
+    wait_for_new_email(context, count_of_emails + 1)
     email_body2 = context.mailbox.get_messages()[0].html_body
     value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
     context._config.driver.find_element(By.XPATH,

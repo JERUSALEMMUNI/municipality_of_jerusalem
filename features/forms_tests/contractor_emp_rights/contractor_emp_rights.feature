@@ -159,7 +159,6 @@ Feature: ContractorEmpRights form - checklist scenarios
 #    When click on "המשך" Button
 
 
-#check if
   Scenario: Test fields with valid values Two
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"

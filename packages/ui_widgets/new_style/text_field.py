@@ -58,4 +58,4 @@ class TextField(BaseWidget):
 
     def check_error_message(self, expected_error):
         self.initial_error()
-        self.alert_error_message.check_expected_error(expected_error)
+        return self.alert_error_message.check_expected_error(expected_error)
