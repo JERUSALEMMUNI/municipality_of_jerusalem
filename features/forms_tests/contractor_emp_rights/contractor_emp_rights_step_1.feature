@@ -74,7 +74,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 #    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #    When click on "המשך" Button
-
+#  Then
 
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
     Given Navigate to "ContractorEmpRights" form
