@@ -29,7 +29,7 @@ class MonthYearList(BaseWidget):
         return len(self.get_list())
 
     def create_widget(self, index):
-        widget = MonthYear(index)
+        widget = MonthYear(index,self.index)
         widget.set_web_element(self.web_element)
         return widget
 

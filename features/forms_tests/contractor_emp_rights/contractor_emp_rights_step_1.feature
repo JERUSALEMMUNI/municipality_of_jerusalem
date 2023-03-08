@@ -23,8 +23,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-  @@in_dev
-  @pdf
+
 #  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
 #    Given Navigate to "ContractorEmpRights" form
 #    When click on "הדפס" icon
@@ -48,10 +47,10 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-#    And click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-#    When click on "המשך" Button
+    And click on "שמור" icon
+    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When click on "המשך" Button
 
 
 
@@ -75,7 +74,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
 #    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #    When click on "המשך" Button
-
+#  Then
 
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
     Given Navigate to "ContractorEmpRights" form
