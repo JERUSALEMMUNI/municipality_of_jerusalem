@@ -139,10 +139,16 @@ def click_on_link_email(context, email):
     time.sleep(3)
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
     checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {value}')]")
-    checkId.is_displayed()
-    assert checkId.is_displayed(), 'The form number is not avaliable'
+    if "ContractorEmpRights?sess" in context._config.driver.current_url:
+        rep.add_label_to_step('reached destination',
+                              "We have reached our desired url to check the validation process of e-mail")
     if not checkId.is_displayed():
-        raise AssertionError('The form number is not avaliable')
+        rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
+                                                "equal the one we filled at the beginning")
+        raise AssertionError('The form number is not available')
+    else:
+        rep.add_label_to_step('Correct verification',
+                              "validation done correctly and we are at the desired form number")
 
 
 def wait_for_new_email(context, count_of_emails):

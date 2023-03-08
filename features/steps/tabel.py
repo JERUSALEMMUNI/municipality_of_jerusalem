@@ -27,10 +27,18 @@ def add_items_month_year_list(context, year, widget_name, number):
     widget.set_year(year, number)
 
 
-@when('pick month "{month}" in widget "{widget_name}" at index "{number}"')
+# @when('pick month "{month}" in widget "{widget_name}" at index "{number}"')
+# def add_items_month_year_list(context, month, widget_name, number):
+#     widget = context._config.current_page.widgets[widget_name]
+#     widget.init_widget()
+#     widget.set_month(month, number)
+@when('pick month "{month:d}" in widget "{widget_name}" at index "{number}"')
 def add_items_month_year_list(context, month, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     widget.init_widget()
+    if month > 12 or month < 1:
+        raise ValueError("The month value should be between 1-12")
+    month = str(month)
     widget.set_month(month, number)
 
 
