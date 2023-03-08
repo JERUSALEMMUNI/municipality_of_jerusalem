@@ -198,7 +198,9 @@ class HeaderField(BaseWidget):
         """
         initialise button form text then click on it
         """
-        button = ButtonField(label)
+        #Todo:add create widget here
+        button = ButtonField(label,self.index)
+        # button =create_widget('ButtonField', style=UIStyle.OLD, label=label)
         self.init_buttons_widgets(button)
         if 'הדפס' != label:
             button.click_button()
