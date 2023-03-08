@@ -49,9 +49,9 @@ class MonthYearList(BaseWidget):
         widget = self.create_widget(index)
         widget.set_year(self.locator['Value'], year)
 
-    def set_month(self, month, index, driver):
+    def set_month(self, month, index):
         widget = self.create_widget(index)
-        widget.set_month(self.locator['Value'], month, driver)
+        widget.set_month(self.locator['Value'], month)
 
     def set_months(self, month, index, driver):
         widget = self.create_widget(index)

@@ -41,9 +41,9 @@ class MonthYear(BaseWidget):
     def get_month_element(self,path):
         return self.web_element.find_element(*MonthYearWidgetLocators.set_month(path, self.label))
 
-    def set_month(self, path, month, driver):
+    def set_month(self, path, month):
         self.month_multiselect.set_custom_multiselect(self.get_month_element(path))
-        self.month_multiselect.set_month(config.months[month], driver)
+        self.month_multiselect.set_month(config.months[month])
 
     def set_months(self, path, months, driver):
         self.month_multiselect.set_custom_multiselect(self.get_month_element(path))

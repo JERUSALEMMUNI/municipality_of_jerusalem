@@ -111,8 +111,8 @@ Feature: ContractorEmpRights form - checklist scenarios
     And write a valid value "1" in "מספר דירה"
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" in "מספר טלפון נייד"
-    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-    When click on "שמור" icon
+#    And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
+#    When click on "שמור" icon
 #    Then validate new email received "@TEMP_EMAIL_ADDRESS"
 #    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 #    When click on "המשך" Button
@@ -181,10 +181,10 @@ Feature: ContractorEmpRights form - checklist scenarios
     And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick month "8" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
-#    When click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-#    When click on "המשך" Button
+    When click on "שמור" icon
+    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When click on "המשך" Button
 
 
 
