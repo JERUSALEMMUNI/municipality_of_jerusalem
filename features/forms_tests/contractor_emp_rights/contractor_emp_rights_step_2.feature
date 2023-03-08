@@ -13,7 +13,7 @@ Feature: ContractorEmpRights form - functional scenarios for Step 2
     When write a valid value "332796184" in "מספר זהות"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
-    And fill "058-8078687" in "מספר טלפון נייד"
+    And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "asd@wwf.com" in "אימייל"
     And pick "ניקיון" from "ענף"
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
