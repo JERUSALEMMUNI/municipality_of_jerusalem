@@ -9,6 +9,7 @@ Feature: BetterTaxPtor form
   - Page Information:
   -
 
+  #ToDo : חסר מספר תיק בנין
 
 #  Scenario: general test for all fields
 #    Given Navigate to "BetterTaxPtor" form
