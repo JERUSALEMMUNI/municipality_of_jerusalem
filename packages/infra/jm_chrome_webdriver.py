@@ -32,6 +32,9 @@ class JMChromeWebDriver(ChromeDriver):
         except (StaleElementReferenceException, StaleElementReferenceException_) as e:
             log.exception(e)
             raise ce.MJRunTimeError("Element is not attached to the page document")
+        except Exception as e:
+            log.exception(e)
+            raise ce.MJRunTimeError('Error while searching for Widget in Page')
 
     def wait_for_presence_of_element(self, by=By.XPATH, value=None, wait_interval=WaitInterval.SHORT):
         WebDriverWait(self, wait_interval.value).until(

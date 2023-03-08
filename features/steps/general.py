@@ -20,7 +20,8 @@ def navigate_to_screen(context, screen_name):
         current_page.navigate_to_page_url()
         for element in current_page.main_elements_to_wait_when_load:
             # wait method to wait the element
-            driver.wait_long_for_presence_of_element(element.locator['By'], element.locator['Value'])
+            widget = current_page.widgets.get_without_set_element(element)
+            driver.wait_medium_for_presence_of_element(widget.locator['By'], widget.locator['Value'])
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
                         "click here to see the link of tested step")
 
@@ -105,7 +106,6 @@ def back_to_prev_page(context, page_name):
 def click_on_link_email(context, email):
     emails = context.mailbox.get_messages()
     count_of_emails = len(emails)
-    # misc_utils.while_timeout(len, count_of_emails + 1, WaitInterval.TOO_LONG.value, 'Email didnt reach within time', context.mailbox.get_messages())
     wait_for_new_email(context, count_of_emails)
     email_body = context.mailbox.get_messages()[0].html_body
     soup = BeautifulSoup(email_body, 'html.parser')
@@ -141,6 +141,8 @@ def click_on_link_email(context, email):
     checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {value}')]")
     checkId.is_displayed()
     assert checkId.is_displayed(), 'The form number is not avaliable'
+    if not checkId.is_displayed():
+        raise AssertionError('The form number is not avaliable')
 
 
 def wait_for_new_email(context, count_of_emails):

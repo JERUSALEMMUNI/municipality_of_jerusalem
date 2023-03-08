@@ -10,10 +10,8 @@ class ContractorEmpRights(BasePage):
         self.url_postfix = 'ContractorEmpRights'
         self.driver = driver
 
-        self.main_elements_to_wait_when_load = [
-            # self.widgets['שם פרטי']
-
-        ]
+    def fill_need_to_wait_element(self):
+        self.main_elements_to_wait_when_load = ['שם פרטי']
 
     def create_page_widgets(self):
         self.widgets['מספר זהות'] = create_widget('TextField', style=self.style, label='מספר זהות')

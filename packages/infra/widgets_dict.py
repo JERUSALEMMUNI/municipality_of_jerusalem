@@ -12,3 +12,6 @@ class WidgetsDict(dict):
             web_element = self.driver.find_element(widget.locator['By'], widget.locator['Value'])
             widget.set_web_element(web_element)
         return widget
+
+    def get_without_set_element(self, key):
+        return super().__getitem__(key)

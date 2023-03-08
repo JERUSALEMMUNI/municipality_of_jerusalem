@@ -7,12 +7,16 @@ from ui_widgets.widget_factory import create_widget
 
 class BasePage(object):
     def __init__(self, driver, style=UIStyle.NEW):
+        self.main_elements_to_wait_when_load = []
         self.driver = driver
         self.style = style
         self.main_url = 'https://jeronlineforms.jerusalem.muni.il/'
         self.url_postfix = ''
         self.widgets = WidgetsDict({}, driver=driver)
         self.create_widgets()
+        self.fill_need_to_wait_element()
+
+    def fill_need_to_wait_element(self):
         self.main_elements_to_wait_when_load = []
 
     def create_base_widgets(self):
