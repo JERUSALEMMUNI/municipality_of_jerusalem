@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from infra import logger, custom_exceptions as ce
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.old_style.alert_message_field import AlertMessageField
 from ui_widgets.old_style.button_icon_widget import ButtonIcon
 from ui_widgets.old_style.month_year_widget import MonthYear
 from ui_widgets.old_style.widget_locators.month_year_list_locator import MonthYearListLocators
@@ -13,7 +12,6 @@ class MonthYearList(BaseWidget):
     def __init__(self, label,index):
         super().__init__(label,index)
         self.addItemButton = ButtonIcon('הוסף',index)
-        self.alert_error_message = AlertMessageField(self.label,index)
 
     @property
     def locator(self):
@@ -28,7 +26,7 @@ class MonthYearList(BaseWidget):
     def get_list_length(self):
         return len(self.get_list())
 
-    def create_widget(self, index):
+    def create_widget_from_index(self, index):
         widget = MonthYear(index,self.index)
         widget.set_web_element(self.web_element)
         return widget
@@ -42,33 +40,28 @@ class MonthYearList(BaseWidget):
         self.addItemButton.click_button()
 
     def remove_item(self, index):
-        widget = self.create_widget(index)
+        widget = self.create_widget_from_index(index)
         widget.removeItem(self.locator['Value'])
 
     def set_year(self, year, index):
-        widget = self.create_widget(index)
+        widget = self.create_widget_from_index(index)
         widget.set_year(self.locator['Value'], year)
 
     def set_month(self, month, index):
-        widget = self.create_widget(index)
+        widget = self.create_widget_from_index(index)
         widget.set_month(self.locator['Value'], month)
 
     def set_months(self, month, index, driver):
-        widget = self.create_widget(index)
+        widget = self.create_widget_from_index(index)
         widget.set_months(self.locator['Value'], month, driver)
 
     def validate_months(self, month, index):
-        widget = self.create_widget(index)
+        widget = self.create_widget_from_index(index)
         assert widget.validate_months(self.locator['Value'], month), "the selected months are not shown as selected"
 
-    def initial_error(self):
-        error_message_element = self.web_element.find_element(By.XPATH, "./following-sibling::div/div[1]/div/div/following-sibling::div")
-        self.alert_error_message.set_web_element(error_message_element)
-
-    def get_error_message(self):
-        self.initial_error()
-        self.alert_error_message.get_error_message()
-
-    def check_error_message(self, expected_error):
-        self.initial_error()
-        self.alert_error_message.check_expected_error(expected_error)
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::div/div[1]/div/div/following-sibling::div")
+            return error_msg.text == error_expected
+        except:
+            log.info("Error label is not available")
