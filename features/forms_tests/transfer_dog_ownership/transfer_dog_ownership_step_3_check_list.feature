@@ -1,13 +1,14 @@
 @in_dev
-Feature: TransferDogOwnership form - scenarios step 2
+Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
   - Feature file name: transfer_dog_ownership.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
-  - Number of Pages is : 3, We are at step: 2
+  - Number of Pages is : 3, We are at step: 3
   - All fields are mandatory
 
-   Background:Background Scenario
+
+  Background: Background Scenario
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
     And  from parent "פרטי מגיש הבקשה" write a valid value "דרןח" in "שם פרטי"
@@ -24,9 +25,6 @@ Feature: TransferDogOwnership form - scenarios step 2
     And  from parent "פרטי המוסר" write a valid value "א טור" in "רחוב"
     And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
     And click on "המשך" button
-
-
-  Scenario:TC_DOGOWNER_05 - הזנת ערכים תקינים לשדות  הכלב
     When write a valid value "ביסקו" in "שם הכלב"
     And write a valid value "דשגדק" in "גזע"
     And choose "זכר" from "מין"
@@ -37,25 +35,35 @@ Feature: TransferDogOwnership form - scenarios step 2
     And pick "1/2/2021" from calendar of "תאריך חיסון כלבת אחרון"
     And search for "אבו סריחאן )שבט(" in "הכלב רשום ברשות המקומית"
     And pick "3/2/2020" from calendar of "תאריך מסירת הכלב"
-    And click on "שמור" icon
-    When 1st get pin code from email validation
-    And 2nd click on link and fill email "{email}" pin code
-    And 3rd wait for second email to get "קוד האימות"
-    And 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
-#    When click on "המשך" icon
-#    Then validate current step is "צרופות והצהרה"
+    When click on "המשך" Button
+
+  Scenario: העלת קבצים בשמות מאושרים
+    Then validate current step is "צרופות והצהרה"
+    When Upload "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload "png_to_upload.png" file in "רישיון אחרון להחזקת כלב"
+    And Upload "excel_to_upload.xlsx" file in "אחר"
+    And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של"
+    And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
+    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
 
 
-  Scenario: TC_DOGOWNER_06 - הזנת ערכים תקינים לשדות  הכלב
-    Given Navigate to "TransferDogOwnership" form
-    When write an invalid value "قفغعه" in "שם הכלב"
-    And write an invalid value "يسبسtyu" in "גזע"
-    And choose "זכר" from "מין"
-    And write an invalid value "يبلات" in "צבע"
-    And write an invalid value "ثقفغعة" in "מספר שבב"
-    And pick "شسيشيص" from "הכלב רשום ברשות המקומית"
+  Scenario: העלת קבצים בשמות לא מאושרים
+    Then validate current step is "צרופות והצהרה"
+    When Upload "!@#$%^&שכקדכקדכ.xlsx" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload "!@#$%^&שכקדכקדכ.xlsx" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload "!@#$%^&שכקדכקדכ.xlsx" file in "רישיון אחרון להחזקת כלב"
+    And Upload "!@#$%^&שכקדכקדכ.xlsx" file in "אחר"
+    And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של"
+    And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
+    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
+
+    # TODO: manualy the web accept file with 10 MB
+    # need to add scenarios that check the following:
+    # working on it:
+
+    # לאפשר העלאת קבצים עד 6 MB
+    # לאפשר להעלות קבצים רק מסוג PDF ו- JPEG ,שתהיה הערה על סוגי הקבצים
 
 
 
