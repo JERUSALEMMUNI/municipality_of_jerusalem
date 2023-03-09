@@ -25,7 +25,7 @@ class BasePage(object):
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
         self.widgets['שלח'] = create_widget('ButtonField', style=self.style, label='שלח')
         self.widgets['header'] = create_widget('HeaderField', style=self.style)
-        self.widgets["footer"] = create_widget('FooterField', style=self.style, label='footer')
+        self.widgets["footer"] = create_widget('FooterField', style=self.style)
 
     def navigate_to_page_url(self):
         self.driver.get(self.main_url + self.url_postfix)
