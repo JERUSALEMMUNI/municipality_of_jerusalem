@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 Feature: TransferDogOwnership form - CheckList scenarios
   - Form name: בקשה להחזקת כלב - העברת בעלות
   - Feature file name: transfer_dog_ownership.feature

@@ -20,7 +20,7 @@ def before_all(context):
 def handle_tags_replacement(context):
     for feature in context._runner.features:
         for scenario in feature.scenarios:
-            patch_scenario_with_autoretry(scenario, max_attempts=2)
+            # patch_scenario_with_autoretry(scenario, max_attempts=2)
             for step in scenario.steps:
                 step.name = step.name.replace('@TEMP_EMAIL_ADDRESS', context.mailbox.address)
 
