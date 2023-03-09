@@ -1,6 +1,6 @@
 from infra import logger, reporter
 from screens.forms import contractor_emp_rights, place_container, collective_life_insurance, transfer_dog_ownership, \
-    better_tax_ptor
+    better_tax_ptor, confirmation_for_structure
 
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
@@ -23,6 +23,7 @@ class ScreensFactory(object):
             force_create:force to create it"""
 
         screens_dict = {
+            'ConfirmationForStructure': confirmation_for_structure.ConfirmationForStructure,
             'PlaceContainer': place_container.PlaceContainer,
             'ContractorEmpRights': contractor_emp_rights.ContractorEmpRights,
             'CollectiveLifeInsurance': collective_life_insurance.CollectiveLifeInsurance,
