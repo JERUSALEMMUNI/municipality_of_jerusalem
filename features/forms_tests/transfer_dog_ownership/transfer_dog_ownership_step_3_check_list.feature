@@ -1,8 +1,8 @@
-@in_dev
+
 Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
-  - Feature file name: transfer_dog_ownership.feature
+  - Feature file name: transfer_dog_ownership
   - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
   - Number of Pages is : 3, We are at step: 3
   - All fields are mandatory
@@ -50,20 +50,27 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   Scenario: העלת קבצים בשמות לא מאושרים
     Then validate current step is "צרופות והצהרה"
-    When Upload "!@#$%^&שכקדכקדכ.xlsx" file in "צילום תעודת זהות מוסר הכלב"
-    And Upload "!@#$%^&שכקדכקדכ.xlsx" file in "צילום תעודת זהות מקבל הכלב"
-    When Upload "!@#$%^&שכקדכקדכ.xlsx" file in "רישיון אחרון להחזקת כלב"
-    And Upload "!@#$%^&שכקדכקדכ.xlsx" file in "אחר"
+    When Upload "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload "!@#$%^&file_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
+    And Upload "!@#$%^&file_to_upload.xlsx" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של"
     And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
 
-    # TODO: manualy the web accept file with 10 MB
-    # need to add scenarios that check the following:
-    # working on it:
 
-    # לאפשר העלאת קבצים עד 6 MB
-    # לאפשר להעלות קבצים רק מסוג PDF ו- JPEG ,שתהיה הערה על סוגי הקבצים
+  Scenario: העלת קבצים מעל 6 מיגה
+    Then validate current step is "צרופות והצהרה"
+    When Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload "10MB_file_to_upload.pdf" file in "רישיון אחרון להחזקת כלב"
+    And Upload "10MB_file_to_upload.pdf" file in "אחר"
+    And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של"
+    And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
+    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
+
+
+
 
 
 
