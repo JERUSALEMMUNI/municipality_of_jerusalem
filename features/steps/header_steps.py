@@ -144,7 +144,11 @@ def validate_header_explanation_contains_text(context, count_chars):
 
 @then('an error message appeared with the following description: "{message}"')
 def validate_alert_popup_message(context, message):
-    alert_text = context._config.driver.switch_to.alert.text
+    try:
+        alert_text = context._config.driver.switch_to.alert.text
+    except:
+        raise AssertionError('No popup message')
+
     if alert_text != message:
         rep.add_label_to_step('Error message is not as expected', f'''Found Message: {alert_text}''')
         raise AssertionError('alert message is not as expected')
@@ -152,7 +156,11 @@ def validate_alert_popup_message(context, message):
 
 @when("close error message")
 def close_error_message(context):
-    context._config.driver.switch_to.alert.accept()
+    try:
+        context._config.driver.switch_to.alert.accept()
+        # context._config.driver.switch_to.window(context._config.driver.window_handles[0])
+    except:
+        raise AssertionError('No popup message for close it')
 
 
 @when("click on cancel button")

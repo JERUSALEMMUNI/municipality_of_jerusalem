@@ -1,5 +1,6 @@
 from infra.enums import UIStyle
 from screens.forms.base_page import BasePage
+from ui_widgets.widget_factory import create_widget
 
 
 class BetterTaxPtor(BasePage):
@@ -12,5 +13,7 @@ class BetterTaxPtor(BasePage):
         ]
 
     def create_page_widgets(self):
-        pass
+        self.widgets['מספר תיק בנין'] = create_widget('TextField', style=self.style, label='מספר תיק בנין')
+        self.widgets['בדיקת אופציה לפטור'] = create_widget('ButtonField', style=self.style, label='בדיקת אופציה לפטור')
+
 

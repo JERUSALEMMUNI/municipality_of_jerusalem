@@ -344,8 +344,8 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "א טברי" in "רחוב הצבת המכולה:"
     And write a valid value "1" in "מספר בית"
     And write a valid value "1" in "מספר מכולה:"
-    And pick date and time "8/8/1996" and "16:19" in "מתאריך:"
-    And pick date and time "9/8/1996" and "16:19" in "עד תאריך:"
+    And pick date and time "8/8/2024" and "16:19" in "מתאריך:"
+    And pick date and time "9/8/2026" and "16:19" in "עד תאריך:"
     And pick "תו אזורי" from "סוג החניה:"
     And write a valid value "א טברי" in "כתובת האתר לשפיכת הפסולת"
 

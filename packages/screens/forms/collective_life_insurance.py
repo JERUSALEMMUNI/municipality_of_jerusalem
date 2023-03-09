@@ -1,5 +1,6 @@
 from infra.enums import UIStyle
 from screens.forms.base_page import BasePage
+from ui_widgets.widget_factory import create_widget
 
 
 class CollectiveLifeInsurance(BasePage):
@@ -12,4 +13,5 @@ class CollectiveLifeInsurance(BasePage):
         ]
 
     def create_page_widgets(self):
-        pass
+        self.widgets['מספר זהות'] = create_widget('TextField', style=self.style, label='מספר זהות:')
+        self.widgets['שלח קוד זיהוי'] = create_widget('ButtonField', style=self.style, label='שלח קוד זיהוי')
