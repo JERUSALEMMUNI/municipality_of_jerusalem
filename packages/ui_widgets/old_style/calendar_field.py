@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from packages.infra import logger, config
 from packages.ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.text_field import TextField
-from ui_widgets.old_style.alert_message_field import AlertMessageField
+
 from ui_widgets.old_style.widget_locators.calender_locators import CalenderLocators
 
 log = logger.get_logger(__name__)
@@ -15,7 +15,7 @@ class CalendarField(BaseWidget):
     def __init__(self, label,index):
         super().__init__(label,index)
         self.text_widget = TextField(label,index)
-        self.alert_error_message = AlertMessageField(self.label,index)
+
 
     @property
     def locator(self):
@@ -74,15 +74,10 @@ class CalendarField(BaseWidget):
     def check_date(self, date):
         return self.get_date() in date
 
-    def initial_error(self):
-        error_message_element = self.web_element.find_element(By.XPATH, "./parent::span/parent::p-calendar/following-sibling::span")
-        self.alert_error_message.set_web_element(error_message_element)
-
-    def get_error_message(self):
-        self.initial_error()
-        self.alert_error_message.get_error_message()
-
-    def check_error_message(self, expected_error):
-        self.initial_error()
-        self.alert_error_message.check_expected_error(expected_error)
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(By.XPATH, "./parent::span/parent::p-calendar/following-sibling::span")
+            return error_msg.text == error_expected
+        except:
+            log.info("Error label is not available")
 

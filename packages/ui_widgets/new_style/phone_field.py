@@ -44,3 +44,10 @@ class PhoneField(BaseWidget):
     @property
     def is_valid(self):
         return self.text_widget.is_valid is True
+
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::div/following-sibling::span")
+            return error_msg.text == error_expected
+        except:
+            log.info("Error label is not available")

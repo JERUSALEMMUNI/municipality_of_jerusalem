@@ -78,16 +78,16 @@ def click_buttonsdfsdfsd(context):
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
-    if not widget.check_error_message(error_expectation):
+    if not widget.get_error_message(error_expectation):
         log.info(f"The error value at field is incorrect")
         rep.add_label_to_step(f"The error alert value at field is incorrect")
         raise AssertionError("invalid value and considered as valid")
 
 
 @then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
-def error_msg(context,parent, widget_name, error_expectation):
+def error_msg(context, parent, widget_name, error_expectation):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
+    assert widget.get_error_message(error_expectation), "Incorrect error expectation message"
 
 
 @when('open disabled list')
@@ -112,7 +112,6 @@ def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
 
-
 @When('1st get pin code from email validation')
 def check_email(context):
     emails = context.mailbox.get_messages()
@@ -133,6 +132,7 @@ def check_email(context):
     else:
         rep.add_label_to_step("No pin code", "pin code is not received from email")
 
+
 @when('2nd click on link and fill email "{email}" pin code')
 def check_email(context, email):
     # Open the URL in a new window
@@ -144,35 +144,41 @@ def check_email(context, email):
     context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
     context._config.driver.find_element(*GeneralLocators.send_message_button).click()
 
+
 @when('3rd wait for second email to get "קוד האימות"')
 def get_second_pin_code(context):
-    wait_for_new_email(context, context.count_of_emails+1)
+    wait_for_new_email(context, context.count_of_emails + 1)
     email_body2 = context.mailbox.get_messages()[0].html_body
     if email_body2 is not None:
         rep.add_label_to_step("email received", "E-mail received correctly")
-    else: rep.add_label_to_step("No email received", "E-mail is not received")
+    else:
+        rep.add_label_to_step("No email received", "E-mail is not received")
     value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
     if value2 is not None:
         rep.add_label_to_step("Got pin code", "pin code is received from email")
-    else: rep.add_label_to_step("No pin code", "pin code is not received from email")
+    else:
+        rep.add_label_to_step("No pin code", "pin code is not received from email")
     WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.fill_code_field))
     context._config.driver.find_element(*GeneralLocators.fill_code_field).send_keys(value2)
     context._config.driver.find_element(*GeneralLocators.click_link_request).click()
     WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.see_form))
     context._config.driver.find_element(*GeneralLocators.see_form).click()
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")))
+    WebDriverWait(context._config.driver, 30).until(
+        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")))
     checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")
     if "ContractorEmpRights?sess" in context._config.driver.current_url:
         rep.add_label_to_step('reached destination',
                               "We have reached our desired url to check the validation process of e-mail")
-    else:rep.add_label_to_step('failure to reach destination',"didnt reqquired form url destination")
+    else:
+        rep.add_label_to_step('failure to reach destination', "didnt reqquired form url destination")
     context.validate = checkId.is_displayed()
+
 
 @when('4th close all tabs')
 def close_tabs(context):
     num_tabs = len(context._config.driver.window_handles)
-    for i in range(1,num_tabs):
+    for i in range(1, num_tabs):
         context._config.driver.close()
         context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
         WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
@@ -184,8 +190,9 @@ def close_tabs(context):
     if num_tabs == 1:
         rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
     else:
-        rep.add_label_to_step(f"{num_tabs-1} unused tabs still open", "Not all unused tabs are closed")
-        raise Exception(f"{num_tabs-1} unused tabs still open")
+        rep.add_label_to_step(f"{num_tabs - 1} unused tabs still open", "Not all unused tabs are closed")
+        raise Exception(f"{num_tabs - 1} unused tabs still open")
+
 
 @Then('5th Validate if went back to expected form')
 def validate_form_email(context):
@@ -197,11 +204,11 @@ def validate_form_email(context):
     else:
         rep.add_label_to_step('Correct verification',
                               "validation done correctly and we are at the desired form number")
-    #Todo: validation is done correctly but there is a broken
+    # Todo: validation is done correctly but there is a broken
     current_page = context._config.current_page
-    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,force_create=True)
+    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,
+                                                         force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
-
 
 
 def wait_for_new_email(context, count_of_emails):

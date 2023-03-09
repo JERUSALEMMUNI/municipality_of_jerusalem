@@ -29,3 +29,10 @@ class CheckBox(BaseWidget):
 
     def validate_box_is_unchecked(self):
         return self.web_element.get_attribute('aria-checked') in ("false" or None)
+
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(By.XPATH, "./parent::div/parent::p-checkbox/parent::div/following-sibling::span")
+            return error_msg.text == error_expected
+        except:
+            log.info("Error label is not available")

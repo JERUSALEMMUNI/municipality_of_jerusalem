@@ -10,8 +10,8 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label,index, base_path="/following-sibling::p-dropdown"):
-        super().__init__(label,index)
+    def __init__(self, label, index, base_path="/following-sibling::p-dropdown"):
+        super().__init__(label, index)
         self.base_path = base_path
         self.list = []
 
@@ -27,8 +27,9 @@ class Dropdown(BaseWidget):
 
     def item_search_scroll(self, driver, option_value):
         while True:
-            #todo: use driver.waitLong (max)
-            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
+            # todo: use driver.waitLong (max)
+            WebDriverWait(self.web_element, 30).until(
+                EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
             element = driver.find_element(*DropdownLocators.item_search_scroll_element)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             elements_list = element.text
@@ -82,3 +83,10 @@ class Dropdown(BaseWidget):
     @property
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
+
+    def get_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::span")
+            return error_msg.text == error_expected
+        except:
+            log.info("Error label is not available")

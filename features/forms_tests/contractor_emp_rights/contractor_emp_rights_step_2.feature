@@ -1,11 +1,11 @@
-Feature: ContractorEmpRights form - functional scenarios for Step 2
+@in_dev
+Feature: ContractorEmpRights form - scenarios step 2
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
   - Feature file name: contractor_emp_rights.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/ContractorEmpRights
   - Number of Pages is : 2, We are at Step: 2
-  - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
-
+  - All fields are mandatory except ( תלושי שכר, דוחו"ת נוכחות, אסמכתאות לתשלום שכר, אחר)
 
 
   Background: Background Scenario
@@ -26,6 +26,18 @@ Feature: ContractorEmpRights form - functional scenarios for Step 2
     When click on "המשך" Button
 
 
+  Scenario: TC_EMPCOMP_10 - Upload one file to each section
+    Then validate current step is "צרופות והצהרה"
+    When Upload "png_to_upload.png" file in "תלושי שכר"
+    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
+    And Upload "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+    And Upload "png_to_upload.png" file in "אחר"
+    And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
+    Then validate name of file "1" is "png_to_upload.png" in "תלושי שכר"
+    And validate size of file "1" in "תלושי שכר" in accepted
+    When delete file "1" in "תלושי שכר"
+
+
   Scenario: TC_EMPCOMP_11 - Upload several files to each section
     Then validate current step is "צרופות והצהרה"
     When Upload "png_to_upload.png" file in "תלושי שכר"
@@ -36,6 +48,12 @@ Feature: ContractorEmpRights form - functional scenarios for Step 2
     And Upload "png_to_upload.png" file in "אסמכתאות לתשלום שכר"
     And Upload "png_to_upload.png" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
+
+#  Scenario: Upload not acceptable file
+#    Then validate current step is "צרופות והצהרה"
+#    When Upload "10MB_file_to_upload.pdf" file in "תלושי שכר"
+#    And Upload "zip_to_upload.zip" file in "דוחו"ת נוכחות"
+
 
 
 

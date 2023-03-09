@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.old_style.alert_message_field import AlertMessageField
 from ui_widgets.old_style.widget_locators.radio_button_locators import RadioButtonLocators
 
 log = logger.get_logger(__name__)
@@ -11,7 +9,7 @@ log = logger.get_logger(__name__)
 class RadioButtonField(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
-        self.alert_error_message = AlertMessageField(self.label, index)
+
 
     @property
     def locator(self):

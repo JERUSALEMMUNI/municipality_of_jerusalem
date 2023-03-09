@@ -7,8 +7,8 @@ log = logger.get_logger(__name__)
 
 
 class FooterField(BaseWidget):
-    def __init__(self, label,index):
-        super().__init__(label,index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
         self.init_widget_texts()
 
     @property
