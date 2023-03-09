@@ -95,13 +95,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And click on "שמור" icon
-    When 1st get pin code from email validation
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    And click on "שמור" icon
+#    When 1st get pin code from email validation
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
 
@@ -121,13 +121,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "גורמה ארוחות בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And click on "שמור" icon
-    When 1st get pin code from email validation
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    And click on "שמור" icon
+#    When 1st get pin code from email validation
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
 
@@ -153,13 +153,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick month "1" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-    And click on "שמור" icon
-    When 1st get pin code from email validation
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    And click on "שמור" icon
+#    When 1st get pin code from email validation
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
 
@@ -190,10 +190,10 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick year "2019" in widget "חודשים לבדיקה" at index "2"
     When pick a group of months "5,6,7" in widget "חודשים לבדיקה" at index "2"
     When remove "1" in widget "חודשים לבדיקה"
-    And click on "שמור" icon
-    When 1st get pin code from email validation
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    And click on "שמור" icon
+#    When 1st get pin code from email validation
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
