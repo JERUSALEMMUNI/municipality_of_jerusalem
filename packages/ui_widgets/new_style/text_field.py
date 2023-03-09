@@ -32,6 +32,7 @@ class TextField(BaseWidget):
         return self.web_element.get_attribute('value') == text
 
     def set_text(self, text):
+        self.clear()
         self.web_element.send_keys(text)
 
     def clear(self):

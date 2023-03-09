@@ -6,20 +6,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.core import driver
-from ui_widgets.old_style.widget_locators.header_locators import HeaderLocators
+
 from infra import logger
+from infra.enums import UIStyle
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.old_style.button_field import ButtonField
-from ui_widgets.old_style.dialog_widget import Dialog
+from ui_widgets.old_style.widget_locators.header_locators import HeaderLocators
 
 log = logger.get_logger(__name__)
 
 
 class HeaderField(BaseWidget):
-    def __init__(self,index):
-        super().__init__(self,index)
-        self.info_dialog = Dialog(index)
-        self.save_dialog = Dialog(index)
+    def __init__(self, index):
+        super().__init__(self, index)
+
+    def init_widget_constants(self):
         self.main_title = 'שרותים דיגיטליים'
         self.header_status_text = 'סטטוס:'
         self.header_date_text = 'תאריך מילוי הטופס'
@@ -198,9 +198,7 @@ class HeaderField(BaseWidget):
         """
         initialise button form text then click on it
         """
-        #Todo:add create widget here
-        button = ButtonField(label,self.index)
-        # button =create_widget('ButtonField', style=UIStyle.OLD, label=label)
+        button = self.create_widget('ButtonField', style=UIStyle.OLD, label=label)
         self.init_buttons_widgets(button)
         if 'הדפס' != label:
             button.click_button()
@@ -219,6 +217,9 @@ class HeaderField(BaseWidget):
         """
         initialise information dialog when its displayed
         """
+        if not hasattr(self, 'info_dialog'):
+            self.info_dialog = self.create_widget('Dialog', style=UIStyle.OLD)
+
         if self.info_dialog.get_web_element() is None:
             info_dialog = WebDriverWait(driver, 10).until(
                 EC.visibility_of((self.web_element.find_element(self.info_dialog.locator['By'],
@@ -370,6 +371,9 @@ class HeaderField(BaseWidget):
         """
         initialise save form dialog when its displayed
         """
+        if not hasattr(self, 'save_dialog'):
+            self.save_dialog = self.create_widget('Dialog', style=UIStyle.OLD)
+
         if self.save_dialog.get_web_element() is None:
             save_dialog = WebDriverWait(driver, 10).until(
                 EC.visibility_of((self.web_element.find_element(*HeaderLocators.save_dialog))))

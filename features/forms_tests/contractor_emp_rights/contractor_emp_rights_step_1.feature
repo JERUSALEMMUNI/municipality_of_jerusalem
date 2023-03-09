@@ -24,17 +24,16 @@ Feature: ContractorEmpRights form - functional scenarios for Step 1
     When close error message
 
 
-#  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
-#    Given Navigate to "ContractorEmpRights" form
-#    When click on "הדפס" icon
-#    When I click on cancel button
-#    When click on "הדפס" icon
-#    When I click on print button
-#    # alias
-#    When I save the document as "new_file1"
-#    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+  Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
+    Given Navigate to "ContractorEmpRights" form
+    When click on "הדפס" icon
+    When click on print button
+    # alias
+    When I save the document as "new_file1"
+    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
+  @email
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"

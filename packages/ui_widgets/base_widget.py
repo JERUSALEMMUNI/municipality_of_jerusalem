@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
 
@@ -7,6 +6,10 @@ class BaseWidget(object):
         self.label = label
         self.web_element = None
         self.index = index
+        self.init_widget_constants()
+
+    def init_widget_constants(self):
+        pass
 
     def set_web_element(self, web_element):
         self.web_element = web_element

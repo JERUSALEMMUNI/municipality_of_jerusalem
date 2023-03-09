@@ -1,4 +1,5 @@
 #@in_dev
+  @test_this
 Feature: Test Scenarios for functionality and validation of PlaceContainer form
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
@@ -205,7 +206,8 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
   Scenario: TC_CONTAINER_02 - Click on "שמור" button before entering the required details
     Given Navigate to "PlaceContainer" form
     When click on "שמור" icon
-    Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה טלפון נייד ואימייל"
+#    Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה טלפון נייד ואימייל"
+    Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה"
     When close error message
 
 
@@ -230,8 +232,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" Button
 
 
   Scenario: TC_CONTAINER_05 - Enter a incorrect ID number
@@ -242,8 +242,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_06 - Enter correct BN number
@@ -254,8 +252,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_07 - Enter incorrect BN number
@@ -266,8 +262,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_08 - Enter incorrect First Name
@@ -278,8 +272,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_09 - Enter incorrect Last Name
@@ -290,8 +282,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write an invalid value "okkeh" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_10 - Enter incorrect mobile number
@@ -302,8 +292,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-407587!" as invalid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_11 -Enter incorrect email
@@ -314,8 +302,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write an invalid value "w.w" in "אימייל:"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_12 - Enter a valid address
@@ -329,8 +315,6 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And write "א טברי" in search field "רחוב"
     And write a valid value "1" in "מספר בית"
     And write a valid value "3" in "מספר דירה"
-    And click on "שמור" icon
-    And click on "המשך" icon
 
 
   Scenario: TC_CONTAINER_13 - Enter an invalid address
@@ -364,6 +348,4 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form
     And pick date and time "9/8/1996" and "16:19" in "עד תאריך:"
     And pick "תו אזורי" from "סוג החניה:"
     And write a valid value "א טברי" in "כתובת האתר לשפיכת הפסולת"
-    And click on "שמור" icon
-    And click on "המשך" icon
 

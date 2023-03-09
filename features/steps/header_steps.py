@@ -3,6 +3,7 @@ import time
 
 import pyautogui
 from behave import *
+
 from infra import logger, reporter, config
 from utils import files_utils, misc_utils
 
@@ -145,7 +146,7 @@ def validate_header_explanation_contains_text(context, count_chars):
 def validate_alert_popup_message(context, message):
     alert_text = context._config.driver.switch_to.alert.text
     if alert_text != message:
-        rep.add_table_to_step('Error message is not as expected', f'Found Message: {alert_text}')
+        rep.add_label_to_step('Error message is not as expected', f'''Found Message: {alert_text}''')
         raise AssertionError('alert message is not as expected')
 
 
@@ -154,7 +155,7 @@ def close_error_message(context):
     context._config.driver.switch_to.alert.accept()
 
 
-@when("I click on cancel button")
+@when("click on cancel button")
 def step_impl(context):
     time.sleep(1)
     cancel_button = pyautogui.locateOnScreen(
@@ -164,7 +165,7 @@ def step_impl(context):
     time.sleep(1)
 
 
-@when("I click on print button")
+@when("click on print button")
 def step_impl(context):
     # todo: make it with whiletimeout
     # misc_utils.while_timeout()

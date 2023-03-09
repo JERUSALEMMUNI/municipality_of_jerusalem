@@ -4,7 +4,7 @@ from ui_widgets.new_style import button_field, header_field, footer_field, text_
     dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
     footer_field as old_footer_field, calender_time, check_box_field, calendar_field, month_year_list, \
-    radio_button_field, application_steps_field
+    radio_button_field, application_steps_field, dialog_widget
 
 log = logger.get_logger(__name__)
 
@@ -60,14 +60,19 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
         'ApplicationStepsField': {
             UIStyle.OLD: application_steps_field.ApplicationStepsField
         },
+        'Dialog': {
+            UIStyle.OLD: dialog_widget.Dialog
+        },
         'UploadFile': {
             UIStyle.NEW: upload_file.UploadFile
         }
     }
 
     log.info(f'Creating {widget_type} widget obj')
-    kwargs = prepare_args(driver, label,index)
-    return widget_mapping[widget_type].get(style, widget_mapping[widget_type].get(UIStyle(3 - style.value)))(**kwargs)
+    kwargs = prepare_args(driver, label, index)
+    widget = widget_mapping[widget_type].get(style, widget_mapping[widget_type].get(UIStyle(3 - style.value)))(**kwargs)
+    widget.create_widget = create_widget
+    return widget
 
 
 def prepare_args(driver, label, index):
