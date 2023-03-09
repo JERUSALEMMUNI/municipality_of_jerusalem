@@ -17,7 +17,7 @@ class ButtonField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//button[contains(@title, '{self.label}')]"
+            'Value': f"//button[contains(text(), '{self.label}')]"
         }
 
     def click_button(self):

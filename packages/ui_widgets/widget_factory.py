@@ -4,7 +4,7 @@ from ui_widgets.new_style import button_field, header_field, footer_field, text_
     dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
     footer_field as old_footer_field, calender_time, check_box_field, calendar_field, month_year_list, \
-    radio_button_field, application_steps_field, dialog_widget
+    radio_button_field, application_steps_field, dialog_widget , button_icon_widget
 
 log = logger.get_logger(__name__)
 
@@ -12,6 +12,9 @@ log = logger.get_logger(__name__)
 # Todo: add index as input
 def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1):
     widget_mapping = {
+        'ButtonIcon': {
+            UIStyle.OLD: button_icon_widget.ButtonIcon
+        },
         'ButtonField': {
             UIStyle.NEW: button_field.ButtonField,
             UIStyle.OLD: old_button_field.ButtonField
