@@ -6,6 +6,6 @@ Feature: Basic Test for ConfirmationForStructure Form Page
     When write a valid value "סוהייב" in "שם פרטי"
     When write a valid value "אבו גנאם" in "שם משפחה"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    Then fill "058-8078687" as valid value in "טלפון נייד"
+    When fill "058-8078687" as valid value in "טלפון נייד"
     When click on "המשך" button
     When test temp
