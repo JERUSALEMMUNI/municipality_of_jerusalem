@@ -1,4 +1,4 @@
-
+@in_dev
 Feature: TransferDogOwnership form - scenarios step 2
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -7,6 +7,7 @@ Feature: TransferDogOwnership form - scenarios step 2
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory
 
+  #TODO : wait for fix email address in background scenario
    Background:Background Scenario
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"

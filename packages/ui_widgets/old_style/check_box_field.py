@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
+from ui_widgets.old_style.widget_locators.check_box_locators import CheckBoxLocator
 
 log = logger.get_logger(__name__)
 
@@ -32,7 +33,7 @@ class CheckBox(BaseWidget):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(By.XPATH, "./parent::div/parent::p-checkbox/parent::div/following-sibling::span")
+            error_msg = self.web_element.find_element(*CheckBoxLocator.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")

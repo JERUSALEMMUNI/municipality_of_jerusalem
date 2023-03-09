@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.new_style.dropdown_search_field import DropdownSearch
-
+from ui_widgets.new_style.widget_locators.dropdown_search_selectbox_locators import DropdownSearchSelectBoxLocators
 
 log = logger.get_logger(__name__)
 
@@ -135,7 +135,7 @@ class DropdownSearchSelectBox(DropdownSearch):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::div/following-sibling::span")
+            error_msg = self.web_element.find_element(*DropdownSearchSelectBoxLocators.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")

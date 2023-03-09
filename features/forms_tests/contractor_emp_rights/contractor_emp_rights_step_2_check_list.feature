@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: ContractorEmpRights form - CheckList scenarios step 2
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -6,7 +6,6 @@ Feature: ContractorEmpRights form - CheckList scenarios step 2
   - Form link: https://jeronlineforms.jerusalem.muni.il/ContractorEmpRights
   - Number of Pages is : 2, We are at Step: 2
   - All fields are mandatory except ( תלושי שכר, דוחו"ת נוכחות, אסמכתאות לתשלום שכר, אחר)
-
 
   Background: Background Scenario
     Given Navigate to "ContractorEmpRights" form
@@ -26,14 +25,9 @@ Feature: ContractorEmpRights form - CheckList scenarios step 2
     When click on "המשך" icon
 
 
+
   Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה  ( קלט ריק)
     Given Navigate to "ContractorEmpRights" form
     When click on "שלח" icon
     When close error message
     Then check if "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים." error is "חובה למלא את ההצהרה"
-
-
-
-
-
-

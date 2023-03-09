@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
-
+from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
 
 log = logger.get_logger(__name__)
 
@@ -51,7 +51,7 @@ class TextField(BaseWidget):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::span")
+            error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")

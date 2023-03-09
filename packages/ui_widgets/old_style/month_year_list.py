@@ -61,7 +61,7 @@ class MonthYearList(BaseWidget):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(By.XPATH, "./following-sibling::div/div[1]/div/div/following-sibling::div")
+            error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")

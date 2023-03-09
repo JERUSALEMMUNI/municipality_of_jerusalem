@@ -12,10 +12,9 @@ log = logger.get_logger(__name__)
 
 
 class CalendarField(BaseWidget):
-    def __init__(self, label,index):
-        super().__init__(label,index)
-        self.text_widget = TextField(label,index)
-
+    def __init__(self, label, index):
+        super().__init__(label, index)
+        self.text_widget = TextField(label, index)
 
     @property
     def locator(self):
@@ -33,7 +32,7 @@ class CalendarField(BaseWidget):
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
         WebDriverWait(self.web_element, 10).until(
-            #Todo: it should be in a locator file
+            # Todo: it should be in a locator file
             EC.element_to_be_clickable((CalenderLocators.day(day)))).click()
 
     def select_all_date(self, date):
@@ -51,7 +50,6 @@ class CalendarField(BaseWidget):
         self.text_widget.set_text(date)
         WebDriverWait(self.web_element, 10).until(
             EC.element_to_be_clickable(CalenderLocators.active_day)).click()
-
 
     def dialog_alert(self):
         try:
@@ -76,8 +74,7 @@ class CalendarField(BaseWidget):
 
     def get_error_message(self, error_expected):
         try:
-            error_msg = self.web_element.find_element(By.XPATH, "./parent::span/parent::p-calendar/following-sibling::span")
+            error_msg = self.web_element.find_element(*CalenderLocators.error_msg)
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")
-

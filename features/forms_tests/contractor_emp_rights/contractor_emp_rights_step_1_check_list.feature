@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: ContractorEmpRights form - CheckList scenarios step 1
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -9,7 +9,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
 
 
   Scenario: הסבר לטופס - לכל טופס חייב להיות הסבר -בבדיקה מול טפסים ישנים שיש התאמה מול ההסברים הישנים
-    Given Navigate to "TransferDogOwnership" form
+    Given Navigate to "ContractorEmpRights" form
     When click on "מידע" icon
     Then validate information dialog is opened
     And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב, לזכות בעדכון לגבי מצב הטיפול בטופס"
@@ -206,4 +206,3 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
     Given Navigate to "ContractorEmpRights" form
     When pick "1/2/1900" from calendar of "תאריך תחילת העבודה בחברה"
     Then validate picked date of "תאריך תחילת העבודה בחברה" is "01/02/1900"
-

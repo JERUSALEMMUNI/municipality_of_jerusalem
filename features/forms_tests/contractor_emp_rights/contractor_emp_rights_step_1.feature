@@ -23,7 +23,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-  #Todo: this scenario is working - try it tommorow
+
   @in_dev
   @pdf
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
@@ -33,8 +33,8 @@ Feature: ContractorEmpRights form - scenarios step 1
     When click on "הדפס" icon
     When click on print button
     # alias
-    When save the document as "new_file1"
-    Then compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+    When I save the document as "new_file1"
+    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details
@@ -49,11 +49,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-#    And click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-# Todo:you should close the tabs and back to the main page after the mail then click המשך in the main page
-#    When click on "המשך" Button
+
 
 
 
@@ -80,7 +76,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
+
 
 
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
@@ -106,7 +102,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
+
 
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
@@ -132,7 +128,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
+
 
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
@@ -164,7 +160,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
+
 
 
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
@@ -201,12 +197,3 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
-
-
-
-
-
-
-
-

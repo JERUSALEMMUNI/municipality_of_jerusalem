@@ -7,6 +7,7 @@ class DropdownSearchLocators:
     write_in_search_field = (By.XPATH, f"//div/div/div/input")
     clear_search_field = (By.XPATH, f"//div/div/div/div/input")
     get_search_result_if_empty = (By.XPATH, f".//div/div/div//li")
+    error_msg = (By.XPATH, "./following-sibling::span")
 
     @staticmethod
     def dropdown(label):

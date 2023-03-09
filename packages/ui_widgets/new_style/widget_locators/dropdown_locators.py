@@ -6,6 +6,7 @@ class DropdownLocators:
     item_search_scroll_element = (By.XPATH, "//div/div/div/ul")
     read_text = (By.XPATH, "./div/span")
     check_if_open = (By.XPATH, "./div")
+    error_msg = (By.XPATH, "./following-sibling::span")
 
     @staticmethod
     def chosen_element(option_value):
