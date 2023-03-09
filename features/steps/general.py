@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import allure
 from behave import *
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from features.steps.steps_locators.general_locators import GeneralLocators
 from infra import logger, reporter, custom_exceptions as ce
 
 rep = reporter.get_reporter()
@@ -75,7 +78,10 @@ def click_buttonsdfsdfsd(context):
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.check_error_message(error_expectation), "Incorrect error expectation message"
+    if not widget.check_error_message(error_expectation):
+        log.info(f"The error value at field is incorrect")
+        rep.add_label_to_step(f"The error alert value at field is incorrect")
+        raise AssertionError("invalid value and considered as valid")
 
 
 @then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
@@ -106,53 +112,96 @@ def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
 
-@Then('validate new email received "{email}"')
-def click_on_link_email(context, email):
+
+@When('1st get pin code from email validation')
+def check_email(context):
     emails = context.mailbox.get_messages()
-    count_of_emails = len(emails)
-    wait_for_new_email(context, count_of_emails)
+    context.count_of_emails = len(emails)
+    wait_for_new_email(context, context.count_of_emails)
     email_body = context.mailbox.get_messages()[0].html_body
+    if email_body is not None:
+        rep.add_label_to_step("email received", "E-mail received correctly")
+    else:
+        rep.add_label_to_step("No email received", "E-mail is not received")
+        raise AssertionError('No email recieved')
     soup = BeautifulSoup(email_body, 'html.parser')
     value_div = soup.find('div', {
         'style': 'direction: rtl; text-align: right;font-size: 20px;font-weight: bold;color : #ec9f0a;'})
-    value = value_div.text.strip()
-    click_here = "https://jerequestatusapi.jerusalem.muni.il/JerSiteStatusApp/#/status/3"
+    context.value = value_div.text.strip()
+    if context.value is not None:
+        rep.add_label_to_step("Got pin code", "pin code is received from email")
+    else:
+        rep.add_label_to_step("No pin code", "pin code is not received from email")
+
+@when('2nd click on link and fill email "{email}" pin code')
+def check_email(context, email):
     # Open the URL in a new window
-    context._config.driver.execute_script("window.open('{}', '_blank');".format(click_here))
+    context._config.driver.execute_script("window.open('{}', '_blank');".format(GeneralLocators.validation_link))
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    context._config.driver.find_element(By.XPATH,
-                                        '//*[contains(text(),"מספר אסמכתא")]//preceding-sibling::input').send_keys(
-        value)
-    context._config.driver.find_element(By.XPATH,
-                                        '//*[contains(text(),"מספר תעודת זהות /דרכון*")]//preceding-sibling::input').send_keys(
-        "3327")
-    context._config.driver.find_element(By.XPATH, '//*[contains(text(),"מייל")]//preceding-sibling::input').send_keys(
-        email)
-    context._config.driver.find_element(By.XPATH, '//input[@value="שלח הזדהות"]').click()
-    wait_for_new_email(context, count_of_emails + 1)
+    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.form_number))
+    context._config.driver.find_element(*GeneralLocators.form_number).send_keys(context.value)
+    context._config.driver.find_element(*GeneralLocators.id_number).send_keys("3327")
+    context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
+    context._config.driver.find_element(*GeneralLocators.send_message_button).click()
+
+@when('3rd wait for second email to get "קוד האימות"')
+def get_second_pin_code(context):
+    wait_for_new_email(context, context.count_of_emails+1)
     email_body2 = context.mailbox.get_messages()[0].html_body
+    if email_body2 is not None:
+        rep.add_label_to_step("email received", "E-mail received correctly")
+    else: rep.add_label_to_step("No email received", "E-mail is not received")
     value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
-    context._config.driver.find_element(By.XPATH,
-                                        '//*[contains(text(),"הזן את הקוד")]//preceding-sibling::input').send_keys(
-        value2)
-    time.sleep(3)
-    context._config.driver.find_element(By.XPATH, '//input[@value="אתר בקשה"]').click()
-    time.sleep(3)
-    context._config.driver.find_element(By.XPATH,
-                                        '//span[contains(text()," לצפייה בטופס > ")]').click()
-    time.sleep(3)
+    if value2 is not None:
+        rep.add_label_to_step("Got pin code", "pin code is received from email")
+    else: rep.add_label_to_step("No pin code", "pin code is not received from email")
+    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.fill_code_field))
+    context._config.driver.find_element(*GeneralLocators.fill_code_field).send_keys(value2)
+    context._config.driver.find_element(*GeneralLocators.click_link_request).click()
+    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.see_form))
+    context._config.driver.find_element(*GeneralLocators.see_form).click()
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {value}')]")
+    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")))
+    checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")
     if "ContractorEmpRights?sess" in context._config.driver.current_url:
         rep.add_label_to_step('reached destination',
                               "We have reached our desired url to check the validation process of e-mail")
-    if not checkId.is_displayed():
+    else:rep.add_label_to_step('failure to reach destination',"didnt reqquired form url destination")
+    context.validate = checkId.is_displayed()
+
+@when('4th close all tabs')
+def close_tabs(context):
+    num_tabs = len(context._config.driver.window_handles)
+    for i in range(1,num_tabs):
+        context._config.driver.close()
+        context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
+        WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
+
+    context._config.driver.switch_to.window(context._config.driver.window_handles[0])
+    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
+    context._config.driver.find_element(*GeneralLocators.click_continue_button).click()
+    num_tabs = len(context._config.driver.window_handles)
+    if num_tabs == 1:
+        rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
+    else:
+        rep.add_label_to_step(f"{num_tabs-1} unused tabs still open", "Not all unused tabs are closed")
+        raise Exception(f"{num_tabs-1} unused tabs still open")
+
+@Then('5th Validate if went back to expected form')
+def validate_form_email(context):
+    if not context.validate:
         rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
                                                 "equal the one we filled at the beginning")
+        context._config.current_page.navigate_to_page_url()
         raise AssertionError('The form number is not available')
     else:
         rep.add_label_to_step('Correct verification',
                               "validation done correctly and we are at the desired form number")
+    #Todo: validation is done correctly but there is a broken
+    current_page = context._config.current_page
+    current_page = context.screens_manager.create_screen(current_page.page_title, force_create=True)
+    context.screens_manager.screens[current_page.page_title] = current_page
+
 
 
 def wait_for_new_email(context, count_of_emails):
@@ -162,4 +211,5 @@ def wait_for_new_email(context, count_of_emails):
         log.info('wait for email')
         time.sleep(3)
     else:
+        rep.add_label_to_step("e-mail is not received")
         raise ce.MJTimeOutError('no new email received')

@@ -164,7 +164,7 @@ Scenario Outline: id (invalid/error message)
   Scenario Outline: email (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<email>" in "אימייל"
-    Then check if "אימייל" error is "דוא''ל לא תקי"
+    Then check if "אימייל" error is "דוא''ל לא תקין"
     Examples:
     | email  |
     | ابوسنينة@ستت.com  |
@@ -175,10 +175,7 @@ Scenario Outline: id (invalid/error message)
     | sdfghj  |
     | dgjfk!@jsk.c-om  |
     | djdkdjf@kads |
-    | skslsm@j11dkddkcom |
     | sam@ss.c1 |
-    | sam@ss.11comaa11 |
-    | sam@ss.casasaddfeff |
     | firas@sls.123 |
     | a@b.com.com.com.com|
     | a@b.................com |

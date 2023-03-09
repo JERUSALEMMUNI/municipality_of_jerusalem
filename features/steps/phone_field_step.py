@@ -12,9 +12,9 @@ def write_phone_number(context, phone_number, widget_name):
     widget.set_text(phone_number)
     if not widget.is_valid:
         log.info(f"This value {phone_number} at field {widget_name} is considered "
-                 f" an valid value but it appeared as invalid")
+                 f" a valid value but it appeared as invalid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} at field {widget_name} is considered "
-                                             f" an valid value but it appeared as invalid")
+                                             f" a valid value but it appeared as invalid")
         raise AssertionError("valid value and considered as invalid")
 
 
@@ -36,10 +36,10 @@ def write_phone_number(context, parent, phone_number, widget_name):
     widget.set_text(phone_number)
     if not widget.is_valid:
         log.info(f"This value {phone_number} from parent {parent} at field {widget_name} is considered "
-                 f" an valid value but it appeared as invalid")
+                 f"a valid value but it appeared as invalid")
         rep.add_label_to_step("wrong_value",
                               f"This value {phone_number} from parent {parent} at field {widget_name} is considered "
-                              f" an valid value but it appeared as invalid")
+                              f"a valid value but it appeared as invalid")
         raise AssertionError("valid value and considered as invalid")
 
 
@@ -49,7 +49,7 @@ def write_phone_number(context, parent, phone_number, widget_name):
     widget.set_text(phone_number)
     if not widget.is_invalid:
         log.info(f"This value {phone_number} from parent {parent} at field {widget_name} is considered "
-                 f" an invalid value but it appeared as valid")
+                 f"an invalid value but it appeared as valid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} from parent {parent} at field {widget_name} is considered "
-                                             f" an invalid value but it appeared as valid")
+                                             f"an invalid value but it appeared as valid")
         raise AssertionError("invalid value and considered as valid")

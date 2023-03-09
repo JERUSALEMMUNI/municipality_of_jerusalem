@@ -21,4 +21,6 @@ class AlertMessageField(BaseWidget):
         return self.web_element.text
 
     def check_expected_error(self, expected_error):
+        #Todo: I think its better to check if the error label appeared first then we can validate the value
+        #Todo: by doing this, we can save a lot of time if element is not found
         return self.web_element.text == expected_error

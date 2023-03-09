@@ -15,7 +15,7 @@ def write_into_field(context, text, widget_name):
     if not widget.is_valid:
         log.info(f"This value {text} at field {widget_name} is considered "
                  f" an valid value but it appeared as invalid")
-        rep.add_label_to_step("wrong_value", f"This value {text} at field {widget_name} is considered "
+        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} is considered "
                                              f" an valid value but it appeared as invalid")
         raise AssertionError("valid value and considered as invalid")
 
@@ -28,7 +28,7 @@ def write_into_field_valid_value(context, parent, text, widget_name):
     if not widget.is_valid:
         log.info(f"This value {text} from parent {parent} at field {widget_name} is considered "
                  f" an valid value but it appeared as invalid")
-        rep.add_label_to_step("wrong_value",
+        rep.add_label_to_step("failure reason",
                               f"This value {text} from parent {parent} at field {widget_name} is considered "
                               f" an valid value but it appeared as invalid")
         raise AssertionError("valid value and considered as invalid")
@@ -42,7 +42,7 @@ def write_into_field_invalid_value(context,parent, text, widget_name):
     if not widget.is_invalid:
         log.info(f"This value {text} from parent {parent} at field {widget_name} is considered "
                  f" an invalid value but it appeared as valid")
-        rep.add_label_to_step("wrong_value", f"This value {text} from parent {parent} at field {widget_name} is considered "
+        rep.add_label_to_step("failure reason", f"This value {text} from parent {parent} at field {widget_name} is considered "
                                              f" an invalid value but it appeared as valid")
         raise AssertionError("invalid value and considered as valid")
 
@@ -55,7 +55,7 @@ def write_into_field(context, text, widget_name):
     if not widget.is_invalid:
         log.info(f"This value {text} at field {widget_name} is considered "
                  f" an invalid value but it appeared as valid")
-        rep.add_label_to_step("wrong_value", f"This value {text} at field {widget_name} is considered "
+        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} is considered "
                                              f" an invalid value but it appeared as valid")
         raise AssertionError("invalid value and considered as valid")
 
@@ -78,6 +78,6 @@ def append_text_field(context, widget_name, text):
     if not widget.validate_text(text):
         log.info(f"This value {text} at field {widget_name} is not "
                  f" the same written value")
-        rep.add_label_to_step("wrong_value", f"This value {text} at field {widget_name} is not "
+        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} is not "
                                              " the same written value")
         raise AssertionError("Written correctly but appeared incorrectly")

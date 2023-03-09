@@ -11,7 +11,7 @@ class ContractorEmpRights(BasePage):
         self.driver = driver
 
     def fill_need_to_wait_element(self):
-        self.main_elements_to_wait_when_load = ['שם פרטי']
+        self.main_elements_to_wait_when_load = ['שם פרטי', 'נושא התלונה']
 
     def create_page_widgets(self):
         self.widgets['מספר זהות'] = create_widget('TextField', style=self.style, label='מספר זהות')
