@@ -199,7 +199,7 @@ def validate_form_email(context):
                               "validation done correctly and we are at the desired form number")
     #Todo: validation is done correctly but there is a broken
     current_page = context._config.current_page
-    current_page = context.screens_manager.create_screen(current_page.page_title, force_create=True)
+    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
 
 
