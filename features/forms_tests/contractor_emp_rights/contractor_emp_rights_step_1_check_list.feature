@@ -1,4 +1,4 @@
-
+@in_dev
 Feature: ContractorEmpRights form - CheckList scenarios step 1
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה

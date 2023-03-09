@@ -1,5 +1,5 @@
 Feature: Basic Test for ConfirmationForStructure Form Page
-
+@in_dev
   Scenario: general test for all mandatory fields
     Given Navigate to "ConfirmationForStructure" form
     When write a valid value "332796184" in "מספר ת.ז."
