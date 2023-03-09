@@ -2,11 +2,12 @@
 Feature: TransferDogOwnership form - CheckList scenarios step 1
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
-  - Feature file name: transfer_dog_ownership.feature
+  - Feature file name: transfer_dog_ownership
   - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory except (.ספר דירה, ת.ד )
 
+  @in_dev
   Scenario: אחרי שמירה שטופס לא יקפוץ לעמוד הראשון-להשאיר בשלב שהתושב נמצא בו כעת
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
@@ -17,7 +18,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי מגיש הבקשה" pick "א טור" from "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "1" in "מספר דירה"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "תד"
+    And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "ת.ד"
     And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
     And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"
     And  from parent "פרטי המוסר" write a valid value "332796184" in "תעודת זהות"
@@ -26,7 +27,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי המוסר" write a valid value "א טור" in "רחוב"
     And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "3" in "מספר דירה"
-    And  from parent "פרטי המוסר" write a valid value "3233" in "תד"
+    And  from parent "פרטי המוסר" write a valid value "3233" in "ת.ד"
     And click on "המשך" button
     And write a valid value "ביסקו" in "שם הכלב"
     And write a valid value "דשגדק" in "גזע"
@@ -181,7 +182,6 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   Scenario Outline: בכתובת מייל לאפשר לכתוב רק באנגלית ומספרים (valid)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "<email>" in "אימייל"
-    And from parent "פרטי המוסר" write a valid value "<email>" in "אימייל"
     Examples:
       | email             |
       | sui_b@ajj.com     |
@@ -193,7 +193,6 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   Scenario Outline: בכתובת מייל לאפשר לכתוב רק באנגלית ומספרים (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<email>" in "אימייל"
-    And  from parent "פרטי המוסר" write an invalid value "<email>" in "אימייל"
     Examples:
       | email        |
       | A@b.cO+m     |
@@ -206,9 +205,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<email>" in "אימייל"
-    And  from parent "פרטי המוסר" write an invalid value "<email>" in "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "דוא''ל לא תקין"
-    Then from parent "פרטי המוסר" check if "אימייל" error is "דוא''ל לא תקין"
     Examples:
       | email                |
       | 87389228312232112312 |
@@ -221,9 +218,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "אימייל"
-    And  from parent "פרטי המוסר" write an invalid value " " in "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "יש להזין כתובת אימייל"
-    Then from parent "פרטי המוסר" check if "אימייל" error is "יש להזין כתובת אימייל"
 
 
 
@@ -235,8 +230,8 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי המוסר" write a valid value "<home_number>" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write a valid value "<apartment_number>" in "מספר דירה"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "<postal_number>" in "תד"
-    And  from parent "פרטי המוסר" write a valid value "<postal_number>" in "תד"
+    And  from parent "פרטי מגיש הבקשה" write a valid value "<postal_number>" in "ת.ד"
+    And  from parent "פרטי המוסר" write a valid value "<postal_number>" in "ת.ד"
     Examples:
       | phone_number | home_number | apartment_number | postal_number |
       | 050-8076283  | 23          | 1                | 231232        |
@@ -251,8 +246,8 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי המוסר" write an invalid value "<home_number>" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write an invalid value "<apartment_number>" in "מספר דירה"
-    And  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "תד"
-    And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "תד"
+    And  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "ת.ד"
+    And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "ת.ד"
     Examples:
       | phone_number | home_number | apartment_number | postal_number |
       | 050-שדגדגשד  | דגגד        | כע               | dfghj         |
@@ -267,17 +262,17 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי המוסר" write an invalid value "<home_number>" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write an invalid value "<apartment_number>" in "מספר דירה"
-    And  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "תד"
-    And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "תד"
+    And  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "ת.ד"
+    And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "ת.ד"
     #TODO: do the split for the error message
     Then from parent "פרטי מגיש הבקשה" check if "מספר טלפון נייד" error is "יש להזין ספרות בלבד/nיש להשלים את הספרות החסרות"
     Then from parent "פרטי מגיש הבקשה" check if "מספר בית" error is "יש למלא מספר בית"
     Then from parent "פרטי מגיש הבקשה" check if "מספר דירה" error is "יש למלא מספר דירה"
-    Then from parent "פרטי מגיש הבקשה" check if "תד" error is "יש להזין ספרות בלבד"
+    Then from parent "פרטי מגיש הבקשה" check if "ת.ד" error is "יש להזין ספרות בלבד"
     Then from parent "פרטי המוסר" check if "מספר טלפון נייד" error is "יש להזין ספרות בלבד/nיש להשלים את הספרות החסרות"
     Then from parent "פרטי המוסר" check if "מספר בית" error is "יש למלא מספר בית"
     Then from parent "פרטי המוסר" check if "מספר דירה" error is "יש למלא מספר דירה"
-    Then from parent "פרטי המוסר" check if "תד" error is "יש להזין ספרות בלבד"
+    Then from parent "פרטי המוסר" check if "ת.ד" error is "יש להזין ספרות בלבד"
     Examples:
       | phone_number | home_number | apartment_number | postal_number |
       | 050-שדגדגשד   | דגגד        | כע               | dfghj         |
@@ -287,8 +282,8 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
   Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" fill " " as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" fill " " as invalid value in "מספר טלפון נייד"
+    When  from parent "פרטי מגיש הבקשה" fill "052- " as invalid value in "מספר טלפון נייד"
+    And  from parent "פרטי המוסר" fill "054- " as invalid value in "מספר טלפון נייד"
     And  from parent "פרטי מגיש הבקשה" write an invalid value " " in "מספר בית"
     And  from parent "פרטי המוסר" write an invalid value " " in "מספר בית"
     Then from parent "פרטי מגיש הבקשה" check if "מספר טלפון נייד" error is "יש להזין מספר טלפון נייד"

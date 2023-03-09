@@ -2,7 +2,7 @@
 Feature: TransferDogOwnership form - CheckList scenarios step 2
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
-  - Feature file name: transfer_dog_ownership.feature
+  - Feature file name: transfer_dog_ownership
   - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory

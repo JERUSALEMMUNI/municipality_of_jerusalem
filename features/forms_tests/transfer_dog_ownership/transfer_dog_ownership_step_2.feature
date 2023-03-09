@@ -2,7 +2,7 @@
 Feature: TransferDogOwnership form - scenarios step 2
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
-  - Feature file name: transfer_dog_ownership.feature
+  - Feature file name: transfer_dog_ownership
   - Form link: https://jeronlineforms.jerusalem.muni.il/TransferDogOwnership
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory
@@ -38,6 +38,7 @@ Feature: TransferDogOwnership form - scenarios step 2
     And search for "אבו סריחאן )שבט(" in "הכלב רשום ברשות המקומית"
     And pick "3/2/2020" from calendar of "תאריך מסירת הכלב"
     And click on "שמור" icon
+    And close error message
     When 1st get pin code from email validation
     And 2nd click on link and fill email "{email}" pin code
     And 3rd wait for second email to get "קוד האימות"
