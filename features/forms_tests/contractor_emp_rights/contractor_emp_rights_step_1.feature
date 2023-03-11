@@ -23,7 +23,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-
+  #Todo: this scenario is working - try it tommorow
   @in_dev
   @pdf
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
@@ -33,8 +33,8 @@ Feature: ContractorEmpRights form - scenarios step 1
     When click on "הדפס" icon
     When click on print button
     # alias
-    When I save the document as "new_file1"
-    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+    When save the document as "new_file1"
+    Then compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details
@@ -49,10 +49,14 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
+#    And click on "שמור" icon
+#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
+#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+# Todo:you should close the tabs and back to the main page after the mail then click המשך in the main page
+#    When click on "המשך" Button
 
 
-
-
+  @email1
   Scenario: TC_EMPCOMP_05 - Enter correct employer details from cleaning department
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"
@@ -76,9 +80,9 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
-
-
+  @after_email1
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"
@@ -95,14 +99,14 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    And click on "שמור" icon
-#    When 1st get pin code from email validation
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-
+    And click on "שמור" icon
+    When 1st get pin code from email validation
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
@@ -121,14 +125,14 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "גורמה ארוחות בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    And click on "שמור" icon
-#    When 1st get pin code from email validation
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-
+    And click on "שמור" icon
+    When 1st get pin code from email validation
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
@@ -153,16 +157,16 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick month "1" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-#    And click on "שמור" icon
-#    When 1st get pin code from email validation
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    And click on "שמור" icon
+    When 1st get pin code from email validation
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When click on "המשך" Button
 
-
-
+  @dropdown
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "332796184" in "מספר זהות"
@@ -182,7 +186,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "אי צבירה נאותה - ימי חופשה" from "נושא התלונה"
     And pick "צבירת ימי מחלה" from "נושא התלונה"
     And pick "תשלומי שכר בגין השתתפות במטווחים, השתלמויות וקורסי ריענון ירי" from "נושא התלונה"
-    When pick year "2020" in widget "חודשים לבדיקה" at index "1"
+    When pick year "2018" in widget "חודשים לבדיקה" at index "1"
     And write a valid value "א טור" in textarea of "פרטי התלונה"
     When pick a group of months "2,3,4" in widget "חודשים לבדיקה" at index "1"
     When choose "לא" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
@@ -190,10 +194,4 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick year "2019" in widget "חודשים לבדיקה" at index "2"
     When pick a group of months "5,6,7" in widget "חודשים לבדיקה" at index "2"
     When remove "1" in widget "חודשים לבדיקה"
-#    And click on "שמור" icon
-#    When 1st get pin code from email validation
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    And click on "שמור" icon
