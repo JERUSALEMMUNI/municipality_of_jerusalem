@@ -23,7 +23,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-  #Todo: this scenario is working - try it tommorow
+
   @in_dev
   @pdf
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
@@ -33,8 +33,8 @@ Feature: ContractorEmpRights form - scenarios step 1
     When click on "הדפס" icon
     When click on print button
     # alias
-    When save the document as "new_file1"
-    Then compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
+    When I save the document as "new_file1"
+    Then I compare "new_file1" with reference pdf file "ContractorEmpRights_empty_form"
 
 
   Scenario: TC_EMPCOMP_04 - Enter a correct employee details

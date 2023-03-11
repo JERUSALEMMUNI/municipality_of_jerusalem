@@ -20,7 +20,7 @@ class CalendarField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::p-calendar/span/input",
+            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::p-calendar/span/input"
         }
 
     def initial_widgets(self):
@@ -78,3 +78,11 @@ class CalendarField(BaseWidget):
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")
+
+    def is_invalid(self):
+        x = self.web_element.find_element(*CalenderLocators.valid_checker)
+        return 'invalid' in x.get_attribute('class')
+
+    def is_valid(self):
+        x = self.web_element.find_element(*CalenderLocators.valid_checker)
+        return 'valid' in x.get_attribute('class')
