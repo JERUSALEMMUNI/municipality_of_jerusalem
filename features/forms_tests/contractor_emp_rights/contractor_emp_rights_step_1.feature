@@ -80,7 +80,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-#    When click on "המשך" Button
 
   @after_email1
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
@@ -106,7 +105,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-#    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
@@ -132,7 +130,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
 
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
@@ -164,7 +161,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 4th close all tabs
     Then 5th Validate if went back to expected form
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-    When click on "המשך" Button
 
   @dropdown
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification

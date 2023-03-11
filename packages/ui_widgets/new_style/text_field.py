@@ -1,7 +1,10 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
+from selenium.webdriver.support import expected_conditions as EC
 
 log = logger.get_logger(__name__)
 
@@ -33,6 +36,8 @@ class TextField(BaseWidget):
 
     def set_text(self, text):
         self.clear()
+        WebDriverWait(self.web_element, 5).until(
+            EC.presence_of_element_located((By.XPATH,f"//label[contains(text(),'{self.label}')]")))
         self.web_element.send_keys(text)
 
     def clear(self):
