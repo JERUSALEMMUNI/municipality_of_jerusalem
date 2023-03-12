@@ -1,28 +1,56 @@
+import copy
 import uuid
+
+from behave.model import Scenario
 from behave.model_core import Status
-from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from infra import reporter, logger, config
+
+from infra import reporter, logger
 from infra.jm_chrome_webdriver import JMChromeWebDriver
-from behave.contrib.scenario_autoretry import patch_scenario_with_autoretry
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
 
+def handle_alias_replacement_in_background(context):
+    for feature in context._runner.features:
+        if feature.background:
+            handle_alias_replacement(context, feature.background)
+
+
+def assign_new_scenarios_list_to_features(context, scenarios_dict):
+    for feature in context._runner.features:
+        feature.scenarios = scenarios_dict[feature.name]
+
+
 def before_all(context):
     context._config.current_page = None
     init_webdriver(context)
-    handle_tags_replacement(context)
-    context._config.current_scenario_index = 0
+    scenarios_dict = {}
+    get_all_scenarios(context, scenarios_dict)
+    duplicate_scenario_for_stability(context, scenarios_dict)
+    handle_alias_replacement_in_background(context)
+    assign_new_scenarios_list_to_features(context, scenarios_dict)
 
 
-def handle_tags_replacement(context):
+def handle_alias_replacement(context, scenario):
+    scenario.name = scenario.name.replace('@TEMP_EMAIL_ADDRESS', context.mailbox.address)
+    for step in scenario.steps:
+        step.name = step.name.replace('@TEMP_EMAIL_ADDRESS', context.mailbox.address)
+
+
+def get_all_scenarios(context, scenarios_dict):
     for feature in context._runner.features:
+        temp_list = []
         for scenario in feature.scenarios:
-            patch_scenario_with_autoretry(scenario, max_attempts=2)
-            for step in scenario.steps:
-                step.name = step.name.replace('@TEMP_EMAIL_ADDRESS', context.mailbox.address)
+            if hasattr(scenario, 'scenarios'):
+                examples_scenarios = scenario.scenarios
+                for ex_sc in examples_scenarios:
+                    ex_sc.tags = scenario.tags
+                temp_list.extend(examples_scenarios)
+            else:
+                temp_list.append(scenario)
+        scenarios_dict[feature.name] = temp_list
 
 
 def init_webdriver(context):
@@ -32,9 +60,24 @@ def init_webdriver(context):
         context._config.driver = driver
 
 
+def duplicate_scenario_for_stability(context, scenarios_dict):
+    for feature_name, scenarios in scenarios_dict.items():
+        temp_list = []
+        for scenario in scenarios:
+            handle_alias_replacement(context, scenario)
+            steps = copy.deepcopy(scenario.steps)
+            new_scenario = Scenario(scenario.filename, scenario.line, scenario.keyword, scenario.name,
+                                    tags=scenario.tags, steps=steps)
+            new_scenario.feature = scenario.feature
+            temp_list.append(scenario)
+            temp_list.append(new_scenario)
+        scenarios_dict[feature_name] = temp_list
+
+
 def before_feature(context, feature):
     log.info(f'----- Start Feature - {feature.name} -----')
     context._config.current_feature = feature
+    context._config.current_scenario_index = 0
 
 
 def before_scenario(context, scenario):
@@ -42,6 +85,7 @@ def before_scenario(context, scenario):
     log.info(scenario.starting_scenario_msg)
     # if there is a failed step in the scenario, the scenario will continue
     scenario.continue_after_failed_step = True
+    context._config.current_scenario = scenario
 
 
 def before_step(context, step):
@@ -65,6 +109,10 @@ def after_step(context, step):
 
 
 def after_scenario(context, scenario):
+    current_scenario_index = context._config.current_scenario_index
+    current_feature = context._config.current_feature
+    current_scenario = context._config.current_scenario
+
     if scenario.status.name != 'passed':
         log_debug_file = [f['path'] for f in context.log_files if f['levelname'] == 'DEBUG'][0]
         with open(log_debug_file, 'r', encoding='utf-16') as e:
@@ -80,11 +128,19 @@ def after_scenario(context, scenario):
         except PermissionError as e:
             log.warning(f'{scenario_log_file} - {e.args[0]}')
 
-        driver = context._config.driver
-        # driver.quit()
-        # init_webdriver(context)
-        context.screens_manager.screens = {}
-        context._config.current_page = None
+        for step in scenario.steps:
+            if step.exception and 'assert' not in str(type(step.exception)):
+                context.screens_manager.screens = {}
+                context._config.current_page = None
+                break
+        else:
+            if (current_scenario_index + 1) < len(current_feature.scenarios) and current_scenario.name == \
+                    current_feature.scenarios[current_scenario_index + 1].name:
+                current_feature.scenarios.pop(current_scenario_index + 1)
+    else:
+        if (current_scenario_index + 1) < len(current_feature.scenarios) and current_scenario.name == \
+                current_feature.scenarios[current_scenario_index + 1].name:
+            current_feature.scenarios.pop(current_scenario_index + 1)
 
     context._config.current_scenario_index += 1
     log.info(f'----- End Scenario - {scenario.name} -----')

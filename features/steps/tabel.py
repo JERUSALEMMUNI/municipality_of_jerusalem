@@ -23,7 +23,6 @@ def add_items_month_year_list(context, items, widget_name):
 @when('pick year "{year:d}" in widget "{widget_name}" at index "{number}"')
 def add_items_month_year_list(context, year, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
-    widget.init_widget()
     if year > 2024 or year < 2018:
         raise ValueError("Year value should be between 2018-2023")
     year = str(year)
@@ -38,7 +37,7 @@ def add_items_month_year_list(context, year, widget_name, number):
 @when('pick month "{month:d}" in widget "{widget_name}" at index "{number}"')
 def add_items_month_year_list(context, month, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
-    widget.init_widget()
+    # widget.init_widget()
     if month > 12 or month < 1:
         raise ValueError("The month value should be between 1-12")
     month = str(month)

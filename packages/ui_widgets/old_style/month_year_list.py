@@ -44,10 +44,12 @@ class MonthYearList(BaseWidget):
         widget.removeItem(self.locator['Value'])
 
     def set_year(self, year, index):
+        self.init_widget()
         widget = self.create_widget_from_index(index)
         widget.set_year(self.locator['Value'], year)
 
     def set_month(self, month, index):
+        self.init_widget()
         widget = self.create_widget_from_index(index)
         widget.set_month(self.locator['Value'], month)
 

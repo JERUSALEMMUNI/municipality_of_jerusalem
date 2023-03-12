@@ -1,6 +1,6 @@
 #@in_dev
   @test_this
-Feature: Test Scenarios for functionality and validation of PlaceContainer form
+Feature: PlaceContainer form - scenarios step 1
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
   - Feature file name: place_container.feature

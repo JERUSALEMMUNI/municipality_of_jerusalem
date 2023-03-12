@@ -199,7 +199,7 @@ class HeaderField(BaseWidget):
             temp_btn = self.web_element.find_element(button.locator['By'], button.locator['Value'])
             button.set_web_element(temp_btn)
 
-    def click_header_button(self, label: str, chrome_driver):
+    def click_header_button(self, label: str, chrome_driver=None):
         """
         initialise button form text then click on it
         """

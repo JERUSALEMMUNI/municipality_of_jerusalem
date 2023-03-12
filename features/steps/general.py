@@ -1,10 +1,12 @@
 import time
-from bs4 import BeautifulSoup
+
 import allure
 from behave import *
+from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from features.steps.steps_locators.general_locators import GeneralLocators
 from infra import logger, reporter, custom_exceptions as ce
 
@@ -26,6 +28,27 @@ def navigate_to_screen(context, screen_name):
             driver.wait_medium_for_presence_of_element(widget.locator['By'], widget.locator['Value'])
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
                         "click here to see the link of tested step")
+
+
+@given('Navigate to "{screen_name}" form and reach step "{dst_step}"')
+def navigate_to_screen_specific_step(context, screen_name, dst_step):
+    driver = context._config.driver
+    current_page = context.screens_manager.create_screen([screen_name], driver=driver)
+
+    if context._config.current_page and context._config.current_page.page_title == current_page.page_title:
+        widget = context._config.current_page.widgets["page_steps"]
+        current_step_name = widget.get_step_name()
+        if current_step_name != dst_step:
+            navigate_to_step_in_screen(context, current_page, dst_step)
+    elif (context._config.current_page and context._config.current_page.page_title != current_page.page_title) \
+            or (context._config.current_page is None):
+        navigate_to_step_in_screen(context, current_page, dst_step)
+
+
+def navigate_to_step_in_screen(context, current_page, dst_step):
+    context._config.current_page = None
+    context.execute_steps(f'''Given Navigate to "{current_page.page_title}" form''')
+    current_page.fill_form_to_reach_step(dst_step)
 
 
 @when('checked if "{text}" is the text of "{widget_name}"')
@@ -79,17 +102,18 @@ def click_buttonsdfsdfsd(context):
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.is_invalid:
-        rep.add_label_to_step("No label appeared","There should be an error message but it didnt appear at all")
+        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
         raise AssertionError("invalid value and considered as valid")
     if not widget.get_error_message(error_expectation):
         log.info(f"The error value at field is incorrect")
-        rep.add_label_to_step("incorrect message or missing","incorrect or missing error value and considered as valid")
+        rep.add_label_to_step("incorrect message or missing",
+                              "incorrect or missing error value and considered as valid")
         raise AssertionError("invalid value and considered as valid")
     rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
 @then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
-def error_msg(context,parent, widget_name, error_expectation):
+def error_msg(context, parent, widget_name, error_expectation):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
     assert widget.get_error_message(error_expectation), "Incorrect error expectation message"
 
@@ -116,7 +140,6 @@ def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
 
-
 @When('1st get pin code from email validation')
 def check_email(context):
     emails = context.mailbox.get_messages()
@@ -138,6 +161,7 @@ def check_email(context):
     else:
         rep.add_label_to_step("No pin code", "pin code is not received from email")
 
+
 @when('2nd click on link and fill email "{email}" pin code')
 def check_email(context, email):
     # Open the URL in a new window
@@ -152,33 +176,39 @@ def check_email(context, email):
     context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
     context._config.driver.find_element(*GeneralLocators.send_message_button).click()
 
+
 @when('3rd wait for second email to get "קוד האימות"')
 def get_second_pin_code(context):
     if context.email_body == None:
         rep.add_label_to_step("No email received", "E-mail is not received")
         raise AssertionError('No email recieved')
-    wait_for_new_email(context, context.count_of_emails+1)
+    wait_for_new_email(context, context.count_of_emails + 1)
     email_body2 = context.mailbox.get_messages()[0].html_body
     if email_body2 is not None:
         rep.add_label_to_step("email received", "E-mail received correctly")
-    else: rep.add_label_to_step("No email received", "E-mail is not received")
+    else:
+        rep.add_label_to_step("No email received", "E-mail is not received")
     value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
     if value2 is not None:
         rep.add_label_to_step("Got pin code", "pin code is received from email")
-    else: rep.add_label_to_step("No pin code", "pin code is not received from email")
+    else:
+        rep.add_label_to_step("No pin code", "pin code is not received from email")
     WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.fill_code_field))
     context._config.driver.find_element(*GeneralLocators.fill_code_field).send_keys(value2)
     context._config.driver.find_element(*GeneralLocators.click_link_request).click()
     WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.see_form))
     context._config.driver.find_element(*GeneralLocators.see_form).click()
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")))
+    WebDriverWait(context._config.driver, 30).until(
+        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")))
     checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.value}')]")
     if "ContractorEmpRights?sess" in context._config.driver.current_url:
         rep.add_label_to_step('reached destination',
                               "We have reached our desired url to check the validation process of e-mail")
-    else:rep.add_label_to_step('failure to reach destination',"didnt reqquired form url destination")
+    else:
+        rep.add_label_to_step('failure to reach destination', "didnt reqquired form url destination")
     context.validate = checkId.is_displayed()
+
 
 @when('4th close all tabs')
 def close_tabs(context):
@@ -186,7 +216,7 @@ def close_tabs(context):
         rep.add_label_to_step("No email received", "E-mail is not received")
         context.validate = None
     num_tabs = len(context._config.driver.window_handles)
-    for i in range(1,num_tabs):
+    for i in range(1, num_tabs):
         context._config.driver.close()
         context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
         WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
@@ -198,13 +228,14 @@ def close_tabs(context):
     if num_tabs == 1:
         rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
     else:
-        rep.add_label_to_step(f"{num_tabs-1} unused tabs still open", "Not all unused tabs are closed")
-        raise Exception(f"{num_tabs-1} unused tabs still open")
+        rep.add_label_to_step(f"{num_tabs - 1} unused tabs still open", "Not all unused tabs are closed")
+        raise Exception(f"{num_tabs - 1} unused tabs still open")
+
 
 @Then('5th Validate if went back to expected form')
 def validate_form_email(context):
     if context.validate == None:
-        rep.add_label_to_step('No e-mail recieved','couldnt reach desiered page to make validation')
+        rep.add_label_to_step('No e-mail recieved', 'couldnt reach desiered page to make validation')
         raise ValueError("No email received, couldn't make validation")
     if not context.validate:
         rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
@@ -215,9 +246,9 @@ def validate_form_email(context):
         rep.add_label_to_step('Correct verification',
                               "validation done correctly and we are at the desired form number")
     current_page = context._config.current_page
-    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,force_create=True)
+    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,
+                                                         force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
-
 
 
 def wait_for_new_email(context, count_of_emails):
@@ -227,5 +258,5 @@ def wait_for_new_email(context, count_of_emails):
         log.info('wait for email')
         time.sleep(3)
     else:
-        rep.add_label_to_step("e-mail is not received","E-mail is not received")
+        rep.add_label_to_step("e-mail is not received", "E-mail is not received")
         raise ce.MJTimeOutError('no new email received')

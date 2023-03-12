@@ -39,6 +39,7 @@ class Dropdown(BaseWidget):
                 return chosenElement.text, elements_list
 
     def select_element(self, pre):
+        self.click_button()
         WebDriverWait(self.web_element, 5).until(
             EC.presence_of_element_located((DropdownLocators.select(pre))))
         prefix = self.web_element.find_element(*DropdownLocators.select(pre))
