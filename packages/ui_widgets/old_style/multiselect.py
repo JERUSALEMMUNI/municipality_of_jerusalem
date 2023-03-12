@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
@@ -9,9 +10,9 @@ log = logger.get_logger(__name__)
 
 
 class MultiSelect(BaseWidget):
-    def __init__(self, label,index, base_path="/following-sibling::p-multiselect"):
-        super().__init__(label,index)
-        self.base_path = base_path
+    def __init__(self, label, index, path_locator="/following-sibling::p-multiselect"):
+        super().__init__(label, index)
+        self.path_locator = path_locator
         self.multiselect = None
         self.close_button = None
         self.select_all = None

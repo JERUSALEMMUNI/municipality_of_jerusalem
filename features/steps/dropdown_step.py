@@ -1,7 +1,5 @@
-import time
-
 from behave import *
-import allure
+
 from infra import logger, reporter
 
 rep = reporter.get_reporter()
@@ -24,13 +22,16 @@ def choose_in_search(context, widget_name):
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     # widget.click_button()
-    #todo: wrong approach
+    # todo: wrong approach
     if widget.select_element(option_value) != None:
-        rep.add_label_to_step("selected Value",f"{option_value} is selected")
+        rep.add_label_to_step("selected Value", f"{option_value} is selected")
+    # if "No results found" in widget.get_search_result_if_empty():
+    #     rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
+    # assert "No results found" in widget.get_search_result_if_empty()
 
 
 @when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
-def pick_element(context,parent, option_value, widget_name):
+def pick_element(context, parent, option_value, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
     widget.click_button()
     widget.select_element(option_value)
@@ -41,6 +42,9 @@ def write_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     widget.write_in_search_field(option_value)
+    if "No results found" in widget.get_search_result_if_empty():
+        rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
+    assert "No results found" in widget.get_search_result_if_empty(), "(No results found) message should appear"
 
 
 @When('clear search field for "{widget_name}"')
@@ -64,9 +68,9 @@ def scroll_to_element(context, widget_name, option_value):
     widget.click_button()
     driver = context._config.current_page.driver
     if option_value in widget.item_search_scroll(driver, option_value)[1]:
-        rep.add_label_to_step("Chosen option is in list",f"Chosen option [{option_value}] is in list")
+        rep.add_label_to_step("Chosen option is in list", f"Chosen option [{option_value}] is in list")
     else:
-        rep.add_label_to_step("Chosen option is not in list",f"Chosen option [{option_value}] is not found in list")
+        rep.add_label_to_step("Chosen option is not in list", f"Chosen option [{option_value}] is not found in list")
         raise AssertionError('Chosen option is not in list')
 
 

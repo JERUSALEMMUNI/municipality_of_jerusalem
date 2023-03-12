@@ -1,9 +1,8 @@
-import time
-
 import allure
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
 from infra import logger
 from ui_widgets.new_style.dropdown_search_field import DropdownSearch
 from ui_widgets.new_style.widget_locators.dropdown_search_selectbox_locators import DropdownSearchSelectBoxLocators
@@ -12,10 +11,9 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearchSelectBox(DropdownSearch):
-    def __init__(self, label,index, base_path="/following-sibling::p-multiselect"):
-        super().__init__(label,index)
-        self.base_path = base_path
-
+    def __init__(self, label, index, path_locator="/following-sibling::p-multiselect"):
+        super().__init__(label, index)
+        self.path_locator = path_locator
 
     @property
     def read_text_value(self):
@@ -35,14 +33,15 @@ class DropdownSearchSelectBox(DropdownSearch):
     def validate_option_is_not_selected(self, option):
         if "highlight" not in self.web_element.find_element(by=By.XPATH,
                                                             value=f"//li[@aria-label='{option}']").get_attribute(
-                'class'):
+            'class'):
             return True
         else:
             return False
 
     def count_selected_options(self):
         if 'invalid' in self.web_element.find_element(By.XPATH,
-                                                      value=f"//label[contains(text(),'{self.label}')]/following-sibling::p-multiselect").get_attribute('class'):
+                                                      value=f"//label[contains(text(),'{self.label}')]/following-sibling::p-multiselect").get_attribute(
+            'class'):
             return 0
         else:
             WebDriverWait(self.web_element, 1).until(
@@ -139,4 +138,3 @@ class DropdownSearchSelectBox(DropdownSearch):
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")
-

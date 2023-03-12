@@ -1,7 +1,7 @@
-import time
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
 from infra import logger
 from ui_widgets.new_style.dropdown_field import Dropdown
 from ui_widgets.new_style.widget_locators.dropdown_search_locators import DropdownSearchLocators
@@ -10,9 +10,9 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearch(Dropdown):
-    def __init__(self, label,index, base_path="/following-sibling::p-dropdown"):
-        super().__init__(label,index)
-        self.base_path = base_path
+    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
+        super().__init__(label, index)
+        self.path_locator = path_locator
 
     def search_element(self, value_selected):
         dropDown_open = self.web_element.get_attribute('aria-expanded')
@@ -59,7 +59,6 @@ class DropdownSearch(Dropdown):
     @property
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
-
 
     def write_in_search_field(self, text):
         element = WebDriverWait(self.web_element, 30).until(

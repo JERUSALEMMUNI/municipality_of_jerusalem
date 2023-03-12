@@ -1,24 +1,24 @@
-import time
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from ui_widgets.base_widget import BaseWidget
+
 from infra import logger
+from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
 
 log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, base_path="/following-sibling::p-dropdown"):
+    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
         super().__init__(label, index)
-        self.base_path = base_path
+        self.path_locator = path_locator
         self.list = []
 
     @property
     def locator(self):
         return {'By': By.XPATH,
-                'Value': f"//label[contains(text(),'{self.label}')]{self.base_path}"}
+                'Value': f"//label[contains(text(),'{self.label}')]{self.path_locator}"}
 
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
