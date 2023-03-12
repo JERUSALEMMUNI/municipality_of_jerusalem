@@ -1,4 +1,5 @@
-from selenium.webdriver.common.by import By
+from time import sleep
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -19,18 +20,12 @@ class CalendarClock(CalendarField):
         month = new_date[1]
         day = new_date[0]
         year = new_date[2]
-        select_month = self.web_element.find_element(*CalenderLocators.month)
-        log.info(select_month.text)
-        log.info(config.months[month])
-        for i in range(12):
-            if select_month.text != config.months[month]:
-                click = WebDriverWait(self.web_element, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, "//a[starts-with(@class,'ui-datepicker-prev')]")))
-                click.click()
-                select_month = self.web_element.find_element(*CalenderLocators.month)
 
-            else:
-                break
+        for i in range(12):
+            select_month = self.web_element.find_element(*CalenderLocators.month)
+            if select_month.text != config.months[month]:
+                WebDriverWait(self.web_element, 10).until(
+                    EC.presence_of_element_located(CalenderClockLocators.click_months)).click()
         self.date_by_select_day_year(day, year)
 
     def select_time(self, date, time):
@@ -38,24 +33,16 @@ class CalendarClock(CalendarField):
         hour = new_time[0]
         minute = new_time[1]
         self.click_on()
-        h = self.web_element.find_element(*CalenderClockLocators.hour)
-        m = self.web_element.find_element(*CalenderClockLocators.minutes)
         for i in range(24):
+            h = self.web_element.find_element(*CalenderClockLocators.hour)
             if h.text != hour:
-                click = WebDriverWait(self.web_element, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, "//div[starts-with(@class,'ui-hour-picker')]//a[1]")))
-                click.click()
-                h = self.web_element.find_element(*CalenderClockLocators.hour)
-            else:
-                break
+                WebDriverWait(self.web_element, 10).until(
+                    EC.presence_of_element_located(CalenderClockLocators.click_hours)).click()
 
         for i in range(60):
+            m = self.web_element.find_element(*CalenderClockLocators.minutes)
             if m.text != minute:
-                click = WebDriverWait(self.web_element, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, "//div[starts-with(@class,'ui-minute-picker')]//a[1]")))
-                click.click()
-                m = self.web_element.find_element(*CalenderClockLocators.minutes)
-            else:
-                break
-
+                WebDriverWait(self.web_element, 10).until(
+                    EC.presence_of_element_located(CalenderClockLocators.click_minutes)).click()
         self.with_time(date)
+
