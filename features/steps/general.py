@@ -123,6 +123,7 @@ def check_email(context):
     context.count_of_emails = len(emails)
     wait_for_new_email(context, context.count_of_emails)
     email_body = context.mailbox.get_messages()[0].html_body
+    context.email_body = email_body
     if email_body is not None:
         rep.add_label_to_step("email received", "E-mail received correctly")
     else:
@@ -140,6 +141,9 @@ def check_email(context):
 @when('2nd click on link and fill email "{email}" pin code')
 def check_email(context, email):
     # Open the URL in a new window
+    if context.email_body == None:
+        rep.add_label_to_step("No email received", "E-mail is not received")
+        raise AssertionError('No email recieved')
     context._config.driver.execute_script("window.open('{}', '_blank');".format(GeneralLocators.validation_link))
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
     WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.form_number))
@@ -150,6 +154,9 @@ def check_email(context, email):
 
 @when('3rd wait for second email to get "קוד האימות"')
 def get_second_pin_code(context):
+    if context.email_body == None:
+        rep.add_label_to_step("No email received", "E-mail is not received")
+        raise AssertionError('No email recieved')
     wait_for_new_email(context, context.count_of_emails+1)
     email_body2 = context.mailbox.get_messages()[0].html_body
     if email_body2 is not None:
@@ -175,6 +182,9 @@ def get_second_pin_code(context):
 
 @when('4th close all tabs')
 def close_tabs(context):
+    if context.email_body == None:
+        rep.add_label_to_step("No email received", "E-mail is not received")
+        context.validate = None
     num_tabs = len(context._config.driver.window_handles)
     for i in range(1,num_tabs):
         context._config.driver.close()
@@ -193,6 +203,9 @@ def close_tabs(context):
 
 @Then('5th Validate if went back to expected form')
 def validate_form_email(context):
+    if context.validate == None:
+        rep.add_label_to_step('No e-mail recieved','couldnt reach desiered page to make validation')
+        raise ValueError("No email received, couldn't make validation")
     if not context.validate:
         rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
                                                 "equal the one we filled at the beginning")
@@ -201,7 +214,6 @@ def validate_form_email(context):
     else:
         rep.add_label_to_step('Correct verification',
                               "validation done correctly and we are at the desired form number")
-    #Todo: validation is done correctly but there is a broken
     current_page = context._config.current_page
     current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
@@ -215,5 +227,5 @@ def wait_for_new_email(context, count_of_emails):
         log.info('wait for email')
         time.sleep(3)
     else:
-        rep.add_label_to_step("e-mail is not received")
+        rep.add_label_to_step("e-mail is not received","E-mail is not received")
         raise ce.MJTimeOutError('no new email received')

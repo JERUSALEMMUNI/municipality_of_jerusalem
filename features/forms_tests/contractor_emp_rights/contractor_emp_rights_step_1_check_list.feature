@@ -187,7 +187,7 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
 
   Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
     Given Navigate to "ContractorEmpRights" form
-    When fill " " as invalid value in "מספר טלפון נייד"
+    When fill "052- " as invalid value in "מספר טלפון נייד"
     Then check if "מספר טלפון נייד" error is "יש להזין מספר טלפון נייד"
 
 

@@ -17,13 +17,18 @@ def choose_in_search(context, file_path, widget_name):
 @then('validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
 def choose_in_search(context, file_name_index, file_name, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.check_file_name(file_name_index, file_name), "File name is not correct"
+    if not widget.check_file_name(file_name_index, file_name):
+        rep.add_label_to_step("Wrong file extension","File extension is not accepted, Only two formats are allowed "
+                                                     "pdf and jpg")
+        raise AssertionError("File extension is not accepted")
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')
 def choose_in_search(context, file_size_index, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    assert widget.check_file_size(file_size_index), "File size is not accepted"
+    if not widget.check_file_size(file_size_index):
+        rep.add_label_to_step("Wrong file size","File size is not accepted, it is bigger than 6MB")
+        raise AssertionError("File size is not accepted")
 
 
 @when('delete file "{wanted_file_index}" in "{widget_name}"')

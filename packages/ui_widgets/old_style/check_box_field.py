@@ -7,8 +7,8 @@ log = logger.get_logger(__name__)
 
 
 class CheckBox(BaseWidget):
-    def __init__(self, label,index):
-        super().__init__(label,index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
 
     @property
     def locator(self):
@@ -37,3 +37,11 @@ class CheckBox(BaseWidget):
             return error_msg.text == error_expected
         except:
             log.info("Error label is not available")
+
+    def is_invalid(self):
+        x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
+        return 'invalid' in x.get_attribute('class')
+
+    def is_valid(self):
+        x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
+        return 'valid' in x.get_attribute('class')

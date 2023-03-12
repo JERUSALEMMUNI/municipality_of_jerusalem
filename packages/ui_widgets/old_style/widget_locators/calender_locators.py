@@ -9,6 +9,7 @@ class CalenderLocators:
     dialog = (By.XPATH, "//i[@class='fa fa-times-circle']")
     accept_alert = (By.XPATH, "//div[@class='generalBtn']")
     error_msg = (By.XPATH, "./parent::span/parent::p-calendar/following-sibling::span")
+    valid_checker = (By.XPATH, "./parent::span/parent::p-calendar")
 
     @staticmethod
     def day(day):

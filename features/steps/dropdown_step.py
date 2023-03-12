@@ -1,3 +1,5 @@
+import time
+
 from behave import *
 import allure
 from infra import logger, reporter
@@ -22,7 +24,8 @@ def choose_in_search(context, widget_name):
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
-    widget.select_element(option_value)
+    if widget.select_element(option_value) != None:
+        rep.add_label_to_step("selected Value",f"{option_value} is selected")
 
 
 @when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
@@ -59,7 +62,11 @@ def scroll_to_element(context, widget_name, option_value):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
     driver = context._config.current_page.driver
-    assert option_value in widget.item_search_scroll(driver, option_value)[1], 'field has no desired value'
+    if option_value in widget.item_search_scroll(driver, option_value)[1]:
+        rep.add_label_to_step("Chosen option is in list",f"Chosen option [{option_value}] is in list")
+    else:
+        rep.add_label_to_step("Chosen option is not in list",f"Chosen option [{option_value}] is not found in list")
+        raise AssertionError('Chosen option is not in list')
 
 
 @then('validate "{widget_name}" has no options')

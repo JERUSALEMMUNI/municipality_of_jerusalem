@@ -20,10 +20,13 @@ def add_items_month_year_list(context, items, widget_name):
     widget.remove_item(items)
 
 
-@when('pick year "{year}" in widget "{widget_name}" at index "{number}"')
+@when('pick year "{year:d}" in widget "{widget_name}" at index "{number}"')
 def add_items_month_year_list(context, year, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     widget.init_widget()
+    if year > 2024 or year < 2018:
+        raise ValueError("Year value should be between 2018-2023")
+    year = str(year)
     widget.set_year(year, number)
 
 
