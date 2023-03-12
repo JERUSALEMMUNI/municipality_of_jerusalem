@@ -100,12 +100,11 @@ def scroll_to_element(context, widget_name, option_value):
         raise AssertionError("Option is not found at the list")
 
 
-@then('selected option of "{widget_name}" is "{element}"')
-def select_element_after_scroll(context, widget_name, element):
+@then('selected option of "{widget_name}" is "{option}"')
+def select_element_after_scroll(context, widget_name, option):
     widget = context._config.current_page.widgets[widget_name]
-    result = widget.validate_selected()
-    log.info("result is: " + result + " ?== prefix value " + element)
-    assert result == element, 'selected element doesnt equal text'
+    widget.validate_selected(option)
+    assert widget.validate_selected(option), 'selected option doesnt equal text'
 
 
 @when('select all options of "{widget_name}"')

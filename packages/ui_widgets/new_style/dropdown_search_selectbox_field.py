@@ -62,6 +62,12 @@ class DropdownSearchSelectBox(DropdownSearch):
         element.click()
 
     def select_all_checkbox(self):
+        """
+        first we will clear the search text field from any text so all the values appear to us.
+        then will check first if the select all check box are options are all selected, if not it will
+        click twice.
+        then we will add the checked options one by one to use it for validation later on.
+        """
         # We should clear the search field first, so we can uncheck all the list
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located((By.XPATH, f"//p-multiselect/div/div/div/div/input")))
@@ -103,11 +109,11 @@ class DropdownSearchSelectBox(DropdownSearch):
             list.append(i.text)
         log.info(self.list)
         log.info(list)
-        self.discription = []
+        discription = []
         for i in range(0, len(list)):
             if self.list[i] != list[i]:
-                self.discription.append(["no. " + str(i), self.list[i], list[i]])
-        return self.list == list, self.discription
+                discription.append(["no. " + str(i), self.list[i], list[i]])
+        return self.list == list, discription
 
     def table_for_allure(self, table, table_headers):
         table_rows = [list(row) for row in table]

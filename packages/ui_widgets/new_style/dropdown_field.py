@@ -53,10 +53,10 @@ class Dropdown(BaseWidget):
         log.info(self.list)
         return prefix.text
 
-    def validate_selected(self):
+    def validate_selected(self, option):
         result = self.web_element.text
         returnResult = result.splitlines()[0]
-        return returnResult
+        return returnResult == option
 
     @property
     def read_text_value(self):
