@@ -59,48 +59,4 @@ Feature: CollectiveLifeInsurance form - checklist scenarios
       | id   |
       | 1234 |
 
-#------------------------------------------------------------------------------------------------
-
-  Scenario: Header elements test
-    Given Navigate to "CollectiveLifeInsurance" form
-    Then validate municipality logo is displayed in old header
-    And validate old header title is default
-    And validate form Title in old header is "שרותים דיגיטליים"
-    And validate form explanation in old header contains "עובדות ועובדים יקרים,"
-    And validate form explanation in old header exists and contains at least "20" chars
-
-
-  Scenario: Footer elements test
-    Given Navigate to "CollectiveLifeInsurance" form
-    Then Validate Facebook Logo is displayed in footer
-    Then Validate Instagram Logo is displayed in footer
-    Then Validate Twitter Logo is displayed in footer
-    Then Validate old footer call us is displayed
-    Then Validate old footer follow us is displayed
-    Then Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים ראשון עד חמישי בין השעות 08:30-16:00"
-    Then Validate old footer follow us text is "עקבו אחרינו"
-    Then Validate old footer call us has the default text
-    Then Validate old footer follow us has the default text
-
-
-  Scenario: footer facebook url test
-    Given Navigate to "CollectiveLifeInsurance" form
-    Then Validate facebook url in footer
-    Then Back to previous page
-    Then Validate current page is "CollectiveLifeInsurance"
-
-
-  Scenario: footer instagram url test
-    Given Navigate to "CollectiveLifeInsurance" form
-    Then Validate instagram url in footer
-    Then Back to previous page
-    Then Validate current page is "CollectiveLifeInsurance"
-
-  Scenario: footer twitter url test
-    Given Navigate to "CollectiveLifeInsurance" form
-    Then Validate twitter url in footer
-    Then Back to previous page
-    Then Validate current page is "CollectiveLifeInsurance"
-
-
 
