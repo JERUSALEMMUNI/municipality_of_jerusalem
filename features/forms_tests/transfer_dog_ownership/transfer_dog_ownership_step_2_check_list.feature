@@ -62,7 +62,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 2
       | sdwאטו#ه#&^*@!#% | !@#$%%            | sdw##&&^*@!#% |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם הכלב, גזע, צבע: קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When write an invalid value "<dog_name>" in "שם הכלב"
     And write an invalid value "<dog_breeds>" in "גזע"
@@ -79,7 +79,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 2
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם הכלב, גזע, צבע: קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When write an invalid value " " in "שם הכלב"
     And write an invalid value " " in "גזע"
@@ -111,7 +111,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 2
       | #$%^&      |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר שבב: קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When write an invalid value "<chip_number>" in "מספר שבב"
     Then check if "מספר שבב" error is "מספר שבב לא תקין"
@@ -123,12 +123,12 @@ Feature: TransferDogOwnership form - CheckList scenarios step 2
       | شيص               |
 
 
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (קלט  ריק)
+  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר שבב: קלט  ריק)
     Given Navigate to "TransferDogOwnership" form
     When write an invalid value " " in "מספר שבב"
     Then check if "מספר שבב" error is "יש למלא מספר שבב"
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה לשאר השדות ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה לשאר השדות (מין, הכלב מחוסן כנגד מחלת הכלבת, שנת לידה, הכלב מחוסן כנגד מחלת הכלבת, הכלב רשום ברשות המקומית, תאריך מסירת הכלב קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When click on "המשך" icon
     Then check if "מין" error is "יש לבחור מין"

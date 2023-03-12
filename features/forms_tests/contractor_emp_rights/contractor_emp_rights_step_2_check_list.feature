@@ -26,7 +26,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 2
 
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה  ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה  (הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים: קלט ריק)
     Given Navigate to "ContractorEmpRights" form
     When click on "שלח" icon
     When close error message

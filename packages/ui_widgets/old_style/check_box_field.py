@@ -38,10 +38,12 @@ class CheckBox(BaseWidget):
         except:
             log.info("Error label is not available")
 
+    @property
     def is_invalid(self):
         x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
         return 'invalid' in x.get_attribute('class')
 
+    @property
     def is_valid(self):
         x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
         return 'valid' in x.get_attribute('class')

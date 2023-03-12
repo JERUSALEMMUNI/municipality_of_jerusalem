@@ -190,4 +190,4 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick year "2019" in widget "חודשים לבדיקה" at index "2"
     When pick a group of months "5,6,7" in widget "חודשים לבדיקה" at index "2"
     When remove "1" in widget "חודשים לבדיקה"
-    And click on "שמור" icon
+

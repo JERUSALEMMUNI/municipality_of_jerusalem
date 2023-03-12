@@ -80,7 +80,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | #$%^&     |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (תעודת זהות פרטי מגיש הבקשה: קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value "<id>" in "תעודת זהות"
     Then from parent "פרטי מגיש הבקשה" check if "תעודת זהות" error is "מספר זהות לא תקין"
@@ -96,13 +96,13 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | suhaib               |
 
 
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (תעודת זהות פרטי מגיש הבקשה: קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value " " in "תעודת זהות"
     Then from parent "פרטי מגיש הבקשה" check if "תעודת זהות" error is "יש להזין מספר זהות"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית (valid)
+  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית (שם פרטי, שם משפחה, יישוב, רחוב) (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write a valid value "<last_name>" in "שם משפחה"
@@ -119,7 +119,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית (invalid)
+  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית (שם פרטי, שם משפחה, יישוב, רחוב) (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "<last_name>" in "שם משפחה"
@@ -137,7 +137,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | סוהייב##&&^*@!#% | !@#$%%           | סוהייב##&&^*@!#% | !@#$%%           |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי, שם משפחה, רחוב, יישוב: קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "<last_name>" in "שם משפחה"
@@ -162,7 +162,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי, שם משפחה, רחוב, יישוב: קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write an invalid value " " in "שם משפחה"
@@ -202,7 +202,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | a@b.co./mb   |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל: קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<email>" in "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "דוא''ל לא תקין"
@@ -215,7 +215,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | صهيب                 |
       | suhaib               |
 
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל: קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "יש להזין כתובת אימייל"
@@ -254,7 +254,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 050-234#$%   | שד34        | ראטוחFן          | بلات          |
       | 050-כעיחUןם  | #$5         | %^لاتن           | ראטון         |
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד, מספר בית, מספר דירה, ת.ד:  קלט לא תקין)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
     And  from parent "פרטי המוסר" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
@@ -280,7 +280,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 050-כעיחUןם   | #$5        | %^لاتن             | ראטון         |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד, מספר בית: קלט ריק)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" fill "052- " as invalid value in "מספר טלפון נייד"
     And  from parent "פרטי המוסר" fill "054- " as invalid value in "מספר טלפון נייד"

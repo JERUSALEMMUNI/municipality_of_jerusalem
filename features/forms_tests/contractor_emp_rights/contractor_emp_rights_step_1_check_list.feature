@@ -8,7 +8,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
   - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
 
 
-  Scenario: הסבר לטופס - לכל טופס חייב להיות הסבר -בבדיקה מול טפסים ישנים שיש התאמה מול ההסברים הישנים
+  Scenario: הסבר לטופס - לדף (ContractorEmpRights)
     Given Navigate to "ContractorEmpRights" form
     When click on "מידע" icon
     Then validate information dialog is opened
@@ -17,7 +17,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
     When click on X button
     Then validate information dialog is closed
 
-  Scenario Outline: לחסום תעודות זהות פקטיביות (valid)
+  Scenario Outline:  לחסום תעודות זהות פקטיביות (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<id>" in "מספר זהות"
     Examples:
@@ -105,7 +105,7 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
       | يبلdfgגכעי4ٌٌُُلإ$%פ | גכע#$%^&*     | fןכיبل@.com | يبلdfgגכעי4ٌٌُُلإ$%פ | פsda          |  يبلان               | يبلdfgגכעי4ٌٌُُلإ$%פ|
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי, שם משפחה, אימייל, רחוב, שם אתר עירוני, פרטי התלונה:  קלט לא תקין)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<first_name>" in "שם פרטי"
     When write an invalid value "<last_name>" in "שם משפחה"
@@ -129,7 +129,7 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
       | يبلdfgגכעי4ٌٌُُلإ$%פ | גכע#$%^&*     | fןכיبل@.com | يبلdfgגכעי4ٌٌُُلإ$%פ | פsda          |  يبلان               | يبلdfgגכעי4ٌٌُُلإ$%פ|
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי, שם משפחה, אימייל, רחוב, שם אתר עירוני, פרטי התלונה: קלט ריק)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value " " in "שם פרטי"
     When write an invalid value " " in "שם משפחה"
@@ -167,7 +167,7 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
       | 644e3e           | 64e43e             | 026e83066         | 058-389e485  |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט לא תקין)
+  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר בית, מספר דירה, מספר טלפון, מספר טלפון נייד: קלט לא תקין)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<house_number>" in "מספר בית"
     When write an invalid value "<department_number>" in "מספר דירה"
@@ -185,13 +185,13 @@ Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאי
       | 6443ee           | 644e3e             | 026e83066         | 058-389e485  |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר בית, מספר דירה, מספר טלפון, מספר טלפון נייד: קלט ריק)
     Given Navigate to "ContractorEmpRights" form
     When fill "052- " as invalid value in "מספר טלפון נייד"
     Then check if "מספר טלפון נייד" error is "יש להזין מספר טלפון נייד"
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה לשאר השדות ( קלט ריק)
+  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה לשאר השדות (ענף, שם חברה, תאריך תחילת העבודה בחברה, נושא התלונה, חודשים לבדיקה, האם היתה פניה למעסיק קודם הגשת תלונה זו: קלט ריק)
     Given Navigate to "ContractorEmpRights" form
     When click on "המשך" icon
     Then check if "ענף" error is "יש לבחור ענף"
