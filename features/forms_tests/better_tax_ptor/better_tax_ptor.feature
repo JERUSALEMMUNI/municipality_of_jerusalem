@@ -68,15 +68,16 @@ Feature: BetterTaxPtor form
 
 
 #------------------------------------------------------------------------------------------------
+  @header
   Scenario: Header elements test
     Given Navigate to "BetterTaxPtor" form
     Then validate municipality logo is displayed in old header
     And validate old header title is default
-    And validate form Title in old header is "שרותים דיגיטליים"
+    And validate form Name in old header is "בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר"
     And validate form explanation in old header contains "בבקשה להיתר אשר אושרה בועדה ניתן להגיש בקשות לפטור מהיטל השבחה"
     And validate form explanation in old header exists and contains at least "20" chars
 
-
+  @footer
   Scenario: Footer elements test
     Given Navigate to "BetterTaxPtor" form
     Then Validate Facebook Logo is displayed in footer
@@ -89,20 +90,21 @@ Feature: BetterTaxPtor form
     And Validate old footer call us has the default text
     And Validate old footer follow us has the default text
 
-
+  @footer
   Scenario: footer facebook url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate facebook url in footer
     And Back to previous page
     And Validate current page is "BetterTaxPtor"
 
-
+  @footer
   Scenario: footer instagram url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate instagram url in footer
     And Back to previous page
     And Validate current page is "BetterTaxPtor"
 
+  @footer
   Scenario: footer twitter url test
     Given Navigate to "BetterTaxPtor" form
     Then Validate twitter url in footer

@@ -128,6 +128,12 @@ def validate_header_title_is_default(context, form_title):
     assert widget.validate_header_title_text(form_title), "Header title not equal to expected title"
 
 
+@then('validate form Name in old header is "{form_name}"')
+def validate_header_title_is_default(context, form_name):
+    widget = context._config.current_page.widgets["header"]
+    assert widget.validate_header_application_name_text(form_name), "Form Name not equal to expected name"
+
+
 @then('validate form explanation in old header contains "{explanation_text}"')
 def validate_header_explanation_contains_text(context, explanation_text):
     widget = context._config.current_page.widgets["header"]

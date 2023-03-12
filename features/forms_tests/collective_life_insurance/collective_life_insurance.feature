@@ -65,17 +65,16 @@ Feature: CollectiveLifeInsurance form
 
 
   #------------------------------------------------------------------------------------------------
-
-
+  @header
   Scenario: Header elements test
     Given Navigate to "CollectiveLifeInsurance" form
     Then validate municipality logo is displayed in old header
     And validate old header title is default
-    And validate form Title in old header is "שרותים דיגיטליים"
+    And validate form Name in old header is "טופס הצטרפות לביטוח חיים קולקטיבי לעובדי העירייה"
     And validate form explanation in old header contains "עובדות ועובדים יקרים,"
     And validate form explanation in old header exists and contains at least "20" chars
 
-
+  @footer
   Scenario: Footer elements test
     Given Navigate to "CollectiveLifeInsurance" form
     Then Validate Facebook Logo is displayed in footer
@@ -88,20 +87,21 @@ Feature: CollectiveLifeInsurance form
     Then Validate old footer call us has the default text
     Then Validate old footer follow us has the default text
 
-
+  @footer
   Scenario: footer facebook url test
     Given Navigate to "CollectiveLifeInsurance" form
     Then Validate facebook url in footer
     Then Back to previous page
     Then Validate current page is "CollectiveLifeInsurance"
 
-
+  @footer
   Scenario: footer instagram url test
     Given Navigate to "CollectiveLifeInsurance" form
     Then Validate instagram url in footer
     Then Back to previous page
     Then Validate current page is "CollectiveLifeInsurance"
 
+  @footer
   Scenario: footer twitter url test
     Given Navigate to "CollectiveLifeInsurance" form
     Then Validate twitter url in footer

@@ -46,6 +46,10 @@ class HeaderField(BaseWidget):
         :return: bool if header title same as default title
         """
         log.info("validating if header title same as default title")
+        log.info(f"header title in site = {self.get_header_title().text}")
+        log.info(f"header title must be = {self.main_title}")
+        log.debug(f"check if header title in site {self.get_header_title().text}")
+        log.debug(f"check if header title same  as expected {self.main_title}")
         return self.get_header_title().text == self.main_title
 
     def validate_header_title_text(self, title) -> bool:
@@ -55,6 +59,7 @@ class HeaderField(BaseWidget):
         """
         log.info("check if header title same  as expected title")
         log.debug(f"check if header title same  as expected {title}")
+        log.debug(f"check if header title same  as expected {self.get_header_title().text}")
         return self.get_header_title().text == title
 
     def validate_header_title_is_displayed(self) -> bool:
