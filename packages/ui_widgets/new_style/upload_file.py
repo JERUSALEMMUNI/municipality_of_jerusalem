@@ -26,7 +26,7 @@ class UploadFile(BaseWidget):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
-        allowed_extension_values = ['png','pdf']
+        allowed_extension_values = ['png', 'pdf']
         if file_extenssion in allowed_extension_values:
             extention = True
         else:
@@ -36,7 +36,6 @@ class UploadFile(BaseWidget):
         else:
             same_uploaded = False
         return extention, same_uploaded
-
 
     def check_file_size(self, file_index):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index))

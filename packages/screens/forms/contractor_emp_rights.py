@@ -45,7 +45,7 @@ class ContractorEmpRights(BasePage):
         self.widgets['מספר זהות'].set_text('332796184')
         self.widgets['שם פרטי'].set_text('דני')
         self.widgets['שם משפחה'].set_text('גלעד')
-        self.widgets['מספר טלפון נייד'].set_text('058-8078687')
+        self.widgets['מספר טלפון נייד'].set_full_phone('058-8078687')
         self.widgets['אימייל'].set_text('asd@wwf.com')
         self.widgets['ענף'].select_element('ניקיון')
         self.widgets['שם חברה'].select_element('מוקד יסעור נקיון ותחזוקה בע"מ')
