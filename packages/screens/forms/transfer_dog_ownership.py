@@ -40,7 +40,7 @@ class TransferDogOwnership(BasePage):
         self.widgets['הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק.'] = create_widget('CheckBox', style=self.style, label='הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק.')
         self.widgets['הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים.'] = create_widget('CheckBox', style=self.style, label='הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים.')
 
-        self.widgets['שם הכלב'] = create_widget('TextField', style=self.style, label='שם הכלב')
+        self.widgets['שם הכלב'] = create_widget('TextField', style=self.style, label='שם הכלב:')
         self.widgets['גזע'] = create_widget('TextField', style=self.style, label='גזע')
         self.widgets['מין'] = create_widget('RadioButtonField', style=self.style, label='מין')
         self.widgets['צבע'] = create_widget('TextField', style=self.style, label='צבע')

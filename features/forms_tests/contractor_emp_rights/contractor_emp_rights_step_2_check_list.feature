@@ -1,3 +1,4 @@
+
 Feature: ContractorEmpRights form - CheckList scenarios step 2
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה

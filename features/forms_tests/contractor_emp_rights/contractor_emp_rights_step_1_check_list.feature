@@ -17,7 +17,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
     When click on X button
     Then validate information dialog is closed
 
-    @footer
+  @footer
   Scenario: footer check (ContractorEmpRights)
     Given Navigate to "ContractorEmpRights" form
     Then validate Facebook Logo is displayed in footer

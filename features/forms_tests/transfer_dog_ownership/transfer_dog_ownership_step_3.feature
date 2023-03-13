@@ -32,9 +32,9 @@ Feature: TransferDogOwnership form - scenarios step 3
     And write a valid value "982009104328548" in "מספר שבב"
     And pick "2020" from "שנת לידה"
     And choose "כן" from "הכלב מחוסן כנגד מחלת הכלבת?"
-    And pick "1/2/2021" from calendar of "תאריך חיסון כלבת אחרון"
+    And pick "8/3/2020" from second type of calendar of "תאריך חיסון כלבת אחרון"
     And search for "אבו סריחאן )שבט(" in "הכלב רשום ברשות המקומית"
-    And pick "3/2/2020" from calendar of "תאריך מסירת הכלב"
+    And pick "8/3/2020" from second type of calendar of "תאריך מסירת הכלב"
     When click on "המשך" icon
 
 

@@ -16,7 +16,6 @@ class CalendarClock(CalendarField):
         super().__init__(label, index)
 
     def with_time(self, date):
-        self.click_on()
         new_date = date.split("/")
         month = new_date[1]
         day = new_date[0]
@@ -45,5 +44,9 @@ class CalendarClock(CalendarField):
             if m.text != minute:
                 WebDriverWait(self.web_element, 10).until(
                     EC.presence_of_element_located(CalenderClockLocators.click_minutes)).click()
+        self.with_time(date)
+
+    def second_calender(self, date):
+        self.click_on()
         self.with_time(date)
 

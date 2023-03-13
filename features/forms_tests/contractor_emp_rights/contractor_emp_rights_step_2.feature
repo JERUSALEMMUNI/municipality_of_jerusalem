@@ -14,7 +14,7 @@ Feature: ContractorEmpRights form - scenarios step 2
 
 @this_to_test
   Scenario: TC_EMPCOMP_10 - Upload one file to each section
-#    Then validate current step is "צרופות והצהרה"
+    Then validate current step is "צרופות והצהרה"
     When Upload "png_to_upload.png" file in "תלושי שכר"
     And Upload "word_to_upload.docx" file in "תלושי שכר"
     And Upload "excel_to_upload.xlsx" file in "תלושי שכר"
