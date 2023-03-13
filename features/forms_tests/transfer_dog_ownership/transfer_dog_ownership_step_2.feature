@@ -40,7 +40,7 @@ Feature: TransferDogOwnership form - scenarios step 2
     And pick "3/2/2020" from calendar of "תאריך מסירת הכלב"
     And click on "שמור" icon
     And close error message
-    When 1st get pin code from email validation
+    When 1st wait for email that contains pin code and link
     And 2nd click on link and fill email "{email}" pin code
     And 3rd wait for second email to get "קוד האימות"
     And 4th close all tabs

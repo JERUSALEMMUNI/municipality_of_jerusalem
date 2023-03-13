@@ -35,7 +35,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And write a valid value "לבן" in "צבע"
     And write a valid value "982009104328548" in "מספר שבב"
     And click on "שמור" icon
-    When 1st get pin code from email validation
+    When 1st wait for email that contains pin code and link
     When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
     When 3rd wait for second email to get "קוד האימות"
     When 4th close all tabs
