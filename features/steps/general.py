@@ -114,7 +114,15 @@ def error_msg(context, widget_name, error_expectation):
 @then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, parent, widget_name, error_expectation):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    assert widget.get_error_message(error_expectation), "Incorrect error expectation message"
+    if not widget.is_invalid:
+        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
+        raise AssertionError("invalid value and considered as valid")
+    if not widget.get_error_message(error_expectation):
+        log.info(f"The error value at field is incorrect")
+        rep.add_label_to_step("incorrect message or missing",
+                              "incorrect or missing error value and considered as valid")
+        raise AssertionError("invalid value and considered as valid")
+    rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
 @when('open disabled list')

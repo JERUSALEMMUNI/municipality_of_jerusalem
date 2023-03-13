@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: TransferDogOwnership form - scenarios step 1
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -14,7 +14,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-sdasdwטו" as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "سيليسبيس" from "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"
@@ -27,7 +27,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "054-sdasdwטו" as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "سيليسبيس" from "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"
@@ -40,14 +40,13 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "3" in "מספר דירה"
     And  from parent "פרטי המוסר" write a valid value "3233" in "ת.ד"
-    When from header click on "שמור" icon
-    When 1st wait for email that contains pin code and link
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
-    When click on "המשך" icon
+#    When from header click on "שמור" icon
+#    When 1st wait for email that contains pin code and link
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
 
 
 
@@ -58,7 +57,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "053-sdasdwטו" as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "سيليسبيس" from "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"

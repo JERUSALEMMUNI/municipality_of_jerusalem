@@ -27,9 +27,7 @@ class Dropdown(BaseWidget):
 
     def item_search_scroll(self, driver, option_value):
         while True:
-            # todo: use driver.waitLong (max)
-            WebDriverWait(self.web_element, 30).until(
-                EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
+            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
             element = driver.find_element(*DropdownLocators.item_search_scroll_element)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             elements_list = element.text
@@ -41,7 +39,7 @@ class Dropdown(BaseWidget):
     def select_element(self, pre):
         self.click_button()
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((DropdownLocators.select(pre))))
+            EC.presence_of_element_located(DropdownLocators.select(pre)))
         prefix = self.web_element.find_element(*DropdownLocators.select(pre))
         prefix.click()
         self.value = prefix

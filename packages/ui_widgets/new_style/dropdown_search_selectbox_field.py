@@ -17,42 +17,34 @@ class DropdownSearchSelectBox(DropdownSearch):
 
     @property
     def read_text_value(self):
-        return self.web_element.find_element(By.XPATH, value="./div/div/span").text
+        return self.web_element.find_element(*DropdownSearchSelectBoxLocators.read_text_value).text
 
     def validate_chosen_option(self, number):
-        assert self.value == self.web_element.find_element(By.XPATH,
-                                                           value=f"//p-multiselect/following-sibling::div/div[{number}]").text, 'The selected item is not in the list'
+        assert self.value == self.web_element.find_element(*DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
 
     def validate_selected_option(self, option):
-        if "highlight" in self.web_element.find_element(by=By.XPATH,
-                                                        value=f"//li[@aria-label='{option}']").get_attribute('class'):
+        if "highlight" in self.web_element.find_element(*DropdownSearchSelectBoxLocators.selected_option(option)).get_attribute('class'):
             return True
         else:
             return False
 
     def validate_option_is_not_selected(self, option):
-        if "highlight" not in self.web_element.find_element(by=By.XPATH,
-                                                            value=f"//li[@aria-label='{option}']").get_attribute(
-            'class'):
+        if "highlight" not in self.web_element.find_element(*DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
             return True
         else:
             return False
 
     def count_selected_options(self):
-        if 'invalid' in self.web_element.find_element(By.XPATH,
-                                                      value=f"//label[contains(text(),'{self.label}')]/following-sibling::p-multiselect").get_attribute(
-            'class'):
+        if 'invalid' in self.web_element.find_element(*DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
             return 0
         else:
-            WebDriverWait(self.web_element, 1).until(
-                EC.visibility_of_element_located((By.XPATH, f"//p-multiselect/following-sibling::div/div")))
-            list_under_field = self.web_element.find_elements(By.XPATH,
-                                                              value="//p-multiselect/following-sibling::div/div")
+            WebDriverWait(self.web_element, 1).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.wait_list))
+            list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
             counter = len(list_under_field)
             return counter
 
     def click_button(self):
-        dropDown_open = self.web_element.find_element(By.XPATH, "./div/div/input").get_attribute('aria-expanded')
+        dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute('aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
 
@@ -64,14 +56,13 @@ class DropdownSearchSelectBox(DropdownSearch):
         then we will add the checked options one by one to use it for validation later on.
         """
         # We should clear the search field first, so we can uncheck all the list
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"//p-multiselect/div/div/div/div/input")))
+        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
         self.list = []
         element.click()
         element.clear()
         # If the status of the checkbox is false (unchecked) then we have to check it twice.
-        element = self.web_element.find_element(By.XPATH, "//p-multiselect//div[@role='checkbox']")
-        all_elements = self.web_element.find_elements(By.XPATH, "//p-multiselect//ul/p-multiselectitem/li")
+        element = self.web_element.find_element(*DropdownSearchSelectBoxLocators.element)
+        all_elements = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.all_elements)
         if element.get_attribute('aria-checked') in (None, "false"):
             element.click()
         for i in all_elements:
@@ -80,25 +71,24 @@ class DropdownSearchSelectBox(DropdownSearch):
 
     def clear_selected_items(self):
         # We should clear the search field first, so we can uncheck all the list
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"//p-multiselect/div/div/div/div/input")))
+        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.clear_selected_items))
         element.click()
         element.clear()
         # If the status of the checkbox is false (unchecked) then we have to check it twice.
-        element = self.web_element.find_element(By.XPATH, "//p-multiselect//div[@role='checkbox']")
+        element = self.web_element.find_element(*DropdownSearchSelectBoxLocators.element_clear)
         if element.get_attribute('aria-checked') in (None, "false"):
             element.click()
             element.click()
 
         elif "true" == element.get_attribute('aria-checked'):
             element.click()
-        all_elements = self.web_element.find_elements(By.XPATH, "//p-multiselect//ul/p-multiselectitem/li")
+        all_elements = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.all_elements)
         for i in all_elements:
             self.list.remove(i.text)
         log.info(self.list)
 
     def validate_checked_list_count(self):
-        list_under_field = self.web_element.find_elements(By.XPATH, value="//p-multiselect/following-sibling::div/div")
+        list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list_under_field)
         list = []
         for i in list_under_field:
             list.append(i.text)

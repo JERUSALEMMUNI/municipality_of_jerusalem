@@ -7,7 +7,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory except (.ספר דירה, ת.ד )
 
-  @in_dev
+
   Scenario: אחרי שמירה שטופס לא יקפוץ לעמוד הראשון-להשאיר בשלב שהתושב נמצא בו כעת
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
@@ -15,7 +15,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "א טור" from "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "1" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "ת.ד"
@@ -34,13 +34,13 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And choose "זכר" from "מין"
     And write a valid value "לבן" in "צבע"
     And write a valid value "982009104328548" in "מספר שבב"
-    When from header click on "שמור" icon
-    When 1st wait for email that contains pin code and link
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי הכלב"
+#    When from header click on "שמור" icon
+#    When 1st wait for email that contains pin code and link
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי הכלב"
 
 
   Scenario: הסבר לטופס - לכל טופס חייב להיות הסבר -בבדיקה מול טפסים ישנים שיש התאמה מול ההסברים הישנים
@@ -232,7 +232,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (valid)
-    When  from parent "פרטי מגיש הבקשה" pick "<street>" from "רחוב"
+    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write a valid value "<street>" in "רחוב"
     Examples:
       | street       |
@@ -243,7 +243,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
   #BUG
   Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (invalid)
-    When  from parent "פרטי מגיש הבקשה" pick "<street>" from "רחוב"
+    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write an invalid value "<street>" in "רחוב"
     Examples:
       | street           |

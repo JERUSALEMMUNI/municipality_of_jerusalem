@@ -15,7 +15,7 @@ Feature: TransferDogOwnership form - scenarios step 3
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "a.b@c.com" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "א טור" from "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
     And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"

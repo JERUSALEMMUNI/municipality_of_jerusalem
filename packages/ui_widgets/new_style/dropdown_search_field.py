@@ -30,8 +30,7 @@ class DropdownSearch(Dropdown):
         element = None
         i = 0
         while True:
-            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(
-                (By.XPATH, "//div//ul/cdk-virtual-scroll-viewport")))
+            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
             element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             element = element.text
@@ -61,8 +60,7 @@ class DropdownSearch(Dropdown):
         return 'ng-valid' in self.web_element.get_attribute('class')
 
     def write_in_search_field(self, text):
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"./div/div/div/input")))
+        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchLocators.write_in_search_field))
         element.click()
         element.clear()
         element.send_keys(text)
@@ -70,14 +68,12 @@ class DropdownSearch(Dropdown):
 
 
     def clear_search_field(self):
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"//div/div/div/div/input")))
+        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchLocators.clear_search_field))
         element.click()
         element.clear()
 
     def get_search_result_if_empty(self):
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f".//div/div/div//li")))
+        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
         return element.text
 
     def get_error_message(self, error_expected):
