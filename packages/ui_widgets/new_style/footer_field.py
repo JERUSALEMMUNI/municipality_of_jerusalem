@@ -8,13 +8,12 @@ log = logger.get_logger(__name__)
 
 
 class FooterField(BaseWidget):
-    def __init__(self,index):
+    def __init__(self, index):
         super().__init__(self, index)
         self.init_widget_texts()
 
     def init_widget_texts(self):
-        self.privacy_policy = "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service " \
-                              "apply."
+        self.privacy_policy = "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply."
         self.call_us = "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
 
     @property

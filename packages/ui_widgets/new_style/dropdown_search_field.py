@@ -26,12 +26,20 @@ class DropdownSearch(Dropdown):
         return returnResult
 
     # Todo: function is not ready yet
+    # loop should be stopped if an element is not found
     def item_search_scroll(self, driver, text):
+        """
+              This function will click first, then start scrolling down until it finds the option
+              that we are looking for.
+              i variable increases each time it sees the wanted option, until it sees it 5 times,
+              it will return the
+        """
+        self.click_button()
         element = None
         i = 0
         while True:
-            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(
-                (By.XPATH, "//div//ul/cdk-virtual-scroll-viewport")))
+            WebDriverWait(self.web_element, 30).until(
+                EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
             element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             element = element.text
@@ -60,22 +68,49 @@ class DropdownSearch(Dropdown):
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
 
+    def click_first_value(self, text):
+        element = WebDriverWait(self.web_element, 30).until(
+            EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
+        element.click()
+
     def write_in_search_field(self, text):
+        self.click_button()
+        element = WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_element_located(DropdownSearchLocators.write_in_search_field))
+        element.click()
+        element.clear()
+        element.send_keys(text)
+
+    def search_and_pick_first_element(self, text):
+        """
+        This function will click the dropdown menu, then it will clear the search field
+        and will set a text value, after that it will search for that option and click the
+        first value in search result
+        """
+        self.click_button()
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located((By.XPATH, f"./div/div/div/input")))
         element.click()
         element.clear()
         element.send_keys(text)
+        try:
+            element = WebDriverWait(self.web_element, 30).until(
+                EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
+            element.click()
+
+        except:
+            log.info("Option is not found")
 
     def clear_search_field(self):
         element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"//div/div/div/div/input")))
+            EC.visibility_of_element_located(DropdownSearchLocators.clear_search_field))
         element.click()
         element.clear()
 
     def get_search_result_if_empty(self):
+        # self.click_button()
         element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f".//div/div/div//li")))
+            EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
         return element.text
 
     def get_error_message(self, error_expected):

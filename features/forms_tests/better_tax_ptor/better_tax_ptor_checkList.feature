@@ -1,5 +1,6 @@
 @in_dev
     #ToDo : wait for the popup message
+@test
 
 Feature: BetterTaxPtor form - checklist scenarios
 
@@ -38,7 +39,7 @@ Feature: BetterTaxPtor form - checklist scenarios
   Scenario Outline: TC_IDENT_07 checklist - Click on "שמור" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "<id>" in "מספר תיק בנין"
-    When click on "שמור" icon
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
     Examples:
@@ -48,7 +49,7 @@ Feature: BetterTaxPtor form - checklist scenarios
   Scenario Outline: TC_IDENT_08 checklist - Click on "הדפס" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "<id>" in "מספר תיק בנין"
-    When click on "הדפס" icon
+    When from header click on "הדפס" icon
     Examples:
       | id  |
       | 111 |

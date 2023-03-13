@@ -1,5 +1,5 @@
 #@in_dev
-@test_this
+@test
 Feature: PlaceContainer form - scenarios step 1
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
@@ -12,28 +12,28 @@ Feature: PlaceContainer form - scenarios step 1
 
   Scenario: TC_CONTAINER_01  - Click on "מידע" button after form opened
     Given Navigate to "PlaceContainer" form
-    When click on "מידע" icon
+    When from header click on "מידע" icon
     Then validate information dialog is opened
     And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב"
     And validate information dialog text in old header exists and contains at least "20" chars
     When click on X Button
     Then validate information dialog is closed
 
+
   Scenario: TC_CONTAINER_02 - Click on "שמור" button before entering the required details
     Given Navigate to "PlaceContainer" form
-    When click on "שמור" icon
-#    Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה טלפון נייד ואימייל"
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "חובה למלא מספר זהות, שם פרטי, שם משפחה, כתובת מייל תקינה ופלאפון ליצירת קשר בפרטי מגיש הבקשה"
     When close error message
 
 
-  @@in_dev
+#  @in_dev
 #  @pdf
 #  Scenario: TC_CONTAINER_03 - Click on "הדפס" button before entering the required details
 #    Given Navigate to "PlaceContainer" form
-#    When click on "הדפס" icon
+#    When from header click on "הדפס" icon
 #    When click on cancel button
-#    When click on "הדפס" icon
+#    When from header click on "הדפס" icon
 #    When click on print button
 #    # alias
 #    When I save the document as "new_file1"
@@ -128,8 +128,7 @@ Feature: PlaceContainer form - scenarios step 1
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write "א טברי" in search field "רחוב"
-    And pick "א טברי" from "רחוב"
+    And search and pick "א טברי" in search field "רחוב"
     And  from parent "פרטי הצבת המכולה:" write a valid value "1" in "מספר בית"
     And write a valid value "3" in "מספר דירה"
 
@@ -142,12 +141,11 @@ Feature: PlaceContainer form - scenarios step 1
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write "ww" in search field "רחוב"
-    And pick "ww" from "רחוב"
+    And search and pick "ww" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write an invalid value "ww" in "מספר בית"
     And write an invalid value "ww" in "מספר דירה"
 
-#  @wisam
+  @wisam
   Scenario: TC_CONTAINER_14 - Enter a valid container placement details
     Given Navigate to "PlaceContainer" form
     When choose "ת.ז." from "סוג זהות:"
@@ -155,21 +153,17 @@ Feature: PlaceContainer form - scenarios step 1
     And write a valid value "ווסאם" in "שם פרטי"
     And write a valid value "עוקה" in "שם משפחה"
 #    And fill "052-4075877" as valid value in "מספר טלפון נייד"
-    #ToDo: do that to take from phone field
-    And pick "052" from "prefix"
-    And write a valid value "4075877" in "phone number"
+    And fill prefix "052" as valid value in "מספר טלפון נייד"
+    And fill number "4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write "א טברי" in search field "רחוב"
-    And pick "א טברי" from "רחוב"
+    And search and pick "א טברי" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write a valid value "111" in "מספר בית"
     And write a valid value "3" in "מספר דירה"
-    And write "א טברי" in search field "רחוב הצבת המכולה:"
-    And pick "א טברי" from "רחוב הצבת המכולה:"
+    And search and pick "א טברי" in search field "רחוב הצבת המכולה:"
     And  from parent "פרטי הצבת המכולה:" write a valid value "111" in "מספר בית"
     #ToDO: this filed has another xpath with div befor the input like the phone field
     And write a valid value "1" in "מספר מכולה:"
     And pick date and time "8/8/2024" and "16:19" in "מתאריך:"
-    When I wait for "2" seconds
     And pick date and time "9/8/2024" and "12:19" in "עד תאריך:"
     And pick "תו אזורי" from "סוג החניה:"
     #ToDO: this filed has another xpath with div befor the input like the phone field
@@ -195,35 +189,20 @@ Feature: PlaceContainer form - scenarios step 1
     And validate form explanation in old header exists and contains at least "20" chars
 
   @footer
-  Scenario: Footer elements test
+  Scenario: footer check (ContractorEmpRights)
     Given Navigate to "PlaceContainer" form
-    Then Validate Facebook Logo is displayed in footer
-    And Validate Instagram Logo is displayed in footer
-    And Validate Twitter Logo is displayed in footer
-    And Validate old footer call us is displayed
-    And Validate old footer follow us is displayed
-    And Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
-    And Validate old footer follow us text is "עקבו אחרינו"
-    And Validate old footer call us has the default text
-    And Validate old footer follow us has the default text
-
-  @footer
-  Scenario: footer facebook url test
-    Given Navigate to "PlaceContainer" form
-    Then Validate facebook url in footer
+    Then validate Facebook Logo is displayed in footer
+    And validate Instagram Logo is displayed in footer
+    And validate Twitter Logo is displayed in footer
+    And validate facebook url in footer
     And Back to previous page
-    And Validate current page is "PlaceContainer"
-
-  @footer
-  Scenario: footer instagram url test
-    Given Navigate to "PlaceContainer" form
-    Then Validate instagram url in footer
+    And validate instagram url in footer
     And Back to previous page
-    And Validate current page is "PlaceContainer"
-
-  @footer
-  Scenario: footer twitter url test
-    Given Navigate to "PlaceContainer" form
-    Then Validate twitter url in footer
+    And validate twitter url in footer
     And Back to previous page
-    And Validate current page is "PlaceContainer"
+    And validate footer follow us is displayed
+    And validate footer follow us text is "עקבו אחרינו"
+    And validate footer follow us text is default as "עקבו אחרינו"
+    And validate footer call us is displayed
+    And validate footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+    And validate footer call us text is default as "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א - ה בין 08:30-16:00"

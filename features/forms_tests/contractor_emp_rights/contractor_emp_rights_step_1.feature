@@ -1,3 +1,4 @@
+
 Feature: ContractorEmpRights form - scenarios step 1
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -9,7 +10,7 @@ Feature: ContractorEmpRights form - scenarios step 1
 
   Scenario: TC_EMPCOMP_01 - Click on "מידע" button after form opened
     Given Navigate to "ContractorEmpRights" form
-    When click on "מידע" icon
+    When from header click on "מידע" icon
     Then validate information dialog is opened
     And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב"
     And validate information dialog text in old header exists and contains at least "20" chars
@@ -19,7 +20,7 @@ Feature: ContractorEmpRights form - scenarios step 1
 
   Scenario: TC_EMPCOMP_02 - Click on "שמור" button before entering the required details
     Given Navigate to "ContractorEmpRights" form
-    When click on "שמור" icon
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
@@ -28,9 +29,9 @@ Feature: ContractorEmpRights form - scenarios step 1
   @pdf
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
     Given Navigate to "ContractorEmpRights" form
-    When click on "הדפס" icon
+    When from header click on "הדפס" icon
     When click on cancel button
-    When click on "הדפס" icon
+    When from header click on "הדפס" icon
     When click on print button
     # alias
     When I save the document as "new_file1"
@@ -49,11 +50,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-#    And click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-# Todo:you should close the tabs and back to the main page after the mail then click המשך in the main page
-#    When click on "המשך" Button
+
 
 
   @email1
@@ -73,7 +70,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And click on "שמור" icon
+    When from header click on "שמור" icon
     When 1st wait for email that contains pin code and link
     When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
     When 3rd wait for second email to get "קוד האימות"
@@ -98,7 +95,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And click on "שמור" icon
+    When from header click on "שמור" icon
     When 1st wait for email that contains pin code and link
     When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
     When 3rd wait for second email to get "קוד האימות"
@@ -123,7 +120,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "גורמה ארוחות בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-    And click on "שמור" icon
+    When from header click on "שמור" icon
     When 1st wait for email that contains pin code and link
     When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
     When 3rd wait for second email to get "קוד האימות"
@@ -154,7 +151,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick month "1" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-    And click on "שמור" icon
+    When from header click on "שמור" icon
     When 1st wait for email that contains pin code and link
     When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
     When 3rd wait for second email to get "קוד האימות"

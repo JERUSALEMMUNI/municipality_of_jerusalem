@@ -1,5 +1,4 @@
 import time
-
 import allure
 from behave import *
 from bs4 import BeautifulSoup
@@ -115,7 +114,15 @@ def error_msg(context, widget_name, error_expectation):
 @then('from parent "{parent}" check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, parent, widget_name, error_expectation):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    assert widget.get_error_message(error_expectation), "Incorrect error expectation message"
+    if not widget.is_invalid:
+        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
+        raise AssertionError("invalid value and considered as valid")
+    if not widget.get_error_message(error_expectation):
+        log.info(f"The error value at field is incorrect")
+        rep.add_label_to_step("incorrect message or missing",
+                              "incorrect or missing error value and considered as valid")
+        raise AssertionError("invalid value and considered as valid")
+    rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
 @when('open disabled list')
@@ -132,7 +139,7 @@ def close_special_list(context):
 def back_to_prev_page(context):
     context._config.driver.execute_script("window.history.go(-1)")
     context.screens_manager.screens = {}
-    context._config.current_page = None
+    # context._config.current_page = None
 
 
 @Then('Validate current page is "{page_name}"')
@@ -202,16 +209,16 @@ def get_second_pin_code(context):
     else:
         rep.add_label_to_step('failure to reach destination', "didnt reqquired form url destination")
     if context.user_data['email_body'] == None:
-        context.validate = False
+        context.user_data['validate'] = False
     else:
-        context.validate = checkId.is_displayed()
+        context.user_data['validate'] = checkId.is_displayed()
 
 
 @when('4th close all tabs')
 def close_tabs(context):
     if context.user_data['email_body'] == None:
         rep.add_label_to_step("No email received", "E-mail is not received")
-        context.validate = None
+        context.user_data['validate'] = None
     num_tabs = len(context._config.driver.window_handles)
     for i in range(1, num_tabs):
         context._config.driver.close()
@@ -230,10 +237,10 @@ def close_tabs(context):
 
 @Then('5th Validate if went back to expected form')
 def validate_form_email(context):
-    if context.validate == None:
+    if context.user_data['validate'] == None:
         rep.add_label_to_step('No e-mail recieved', 'couldnt reach desiered page to make validation')
         raise ValueError("No email received, couldn't make validation")
-    if not context.validate:
+    if not context.user_data['validate']:
         rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
                                                 "equal the one we filled at the beginning")
         context._config.current_page.navigate_to_page_url()
@@ -245,8 +252,7 @@ def validate_form_email(context):
     current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,
                                                          force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
-
-
+    current_page.navigate_to_page_url()
 
 
 def wait_for_new_email(context, count_of_emails):

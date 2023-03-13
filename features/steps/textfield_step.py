@@ -66,6 +66,12 @@ def clear_field(context, widget_name):
     widget.clear()
 
 
+@when('from parent "{parent}" clear "{widget_name}"')
+def write_into_field_invalid_value(context, parent, widget_name):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    widget.clear()
+
+
 @when('append "{text}" to "{widget_name}"')
 def append_text_field(context, text, widget_name):
     widget = context._config.current_page.widgets[widget_name]

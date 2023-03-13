@@ -1,5 +1,6 @@
 @in_dev
     #ToDo : wait for the popup message
+@test
 
 Feature: CollectiveLifeInsurance form - checklist scenarios
   - Form name: טופס הצטרפות לביטוח חיים קולקטיבי לעובדי העירייה
@@ -44,7 +45,7 @@ Feature: CollectiveLifeInsurance form - checklist scenarios
   Scenario Outline: TC_IDENT_07 checklist - Click on "שמור" button after entering the employee ID
     Given Navigate to "CollectiveLifeInsurance" form
     When write a valid value "<id>" in "מספר זהות"
-    When click on "שמור" icon
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
     Examples:
@@ -54,7 +55,7 @@ Feature: CollectiveLifeInsurance form - checklist scenarios
   Scenario Outline: TC_IDENT_08 checklist - Click on "הדפס" button after entering the employee ID
     Given Navigate to "CollectiveLifeInsurance" form
     When write a valid value "<id>" in "מספר זהות"
-    When click on "הדפס" icon
+    When from header click on "הדפס" icon
     Examples:
       | id   |
       | 1234 |

@@ -15,12 +15,20 @@ def choose_in_search(context, file_path, widget_name):
 
 
 @then('validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
-def choose_in_search(context, file_name_index, file_name, widget_name):
+def check_uploaded_files(context, file_name_index, file_name, widget_name):
+    """
+    The check_file_name function returns tuple, first value checks if the file extension is allowed.
+    second value checks if we saw the file's name listed correctly
+    """
     widget = context._config.current_page.widgets[widget_name]
-    if not widget.check_file_name(file_name_index, file_name):
-        rep.add_label_to_step("Wrong file extension","File extension is not accepted, Only two formats are allowed "
-                                                     "pdf and jpg")
-        raise AssertionError("File extension is not accepted")
+
+    if not widget.check_file_name(file_name_index, file_name)[0]:
+        rep.add_label_to_step("File extension is not allowed","File extension is not accepted, Only two formats are allowed pdf and jpg")
+        # raise AssertionError("File extension is not accepted")
+    if not widget.check_file_name(file_name_index, file_name)[1]:
+        rep.add_label_to_step("Wrong file name","File name is not the same one uploaded")
+        #Todo: if we make AssertionError, all steps in Scenario will be broken
+        # raise AssertionError("File name is different")
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')

@@ -46,3 +46,7 @@ class CalendarClock(CalendarField):
                     EC.presence_of_element_located(CalenderClockLocators.click_minutes)).click()
         self.with_time(date)
 
+    def second_calender(self, date):
+        self.click_on()
+        self.with_time(date)
+

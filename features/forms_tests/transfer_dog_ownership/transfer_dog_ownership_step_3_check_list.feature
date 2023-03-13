@@ -13,9 +13,9 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
     And  from parent "פרטי מגיש הבקשה" write a valid value "דרןח" in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
+    And  from parent "פרטי מגיש הבקשה" write a valid value "s.c@c.com" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" pick "א טור" from "רחוב"
+    And  search and pick "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
     And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"
@@ -24,7 +24,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
     And  from parent "פרטי המוסר" write a valid value "ירושלים" in "יישוב"
     And  from parent "פרטי המוסר" write a valid value "א טור" in "רחוב"
     And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
-    And click on "המשך" button
+    And click on "המשך" icon
     When write a valid value "ביסקו" in "שם הכלב"
     And write a valid value "דשגדק" in "גזע"
     And choose "זכר" from "מין"
@@ -35,7 +35,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
     And pick "1/2/2021" from calendar of "תאריך חיסון כלבת אחרון"
     And search for "אבו סריחאן )שבט(" in "הכלב רשום ברשות המקומית"
     And pick "3/2/2020" from calendar of "תאריך מסירת הכלב"
-    When click on "המשך" Button
+    When click on "המשך" icon
 
   Scenario: העלת קבצים בשמות מאושרים
     Then validate current step is "צרופות והצהרה"

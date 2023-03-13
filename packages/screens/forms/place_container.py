@@ -19,12 +19,8 @@ class PlaceContainer(BasePage):
         self.widgets['שם פרטי'] = create_widget('TextField', style=self.style, label='שם פרטי')
         self.widgets['שם משפחה'] = create_widget('TextField', style=self.style, label='שם משפחה')
         self.widgets['מספר טלפון נייד'] = create_widget('PhoneField', style=self.style, label='מספר טלפון נייד')
-        # ToDo : cahnge that to phone field
-        self.widgets['prefix'] = create_widget('Dropdown', style=self.style, label='מספר טלפון נייד',
-                                               path_locator="/following-sibling::div//p-dropdown")
-        self.widgets['phone number'] = create_widget('TextField', style=self.style, label='מספר טלפון נייד',
-                                                     path_locator="following-sibling::div//input")
-
+        self.widgets['מספר טלפון נייד'] = create_widget('PhoneField', style=self.style, label='מספר טלפון נייד')
+        self.widgets['מספר טלפון נייד'] = create_widget('PhoneField', style=self.style, label='מספר טלפון נייד')
         self.widgets['אימייל:'] = create_widget('TextField', style=self.style, label='אימייל:')
 
         # כתובת מקום העבודה:

@@ -38,6 +38,8 @@ class ContractorEmpRights(BasePage):
         self.widgets['אסמכתאות לתשלום שכר'] = create_widget('UploadFile', style=self.style, label='אסמכתאות לתשלום שכר', driver=self.driver)
         self.widgets['דוחו"ת נוכחות'] = create_widget('UploadFile', style=self.style, label='דוחו"ת נוכחות', driver=self.driver)
         self.widgets['תלושי שכר'] = create_widget('UploadFile', style=self.style, label='תלושי שכר', driver=self.driver)
+        self.widgets['שלח'] = create_widget('ButtonIcon', style=self.style, label='שלח')
+        self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
     def fill_form_to_reach_step(self, dst_step):
         self.widgets['מספר זהות'].set_text('332796184')
@@ -50,8 +52,8 @@ class ContractorEmpRights(BasePage):
         self.widgets['תאריך תחילת העבודה בחברה'].select_all_date('8/1/2019')
         self.widgets['נושא התלונה'].select_element('אי צבירה נאותה - ימי חופשה')
         self.widgets['פרטי התלונה'].set_text('א טור')
-        self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'].choose_value('כן')
         self.widgets["חודשים לבדיקה"].set_year(2018, '1')
         self.widgets["חודשים לבדיקה"].set_month('1', '1')
-        self.widgets["header"].click_header_button('המשך')
+        self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'].choose_value('כן')
+        self.widgets["המשך"].click_button()
         pass
