@@ -1,5 +1,5 @@
 #@in_dev
-@test_this
+@test
 Feature: Test Scenarios for functionality and validation of PlaceContainer form - checklist scenarios
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
@@ -155,9 +155,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write "<address>" in search field "רחוב"
-
-    And pick "<address>" from "רחוב הצבת המכולה:"
+    And search and pick "<address>" in search field "רחוב"
     And  from parent "פרטי הצבת המכולה:" write a valid value "<home_number>" in "מספר בית"
     And write a valid value "<apartment_number>" in "מספר דירה"
     Examples:
@@ -173,8 +171,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And write an invalid value "<address>" in "רחוב"
-    And pick "<address>" from "רחוב"
+    And search and pick "<address>" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write an invalid value "<home_number>" in "מספר בית"
     And write an invalid value "<apartment_number>" in "מספר דירה"
     Examples:
@@ -190,22 +187,19 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "<last_name>" in "שם משפחה"
     And fill "<phone_number>" as valid value in "מספר טלפון נייד"
     And write a valid value "<email>" in "אימייל:"
-    And write "<address>" in search field "רחוב"
-    And pick "<address>" from "רחוב"
+    And search and pick "<address>" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write a valid value "<home_number>" in "מספר בית"
     And write a valid value "<apartment_number>" in "מספר דירה"
-    And write "<container_address>" in search field "רחוב הצבת המכולה:"
-    And pick "<container_address>" from "רחוב הצבת המכולה:"
+    And search and pick "<container_address>" in search field "רחוב"
     And  from parent "פרטי הצבת המכולה:" write a valid value "<container_home_number>" in "מספר בית"
     #ToDO: this filed has another xpath with div befor the input like the phone field
-#    And write a valid value "<container_number>" in "מספר מכולה:"
-    And pick date and time "<start_date>" and "16:19" in "מתאריך:"
-    #ToDO: check why this is not pick
-    And pick date and time "<end_date>" and "12:19" in "עד תאריך:"
+    And write a valid value "<container_number>" in "מספר מכולה:"
+    And pick date and time "<start_date>" and "<start_clock>" in "מתאריך:"
+    And pick date and time "<end_date>" and "<end_clock>" in "עד תאריך:"
     And pick "<parking_type>" from "סוג החניה:"
     #ToDO: this filed has another xpath with div befor the input like the phone field
-#    And write a valid value "<url>" in "כתובת האתר לשפיכת הפסולת"
+    And write a valid value "<url>" in "כתובת האתר לשפיכת הפסולת"
     Examples:
-      | id-type | id | first_name | last_name | phone_number | email | address | home_number | apartment_number | container_address | container_home_number | container_number | start_date | end_date | parking_type | url |
-
+      | id-type | id        | first_name | last_name | phone_number | email           | address | home_number | apartment_number | container_address | container_home_number | container_number | start_date | start_clock | end_date | end_clock | parking_type | url    |
+      | ת.ז.    | 332796184 | ווסאם      | עוקה      | 052-4075877  | wisam@wisam.com | א טברי  | 1           | 1                | א טברי            | 1                     | 1                | 8/8/2024   | 16:19       | 9/8/2024 | 12:19     | תו אזורי     | א טברי
 

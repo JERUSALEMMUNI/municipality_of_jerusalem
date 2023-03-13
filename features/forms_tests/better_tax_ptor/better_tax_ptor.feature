@@ -1,6 +1,6 @@
 @in_dev
     #ToDo : wait for the popup message
-
+@test
 Feature: BetterTaxPtor form
 
   - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
@@ -15,23 +15,30 @@ Feature: BetterTaxPtor form
 
   Scenario: TC_IDENT_01 - Click on "מידע" button after form opened
     Given Navigate to "BetterTaxPtor" form
-    When click on "מידע" icon
+    When from header click on "מידע" icon
     Then validate information dialog is opened
     Then validate information dialog contains "טופס זה הוא טופס מקוון,"
-    Then validate information dialog text in old header exists and contains at least "20" chars
+    And validate information dialog text in old header exists and contains at least "20" chars
     When click on X Button
+    Then validate information dialog is closed
 
 
   Scenario: TC_IDENT_02 - Click on "שמור" button before entering the file number
     Given Navigate to "BetterTaxPtor" form
-    When click on "שמור" icon
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
 
-  Scenario: TC_IDENT_03 - Click on "הדפס" button before entering the file number
-    Given Navigate to "BetterTaxPtor" form
-    When click on "הדפס" icon
+#  Scenario: TC_IDENT_03 - Click on "הדפס" button before entering the file number
+#    Given Navigate to "BetterTaxPtor" form
+#    When from header click on "הדפס" icon
+#    When click on cancel button
+#    When from header click on "הדפס" icon
+#    When click on print button
+#    # alias
+#    When I save the document as "new_file1"
+#    Then I compare "new_file1" with reference pdf file "BetterTaxPtor_empty_form"
 
   Scenario: TC_IDENT_04 - Enter a correct file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
@@ -57,14 +64,14 @@ Feature: BetterTaxPtor form
   Scenario: TC_IDENT_07 - Click on "שמור" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "11111111" in "מספר תיק בנין"
-    When click on "שמור" icon
+    When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
   Scenario: TC_IDENT_08 - Click on "הדפס" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "11111111" in "מספר תיק בנין"
-    When click on "הדפס" icon
+    When from header click on "הדפס" icon
 
 
 #------------------------------------------------------------------------------------------------
@@ -78,35 +85,20 @@ Feature: BetterTaxPtor form
     And validate form explanation in old header exists and contains at least "20" chars
 
   @footer
-  Scenario: Footer elements test
+  Scenario: footer check (ContractorEmpRights)
     Given Navigate to "BetterTaxPtor" form
-    Then Validate Facebook Logo is displayed in footer
-    And Validate Instagram Logo is displayed in footer
-    And Validate Twitter Logo is displayed in footer
-    And Validate old footer call us is displayed
-    And Validate old footer follow us is displayed
-    And Validate old footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
-    And Validate old footer follow us text is "עקבו אחרינו"
-    And Validate old footer call us has the default text
-    And Validate old footer follow us has the default text
-
-  @footer
-  Scenario: footer facebook url test
-    Given Navigate to "BetterTaxPtor" form
-    Then Validate facebook url in footer
+    Then validate Facebook Logo is displayed in footer
+    And validate Instagram Logo is displayed in footer
+    And validate Twitter Logo is displayed in footer
+    And validate facebook url in footer
     And Back to previous page
-    And Validate current page is "BetterTaxPtor"
-
-  @footer
-  Scenario: footer instagram url test
-    Given Navigate to "BetterTaxPtor" form
-    Then Validate instagram url in footer
+    And validate instagram url in footer
     And Back to previous page
-    And Validate current page is "BetterTaxPtor"
-
-  @footer
-  Scenario: footer twitter url test
-    Given Navigate to "BetterTaxPtor" form
-    Then Validate twitter url in footer
+    And validate twitter url in footer
     And Back to previous page
-    And Validate current page is "BetterTaxPtor"
+    And validate footer follow us is displayed
+    And validate footer follow us text is "עקבו אחרינו"
+    And validate footer follow us text is default as "עקבו אחרינו"
+    And validate footer call us is displayed
+    And validate footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+    And validate footer call us text is default as "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א - ה בין 08:30-16:00"
