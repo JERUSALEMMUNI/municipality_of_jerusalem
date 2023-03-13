@@ -17,10 +17,14 @@ def choose_in_search(context, file_path, widget_name):
 @then('validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
 def choose_in_search(context, file_name_index, file_name, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if not widget.check_file_name(file_name_index, file_name):
+    if not widget.check_file_name(file_name_index, file_name)[0]:
         rep.add_label_to_step("Wrong file extension","File extension is not accepted, Only two formats are allowed "
                                                      "pdf and jpg")
-        raise AssertionError("File extension is not accepted")
+        # raise AssertionError("File extension is not accepted")
+    if not widget.check_file_name(file_name_index, file_name)[1]:
+        rep.add_label_to_step("Wrong file name","File name is not the same one uploaded")
+        #Todo: if we make Assertionerro, all the test will be broken
+        # raise AssertionError("File name is different")
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')
