@@ -70,13 +70,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מוקד יסעור נקיון ותחזוקה בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When from header click on "שמור" icon
+    When 1st wait for email that contains pin code and link
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
   @after_email1
   Scenario: TC_EMPCOMP_06 - Enter correct employer details from security department
@@ -95,13 +95,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "מיקוד שמירה, אבטחה, שירותים וניקיון בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When from header click on "שמור" icon
+    When 1st wait for email that contains pin code and link
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
   Scenario: TC_EMPCOMP_07 - Enter correct employer details from catering department
@@ -120,13 +120,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     And pick "גורמה ארוחות בע"מ" from "שם חברה"
     And write a valid value "עיריית ירושלים" in "שם אתר עירוני"
     And pick "8/1/2019" from calendar of "תאריך תחילת העבודה בחברה"
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When from header click on "שמור" icon
+    When 1st wait for email that contains pin code and link
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
   Scenario: TC_EMPCOMP_08 - Enter correct employer details from any department with one complaint and one period for verification
@@ -151,13 +151,13 @@ Feature: ContractorEmpRights form - scenarios step 1
     When pick month "1" in widget "חודשים לבדיקה" at index "1"
     When choose "כן" from "האם היתה פניה למעסיק קודם הגשת תלונה זו?"
     And write a valid value "דגדדד" in "התשובה שקיבלתי"
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
+    When from header click on "שמור" icon
+    When 1st wait for email that contains pin code and link
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
   @dropdown
   Scenario: TC_EMPCOMP_09 - Enter correct employer details from any department with more then one complaint and period for verification
