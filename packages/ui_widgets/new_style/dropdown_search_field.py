@@ -67,6 +67,8 @@ class DropdownSearch(Dropdown):
         element.clear()
         element.send_keys(text)
 
+
+
     def clear_search_field(self):
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located((By.XPATH, f"//div/div/div/div/input")))
