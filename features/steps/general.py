@@ -209,16 +209,16 @@ def get_second_pin_code(context):
     else:
         rep.add_label_to_step('failure to reach destination', "didnt reqquired form url destination")
     if context.user_data['email_body'] == None:
-        context.validate = False
+        context.user_data['validate'] = False
     else:
-        context.validate = checkId.is_displayed()
+        context.user_data['validate'] = checkId.is_displayed()
 
 
 @when('4th close all tabs')
 def close_tabs(context):
     if context.user_data['email_body'] == None:
         rep.add_label_to_step("No email received", "E-mail is not received")
-        context.validate = None
+        context.user_data['validate'] = None
     num_tabs = len(context._config.driver.window_handles)
     for i in range(1, num_tabs):
         context._config.driver.close()
@@ -237,10 +237,10 @@ def close_tabs(context):
 
 @Then('5th Validate if went back to expected form')
 def validate_form_email(context):
-    if context.validate == None:
+    if context.user_data['validate'] == None:
         rep.add_label_to_step('No e-mail recieved', 'couldnt reach desiered page to make validation')
         raise ValueError("No email received, couldn't make validation")
-    if not context.validate:
+    if not context.user_data['validate']:
         rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
                                                 "equal the one we filled at the beginning")
         context._config.current_page.navigate_to_page_url()
