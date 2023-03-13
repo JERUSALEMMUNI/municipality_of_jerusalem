@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.base_widget import BaseWidget
 from infra import logger, custom_exceptions as ce
 from ui_widgets.old_style.button_field import ButtonField
 
@@ -14,5 +13,5 @@ class ButtonIcon(ButtonField):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//button[@title='{self.label}']"
+            'Value': f"//button[contains(@icon,'{self.label}')]"
         }
