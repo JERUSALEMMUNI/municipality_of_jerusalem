@@ -49,11 +49,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-#    And click on "שמור" icon
-#    Then validate new email received "@TEMP_EMAIL_ADDRESS"
-#    Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
-# Todo:you should close the tabs and back to the main page after the mail then click המשך in the main page
-#    When click on "המשך" Button
+
 
 
   @email1
