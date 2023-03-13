@@ -60,4 +60,17 @@ def check_months_are_chosen(context, months, widget_name, number):
 def check_months_are_chosen(context, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     widget.init_widget()
-    assert widget.get_list_length() == int(number), f"the widget {widget_name} list length did not change to length {number}"
+    assert widget.get_list_length() == int(
+        number), f"the widget {widget_name} list length did not change to length {number}"
+
+
+@when('write a valid value "{text}" in "{widget_name}" from table "{table_name}" at row "{row}"')
+def write_in_table_from_column(context, text, widget_name, table_name, row):
+    widget = context._config.current_page.widgets[table_name]
+    widget.set_text(row, widget_name, text)
+
+
+@Then('validate tab text  from table "{table_name}" at row "{row}" is same as "{date}"')
+def validate_tab_text_from_column(context, table_name, row,date):
+    widget = context._config.current_page.widgets[table_name]
+    assert widget.get_tab_text(row) == date

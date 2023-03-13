@@ -1,10 +1,11 @@
 from infra import logger
 from infra.enums import UIStyle
 from ui_widgets.new_style import button_field, header_field, footer_field, text_field, phone_field, \
-    dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file
+    dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file, \
+    button_icon_widget, accordion_table, accordion_row
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
-    footer_field as old_footer_field, calender_time, check_box_field, calendar_field, month_year_list, \
-    radio_button_field, application_steps_field, dialog_widget, button_icon_widget
+    footer_field as old_footer_field,button_icon_widget as old_button_icon, calender_time, check_box_field, calendar_field, month_year_list, \
+    radio_button_field, application_steps_field, dialog_widget
 
 log = logger.get_logger(__name__)
 
@@ -13,7 +14,8 @@ log = logger.get_logger(__name__)
 def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1, path_locator=None):
     widget_mapping = {
         'ButtonIcon': {
-            UIStyle.OLD: button_icon_widget.ButtonIcon
+            UIStyle.NEW: button_icon_widget.ButtonIcon,
+            UIStyle.OLD: old_button_icon.ButtonIcon
         },
         'ButtonField': {
             UIStyle.NEW: button_field.ButtonField,
@@ -68,6 +70,12 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
         },
         'UploadFile': {
             UIStyle.NEW: upload_file.UploadFile
+        },
+        'AccordionTable': {
+            UIStyle.NEW: accordion_table.AccordionTable
+        },
+        'AccordionRow':{
+            UIStyle.NEW: accordion_row.AccordionRow
         }
     }
 
