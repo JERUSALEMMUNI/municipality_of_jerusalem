@@ -33,8 +33,8 @@ class CalendarField(BaseWidget):
         WebDriverWait(self.web_element, 10).until(
             EC.element_to_be_clickable((CalenderLocators.day(day)))).click()
         #todo check the wait its takes a lot of time
-        WebDriverWait(self.web_element, 10).until(
-            EC.invisibility_of_element(CalenderLocators.day(day)))
+        # WebDriverWait(self.web_element, 10).until(
+        #     EC.invisibility_of_element(CalenderLocators.day(day)))
 
     def select_all_date(self, date):
         self.click_on()

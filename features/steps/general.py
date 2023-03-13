@@ -1,5 +1,4 @@
 import time
-
 import allure
 from behave import *
 from bs4 import BeautifulSoup
@@ -242,11 +241,13 @@ def validate_form_email(context):
         rep.add_label_to_step('Correct verification',
                               "validation done correctly and we are at the desired form number")
     current_page = context._config.current_page
+    pass
     current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,
                                                          force_create=True)
+    pass
     context.screens_manager.screens[current_page.page_title] = current_page
-
-
+    pass
+    current_page.navigate_to_page_url()
 
 
 def wait_for_new_email(context, count_of_emails):
