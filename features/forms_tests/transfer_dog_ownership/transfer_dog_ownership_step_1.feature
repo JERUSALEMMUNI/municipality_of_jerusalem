@@ -1,4 +1,4 @@
-
+@in_dev
 Feature: TransferDogOwnership form - scenarios step 1
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -40,14 +40,14 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "3" in "מספר דירה"
     And  from parent "פרטי המוסר" write a valid value "3233" in "ת.ד"
-#    And click on "שמור" icon
-#    When 1st get pin code from email validation
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
-#    When click on "המשך" Button
+    When from header click on "שמור" icon
+    When 1st wait for email that contains pin code and link
+    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+    When 3rd wait for second email to get "קוד האימות"
+    When 4th close all tabs
+    Then 5th Validate if went back to expected form
+    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
+    When click on "המשך" icon
 
 
 

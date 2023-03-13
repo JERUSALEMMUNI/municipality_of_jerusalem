@@ -62,7 +62,7 @@ def validate_header_explanation_contains_text(context, chars_count):
         int(chars_count)), f"Explanation text is not displayed or it doesnt contains the expected chars"
 
 
-@When('click on "{button_name}" icon')
+@When('from header click on "{button_name}" icon')
 def click_button(context, button_name):
     widget = context._config.current_page.widgets["header"]
     widget.click_header_button(button_name, context._config.driver)

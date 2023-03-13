@@ -1,4 +1,8 @@
+from selenium.webdriver.support import expected_conditions as EC
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.old_style.widget_locators.footer_locators import FooterLocators
@@ -28,32 +32,29 @@ class FooterField(BaseWidget):
     def get_call_us_element(self):
         return self.web_element.find_element(*FooterLocators.call_us)
 
-    def get_folow_us_element(self):
-        return self.web_element.find_element(*FooterLocators.follow_us)
-
-    def validate_old_call_us_is_displayed(self):
+    def validate_call_us_is_displayed(self):
         return self.get_call_us_element().is_displayed()
 
-    def get_old_call_us(self):
+    def get_call_us(self):
         return self.get_call_us_element().text
 
-    def validate_old_call_us_text(self, call_us):
-        return self.get_old_call_us() == call_us
+    def validate_call_us_text(self, call_us):
+        return self.get_call_us() == call_us
 
-    def validate_old_call_us_with_default(self):
-        return self.get_old_call_us() == self.call_us
+    def validate_call_us_with_default(self):
+        return self.get_call_us() == self.call_us
 
-    def validate_old_follow_us_is_displayed(self):
-        return self.get_folow_us_element().is_displayed()
+    def validate_follow_us_is_displayed(self):
+        return self.get_follow_us_element().is_displayed()
 
-    def get_old_follow_us(self):
-        return self.get_folow_us_element().text
+    def get_follow_us(self):
+        return self.get_follow_us_element().text
 
-    def validate_old_follow_us(self, follow_us):
-        return self.get_old_follow_us() == follow_us
+    def validate_follow_us(self, follow_us):
+        return self.get_follow_us() == follow_us
 
-    def validate_old_follow_us_with_default(self):
-        return self.get_old_follow_us() == self.follow_us
+    def validate_follow_us_with_default(self):
+        return self.get_follow_us() == self.follow_us
 
     def is_facebook_displayed(self):
         facebook_logo = self.web_element.find_element(*FooterLocators.facebook_logo)
@@ -88,3 +89,6 @@ class FooterField(BaseWidget):
     def validate_current_url(self, page_name, driver):
         url = driver.current_url
         return page_name in url
+
+    def get_follow_us_element(self):
+        return self.web_element.find_element(*FooterLocators.follow_us)

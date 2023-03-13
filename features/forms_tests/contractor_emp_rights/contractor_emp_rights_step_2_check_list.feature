@@ -9,9 +9,8 @@ Feature: ContractorEmpRights form - CheckList scenarios step 2
   Background: Background Scenario
     Given Navigate to "ContractorEmpRights" form and reach step "צרופות והצהרה"
 
-    #Todo: need wait
+
   Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה  (הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים: קלט ריק)
-    Given Navigate to "ContractorEmpRights" form
     When click on "שלח" icon
     When close error message
     Then check if "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים." error is "חובה למלא את ההצהרה"

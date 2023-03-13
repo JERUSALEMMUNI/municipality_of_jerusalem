@@ -132,7 +132,7 @@ def close_special_list(context):
 def back_to_prev_page(context):
     context._config.driver.execute_script("window.history.go(-1)")
     context.screens_manager.screens = {}
-    context._config.current_page = None
+    # context._config.current_page = None
 
 
 @Then('Validate current page is "{page_name}"')

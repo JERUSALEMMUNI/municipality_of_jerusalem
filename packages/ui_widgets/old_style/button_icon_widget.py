@@ -19,3 +19,6 @@ class ButtonIcon(ButtonField):
 
     def set_custom_locator(self, web_element):
         self.set_web_element(web_element)
+
+    def click_button(self):
+        self.web_element.click()

@@ -40,3 +40,13 @@ class TransferDogOwnership(BasePage):
         self.widgets['הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק.'] = create_widget('CheckBox', style=self.style, label='הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק.')
         self.widgets['הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים.'] = create_widget('CheckBox', style=self.style, label='הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים.')
 
+        self.widgets['שם הכלב'] = create_widget('TextField', style=self.style, label='שם הכלב')
+        self.widgets['גזע'] = create_widget('TextField', style=self.style, label='גזע')
+        self.widgets['מין'] = create_widget('RadioButtonField', style=self.style, label='מין')
+        self.widgets['צבע'] = create_widget('TextField', style=self.style, label='צבע')
+        self.widgets['מספר שבב'] = create_widget('TextField', style=self.style, label='מספר שבב')
+        self.widgets['שנת לידה'] = create_widget('Dropdown', style=self.style, label='שנת לידה')
+        self.widgets['הכלב מחוסן כנגד מחלת הכלבת?'] = create_widget('RadioButtonField', style=self.style, label='הכלב מחוסן כנגד מחלת הכלבת?')
+        self.widgets['הכלב רשום ברשות המקומית'] = create_widget('DropdownSearch', style=self.style, label='הכלב רשום ברשות המקומית')
+        self.widgets['תאריך מסירת הכלב'] = create_widget('CalendarField', style=self.style, label='תאריך מסירת הכלב')
+        self.widgets['תאריך חיסון כלבת אחרון'] = create_widget('CalendarField', style=self.style, label='תאריך חיסון כלבת אחרון')
