@@ -21,9 +21,9 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
     second value checks if we saw the file's name listed correctly
     """
     widget = context._config.current_page.widgets[widget_name]
+
     if not widget.check_file_name(file_name_index, file_name)[0]:
-        rep.add_label_to_step("File extension is not allowed","File extension is not accepted, Only two formats are allowed "
-                                                     "pdf and jpg")
+        rep.add_label_to_step("File extension is not allowed","File extension is not accepted, Only two formats are allowed pdf and jpg")
         # raise AssertionError("File extension is not accepted")
     if not widget.check_file_name(file_name_index, file_name)[1]:
         rep.add_label_to_step("Wrong file name","File name is not the same one uploaded")

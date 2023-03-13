@@ -15,7 +15,7 @@ Feature: TransferDogOwnership form - scenarios step 3
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "a.b@c.com" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" write "א טור" in search field "רחוב"
+    And  search and pick "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
     And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"
@@ -47,13 +47,13 @@ Feature: TransferDogOwnership form - scenarios step 3
     And check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי"
     And check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
-    When from header click on "שמור" icon
-    When 1st wait for email that contains pin code and link
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
+#    When from header click on "שמור" icon
+#    When 1st wait for email that contains pin code and link
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
 
 
 

@@ -8,31 +8,8 @@ Feature: TransferDogOwnership form - CheckList scenarios step 2
   - All fields are mandatory
 
   Background:Background Scenario
-    Given Navigate to "TransferDogOwnership" form
-    When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "דרןח" in "שם פרטי"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "f.a@c.com" in "אימייל"
-    And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" write "א טור" in search field "רחוב"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
-    And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
-    And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"
-    And  from parent "פרטי המוסר" write a valid value "332796184" in "תעודת זהות"
-    And  from parent "פרטי המוסר" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" write a valid value "ירושלים" in "יישוב"
-    And  from parent "פרטי המוסר" write a valid value "א טור" in "רחוב"
-    And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
-    And click on "המשך" icon
+    Given Navigate to "TransferDogOwnership" form and reach step "פרטי הכלב"
 
-
-  Scenario: הסבר לטופס - לכל טופס חייב להיות הסבר -בבדיקה מול טפסים ישנים שיש התאמה מול ההסברים הישנים
-    When from header click on "מידע" icon
-    Then validate information dialog is opened
-    And validate information dialog contains "טופס זה הוא טופס מקוון, והוא יאפשר לך להגיש את הבקשה באופן ממוחשב, לזכות בעדכון לגבי מצב הטיפול בטופס"
-    And validate information dialog text in old header exists and contains at least "20" chars
-    When click on X button
-    Then validate information dialog is closed
 
 
   Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם הכלב (valid)

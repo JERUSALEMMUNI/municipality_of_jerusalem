@@ -35,7 +35,6 @@ def pick_element(context, parent, option_value, widget_name):
     assert "No results found" in widget.get_search_result_if_empty(), "(No results found) message should appear"
 
 
-
 @when('write "{option_value}" in search field "{widget_name}"')
 def write_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -53,8 +52,6 @@ def write_in_search_field(context, parent, option_value, widget_name):
     if "No results found" in widget.get_search_result_if_empty():
         rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
     assert "No results found" in widget.get_search_result_if_empty(), "(No results found) message should appear"
-
-
 
 
 @When('clear search field for "{widget_name}"')

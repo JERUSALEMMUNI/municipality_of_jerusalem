@@ -16,6 +16,7 @@ class CalendarClock(CalendarField):
         super().__init__(label, index)
 
     def with_time(self, date):
+        self.click_on()
         new_date = date.split("/")
         month = new_date[1]
         day = new_date[0]

@@ -17,6 +17,26 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
     When click on X button
     Then validate information dialog is closed
 
+    @footer
+  Scenario: footer check (ContractorEmpRights)
+    Given Navigate to "ContractorEmpRights" form
+    Then validate Facebook Logo is displayed in footer
+    And validate Instagram Logo is displayed in footer
+    And validate Twitter Logo is displayed in footer
+    And validate facebook url in footer
+    And Back to previous page
+    And validate instagram url in footer
+    And Back to previous page
+    And validate twitter url in footer
+    And Back to previous page
+    And validate footer follow us is displayed
+    And validate footer follow us text is "עקבו אחרינו"
+    And validate footer follow us text is default as "עקבו אחרינו"
+    And validate footer call us is displayed
+    And validate footer call us text is "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א'-ה' בין 08:30-16:00"
+    And validate footer call us text is default as "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א - ה בין 08:30-16:00"
+
+
   Scenario Outline:  לחסום תעודות זהות פקטיביות (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<id>" in "מספר זהות"
