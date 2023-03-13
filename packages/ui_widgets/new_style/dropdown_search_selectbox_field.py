@@ -1,5 +1,3 @@
-import allure
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -20,31 +18,40 @@ class DropdownSearchSelectBox(DropdownSearch):
         return self.web_element.find_element(*DropdownSearchSelectBoxLocators.read_text_value).text
 
     def validate_chosen_option(self, number):
-        assert self.value == self.web_element.find_element(*DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
+        assert self.value == self.web_element.find_element(
+            *DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
 
     def validate_selected_option(self, option):
-        if "highlight" in self.web_element.find_element(*DropdownSearchSelectBoxLocators.selected_option(option)).get_attribute('class'):
+
+        self.click_button()
+        if "highlight" in self.web_element.find_element(
+                *DropdownSearchSelectBoxLocators.selected_option(option)).get_attribute('class'):
+
             return True
         else:
             return False
 
     def validate_option_is_not_selected(self, option):
-        if "highlight" not in self.web_element.find_element(*DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
+        if "highlight" not in self.web_element.find_element(
+                *DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
             return True
         else:
             return False
 
     def count_selected_options(self):
-        if 'invalid' in self.web_element.find_element(*DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
+        if 'invalid' in self.web_element.find_element(
+                *DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
             return 0
         else:
-            WebDriverWait(self.web_element, 1).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.wait_list))
+            WebDriverWait(self.web_element, 1).until(
+                EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.wait_list))
             list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
             counter = len(list_under_field)
             return counter
 
     def click_button(self):
-        dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute('aria-expanded')
+        dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute(
+            'aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
 
@@ -55,8 +62,10 @@ class DropdownSearchSelectBox(DropdownSearch):
         click twice.
         then we will add the checked options one by one to use it for validation later on.
         """
+        self.click_button()
         # We should clear the search field first, so we can uncheck all the list
-        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
+        element = WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
         self.list = []
         element.click()
         element.clear()
@@ -70,8 +79,10 @@ class DropdownSearchSelectBox(DropdownSearch):
         log.info(self.list)
 
     def clear_selected_items(self):
+        self.click_button()
         # We should clear the search field first, so we can uncheck all the list
-        element = WebDriverWait(self.web_element, 30).until(EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.clear_selected_items))
+        element = WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.clear_selected_items))
         element.click()
         element.clear()
         # If the status of the checkbox is false (unchecked) then we have to check it twice.
@@ -88,7 +99,10 @@ class DropdownSearchSelectBox(DropdownSearch):
         log.info(self.list)
 
     def validate_checked_list_count(self):
+
+        self.click_button()
         list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list_under_field)
+
         list = []
         for i in list_under_field:
             list.append(i.text)

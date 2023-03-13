@@ -26,6 +26,7 @@ class Dropdown(BaseWidget):
             self.web_element.click()
 
     def item_search_scroll(self, driver, option_value):
+        self.click_button()
         while True:
             WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
             element = driver.find_element(*DropdownLocators.item_search_scroll_element)
