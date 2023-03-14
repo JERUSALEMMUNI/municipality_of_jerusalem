@@ -21,9 +21,12 @@ def choose_in_search(context, widget_name):
 @when('pick "{option_value}" from "{widget_name}"')
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    # todo: wrong approach
-    if widget.select_element(option_value) is not None:
+    if widget.select_element(option_value):
         rep.add_label_to_step("selected Value", f"{option_value} is selected")
+    else:
+        rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found, this is a valid"
+                                                             f" value and should appear in list")
+        raise AssertionError('Desired value is not found in list')
 
 
 @when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
