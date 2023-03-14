@@ -23,6 +23,7 @@ class PhoneField(BaseWidget):
 
         }
 
+    #Todo: try to change the inti_widgint and inherit from textfield
     def initial_widgets(self):
         dropdown_element = self.web_element.find_element(*PhoneFieldLocators.drop_down)
         self.dropdown_widget.set_web_element(dropdown_element)
