@@ -103,8 +103,12 @@ def after_step(context, step):
 
     if not step_pass:
         log.debug(f'Take ScreenShot after failure for step {step.name}')
-        screenshot = f'{context.result_folder_path}/screenshot_after_failure.png'
-        context._config.driver.save_screenshot(screenshot)
+        screenshot = context.failure_screenshot
+        if context.user_data.get('screenshot'):
+            screenshot = context.user_data.get('screenshot')
+            context.user_data['screenshot'] = None
+        else:
+            context._config.driver.save_screenshot(screenshot)
         rep.add_image_to_step(screenshot, "ScreenShot After Failure")
     log.info(f'----- End Step - {step.name} -----')
 

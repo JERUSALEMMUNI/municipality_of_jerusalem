@@ -169,9 +169,16 @@ def validate_if_option_is_selected(context, widget_name):
 def search_and_pick_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.search_and_pick_first_element(option_value)
-    if "No results found" in widget.get_search_result_if_empty():
-        rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
-        raise AssertionError("No results found")
+    try:
+        if "No results found" in widget.get_search_result_if_empty():
+            rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
+            # take screenshot and save it in user_data context.user_data['screenshot'] = screenshot
+            context.user_data['screenshot'] = context._config.driver.save_screenshot(context.failure_screenshot)
+            raise AssertionError("No results found")
+    finally:
+        pass
+        #todo:
+        # widget.close()
 
 
 @when('from parent "{parent}" search and pick "{option_value}" in search field "{widget_name}"')

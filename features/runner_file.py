@@ -53,6 +53,7 @@ def setup():
     runner.Context.feature_file_path = feature_path
     runner.Context.feature_file_name = Path(runner.Context.feature_file_path).stem
     runner.Context.result_folder_path = runner.Context.opt_dict['results_path']
+    runner.Context.failure_screenshot = f'{runner.Context.result_folder_path}/screenshot_after_failure.png'
 
     copy_history_aside_if_exist(runner.Context.result_folder_path)
     # Create or clear results path
