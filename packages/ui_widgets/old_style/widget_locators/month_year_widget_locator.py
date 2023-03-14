@@ -19,7 +19,7 @@ class MonthYearWidgetLocators:
         return By.XPATH, f"{path}//following-sibling::div/div[{label}]//button[@title='הסר']//i[@class='pi pi-times-circle']"
 
     @staticmethod
-    def set_yaer(path, label):
+    def set_year(path, label):
         return By.XPATH, f"{path}//following-sibling::div/div[{label}]//p-dropdown[@formcontrolname='year']"
 
     @staticmethod

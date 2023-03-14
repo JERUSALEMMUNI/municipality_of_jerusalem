@@ -32,7 +32,7 @@ class MonthYear(BaseWidget):
         remove_button.click()
 
     def set_year(self, path, year):
-        dropdown = self.web_element.find_element(*MonthYearWidgetLocators.set_yaer(path, self.label))
+        dropdown = self.web_element.find_element(*MonthYearWidgetLocators.set_year(path, self.label))
         self.year_dropdown.set_web_element(dropdown)
         self.year_dropdown.web_element.click()
         self.year_dropdown.select_element(year)
