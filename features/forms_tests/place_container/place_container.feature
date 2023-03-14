@@ -1,5 +1,5 @@
 #@in_dev
-@test
+@mytest
 Feature: PlaceContainer form - scenarios step 1
 
   - Form name: בקשה להנחת מכולה אגף אכיפה ושיטור
@@ -141,9 +141,11 @@ Feature: PlaceContainer form - scenarios step 1
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And search and pick "ww" in search field "רחוב"
+    And search and pick "אברבנאל" in search field "רחוב"
+    And search invalid value and pick "אברבנאל" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write an invalid value "ww" in "מספר בית"
     And write an invalid value "ww" in "מספר דירה"
+    When I wait for "10" seconds
 
   @wisam
   Scenario: TC_CONTAINER_14 - Enter a valid container placement details
