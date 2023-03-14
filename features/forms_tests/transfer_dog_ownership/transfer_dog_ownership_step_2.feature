@@ -7,7 +7,7 @@ Feature: TransferDogOwnership form - scenarios step 2
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory
 
-   Background:Background Scenario
+   Background: Background Scenario
      Given Navigate to "TransferDogOwnership" form and reach step "פרטי הכלב"
 
 

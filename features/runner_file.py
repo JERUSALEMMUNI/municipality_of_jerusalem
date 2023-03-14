@@ -5,6 +5,7 @@ import sys
 import traceback
 from argparse import ArgumentParser
 from pathlib import Path
+
 from behave import runner
 from behave.configuration import Configuration
 from onesecmail import OneSecMail
@@ -28,6 +29,21 @@ rep = reporter.get_reporter()
 exit_code = 0
 
 
+def copy_history_aside_if_exist(result_folder_path):
+    history_folder = Path(result_folder_path) / 'report' / 'history'
+    last_history_saved = Path(config.temp_folder) / 'last_history'
+    files_utils.remove_paths(last_history_saved)
+    if history_folder.exists():
+        files_utils.copy_anything(Path(result_folder_path) / 'report' / 'history',
+                                  Path(config.temp_folder) / 'last_history')
+
+
+def return_history_folder_if_exist(result_folder_path):
+    last_saved_history = Path(config.temp_folder) / 'last_history' / 'history'
+    if last_saved_history.exists():
+        files_utils.copy_anything(last_saved_history, result_folder_path)
+
+
 def setup():
     # Read run options from command
     opt_dict = set_opt_dict()
@@ -38,8 +54,11 @@ def setup():
     runner.Context.feature_file_name = Path(runner.Context.feature_file_path).stem
     runner.Context.result_folder_path = runner.Context.opt_dict['results_path']
 
+    copy_history_aside_if_exist(runner.Context.result_folder_path)
     # Create or clear results path
     files_utils.clear_or_create_folder(runner.Context.result_folder_path)
+
+    return_history_folder_if_exist(runner.Context.result_folder_path)
 
     # Init logger and report
     init_logger_reporter(opt_dict)

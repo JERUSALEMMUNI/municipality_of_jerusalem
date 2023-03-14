@@ -1,7 +1,4 @@
 @in_dev
-    #ToDo : wait for the popup message
-@test
-
 Feature: BetterTaxPtor form - checklist scenarios
 
   - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
@@ -12,45 +9,32 @@ Feature: BetterTaxPtor form - checklist scenarios
   - Page Information: same feature with multi values
   -
 
-  Scenario Outline: TC_IDENT_04 checklist - Enter a correct file number to the "מספר תיק בנין" field
+  Scenario: TC_IDENT_04 checklist - Enter a correct file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "<id>" in "מספר תיק בנין"
+    When write a valid value "111" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
-    Examples:
-      | id  |
-      | 111 |
 
-  Scenario Outline: TC_IDENT_05 checklist - Enter an incorrect file number to the "מספר תיק בנין" field
+#TODO: check this
+  Scenario: TC_IDENT_05 checklist - Enter an incorrect file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "<id>" in "מספר תיק בנין"
+    When write a valid value "111" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
-    Examples:
-      | id  |
-      | 111 |
 
-  Scenario Outline: TC_IDENT_06 checklist - Enter a partial file number to the "מספר תיק בנין" field
+  Scenario: TC_IDENT_06 checklist - Enter a partial file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "<id>" in "מספר תיק בנין"
+    When write a valid value "111" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
-    Examples:
-      | id  |
-      | 111 |
 
-  Scenario Outline: TC_IDENT_07 checklist - Click on "שמור" button after entering the file number
+  Scenario: TC_IDENT_07 checklist - Click on "שמור" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "<id>" in "מספר תיק בנין"
+    When write a valid value "111" in "מספר תיק בנין"
     When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
-    When close error message
-    Examples:
-      | id  |
-      | 111 |
 
-  Scenario Outline: TC_IDENT_08 checklist - Click on "הדפס" button after entering the file number
+  Scenario: TC_IDENT_08 checklist - Click on "הדפס" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
-    When write a valid value "<id>" in "מספר תיק בנין"
+    When write a valid value "111" in "מספר תיק בנין"
     When from header click on "הדפס" icon
-    Examples:
-      | id  |
-      | 111 |
+     When click on cancel button
+
 

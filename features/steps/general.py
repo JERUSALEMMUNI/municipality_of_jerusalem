@@ -84,8 +84,12 @@ def click_buttonsdfsdfsd(context):
     from selenium.webdriver.common.by import By
     context._config.current_page.driver.find_element(By.XPATH,
                                                      '//*[@id="contentToConvert"]/div/div/form/app-first-step/div/lib-identification/div/lib-otp-identification/div/otp-dialog/p-dialog/div/div/div[2]/div[2]/div[2]/button[2]').click()
+    i = 0
     while len(context.mailbox.get_messages()) != count_of_emails + 1:
         time.sleep(3)
+        i += 1
+        if i == 30:
+            raise ce.MJTimeOutError('no new notification email received')
     email_body = context.mailbox.get_messages()[-1].html_body
     password = email_body.split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split('</div>')[0]
     time.sleep(3)

@@ -34,7 +34,7 @@ class MonthYearList(BaseWidget):
     def init_widget(self):
         add_item_button = self.web_element.find_element(self.addItemButton.locator['By'],
                                                         self.addItemButton.locator['Value'])
-        self.addItemButton.set_custom_locator(add_item_button)
+        self.addItemButton.set_web_element(add_item_button)
 
     def add_item(self):
         self.addItemButton.click_button()
@@ -59,9 +59,12 @@ class MonthYearList(BaseWidget):
 
     def validate_months(self, month, index):
         widget = self.create_widget_from_index(index)
+        #todo: validate should return true/false
         assert widget.validate_months(self.locator['Value'], month), "the selected months are not shown as selected"
 
     def get_error_message(self, error_expected):
+        #todo: is this a validate method or get!
+        #in case of exception, return nothing!
         try:
             error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
             return error_msg.text == error_expected

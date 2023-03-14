@@ -6,7 +6,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
   - Number of Pages is : 2, We are at Step: 2
   - All fields are mandatory except ( רחוב, מספר בית, מספר דירה, גוש, חלקה, תת חלקה)
 
-  Scenario: Background Scenario
+  Background: Setup Scenario
 #        Given Navigate to "ConfirmationForStructure" form and reach step "צרופות והצהרה"
     Given Navigate to "ConfirmationForStructure" form
     When write a valid value "332796184" in "מספר ת.ז."

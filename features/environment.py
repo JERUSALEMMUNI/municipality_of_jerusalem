@@ -69,6 +69,7 @@ def duplicate_scenario_for_stability(context, scenarios_dict):
             new_scenario = Scenario(scenario.filename, scenario.line, scenario.keyword, scenario.name,
                                     tags=scenario.tags, steps=steps)
             new_scenario.feature = scenario.feature
+            new_scenario.background = scenario.background
             temp_list.append(scenario)
             temp_list.append(new_scenario)
         scenarios_dict[feature_name] = temp_list
@@ -109,10 +110,12 @@ def after_step(context, step):
 
 
 def after_scenario(context, scenario):
-    current_scenario_index = context._config.current_scenario_index
     current_feature = context._config.current_feature
     current_scenario = context._config.current_scenario
 
+    current_scenario_index = context._config.current_scenario_index
+    scenario_index = current_feature.scenarios.index(current_scenario)
+    current_scenario_index = scenario_index if current_scenario_index < scenario_index else current_scenario_index
     if scenario.status.name != 'passed':
         log_debug_file = [f['path'] for f in context.log_files if f['levelname'] == 'DEBUG'][0]
         with open(log_debug_file, 'r', encoding='utf-16') as e:
@@ -138,11 +141,11 @@ def after_scenario(context, scenario):
                     current_feature.scenarios[current_scenario_index + 1].name:
                 current_feature.scenarios.pop(current_scenario_index + 1)
     else:
-        if (current_scenario_index + 1) < len(current_feature.scenarios) and current_scenario.name == \
-                current_feature.scenarios[current_scenario_index + 1].name:
+        if (current_scenario_index + 1) < len(current_feature.scenarios) \
+                and current_scenario.name == current_feature.scenarios[current_scenario_index + 1].name:
             current_feature.scenarios.pop(current_scenario_index + 1)
 
-    context._config.current_scenario_index += 1
+    context._config.current_scenario_index = current_scenario_index + 1
     log.info(f'----- End Scenario - {scenario.name} -----')
 
 

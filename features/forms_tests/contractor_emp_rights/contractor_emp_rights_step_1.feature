@@ -25,7 +25,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     When close error message
 
 
-  @in_dev
   @pdf
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
     Given Navigate to "ContractorEmpRights" form

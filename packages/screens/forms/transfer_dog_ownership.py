@@ -27,7 +27,8 @@ class TransferDogOwnership(BasePage):
         self.widgets['פרטי המוסר_מספר טלפון נייד'] = create_widget('PhoneField', style=self.style,
                                                                    label='מספר טלפון נייד', index=2)
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב:')
-        self.widgets['פרטי המוסר_רחוב'] = create_widget('TextField', style=self.style, label='רחוב')
+        self.widgets['פרטי מגיש הבקשה_רחוב'] = create_widget('TextField', style=self.style, label='רחוב')
+        self.widgets['פרטי המוסר_רחוב'] = create_widget('TextField', style=self.style, label='רחוב', index=2)
         self.widgets['פרטי מגיש הבקשה_מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית')
         self.widgets['פרטי המוסר_מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית', index=2)
         self.widgets['פרטי מגיש הבקשה_מספר דירה'] = create_widget('TextField', style=self.style, label='מספר דירה')

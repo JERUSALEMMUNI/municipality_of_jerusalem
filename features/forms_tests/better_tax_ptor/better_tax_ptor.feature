@@ -1,6 +1,4 @@
-@in_dev
-    #ToDo : wait for the popup message
-@test
+@test_this
 Feature: BetterTaxPtor form
 
   - Form name: בקשה לפטור מהיטל השבחה-בהליך הוצאת היתר
@@ -27,7 +25,7 @@ Feature: BetterTaxPtor form
     Given Navigate to "BetterTaxPtor" form
     When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
-    When close error message
+#    When close error message
 
 
 #  Scenario: TC_IDENT_03 - Click on "הדפס" button before entering the file number
@@ -45,33 +43,30 @@ Feature: BetterTaxPtor form
     When write a valid value "11111" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
     Then an error message appeared with the following description: "מספר תיק רישוי לא קיים"
-    When close error message
 
   Scenario: TC_IDENT_05 - Enter an incorrect file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
     When write an invalid value "sdsd" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
     Then an error message appeared with the following description: "מספר תיק רישוי לא קיים"
-    When close error message
 
   Scenario: TC_IDENT_06 - Enter a partial file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "31545" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
     Then an error message appeared with the following description: "מספר תיק רישוי לא קיים"
-    When close error message
 
   Scenario: TC_IDENT_07 - Click on "שמור" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "11111111" in "מספר תיק בנין"
     When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
-    When close error message
 
   Scenario: TC_IDENT_08 - Click on "הדפס" button after entering the file number
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "11111111" in "מספר תיק בנין"
     When from header click on "הדפס" icon
+    When click on cancel button
 
 
 #------------------------------------------------------------------------------------------------

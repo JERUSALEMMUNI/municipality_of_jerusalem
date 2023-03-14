@@ -150,8 +150,11 @@ def validate_header_explanation_contains_text(context, count_chars):
 
 @then('an error message appeared with the following description: "{message}"')
 def validate_alert_popup_message(context, message):
+    context._config.driver.wait_for_alert_to_appear()
     try:
-        alert_text = context._config.driver.switch_to.alert.text
+        alert = context._config.driver.switch_to.alert
+        alert_text = alert.text
+        alert.accept()
     except:
         raise AssertionError('No popup message')
 
@@ -164,45 +167,23 @@ def validate_alert_popup_message(context, message):
 def close_error_message(context):
     try:
         context._config.driver.switch_to.alert.accept()
-        # context._config.driver.switch_to.window(context._config.driver.window_handles[0])
-    except:
-        raise AssertionError('No popup message for close it')
+    except Exception as e:
+        log.info('No Error Message caught')
+        log.exception(e)
 
 
 @when("click on cancel button")
-def step_impl(context):
-    time.sleep(1)
-    cancel_button = pyautogui.locateOnScreen(
-        os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_cancel.PNG'))
-    buttonx, buttony = pyautogui.center(cancel_button)
-    pyautogui.click(buttonx, buttony)
-    time.sleep(1)
+def click_cancel_button_in_dialog(context):
+    context._config.driver.click_image_on_screen('print_dialog_cancel')
 
 
 @when("click on print button")
-def step_impl(context):
-    # todo: make it with whiletimeout
-    # misc_utils.while_timeout()
-    time.sleep(2)
-    for i in range(10):
-        try:
-            print_button = pyautogui.locateOnScreen(
-                os.path.join(config.utilities_folder, 'pics_to_search_for', 'print_dialog_print.PNG'))
-            break
-        except:
-            time.sleep(2)
-            log.info('sleep for 2 secs')
-    else:
-        from infra import custom_exceptions as ce
-        raise ce.MJRunTimeError('cannot find print button on screen')
-
-    buttonx, buttony = pyautogui.center(print_button)
-    pyautogui.click(buttonx, buttony)
-    time.sleep(1)
+def click_print_button_in_dialog(context):
+    context._config.driver.click_image_on_screen('print_dialog_print')
 
 
 @when('I save the document as "{new_file}"')
-def step_impl(context, new_file):
+def handle_save_as_dialog(context, new_file):
     folder_to_save_in = os.path.join(config.temp_folder, 'SavedPDF')
     os.makedirs(folder_to_save_in, exist_ok=True)
     dst_path = os.path.join(folder_to_save_in, f'{new_file}_print.pdf')
@@ -216,7 +197,7 @@ def step_impl(context, new_file):
 
 
 @then('both files "{new_file1}" and "{new_file2}" should be the same')
-def step_impl(context, new_file1, new_file2):
+def comapre_two_pdf_files(context, new_file1, new_file2):
     new_file1_path = context.user_data[new_file1]
     new_file2_path = context.user_data[new_file2]
     res = files_utils.compare_pdfs(new_file1_path, new_file2_path)
@@ -227,7 +208,7 @@ def step_impl(context, new_file1, new_file2):
 
 
 @then('I compare "{new_file}" with reference pdf file "{reference_pdf}"')
-def step_impl(context, new_file, reference_pdf):
+def compare_pdf_file_with_reference(context, new_file, reference_pdf):
     file1_path = context.user_data[new_file]
     file2_path = os.path.join(config.utilities_folder, 'expected_references', 'pdf_files', f'{reference_pdf}.pdf')
     res = files_utils.compare_pdfs(file1_path, file2_path)
