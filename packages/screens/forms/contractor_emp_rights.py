@@ -24,7 +24,7 @@ class ContractorEmpRights(BasePage):
         self.widgets['מספר טלפון'] = create_widget('TextField', style=self.style, label='מספר טלפון')
         self.widgets['מספר טלפון נייד'] = create_widget('PhoneField', style=self.style, label='מספר טלפון נייד')
         self.widgets['אימייל'] = create_widget('TextField', style=self.style, label='אימייל')
-        self.widgets['ענף'] = create_widget('Dropdown', style=self.style, label='ענף')
+        self.widgets['ענף'] = create_widget('DropdownSearch', style=self.style, label='ענף')
         self.widgets['שם חברה'] = create_widget('DropdownSearch', style=self.style, label='שם חברה')
         self.widgets['שם אתר עירוני'] = create_widget('TextField', style=self.style, label='שם אתר עירוני')
         self.widgets['תאריך תחילת העבודה בחברה'] = create_widget('CalendarField', style=self.style, label='תאריך תחילת העבודה בחברה')
