@@ -39,18 +39,16 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located(DropdownLocators.select(pre)))
-        prefix = self.web_element.find_element(*DropdownLocators.select(pre))
-        prefix.click()
-        self.value = prefix
-        if "highlight" in self.value.get_attribute('class'):
-            self.list.append(self.value.text)
-        else:
-            self.list.remove(self.value.text)
-        log.info("after removing")
-        log.info(self.list)
-        return prefix.text
+        try:
+            WebDriverWait(self.web_element, 5).until(
+                EC.presence_of_element_located(DropdownLocators.select(pre)))
+            prefix = self.web_element.find_element(*DropdownLocators.select(pre))
+            prefix.click()
+            selection = True
+        except:
+            log.info("Didn't find option to choose")
+            selection = False
+        return selection
 
     def validate_selected(self, option):
         result = self.web_element.text
