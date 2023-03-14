@@ -4,13 +4,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
-from selenium.webdriver.support import expected_conditions as EC
 
 log = logger.get_logger(__name__)
 
 
 class TextField(BaseWidget):
-    def __init__(self, label, index, path_locator="following-sibling::input"):
+    def __init__(self, label, index, path_locator="parent::div//input"):
         super().__init__(label,index)
         self.path_locator = path_locator
 

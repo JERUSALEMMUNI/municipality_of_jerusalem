@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.new_style.accordion_row import AccordionRow
 from ui_widgets.new_style.widget_locators.accordion_table_locators import AccordionTableLocators
 
 log = logger.get_logger(__name__)
@@ -21,14 +20,8 @@ class AccordionTable(BaseWidget):
     def init_widget(self):
         pass
 
-    def set_widget_web_element(self, element):
-        located_element = self.web_element.find_element(element.locator['By'],
-                                                        element.locator['Value'])
-        element.set_web_element(located_element)
-
     def get_list(self):
-        x = self.web_element.find_elements(*AccordionTableLocators.list)
-        return x
+        return self.web_element.find_elements(*AccordionTableLocators.list)
 
     def get_list_length(self):
         return len(self.get_list())

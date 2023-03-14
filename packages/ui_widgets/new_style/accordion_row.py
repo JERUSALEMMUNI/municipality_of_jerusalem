@@ -11,7 +11,6 @@ log = logger.get_logger(__name__)
 class AccordionRow(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
-        self.trash_button = ButtonIcon('trash', index)
 
     @property
     def locator(self):
@@ -35,14 +34,15 @@ class AccordionRow(BaseWidget):
         return self.get_current_tab().text
 
     def removeItem(self):
+        self.trash_button = self.create_widget('ButtonIcon', label='trash')
         element = self.web_element.find_element(*AccordionRowLocators.trash)
-        self.trash_button.set_web_element(element)
+        self.set_widget_web_element(self.trash_button,element)
         self.trash_button.click_button()
 
     def set_text(self, label, text):
         if not self.validate_current_tab_is_expanded():
             self.click_on_current_tab()
-        text_field = TextField(label, self.index)
+        text_field = self.create_widget('TextField', label=label)
         element = self.web_element.find_element(*AccordionRowLocators.get_text_field_from_locator(label))
-        text_field.set_web_element(element)
+        self.set_widget_web_element(text_field,element)
         text_field.set_text(text)

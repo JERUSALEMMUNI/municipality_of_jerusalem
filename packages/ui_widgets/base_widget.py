@@ -11,6 +11,14 @@ class BaseWidget(object):
     def init_widget_constants(self):
         pass
 
+    def set_widget_web_element(self, element, temp_element=None):
+        if temp_element is None:
+            located_element = self.web_element.find_element(element.locator['By'],
+                                                            element.locator['Value'])
+            element.set_web_element(located_element)
+        else:
+            element.set_web_element(temp_element)
+
     def set_web_element(self, web_element):
         self.web_element = web_element
 
