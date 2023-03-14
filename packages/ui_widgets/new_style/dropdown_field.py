@@ -10,7 +10,7 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
+    def __init__(self, label, index, path_locator="/following-sibling::div/p-dropdown"):
         super().__init__(label, index)
         self.path_locator = path_locator
         self.list = []
