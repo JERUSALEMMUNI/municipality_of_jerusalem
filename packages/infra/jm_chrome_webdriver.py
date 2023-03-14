@@ -28,6 +28,21 @@ class JMChromeWebDriver(ChromeDriver):
         self.maximize_window()
         self.implicitly_wait(WaitInterval.MEDIUM.value)
 
+    # todo: add find elements with same handling as find element
+    def find_elements(self, by=By.XPATH, value=None):
+        try:
+            log.debug(f"Finding elements by {by}: {value}")
+            return super().find_elements(by, value)
+        except NoSuchElementException as e:
+            log.exception(e)
+            raise ce.MJRunTimeError("Cannot Find Widgets in Page")
+        except (StaleElementReferenceException, StaleElementReferenceException_) as e:
+            log.exception(e)
+            raise ce.MJRunTimeError("Elements are not attached to the page document")
+        except Exception as e:
+            log.exception(e)
+            raise ce.MJRunTimeError('Error while searching for Widgets in Page')
+
     def find_element(self, by=By.XPATH, value=None):
         try:
             log.debug(f"Finding element by {by}: {value}")
@@ -64,8 +79,8 @@ class JMChromeWebDriver(ChromeDriver):
     def locate_image_on_screen(self, image_name):
         image = os.path.join(config.utilities_folder, 'pics_to_search_for', f'{image_name}.PNG')
         widget_on_screen = misc_utils.while_timeout(pyautogui.locateOnScreen, True,
-                                 WaitInterval.MEDIUM.value, 'cannot find image on screen', image
-                                 , w_comp_func=lambda a, b: a is None)
+                                                    WaitInterval.MEDIUM.value, 'cannot find image on screen', image
+                                                    , w_comp_func=lambda a, b: a is None)
         return widget_on_screen
 
     def click_image_on_screen(self, image_name):

@@ -10,9 +10,8 @@ log = logger.get_logger(__name__)
 
 class TextField(BaseWidget):
     def __init__(self, label, index, path_locator="parent::div//input"):
-        super().__init__(label,index)
+        super().__init__(label, index)
         self.path_locator = path_locator
-
 
     @property
     def get_text(self):
@@ -20,15 +19,10 @@ class TextField(BaseWidget):
 
     @property
     def locator(self):
-        # Todo:add index with locator
         return {
             'By': By.XPATH,
             'Value': f"//label[contains(text(),'{self.label}')]/{self.path_locator}"
         }
-
-    def get_list(self, index=1):
-        x = self.web_element.find_elements(self.locator['By'], self.locator['Value'])
-        return x[index - 1]
 
     def validate_text(self, text):
         return self.web_element.get_attribute('value') == text

@@ -22,7 +22,7 @@ def choose_in_search(context, widget_name):
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     # todo: wrong approach
-    if widget.select_element(option_value) != None:
+    if widget.select_element(option_value) is not None:
         rep.add_label_to_step("selected Value", f"{option_value} is selected")
 
 

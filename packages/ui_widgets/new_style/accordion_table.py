@@ -47,6 +47,14 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         widget.set_text(label, text)
 
+    def set_time_text(self, row, label, text):
+        widget = self.create_widget_table_row(row)
+        widget.set_time_text(label, text)
+
+    def select_time(self, row, label, text):
+        widget = self.create_widget_table_row(row)
+        widget.select_time(label, text)
+
     def get_tab_text(self, row):
         widget = self.create_widget_table_row(row)
         return widget.get_current_tab_text()
