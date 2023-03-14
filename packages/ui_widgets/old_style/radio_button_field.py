@@ -10,28 +10,21 @@ class RadioButtonField(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
 
-
     @property
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::div/p-radiobutton/label",
+            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::div"
         }
 
-    def choose_value(self, selected_item, index=1):
-        try:
-            wanted_btn = self.web_element.find_elements(self.locator['By'], self.locator[
-                'Value'] + f"[contains(text(),'{selected_item}')]/parent::p-radiobutton/div")
-            wanted_btn[index - 1].click()
-        except:
-            log.info(f"{selected_item} not exists in radio button to chose")
+    def choose_value(self, selected_item):
+        self.get_label(selected_item).click()
 
     def get_label(self, selected_item):
-        return self.web_element.find_element(self.locator['By'], self.locator[
-            'Value'] + f"[contains(text(),'{selected_item}')]")
+        return self.web_element.find_element(*RadioButtonLocators.get_item(selected_item))
 
     def get_lists(self):
-        return self.web_element.find_elements(self.locator['By'], self.locator['Value'])
+        return self.web_element.find_elements(*RadioButtonLocators.list)
 
     def inactive_count(self):
         count = 0
@@ -46,6 +39,7 @@ class RadioButtonField(BaseWidget):
                 return option.text
         return -1
 
+
     def is_chosen(self, selected_item):
         return "active" in self.get_label(selected_item).get_attribute('class')
 
@@ -56,10 +50,12 @@ class RadioButtonField(BaseWidget):
         except:
             log.info("there is no label error here")
 
+    @property
     def is_invalid(self):
         x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'invalid' in x.get_attribute('class')
 
+    @property
     def is_valid(self):
         x = self.web_element.find_element(*RadioButtonLocators.is_invalid)
         return 'valid' in x.get_attribute('class')
