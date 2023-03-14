@@ -81,25 +81,26 @@ class DropdownSearch(Dropdown):
         element.clear()
         element.send_keys(text)
 
-    def search_and_pick_first_element(self, text):
+    def search_and_pick_first_element_and_validate(self, text):
         """
         This function will click the dropdown menu, then it will clear the search field
         and will set a text value, after that it will search for that option and click the
-        first value in search result
+        first value in search result, and validate the result
         """
         self.click_button()
-        element = WebDriverWait(self.web_element, 30).until(
+        element = WebDriverWait(self.web_element, 5).until(
             EC.visibility_of_element_located((By.XPATH, f"./div/div/div/input")))
         element.click()
         element.clear()
         element.send_keys(text)
         try:
-            element = WebDriverWait(self.web_element, 30).until(
+            element = WebDriverWait(self.web_element, 5).until(
                 EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
             element.click()
-
+            return True
         except:
             log.info("Option is not found")
+            return False
 
     def clear_search_field(self):
         element = WebDriverWait(self.web_element, 30).until(
@@ -109,9 +110,9 @@ class DropdownSearch(Dropdown):
 
     def get_search_result_if_empty(self):
         # self.click_button()
-        element = WebDriverWait(self.web_element, 30).until(
+        element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
-        return element.text
+        return element.text == "No results found"
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)
