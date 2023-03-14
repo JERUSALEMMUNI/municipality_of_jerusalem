@@ -51,9 +51,7 @@ class UploadFile(BaseWidget):
         delete_button = self.web_element.find_element(*UploadFilesLocators.delete_file_locator(file_index))
         delete_button.click()
 
-    def get_error_message(self, error_expected):
-        try:
-            error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
-            return error_msg.text == error_expected
-        except:
-            log.info("Error label is not available")
+    def validate_error_message(self, error_expected):
+        error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
+        return error_msg.text == error_expected
+

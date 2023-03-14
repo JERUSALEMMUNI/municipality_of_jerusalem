@@ -51,9 +51,7 @@ class TextField(BaseWidget):
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
 
-    def get_error_message(self, error_expected):
-        try:
-            error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
-            return error_msg.text == error_expected
-        except:
-            log.info("Error label is not available")
+    def validate_error_message(self, error_expected):
+        error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
+        return error_msg.text == error_expected
+

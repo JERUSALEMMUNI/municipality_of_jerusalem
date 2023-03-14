@@ -62,11 +62,6 @@ class MonthYearList(BaseWidget):
         #todo: validate should return true/false
         assert widget.validate_months(self.locator['Value'], month), "the selected months are not shown as selected"
 
-    def get_error_message(self, error_expected):
-        #todo: is this a validate method or get!
-        #in case of exception, return nothing!
-        try:
-            error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
-            return error_msg.text == error_expected
-        except:
-            log.info("Error label is not available")
+    def validate_error_message(self, error_expected):
+        error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
+        return error_msg.text == error_expected

@@ -27,8 +27,7 @@ class TransferDogOwnership(BasePage):
         self.widgets['פרטי המוסר_מספר טלפון נייד'] = create_widget('PhoneField', style=self.style,
                                                                    label='מספר טלפון נייד', index=2)
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב:')
-        self.widgets['פרטי מגיש הבקשה_רחוב'] = create_widget('TextField', style=self.style, label='רחוב')
-        self.widgets['פרטי המוסר_רחוב'] = create_widget('TextField', style=self.style, label='רחוב', index=2)
+        self.widgets['פרטי המוסר_רחוב'] = create_widget('TextField', style=self.style, label='רחוב')
         self.widgets['פרטי מגיש הבקשה_מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית')
         self.widgets['פרטי המוסר_מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית', index=2)
         self.widgets['פרטי מגיש הבקשה_מספר דירה'] = create_widget('TextField', style=self.style, label='מספר דירה')
@@ -45,9 +44,8 @@ class TransferDogOwnership(BasePage):
         self.widgets['רישיון אחרון להחזקת כלב'] = create_widget('UploadFile', style=self.style,
                                                                 label='רישיון אחרון להחזקת כלב', driver=self.driver)
         self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר', driver=self.driver)
-        self.widgets['הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של'] = create_widget('CheckBox',
-                                                                                                    style=self.style,
-                                                                                                    label='הנני מצהיר/ה בזה כי החל מתאריך 14/03/2023 קיבלתי את כלבו של')
+        self.widgets['הנני מצהיר/ה בזה כי החל מתאריך'] = create_widget('CheckBox', style=self.style,
+                                                                       label='הנני מצהיר/ה בזה כי החל מתאריך')
         self.widgets[
             'הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק.'] = create_widget(
             'CheckBox', style=self.style,
@@ -74,6 +72,24 @@ class TransferDogOwnership(BasePage):
         self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
     def fill_form_to_reach_step(self, dst_step):
+        if dst_step == "פרטי הכלב":
+            self.navigate()
+
+        elif dst_step == "צרופות והצהרה":
+            self.navigate()
+            self.widgets['שם הכלב'].set_text('מרקוס')
+            self.widgets['גזע'].set_text('ביטבול')
+            self.widgets['מין'].choose_value('זכר')
+            self.widgets['צבע'].set_text('לבן')
+            self.widgets['מספר שבב'].set_text('2322322232')
+            self.widgets['שנת לידה'].select_element('2020')
+            self.widgets['הכלב מחוסן כנגד מחלת הכלבת?'].choose_value('כן')
+            self.widgets['תאריך חיסון כלבת אחרון'].second_calender('8/3/2020')
+            self.widgets['הכלב רשום ברשות המקומית'].select_element('אבו גוש')
+            self.widgets['תאריך מסירת הכלב'].second_calender('8/5/2021')
+            self.widgets["המשך"].click_button()
+
+    def navigate(self):
         self.widgets['פרטי מגיש הבקשה_תעודת זהות'].set_text('332796184')
         self.widgets['פרטי המוסר_תעודת זהות'].set_text('332796184')
         self.widgets['פרטי מגיש הבקשה_שם פרטי'].set_text('שלום')
@@ -89,4 +105,3 @@ class TransferDogOwnership(BasePage):
         self.widgets['פרטי המוסר_יישוב'].set_text('23')
         self.widgets['פרטי המוסר_רחוב'].set_text('23')
         self.widgets["המשך"].click_button()
-        pass

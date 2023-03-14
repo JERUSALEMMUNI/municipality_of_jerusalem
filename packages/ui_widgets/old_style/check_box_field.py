@@ -31,12 +31,10 @@ class CheckBox(BaseWidget):
     def validate_box_is_unchecked(self):
         return self.web_element.get_attribute('aria-checked') in ("false" or None)
 
-    def get_error_message(self, error_expected):
-        try:
-            error_msg = self.web_element.find_element(*CheckBoxLocator.error_msg)
-            return error_msg.text == error_expected
-        except:
-            log.info("Error label is not available")
+    def validate_error_message(self, error_expected):
+        error_msg = self.web_element.find_element(*CheckBoxLocator.error_msg)
+        return error_msg.text == error_expected
+
 
     @property
     def is_invalid(self):

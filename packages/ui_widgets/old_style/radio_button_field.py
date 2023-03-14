@@ -39,16 +39,12 @@ class RadioButtonField(BaseWidget):
                 return option.text
         return -1
 
-
     def is_chosen(self, selected_item):
         return "active" in self.get_label(selected_item).get_attribute('class')
 
-    def get_error_message(self, error_expected):
-        try:
-            error_msg = self.web_element.find_element(*RadioButtonLocators.error_msg)
-            return error_msg.text == error_expected
-        except:
-            log.info("there is no label error here")
+    def validate_error_message(self, error_expected):
+        error_msg = self.web_element.find_element(*RadioButtonLocators.error_msg)
+        return error_msg.text == error_expected
 
     @property
     def is_invalid(self):

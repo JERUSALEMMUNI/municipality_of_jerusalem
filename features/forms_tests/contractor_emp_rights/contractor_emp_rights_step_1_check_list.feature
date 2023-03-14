@@ -8,7 +8,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
   - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
 
 
-  Scenario: הסבר לטופס - לדף (ContractorEmpRights)
+  Scenario: Explanation of the form (ContractorEmpRights)
     Given Navigate to "ContractorEmpRights" form
     When from header click on "מידע" icon
     Then validate information dialog is opened
@@ -37,7 +37,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
     And validate footer call us text is default as "לתמיכה טכנית צרו איתנו קשר בפנייה דיגיטלית או בטלפון 02-6295488 בימים א - ה בין 08:30-16:00"
 
 
-  Scenario Outline:  לחסום תעודות זהות פקטיביות (valid)
+  Scenario Outline:  Block fictitious IDs (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<id>" in "מספר זהות"
     Examples:
@@ -46,7 +46,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 227638475 |
 
 
-  Scenario Outline: לחסום תעודות זהות פקטיביות (invalid)
+  Scenario Outline: Block fictitious IDs (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<id>" in "מספר זהות"
     Examples:
@@ -64,7 +64,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | סקרכקדכ                  |
 
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (ת.ז. קלט לא תקין)
+  Scenario Outline: ID error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<id>" in "מספר זהות"
     Then check if "מספר זהות" error is "מספר זהות לא תקין"
@@ -85,13 +85,13 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | sgrgsgr                  |
       | סקרכקדכ                  |
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (ת.ז. קלט ריק)
+  Scenario: ID error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value " " in "מספר זהות"
     Then check if "מספר זהות" error is "יש להזין מספר זהות"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם פרטי (valid)
+  Scenario Outline: write only in Hebrew first name test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<first_name>" in "שם פרטי"
     Examples:
@@ -102,7 +102,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פ               |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית שם פרטי (invalid)
+  Scenario Outline: write only in Hebrew first name test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<first_name>" in "שם פרטי"
     Examples:
@@ -113,7 +113,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי:  קלט לא תקין)
+  Scenario Outline: First name error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<first_name>" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -125,13 +125,13 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי: קלט ריק)
+  Scenario: First name error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value " " in "שם פרטי"
     Then check if "שם פרטי" error is "יש למלא שם פרטי"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם משפחה (valid)
+  Scenario Outline: write only in Hebrew last name test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<last_name>" in "שם משפחה"
     Examples:
@@ -142,7 +142,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פ                  |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית שם משפחה (invalid)
+  Scenario Outline: write only in Hebrew last name test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<last_name>" in "שם משפחה"
     Examples:
@@ -153,7 +153,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | גכע#$%^&*            |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם משפחה:  קלט לא תקין)
+  Scenario Outline: Last name error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<last_name>" in "שם משפחה"
     Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -165,13 +165,13 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | גכע#$%^&*            |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם משפחה: קלט ריק)
+  Scenario: Last name error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value " " in "שם משפחה"
     Then check if "שם משפחה" error is "יש למלא שם משפחה"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית אימייל (valid)
+  Scenario Outline: write only in English and numbers in email test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<email>" in "אימייל"
     Examples:
@@ -182,7 +182,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | a@b.com     |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית אימייל (invalid)
+  Scenario Outline: write only in English and numbers in email test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<email>" in "אימייל"
     Examples:
@@ -193,7 +193,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | fןכיبل@.com  |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל:  קלט לא תקין)
+  Scenario Outline: Email error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<email>" in "אימייל"
     Then check if "אימייל" error is "דוא''ל לא תקין"
@@ -205,13 +205,13 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | fןכיبل@.com  |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל: קלט ריק)
+  Scenario: Email error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value " " in "אימייל"
     Then check if "אימייל" error is "יש להזין כתובת אימייל"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (valid)
+  Scenario Outline: write only in Hebrew street test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<street>" in "רחוב"
     Examples:
@@ -222,7 +222,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | ככגךגדחדלגמג    |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (invalid)
+  Scenario Outline: write only in Hebrew street test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<street>" in "רחוב"
     Examples:
@@ -233,7 +233,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (רחוב:  קלט לא תקין)
+  Scenario Outline: Street error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<street>" in "רחוב"
     Then check if "רחוב" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -245,7 +245,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם אתר עירוני (valid)
+  Scenario Outline: write only in Hebrew City site name test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<city_site_name>" in "שם אתר עירוני"
     Examples:
@@ -256,7 +256,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פ                       |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית שם אתר עירוני (invalid)
+  Scenario Outline: write only in Hebrew City site name test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<city_site_name>" in "שם אתר עירוני"
     Examples:
@@ -267,7 +267,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פsda                 |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם אתר עירוני:  קלט לא תקין)
+  Scenario Outline: City site name error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<city_site_name>" in "שם אתר עירוני"
     Then check if "שם אתר עירוני" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -279,7 +279,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פsda                 |
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית פרטי התלונה (valid)
+  Scenario Outline: write only in Hebrew Complaint details test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<complaint_details>" in "פרטי התלונה"
     Examples:
@@ -290,7 +290,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פ                   |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית פרטי התלונה (invalid)
+  Scenario Outline: write only in Hebrew Complaint details test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<complaint_details>" in "פרטי התלונה"
     Examples:
@@ -301,7 +301,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلان                |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (פרטי התלונה:  קלט לא תקין)
+  Scenario Outline: Complaint details error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<complaint_details>" in "פרטי התלונה"
     Then check if "פרטי התלונה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -314,12 +314,12 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلان                |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (פרטי התלונה: קלט ריק)
+  Scenario: Complaint details error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     Then check if "פרטי התלונה" error is "יש למלא את פרטי התלונה"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית התשובה שקיבלתי (valid)
+  Scenario Outline: write only in Hebrew Answer received test (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<answer>" in "התשובה שקיבלתי"
     Examples:
@@ -330,7 +330,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | פ               |
 
 
-  Scenario Outline: בבכל השדות טקסט לאפשר לכתוב רק בעברית התשובה שקיבלתי (invalid)
+  Scenario Outline: write only in Hebrew Answer received test (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<answer>" in "התשובה שקיבלתי"
     Examples:
@@ -341,7 +341,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (התשובה שקיבלתי:  קלט לא תקין)
+  Scenario Outline: Answer received error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<answer>" in "התשובה שקיבלתי"
     Then check if "התשובה שקיבלתי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -353,7 +353,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | يبلdfgגכעי4ٌٌُُلإ$%פ |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר בית (valid)
+  Scenario Outline: write only numbers in house number (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<house_number>" in "מספר בית"
     Examples:
@@ -362,7 +362,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 42           |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר בית (invalid)
+  Scenario Outline: write only numbers in house number (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<house_number>" in "מספר בית"
     Examples:
@@ -373,7 +373,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 644e3e       |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר בית: קלט לא תקין)
+  Scenario Outline: house number error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<house_number>" in "מספר בית"
     Then check if "מספר בית" error is "ש להזין ספרות בלבד"
@@ -385,7 +385,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 6443ee       |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר דירה (valid)
+  Scenario Outline: write only numbers in apartment number (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<department_number>" in "מספר דירה"
     Examples:
@@ -394,7 +394,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 3                 |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר דירה (invalid)
+  Scenario Outline: write only numbers in apartment number (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<department_number>" in "מספר דירה"
     Examples:
@@ -405,7 +405,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 64e43e            |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר דירה: קלט לא תקין)
+  Scenario Outline: Apartment number error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<department_number>" in "מספר דירה"
     Then check if "מספר דירה" error is "ש להזין ספרות בלבד"
@@ -418,7 +418,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 644e3e            |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון(valid)
+  Scenario Outline: write only numbers in home phone number (valid)
     Given Navigate to "ContractorEmpRights" form
     When write a valid value "<home_phone_number>" in "מספר טלפון"
     Examples:
@@ -427,7 +427,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 026283066         |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון (invalid)
+  Scenario Outline: write only numbers in home phone number (invalid)
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<home_phone_number>" in "מספר טלפון"
     Examples:
@@ -438,7 +438,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 026e83066         |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון: קלט לא תקין)
+  Scenario Outline: Home Phone number error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When write an invalid value "<home_phone_number>" in "מספר טלפון"
     Then check if "מספר טלפון" error is "יש להזין ספרות בלבד"
@@ -450,7 +450,8 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 026e83066         |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון נייד (valid)
+
+  Scenario Outline: write only numbers in phone number (valid)
     Given Navigate to "ContractorEmpRights" form
     When fill "<phone_number>" as valid value in "מספר טלפון נייד"
     Examples:
@@ -459,7 +460,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 058-3897485  |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון נייד (invalid)
+  Scenario Outline: write only numbers in phone number (invalid)
     Given Navigate to "ContractorEmpRights" form
     When fill "<phone_number>" as invalid value in "מספר טלפון נייד"
     Examples:
@@ -470,7 +471,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 058-389e485  |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד: קלט לא תקין)
+  Scenario Outline: Phone number error messages test: Invalid input
     Given Navigate to "ContractorEmpRights" form
     When fill "<phone_number>" as invalid value in "מספר טלפון נייד"
     Then check if "מספר טלפון נייד" error is "יש להזין ספרות בלבד"
@@ -482,13 +483,13 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
       | 058-389e485  |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד: קלט ריק)
+  Scenario: Phone number error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When fill "052- " as invalid value in "מספר טלפון נייד"
     Then check if "מספר טלפון נייד" error is "יש להזין מספר טלפון נייד"
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה לשאר השדות (ענף, שם חברה, תאריך תחילת העבודה בחברה, נושא התלונה, חודשים לבדיקה, האם היתה פניה למעסיק קודם הגשת תלונה זו: קלט ריק)
+  Scenario: Rest of fields error messages test: Empty input
     Given Navigate to "ContractorEmpRights" form
     When click on "המשך" icon
     Then check if "ענף" error is "יש לבחור ענף"
@@ -499,7 +500,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 1
     Then check if "האם היתה פניה למעסיק קודם הגשת תלונה זו?" error is "יש לסמן האם היתה פניה למעסיק קודם הגשת תלונה זו"
 
   #BUG
-  Scenario: בדיקת הזנת תאריך לידה
+  Scenario: Date of birth Test
     Given Navigate to "ContractorEmpRights" form
     When pick "1/2/1900" from calendar of "תאריך תחילת העבודה בחברה"
     Then validate picked date of "תאריך תחילת העבודה בחברה" is "01/02/1900"

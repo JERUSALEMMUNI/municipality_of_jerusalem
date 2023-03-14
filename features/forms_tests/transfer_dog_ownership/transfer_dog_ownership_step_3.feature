@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: TransferDogOwnership form - scenarios step 3
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -9,51 +9,19 @@ Feature: TransferDogOwnership form - scenarios step 3
 
 
   Background: Background Scenario
-    Given Navigate to "TransferDogOwnership" form
-    When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "דרןח" in "שם פרטי"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "a.b@c.com" in "אימייל"
-    And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  search and pick "א טור" in search field "רחוב"
-    And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
-    And  from parent "פרטי המוסר" write a valid value "קכקק" in "שם פרטי"
-    And  from parent "פרטי המוסר" write a valid value "דגככגדק" in "שם משפחה"
-    And  from parent "פרטי המוסר" write a valid value "332796184" in "תעודת זהות"
-    And  from parent "פרטי המוסר" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" write a valid value "ירושלים" in "יישוב"
-    And  from parent "פרטי המוסר" write a valid value "א טור" in "רחוב"
-    And  from parent "פרטי המוסר" write a valid value "2" in "מספר בית"
-    And click on "המשך" icon
-    When write a valid value "ביסקו" in "שם הכלב"
-    And write a valid value "דשגדק" in "גזע"
-    And choose "זכר" from "מין"
-    And write a valid value "לבן" in "צבע"
-    And write a valid value "982009104328548" in "מספר שבב"
-    And pick "2020" from "שנת לידה"
-    And choose "כן" from "הכלב מחוסן כנגד מחלת הכלבת?"
-    And pick "8/3/2020" from second type of calendar of "תאריך חיסון כלבת אחרון"
-    And search for "אבו סריחאן )שבט(" in "הכלב רשום ברשות המקומית"
-    And pick "8/3/2020" from second type of calendar of "תאריך מסירת הכלב"
-    When click on "המשך" icon
+    Given Navigate to "TransferDogOwnership" form and reach step "צרופות והצהרה"
 
 
-  Scenario: TC_DOGOWNER_07 - טעינת קבצים בפורמט מאושר
+  Scenario: TC_DOGOWNER_07 - Upload files with approved format test
     Then validate current step is "צרופות והצהרה"
     When Upload "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
     And Upload "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
     And Upload "excel_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
     And Upload "png_to_upload.png" file in "אחר"
     And check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
-    And check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי"
+    And check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    And validate current step is "פרטי מגיש הבקשה המקבל והמוסר"
+
 
 
 

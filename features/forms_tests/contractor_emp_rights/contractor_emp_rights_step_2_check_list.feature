@@ -1,4 +1,3 @@
-
 Feature: ContractorEmpRights form - CheckList scenarios step 2
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -11,7 +10,7 @@ Feature: ContractorEmpRights form - CheckList scenarios step 2
     Given Navigate to "ContractorEmpRights" form and reach step "צרופות והצהרה"
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה  (הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים: קלט ריק)
+  Scenario: check box error messages test: Empty input
     When click on "שלח" icon
     When close error message
     Then check if "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים." error is "חובה למלא את ההצהרה"

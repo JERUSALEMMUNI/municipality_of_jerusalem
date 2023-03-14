@@ -12,7 +12,7 @@ Feature: TransferDogOwnership form - scenarios step 2
 
 
 
-  Scenario:TC_DOGOWNER_05 - הזנת ערכים תקינים לשדות  הכלב
+  Scenario:TC_DOGOWNER_05 - Dog fields test (valid)
     When write a valid value "ביסקו" in "שם הכלב"
     And write a valid value "דשגדק" in "גזע"
     And choose "זכר" from "מין"
@@ -25,8 +25,8 @@ Feature: TransferDogOwnership form - scenarios step 2
     And pick "8/5/2023" from second type of calendar of "תאריך מסירת הכלב"
 
 
-  @in_dev
-  Scenario: TC_DOGOWNER_06 - הזנת ערכים תקינים לשדות  הכלב
+
+  Scenario: TC_DOGOWNER_06 - Dog fields test (invalid)
     When write an invalid value "قفغعه" in "שם הכלב"
     And write an invalid value "يسبسtyu" in "גזע"
     And choose "זכר" from "מין"

@@ -7,15 +7,15 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory except (.ספר דירה, ת.ד )
 
-  @in_dev
-  Scenario: אחרי שמירה שטופס לא יקפוץ לעמוד הראשון-להשאיר בשלב שהתושב נמצא בו כעת
+
+  Scenario: save button test
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "332796184" in "תעודת זהות"
     And  from parent "פרטי מגיש הבקשה" write a valid value "דרןח" in "שם פרטי"
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" write "א טור" in search field "רחוב"
+    And  search and pick "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "1" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "ת.ד"
@@ -43,7 +43,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then validate current step is "פרטי הכלב"
 
 
-  Scenario: הסבר לטופס - לכל טופס חייב להיות הסבר -בבדיקה מול טפסים ישנים שיש התאמה מול ההסברים הישנים
+  Scenario: Test Explanation of the form
     Given Navigate to "TransferDogOwnership" form
     When from header click on "מידע" icon
     Then validate information dialog is opened
@@ -53,7 +53,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then validate information dialog is closed
 
 
-  Scenario Outline: לחסום תעודות זהות פקטיביות תעודת זהות (valid)
+  Scenario Outline: Block fictitious IDs (valid)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "<id>" in "תעודת זהות"
     And  from parent "פרטי המוסר" write a valid value "<id>" in "תעודת זהות"
@@ -64,7 +64,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: לחסום תעודות זהות פקטיביות תעודת זהות(invalid)
+  Scenario Outline: Block fictitious IDs (invalid)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value "<id>" in "תעודת זהות"
     And from parent "פרטי המוסר" write an invalid value "<id>" in "תעודת זהות"
@@ -79,7 +79,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | #$%^&     |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (תעודת זהות: קלט לא תקין)
+  Scenario Outline: ID error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value "<id>" in "תעודת זהות"
     And from parent "פרטי המוסר" write an invalid value "<id>" in "תעודת זהות"
@@ -97,7 +97,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | suhaib               |
 
 
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (תעודת זהות: קלט ריק)
+  Scenario: ID error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value " " in "תעודת זהות"
     When from parent "פרטי מגיש הבקשה" clear "תעודת זהות"
@@ -107,7 +107,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then from parent "פרטי המוסר" check if "תעודת זהות" error is "יש להזין מספר זהות"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם פרטי(valid)
+  Scenario Outline: write only in Hebrew first name test (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי המוסר" write a valid value "<first_name>" in "שם פרטי"
@@ -119,7 +119,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם פרטי(invalid)
+  Scenario Outline: write only in Hebrew first name test (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי המוסר" write an invalid value "<first_name>" in "שם פרטי"
@@ -132,7 +132,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | סוהייב##&&^*@!#% |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי: קלט לא תקין)
+  Scenario Outline: First name error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<first_name>" in "שם פרטי"
     And  from parent "פרטי המוסר" write an invalid value "<first_name>" in "שם פרטי"
@@ -147,7 +147,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם פרטי: קלט ריק)
+  Scenario: First name error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "שם פרטי"
     When from parent "פרטי מגיש הבקשה" clear "שם פרטי"
@@ -157,7 +157,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then from parent "פרטי המוסר" check if "שם פרטי" error is "יש למלא שם פרטי"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם משפחה(valid)
+  Scenario Outline: write only in Hebrew last name test (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<last_name>" in "שם משפחה"
     And  from parent "פרטי המוסר" write a valid value "<last_name>" in "שם משפחה"
@@ -169,7 +169,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית שם משפחה (invalid)
+  Scenario Outline: write only in Hebrew last name test (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<last_name>" in "שם משפחה"
     And  from parent "פרטי המוסר" write an invalid value "<last_name>" in "שם משפחה"
@@ -182,7 +182,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | !@#$%%           |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם משפחה: קלט לא תקין)
+  Scenario Outline: Last name error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<last_name>" in "שם משפחה"
     And  from parent "פרטי המוסר" write an invalid value "<last_name>" in "שם משפחה"
@@ -197,7 +197,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (שם משפחה: קלט ריק)
+  Scenario: Last name error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "שם משפחה"
     When from parent "פרטי מגיש הבקשה" clear "שם משפחה"
@@ -207,7 +207,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then from parent "פרטי המוסר" check if "שם משפחה" error is "יש למלא שם משפחה"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית יישוב (valid)
+  Scenario Outline: write only in Hebrew address test (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי המוסר" write a valid value "<address>" in "יישוב"
     Examples:
@@ -218,7 +218,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית יישוב(invalid)
+  Scenario Outline: write only in Hebrew address test (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי המוסר" write an invalid value "<address>" in "יישוב"
     Examples:
@@ -230,7 +230,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | סוהייב##&&^*@!#% |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (יישוב: קלט לא תקין)
+  Scenario Outline:  Address error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי המוסר" write an invalid value "<address>" in "יישוב"
     Then from parent "פרטי המוסר" check if "יישוב" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -243,14 +243,14 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (יישוב: קלט ריק)
+  Scenario: Address error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     Then from parent "פרטי המוסר" check if "יישוב" error is "יש למלא יישוב"
 
 
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (valid)
+  Scenario Outline: write only in Hebrew street test (valid)
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
+    When  write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write a valid value "<street>" in "רחוב"
     Examples:
       | street       |
@@ -260,9 +260,9 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario Outline: בכל השדות טקסט לאפשר לכתוב רק בעברית רחוב (invalid)
+  Scenario Outline: write only in Hebrew street test (invalid)
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
+    When  write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write an invalid value "<street>" in "רחוב"
     Examples:
       | street           |
@@ -273,7 +273,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | !@#$%%           |
 
   #BUG
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (רחוב: קלט לא תקין)
+  Scenario Outline: Street error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי המוסר" write an invalid value "<street>" in "רחוב"
     Then from parent "פרטי המוסר" check if "רחוב" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -286,14 +286,14 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
 
 
   #BUG
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (רחוב: קלט ריק)
+  Scenario: Street error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי המוסר" write an invalid value " " in "רחוב"
     When from parent "פרטי המוסר" clear "רחוב"
     Then from parent "פרטי המוסר" check if "רחוב" error is "יש למלא רחוב"
 
 
-  Scenario Outline: בכתובת מייל לאפשר לכתוב רק באנגלית ומספרים (valid)
+  Scenario Outline: write only in English and numbers in email test (valid)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write a valid value "<email>" in "אימייל"
     Examples:
@@ -304,7 +304,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | sa1223m@12334.com |
       | suha@abu.net      |
 
-  Scenario Outline: בכתובת מייל לאפשר לכתוב רק באנגלית ומספרים (invalid)
+  Scenario Outline: write only in English and numbers in email test (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<email>" in "אימייל"
     Examples:
@@ -316,7 +316,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | a@b.co./mb   |
 
 
-  Scenario Outline:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל: קלט לא תקין)
+  Scenario Outline: Email error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<email>" in "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "דוא''ל לא תקין"
@@ -329,14 +329,14 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | صهيب                 |
       | suhaib               |
 
-  Scenario:  לכל השגיאות בקבצים יש להציג הודעה מתאימה (אימייל: קלט ריק)
+  Scenario: Email error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "אימייל"
     When from parent "פרטי מגיש הבקשה" clear "אימייל"
     Then from parent "פרטי מגיש הבקשה" check if "אימייל" error is "יש להזין כתובת אימייל"
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון נייד (valid)
+  Scenario Outline: write only numbers in phone number (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" fill "<phone_number>" as valid value in "מספר טלפון נייד"
     And  from parent "פרטי המוסר" fill "<phone_number>" as valid value in "מספר טלפון נייד"
@@ -346,36 +346,38 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 050-1111111  |
       | 050-2222222  |
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר טלפון נייד (invalid)
+  Scenario Outline: write only numbers in phone number (invalid)
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי מגיש הבקשה" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי המוסר" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
+
     Examples:
       | phone_number |
-      | 050-שדגדגשד  |
-      | 050-234#$%   |
-      | 050-כעיחUןם  |
+      | 052-321d2f4  |
+      | 052-321%2f4  |
+      | 052-321@2f4  |
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד:  קלט לא תקין)
+  Scenario Outline: Phone number error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי מגיש הבקשה" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי המוסר" fill "<phone_number>" as invalid value in "מספר טלפון נייד"
     Then from parent "פרטי מגיש הבקשה" check if "מספר טלפון נייד" error is "יש להזין ספרות בלבד/nיש להשלים את הספרות החסרות"
     Then from parent "פרטי המוסר" check if "מספר טלפון נייד" error is "יש להזין ספרות בלבד/nיש להשלים את הספרות החסרות"
     Examples:
       | phone_number |
-      | 050-שדגדגשד  |
-      | 050-234#$%   |
-      | 050-כעיחUןם  |
+      | 052-321d2f4  |
+      | 052-321%2f4  |
+      | 052-321@2f4  |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר טלפון נייד: קלט ריק)
+  Scenario: Phone number error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי מגיש הבקשה" fill "052- " as invalid value in "מספר טלפון נייד"
-    And  from parent "פרטי המוסר" fill "054- " as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי מגיש הבקשה" fill "052-1 " as invalid value in "מספר טלפון נייד"
+    When from parent "פרטי המוסר" fill "052-1 " as invalid value in "מספר טלפון נייד"
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר בית (valid)
+
+  Scenario Outline: write only numbers in house number (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<home_number>" in "מספר בית"
     And  from parent "פרטי המוסר" write a valid value "<home_number>" in "מספר בית"
@@ -385,7 +387,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 123         |
       | 41221321    |
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר בית (invalid)
+  Scenario Outline: write only numbers in house number (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<home_number>" in "מספר בית"
     And  from parent "פרטי המוסר" write an invalid value "<home_number>" in "מספר בית"
@@ -395,7 +397,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | שד34        |
       | #$5         |
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר בית:  קלט לא תקין)
+  Scenario Outline: house number error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<home_number>" in "מספר בית"
     And  from parent "פרטי המוסר" write an invalid value "<home_number>" in "מספר בית"
@@ -408,7 +410,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | #$5         |
 
 
-  Scenario: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר בית: קלט ריק)
+  Scenario: house number error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value " " in "מספר בית"
     When from parent "פרטי מגיש הבקשה" clear "מספר בית"
@@ -418,7 +420,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     Then from parent "פרטי המוסר" check if "מספר בית" error is "יש למלא מספר בית"
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר דירה (valid)
+  Scenario Outline: write only numbers in apartment number (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write a valid value "<apartment_number>" in "מספר דירה"
@@ -428,7 +430,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 23241343443      |
       | 2332             |
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים מספר דירה (invalid)
+  Scenario Outline: write only numbers in apartment number (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write an invalid value "<apartment_number>" in "מספר דירה"
@@ -438,7 +440,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | ראטוחFן          |
       | %^لاتن           |
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (מספר דירה:  קלט לא תקין)
+  Scenario Outline: Apartment number error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<apartment_number>" in "מספר דירה"
     And  from parent "פרטי המוסר" write an invalid value "<apartment_number>" in "מספר דירה"
@@ -451,7 +453,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | %^لاتن           |
 
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים ת.ד (valid)
+  Scenario Outline: write only numbers in P.O. (valid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write a valid value "<postal_number>" in "ת.ד"
     And  from parent "פרטי המוסר" write a valid value "<postal_number>" in "ת.ד"
@@ -461,7 +463,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | 123123142424  |
       | 2             |
 
-  Scenario Outline: בכל השדות של מספרים לאפשר לכתוב רק מספרים ת.ד (invalid)
+  Scenario Outline: write only numbers in P.O. (invalid)
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "ת.ד"
     And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "ת.ד"
@@ -471,7 +473,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
       | بلات          |
       | ראטון         |
 
-  Scenario Outline: לכל השגיאות בקבצים יש להציג הודעה מתאימה (ת.ד:  קלט לא תקין)
+  Scenario Outline: P.O. error messages test: Invalid input
     Given Navigate to "TransferDogOwnership" form
     When  from parent "פרטי מגיש הבקשה" write an invalid value "<postal_number>" in "ת.ד"
     And  from parent "פרטי המוסר" write an invalid value "<postal_number>" in "ת.ד"

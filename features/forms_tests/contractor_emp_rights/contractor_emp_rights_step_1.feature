@@ -1,4 +1,3 @@
-
 Feature: ContractorEmpRights form - scenarios step 1
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -26,6 +25,7 @@ Feature: ContractorEmpRights form - scenarios step 1
 
 
   @pdf
+  @in_dev
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
     Given Navigate to "ContractorEmpRights" form
     When from header click on "הדפס" icon

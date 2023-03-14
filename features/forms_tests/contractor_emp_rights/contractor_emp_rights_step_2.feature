@@ -1,4 +1,3 @@
-
 Feature: ContractorEmpRights form - scenarios step 2
 
   - Form name: תלונה בגין פגיעה בזכויות עובד קבלן בתחומי ניקיון, שמירה והסעדה
@@ -52,7 +51,7 @@ Feature: ContractorEmpRights form - scenarios step 2
     When delete file "1" in "אחר"
 
 @this_to_test
-  Scenario: העלת קבצים בשמות לא מאושרים
+  Scenario: Uploading files with unapproved names test
     Then validate current step is "צרופות והצהרה"
     When Upload "!@#$%^&file_to_upload.xlsx" file in "תלושי שכר"
     And Upload "!@#$%^&file_to_upload.xlsx" file in "דוחו"ת נוכחות"
@@ -65,7 +64,7 @@ Feature: ContractorEmpRights form - scenarios step 2
     When delete file "1" in "אחר"
 
 @this_to_test
-  Scenario: העלת קבצים מעל 6 מיגה
+  Scenario: Uploading files above 6 MB size test
     Then validate current step is "צרופות והצהרה"
     When Upload "10MB_file_to_upload.pdf" file in "תלושי שכר"
     And Upload "10MB_file_to_upload.pdf" file in "דוחו"ת נוכחות"
