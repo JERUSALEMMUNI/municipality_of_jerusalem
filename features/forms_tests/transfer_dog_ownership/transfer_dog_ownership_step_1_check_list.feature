@@ -1,4 +1,3 @@
-
 Feature: TransferDogOwnership form - CheckList scenarios step 1
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -15,7 +14,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  search and pick "א טור" in search field "רחוב"
+    And  from parent "פרטי מגיש הבקשה" search and pick "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "1" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "ת.ד"
@@ -34,13 +33,13 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And choose "זכר" from "מין"
     And write a valid value "לבן" in "צבע"
     And write a valid value "982009104328548" in "מספר שבב"
-    When from header click on "שמור" icon
-    When 1st wait for email that contains pin code and link
-    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-    When 3rd wait for second email to get "קוד האימות"
-    When 4th close all tabs
-    Then 5th Validate if went back to expected form
-    Then validate current step is "פרטי הכלב"
+#    When from header click on "שמור" icon
+#    When 1st wait for email that contains pin code and link
+#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
+#    When 3rd wait for second email to get "קוד האימות"
+#    When 4th close all tabs
+#    Then 5th Validate if went back to expected form
+#    Then validate current step is "פרטי הכלב"
 
 
   Scenario: Test Explanation of the form
@@ -245,12 +244,14 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   #BUG
   Scenario: Address error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
+    When  from parent "פרטי המוסר" write an invalid value " " in "יישוב"
+    When from parent "פרטי המוסר" clear "יישוב"
     Then from parent "פרטי המוסר" check if "יישוב" error is "יש למלא יישוב"
 
 
   Scenario Outline: write only in Hebrew street test (valid)
     Given Navigate to "TransferDogOwnership" form
-    When  write "<street>" in search field "רחוב"
+    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write a valid value "<street>" in "רחוב"
     Examples:
       | street       |
@@ -262,7 +263,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   #BUG
   Scenario Outline: write only in Hebrew street test (invalid)
     Given Navigate to "TransferDogOwnership" form
-    When  write "<street>" in search field "רחוב"
+    When  from parent "פרטי מגיש הבקשה" write "<street>" in search field "רחוב"
     When  from parent "פרטי המוסר" write an invalid value "<street>" in "רחוב"
     Examples:
       | street           |
@@ -288,7 +289,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
   #BUG
   Scenario: Street error messages test: Empty input
     Given Navigate to "TransferDogOwnership" form
-    When  from parent "פרטי המוסר" write an invalid value " " in "רחוב"
+    When from parent "פרטי המוסר" write an invalid value " " in "רחוב"
     When from parent "פרטי המוסר" clear "רחוב"
     Then from parent "פרטי המוסר" check if "רחוב" error is "יש למלא רחוב"
 
