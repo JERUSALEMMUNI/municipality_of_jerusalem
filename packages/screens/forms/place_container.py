@@ -37,7 +37,7 @@ class PlaceContainer(BasePage):
         self.widgets['מתאריך:'] = create_widget('CalendarClock', style=self.style, label='מתאריך:')
         self.widgets['עד תאריך:'] = create_widget('CalendarClock', style=self.style, label='עד תאריך:')
 
-        self.widgets['סוג החניה:'] = create_widget('Dropdown', style=self.style, label='סוג החניה:')
+        self.widgets['סוג החניה:'] = create_widget('DropdownSearch', style=self.style, label='סוג החניה:')
         self.widgets['כתובת האתר לשפיכת הפסולת'] = create_widget('TextField', style=self.style,
                                                                  label='כתובת האתר לשפיכת הפסולת',
                                                                  path_locator="following-sibling::div//input")

@@ -19,7 +19,7 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון נייד'] = create_widget('PhoneField', style=self.style, label='טלפון נייד')
         self.widgets['טלפון קווי'] = create_widget('PhoneField', style=self.style, label='טלפון קווי')
         self.widgets['דוא'] = create_widget('TextField', style=self.style, label='דוא')
-        self.widgets['סוג זיהוי'] = create_widget('Dropdown', style=self.style, label='סוג זיהוי')
+        self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets["שם חברת ההפקה"] = create_widget('TextField', style=self.style, label="שם חברת ההפקה")
         self.widgets["טלפון חברת ההפקה"] = create_widget('PhoneField', style=self.style, label="טלפון חברת ההפקה")
@@ -29,6 +29,6 @@ class PhotoPermission(BasePage):
         self.widgets["שם הגורם עבורו מתבצע הצילום"] = create_widget('TextField', style=self.style,
                                                                     label="שם הגורם עבורו מתבצע הצילום")
         self.widgets["תיאור הצילום"] = create_widget('TextAreaField', style=self.style, label="תיאור הצילום")
-        self.widgets["סוג המדיה"] = create_widget('Dropdown', style=self.style, label="סוג המדיה")
+        self.widgets["סוג המדיה"] = create_widget('DropdownSearch', style=self.style, label="סוג המדיה")
         self.widgets['פרטי ההפקה_דוא'] = create_widget('TextField', style=self.style, label="דוא", index=2)
         self.widgets['פרטי המיקום ומועדי הצילומים'] = create_widget('AccordionTable', style=self.style, label="פרטי המיקום ומועדי הצילומים")
