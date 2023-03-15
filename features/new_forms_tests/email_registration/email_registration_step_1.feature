@@ -8,10 +8,8 @@ Feature: EmailRegistration form - scenarios step 1
   - All fields are mandatory expect of (טלפון קווי)
 
 
-
-  Scenario: TC_EMAILREG_01 - Checking "personal details" fields with correct details
+  Scenario: TC_EMAILREG_01 - Entering correct values for personal details fields when the thesis identification type is selected
     Given Navigate to "EmailRegistration" form
-    When I wait for "5" seconds
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
@@ -29,9 +27,8 @@ Feature: EmailRegistration form - scenarios step 1
 #    When 4th close all tabs
 #    Then 5th Validate if went back to expected form
 
-  Scenario: TC_EMAILREG_02 - Checking "personal details" fields with correct details
+  Scenario: TC_EMAILREG_02 - Entering valid values for personal details fields when the passport identification type is selected
     Given Navigate to "EmailRegistration" form
-    When I wait for "5" seconds
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "דרכון" from "סוג זיהוי"
@@ -49,27 +46,15 @@ Feature: EmailRegistration form - scenarios step 1
 #    When 4th close all tabs
 #    Then 5th Validate if went back to expected form
 
-  Scenario: TC_EMAILREG_03 - Checking "personal details" fields with correct details
+  Scenario: TC_EMAILREG_03 - Entering incorrect values for personal private fields
     Given Navigate to "EmailRegistration" form
-    When I wait for "5" seconds
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "דרכון" from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר דרכון"
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    When write an invalid value "sdsd" in "שם פרטי"
+    And write an invalid value "גלעד" in "שם משפחה"
+    When pick "ת.ז." from "סוג זיהוי"
+    When write an invalid value "hello" in "מספר ת.ז."
+    And fill "058-807f6s7" as invalid value in "טלפון נייד"
+    And fill "058-8078687" as invalid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When test temp
-
-
-
-
-
-
-
-
-
 
 
 
