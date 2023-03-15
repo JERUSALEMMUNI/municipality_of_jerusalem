@@ -59,8 +59,7 @@ class MonthYearList(BaseWidget):
 
     def validate_months(self, month, index):
         widget = self.create_widget_from_index(index)
-        #todo: validate should return true/false
-        assert widget.validate_months(self.locator['Value'], month), "the selected months are not shown as selected"
+        return widget.validate_months(self.locator['Value'], month)
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
