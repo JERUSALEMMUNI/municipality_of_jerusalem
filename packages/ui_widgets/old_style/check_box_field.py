@@ -14,7 +14,7 @@ class CheckBox(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f'//label[contains(text(),"{self.label}")]/parent::p-checkbox/div/div/following-sibling::div'
+            'Value': f'//label[contains(text(),"{self.label}")]/parent::p-checkbox//following-sibling::div'
         }
 
     def check_box(self):
@@ -34,7 +34,6 @@ class CheckBox(BaseWidget):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*CheckBoxLocator.error_msg)
         return error_msg.text == error_expected
-
 
     @property
     def is_invalid(self):

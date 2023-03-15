@@ -1,4 +1,3 @@
-
 Feature: TransferDogOwnership form - CheckList scenarios step 2
 
   - Form name: בקשה להחזקת כלב - העברת בעלות

@@ -1,4 +1,3 @@
-
 Feature: TransferDogOwnership form - scenarios step 1
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -7,6 +6,7 @@ Feature: TransferDogOwnership form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory except (.מספר דירה, ת.ד )
 
+
   Scenario: TC_DOGOWNER_02 - dog recipient fields test (invalid)
     Given Navigate to "TransferDogOwnership" form
     When from parent "פרטי מגיש הבקשה" write an invalid value "one" in "תעודת זהות"
@@ -14,7 +14,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-321d2f4" as invalid value in "מספר טלפון נייד"
-    And  write "سيليسبيس" in search field "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"
@@ -27,7 +27,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-321d2f4" as invalid value in "מספר טלפון נייד"
-    And  write "سيليسبيس" in search field "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"
@@ -51,7 +51,7 @@ Feature: TransferDogOwnership form - scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write an invalid value "there" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "ertydfg" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-321d2f4" as invalid value in "מספר טלפון נייד"
-    And  write "سيليسبيس" in search field "רחוב"
+    And  from parent "פרטי מגיש הבקשה" write "سيليسبيس" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "شسيشسي" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdf" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write an invalid value "sdfsdfse" in "ת.ד"

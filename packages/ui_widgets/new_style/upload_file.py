@@ -15,7 +15,7 @@ class UploadFile(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/parent::div/following-sibling::div/p-fileupload/div/div/span/input"
+            'Value': f"//label[contains(text(),'{self.label}')]/../following-sibling::div//input"
         }
 
     def upload_file(self, path):

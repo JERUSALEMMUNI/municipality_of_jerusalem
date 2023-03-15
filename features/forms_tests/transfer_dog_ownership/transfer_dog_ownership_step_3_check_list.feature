@@ -11,6 +11,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
   Background: Background Scenario
     Given Navigate to "TransferDogOwnership" form and reach step "צרופות והצהרה"
 
+
   Scenario: Upload files with approved names test
     Then validate current step is "צרופות והצהרה"
     When Upload "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
