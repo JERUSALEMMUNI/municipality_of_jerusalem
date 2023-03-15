@@ -53,7 +53,11 @@ def add_items_months_year_list(context, months, widget_name, number):
 def check_months_are_chosen(context, months, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     widget.init_widget()
-    widget.validate_months(months, number)
+    if widget.validate_months(months, number):
+        rep.add_label_to_step('Month/s selected correctly',f'The desired [{months}] months are selected correctly')
+    else:
+        rep.add_label_to_step(('Month/s not selected correctly',f'The desired [{months}] months are not selected correctly'))
+        raise AssertionError('Month/s not selected correctly')
 
 
 @then('check if  widget "{widget_name}" list after change is "{number}"')
