@@ -58,3 +58,15 @@ class AccordionTable(BaseWidget):
     def get_tab_text(self, row):
         widget = self.create_widget_table_row(row)
         return widget.get_current_tab_text()
+
+    def choose_button_from_value(self, row, label, value_name):
+        widget = self.create_widget_table_row(row)
+        widget.choose_button_from_value(label, value_name)
+
+    def is_value_button_chosen(self, row, label, value_name):
+        widget = self.create_widget_table_row(row)
+        return widget.is_value_button_chosen(label, value_name)
+
+    def is_button_valid(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_button_valid(label)

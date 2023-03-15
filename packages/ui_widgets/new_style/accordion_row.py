@@ -41,7 +41,7 @@ class AccordionRow(BaseWidget):
         if not self.validate_current_tab_is_expanded():
             self.click_on_current_tab()
         text_field = self.create_widget('TextField', label=label)
-        element = self.web_element.find_element(*AccordionRowLocators.get_text_field_from_locator(label))
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
         self.set_widget_web_element(text_field, element)
         text_field.set_text(text)
 
@@ -49,7 +49,7 @@ class AccordionRow(BaseWidget):
         if not self.validate_current_tab_is_expanded():
             self.click_on_current_tab()
         time_field = self.create_widget('TimeField', label=label)
-        element = self.web_element.find_element(*AccordionRowLocators.get_text_field_from_locator(label))
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
         self.set_widget_web_element(time_field, element)
         time_field.set_text(text)
 
@@ -57,6 +57,30 @@ class AccordionRow(BaseWidget):
         if not self.validate_current_tab_is_expanded():
             self.click_on_current_tab()
         time_field = self.create_widget('TimeField', label=label)
-        element = self.web_element.find_element(*AccordionRowLocators.get_text_field_from_locator(label))
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
         self.set_widget_web_element(time_field, element)
         time_field.select_time(text)
+
+    def choose_button_from_value(self, label, value_name):
+        if not self.validate_current_tab_is_expanded():
+            self.click_on_current_tab()
+        big_button = self.create_widget('BigButtonField', label=label)
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        self.set_widget_web_element(big_button, element)
+        big_button.choose_value(value_name)
+
+    def is_value_button_chosen(self, label, value_name):
+        if not self.validate_current_tab_is_expanded():
+            self.click_on_current_tab()
+        big_button = self.create_widget('BigButtonField', label=label)
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        self.set_widget_web_element(big_button, element)
+        return big_button.is_chosen(value_name)
+
+    def is_button_valid(self, label):
+        if not self.validate_current_tab_is_expanded():
+            self.click_on_current_tab()
+        big_button = self.create_widget('BigButtonField', label=label)
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        self.set_widget_web_element(big_button, element)
+        return big_button.is_valid

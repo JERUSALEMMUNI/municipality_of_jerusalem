@@ -26,21 +26,21 @@ class RadioButtonField(BaseWidget):
     def get_lists(self):
         return self.web_element.find_elements(*RadioButtonLocators.list)
 
-    def inactive_count(self):
+    def inactive_count(self, state='active'):
         count = 0
         for option in self.get_lists():
-            if "active" not in option.get_attribute('class'):
+            if state not in option.get_attribute('class'):
                 count += 1
         return count
 
-    def get_chosen_value(self):
+    def get_chosen_value(self, state="active"):
         for option in self.get_lists():
-            if "active" in option.get_attribute('class'):
+            if state in option.get_attribute('class'):
                 return option.text
         return -1
 
-    def is_chosen(self, selected_item):
-        return "active" in self.get_label(selected_item).get_attribute('class')
+    def is_chosen(self, selected_item, state="active"):
+        return state in self.get_label(selected_item).get_attribute('class')
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*RadioButtonLocators.error_msg)

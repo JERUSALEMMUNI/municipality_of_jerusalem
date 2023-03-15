@@ -7,6 +7,7 @@ widget_locators = {
     'מספר אנשי צוות': ".//label[contains(text(),'מספר אנשי צוות')]//parent::div//input",
     'שעת התחלה': ".//label[contains(text(),'שעת התחלה')]",
     'שעת סיום': ".//label[contains(text(),'שעת סיום')]",
+    'חסימת כביש': ".//label[contains(text(),'חסימת כביש')]"
 
 }
 
@@ -16,5 +17,5 @@ class AccordionRowLocators:
     trash = (By.XPATH, ".//button[contains(@icon,'trash')]")
 
     @staticmethod
-    def get_text_field_from_locator(label):
+    def get_field_from_locator(label):
         return By.XPATH, widget_locators[label]

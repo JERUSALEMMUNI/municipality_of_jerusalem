@@ -5,6 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
+from ui_widgets.old_style.widget_locators.multi_select_locator import MulltiSelectLocators
 
 log = logger.get_logger(__name__)
 
@@ -14,21 +15,17 @@ class MultiSelect(BaseWidget):
         super().__init__(label, index)
         self.path_locator = path_locator
         self.multiselect = None
-        self.close_button = None
         self.select_all = None
 
     @property
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]",
-            'List': "//div[contains(@class,'ui-multiselect-items-wrapper')]/ul/p-multiselectitem",
-            'SelectAll': "//div[contains(@class,'ui-widget-header')]//div[@role='checkbox']",
-            'Close': "//div[contains(@class,'ui-widget-header')]//a[contains(@class,'ui-multiselect-close')]"
+            'Value': f"//label[contains(text(),'{self.label}')]"
         }
 
     def set_select_all_button(self):
-        self.select_all = self.web_element.find_element(self.locator['By'], self.locator['SelectAll'])
+        self.select_all = self.web_element.find_element(*MulltiSelectLocators.select_all)
 
     def get_select_all_button(self):
         return self.select_all
@@ -42,25 +39,16 @@ class MultiSelect(BaseWidget):
         if not self.all_is_selected():
             self.select_all.click()
 
-    def set_close_button(self):
-        self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
-
-    def get_close_button(self):
-        return self.close_button
-
-    def click_close_button(self):
-        if self.close_button is None:
-            self.set_close_button()
-        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(self.close_button)).click()
-        self.close_button.click()
+    def close_button(self):
+        WebDriverWait(self.web_element, 30).until(EC.element_to_be_clickable(MulltiSelectLocators.close)).click()
 
     def click(self):
         self.web_element.click()
 
     def get_multiselect_list(self):
-        list = WebDriverWait(self.web_element, 30).until(
-            EC.presence_of_all_elements_located((self.locator['By'], self.locator['List'])))
-        return list
+        lists = WebDriverWait(self.web_element, 30).until(
+            EC.presence_of_all_elements_located(*MulltiSelectLocators.list))
+        return lists
 
     def set_custom_multiselect(self, web_element):
         self.multiselect = web_element
@@ -76,8 +64,7 @@ class MultiSelect(BaseWidget):
             EC.presence_of_element_located((DropdownLocators.select(txt))))
         prefix = self.web_element.find_element(*DropdownLocators.select(txt))
         prefix.click()
-        self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
-        self.close_button.click()
+        self.close_button()
 
     def select_listbox_items(self, month_list, driver, path="//div[contains(@class,'ui-multiselect-items-wrapper')]"):
         if not self.is_open():
@@ -89,8 +76,7 @@ class MultiSelect(BaseWidget):
             else:
                 x = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, path)))
                 driver.execute_script("arguments[0].scrollBy(0, 30);", x)
-        self.close_button = self.web_element.find_element(self.locator['By'], self.locator['Close'])
-        self.close_button.click()
+        self.close_button()
 
     def set_month(self, month):
         self.select_listbox_item(month)

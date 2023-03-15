@@ -77,28 +77,18 @@ def field_has_valid_value(context, widget_name):
     assert widget.is_invalid is False and widget.is_valid is True, "Field considered as invalid"
 
 
-@when('test temp')
-def click_buttonsdfsdfsd(context):
-    emails = context.mailbox.get_messages()
-    count_of_emails = len(emails)
-    from selenium.webdriver.common.by import By
-    context._config.current_page.driver.find_element(By.XPATH,
-                                                     '//*[@id="contentToConvert"]/div/div/form/app-first-step/div/lib-identification/div/lib-otp-identification/div/otp-dialog/p-dialog/div/div/div[2]/div[2]/div[2]/button[2]').click()
-    i = 0
-    while len(context.mailbox.get_messages()) != count_of_emails + 1:
-        time.sleep(3)
-        i += 1
-        if i == 30:
-            raise ce.MJTimeOutError('no new notification email received')
-    email_body = context.mailbox.get_messages()[-1].html_body
-    password = email_body.split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split('</div>')[0]
+@when('click on email option')
+def click_email_option(context):
+    time.sleep(2)
+    context._config.current_page.driver.find_element(By.XPATH, "//span[contains(text(),'הודעה במייל')]").click()
+
+@When('set pin code')
+def set_pin_code(context):
+    password = context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split('</div>')[0]
     time.sleep(3)
-    context._config.current_page.driver.find_element(By.XPATH,
-                                                     '//*[@id="contentToConvert"]/div/div/form/app-first-step/div/lib-identification/div/lib-otp-identification/div/otp-dialog/p-dialog/div/div/div[2]/div[2]/div[1]/lib-input-text/div/input').send_keys(
-        password)
-    context._config.current_page.driver.find_element(By.XPATH,
-                                                     '//*[@id="contentToConvert"]/div/div/form/app-first-step/div/lib-identification/div/lib-otp-identification/div/otp-dialog/p-dialog/div/div/div[2]/div[2]/div[1]/button').click()
-    time.sleep(5)
+    context._config.current_page.driver.find_element(By.XPATH, '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(password)
+    context._config.current_page.driver.find_element(By.XPATH,'//lib-input-text/following-sibling::button').click()
+    time.sleep(3)
 
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
@@ -156,9 +146,8 @@ def check_email(context):
     emails = context.mailbox.get_messages()
     context.count_of_emails = len(emails)
     wait_for_new_email(context, context.count_of_emails)
-    email_body = context.mailbox.get_messages()[0].html_body
-    context.user_data['email_body'] = email_body
-    if email_body is None:
+    context.user_data['email_body'] = context.mailbox.get_messages()[0].html_body
+    if context.user_data['email_body'] is None:
         rep.add_label_to_step("No email received", "E-mail is not received")
         raise AssertionError('No email received')
 
@@ -257,6 +246,7 @@ def validate_form_email(context):
                                                          force_create=True)
     context.screens_manager.screens[current_page.page_title] = current_page
     current_page.navigate_to_page_url()
+    context.user_data['email_body'] = None
 
 
 def wait_for_new_email(context, count_of_emails):
@@ -272,7 +262,6 @@ def wait_for_new_email(context, count_of_emails):
         time_diff_rounded = round(waiting_time, 2)
         time_for_total_wait = time_diff_rounded + time_for_total_wait
         log.info(f'wait for email, {time_for_total_wait} seconds passed')
-
     else:
         end_time = time.time()
         difference = end_time - start_time

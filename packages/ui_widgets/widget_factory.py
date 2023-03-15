@@ -1,11 +1,11 @@
 from infra import logger
 from infra.enums import UIStyle
 from ui_widgets.new_style import button_field, header_field, footer_field, text_field, phone_field, \
-    dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, upload_file, \
-    button_icon_widget, accordion_table, accordion_row, time_field, time_picker_widget
+    dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, \
+    button_icon_widget, accordion_table, accordion_row, time_field, time_picker_widget,big_button_field
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
     footer_field as old_footer_field,button_icon_widget as old_button_icon, calender_time, check_box_field, calendar_field, month_year_list, \
-    radio_button_field, application_steps_field, dialog_widget
+    radio_button_field, application_steps_field, dialog_widget, upload_file
 
 log = logger.get_logger(__name__)
 
@@ -20,6 +20,9 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
         'ButtonField': {
             UIStyle.NEW: button_field.ButtonField,
             UIStyle.OLD: old_button_field.ButtonField
+        },
+        'BigButtonField':{
+            UIStyle.NEW: big_button_field.BigButtonField
         },
         'HeaderField': {
             UIStyle.NEW: header_field.HeaderField,

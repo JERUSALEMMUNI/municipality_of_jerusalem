@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
-from ui_widgets.new_style.widget_locators.upload_file_locators import UploadFilesLocators
+from ui_widgets.old_style.widget_locators.upload_file_locators import UploadFilesLocators
 
 log = logger.get_logger(__name__)
 
