@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
-from infra import logger, custom_exceptions as ce
+
+from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.old_style.button_icon_widget import ButtonIcon
 from ui_widgets.old_style.month_year_widget import MonthYear
@@ -9,9 +10,9 @@ log = logger.get_logger(__name__)
 
 
 class MonthYearList(BaseWidget):
-    def __init__(self, label,index):
-        super().__init__(label,index)
-        self.addItemButton = ButtonIcon('הוסף',index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
+        self.addItemButton = ButtonIcon('הוסף', index)
 
     @property
     def locator(self):
@@ -27,7 +28,7 @@ class MonthYearList(BaseWidget):
         return len(self.get_list())
 
     def create_widget_from_index(self, index):
-        widget = MonthYear(index,self.index)
+        widget = MonthYear(index, self.index)
         widget.set_web_element(self.web_element)
         return widget
 
@@ -64,3 +65,11 @@ class MonthYearList(BaseWidget):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*MonthYearListLocators.error_msg)
         return error_msg.text == error_expected
+
+    def close(self):
+        dropDown_open = self.web_element.find_element(By.XPATH, "./..//input").get_attribute(
+            'aria-expanded')
+        if dropDown_open in ('true', "True"):
+            self.web_element.click()
+            return True
+        return False

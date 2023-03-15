@@ -21,12 +21,15 @@ def choose_in_search(context, widget_name):
 @when('pick "{option_value}" from "{widget_name}"')
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.select_element(option_value):
-        rep.add_label_to_step("selected Value", f"{option_value} is selected")
-    else:
-        rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found, this is a valid"
-                                                             f" value and should appear in list")
-        raise AssertionError('Desired value is not found in list')
+    try:
+        if widget.select_element(option_value):
+            rep.add_label_to_step("selected Value", f"{option_value} is selected")
+        else:
+            rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found, this is a valid"
+                                                                 f" value and should appear in list")
+            raise AssertionError('Desired value is not found in list')
+    finally:
+        widget.close()
 
 
 @when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
@@ -40,6 +43,7 @@ def pick_element(context, parent, option_value, widget_name):
                                                              f" value and should appear in list")
         raise AssertionError('Desired value is not found in list')
 
+
 @when('write "{option_value}" in search field "{widget_name}"')
 def write_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -52,11 +56,14 @@ def write_in_search_field(context, option_value, widget_name):
 @when('from parent "{parent}" write "{option_value}" in search field "{widget_name}"')
 def write_in_search_field(context, parent, option_value, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    widget.click_button()
-    widget.write_in_search_field(option_value)
-    if widget.get_search_result_if_empty():
-        rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
-        raise KeyError('No results found, searched value is not an option in this list')
+    # widget.click_button()
+    try:
+        widget.write_in_search_field(option_value)
+        if widget.get_search_result_if_empty():
+            rep.add_label_to_step("No Elements Found", f"{option_value} is not an option to be selected")
+            raise KeyError('No results found, searched value is not an option in this list')
+    finally:
+        widget.close()
 
 
 @When('clear search field for "{widget_name}"')
@@ -70,7 +77,10 @@ def pick_element(context, widget_name):
 def scroll_to_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.current_page.driver
-    widget.item_search_scroll(driver, option_value)
+    try:
+        widget.item_search_scroll(driver, option_value)
+    finally:
+        widget.close()
 
 
 @then('validate all "{widget_name}" options contain "{option_value}"')
@@ -93,7 +103,10 @@ def scroll_to_element(context, widget_name):
 @when('goto "{option_value}" from "{widget_name}"')
 def search_(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.search_element(option_value)
+    try:
+        widget.search_element(option_value)
+    finally:
+        widget.close()
 
 
 @then('validate "{widget_name}" has "{option_value}" in list')
@@ -118,7 +131,10 @@ def select_element_after_scroll(context, widget_name, option):
 @when('select all options of "{widget_name}"')
 def select_all_elements(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.select_all_checkbox()
+    try:
+        widget.select_all_checkbox()
+    finally:
+        widget.close()
 
 
 @when('deselect all options of "{widget_name}"')
@@ -183,21 +199,26 @@ def search_and_pick_in_search_field(context, option_value, widget_name):
                                   f"Chosen option [{option_value}] is not found in list")
             raise KeyError('Chosen option is not in list')
     finally:
-        pass
-        #todo:
-        # widget.close()
+        widget.close()
+
 
 @when('search invalid value and pick "{option_value}" in search field "{widget_name}"')
 def search_and_pick_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    if widget.search_and_pick_first_element_and_validate(option_value):
-       rep.add_label_to_step('Invalid option is selected','The chosen value is considered invalid and there was a selection from list')
-       raise AssertionError('The chosen value is considered invalid and there was a selection from list')
-    if widget.get_search_result_if_empty():
-        rep.add_label_to_step("Chosen option is not in list", f"Chosen option [{option_value}] is not found in list")
-    else:
-        rep.add_label_to_step('Invalid option is selected','The chosen value is considered invalid and there was a selection from list')
-        raise AssertionError('The chosen value is considered invalid and there was a selection from list')
+    try:
+        if widget.search_and_pick_first_element_and_validate(option_value):
+            rep.add_label_to_step('Invalid option is selected',
+                                  'The chosen value is considered invalid and there was a selection from list')
+            raise AssertionError('The chosen value is considered invalid and there was a selection from list')
+        if widget.get_search_result_if_empty():
+            rep.add_label_to_step("Chosen option is not in list",
+                                  f"Chosen option [{option_value}] is not found in list")
+        else:
+            rep.add_label_to_step('Invalid option is selected',
+                                  'The chosen value is considered invalid and there was a selection from list')
+            raise AssertionError('The chosen value is considered invalid and there was a selection from list')
+    finally:
+        widget.close()
 
 
 @when('from parent "{parent}" search and pick "{option_value}" in search field "{widget_name}"')

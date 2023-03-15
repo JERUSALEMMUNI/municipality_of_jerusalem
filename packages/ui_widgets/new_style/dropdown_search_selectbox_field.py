@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -51,10 +53,13 @@ class DropdownSearchSelectBox(DropdownSearch):
             return counter
 
     def click_button(self):
+        # ToDo: change to wait
+        time.sleep(1)
         dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute(
             'aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
+        # WebDriverWait(self.web_element, 1).until(EC.visibility_of_element_located(dropDown_open))
 
     def select_all_checkbox(self):
         """
@@ -141,4 +146,3 @@ class DropdownSearchSelectBox(DropdownSearch):
         else:
             selection = False
         return prefix.text, selection
-

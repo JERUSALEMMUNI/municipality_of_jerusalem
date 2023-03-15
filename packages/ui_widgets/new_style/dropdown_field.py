@@ -10,7 +10,7 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, path_locator="/following-sibling::div/p-dropdown"):
+    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
         super().__init__(label, index)
         self.path_locator = path_locator
         self.list = []
@@ -28,7 +28,8 @@ class Dropdown(BaseWidget):
     def item_search_scroll(self, driver, option_value):
         self.click_button()
         while True:
-            WebDriverWait(self.web_element, 30).until(EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
+            WebDriverWait(self.web_element, 30).until(
+                EC.presence_of_element_located(DropdownLocators.item_search_scroll_element))
             element = driver.find_element(*DropdownLocators.item_search_scroll_element)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             elements_list = element.text
@@ -86,3 +87,9 @@ class Dropdown(BaseWidget):
         error_msg = self.web_element.find_element(*DropdownLocators.error_msg)
         return error_msg.text == error_expected
 
+    def close(self):
+        dropDown_open = self.web_element.find_element(By.XPATH, ".//..//input").get_attribute('aria-expanded')
+        if dropDown_open in ('true', "True"):
+            self.web_element.click()
+            return True
+        return False

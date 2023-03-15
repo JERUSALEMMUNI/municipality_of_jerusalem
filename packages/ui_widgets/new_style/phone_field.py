@@ -23,7 +23,7 @@ class PhoneField(BaseWidget):
 
         }
 
-    #Todo: try to change the inti_widgint and inherit from textfield
+    # Todo: try to change the inti_widgint and inherit from textfield
     def initial_widgets(self):
         dropdown_element = self.web_element.find_element(*PhoneFieldLocators.drop_down)
         self.dropdown_widget.set_web_element(dropdown_element)
@@ -45,7 +45,7 @@ class PhoneField(BaseWidget):
         rest_phone = new_text[1]
         self.initial_widgets()
         self.text_widget.set_text(rest_phone)
-        self.dropdown_widget.click_button()
+        # self.dropdown_widget.click_button()
         self.dropdown_widget.select_element(start_phone)
 
     @property
@@ -60,3 +60,10 @@ class PhoneField(BaseWidget):
         error_msg = self.web_element.find_element(*PhoneFieldLocators.error_msg)
         return error_msg.text == error_expected
 
+    def close(self):
+        dropDown_open = self.web_element.find_element(By.XPATH, "./..//p-dropdown//input").get_attribute(
+            'aria-expanded')
+        if dropDown_open in ('true', "True"):
+            self.web_element.click()
+            return True
+        return False
