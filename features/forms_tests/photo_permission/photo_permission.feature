@@ -11,7 +11,9 @@ Feature: testing feature to help me creat the new widget in step 3
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"
     And fill "058-8078687" as valid value in "טלפון נייד"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When write a valid value "ככגדכגד" in "שם חברת ההפקה"
     And fill "058-8078687" as valid value in "טלפון חברת ההפקה"
     When write a valid value "ככגדכגד" in "כתובת חברת ההפקה"
@@ -25,10 +27,26 @@ Feature: testing feature to help me creat the new widget in step 3
     When add "2" in widget "פרטי המיקום ומועדי הצילומים"
     When remove "2" in widget "פרטי המיקום ומועדי הצילומים"
     Then check if  widget "פרטי המיקום ומועדי הצילומים" list after change is "2"
-    When write a valid value "11112023" in "תאריך" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    When write a valid value "אתר" in "שם האתר" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    When write a valid value "111" in "מספר אנשי צוות" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    When write a valid value "גדגדכ" in "כתובת" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    When write a valid value "11:11" in "שעת התחלה" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    When write a valid value "22:11" in "שעת סיום" from table "פרטי המיקום ומועדי הצילומים" at row "2"
-    Then validate tab text  from table "פרטי המיקום ומועדי הצילומים" at row "2" is same as "11/11/2023"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "11112023" in "תאריך"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "אתר" in "שם האתר"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "111" in "מספר אנשי צוות"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "גדגדכ" in "כתובת"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" pick time "11:11" in "שעת התחלה"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" pick time "22:11" in "שעת סיום"
+    Then from table "פרטי המיקום ומועדי הצילומים" at row "2" validate tab text is same as "11/11/2023"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "2" choose "נושמת" in "חסימת כביש"
+    Then from table "פרטי המיקום ומועדי הצילומים" at row "2" validate chosen choice of "חסימת כביש" is "נושמת"
+
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "11112023" in "תאריך"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "אתר" in "שם האתר"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "111" in "מספר אנשי צוות"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "גדגדכ" in "כתובת"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" pick time "04:08" in "שעת התחלה"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" pick time "07:11" in "שעת סיום"
+    Then from table "פרטי המיקום ומועדי הצילומים" at row "2" validate tab text is same as "11/11/2023"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" choose "נושמת" in "חסימת כביש"
+    Then from table "פרטי המיקום ומועדי הצילומים" at row "2" validate chosen choice of "חסימת כביש" is "נושמת"
+#    When choose "כן" from "האם יש חיבור לחשמל/גנרטור"
+#    Then validate chosen choice of "האם יש חיבור לחשמל/גנרטור" is "כן"
+#    When click on "המשך" button
+#    Then validate "האם יש חיבור לחשמל/גנרטור" has error "שדה חובה"
