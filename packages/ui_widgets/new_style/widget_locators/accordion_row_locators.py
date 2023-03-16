@@ -7,7 +7,8 @@ widget_locators = {
     'מספר אנשי צוות': ".//label[contains(text(),'מספר אנשי צוות')]//parent::div//input",
     'שעת התחלה': ".//label[contains(text(),'שעת התחלה')]",
     'שעת סיום': ".//label[contains(text(),'שעת סיום')]",
-    'חסימת כביש': ".//label[contains(text(),'חסימת כביש')]"
+    'חסימת כביש': ".//label[contains(text(),'חסימת כביש')]",
+    'תמונה של העץ' : './/label[contains(text(),"תמונה של העץ")]/../../span/input'
 
 }
 

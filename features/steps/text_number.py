@@ -11,7 +11,7 @@ def write_into_field(context, number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.clear()
     widget.set_text(number)
-    if not widget.is_invalid:
+    if not widget.is_valid:
         log.info(f"This value {number} at field {widget_name} is considered "
                  f" an valid value but it appeared as invalid")
         rep.add_label_to_step("failure reason", f"This value {number} at field {widget_name} is considered "
@@ -24,7 +24,7 @@ def write_into_field_valid_value(context, parent, number, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
     widget.clear()
     widget.set_text(number)
-    if widget.is_invalid:
+    if not widget.is_valid:
         log.info(f"This value {number} from parent {parent} at field {widget_name} is considered "
                  f" an valid value but it appeared as invalid")
         rep.add_label_to_step("failure reason",

@@ -24,3 +24,4 @@ class TreeCut(BasePage):
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
         self.widgets['מספר בית'] = create_widget('TextNumberField', style=self.style, label='מספר בית')
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')
+        self.widgets['רשימת עצים'] = create_widget('AccordionTable', style=self.style, label="רשימת עצים")

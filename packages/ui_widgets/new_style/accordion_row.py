@@ -58,6 +58,13 @@ class AccordionRow(BaseWidget):
         self.set_widget_web_element(text_field, element)
         text_field.set_text(text)
 
+    def upload_file(self, label, file, driver):
+        self.open_current_tab()
+        upload = self.create_widget('UploadFile', label=label)
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        self.set_widget_web_element(upload, element)
+        upload.upload_file(file, driver)
+
     def validate_text_is_valid(self, label):
         self.open_current_tab()
         text_field = self.create_widget('TextField', label=label)

@@ -1,6 +1,8 @@
+import os
+
 from behave import *
 
-from infra import logger, reporter
+from infra import logger, reporter, config
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -131,9 +133,10 @@ def validate_tab_text_from_column(context, table_name, row, date):
     widget = context._config.current_page.widgets[table_name]
     if widget.get_tab_text(row) != date:
         log.info(f"the date text on table {table_name} at row {row} is not equal to {date}")
-        rep.add_label_to_step("wrong date or missing",f"the date text on table {table_name} at row {row} is not equal to {date}")
+        rep.add_label_to_step("wrong date or missing",
+                              f"the date text on table {table_name} at row {row} is not equal to {date}")
         raise AssertionError("actual text not equal expected text")
-    rep.add_label_to_step("wrong date or missing","actual text not equal expected text")
+    rep.add_label_to_step("wrong date or missing", "actual text not equal expected text")
 
 
 @When('from table "{table_name}" at row "{row}" choose "{value_name}" in "{widget_name}"')
@@ -174,7 +177,7 @@ def validate_chosen_button_value_from_table(context, table_name, row):
 @When('from table "{table_name}" at row "{row}" close tab')
 def validate_chosen_button_value_from_table(context, table_name, row):
     widget = context._config.current_page.widgets[table_name]
-    if not  widget.close_tab_by_row(row):
+    if not widget.close_tab_by_row(row):
         log.info(("tab did not close", f"The chosen tab in table {table_name} at row {row} at field did not close"))
         rep.add_label_to_step("tab did not open", f"The chosen tab in table {table_name} at row {row} at field did "
                                                   f"not close")
@@ -191,4 +194,11 @@ def add_items_in_table(context, table_name, items):
 @when('from table "{table_name}" remove "{items}"')
 def remove_item_from_table(context, table_name, items):
     widget = context._config.current_page.widgets[table_name]
-    widget.remove_item(items)
+    widget.remove_item(items) @ when('from table "{table_name}" remove "{items}"')
+
+
+@when('from table "{table_name}" at row "{row}" upload file "{text}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
+    widget.upload_file(row, widget_name, file, context._config.driver)
