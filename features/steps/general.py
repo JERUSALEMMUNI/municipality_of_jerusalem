@@ -93,8 +93,8 @@ def click_email_option(context):
 @When('set pin code')
 def set_pin_code(context):
     password = \
-    context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split(
-        '</div>')[0]
+        context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split(
+            '</div>')[0]
     time.sleep(3)
     context._config.current_page.driver.find_element(By.XPATH,
                                                      '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(
@@ -285,11 +285,14 @@ def wait_for_new_email(context, count_of_emails):
 @When('clear fields')
 def clear_fields(context):
     widgets = context._config.current_page.widgets
-    for i in widgets:
+    for widget_name, widget_obj in widgets.items():
         try:
-            if i is not None:
-                widgets[i].clear()
-                log.info(f"the field {i} is cleared")
+            if widget_obj.get_web_element() is not None:
+                widget_obj.clear()
+                log.info(f"the field {widget_name} is cleared")
 
-        except:
-            log.info(f"the field {i} is empty")
+        except Exception as e:
+            log.exception(e)
+            log.info(f"the field {widget_name} is empty")
+
+    pass

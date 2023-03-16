@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -66,8 +67,8 @@ class DropdownSearchSelectBox(DropdownSearch):
         then we will add the checked options one by one to use it for validation later on.
         """
         self.click_button()
-        WebDriverWait(self.web_element, 10).until(
-            EC.visibility_of_element_located("//div[contains(@class,'ui-multiselect-items')]"))
+        WebDriverWait(self.web_element, 1).until(
+            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
         # We should clear the search field first, so we can uncheck all the list
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
@@ -83,6 +84,7 @@ class DropdownSearchSelectBox(DropdownSearch):
             self.list.append(i.text)
         log.info(self.list)
 
+    # ToDo: check
     def clear_selected_items(self):
         self.click_button()
         # We should clear the search field first, so we can uncheck all the list

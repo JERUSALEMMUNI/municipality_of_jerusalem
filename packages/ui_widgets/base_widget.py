@@ -42,4 +42,4 @@ class BaseWidget(object):
         return self.web_element.is_displayed()
 
     def clear(self, index=None):
-        self.clear()
+        return

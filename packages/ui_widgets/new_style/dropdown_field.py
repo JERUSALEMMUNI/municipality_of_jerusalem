@@ -1,5 +1,3 @@
-from time import sleep
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -94,11 +92,7 @@ class Dropdown(BaseWidget):
         if dropDown_open in ('true', "True"):
             self.web_element.click()
             # ToDo: find good wait for that
-            sleep(1)
-            # WebDriverWait(self.web_element, 10).until(
-            #     EC.invisibility_of_element(self.web_element.click()))
+            WebDriverWait(self.web_element, 1).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
             return True
         return False
-
-    def clear(self):
-        self.web_element.clear()
