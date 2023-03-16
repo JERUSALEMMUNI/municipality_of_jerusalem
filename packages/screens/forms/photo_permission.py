@@ -34,5 +34,5 @@ class PhotoPermission(BasePage):
         self.widgets['פרטי ההפקה_דוא'] = create_widget('TextField', style=self.style, label="דוא", index=2)
         self.widgets['פרטי המיקום ומועדי הצילומים'] = create_widget('AccordionTable', style=self.style,
                                                                     label="פרטי המיקום ומועדי הצילומים")
-        self.widgets['האם יש חיבור לחשמל/גנרטור'] = create_widget('BigButtonField', style=self.style,
+        self.widgets['האם יש חיבור לחשמל/גנרטור'] = create_widget('ButtonGroup', style=self.style,
                                                                   label="האם יש חיבור לחשמל/גנרטור")

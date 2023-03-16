@@ -27,8 +27,8 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['מספר עמותה'] = create_widget('TextField', style=self.style, label='מספר עמותה')
         self.widgets['ממלא ההשגה'] = create_widget('DropdownSearch', style=self.style, label='ממלא ההשגה')
         self.widgets['מועד תחילת הטענה'] = create_widget('CalendarField', style=self.style.OLD, label='מועד תחילת הטענה')
-        self.widgets['בעל/ת הנכס שונה ממגיש הבקשה'] = create_widget('BigButtonField', style=self.style, label='בעל/ת הנכס שונה ממגיש הבקשה')
-        self.widgets['סיבת ההשגה'] = create_widget('BigButtonField', style=self.style,label='סיבת ההשגה')
+        self.widgets['בעל/ת הנכס שונה ממגיש הבקשה'] = create_widget('ButtonGroup', style=self.style, label='בעל/ת הנכס שונה ממגיש הבקשה')
+        self.widgets['סיבת ההשגה'] = create_widget('ButtonGroup', style=self.style,label='סיבת ההשגה')
 
 
 

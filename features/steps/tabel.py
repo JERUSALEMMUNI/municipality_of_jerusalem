@@ -77,6 +77,41 @@ def check_months_are_chosen(context, widget_name, number):
 def write_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     widget.set_text(row, widget_name, text)
+    if widget.validate_text_is_invalid(row, widget_name):
+        log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
+                 f" an valid value but it appeared as invalid")
+        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} from table {table_name} at "
+                                                f"row {row} is considered"
+                                                f" an valid value but it appeared as invalid")
+        raise AssertionError("valid value and considered as invalid")
+
+
+@when('from table "{table_name}" at row "{row}" write an invalid value "{text}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    widget.set_text(row, widget_name, text)
+    if not widget.validate_text_is_invalid(row, widget_name):
+        log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
+                 f" an invalid value but it appeared as valid")
+        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} from table {table_name} at "
+                                                f"row {row} is considered"
+                                                f" an invalid value but it appeared as valid")
+        raise AssertionError("invalid value and considered as valid")
+
+
+@then('from table "{table_name}" at row "{row}" check if "{widget_name}" error is "{error_expectation}"')
+def error_msg(context, table_name, row, widget_name, error_expectation):
+    widget = context._config.current_page.widgets[table_name]
+    if not widget.validate_text_is_invalid(row, widget_name):
+        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
+        raise AssertionError("invalid value and considered as valid")
+    if not widget.validate_error_message(row, widget_name, error_expectation):
+        log.info(f"The error value in table {table_name} in row {row} at field {widget_name} is incorrect")
+        rep.add_label_to_step("incorrect message or missing",
+                              f"The error value in table {table_name} in row {row} at field {widget_name} is not "
+                              f"equal to {error_expectation}")
+        raise AssertionError("invalid value and considered as valid")
+    rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
 @when('from table "{table_name}" at row "{row}" write a valid time value "{text}" in "{widget_name}"')
@@ -94,7 +129,11 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
 @Then('from table "{table_name}" at row "{row}" validate tab text is same as "{date}"')
 def validate_tab_text_from_column(context, table_name, row, date):
     widget = context._config.current_page.widgets[table_name]
-    assert widget.get_tab_text(row) == date
+    if widget.get_tab_text(row) != date:
+        log.info(f"the date text on table {table_name} at row {row} is not equal to {date}")
+        rep.add_label_to_step("wrong date or missing",f"the date text on table {table_name} at row {row} is not equal to {date}")
+        raise AssertionError("actual text not equal expected text")
+    rep.add_label_to_step("wrong date or missing","actual text not equal expected text")
 
 
 @When('from table "{table_name}" at row "{row}" choose "{value_name}" in "{widget_name}"')
@@ -106,5 +145,50 @@ def choose_button_of_value_from_table(context, table_name, row, value_name, widg
 @Then('from table "{table_name}" at row "{row}" validate chosen choice of "{widget_name}" is "{value_name}"')
 def validate_chosen_button_value_from_table(context, table_name, row, widget_name, value_name):
     widget = context._config.current_page.widgets[table_name]
-    assert widget.is_button_valid(row, widget_name), "Invalid button"
-    assert widget.is_value_button_chosen(row, widget_name, value_name), "Incorrect choice"
+    if not widget.is_button_valid(row, widget_name):
+        log.info(("No button clicked", f"Button should be clicked but its not clicked in table {table_name}"
+                                       f"in row {row} at field {widget_name}"))
+        rep.add_label_to_step("No button clicked", f"Button should be clicked but its not clicked in table {table_name}"
+                                                   f"in row {row} at field {widget_name}")
+        raise AssertionError("Button not clicked")
+    if not widget.is_value_button_chosen(row, widget_name, value_name):
+        log.info(("Chosen button not clicked", f"The chosen button {value_name} in table {table_name} at "
+                                               f"row {row} at field {widget_name} should be clicked but "
+                                               f"its not clicked"))
+        rep.add_label_to_step("Chosen button not clicked", f"The chosen button {value_name} in table {table_name} at "
+                                                           f"row {row} at field {widget_name} should be clicked but "
+                                                           f"its not clicked")
+        raise AssertionError("Chosen button not clicked")
+
+
+@When('from table "{table_name}" at row "{row}" open tab')
+def validate_chosen_button_value_from_table(context, table_name, row):
+    widget = context._config.current_page.widgets[table_name]
+    if not widget.open_tab_by_row(row):
+        log.info(("tab did not open", f"The chosen tab in table {table_name} at row {row} at field did not open"))
+        rep.add_label_to_step("tab did not open", f"The chosen tab in table {table_name} at row {row} at field did "
+                                                  f"not open")
+        raise AssertionError("tab did not open")
+
+
+@When('from table "{table_name}" at row "{row}" close tab')
+def validate_chosen_button_value_from_table(context, table_name, row):
+    widget = context._config.current_page.widgets[table_name]
+    if not  widget.close_tab_by_row(row):
+        log.info(("tab did not close", f"The chosen tab in table {table_name} at row {row} at field did not close"))
+        rep.add_label_to_step("tab did not open", f"The chosen tab in table {table_name} at row {row} at field did "
+                                                  f"not close")
+        raise AssertionError("tab did not close")
+
+
+@when('from table "{table_name}" add "{items}"')
+def add_items_in_table(context, table_name, items):
+    widget = context._config.current_page.widgets[table_name]
+    for item in range(int(items)):
+        widget.add_item()
+
+
+@when('from table "{table_name}" remove "{items}"')
+def remove_item_from_table(context, table_name, items):
+    widget = context._config.current_page.widgets[table_name]
+    widget.remove_item(items)

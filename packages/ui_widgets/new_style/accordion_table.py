@@ -18,6 +18,7 @@ class AccordionTable(BaseWidget):
         }
 
     def init_widget(self):
+        # todo: when we git rid of this init_widget function it remove it form here !
         pass
 
     def get_list(self):
@@ -39,6 +40,14 @@ class AccordionTable(BaseWidget):
         self.set_widget_web_element(widget)
         return widget
 
+    def open_tab_by_row(self, row):
+        widget = self.create_widget_table_row(row)
+        return widget.open_current_tab()
+
+    def close_tab_by_row(self, row):
+        widget = self.create_widget_table_row(row)
+        return widget.close_current_tab()
+
     def remove_item(self, row):
         widget = self.create_widget_table_row(row)
         widget.removeItem()
@@ -46,6 +55,18 @@ class AccordionTable(BaseWidget):
     def set_text(self, row, label, text):
         widget = self.create_widget_table_row(row)
         widget.set_text(label, text)
+
+    def validate_text_is_valid(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.validate_text_is_valid(label)
+
+    def validate_text_is_invalid(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.validate_text_is_invalid(label)
+
+    def validate_error_message(self, row, label, error_expectation):
+        widget = self.create_widget_table_row(row)
+        return widget.validate_error_message(label, error_expectation)
 
     def set_time_text(self, row, label, text):
         widget = self.create_widget_table_row(row)
