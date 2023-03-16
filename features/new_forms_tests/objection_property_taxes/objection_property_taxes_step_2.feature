@@ -1,3 +1,4 @@
+@in_dev
 Feature: ObjectionPropertyTaxes form - scenarios step 1
 
   - Form name: השגה על חיוב בארנונה
@@ -5,181 +6,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/ObjectionPropertyTaxes
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
-
-  Scenario: TC_OBJECTIONPRO_01 - Entering correct values for personal fields when the thesis identification type is selected
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ת.ז."
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-    #todo: create new steps for email of new pages
-#    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-
-
-
-  Scenario: TC_OBJECTIONPRO_02 - Entering correct values for personal fields when the passport identification type is selected
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "דרכון" from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר דרכון"
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-    #todo: create new steps for email of new pages
-#    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-
-
-  Scenario: TC_OBJECTIONPRO_03 - Entering correct values for personal fields when the H.P. identification type is selected
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "ח.פ." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ח.פ."
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-    #todo: create new steps for email of new pages
-#    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-
-
-
-
-  Scenario: TC_OBJECTIONPRO_04 - Entering correct values for personal fields when the institution identification type is selected
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "מוסד" from "סוג זיהוי"
-    When write a valid value "3327" in "מספר מוסד"
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-    #todo: create new steps for email of new pages
-#    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-
-
-
-
-
-
-  Scenario: TC_OBJECTIONPRO_05 - Entering correct values for personal fields when the association identification type is selected
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "עמותה" from "סוג זיהוי"
-    When write a valid value "3327" in "מספר עמותה"
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-    #todo: create new steps for email of new pages
-#    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-
-
-  Scenario: TC_OBJECTIONPRO_06 type 1 - Entering incorrect values for the applicant's personal fields
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write an invalid value "sda" in "שם פרטי"
-    And write an invalid value "asdsad" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
-    When write an invalid value "sdadw" in "מספר ת.ז."
-    And fill "058-807d68r" as invalid value in "טלפון נייד"
-    And fill "02-80s86t7" as invalid value in "טלפון קווי"
-    When write an invalid value "גכעיחלעיח" in "דוא"ל"
-
-  Scenario: TC_OBJECTIONPRO_06 type 2 - Entering incorrect values for the applicant's personal fields
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write an invalid value "sda" in "שם פרטי"
-    And write an invalid value "asdsad" in "שם משפחה"
-    When pick "דרכון" from "סוג זיהוי"
-    When write a valid value "sfdsfsdfs" in "מספר דרכון"
-    And fill "058-807d68r" as invalid value in "טלפון נייד"
-    And fill "02-80s86t7" as invalid value in "טלפון קווי"
-    When write an invalid value "גכעיחלעיח" in "דוא"ל"
-
-
-  Scenario: TC_OBJECTIONPRO_06 type 3 - Entering incorrect values for the applicant's personal fields
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write an invalid value "sda" in "שם פרטי"
-    And write an invalid value "asdsad" in "שם משפחה"
-    When pick "ח.פ." from "סוג זיהוי"
-    When write a valid value "sdaasdasd" in "מספר ח.פ."
-    And fill "058-807d68r" as invalid value in "טלפון נייד"
-    And fill "02-80s86t7" as invalid value in "טלפון קווי"
-    When write an invalid value "גכעיחלעיח" in "דוא"ל"
-
-
-  Scenario: TC_OBJECTIONPRO_06 type 4 - Entering incorrect values for the applicant's personal fields
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write an invalid value "sda" in "שם פרטי"
-    And write an invalid value "asdsad" in "שם משפחה"
-    When pick "מוסד" from "סוג זיהוי"
-    When write a valid value "fdsdfsdf" in "מספר מוסד"
-    And fill "058-807d68r" as invalid value in "טלפון נייד"
-    And fill "02-80s86t7" as invalid value in "טלפון קווי"
-    When write an invalid value "גכעיחלעיח" in "דוא"ל"
-
-
-  Scenario: TC_OBJECTIONPRO_06 type 5 - Entering incorrect values for the applicant's personal fields
-    Given Navigate to "ObjectionPropertyTaxes" form
-    When write an invalid value "sda" in "שם פרטי"
-    And write an invalid value "asdsad" in "שם משפחה"
-    When pick "עמותה" from "סוג זיהוי"
-    When write a valid value "sfdssdf" in "מספר עמותה"
-    And fill "058-807d68r" as invalid value in "טלפון נייד"
-    And fill "02-80s86t7" as invalid value in "טלפון קווי"
-    When write an invalid value "גכעיחלעיח" in "דוא"ל"
 
 
   Scenario: TC_OBJECTIONPRO_07 - Entering correct values for the "property details, reason for obtaining" fields
@@ -189,14 +15,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "סוג חשבון / נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -206,11 +32,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "הנכס אינו ראוי לשימוש"
-    When from "האם הנכס נהרס עד היסוד?" click on "לא"
-    When from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?" click on "לא"
+    When choose "הנכס אינו ראוי לשימוש" from "סיבת ההשגה"
+    When choose "לא" from "האם הנכס נהרס עד היסוד?"
+    When choose "לא" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     When write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When Upload "png_to_upload.png" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     When click on "המשך" button
@@ -232,14 +57,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -249,12 +74,11 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "הנכס אינו ראוי לשימוש"
-    When from "האם הנכס נהרס עד היסוד?" click on "כן"
+    When choose "הנכס אינו ראוי לשימוש" from "סיבת ההשגה"
+    When choose "כן" from "האם הנכס נהרס עד היסוד?"
     When pick "3/1/2023" from calendar of "תאריך הריסת הנכס"
-    When from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?" click on "כן"
+    When choose "כן" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     When write a valid value "דכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "דו"ח מהנדס"
     When click on "המשך" button
     When click on email option
@@ -276,14 +100,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -293,9 +117,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "שטח החיוב שנקבע לנכס שגוי"
+    When choose "שטח החיוב שנקבע לנכס שגוי" from "סיבת ההשגה"
     When write a valid value "כדגכגדכדגדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When Upload "png_to_upload.png" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
     When click on "המשך" button
@@ -317,14 +140,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -334,9 +157,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "השימוש בפועל שונה מהחיוב הקיים"
+    When choose "השימוש בפועל שונה מהחיוב הקיים" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -357,14 +179,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -374,9 +196,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "הנכס פוצל למספר יחידות או אוחד עם נכסים אחרים"
+    When choose "הנכס פוצל למספר יחידות או אוחד עם נכסים אחרים" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
     When Upload "png_to_upload.png" file in "מומלץ לצרף חוזי שכירות של היחידות שפוצלו"
     When Upload "png_to_upload.png" file in "אישור מבעלי הנכס על איחוד או פיצול, אם אינך בעלי הנכס"
@@ -400,14 +221,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -417,11 +238,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "החיוב אינו שלי"
+    When choose "החיוב אינו שלי" from "סיבת ההשגה"
     #todo: new type of dropdown without label:
     When pick "אני לא בעל השליטה בחברה"
     When write a valid value "דגכדגכקדכקדג" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -442,14 +262,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -459,9 +279,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "כתובת הנכס בארנונה איננה נכונה"
+    When choose "כתובת הנכס בארנונה איננה נכונה" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדכגכג" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "תמונות"
     When Upload "png_to_upload.png" file in "ספח תעודת זהות"
     When Upload "png_to_upload.png" file in "אחר"
@@ -484,20 +303,20 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "3327" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
@@ -508,9 +327,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכגדככג" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -532,20 +350,20 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "דרכון" from "סוג זיהוי"
     When write a valid value "3327" in "מספר דרכון"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
@@ -556,9 +374,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "דגכדגכדכגדכגדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -580,20 +397,20 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ח.פ." from "סוג זיהוי"
     When write a valid value "3327" in "מספר ח.פ."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
@@ -604,9 +421,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -627,20 +443,20 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "מוסד" from "סוג זיהוי"
     When write a valid value "3327" in "מספר מוסד"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
@@ -651,9 +467,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -674,20 +489,20 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
@@ -698,9 +513,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "גדגכדגככגד" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
     When click on "המשך" button
     When click on email option
@@ -722,14 +536,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write an invalid value "dfsdf" in "שם פרטי"
     And write an invalid value "sdfsdffd" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
@@ -746,9 +560,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "sad" in "דירה"
     When pick "sdas" from "זיקה לנכס"
     When pick "3s/1d/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "asdasd" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
 
 
@@ -760,14 +573,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write an invalid value "dfsdf" in "שם פרטי"
     And write an invalid value "sdfsdffd" in "שם משפחה"
     When pick "ח.פ." from "סוג זיהוי"
@@ -784,9 +597,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "sad" in "דירה"
     When pick "sdas" from "זיקה לנכס"
     When pick "3s/1d/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "asdasd" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
 
 
@@ -798,14 +610,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write an invalid value "dfsdf" in "שם פרטי"
     And write an invalid value "sdfsdffd" in "שם משפחה"
     When pick "מוסד" from "סוג זיהוי"
@@ -822,9 +634,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "sad" in "דירה"
     When pick "sdas" from "זיקה לנכס"
     When pick "3s/1d/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "asdasd" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
 
 
@@ -835,14 +646,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "כן"
+    When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When write an invalid value "dfsdf" in "שם פרטי"
     And write an invalid value "sdfsdffd" in "שם משפחה"
     When pick "עמותה" from "סוג זיהוי"
@@ -859,9 +670,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "sad" in "דירה"
     When pick "sdas" from "זיקה לנכס"
     When pick "3s/1d/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי"
+    When choose "איזור החיוב או סוג הבניין בחיוב הארנונה שגוי" from "סיבת ההשגה"
     When write a valid value "asdasd" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
 
 
@@ -874,14 +684,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -891,9 +701,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "כתובת הנכס בארנונה איננה נכונה"
+    When choose "כתובת הנכס בארנונה איננה נכונה" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדכגכג" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "תמונות"
     When Upload "png_to_upload.png" file in "ספח תעודת זהות"
     When Upload "png_to_upload.png" file in "אחר"
@@ -906,11 +715,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When write a valid value "2" in "מס' בית"
     When write a valid value "3222" in "מיקוד"
     When write a valid value "23344" in "ת.ד."
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    #todo: new check box of CAPTCHA type
-    When check CAPTCHA box
+    When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
      #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -928,14 +735,14 @@ Scenario: TC_OBJECTIONPRO_21 - Entering invalid values for the "forms and attach
     When pick "עמותה" from "סוג זיהוי"
     When write a valid value "3327" in "מספר עמותה"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    When from "בעל/ת הנכס שונה ממגיש הבקשה" click on "לא"
+    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "מספר נכס"
     When write a valid value "2432434323" in "מס' חשבון / נכס"
     When search and pick "א טור" in search field "רחוב"
@@ -945,9 +752,8 @@ Scenario: TC_OBJECTIONPRO_21 - Entering invalid values for the "forms and attach
     When write a valid value "3" in "דירה"
     When pick "בעלות" from "זיקה לנכס"
     When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When from "סיבת ההשגה" click on "כתובת הנכס בארנונה איננה נכונה"
+    When choose "כתובת הנכס בארנונה איננה נכונה" from "סיבת ההשגה"
     When write a valid value "דגכדגכדגכדכגכג" in textarea of "נא פרט את הטענה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "תמונות"
     When Upload "png_to_upload.png" file in "ספח תעודת זהות"
     When Upload "png_to_upload.png" file in "אחר"
@@ -960,6 +766,5 @@ Scenario: TC_OBJECTIONPRO_21 - Entering invalid values for the "forms and attach
     When write an invalid value "ירוsdfdsשלים" in "מס' בית"
     When write an invalid value "ירוsdfשלים" in "מיקוד"
     When write an invalid value "sdf" in "ת.ד."
-    #todo: need to create new upload file widget
     When Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
 

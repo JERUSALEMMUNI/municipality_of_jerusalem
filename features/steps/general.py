@@ -28,6 +28,12 @@ def navigate_to_screen(context, screen_name):
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
                         "click here to see the link of tested step")
 
+    try:
+        driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
+
+    except:
+        pass
+
 
 @given('Navigate to "{screen_name}" form and reach step "{dst_step}"')
 def navigate_to_screen_specific_step(context, screen_name, dst_step):
@@ -82,12 +88,17 @@ def click_email_option(context):
     time.sleep(2)
     context._config.current_page.driver.find_element(By.XPATH, "//span[contains(text(),'הודעה במייל')]").click()
 
+
 @When('set pin code')
 def set_pin_code(context):
-    password = context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split('</div>')[0]
+    password = \
+    context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split(
+        '</div>')[0]
     time.sleep(3)
-    context._config.current_page.driver.find_element(By.XPATH, '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(password)
-    context._config.current_page.driver.find_element(By.XPATH,'//lib-input-text/following-sibling::button').click()
+    context._config.current_page.driver.find_element(By.XPATH,
+                                                     '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(
+        password)
+    context._config.current_page.driver.find_element(By.XPATH, '//lib-input-text/following-sibling::button').click()
     time.sleep(3)
 
 
@@ -195,7 +206,8 @@ def get_second_pin_code(context):
     context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
     WebDriverWait(context._config.driver, 30).until(
         EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.user_data['value']}')]")))
-    checkId = context._config.driver.find_element(By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.user_data['value']}')]")
+    checkId = context._config.driver.find_element(By.XPATH,
+                                                  f"//*[contains(text(),'מספר בקשה: {context.user_data['value']}')]")
     if "ContractorEmpRights?sess" in context._config.driver.current_url:
         rep.add_label_to_step('reached destination',
                               "We have reached our desired url to check the validation process of e-mail")
@@ -265,5 +277,8 @@ def wait_for_new_email(context, count_of_emails):
     else:
         end_time = time.time()
         difference = end_time - start_time
-        rep.add_label_to_step("e-mail is not received",f"{difference} seconds passed without receiving an E-mail")
+        rep.add_label_to_step("e-mail is not received", f"{difference} seconds passed without receiving an E-mail")
         # raise ce.MJTimeOutError('no new email received')
+
+
+

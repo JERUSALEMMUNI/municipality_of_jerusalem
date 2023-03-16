@@ -22,3 +22,15 @@ class EmailRegistration(BasePage):
         self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
+        self.widgets["חשבון ארנונה"] = create_widget('TextField', style=self.style, label="חשבון ארנונה")
+
+        self.widgets['בעל/ת החשבון שונה ממגיש הבקשה'] = create_widget('BigButtonField', style=self.style, label="בעל/ת החשבון שונה ממגיש הבקשה")
+        self.widgets['מגיש הבקשה'] = create_widget('BigButtonField', style=self.style, label="מגיש הבקשה")
+        self.widgets['האם דירת שותפים'] = create_widget('BigButtonField', style=self.style, label="האם דירת שותפים")
+
+        self.widgets['צילום תעודת זהות + ספח'] = create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח', driver=self.driver)
+        self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר', driver=self.driver)
+
+        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
+        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
+

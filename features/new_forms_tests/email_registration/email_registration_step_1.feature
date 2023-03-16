@@ -15,12 +15,12 @@ Feature: EmailRegistration form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -36,12 +36,12 @@ Feature: EmailRegistration form - scenarios step 1
     When pick "דרכון" from "סוג זיהוי"
     When write a valid value "332796184" in "מספר דרכון"
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
      #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -53,12 +53,12 @@ Feature: EmailRegistration form - scenarios step 1
   Scenario: TC_EMAILREG_03 - Entering incorrect values for personal private fields
     Given Navigate to "EmailRegistration" form
     When write an invalid value "sdsd" in "שם פרטי"
-    And write an invalid value "גלעד" in "שם משפחה"
+    And write an invalid value "sdfdf" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write an invalid value "hello" in "מספר ת.ז."
-    And fill "058-807f6s7" as invalid value in "טלפון נייד"
-    And fill "058-8078687" as invalid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+    And fill "058-8e7f6s7" as invalid value in "טלפון נייד"
+    And fill "02-80e8687" as invalid value in "טלפון קווי"
+    When write an invalid value "כעיחלך" in "דוא"ל"
 
 
 

@@ -15,7 +15,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -31,13 +31,12 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "בעל הנכס"
-    When from "מהי הפעולה המבוקשת?" click on "רישום שוכר חדש"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "בעל הנכס" from "מי מגיש הבקשה?"
+    When choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "כן"
+    When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -45,10 +44,9 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042024" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -63,7 +61,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -79,20 +77,19 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "בעל הנכס"
-    When from "מהי הפעולה המבוקשת?" click on "רישום בעלים אחרים (הנכס נמכר)"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "בעל הנכס" from "מי מגיש הבקשה?"
+    When choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "לא"
+    When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -100,10 +97,9 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042024" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -118,7 +114,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -134,21 +130,20 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "בעל הנכס"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "בעל הנכס" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "לא"
+    When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "לא"
+    When choose "לא" from "דירת שותפים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -162,7 +157,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -178,22 +173,21 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "בעל הנכס"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "בעל הנכס" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "לא"
+    When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "כן"
+    When choose "כן" from "דירת שותפים"
+    When choose "כן" from "האם כל השותפים עוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -207,7 +201,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -223,23 +217,22 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "בעל הנכס"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "בעל הנכס" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "לא"
+    When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "לא"
+    When choose "כן" from "דירת שותפים"
+    When choose "לא" from "האם כל השותפים עוזבים"
     When write a valid value "שמעון ואבי" in textarea of "שמות השותפים שעוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -253,7 +246,7 @@ Feature: HoldersExchange form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
     When click on email option
@@ -269,19 +262,18 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "שוכר"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "שוכר" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "058-8078687" as valid value in "טלפון קווי"
+    And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "מהי הפעולה המבוקשת?" click on "רישום שוכר חדש"
+    When choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
     When write a valid value "12042023" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -311,18 +303,17 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "שוכר"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "שוכר" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "דירת שותפים" click on "לא"
+    When choose "לא" from "דירת שותפים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -351,19 +342,18 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "שוכר"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "שוכר" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "כן"
+    When choose "כן" from "דירת שותפים"
+    When choose "כן" from "האם כל השותפים עוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -392,20 +382,19 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "שוכר"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "שוכר" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When click on "המשך" button
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "לא"
+    When choose "כן" from "דירת שותפים"
+    When choose "לא" from "האם כל השותפים עוזבים"
     When write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -434,15 +423,13 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "יורש"
-    When from "מהי הפעולה המבוקשת?" click on "רישום שוכר חדש"
-    #todo: need to create new upload file widget
+    When choose "למגורים" from "סוג הנכס"
+    When choose "יורש" from "מי מגיש הבקשה?"
+    When choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When click on "המשך" button
-    When from "האם היורש הוא המחזיק הנוכחי?" click on "כן"
+    When choose "כן" from "האם היורש הוא המחזיק הנוכחי?"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -452,7 +439,6 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -482,13 +468,12 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "יורש"
-    When from "מהי הפעולה המבוקשת?" click on "רישום בעלים אחרים (הנכס נמכר)"
-    #todo: need to create new upload file widget
+    When choose "למגורים" from "סוג הנכס"
+    When choose "יורש" from "מי מגיש הבקשה?"
+    When choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When click on "המשך" button
-    When from "האם היורש הוא המחזיק הנוכחי?" click on "לא"
+    When choose "לא" from "האם היורש הוא המחזיק הנוכחי?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
@@ -496,7 +481,6 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -506,7 +490,6 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -536,10 +519,9 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "יורש"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "למגורים" from "סוג הנכס"
+    When choose "יורש" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -548,9 +530,8 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "לא"
+    When choose "לא" from "דירת שותפים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -579,10 +560,9 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "יורש"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "למגורים" from "סוג הנכס"
+    When choose "יורש" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -591,10 +571,9 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "כן"
+    When choose "כן" from "דירת שותפים"
+    When choose "כן" from "האם כל השותפים עוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -623,10 +602,9 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "יורש"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "למגורים" from "סוג הנכס"
+    When choose "יורש" from "מי מגיש הבקשה?"
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -635,11 +613,10 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "לא"
+    When choose "כן" from "דירת שותפים"
+    When choose "לא" from "האם כל השותפים עוזבים"
     When write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -668,20 +645,18 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "מיופה כח"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "רישום שוכר חדש"
-    #todo: need to create new upload file widget
+    When choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "יפוי כח"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "כן"
+    When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -691,7 +666,6 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -721,20 +695,18 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "מיופה כח"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "רישום בעלים אחרים (הנכס נמכר)"
-    #todo: need to create new upload file widget
+    When choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "יפוי כח"
     When click on "המשך" button
-    When from "האם בעל הנכס הוא המחזיק הנוכחי?" click on "כן"
+    When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -744,7 +716,6 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When write a valid value "12042023" in "תאריך כניסה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
@@ -774,15 +745,14 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "מיופה כח"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "יפוי כח"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -791,9 +761,8 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "לא"
+    When choose "לא" from "דירת שותפים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -822,15 +791,14 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "מיופה כח"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "יפוי כח"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -839,10 +807,9 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "כן"
+    When choose "כן" from "דירת שותפים"
+    When choose "כן" from "האם כל השותפים עוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
@@ -871,15 +838,14 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "3345434453" in "מס' חשבון תושב בארנונה"
     When search invalid value and pick "א טור" in search field "רחוב"
     When write a valid value "3345434453" in "מס' בית"
-    When from "סוג הנכס" click on "למגורים"
-    When from "מי מגיש הבקשה?" click on "מיופה כח"
+    When choose "למגורים" from "סוג הנכס"
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
-    When from "מהי הפעולה המבוקשת?" click on "הודעה על שוכר שעזב"
-    #todo: need to create new upload file widget
+    When choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     When Upload "png_to_upload.png" file in "יפוי כח"
     When click on "המשך" button
     When write a valid value "דני" in "שם פרטי"
@@ -888,11 +854,10 @@ Feature: HoldersExchange form - scenarios step 1
     When write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from "דירת שותפים" click on "כן"
-    When from "האם כל השותפים עוזבים" click on "לא"
+    When choose "כן" from "דירת שותפים"
+    When choose "לא" from "האם כל השותפים עוזבים"
     When write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
     When write a valid value "12042023" in "תאריך עזיבה"
-    #todo: need to create new upload file widget
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"

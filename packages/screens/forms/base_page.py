@@ -1,5 +1,4 @@
 from abc import abstractmethod
-
 from infra.enums import UIStyle
 from infra.widgets_dict import WidgetsDict
 from ui_widgets.widget_factory import create_widget
@@ -27,7 +26,6 @@ class BasePage(object):
         self.widgets['header'] = create_widget('HeaderField', style=self.style)
         self.widgets["footer"] = create_widget('FooterField', style=self.style)
         self.widgets['page_steps'] = create_widget('ApplicationStepsField', style=self.style, label='page_steps')
-
 
     def navigate_to_page_url(self):
         self.driver.get(self.main_url + self.url_postfix)
