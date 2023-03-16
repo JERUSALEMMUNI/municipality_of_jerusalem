@@ -7,9 +7,9 @@ log = logger.get_logger(__name__)
 
 
 class UploadFile(BaseWidget):
-    def __init__(self, label, index, driver):
+    def __init__(self, label, index):
         super().__init__(label, index)
-        self.driver = driver
+
 
     @property
     def locator(self):
@@ -18,8 +18,8 @@ class UploadFile(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]/../following-sibling::div//input"
         }
 
-    def upload_file(self, path):
-        file_input = self.driver.find_element(self.locator["By"], self.locator["Value"])
+    def upload_file(self, path, driver):
+        file_input = driver.find_element(self.locator["By"], self.locator["Value"])
         file_input.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
