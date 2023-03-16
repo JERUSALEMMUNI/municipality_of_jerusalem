@@ -18,7 +18,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "לא"
     When from "האם דירת שותפים" click on "לא"
     #todo: need to create new upload file widget
@@ -47,7 +49,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "כן"
     When from "מגיש הבקשה" click on "בן/בת  זוג של בעל החשבון"
     When from "האם דירת שותפים" click on "לא"
@@ -75,7 +79,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "כן"
     When from "מגיש הבקשה" click on "מיופה כח"
     When from "האם דירת שותפים" click on "לא"
@@ -106,7 +112,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "כן"
     When from "מגיש הבקשה" click on "בעל תפקיד בתאגיד"
     When from "האם דירת שותפים" click on "לא"
@@ -136,7 +144,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "לא"
     When from "האם דירת שותפים" click on "כן"
     When write a valid value "3422344233" in "מס חשבון ארנונה"
@@ -165,7 +175,9 @@ Feature: EmailRegistration form - scenarios step 2
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     When from "בעל חשבון שונה ממגיש הבקשה" click on "כן"
     When from "מגיש הבקשה" click on "מיופה כח"
     When from "האם דירת שותפים" click on "כן"

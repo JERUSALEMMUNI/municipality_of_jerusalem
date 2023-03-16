@@ -18,7 +18,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -51,7 +53,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_02 - registration of a new tenant by the owner of the property
@@ -64,7 +66,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -104,7 +108,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגכגכגכג" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_03 type 1 - registration of a new tenant by the owner of the property
@@ -117,7 +121,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -146,7 +152,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגככג" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_03 type 2 - registration of a new tenant by the owner of the property
@@ -159,7 +165,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -189,7 +197,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכגדכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_03 type 3 - registration of a new tenant by the owner of the property
@@ -202,7 +210,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -233,7 +243,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדכגדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_04 - registration of a new tenant by the lessee of the property
@@ -246,7 +256,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -274,7 +286,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_05 type 1 - registration of a new tenant by the lessee of the property
@@ -286,7 +298,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -312,7 +326,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגככגד" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_05 type 2 - registration of a new tenant by the lessee of the property
@@ -324,7 +338,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -351,7 +367,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכגד" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_05 type 3 - registration of a new tenant by the lessee of the property
@@ -363,7 +379,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -391,7 +409,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_06 - registration of a new tenant by the property's heir
@@ -403,7 +421,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -437,7 +457,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_07 - registration of a new tenant by the property's heir
@@ -449,7 +469,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -489,7 +511,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכגדכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_08 type 1 - registration of a new tenant by the property's heir
@@ -501,7 +523,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -530,7 +554,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_08 type 2 - registration of a new tenant by the property's heir
@@ -542,7 +566,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -572,7 +598,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_08 type 3 - registration of a new tenant by the property's heir
@@ -584,7 +610,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -615,7 +643,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדכג" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_09 - registration of a new tenant by the property representative
@@ -627,7 +655,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -666,7 +696,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדכגדגכדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_10 - registration of a new tenant by the property representative
@@ -678,7 +708,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -717,7 +749,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכדכג" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_11 type 1 - registration of a new tenant by the property representative
@@ -729,7 +761,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -763,7 +797,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_11 type 2 - registration of a new tenant by the property representative
@@ -775,7 +809,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -810,7 +846,7 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "דגדכגדגכדגכ" in textarea of "הערות"
 
 
   Scenario: TC_HOLDERSEXCH_11 type 3 - registration of a new tenant by the property representative
@@ -822,7 +858,9 @@ Feature: HoldersExchange form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
-    When test temp
+    When click on email option
+    When 1st wait for email that contains pin code and link
+    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -858,4 +896,4 @@ Feature: HoldersExchange form - scenarios step 1
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When write a valid value "hello everybody" in textarea of "הערות"
+    When write a valid value "כדגכדגכדגכ" in textarea of "הערות"
