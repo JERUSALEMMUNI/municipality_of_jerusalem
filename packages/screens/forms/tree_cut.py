@@ -22,5 +22,5 @@ class TreeCut(BasePage):
         self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
-        self.widgets['מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית')
+        self.widgets['מספר בית'] = create_widget('TextNumberField', style=self.style, label='מספר בית')
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')

@@ -13,5 +13,8 @@ class CalenderLocators:
 
     @staticmethod
     def day(day):
+        """
+        to support two caleder fields old and new
+        """
         return By.XPATH, f"//a[text()='{day}']|//span[text()='{day}']"
 

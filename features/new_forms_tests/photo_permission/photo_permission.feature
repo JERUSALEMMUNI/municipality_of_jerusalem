@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: PhotoPermission form - scenarios step 1
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים

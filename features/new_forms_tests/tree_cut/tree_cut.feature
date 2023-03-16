@@ -1,4 +1,3 @@
-@in_dev
 Feature: TreeCut form - scenarios step 1
 
   - Form name: בקשה לעקירת עצים
@@ -7,7 +6,6 @@ Feature: TreeCut form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory of (טלפון קווי)
 
-@in_dev
   Scenario: TC_TREECUT_01 - Checking "personal details" fields with correct details
     Given Navigate to "TreeCut" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -18,7 +16,7 @@ Feature: TreeCut form - scenarios step 1
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When goto "א נחיל" from "רחוב"
-    When write a valid value "1" in "מספר בית"
+    When write a valid number "1" in "מספר בית"
     When click on "המשך" button
 
 @in_dev
@@ -36,7 +34,7 @@ Feature: TreeCut form - scenarios step 1
     When write a valid value "1" in "מספר בית"
     When click on "המשך" button
 
-
+@in_dev
   Scenario: TC_TREECUT_03 - Checking "personal details" fields with incorrect details
     Given Navigate to "TreeCut" form
     When write an invalid value "dddd" in "שם פרטי"

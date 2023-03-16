@@ -49,3 +49,5 @@ class TextField(BaseWidget):
         error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
         return error_msg.text == error_expected
 
+    #todo create new widjets for input just number
+
