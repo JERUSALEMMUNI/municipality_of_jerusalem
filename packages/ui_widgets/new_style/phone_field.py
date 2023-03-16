@@ -67,3 +67,7 @@ class PhoneField(BaseWidget):
             self.web_element.click()
             return True
         return False
+
+    def clear(self):
+        self.text_widget.clear()
+        self.dropdown_widget.select_element("050")

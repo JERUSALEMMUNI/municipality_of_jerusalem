@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.base_widget import BaseWidget
+
 from infra import logger
+from ui_widgets.base_widget import BaseWidget
 from ui_widgets.old_style.widget_locators.check_box_locators import CheckBoxLocator
 
 log = logger.get_logger(__name__)
@@ -44,3 +45,6 @@ class CheckBox(BaseWidget):
     def is_valid(self):
         x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
         return 'valid' in x.get_attribute('class')
+
+    def clear(self):
+        self.uncheck_box()

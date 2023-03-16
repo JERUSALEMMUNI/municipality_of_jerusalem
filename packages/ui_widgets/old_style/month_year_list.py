@@ -73,3 +73,6 @@ class MonthYearList(BaseWidget):
             self.web_element.click()
             return True
         return False
+
+    def clear(self, index):
+        self.remove_item(index)

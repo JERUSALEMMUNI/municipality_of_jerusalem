@@ -40,3 +40,6 @@ class BaseWidget(object):
     @property
     def is_displayed(self):
         return self.web_element.is_displayed()
+
+    def clear(self, index=None):
+        self.clear()

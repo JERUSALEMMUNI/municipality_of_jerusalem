@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.base_widget import BaseWidget
+
 from infra import logger
+from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.upload_file_locators import UploadFilesLocators
 
 log = logger.get_logger(__name__)
@@ -9,7 +10,6 @@ log = logger.get_logger(__name__)
 class UploadFile(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
-
 
     @property
     def locator(self):
@@ -55,3 +55,6 @@ class UploadFile(BaseWidget):
         error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
         return error_msg.text == error_expected
 
+    # ToDo: not ready
+    def clear(self, file_index):
+        self.delete_file(file_index)

@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.base_widget import BaseWidget
+
 from infra import logger
+from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.text_area_locators import TextAreaLocators
 
 log = logger.get_logger(__name__)
@@ -9,7 +10,6 @@ log = logger.get_logger(__name__)
 class TextAreaField(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
-
 
     @property
     def get_text(self):
@@ -28,9 +28,6 @@ class TextAreaField(BaseWidget):
     def set_text(self, text):
         self.web_element.send_keys(text)
 
-    def clear(self):
-        self.web_element.clear()
-
     def has_text(self, text):
         return text in self.get_text
 
@@ -46,3 +43,5 @@ class TextAreaField(BaseWidget):
         error_msg = self.web_element.find_element(*TextAreaLocators.error_msg)
         return error_msg.text == error_expected
 
+    def clear(self):
+        self.web_element.clear()

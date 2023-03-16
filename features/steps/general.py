@@ -1,4 +1,5 @@
 import time
+
 import allure
 from behave import *
 from bs4 import BeautifulSoup
@@ -7,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 from features.steps.steps_locators.general_locators import GeneralLocators
-from infra import logger, reporter, custom_exceptions as ce
+from infra import logger, reporter
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -281,4 +282,14 @@ def wait_for_new_email(context, count_of_emails):
         # raise ce.MJTimeOutError('no new email received')
 
 
+@When('clear fields')
+def clear_fields(context):
+    widgets = context._config.current_page.widgets
+    for i in widgets:
+        try:
+            if i is not None:
+                widgets[i].clear()
+                log.info(f"the field {i} is cleared")
 
+        except:
+            log.info(f"the field {i} is empty")
