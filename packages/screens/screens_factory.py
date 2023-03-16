@@ -34,7 +34,7 @@ class ScreensFactory(object):
             'EmailRegistration': email_registration.EmailRegistration,
             'TreeCut': tree_cut.TreeCut,
             'ObjectionPropertyTaxes': objection_property_taxes.ObjectionPropertyTaxes,
-            'HoldersExchange': holders_exchange.HoldersExchange,
+            'HoldersExchange': holders_exchange.HoldersExchange
         }
 
         screens = []
