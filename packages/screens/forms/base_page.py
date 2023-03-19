@@ -21,7 +21,7 @@ class BasePage(object):
     def create_base_widgets(self):
         self.widgets['המשך'] = create_widget('ButtonField', style=self.style, label='המשך')
         self.widgets['חזור'] = create_widget('ButtonField', style=self.style, label='חזור')
-        self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
+        # self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
         self.widgets['שלח'] = create_widget('ButtonField', style=self.style, label='שלח')
         self.widgets['header'] = create_widget('HeaderField', style=self.style)
         self.widgets["footer"] = create_widget('FooterField', style=self.style)

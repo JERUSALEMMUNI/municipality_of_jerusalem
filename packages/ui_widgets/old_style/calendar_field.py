@@ -67,11 +67,12 @@ class CalendarField(BaseWidget):
             EC.element_to_be_clickable(self.web_element)
         ).click()
 
+    @property
     def get_date(self):
         return self.web_element.get_attribute('value')
 
     def check_date(self, date):
-        return self.get_date() in date
+        return self.get_date in date
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*CalenderLocators.error_msg)
