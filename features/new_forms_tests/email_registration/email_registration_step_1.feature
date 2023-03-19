@@ -1,4 +1,3 @@
-@in_dev
 Feature: EmailRegistration form - scenarios step 1
 
   - Form name: קבלת חשבון ארנונה באימייל
