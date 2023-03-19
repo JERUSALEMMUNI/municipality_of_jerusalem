@@ -18,12 +18,16 @@ class DropdownSearch(Dropdown):
         dropDown_open = self.web_element.get_attribute('aria-expanded')
         if dropDown_open in ('false', None):
             self.web_element.click()
-        self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label)).send_keys(value_selected)
-        drop = self.web_element.find_element(*DropdownSearchLocators.drop)
-        drop.click()
-        result = self.web_element.text
-        returnResult = result.splitlines()[0]
-        return returnResult
+        try:
+            self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label)).send_keys(value_selected)
+            drop = self.web_element.find_element(*DropdownSearchLocators.drop)
+            drop.click()
+            result = self.web_element.text
+            returnResult = result.splitlines()[0]
+            return returnResult
+
+        except:
+            raise AssertionError('Desired value is not found in list')
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found

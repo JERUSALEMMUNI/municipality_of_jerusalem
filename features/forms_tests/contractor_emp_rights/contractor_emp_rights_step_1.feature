@@ -6,7 +6,7 @@ Feature: ContractorEmpRights form - scenarios step 1
   - Number of Pages is : 2, We are at Step: 1
   - All fields are mandatory except (תאריך לידה, רחוב, מספר בית, מספר דירה, מספר טלפון, שם אתר עירוני)
 
-
+  @in_dev
   Scenario: TC_EMPCOMP_01 - Click on "מידע" button after form opened
     Given Navigate to "ContractorEmpRights" form
     When from header click on "מידע" icon
@@ -16,14 +16,14 @@ Feature: ContractorEmpRights form - scenarios step 1
     When click on X Button
     Then validate information dialog is closed
 
-
+  @in_dev
   Scenario: TC_EMPCOMP_02 - Click on "שמור" button before entering the required details
     Given Navigate to "ContractorEmpRights" form
     When from header click on "שמור" icon
     Then an error message appeared with the following description: "עליך למלא מספר זהות, שם פרטי, שם משפחה, מספר טלפון נייד ואימייל"
     When close error message
 
-
+  @in_dev
   @pdf
   @in_dev
   Scenario: TC_EMPCOMP_03 - Click on "הדפס" button before entering the required details
@@ -49,7 +49,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "026282068" in "מספר טלפון"
     And fill "058-8078687" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
-
 
 
   @email1
@@ -100,6 +99,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 3rd wait for second email to get "קוד האימות"
     When 4th close all tabs
     Then 5th Validate if went back to expected form
+    When Navigate to original url
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 

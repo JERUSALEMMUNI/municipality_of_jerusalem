@@ -22,6 +22,7 @@ class PhotoPermission(BasePage):
         # todo:check change it to dropdown or keep it as dropdownsearch
         self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
+        self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
         self.widgets["שם חברת ההפקה"] = create_widget('TextField', style=self.style, label="שם חברת ההפקה")
         self.widgets["טלפון חברת ההפקה"] = create_widget('PhoneField', style=self.style, label="טלפון חברת ההפקה")
         self.widgets["כתובת חברת ההפקה"] = create_widget('TextField', style=self.style, label="כתובת חברת ההפקה")
@@ -36,3 +37,30 @@ class PhotoPermission(BasePage):
                                                                     label="פרטי המיקום ומועדי הצילומים")
         self.widgets['האם יש חיבור לחשמל/גנרטור'] = create_widget('ButtonGroup', style=self.style,
                                                                   label="האם יש חיבור לחשמל/גנרטור")
+
+    def fill_form_to_reach_step(self, dst_step, mailbox):
+        if dst_step == "פרטי מגיש הבקשה":
+            self.navigate(mailbox)
+
+        elif dst_step == "פרטי ההפקה":
+            self.navigate(mailbox)
+            # self.widgets['שם הכלב'].set_text('מרקוס')
+            # self.widgets['גזע'].set_text('ביטבול')
+            # self.widgets['מין'].choose_value('זכר')
+            # self.widgets['צבע'].set_text('לבן')
+            # self.widgets['מספר שבב'].set_text('2322322232')
+            # self.widgets['שנת לידה'].select_element('2020')
+            # self.widgets['הכלב מחוסן כנגד מחלת הכלבת?'].choose_value('כן')
+            # self.widgets['תאריך חיסון כלבת אחרון'].second_calender('8/3/2020')
+            # self.widgets['הכלב רשום ברשות המקומית'].select_element('אבו גוש')
+            # self.widgets['תאריך מסירת הכלב'].second_calender('8/5/2021')
+            # self.widgets["המשך"].click_button()
+
+    def navigate(self,mailbox):
+        self.widgets["סוג זיהוי"].select_element('דרכון')
+        self.widgets["מספר דרכון"].set_text('332796184')
+        self.widgets["שם פרטי"].set_text("סוהייב")
+        self.widgets["שם משפחה"].set_text("אבו גנאם")
+        self.widgets['טלפון נייד'].set_full_phone('058-8078687')
+        self.widgets['דוא'].set_text(mailbox)
+        self.widgets["המשך"].click_button()

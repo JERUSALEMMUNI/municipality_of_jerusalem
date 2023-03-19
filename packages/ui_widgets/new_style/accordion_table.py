@@ -60,6 +60,12 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         widget.upload_file(label, file,driver)
 
+
+    def choose_item(self, row, label, txt):
+        widget = self.create_widget_table_row(row)
+        widget.choose_item(label, txt)
+
+
     def validate_text_is_valid(self, row, label):
         widget = self.create_widget_table_row(row)
         return widget.validate_text_is_valid(label)

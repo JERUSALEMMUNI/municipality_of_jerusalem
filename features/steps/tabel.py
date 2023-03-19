@@ -194,7 +194,7 @@ def add_items_in_table(context, table_name, items):
 @when('from table "{table_name}" remove "{items}"')
 def remove_item_from_table(context, table_name, items):
     widget = context._config.current_page.widgets[table_name]
-    widget.remove_item(items) @ when('from table "{table_name}" remove "{items}"')
+    widget.remove_item(items)
 
 
 @when('from table "{table_name}" at row "{row}" upload file "{text}" in "{widget_name}"')
@@ -202,3 +202,9 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
     widget = context._config.current_page.widgets[table_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
     widget.upload_file(row, widget_name, file, context._config.driver)
+
+
+@when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    widget.choose_item(row, widget_name, text)

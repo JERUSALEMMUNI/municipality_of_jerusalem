@@ -7,8 +7,8 @@ log = logger.get_logger(__name__)
 
 
 class ApplicationStepsField(BaseWidget):
-    def __init__(self,index):
-        super().__init__(self,index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
 
     @property
     def locator(self):
@@ -35,3 +35,17 @@ class ApplicationStepsField(BaseWidget):
 
     def validate_number_of_forms(self, expected_number: int):
         return self.get_number_of_steps() == expected_number
+
+    def get_step_name(self):
+        steps = self.web_element.find_elements(self.locator['By'], self.locator['Value'])
+
+        for temp_step in steps:
+            if "active" in temp_step.get_attribute('class'):
+                step = temp_step.text.split("\n")
+                step_name = step[1]
+                log.info(step_name)
+                return step_name
+        return -1
+
+    def validate_current_step_name(self, step_name):
+        return self.get_step_name() == step_name
