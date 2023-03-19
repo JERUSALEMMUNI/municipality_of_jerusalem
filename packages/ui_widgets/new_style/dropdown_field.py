@@ -10,7 +10,7 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
+    def __init__(self, label, index, path_locator="/..//p-dropdown"):
         super().__init__(label, index)
         self.path_locator = path_locator
         self.list = []
@@ -40,16 +40,18 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        try:
-            WebDriverWait(self.web_element, 5).until(
-                EC.presence_of_element_located(DropdownLocators.select(pre)))
-            prefix = self.web_element.find_element(*DropdownLocators.select(pre))
-            prefix.click()
-            selection = True
-        except:
+        WebDriverWait(self.web_element, 5).until(
+            EC.presence_of_element_located((By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//span")))
+        list_of_items = self.web_element.find_elements(By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//span")
+        for i in list_of_items:
+            if i.text == pre:
+                i.click()
+                self.dropdown_selection = True
+                return True
+        else:
             log.info("Didn't find option to choose")
-            selection = False
-        return selection
+            self.dropdown_selection = False
+            return False
 
     def validate_selected(self, option):
         result = self.web_element.text
@@ -96,3 +98,6 @@ class Dropdown(BaseWidget):
                 EC.invisibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
             return True
         return False
+    @property
+    def option_status(self):
+        return self.dropdown_selection
