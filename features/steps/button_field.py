@@ -10,6 +10,11 @@ def click_button(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_button()
 
+@When('click on "{widget_name}" button tyota')
+def click_button(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.click_button_tyota()
+
 
 @When('click on "{button_name}" icon')
 def click_button(context, button_name):

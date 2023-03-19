@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,10 +22,19 @@ class ButtonField(BaseWidget):
     def locator(self):
         return {
              'By': By.XPATH,
-             'Value': f"//span[contains(text(),'{self.label}')]"
+             'Value': f"//span[contains(text(),'{self.label}')]/.."
         }
 
     def click_button(self):
+        time.sleep(1)
+        WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_element_located((By.XPATH, f"//span[contains(text(),'{self.label}')]/..")))
         self.web_element.click()
+        log.debug(f'{self.label} button clicked')
+
+    def click_button_tyota(self):
+        WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_element_located((By.XPATH, f"//span[contains(text(),'{self.label}')]/..")))
+        self.web_element.find_element(By.XPATH,"(//span[contains(text(),'שמור טיוטה')]/..)[2]").click()
         log.debug(f'{self.label} button clicked')
 

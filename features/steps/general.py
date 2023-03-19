@@ -3,6 +3,7 @@ import time
 import allure
 from behave import *
 from bs4 import BeautifulSoup
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -84,24 +85,19 @@ def field_has_valid_value(context, widget_name):
     assert widget.is_invalid is False and widget.is_valid is True, "Field considered as invalid"
 
 
-@when('click on email option')
-def click_email_option(context):
-    time.sleep(2)
-    context._config.current_page.driver.find_element(By.XPATH, "//span[contains(text(),'הודעה במייל')]").click()
+@when('click on "{widget_name}" option')
+def click_email_option(context, widget_name):
+    time.sleep(4)
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    widget.click_email_option(driver)
 
 
-@When('set pin code')
-def set_pin_code(context):
-    password = \
-        context.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split(
-            '</div>')[0]
-    time.sleep(3)
-    context._config.current_page.driver.find_element(By.XPATH,
-                                                     '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(
-        password)
-    context._config.current_page.driver.find_element(By.XPATH, '//lib-input-text/following-sibling::button').click()
-    time.sleep(3)
-
+@When('set pin code "{widget_name}"')
+def set_pin_code(context,widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    widget.set_pin(driver)
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
@@ -145,7 +141,6 @@ def close_special_list(context):
 def back_to_prev_page(context):
     context._config.driver.execute_script("window.history.go(-1)")
     context.screens_manager.screens = {}
-    # context._config.current_page = None
 
 
 @Then('Validate current page is "{page_name}"')
@@ -153,15 +148,12 @@ def back_to_prev_page(context, page_name):
     assert page_name in context._config.driver.current_url, "Error, Wrong page url"
 
 
-@When('1st wait for email that contains pin code and link')
-def check_email(context):
-    emails = context.mailbox.get_messages()
-    context.count_of_emails = len(emails)
-    wait_for_new_email(context, context.count_of_emails)
-    context.user_data['email_body'] = context.mailbox.get_messages()[0].html_body
-    if context.user_data['email_body'] is None:
-        rep.add_label_to_step("No email received", "E-mail is not received")
-        raise AssertionError('No email received')
+@When('1st wait for "{widget_name}" that contains pin code and link')
+def check_email(context,widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    mailbox = context.mailbox
+    widget.wait_for_email(mailbox)
+
 
 
 @when('2nd click on link and fill email "{email}" pin code')
@@ -185,102 +177,58 @@ def fill_pincode_and_click_link(context, email):
     context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
     context._config.driver.find_element(*GeneralLocators.send_message_button).click()
 
-
-@when('3rd wait for second email to get "קוד האימות"')
-def get_second_pin_code(context):
-    if context.user_data['email_body'] == None:
-        rep.add_label_to_step("No email received", "E-mail is not received")
-        raise AssertionError('No email recieved')
-    wait_for_new_email(context, context.count_of_emails + 1)
-    email_body2 = context.mailbox.get_messages()[0].html_body
-    if email_body2 is None:
-        rep.add_label_to_step("No email received", "E-mail is not received")
-        raise AssertionError('No email received')
-    value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
-    if value2 is None:
-        rep.add_label_to_step("No pin code", "pin code is not received from email")
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.fill_code_field))
-    context._config.driver.find_element(*GeneralLocators.fill_code_field).send_keys(value2)
-    context._config.driver.find_element(*GeneralLocators.click_link_request).click()
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.see_form))
-    context._config.driver.find_element(*GeneralLocators.see_form).click()
-    context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    WebDriverWait(context._config.driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'מספר בקשה: {context.user_data['value']}')]")))
-    checkId = context._config.driver.find_element(By.XPATH,
-                                                  f"//*[contains(text(),'מספר בקשה: {context.user_data['value']}')]")
-    if "ContractorEmpRights?sess" in context._config.driver.current_url:
-        rep.add_label_to_step('reached destination',
-                              "We have reached our desired url to check the validation process of e-mail")
-    else:
-        rep.add_label_to_step('failure to reach destination', "didnt reqquired form url destination")
-    if context.user_data['email_body'] == None:
-        context.user_data['validate'] = False
-    else:
-        context.user_data['validate'] = checkId.is_displayed()
+@when('2nda click on link and fill "{widget_name}" "{email}" pin code')
+def fill_pincode_and_click_link(context, widget_name, email):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    mailbox = context.mailbox
+    widget.fill_and_click_link(driver, email)
 
 
-@when('4th close all tabs')
-def close_tabs(context):
-    if context.user_data['email_body'] == None:
-        rep.add_label_to_step("No email received", "E-mail is not received")
-        context.user_data['validate'] = None
-    num_tabs = len(context._config.driver.window_handles)
-    for i in range(1, num_tabs):
-        context._config.driver.close()
-        context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-        WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
-    context._config.driver.switch_to.window(context._config.driver.window_handles[0])
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
-    context._config.driver.find_element(*GeneralLocators.click_continue_button).click()
-    num_tabs = len(context._config.driver.window_handles)
-    if num_tabs == 1:
-        rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
-    else:
-        rep.add_label_to_step(f"{num_tabs - 1} unused tabs still open", "Not all unused tabs are closed")
-        raise Exception(f"{num_tabs - 1} unused tabs still open")
-
-
-@Then('5th Validate if went back to expected form')
-def validate_form_email(context):
-    if context.user_data['validate'] == None:
-        rep.add_label_to_step('No e-mail recieved', 'couldnt reach desiered page to make validation')
-        raise ValueError("No email received, couldn't make validation")
-    if not context.user_data['validate']:
-        rep.add_label_to_step('failure reason', "We reached the desired url destination but the form number doesn't "
-                                                "equal the one we filled at the beginning")
-        context._config.current_page.navigate_to_page_url()
-        raise AssertionError('The form number is not available')
-    else:
-        rep.add_label_to_step('Correct verification',
-                              "validation done correctly and we are at the desired form number")
+@when('3rd wait for second "{widget_name}" to get "קוד האימות"')
+def get_second_pin_code(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    mailbox = context.mailbox
     current_page = context._config.current_page
-    current_page = context.screens_manager.create_screen([current_page.page_title], driver=context._config.driver,
-                                                         force_create=True)
-    context.screens_manager.screens[current_page.page_title] = current_page
-    current_page.navigate_to_page_url()
-    context.user_data['email_body'] = None
+    widget.wait_for_second_email(driver, mailbox, current_page)
+
+@when('4th close all tabs "{widget_name}"')
+def close_tabs(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    widget.close_all_tabs(driver)
+
+@Then('5th Validate if went back to expected "{widget_name}" form')
+def validate_form_email(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    current_page = context._config.current_page
+    assert widget.vlidate_form(driver, current_page), 'The form number is not the same'
+
+@When('Navigate to original url')
+def return_to_original_url(context):
+    context._config.current_page.navigate_to_page_url()
 
 
-def wait_for_new_email(context, count_of_emails):
-    start_time = time.time()
-    time_for_total_wait = 0
-    for i in range(15):
-        start_step = time.time()
-        if len(context.mailbox.get_messages()) == count_of_emails + 1:
-            break
-        time.sleep(3)
-        end_step = time.time()
-        waiting_time = (end_step - start_step)
-        time_diff_rounded = round(waiting_time, 2)
-        time_for_total_wait = time_diff_rounded + time_for_total_wait
-        log.info(f'wait for email, {time_for_total_wait} seconds passed')
-    else:
-        end_time = time.time()
-        difference = end_time - start_time
-        rep.add_label_to_step("e-mail is not received", f"{difference} seconds passed without receiving an E-mail")
-        # raise ce.MJTimeOutError('no new email received')
-
+# def wait_for_new_email(context, count_of_emails):
+#     start_time = time.time()
+#     time_for_total_wait = 0
+#     for i in range(15):
+#         start_step = time.time()
+#         if len(context.mailbox.get_messages()) == count_of_emails + 1:
+#             break
+#         time.sleep(3)
+#         end_step = time.time()
+#         waiting_time = (end_step - start_step)
+#         time_diff_rounded = round(waiting_time, 2)
+#         time_for_total_wait = time_diff_rounded + time_for_total_wait
+#         log.info(f'wait for email, {time_for_total_wait} seconds passed')
+#     else:
+#         end_time = time.time()
+#         difference = end_time - start_time
+#         rep.add_label_to_step("e-mail is not received", f"{difference} seconds passed without receiving an E-mail")
+#         # raise ce.MJTimeOutError('no new email received')
 
 @When('clear fields')
 def clear_fields(context):
@@ -295,4 +243,5 @@ def clear_fields(context):
             log.exception(e)
             log.info(f"the field {widget_name} is empty")
 
-    pass
+
+
