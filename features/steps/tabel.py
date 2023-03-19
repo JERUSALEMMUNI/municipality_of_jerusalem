@@ -202,3 +202,9 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
     widget = context._config.current_page.widgets[table_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
     widget.upload_file(row, widget_name, file, context._config.driver)
+
+
+@when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    widget.choose_item(row, widget_name, text)

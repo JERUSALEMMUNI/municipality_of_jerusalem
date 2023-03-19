@@ -109,6 +109,15 @@ def search_(context, option_value, widget_name):
         widget.close()
 
 
+@when('from parent "{parent}" goto "{option_value}" from "{widget_name}"')
+def search_(context, parent, option_value, widget_name):
+    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
+    try:
+        widget.search_element(option_value)
+    finally:
+        widget.close()
+
+
 @then('validate "{widget_name}" has "{option_value}" in list')
 def scroll_to_element(context, widget_name, option_value):
     widget = context._config.current_page.widgets[widget_name]
