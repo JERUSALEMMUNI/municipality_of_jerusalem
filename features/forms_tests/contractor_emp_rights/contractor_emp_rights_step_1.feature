@@ -51,7 +51,6 @@ Feature: ContractorEmpRights form - scenarios step 1
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
 
 
-
   @email1
   Scenario: TC_EMPCOMP_05 - Enter correct employer details from cleaning department
     Given Navigate to "ContractorEmpRights" form
@@ -100,6 +99,7 @@ Feature: ContractorEmpRights form - scenarios step 1
     When 3rd wait for second email to get "קוד האימות"
     When 4th close all tabs
     Then 5th Validate if went back to expected form
+    When Navigate to original url
     Then validate current step is "פרטי העובד/ת, המעסיק והתלונה"
 
 
