@@ -9,7 +9,6 @@ class ApplicationStepsField(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
 
-
     @property
     def get_text(self):
         return self.web_element.text
@@ -33,7 +32,8 @@ class ApplicationStepsField(BaseWidget):
         return len(steps) - 1
 
     def step_checker(self, expected_step):
-        step = self.web_element.find_element(By.XPATH, f".//following-sibling::div/span[contains(text(),'{expected_step}')]/parent::div")
+        step = self.web_element.find_element(By.XPATH,
+                                             f".//following-sibling::div/span[contains(text(),'{expected_step}')]/parent::div")
         if "active" in step.get_attribute('class'):
             return True
 
@@ -43,9 +43,3 @@ class ApplicationStepsField(BaseWidget):
             if "active" in step.get_attribute('class'):
                 return step.text
         return -1
-
-
-
-
-
-

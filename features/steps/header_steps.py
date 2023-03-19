@@ -35,18 +35,10 @@ def validate_languages_buttons_is_displayed(context):
     assert widget.validate_is_languages_buttons_is_displayed(), "Header language button (arabic , hebrew) is not displayed "
 
 
-@then('validate current step number is "{current_step}"')
+@then('validate current step name is "{current_step}"')
 def validate_current_step_number(context, current_step):
-    widget = context._config.current_page.widgets["header"]
-    widget.init_widget()
-    assert widget.validate_current_step_number(int(current_step)), f"Wrong step number"
-
-
-@then('validate total steps count is "{step_count}"')
-def validate_total_step_count(context, step_count):
-    widget = context._config.current_page.widgets["header"]
-    widget.init_widget()
-    assert widget.validate_number_of_pages(int(step_count)), f"Expected steps count is wrong"
+    widget = context._config.current_page.widgets["page_steps"]
+    assert widget.validate_current_step_name(current_step), "Wrong step name"
 
 
 @then('validate Form explanation contains "{explanation_text}"')

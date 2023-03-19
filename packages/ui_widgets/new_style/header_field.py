@@ -8,9 +8,8 @@ log = logger.get_logger(__name__)
 
 
 class HeaderField(BaseWidget):
-    def __init__(self,index):
+    def __init__(self, index):
         super().__init__(self, index)
-        self.form_number = ApplicationStepsField(index)
         self.main_title = 'שרותים דיגיטליים'
 
     @property
@@ -186,29 +185,5 @@ class HeaderField(BaseWidget):
         log.info("validating if rules text same as the input text")
         return self.get_header_rules().text == rules
 
-    def init_widget(self):
-        """
-        used to initialise the web element of  widgets that are part of the header widget
-        """
-        if self.form_number.get_web_element() is None:
-            web_element = self.web_element.find_element(self.form_number.locator['By'],
-                                                        self.form_number.locator['Value'])
-            self.form_number.set_web_element(web_element)
 
-    def validate_total_number_of_forms(self, expected_number):
-        """
-        :param expected_number: expected number of forms
-        :return: bool if number of forms same as expected
-        """
-        log.debug(f"validate if total number of forms same as {expected_number}")
-        log.info("validate if total number of forms is same as the expected number")
-        return self.form_number.validate_number_of_forms(expected_number)
 
-    def validate_current_step_number(self, number):
-        """
-        :param number: expected form number
-        :return: bool is expected form number is same as the current form we are in
-        """
-        log.debug(f"validate if current form we are in is same  as {number}")
-        log.info("validate if current form we are in is same as expected number")
-        return self.form_number.validate_current_step_number(number)
