@@ -50,11 +50,11 @@ class PhoneField(BaseWidget):
 
     @property
     def is_invalid(self):
-        return self.text_widget.is_invalid is True
+        return self.text_widget.is_invalid, self.dropdown_widget.option_status
 
     @property
     def is_valid(self):
-        return self.text_widget.is_valid is True
+        return self.text_widget.is_valid, self.dropdown_widget.option_status
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*PhoneFieldLocators.error_msg)
@@ -63,6 +63,7 @@ class PhoneField(BaseWidget):
     def close(self):
         dropDown_open = self.web_element.find_element(By.XPATH, "./..//p-dropdown//input").get_attribute(
             'aria-expanded')
+        pass
         if dropDown_open in ('true', "True"):
             self.web_element.click()
             return True
