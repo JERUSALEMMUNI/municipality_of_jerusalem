@@ -1,4 +1,5 @@
-Feature: TreeCut form - scenarios step 1
+@suhaib
+Feature: TreeCut form - scenarios step 2
 
   - Form name: בקשה לעקירת עצים
   - Feature file name: tree_cut.feature
@@ -15,13 +16,23 @@ Feature: TreeCut form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When goto "א נחיל" from "רחוב"
-    When write a valid number "1" in "מספר בית"
+    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
+    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
     When click on "המשך" button
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
+
+  Scenario: TC_TREECUT_04 - Checking "personal details" fields with correct details
+    When I wait for "3" seconds
+#    When from parent "פרטי העקירה" goto "א נחיל" from "רחוב"
+#    When from parent "פרטי העקירה" write a valid number "1" in "מספר בית"
+    When write a valid value "1223" in "גוש"
+    When write a valid value "875" in "חלקה"
     When from table "רשימת עצים" at row "1" upload file "png_to_upload.png" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
+    When pick "סכנה" from "סיבת העקירה"
+    When choose "כן" from "האם מדובר בבית משותף"
     When I wait for "8" seconds
 
 

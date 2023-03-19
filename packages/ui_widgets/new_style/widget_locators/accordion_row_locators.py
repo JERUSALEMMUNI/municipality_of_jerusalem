@@ -8,7 +8,8 @@ widget_locators = {
     'שעת התחלה': ".//label[contains(text(),'שעת התחלה')]",
     'שעת סיום': ".//label[contains(text(),'שעת סיום')]",
     'חסימת כביש': ".//label[contains(text(),'חסימת כביש')]",
-    'תמונה של העץ' : './/label[contains(text(),"תמונה של העץ")]/../../span/input'
+    'תמונה של העץ': './/label[contains(text(),"תמונה של העץ")]/../../span/input',
+    'סוג העץ': './/label[contains(text(),"סוג העץ")]/following-sibling::p-dropdown'
 
 }
 

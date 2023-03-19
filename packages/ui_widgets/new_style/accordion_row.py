@@ -65,6 +65,13 @@ class AccordionRow(BaseWidget):
         self.set_widget_web_element(upload, element)
         upload.upload_file(file, driver)
 
+    def choose_item(self, label, txt):
+        self.open_current_tab()
+        select = self.create_widget('DropdownSearch', label=label)
+        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        self.set_widget_web_element(select, element)
+        select.search_element(txt)
+
     def validate_text_is_valid(self, label):
         self.open_current_tab()
         text_field = self.create_widget('TextField', label=label)
