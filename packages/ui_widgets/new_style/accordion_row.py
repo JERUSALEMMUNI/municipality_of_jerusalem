@@ -69,7 +69,7 @@ class AccordionRow(BaseWidget):
     def choose_item(self, label, txt):
         self.open_current_tab()
         select = self.create_widget('DropdownSearch', label=label)
-        element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
+        element = self.web_element.find_element(select.locator['By'],'.'+select.locator['Value'])
         self.set_widget_web_element(select, element)
         select.search_element(txt)
 
