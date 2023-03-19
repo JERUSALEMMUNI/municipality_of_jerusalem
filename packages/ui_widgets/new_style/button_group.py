@@ -29,6 +29,8 @@ class ButtonGroup(RadioButtonField):
 
     def get_label(self, selected_item):
         return self.web_element.find_element(*ButtonGroupLocators.get_item(selected_item))
+    def choose_value(self, selected_item):
+        self.get_label(selected_item).click()
 
     def inactive_count(self, state='highlight'):
         return super().inactive_count(state)
