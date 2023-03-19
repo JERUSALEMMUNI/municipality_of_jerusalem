@@ -1,4 +1,3 @@
-@suhaib
 Feature: StandingOrderRequest - scenarios step 3
 
   - Form name: בקשה להצטרפות להסדר הוראת קבע ארנונה/ חינוך
