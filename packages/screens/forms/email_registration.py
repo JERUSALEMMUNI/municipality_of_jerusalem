@@ -35,7 +35,7 @@ class EmailRegistration(BasePage):
         self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
 
-    def fill_form_to_reach_step(self, dst_step):
+    def fill_form_to_reach_step(self, dst_step, mailbox):
         if dst_step == "תצהיר ושליחה":
             self.widgets['שם פרטי'].set_text('דני')
             self.widgets['שם משפחה'].set_text('גלעד')
@@ -43,5 +43,6 @@ class EmailRegistration(BasePage):
             self.widgets['מספר דרכון'].set_text('332796182')
             self.widgets['טלפון נייד'].set_full_phone('052-80768343')
             self.widgets['טלפון קווי'].set_full_phone('02-8236343')
+            self.widgets['דוא"ל'].set_text(mailbox)
 
 

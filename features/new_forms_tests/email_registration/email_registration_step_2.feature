@@ -7,6 +7,7 @@ Feature: EmailRegistration form - scenarios step 2
   - All fields are mandatory expect of (טלפון קווי)
 
 
+
   Background: Background Scenario
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
@@ -21,7 +22,6 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "האם דירת שותפים?"
     When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload "png_to_upload.png" file in "אחר"
-    When I wait for "6" seconds
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
 #    When click on "שמור" button

@@ -1,11 +1,13 @@
 @in_dev
-Feature: ObjectionPropertyTaxes form - scenarios step 1
+Feature: objectionPropertyTaxes form - scenarios step 1
 
   - Form name: השגה על חיוב בארנונה
   - Feature file name: objection_property_taxes.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/ObjectionPropertyTaxes
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
+
+
 
   Scenario: TC_OBJECTIONPRO_01 - Entering correct values for personal fields when the thesis identification type is selected
     Given Navigate to "ObjectionPropertyTaxes" form
@@ -17,10 +19,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -41,10 +43,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -54,6 +56,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
 #    Then 5th Validate if went back to expected form
 
 
+  #BUG : we dont have a valid  ח.פ. number
   Scenario: TC_OBJECTIONPRO_03 - Entering correct values for personal fields when the H.P. identification type is selected
     Given Navigate to "ObjectionPropertyTaxes" form
     When write a valid value "דני" in "שם פרטי"
@@ -64,10 +67,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -89,10 +92,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
@@ -100,10 +103,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
 #    When 3rd wait for second email to get "קוד האימות"
 #    When 4th close all tabs
 #    Then 5th Validate if went back to expected form
-
-
-
-
 
 
   Scenario: TC_OBJECTIONPRO_05 - Entering correct values for personal fields when the association identification type is selected
@@ -116,10 +115,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick "המחזיק" from "ממלא ההשגה"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+#    When click on "המשך" button
+#    When click on email option
+#    When 1st wait for email that contains pin code and link
+#    When set pin code
     #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When 1st wait for email that contains pin code and link
