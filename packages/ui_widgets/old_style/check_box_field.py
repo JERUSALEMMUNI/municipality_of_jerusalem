@@ -46,5 +46,5 @@ class CheckBox(BaseWidget):
         x = self.web_element.find_element(*CheckBoxLocator.valid_checker)
         return 'valid' in x.get_attribute('class')
 
-    def clear(self):
-        self.uncheck_box()
+    # def clear(self, index=None):
+    #     self.uncheck_box()

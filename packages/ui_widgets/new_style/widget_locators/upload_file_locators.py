@@ -2,8 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class UploadFilesLocators:
-    error_msg = (By.XPATH,
-                 "./../../../../following-sibling::div")
+    error_msg = (By.XPATH, "./../../../../following-sibling::div")
+    list = (By.XPATH, "./../../following-sibling::div/div/following-sibling::div/div")
 
     @staticmethod
     def check_file_size_locator(file_index):
@@ -11,7 +11,6 @@ class UploadFilesLocators:
 
     @staticmethod
     def check_file_name_locator(file_index):
-
         return By.XPATH, f"./../../following-sibling::div//following-sibling::div//following-sibling::div[{file_index}]//span[1]"
 
     @staticmethod

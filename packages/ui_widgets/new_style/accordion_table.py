@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.accordion_table_locators import AccordionTableLocators
@@ -56,9 +57,9 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         widget.set_text(label, text)
 
-    def upload_file(self, row, label, file,driver):
+    def upload_file(self, row, label, file, driver):
         widget = self.create_widget_table_row(row)
-        widget.upload_file(label, file,driver)
+        widget.upload_file(label, file, driver)
 
 
     def choose_item(self, row, label, txt):
@@ -101,3 +102,7 @@ class AccordionTable(BaseWidget):
     def is_button_valid(self, row, label):
         widget = self.create_widget_table_row(row)
         return widget.is_button_valid(label)
+
+    def clear(self, index=None):
+        for i in range(self.get_list_length()):
+            self.remove_item(1)

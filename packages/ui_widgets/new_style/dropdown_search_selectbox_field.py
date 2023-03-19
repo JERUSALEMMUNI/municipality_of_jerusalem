@@ -52,12 +52,13 @@ class DropdownSearchSelectBox(DropdownSearch):
             return counter
 
     def click_button(self):
-        # ToDo: change to wait
-        # time.sleep(1)
         dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute(
             'aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
+        # ToDo: take 10.9 second in multi select search box , fix it
+        WebDriverWait(self.web_element, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
 
     def select_all_checkbox(self):
         """
@@ -67,8 +68,7 @@ class DropdownSearchSelectBox(DropdownSearch):
         then we will add the checked options one by one to use it for validation later on.
         """
         self.click_button()
-        WebDriverWait(self.web_element, 1).until(
-            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
+
         # We should clear the search field first, so we can uncheck all the list
         element = WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))

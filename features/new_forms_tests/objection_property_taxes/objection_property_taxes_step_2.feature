@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 Feature: ObjectionPropertyTaxes form - scenarios step 2
 
   - Form name: השגה על חיוב בארנונה
@@ -18,7 +18,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When pick "מספר חשבון" from "סוג חשבון / נכס"
     When write a valid value "2432434323" in "חשבון / נכס"
-    When goto "א טור" from "רחוב"
+    When search and pick "א טור" in search field "רחוב"
     When write a valid value "2" in "בית"
     When write a valid value "א" in "כניסה"
     When write a valid value "3" in "קומה"

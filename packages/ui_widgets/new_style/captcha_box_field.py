@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
-from ui_widgets.base_widget import BaseWidget
+
 from infra import logger
+from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.captcha_box_locators import CaptchaBoxLocator
 
 log = logger.get_logger(__name__)
@@ -40,3 +41,6 @@ class CaptchaBox(BaseWidget):
     def is_valid(self):
         x = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
         return 'valid' in x.get_attribute('class')
+
+    # def clear(self, index=None):
+    #     self.uncheck_captcha_box()

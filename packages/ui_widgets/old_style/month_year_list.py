@@ -74,5 +74,6 @@ class MonthYearList(BaseWidget):
             return True
         return False
 
-    # def clear(self, index):
-    #     self.remove_item(index)
+    def clear(self, index=None):
+        for i in range(self.get_list_length()):
+            self.remove_item(1)

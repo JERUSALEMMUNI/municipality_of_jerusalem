@@ -55,6 +55,13 @@ class UploadFile(BaseWidget):
         error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
         return error_msg.text == error_expected
 
-    # ToDo: not ready
-    def clear(self, file_index):
-        self.delete_file(file_index)
+    def get_list(self):
+        return self.web_element.find_elements(*UploadFilesLocators.list)
+
+    def get_list_length(self):
+        return len(self.get_list())
+
+    def clear(self, file_index=None):
+        for i in range(self.get_list_length() - 1):
+            self.delete_file(1)
+            pass

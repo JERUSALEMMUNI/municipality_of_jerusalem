@@ -5,6 +5,8 @@ class UploadFilesLocators:
     error_msg = (By.XPATH,
                  "./ancestor::div/parent::core-file-upload/parent::div/following-sibling::span")
 
+    list = (By.XPATH, "./../../following-sibling::div")
+
     @staticmethod
     def check_file_size_locator(file_index):
         return By.XPATH, f"./ancestor::div/following-sibling::div//div[{file_index}]/following-sibling::div[2]"

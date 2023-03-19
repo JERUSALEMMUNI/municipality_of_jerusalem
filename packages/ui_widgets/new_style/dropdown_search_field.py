@@ -93,12 +93,12 @@ class DropdownSearch(Dropdown):
         """
         self.click_button()
         element = WebDriverWait(self.web_element, 5).until(
-            EC.visibility_of_element_located((By.XPATH, f"./div/div/div/input")))
+            EC.visibility_of_element_located((By.XPATH, f".//div/div/div/input")))
         element.click()
         element.clear()
         element.send_keys(text)
         try:
-            element = WebDriverWait(self.web_element, 5).until(
+            element = WebDriverWait(self.web_element, 10).until(
                 EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
             element.click()
             return True
@@ -121,4 +121,3 @@ class DropdownSearch(Dropdown):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)
         return error_msg.text == error_expected
-
