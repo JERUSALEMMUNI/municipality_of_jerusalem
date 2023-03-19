@@ -10,7 +10,7 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearch(Dropdown):
-    def __init__(self, label, index, path_locator="/following-sibling::p-dropdown"):
+    def __init__(self, label, index, path_locator="/..//p-dropdown"):
         super().__init__(label, index)
         self.path_locator = path_locator
 
