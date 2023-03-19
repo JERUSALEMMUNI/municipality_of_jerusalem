@@ -23,25 +23,16 @@ class EmailRegistration(BasePage):
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
         self.widgets["חשבון ארנונה"] = create_widget('TextField', style=self.style, label="חשבון ארנונה")
-
-        self.widgets['בעל/ת החשבון שונה ממגיש הבקשה'] = create_widget('ButtonGroup', style=self.style,
-                                                                      label="בעל/ת החשבון שונה ממגיש הבקשה")
+        self.widgets['בעל/ת החשבון שונה ממגיש הבקשה'] = create_widget('ButtonGroup', style=self.style, label="בעל/ת החשבון שונה ממגיש הבקשה")
         self.widgets['מגיש הבקשה'] = create_widget('ButtonGroup', style=self.style, label="מגיש הבקשה")
         self.widgets['האם דירת שותפים?'] = create_widget('ButtonGroup', style=self.style, label="האם דירת שותפים?")
-
-        self.widgets['צילום תעודת זהות + ספח'] = create_widget('UploadFile', style=self.style,
-                                                               label='צילום תעודת זהות + ספח')
+        self.widgets['צילום תעודת זהות + ספח'] = create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח')
         self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר')
         self.widgets['תעודת התאגדות'] = create_widget('UploadFile', style=self.style, label='תעודת התאגדות')
-        self.widgets['ייפוי כוח לקבלת מידע בשם התאגיד'] = create_widget('UploadFile', style=self.style,
-                                                                        label='ייפוי כוח לקבלת מידע בשם התאגיד')
-        self.widgets['תעודת זהות מיופה כוח'] = create_widget('UploadFile', style=self.style,
-                                                             label='תעודת זהות מיופה כוח')
+        self.widgets['ייפוי כוח לקבלת מידע בשם התאגיד'] = create_widget('UploadFile', style=self.style, label='ייפוי כוח לקבלת מידע בשם התאגיד')
+        self.widgets['תעודת זהות מיופה כוח'] = create_widget('UploadFile', style=self.style, label='תעודת זהות מיופה כוח')
         self.widgets['ייפוי כוח'] = create_widget('UploadFile', style=self.style, label='ייפוי כוח')
-
-        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget(
-            'CheckBox', style=self.style,
-            label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
+        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
 
     def fill_form_to_reach_step(self, dst_step):
