@@ -6,22 +6,13 @@ Feature: TreeCut form - scenarios step 2
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory of (טלפון קווי)
 
-  Scenario: TC_TREECUT_04 - Checking "personal details" fields with correct details
-    Given Navigate to "TreeCut" form
-    When write a valid value "סוהייב" in "שם פרטי"
-    When write a valid value "אבו גנאם" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ת.ז."
-    When fill "058-8078687" as valid value in "טלפון נייד"
-    When fill "02-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
-    When click on "המשך" button
+  Background: Background Scenario
+    Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
 
+  Scenario: TC_TREECUT_04 - Checking "personal details" fields with correct details
     When from parent "פרטי העקירה" goto "א נחיל" from "רחוב"
     When from parent "פרטי העקירה" write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -32,23 +23,7 @@ Feature: TreeCut form - scenarios step 2
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload "png_to_upload.png" file in "אחר"
 
-
   Scenario: TC_TREECUT_05 - Checking "personal details" fields with correct details
-    Given Navigate to "TreeCut" form
-    When write a valid value "סוהייב" in "שם פרטי"
-    When write a valid value "אבו גנאם" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ת.ז."
-    When fill "058-8078687" as valid value in "טלפון נייד"
-    When fill "02-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-
     When from parent "פרטי העקירה" goto "א נחיל" from "רחוב"
     When from parent "פרטי העקירה" write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -62,21 +37,6 @@ Feature: TreeCut form - scenarios step 2
 
 
   Scenario: TC_TREECUT_06 - Checking "personal details" fields with correct details
-    Given Navigate to "TreeCut" form
-    When write a valid value "סוהייב" in "שם פרטי"
-    When write a valid value "אבו גנאם" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ת.ז."
-    When fill "058-8078687" as valid value in "טלפון נייד"
-    When fill "02-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
-
     When from parent "פרטי העקירה" goto "א DSDנחיל" from "רחוב"
     When from parent "פרטי העקירה" write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
