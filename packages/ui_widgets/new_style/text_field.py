@@ -19,7 +19,7 @@ class TextField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/{self.path_locator}"
+            'Value': f"""//label[contains(text(),'{self.label}')]/{self.path_locator}"""
         }
 
     def validate_text(self, text):
@@ -46,4 +46,3 @@ class TextField(BaseWidget):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
         return error_msg.text == error_expected
-
