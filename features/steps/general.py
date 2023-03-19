@@ -54,7 +54,7 @@ def navigate_to_screen_specific_step(context, screen_name, dst_step):
 def navigate_to_step_in_screen(context, current_page, dst_step):
     context._config.current_page = None
     context.execute_steps(f'''Given Navigate to "{current_page.page_title}" form''')
-    current_page.fill_form_to_reach_step(dst_step)
+    current_page.fill_form_to_reach_step(dst_step,context.mailbox.address)
 
 
 @when('checked if "{text}" is the text of "{widget_name}"')

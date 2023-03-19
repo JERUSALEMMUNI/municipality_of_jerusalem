@@ -194,7 +194,7 @@ def add_items_in_table(context, table_name, items):
 @when('from table "{table_name}" remove "{items}"')
 def remove_item_from_table(context, table_name, items):
     widget = context._config.current_page.widgets[table_name]
-    widget.remove_item(items) @ when('from table "{table_name}" remove "{items}"')
+    widget.remove_item(items)
 
 
 @when('from table "{table_name}" at row "{row}" upload file "{text}" in "{widget_name}"')
