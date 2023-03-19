@@ -57,4 +57,4 @@ class ContractorEmpRights(BasePage):
             self.widgets["חודשים לבדיקה"].set_month('1', '1')
             self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'].choose_value('כן')
             self.widgets["המשך"].click_button()
-            pass
+
