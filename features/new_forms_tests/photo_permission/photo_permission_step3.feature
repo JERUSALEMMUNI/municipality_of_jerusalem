@@ -10,7 +10,6 @@ Feature: PhotoPermission form - scenarios step 3
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי המיקום ומועדי הצילומים"
 #  @in_dev
-  @abd1
   Scenario: TC_PHOTOPERMIT_06 - Checking "location details and shooting dates" fields
     Given Navigate to "PhotoPermission" form
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "11112023" in "תאריך"
@@ -27,7 +26,6 @@ Feature: PhotoPermission form - scenarios step 3
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט ציוד צילום"
     When clear fields
 
-  @abd2
   Scenario: TC_PHOTOPERMIT_07 - Checking "location details and shooting dates" fields
     Given Navigate to "PhotoPermission" form
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "11112023" in "תאריך"

@@ -10,7 +10,6 @@ Feature: PhotoPermission form - scenarios step 2
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי ההפקה"
 #  @in_dev
-  @abd
   Scenario: TC_PHOTOPERMIT_05 - Checking "production details" fields
     Given Navigate to "PhotoPermission" form
     When write a valid value "ככגדכגד" in "שם חברת ההפקה"

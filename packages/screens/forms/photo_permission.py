@@ -20,7 +20,7 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון קווי'] = create_widget('PhoneField', style=self.style, label='טלפון קווי')
         self.widgets['דוא"ל'] = create_widget('TextField', style=self.style, label='דוא"ל')
         # todo:check change it to dropdown or keep it as dropdownsearch
-        self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
+        self.widgets['סוג זיהוי'] = create_widget('Dropdown', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
         self.widgets["שם חברת ההפקה"] = create_widget('TextField', style=self.style, label="שם חברת ההפקה")
@@ -31,7 +31,7 @@ class PhotoPermission(BasePage):
         self.widgets["שם הגורם עבורו מתבצע הצילום"] = create_widget('TextField', style=self.style,
                                                                     label="שם הגורם עבורו מתבצע הצילום")
         self.widgets["תיאור הצילום"] = create_widget('TextAreaField', style=self.style, label="תיאור הצילום")
-        self.widgets["סוג המדיה"] = create_widget('DropdownSearch', style=self.style, label="סוג המדיה")
+        self.widgets["סוג המדיה"] = create_widget('Dropdown', style=self.style, label="סוג המדיה")
         self.widgets['פרטי ההפקה_דוא'] = create_widget('TextField', style=self.style, label="דוא", index=2)
         self.widgets['פרטי המיקום ומועדי הצילומים'] = create_widget('AccordionTable', style=self.style,
                                                                     label="פרטי המיקום ומועדי הצילומים")
@@ -40,7 +40,9 @@ class PhotoPermission(BasePage):
         self.widgets["דוא''ל"] = create_widget('TextField', style=self.style, label="דוא''ל")
         self.widgets["פירוט"] = create_widget('TextField', style=self.style, label="פירוט")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
-
+        self.widgets["פירוט השימוש בחשמל"] = create_widget('TextAreaField', style=self.style, label="פירוט השימוש בחשמל")
+        self.widgets["פירוט ציוד צילום"] = create_widget('TextAreaField', style=self.style, label="פירוט ציוד צילום")
+        self.widgets["פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"] = create_widget('TextAreaField', style=self.style, label="פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)")
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי ההפקה":
             self.navigate_first_page(mailbox, driver)
@@ -64,6 +66,9 @@ class PhotoPermission(BasePage):
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(driver, mailbox)
 
+        # self.widgets["email"].click_email_option(driver)
+        # self.widgets["email"].wait_for_email(mailbox)
+        # self.widgets["email"].set_pin(driver)
 
     def navigate_to_second_page(self, mailbox):
         self.widgets["שם חברת ההפקה"].set_text("ככגדכגד")
