@@ -17,6 +17,8 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
+    When close "email" dialog
+    When clear fields
 #  @in_dev
   Scenario: TC_PHOTOPERMIT_02 - Checking "personal details" fields with correct details
     Given Navigate to "PhotoPermission" form
@@ -28,6 +30,8 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When click on "המשך" button
+    When close "email" dialog
+    When clear fields
 
   Scenario: TC_PHOTOPERMIT_03 - Checking "personal details" fields with incorrect details
     Given Navigate to "PhotoPermission" form
@@ -59,7 +63,7 @@ Feature: PhotoPermission form - scenarios step 1
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
     When write an invalid value "876543456" in "דוא"ל"
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
-
+    When clear fields
 
 
 

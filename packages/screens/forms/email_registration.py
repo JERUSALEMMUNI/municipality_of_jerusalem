@@ -38,7 +38,7 @@ class EmailRegistration(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
         if dst_step == "תצהיר ושליחה":
             self.widgets['שם פרטי'].set_text('דני')
             self.widgets['שם משפחה'].set_text('גלעד')

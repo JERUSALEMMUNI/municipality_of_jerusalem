@@ -8,10 +8,10 @@ Feature: PhotoPermission form - scenarios step 2
   - All fields are mandatory
 
   Background:
-    Given  Navigate to "PhotoPermission" form and reach step "פרטי מגיש הבקשה"
-    When click on "email" option
+    Given  Navigate to "PhotoPermission" form and reach step "פרטי ההפקה"
+#    When click on "email" option
     When 1st wait for "email" that contains pin code and link
-    When set pin code "email"
+#    When set pin code "email"
 
 #  @in_dev
   Scenario: TC_PHOTOPERMIT_05 - Checking "production details" fields

@@ -41,12 +41,12 @@ class PhotoPermission(BasePage):
         self.widgets["פירוט"] = create_widget('TextField', style=self.style, label="פירוט")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
         if dst_step == "פרטי מגיש הבקשה":
-            self.navigate(mailbox)
+            self.navigate(mailbox, driver)
 
         elif dst_step == "פרטי ההפקה":
-            self.navigate(mailbox)
+            self.navigate(mailbox, driver)
             # self.widgets['שם הכלב'].set_text('מרקוס')
             # self.widgets['גזע'].set_text('ביטבול')
             # self.widgets['מין'].choose_value('זכר')
@@ -59,11 +59,14 @@ class PhotoPermission(BasePage):
             # self.widgets['תאריך מסירת הכלב'].second_calender('8/5/2021')
             # self.widgets["המשך"].click_button()
 
-    def navigate(self,mailbox):
+    def navigate(self, mailbox, driver):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
-        self.widgets['דוא"ל'].set_text(mailbox)
+        self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
+        self.widgets["email"].click_email_option(driver)
+        self.widgets["email"].wait_for_email(mailbox)
+        self.widgets["email"].set_pin(driver)

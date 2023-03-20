@@ -53,12 +53,12 @@ class TransferDogOwnership(BasePage):
         self.widgets['שלח'] = create_widget('ButtonIcon', style=self.style, label='שלח')
         self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
-    def fill_form_to_reach_step(self, dst_step):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
         if dst_step == "פרטי הכלב":
-            self.navigate()
+            self.navigate(mailbox)
 
         elif dst_step == "צרופות והצהרה":
-            self.navigate()
+            self.navigate(mailbox)
             self.widgets['שם הכלב'].set_text('מרקוס')
             self.widgets['גזע'].set_text('ביטבול')
             self.widgets['מין'].choose_value('זכר')
@@ -71,14 +71,14 @@ class TransferDogOwnership(BasePage):
             self.widgets['תאריך מסירת הכלב'].second_calender('8/5/2021')
             self.widgets["המשך"].click_button()
 
-    def navigate(self):
+    def navigate(self,mailbox):
         self.widgets['פרטי מגיש הבקשה_תעודת זהות'].set_text('332796184')
         self.widgets['פרטי המוסר_תעודת זהות'].set_text('332796184')
         self.widgets['פרטי מגיש הבקשה_שם פרטי'].set_text('שלום')
         self.widgets['פרטי המוסר_שם פרטי'].set_text('שבת')
         self.widgets['פרטי מגיש הבקשה_שם משפחה'].set_text('שלום')
         self.widgets['פרטי המוסר_שם משפחה'].set_text('שבת')
-        self.widgets['פרטי מגיש הבקשה_אימייל'].set_text('a@b.com')
+        self.widgets['פרטי מגיש הבקשה_אימייל'].set_text(mailbox)
         self.widgets['פרטי מגיש הבקשה_מספר טלפון נייד'].set_full_phone('052-80768343')
         self.widgets['פרטי המוסר_מספר טלפון נייד'].set_full_phone('052-80768343')
         self.widgets['פרטי מגיש הבקשה_מספר בית'].set_text('23')

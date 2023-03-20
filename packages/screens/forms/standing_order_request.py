@@ -39,7 +39,7 @@ class StandingOrderRequest(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
         if dst_step == "פרטי מגיש":
             self.navigate(mailbox)
 

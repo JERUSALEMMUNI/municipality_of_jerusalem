@@ -55,7 +55,7 @@ def navigate_to_screen_specific_step(context, screen_name, dst_step):
 def navigate_to_step_in_screen(context, current_page, dst_step):
     context._config.current_page = None
     context.execute_steps(f'''Given Navigate to "{current_page.page_title}" form''')
-    current_page.fill_form_to_reach_step(dst_step,context.mailbox.address)
+    current_page.fill_form_to_reach_step(dst_step, context.mailbox,context._config.driver,context._config.current_page)
 
 
 @when('checked if "{text}" is the text of "{widget_name}"')
@@ -93,11 +93,19 @@ def click_email_option(context, widget_name):
     widget.click_email_option(driver)
 
 
+@when('close "{widget_name}" dialog')
+def close_email_option(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    driver = context._config.driver
+    widget.close(driver)
+
+
 @When('set pin code "{widget_name}"')
-def set_pin_code(context,widget_name):
+def set_pin_code(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     widget.set_pin(driver)
+
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
@@ -149,13 +157,13 @@ def back_to_prev_page(context, page_name):
 
 
 @When('1st wait for "{widget_name}" that contains pin code and link')
-def check_email(context,widget_name):
+def check_email(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     mailbox = context.mailbox
     widget.wait_for_email(mailbox)
 
 
-
+@When('close ')
 @when('2nd click on link and fill email "{email}" pin code')
 def fill_pincode_and_click_link(context, email):
     # Open the URL in a new window
@@ -177,6 +185,7 @@ def fill_pincode_and_click_link(context, email):
     context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
     context._config.driver.find_element(*GeneralLocators.send_message_button).click()
 
+
 @when('2nda click on link and fill "{widget_name}" "{email}" pin code')
 def fill_pincode_and_click_link(context, widget_name, email):
     widget = context._config.current_page.widgets[widget_name]
@@ -193,11 +202,13 @@ def get_second_pin_code(context, widget_name):
     current_page = context._config.current_page
     widget.wait_for_second_email(driver, mailbox, current_page)
 
+
 @when('4th close all tabs "{widget_name}"')
 def close_tabs(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     widget.close_all_tabs(driver)
+
 
 @Then('5th Validate if went back to expected "{widget_name}" form')
 def validate_form_email(context, widget_name):
@@ -205,6 +216,7 @@ def validate_form_email(context, widget_name):
     driver = context._config.driver
     current_page = context._config.current_page
     assert widget.vlidate_form(driver, current_page), 'The form number is not the same'
+
 
 @When('Navigate to original url')
 def return_to_original_url(context):
@@ -242,6 +254,3 @@ def clear_fields(context):
         except Exception as e:
             log.exception(e)
             log.info(f"the field {widget_name} is empty")
-
-
-
