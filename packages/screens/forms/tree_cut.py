@@ -39,20 +39,21 @@ class TreeCut(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי מגיש הבקשה":
-            self.navigate(mailbox)
+            self.navigate(mailbox, driver)
 
         elif dst_step == "פרטי הבקשה":
-            self.navigate(mailbox)
+            self.navigate(mailbox, driver)
 
-    def navigate(self, mailbox):
+    def navigate(self, mailbox, driver):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
-        self.widgets['דוא"ל'].set_text(mailbox)
+        self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets['פרטי מגיש הבקשה_מספר בית'].set_text("2")
         self.widgets['פרטי מגיש הבקשה_רחוב'].search_element("א נחיל")
         self.widgets["המשך"].click_button()
+        self.widgets["email"].go_to_next_step(driver, mailbox)

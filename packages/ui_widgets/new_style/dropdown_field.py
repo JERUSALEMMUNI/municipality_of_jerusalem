@@ -10,15 +10,20 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, path_locator="/..//p-dropdown"):
-        super().__init__(label, index)
+    def __init__(self, label, index, path_locator="/..//p-dropdown", step_number=None):
+        super().__init__(label, index, step_number)
         self.path_locator = path_locator
         self.list = []
 
     @property
     def locator(self):
-        return {'By': By.XPATH,
-                'Value': f"//label[contains(text(),'{self.label}')]{self.path_locator}"}
+        value = f"//label[contains(text(),'{self.label}')]{self.path_locator}"
+        if self.step_number:
+            value = f"//{self.step_number.value}{value}"
+        return {
+            'By': By.XPATH,
+            'Value': value
+        }
 
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')

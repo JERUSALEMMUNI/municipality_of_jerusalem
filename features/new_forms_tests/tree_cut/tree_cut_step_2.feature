@@ -8,9 +8,7 @@ Feature: TreeCut form - scenarios step 2
 
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+
 
   Scenario: TC_TREECUT_04 - Checking "personal details" fields with correct details
     When from parent "פרטי העקירה" goto "א נחיל" from "רחוב"
