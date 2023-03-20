@@ -41,8 +41,8 @@ class Dropdown(BaseWidget):
     def select_element(self, pre):
         self.click_button()
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//span")))
-        list_of_items = self.web_element.find_elements(By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//li")
+            EC.presence_of_element_located((By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")))
+        list_of_items = self.web_element.find_elements(By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")
         for i in list_of_items:
             if i.text == pre:
                 i.click()
