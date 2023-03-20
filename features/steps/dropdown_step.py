@@ -35,7 +35,6 @@ def pick_element(context, option_value, widget_name):
 @when('from parent "{parent}" pick "{option_value}" from "{widget_name}"')
 def pick_element(context, parent, option_value, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    widget.select_element(option_value)
     if widget.select_element(option_value):
         rep.add_label_to_step("selected Value", f"{option_value} is selected")
     else:
