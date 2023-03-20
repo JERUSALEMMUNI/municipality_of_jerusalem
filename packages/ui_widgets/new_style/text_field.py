@@ -17,7 +17,10 @@ class TextField(BaseWidget):
 
     @property
     def locator(self):
-        value = f"""//label[contains(text(),'{self.label}')]/{self.path_locator}"""
+        sep = "'"
+        if sep in self.label:
+            sep = '"'
+        value = f"""//label[contains(text(),{sep}{self.label}{sep})]/{self.path_locator}"""
         if self.step_number:
             value = f"""//{self.step_number.value}{value}"""
         return {
