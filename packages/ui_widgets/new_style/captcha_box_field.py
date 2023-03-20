@@ -19,18 +19,20 @@ class CaptchaBox(BaseWidget):
         }
 
     def check_captcha_box(self):
-        if self.web_element.get_attribute('p-checkbox-checked') in ("false", None):
-            self.web_element.click()
+        if self.validate_captcha_box_is_unchecked():
+            ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
+            ele.click()
 
     def uncheck_captcha_box(self):
-        if self.web_element.get_attribute('p-checkbox-checked') == "true":
-            self.web_element.click()
+        if self.validate_captcha_box_is_checked():
+            ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
+            ele.click()
 
     def validate_captcha_box_is_checked(self):
-        return self.web_element.get_attribute('p-checkbox-checked') == "true"
+        return "checked" in self.web_element.get_attribute('class')
 
     def validate_captcha_box_is_unchecked(self):
-        return self.web_element.get_attribute('p-checkbox-checked') in ("false" or None)
+        return "checked" not in self.web_element.get_attribute('class')
 
     @property
     def is_invalid(self):

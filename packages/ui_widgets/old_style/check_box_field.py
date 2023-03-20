@@ -19,18 +19,20 @@ class CheckBox(BaseWidget):
         }
 
     def check_box(self):
-        if self.web_element.get_attribute('aria-checked') in ("false", None):
+        if self.validate_box_is_unchecked():
             self.web_element.click()
 
     def uncheck_box(self):
-        if self.web_element.get_attribute('aria-checked') == "true":
+        if self.validate_box_is_checked():
             self.web_element.click()
 
     def validate_box_is_checked(self):
-        return self.web_element.get_attribute('aria-checked') == "true"
+        element = self.web_element.find_element(*CheckBoxLocator.valid_checker)
+        return "active" or "checked" in element.get_attribute('class')
 
     def validate_box_is_unchecked(self):
-        return self.web_element.get_attribute('aria-checked') in ("false" or None)
+        element = self.web_element.find_element(*CheckBoxLocator.valid_checker)
+        return "active" or "checked" not in element.get_attribute('class')
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*CheckBoxLocator.error_msg)
