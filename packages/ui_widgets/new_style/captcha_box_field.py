@@ -44,5 +44,5 @@ class CaptchaBox(BaseWidget):
         x = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
         return 'valid' in x.get_attribute('class')
 
-    # def clear(self, index=None):
-    #     self.uncheck_captcha_box()
+    def clear(self, index=None):
+        self.uncheck_captcha_box()
