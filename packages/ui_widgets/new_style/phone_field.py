@@ -10,17 +10,19 @@ log = logger.get_logger(__name__)
 
 
 class PhoneField(BaseWidget):
-    def __init__(self, label, index):
-        super().__init__(label, index)
+    def __init__(self, label, index, step_number=None):
+        super().__init__(label, index, step_number)
         self.dropdown_widget = Dropdown(label, index)
         self.text_widget = TextField(label, index)
 
     @property
     def locator(self):
+        value = f"//label[contains(text(),'{self.label}')]"
+        if self.step_number:
+            value = f"//{self.step_number.value}{value}"
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]"
-
+            'Value': value
         }
 
     # Todo: try to change the inti_widgint and inherit from textfield

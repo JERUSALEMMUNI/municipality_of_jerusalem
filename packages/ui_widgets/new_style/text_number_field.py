@@ -11,7 +11,10 @@ class TextNumberField(TextField):
         super().__init__(label, index)
 
     def get_element(self):
-        return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
+        try:
+            return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
+        except:
+            return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
 
     def set_text(self, text):
         self.clear()

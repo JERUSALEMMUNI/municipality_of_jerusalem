@@ -10,15 +10,20 @@ log = logger.get_logger(__name__)
 
 
 class Dropdown(BaseWidget):
-    def __init__(self, label, index, path_locator="/..//p-dropdown"):
-        super().__init__(label, index)
+    def __init__(self, label, index, path_locator="/..//p-dropdown", step_number=None):
+        super().__init__(label, index, step_number)
         self.path_locator = path_locator
         self.list = []
 
     @property
     def locator(self):
-        return {'By': By.XPATH,
-                'Value': f"//label[contains(text(),'{self.label}')]{self.path_locator}"}
+        value = f"//label[contains(text(),'{self.label}')]{self.path_locator}"
+        if self.step_number:
+            value = f"//{self.step_number.value}{value}"
+        return {
+            'By': By.XPATH,
+            'Value': value
+        }
 
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
@@ -40,8 +45,8 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        WebDriverWait(self.web_element, 10).until(
-            EC.presence_of_element_located(
+        WebDriverWait(self.web_element, 30).until(
+            EC.element_to_be_clickable(
                 (By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")))
         list_of_items = self.web_element.find_elements(By.XPATH,
                                                        f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")
