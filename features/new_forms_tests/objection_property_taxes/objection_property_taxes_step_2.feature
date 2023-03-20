@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: ObjectionPropertyTaxes form - scenarios step 2
 
   - Form name: השגה על חיוב בארנונה
@@ -9,9 +9,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 
   Background: Background Scenario
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+    When click on "email" option
+    When 1st wait for "email" that contains pin code and link
+    When set pin code "email"
 
   Scenario: TC_OBJECTIONPRO_07 - Entering correct values for the "property details, reason for obtaining" fields
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
@@ -163,7 +163,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     When write a valid value "דגכדגכדגכגדככג" in textarea of "נא פרט את הטענה"
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
 
-
+  @test_darweesh
   Scenario: TC_OBJECTIONPRO_15 - Entering correct values for the "property details, reason for obtaining" fields
     When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
     When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "דני" in "שם פרטי"
