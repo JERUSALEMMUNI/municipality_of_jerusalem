@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: ObjectionPropertyTaxes form - scenarios step 3
 
   - Form name: השגה על חיוב בארנונה
@@ -14,6 +14,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     When 1st wait for "email" that contains pin code and link
     When set pin code "email"
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "תצהיר ושליחה"
+
 
 
   Scenario: TC_OBJECTIONPRO_20 - Entering valid values for the "forms and attachments" fields

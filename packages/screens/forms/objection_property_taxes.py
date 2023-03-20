@@ -83,13 +83,11 @@ class ObjectionPropertyTaxes(BasePage):
         elif dst_step == "תצהיר ושליחה":
             self.widgets['בעל/ת הנכס שונה ממגיש הבקשה'].choose_value('לא')
             self.widgets['סוג חשבון / נכס'].select_element('מספר חשבון')
-            #check how its work without index 2 or with it !
             self.widgets['חשבון / נכס'].set_text('3423423432')
             self.widgets['רחוב'].select_element('א טור')
             self.widgets['בית'].set_text('2')
             self.widgets['זיקה לנכס'].select_element('בעלות')
-            # use the function that click on calendar
-            # self.widgets['מועד תחילת הטענה'].select_element('3/1/2023')
+            self.widgets['מועד תחילת הטענה'].select_all_date('3/1/2023')
             self.widgets['סיבת ההשגה'].choose_value('שטח החיוב שנקבע לנכס שגוי')
             self.widgets['נא פרט את הטענה'].set_text('שטח')
             self.widgets["המשך"].click_button()

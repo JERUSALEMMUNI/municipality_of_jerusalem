@@ -163,11 +163,11 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     When write a valid value "דגכדגכדגכגדככג" in textarea of "נא פרט את הטענה"
     When Upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
 
-  @test_darweesh
+
   Scenario: TC_OBJECTIONPRO_15 - Entering correct values for the "property details, reason for obtaining" fields
     When choose "כן" from "בעל/ת הנכס שונה ממגיש הבקשה"
-    When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "דני" in "שם פרטי"
-    When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "גלעד" in "שם משפחה"
+    When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "דגשדש" in "שם פרטי"
+    When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "שדדג" in "שם משפחה"
     When from parent "פרטי הנכס וסיבת ההשגה" pick "דרכון" from "סוג זיהוי"
     When from parent "פרטי הנכס וסיבת ההשגה" write a valid value "3327" in "מספר דרכון"
     And  from parent "פרטי הנכס וסיבת ההשגה" fill "058-8078687" as valid value in "טלפון נייד"
