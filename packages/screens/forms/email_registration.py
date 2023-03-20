@@ -40,7 +40,7 @@ class EmailRegistration(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "תצהיר ושליחה":
             self.widgets['שם פרטי'].set_text('דני')
             self.widgets['שם משפחה'].set_text('גלעד')
@@ -48,9 +48,10 @@ class EmailRegistration(BasePage):
             self.widgets['מספר דרכון'].set_text('332796182')
             self.widgets['טלפון נייד'].set_full_phone('052-80768343')
             self.widgets['טלפון קווי'].set_full_phone('02-8236343')
-            # self.widgets['דוא"ל'].set_text(mailbox)
             self.widgets['דוא"ל'].set_text(mailbox.address)
             self.widgets["המשך"].click_button()
-            self.widgets["email"].go_to_next_step(driver, mailbox)
+            self.widgets["email"].click_email_option(driver)
+            self.widgets["email"].wait_for_email(mailbox)
+            self.widgets["email"].set_pin(driver)
 
 

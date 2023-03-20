@@ -23,3 +23,4 @@ class StepNumber(Enum):
     FIRST = 'app-first-step'
     SECOND = 'app-second-step'
     THIRD = 'app-third-step'
+    FOURTH = 'app-fourth-step'

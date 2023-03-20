@@ -20,7 +20,6 @@ Feature: EmailRegistration form - scenarios step 1
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
-    #todo: create new steps for email of new pages
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -40,16 +39,17 @@ Feature: EmailRegistration form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
 #    When click on "המשך" button
-#    When click on email option
-#    When 1st wait for email that contains pin code and link
-#    When set pin code
-     #todo: create new steps for email of new pages
+#    When click on "email" option
+#    When 1st wait for "email" that contains pin code and link
+#    When set pin code "email"
 #    When click on "שמור" button
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות"
+#    When 4th close all tabs "email"
+#    Then 5th Validate if went back to expected "email" form
 
   Scenario: TC_EMAILREG_03 - Entering incorrect values for personal private fields
     Given Navigate to "EmailRegistration" form

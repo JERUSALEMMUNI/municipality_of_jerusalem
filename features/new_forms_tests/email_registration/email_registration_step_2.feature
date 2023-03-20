@@ -1,4 +1,3 @@
-@in_dev
 Feature: EmailRegistration form - scenarios step 2
 
   - Form name: קבלת חשבון ארנונה באימייל
@@ -8,14 +7,8 @@ Feature: EmailRegistration form - scenarios step 2
   - All fields are mandatory expect of (טלפון קווי)
 
 
-
   Background: Background Scenario
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When click on "email" option
-    When 1st wait for "email" that contains pin code and link
-    When set pin code "email"
 
 
   Scenario: TC_EMAILREG_04 - Entering valid values for the "forms and attachments" fields
