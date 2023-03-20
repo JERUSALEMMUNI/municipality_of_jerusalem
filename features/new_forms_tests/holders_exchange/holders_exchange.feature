@@ -9,7 +9,7 @@ Feature: HoldersExchange form
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי נכס"
 
-  
+
   Scenario: TC_HOLDERSEXCH_01 - registration of a new tenant by the owner of the property
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -56,7 +56,7 @@ Feature: HoldersExchange form
 #    And  5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
     And choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
@@ -98,12 +98,11 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     And click on "המשך" button
-    And choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "ת.ז." from "סוג זיהוי"
@@ -130,12 +129,11 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     And click on "המשך" button
-    And choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "ת.ז." from "סוג זיהוי"
@@ -163,12 +161,11 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
     And click on "המשך" button
-    And choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "ת.ז." from "סוג זיהוי"
@@ -197,7 +194,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -228,7 +225,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -257,7 +254,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -287,7 +284,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -299,7 +296,7 @@ Feature: HoldersExchange form
     And click on "המשך" button
     And choose "כן" from "דירת שותפים"
     And choose "לא" from "האם כל השותפים עוזבים"
-    And write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
+    And write a valid value "שלום ואבי" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
     And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
@@ -318,7 +315,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
@@ -353,7 +350,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
@@ -394,7 +391,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
@@ -425,7 +422,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
@@ -457,7 +454,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
@@ -471,7 +468,7 @@ Feature: HoldersExchange form
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "כן" from "דירת שותפים"
     And choose "לא" from "האם כל השותפים עוזבים"
-    And write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
+    And write a valid value "אבי ואני" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
     And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
@@ -490,7 +487,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -530,7 +527,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -570,7 +567,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -606,7 +603,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -643,7 +640,7 @@ Feature: HoldersExchange form
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
-    And write a valid value "3345434453" in "מס' בית"
+    And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
     And write a valid value "דני" in "שם פרטי"
@@ -662,7 +659,7 @@ Feature: HoldersExchange form
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "כן" from "דירת שותפים"
     And choose "לא" from "האם כל השותפים עוזבים"
-    And write a valid value "hello everybody" in textarea of "שמות השותפים שעוזבים"
+    And write a valid value "שמעון ואבי" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
     And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button

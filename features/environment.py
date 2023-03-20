@@ -99,7 +99,6 @@ def after_step(context, step):
             context._config.current_page.widgets.current_step = context._config.current_page.widgets.get('page_steps').get_step_name()
         except:
             context._config.current_page.widgets.current_step = ''
-    # log.info(f"hellossssssssssssssssssssssss {context._config.current_page.widgets.current_step}")
     step_pass = True
     if step.status == Status.failed:
         step_pass = False
