@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.widget_locators.application_steps_locators import ApplicationStepsLocators
+from utils import misc_utils
 
 log = logger.get_logger(__name__)
 
@@ -23,7 +24,7 @@ class ApplicationStepsField(BaseWidget):
     def get_current_step_info(self):
         pages_list = self.get_steps_list()
         for item in pages_list:
-            if bool(item.get_attribute('aria-selected')):
+            if misc_utils.str_to_bool_int(item.get_attribute('aria-selected')):
                 return item.text.split('\n')
         return -1, ''
 
