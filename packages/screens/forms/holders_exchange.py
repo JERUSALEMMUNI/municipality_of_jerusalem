@@ -18,12 +18,20 @@ class HoldersExchange(BasePage):
             'פרטי מגיש': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.FIRST),
             'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.THIRD),
             'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.FOURTH)
-
         }
+        self.widgets['שם משפחה'] = {
+            'פרטי מגיש': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.FIRST),
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.FOURTH)
+        }
+        # self.widgets['סוג זיהוי'] = {
+        #     'פרטי מגיש': create_widget('DropdownSearch', style=self.style, label='סוג זיהוי', step_number=StepNumber.FIRST),
+        #     'פרטי מחזיק נוכחי': create_widget('DropdownSearch', style=self.style, label='סוג זיהוי', step_number=StepNumber.THIRD),
+        #     'פרטי מחזיק חדש': create_widget('DropdownSearch', style=self.style, label='סוג זיהוי', step_number=StepNumber.FOURTH)
+        # }
 
-        # self.widgets['שם פרטי'] = create_widget('TextField', style=self.style, label='שם פרטי')
-        self.widgets['שם משפחה'] = create_widget('TextField', style=self.style, label='שם משפחה')
-        self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
+
+
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
         self.widgets['מספר ח.פ.'] = create_widget('TextField', style=self.style, label='מספר ח.פ.')
