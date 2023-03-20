@@ -15,9 +15,12 @@ class BaseWidget:
         pass
 
     def set_widget_web_element(self, element: 'BaseWidget', temp_element: Optional[WebElement] = None) -> None:
-        with self.web_element as parent:
-            located_element = parent.find_element(element.locator['By'], element.locator['Value'])
-        element.set_web_element(located_element if temp_element is None else temp_element)
+        if temp_element is None:
+            located_element = self.web_element.find_element(element.locator['By'],
+                                                            element.locator['Value'])
+            element.set_web_element(located_element)
+        else:
+            element.set_web_element(temp_element)
 
     def set_web_element(self, web_element: WebElement) -> None:
         self.web_element = web_element
