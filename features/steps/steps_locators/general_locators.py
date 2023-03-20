@@ -18,4 +18,5 @@ class GeneralLocators:
     see_form = (By.XPATH,'//span[contains(text()," לצפייה בטופס > ")]')
     see_form_new = (By.XPATH,"//span[contains(text(),'לעדכון הטופס')]/parent::button")
     click_continue_button = (By.XPATH,'//div[@class="generalBtn"]')
+    click_continue_button_new = (By.XPATH,'//span[contains(text(),"המשך")]/parent::button')
     validation_link = "https://jerequestatusapi.jerusalem.muni.il/JerSiteStatusApp/#/status/3"

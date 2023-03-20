@@ -136,6 +136,7 @@ class EmailAuthentication(BaseWidget):
         time.sleep(5)
         WebDriverWait(driver, 30).until(EC.presence_of_element_located(GeneralLocators.see_form_new))
         driver.find_element(*GeneralLocators.see_form_new).click()
+        time.sleep(3)
         driver.switch_to.window(driver.window_handles[-1])
         WebDriverWait(driver, 30).until(
             EC.presence_of_element_located(
@@ -162,7 +163,7 @@ class EmailAuthentication(BaseWidget):
             WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
         driver.switch_to.window(driver.window_handles[0])
         WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
-        driver.find_element(*GeneralLocators.click_continue_button).click()
+        driver.find_element(*GeneralLocators.click_continue_button_new).click()
         num_tabs = len(driver.window_handles)
         if num_tabs == 1:
             rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
