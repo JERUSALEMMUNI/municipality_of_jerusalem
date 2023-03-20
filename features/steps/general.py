@@ -26,6 +26,8 @@ def navigate_to_screen(context, screen_name):
         for element in current_page.main_elements_to_wait_when_load:
             # wait method to wait the element
             widget = current_page.widgets.get_without_set_element(element)
+            if type(widget) is dict:
+                widget = list(widget.values())[0]
             driver.wait_medium_for_presence_of_element(widget.locator['By'], widget.locator['Value'])
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
                         "click here to see the link of tested step")
