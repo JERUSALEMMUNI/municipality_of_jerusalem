@@ -40,7 +40,7 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        WebDriverWait(self.web_element, 5).until(
+        WebDriverWait(self.web_element, 10).until(
             EC.presence_of_element_located(
                 (By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")))
         list_of_items = self.web_element.find_elements(By.XPATH,
@@ -107,7 +107,7 @@ class Dropdown(BaseWidget):
 
     def select_first_element(self):
         self.click_button()
-        WebDriverWait(self.web_element, 5).until(
+        WebDriverWait(self.web_element, 10).until(
             EC.presence_of_element_located(
                 (By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")))
         list_of_items = self.web_element.find_elements(By.XPATH,

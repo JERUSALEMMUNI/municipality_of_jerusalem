@@ -72,11 +72,6 @@ class DropdownSearch(Dropdown):
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')
 
-    def click_first_value(self, text):
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
-        element.click()
-
     def write_in_search_field(self, text):
         self.click_button()
         element = WebDriverWait(self.web_element, 30).until(
@@ -92,15 +87,13 @@ class DropdownSearch(Dropdown):
         first value in search result, and validate the result
         """
         self.click_button()
-        element = WebDriverWait(self.web_element, 5).until(
+        element = WebDriverWait(self.web_element, 10).until(
             EC.visibility_of_element_located((By.XPATH, f".//div/div/div/input")))
         element.click()
         element.clear()
         element.send_keys(text)
         try:
-            element = WebDriverWait(self.web_element, 10).until(
-                EC.presence_of_element_located((By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]")))
-            element.click()
+            self.select_first_element()
             return True
         except:
             log.info("Option is not found")

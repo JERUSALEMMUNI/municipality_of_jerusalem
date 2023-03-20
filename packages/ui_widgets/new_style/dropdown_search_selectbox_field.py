@@ -128,8 +128,8 @@ class DropdownSearchSelectBox(DropdownSearch):
     def select_element(self, pre):
         self.click_button()
         try:
-            WebDriverWait(self.web_element, 5).until(
-                EC.presence_of_element_located(DropdownLocators.select(pre)))
+            WebDriverWait(self.web_element, 10).until(
+                EC.element_to_be_clickable(DropdownLocators.select(pre)))
             prefix = self.web_element.find_element(*DropdownLocators.select(pre))
             prefix.click()
         except:
