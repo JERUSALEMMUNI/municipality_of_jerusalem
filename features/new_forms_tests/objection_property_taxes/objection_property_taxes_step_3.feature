@@ -10,9 +10,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
     When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+    When click on "email" option
+    When 1st wait for "email" that contains pin code and link
+    When set pin code "email"
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "תצהיר ושליחה"
 
 
