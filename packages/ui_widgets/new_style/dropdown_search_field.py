@@ -10,8 +10,8 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearch(Dropdown):
-    def __init__(self, label, index, path_locator="/..//p-dropdown"):
-        super().__init__(label, index)
+    def __init__(self, label, index, path_locator="/..//p-dropdown", step_number=None):
+        super().__init__(label, index, path_locator, step_number)
         self.path_locator = path_locator
 
     def search_element(self, value_selected):

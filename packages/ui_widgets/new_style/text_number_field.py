@@ -7,14 +7,15 @@ log = logger.get_logger(__name__)
 
 
 class TextNumberField(TextField):
-    def __init__(self, label, index):
-        super().__init__(label, index)
+    def __init__(self, label, index, path_locator="parent::div//input", step_number=None):
+        super().__init__(label, index, path_locator, step_number)
 
     def get_element(self):
         try:
-            return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
-        except:
             return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
+
+        except:
+            return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
 
     def set_text(self, text):
         self.clear()

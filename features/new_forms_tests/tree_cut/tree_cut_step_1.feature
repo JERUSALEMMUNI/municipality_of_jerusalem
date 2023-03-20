@@ -15,8 +15,8 @@ Feature: TreeCut form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
+    When goto "א נחיל" from "רחוב"
+    When write a valid number "1" in "מספר בית"
 
 
   Scenario: TC_TREECUT_02 - Checking "personal details" fields with correct details
@@ -28,9 +28,8 @@ Feature: TreeCut form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write a valid number "1" in "מספר בית"
-
+    When goto "א נחיל" from "רחוב"
+    When write a valid number "1" in "מספר בית"
 
   Scenario: TC_TREECUT_03 - Checking "personal details" fields with incorrect details
     Given Navigate to "TreeCut" form
@@ -39,12 +38,12 @@ Feature: TreeCut form - scenarios step 1
     When pick "ת.ז." from "סוג זיהוי"
     When write an invalid value "dqd2323" in "מספר ת.ז."
     When pick "דרכון" from "סוג זיהוי"
-    When write an invalid value "ds2323" in "מספר דרכון"
-    When fil "098-ds232" as invalid value in "טלפון נייד"
+    When write an invalid value "ds2jk323" in "מספר דרכון"
+    When fill "098-ds232" as invalid value in "טלפון נייד"
     When fill "450-ds232" as invalid value in "טלפון קווי"
     When write an invalid value "TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When from parent "פרטי מגיש הבקשה" goto "א נחscdיל" from "רחוב"
-    When from parent "פרטי מגיש הבקשה" write an invalid number "dsa1dada" in "מספר בית"
+    When goto "א נחscdיל" from "רחוב"
+    When write an invalid number "dsa1dada" in "מספר בית"
 
 
 

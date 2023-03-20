@@ -35,7 +35,7 @@ Feature: StandingOrderRequest form - scenarios step 1
     When write an invalid value "dqd2323" in "מספר ת.ז."
     When pick "דרכון" from "סוג זיהוי"
     When write an invalid value "ds2323" in "מספר דרכון"
-    When fill "0jj-ds232" as valid value in "טלפון נייד"
+    When fill "0jj-ds232" as invalid value in "טלפון נייד"
     When fill "02-ds232" as invalid value in "טלפון קווי"
     When write an invalid value "TEMP_EMAIL_ADDRESS" in "דוא"ל"
 

@@ -11,8 +11,8 @@ Feature: TreeCut form - scenarios step 3
 
 
   Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details
-    When from parent "פרטי העקירה" goto "א נחיל" from "רחוב"
-    When from parent "פרטי העקירה" write a valid number "1" in "מספר בית"
+    When goto "א נחיל" from "רחוב"
+    When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
     When from table "רשימת עצים" at row "1" upload file "png_to_upload.png" in "תמונה של העץ"
@@ -21,6 +21,7 @@ Feature: TreeCut form - scenarios step 3
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload "png_to_upload.png" file in "אחר"
     When click on "המשך" button
+
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 
