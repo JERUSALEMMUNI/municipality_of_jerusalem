@@ -9,7 +9,7 @@ log = logger.get_logger(__name__)
 @when('write a valid value "{text}" in textarea of "{widget_name}"')
 @when('write a valid value "{text}" in "{widget_name}"')
 def write_into_field(context, text, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
+    widget = context._config.current_page.widgets.get(widget_name)
     widget.clear()
     widget.set_text(text)
     if not widget.is_valid:

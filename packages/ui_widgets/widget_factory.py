@@ -14,7 +14,7 @@ log = logger.get_logger(__name__)
 
 
 # Todo: add index as input
-def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1, path_locator=None):
+def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1, path_locator=None, step_number=None):
     widget_mapping = {
         'ButtonIcon': {
             UIStyle.NEW: button_icon_widget.ButtonIcon,
@@ -105,13 +105,13 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
     }
 
     log.info(f'Creating {widget_type} widget obj')
-    kwargs = prepare_args(driver, label, index, path_locator)
+    kwargs = prepare_args(driver, label, index, path_locator, step_number)
     widget = widget_mapping[widget_type].get(style, widget_mapping[widget_type].get(UIStyle(3 - style.value)))(**kwargs)
     widget.create_widget = create_widget
     return widget
 
 
-def prepare_args(driver, label, index, path_locator):
+def prepare_args(driver, label, index, path_locator, step_number):
     kwargs = {}
     if label:
         kwargs['label'] = label
@@ -121,4 +121,6 @@ def prepare_args(driver, label, index, path_locator):
         kwargs['index'] = index
     if path_locator:
         kwargs['path_locator'] = path_locator
+    if step_number:
+        kwargs['step_number'] = step_number
     return kwargs

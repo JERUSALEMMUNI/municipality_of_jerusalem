@@ -7,8 +7,8 @@ log = logger.get_logger(__name__)
 
 
 class TextField(BaseWidget):
-    def __init__(self, label, index, path_locator="parent::div//input"):
-        super().__init__(label, index)
+    def __init__(self, label, index, path_locator="parent::div//input", step_number=None):
+        super().__init__(label, index, step_number)
         self.path_locator = path_locator
 
     @property
@@ -17,9 +17,12 @@ class TextField(BaseWidget):
 
     @property
     def locator(self):
+        value = f"""//label[contains(text(),'{self.label}')]/{self.path_locator}"""
+        if self.step_number:
+            value = f"""//{self.step_number.value}{value}"""
         return {
             'By': By.XPATH,
-            'Value': f"""//label[contains(text(),'{self.label}')]/{self.path_locator}"""
+            'Value': value
         }
 
     def validate_text(self, text):

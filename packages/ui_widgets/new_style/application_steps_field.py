@@ -20,12 +20,15 @@ class ApplicationStepsField(BaseWidget):
     def get_steps_list(self):
         return self.web_element.find_elements(*ApplicationStepsLocators.step_list)
 
-    def get_current_step_number(self):
+    def get_current_step_info(self):
         pages_list = self.get_steps_list()
         for item in pages_list:
             if bool(item.get_attribute('aria-selected')):
-                return int(item.text.split('\n')[0])
-        return -1
+                return item.text.split('\n')
+        return -1, ''
+
+    def get_current_step_number(self):
+        return self.get_current_step_info()[0]
 
     def get_number_of_steps(self):
         return len(self.get_steps_list())
@@ -37,15 +40,7 @@ class ApplicationStepsField(BaseWidget):
         return self.get_number_of_steps() == expected_number
 
     def get_step_name(self):
-        steps = self.web_element.find_elements(self.locator['By'], self.locator['Value'])
-
-        for temp_step in steps:
-            if "active" in temp_step.get_attribute('class'):
-                step = temp_step.text.split("\n")
-                step_name = step[1]
-                log.info(step_name)
-                return step_name
-        return -1
+        return self.get_current_step_info()[1]
 
     def validate_current_step_name(self, step_name):
         return self.get_step_name() == step_name

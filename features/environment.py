@@ -94,8 +94,14 @@ def before_step(context, step):
 
 
 def after_step(context, step):
+    if context._config.current_page:
+        try:
+            context._config.current_page.widgets.current_step = context._config.current_page.widgets.get('page_steps').get_step_name()
+        except:
+            context._config.current_page.widgets.current_step = ''
+
     step_pass = True
-    if step.status != Status.passed:
+    if step.status == Status.failed:
         step_pass = False
         log.exception(f'Exception type: {type(step.exception)}\n'
                       f'Exception: {step.exception}\n'

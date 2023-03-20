@@ -17,3 +17,9 @@ class WaitInterval(Enum):
     MEDIUM = 10
     LONG = 30
     TOO_LONG = 180
+
+
+class StepNumber(Enum):
+    FIRST = 'app-first-step'
+    SECOND = 'app-second-step'
+    THIRD = 'app-third-step'
