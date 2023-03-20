@@ -26,9 +26,8 @@ class ButtonField(BaseWidget):
         }
 
     def click_button(self):
-        time.sleep(1)
         WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located((By.XPATH, f"//span[contains(text(),'{self.label}')]/..")))
+            EC.element_to_be_clickable((By.XPATH, f"//span[contains(text(),'{self.label}')]/..")))
         self.web_element.click()
         log.debug(f'{self.label} button clicked')
 
