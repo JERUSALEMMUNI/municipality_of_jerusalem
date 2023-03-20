@@ -67,6 +67,5 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
-        self.widgets["email"].click_email_option(driver)
-        self.widgets["email"].wait_for_email(mailbox)
-        self.widgets["email"].set_pin(driver)
+        self.widgets["email"].go_to_next_step(driver, mailbox)
+
