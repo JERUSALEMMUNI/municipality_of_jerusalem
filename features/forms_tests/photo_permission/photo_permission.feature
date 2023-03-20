@@ -51,7 +51,7 @@ Feature: testing feature to help me creat the new widget in step 3
     Then from table "פרטי המיקום ומועדי הצילומים" at row "2" validate chosen choice of "חסימת כביש" is "נושמת"
     When from table "פרטי המיקום ומועדי הצילומים" at row "2" close tab
     When from table "פרטי המיקום ומועדי הצילומים" at row "2" open tab
-#    When choose "כן" from "האם יש חיבור לחשמל/גנרטור"
+    When choose "כן" from "האם יש חיבור לחשמל/גנרטור"
 #    Then validate chosen choice of "האם יש חיבור לחשמל/גנרטור" is "כן"
 #    When click on "המשך" button
 #    Then validate "האם יש חיבור לחשמל/גנרטור" has error "שדה חובה"

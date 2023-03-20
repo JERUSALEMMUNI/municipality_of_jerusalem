@@ -41,31 +41,54 @@ class PhotoPermission(BasePage):
         self.widgets["פירוט"] = create_widget('TextField', style=self.style, label="פירוט")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
-        if dst_step == "פרטי מגיש הבקשה":
-            self.navigate(mailbox, driver)
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+        if dst_step == "פרטי ההפקה":
+            self.navigate_first_page(mailbox, driver)
+        elif dst_step == "פרטי המיקום ומועדי הצילומים":
+            self.navigate_first_page(mailbox, driver)
+            self.navigate_to_second_page(mailbox)
+        elif dst_step == "צרופות":
+            self.navigate_first_page(mailbox, driver)
+            self.navigate_to_second_page(mailbox)
+            self.navigate_to_third_page()
 
-        elif dst_step == "פרטי ההפקה":
-            self.navigate(mailbox, driver)
-            # self.widgets['שם הכלב'].set_text('מרקוס')
-            # self.widgets['גזע'].set_text('ביטבול')
-            # self.widgets['מין'].choose_value('זכר')
-            # self.widgets['צבע'].set_text('לבן')
-            # self.widgets['מספר שבב'].set_text('2322322232')
-            # self.widgets['שנת לידה'].select_element('2020')
-            # self.widgets['הכלב מחוסן כנגד מחלת הכלבת?'].choose_value('כן')
-            # self.widgets['תאריך חיסון כלבת אחרון'].second_calender('8/3/2020')
-            # self.widgets['הכלב רשום ברשות המקומית'].select_element('אבו גוש')
-            # self.widgets['תאריך מסירת הכלב'].second_calender('8/5/2021')
-            # self.widgets["המשך"].click_button()
-
-    def navigate(self, mailbox, driver):
-        self.widgets["סוג זיהוי"].select_element('דרכון')
-        self.widgets["מספר דרכון"].set_text('332796184')
+    def navigate_first_page(self, mailbox, driver):
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
+        self.widgets["סוג זיהוי"].select_element('ת.ז.')
+        self.widgets["מספר ת.ז."].set_text('332796184')
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
         self.widgets['דוא"ל'].set_text(mailbox.address)
+        self.widgets["סוג זיהוי"].select_element('דרכון')
+        self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(driver, mailbox)
 
+
+    def navigate_to_second_page(self, mailbox):
+        self.widgets["שם חברת ההפקה"].set_text("ככגדכגד")
+        self.widgets['טלפון חברת ההפקה'].set_full_phone('058-8078687')
+        self.widgets["כתובת חברת ההפקה"].set_text("ככגדכגד")
+        self.widgets["שם מתאם ההפקה"].set_text("ככגדכגד")
+        self.widgets['טלפון מתאם ההפקה'].set_full_phone('058-8078687')
+        self.widgets["דוא''ל"].set_text(mailbox.address)
+        self.widgets["שם הגורם עבורו מתבצע הצילום"].set_text("ככגדכגד")
+        self.widgets["סוג המדיה"].select_element('אחר')
+        self.widgets["פירוט"].set_text("דיכחןגלכח")
+        self.widgets["סוג המדיה"].select_element('קליפ')
+        self.widgets["תיאור הצילום"].set_text("גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
+        self.widgets["המשך"].click_button()
+
+    def navigate_to_third_page(self):
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "תאריך", "11112023")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].select_time("1", "שעת התחלה", "11:11")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].select_time("1", "שעת סיום", "22:11")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "מספר אנשי צוות", "111")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "שם האתר", "ירושלים")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "כתובת", "גדגדכ")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].choose_button_from_value("1", "חסימת כביש", "נושמת")
+        self.widgets["האם יש חיבור לחשמל/גנרטור"].choose_value("לא")
+        self.widgets["פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"].set_text(
+            "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
+        self.widgets["פירוט ציוד צילום"].set_text("גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
+        self.widgets["המשך"].click_button()
