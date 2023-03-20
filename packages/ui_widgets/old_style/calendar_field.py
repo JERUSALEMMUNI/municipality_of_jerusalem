@@ -78,11 +78,12 @@ class CalendarField(BaseWidget):
         error_msg = self.web_element.find_element(*CalenderLocators.error_msg)
         return error_msg.text == error_expected
 
-
+    @property
     def is_invalid(self):
         x = self.web_element.find_element(*CalenderLocators.valid_checker)
         return 'invalid' in x.get_attribute('class')
 
+    @property
     def is_valid(self):
         x = self.web_element.find_element(*CalenderLocators.valid_checker)
         return 'valid' in x.get_attribute('class')

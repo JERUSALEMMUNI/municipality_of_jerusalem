@@ -1,4 +1,4 @@
-#@in_dev
+@in_dev
 Feature: testing feature to help me creat the new widget in step 3
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי מגיש הבקשה"
@@ -13,6 +13,7 @@ Feature: testing feature to help me creat the new widget in step 3
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
+
 #todo: make a way to make pycharm know the different between  דוא"ל and דוא''ל
   Scenario:
     When write a valid value "ככגדכגד" in "שם חברת ההפקה"

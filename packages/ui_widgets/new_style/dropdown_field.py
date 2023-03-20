@@ -41,9 +41,8 @@ class Dropdown(BaseWidget):
     def select_element(self, pre):
         self.click_button()
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//li")))
-        list_of_items = self.web_element.find_elements(By.XPATH,
-                                                       f"//label[contains(text(),'{self.label}')]/parent::div//ul//li")
+            EC.presence_of_element_located((By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//span")))
+        list_of_items = self.web_element.find_elements(By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//li")
         for i in list_of_items:
             if i.text == pre:
                 i.click()
@@ -53,6 +52,7 @@ class Dropdown(BaseWidget):
             log.info("Didn't find option to choose")
             self.dropdown_selection = False
             return False
+
 
     def validate_selected(self, option):
         result = self.web_element.text
@@ -95,11 +95,10 @@ class Dropdown(BaseWidget):
         if dropDown_open in ('true', "True"):
             self.web_element.click()
             # ToDo: find good wait for that
-            WebDriverWait(self.web_element, 10).until(
+            WebDriverWait(self.web_element, 1).until(
                 EC.invisibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
             return True
         return False
-
     @property
     def option_status(self):
         return self.dropdown_selection

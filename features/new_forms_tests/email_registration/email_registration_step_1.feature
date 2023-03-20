@@ -6,7 +6,6 @@ Feature: EmailRegistration form - scenarios step 1
   - Number of Pages is : 2, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
-  @test_darweesh
   Scenario: TC_EMAILREG_01 - Entering correct values for personal details fields when the thesis identification type is selected
     Given Navigate to "EmailRegistration" form
     When I wait for "3" seconds

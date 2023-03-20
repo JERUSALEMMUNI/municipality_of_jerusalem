@@ -18,7 +18,7 @@ class PhotoPermission(BasePage):
         self.widgets['שם משפחה'] = create_widget('TextField', style=self.style, label='שם משפחה')
         self.widgets['טלפון נייד'] = create_widget('PhoneField', style=self.style, label='טלפון נייד')
         self.widgets['טלפון קווי'] = create_widget('PhoneField', style=self.style, label='טלפון קווי')
-        self.widgets['דוא'] = create_widget('TextField', style=self.style, label='דוא')
+        self.widgets['דוא"ל'] = create_widget('TextField', style=self.style, label='דוא"ל')
         # todo:check change it to dropdown or keep it as dropdownsearch
         self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
@@ -37,6 +37,9 @@ class PhotoPermission(BasePage):
                                                                     label="פרטי המיקום ומועדי הצילומים")
         self.widgets['האם יש חיבור לחשמל/גנרטור'] = create_widget('ButtonGroup', style=self.style,
                                                                   label="האם יש חיבור לחשמל/גנרטור")
+        self.widgets["דוא''ל"] = create_widget('TextField', style=self.style, label="דוא''ל")
+        self.widgets["פירוט"] = create_widget('TextField', style=self.style, label="פירוט")
+        self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
     def fill_form_to_reach_step(self, dst_step, mailbox):
         if dst_step == "פרטי מגיש הבקשה":
@@ -62,5 +65,5 @@ class PhotoPermission(BasePage):
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
-        self.widgets['דוא'].set_text(mailbox)
+        self.widgets['דוא"ל'].set_text(mailbox)
         self.widgets["המשך"].click_button()

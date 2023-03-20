@@ -13,29 +13,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     When click on email option
     When 1st wait for email that contains pin code and link
     When set pin code
-    Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
+    Given Navigate to "ObjectionPropertyTaxes" form and reach step "תצהיר ושליחה"
 
 
   Scenario: TC_OBJECTIONPRO_20 - Entering valid values for the "forms and attachments" fields
-    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
-    When pick "מספר חשבון" from "סוג חשבון / נכס"
-    When write a valid value "2432434323" in "חשבון / נכס"
-    When search and pick "א טור" in search field "רחוב"
-    When write a valid value "2" in "בית"
-    When write a valid value "א" in "כניסה"
-    When write a valid value "3" in "קומה"
-    When write a valid value "3" in "דירה"
-    When pick "בעלות" from "זיקה לנכס"
-    When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When choose "כתובת הנכס בארנונה איננה נכונה" from "סיבת ההשגה"
-    When write a valid value "דגכדגכדגכדכגכג" in textarea of "נא פרט את הטענה"
-    When Upload "png_to_upload.png" file in "תמונות"
-    When Upload "png_to_upload.png" file in "ספח תעודת זהות"
-    When Upload "png_to_upload.png" file in "אחר"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
     When write a valid value "ירושלים" in "עיר"
     When write a valid value "א טור" in "רחוב"
     When write a valid value "2" in "בית"
@@ -49,25 +30,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
 
 
 Scenario: TC_OBJECTIONPRO_21 - Entering invalid values for the "forms and attachments" fields
-    When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
-    When pick "מספר חשבון" from "סוג חשבון / נכס"
-    When write a valid value "2432434323" in "חשבון / נכס"
-    When search and pick "א טור" in search field "רחוב"
-    When write a valid value "2" in "בית"
-    When write a valid value "א" in "כניסה"
-    When write a valid value "3" in "קומה"
-    When write a valid value "3" in "דירה"
-    When pick "בעלות" from "זיקה לנכס"
-    When pick "3/1/2023" from calendar of "מועד תחילת הטענה"
-    When choose "כתובת הנכס בארנונה איננה נכונה" from "סיבת ההשגה"
-    When write a valid value "דגכדגכדגכדכגכג" in textarea of "נא פרט את הטענה"
-    When Upload "png_to_upload.png" file in "תמונות"
-    When Upload "png_to_upload.png" file in "ספח תעודת זהות"
-    When Upload "png_to_upload.png" file in "אחר"
-    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
     When write an invalid value "sdfs" in "עיר"
     When write an invalid value "dsf" in "רחוב"
     When write an invalid value "ירוsdfdsשלים" in "בית"
