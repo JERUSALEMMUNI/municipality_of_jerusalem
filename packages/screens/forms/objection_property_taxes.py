@@ -73,6 +73,8 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['תמונות'] = create_widget('UploadFile', style=self.style, label='תמונות')
         self.widgets['ספח תעודת זהות'] = create_widget('UploadFile', style=self.style, label='ספח תעודת זהות')
         self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר')
+        self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
+
 
     def fill_form_to_reach_step(self, dst_step, mailbox):
         if dst_step == "פרטי הנכס וסיבת ההשגה":
