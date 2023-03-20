@@ -21,6 +21,14 @@ class ApplicationStepsField(BaseWidget):
     def get_steps_list(self):
         return self.web_element.find_elements(*ApplicationStepsLocators.step_list)
 
+    # Commented out because it didn't give the correct current page, I have added the one below
+    # def get_current_step_info(self):
+    #     pages_list = self.get_steps_list()
+    #     for item in pages_list:
+    #         if bool(item.get_attribute('aria-selected')):
+    #             return item.text.split('\n')
+    #     return -1, ''
+
     def get_current_step_info(self):
         pages_list = self.get_steps_list()
         for item in pages_list:
@@ -45,3 +53,6 @@ class ApplicationStepsField(BaseWidget):
 
     def validate_current_step_name(self, step_name):
         return self.get_step_name() == step_name
+    @property
+    def get_current_step(self):
+        return self.get_current_step_info()[0]

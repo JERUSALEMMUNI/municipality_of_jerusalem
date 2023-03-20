@@ -54,7 +54,7 @@ class PhotoPermission(BasePage):
             self.navigate_to_second_page(mailbox)
             self.navigate_to_third_page()
 
-    def navigate_first_page(self, mailbox, driver):
+    def navigate_first_page(self, mailbox, driver, current_page):
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets["סוג זיהוי"].select_element('ת.ז.')
@@ -64,7 +64,7 @@ class PhotoPermission(BasePage):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox)
+        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
 
         # self.widgets["email"].click_email_option(driver)
         # self.widgets["email"].wait_for_email(mailbox)

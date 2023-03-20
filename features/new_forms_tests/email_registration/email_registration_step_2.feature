@@ -18,14 +18,14 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות"
-#    When 4th close all tabs "email"
-#    Then 5th Validate if went back to expected "email" form
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות"
+    When 4th close all tabs "email"
+    Then 5th Validate if went back to expected "email" form
 
 
 
@@ -38,14 +38,14 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות"
-#    When 4th close all tabs "email"
-#    Then 5th Validate if went back to expected "email" form
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות"
+    When 4th close all tabs "email"
+    Then 5th Validate if went back to expected "email" form
 
 
   Scenario: TC_EMAILREG_06 - Entering valid values for the "forms and attachments" fields
@@ -58,14 +58,14 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות"
-#    When 4th close all tabs "email"
-#    Then 5th Validate if went back to expected "email" form
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות"
+    When 4th close all tabs "email"
+    Then 5th Validate if went back to expected "email" form
 
 
 
@@ -79,14 +79,14 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות"
-#    When 4th close all tabs "email"
-#    Then 5th Validate if went back to expected "email" form
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות"
+    When 4th close all tabs "email"
+    Then 5th Validate if went back to expected "email" form
 
 
   Scenario: TC_EMAILREG_08 - Entering valid values for the "forms and attachments" fields
@@ -97,14 +97,14 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות"
-#    When 4th close all tabs "email"
-#    Then 5th Validate if went back to expected "email" form
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות"
+    When 4th close all tabs "email"
+    Then 5th Validate if went back to expected "email" form
 
 
 

@@ -106,7 +106,8 @@ def close_email_option(context, widget_name):
 def set_pin_code(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
-    widget.set_pin(driver)
+    current_page = context._config.current_page
+    widget.set_pin(driver, current_page)
 
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
