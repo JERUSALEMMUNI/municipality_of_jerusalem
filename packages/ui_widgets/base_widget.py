@@ -1,4 +1,5 @@
 from typing import Optional
+
 from selenium.webdriver.remote.webdriver import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 
@@ -43,3 +44,6 @@ class BaseWidget:
     @property
     def is_displayed(self) -> bool:
         return self.web_element.is_displayed()
+
+    def clear(self, index=None):
+        return
