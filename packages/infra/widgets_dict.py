@@ -8,7 +8,7 @@ class WidgetsDict(dict):
         return self.get(key)
 
     def get(self, key, wait_for_element=True):
-        widget = super().__getitem__(key)
+        widget = super(WidgetsDict, self).__getitem__(key)
         if type(widget) is dict:
             widget = widget.get(self.current_step, list(widget.values())[0])
 
