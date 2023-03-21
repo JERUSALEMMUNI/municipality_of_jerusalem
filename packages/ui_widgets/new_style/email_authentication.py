@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from features.steps.steps_locators.general_locators import GeneralLocators
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.new_style.constants.email_authentication_constants import EmailAuthenticationConstants
 from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
 
 log = logger.get_logger(__name__)
@@ -77,10 +78,11 @@ class EmailAuthentication(BaseWidget):
         else:
             end_time = time.time()
             difference = end_time - start_time
+            log.info(str(difference) + ' seconds passed and no email received')
             # raise ce.MJTimeOutError('no new email received')
 
 
-    def fill_and_click_link(self, driver, email):
+    def fill_and_click_link(self, driver, email, index):
         if self.user_data['email_body'] == None:
             raise AssertionError('No email received')
         soup = BeautifulSoup(self.user_data['email_body'], 'html.parser')
@@ -88,29 +90,28 @@ class EmailAuthentication(BaseWidget):
             'style': 'direction: rtl; text-align: right;font-size: 20px;font-weight: bold;color : #ec9f0a;'})
         self.user_data['value'] = value_div.text.strip()
         driver.execute_script(
-            "window.open('{}', '_blank');".format("https://jerdigistatusapi.jerusalem.muni.il/Client/#/login"))
+            "window.open('{}', '_blank');".format(EmailAuthenticationConstants.email_dict['validation_link'].get(index)))
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(2)
-        WebDriverWait(driver, 30).until(EC.presence_of_element_located(GeneralLocators.id_number_new))
-        driver.find_element(*GeneralLocators.id_number_new).send_keys("332796184")
-        driver.find_element(*GeneralLocators.form_number_new).send_keys(self.user_data['value'])
-        driver.find_element(*GeneralLocators.email_new).send_keys(email)
-        driver.find_element(*GeneralLocators.send_message_button_new).send_keys(Keys.PAGE_DOWN)
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['id_number'].get(index)))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['id_number'].get(index)).send_keys("332796184")
+        driver.find_element(*EmailAuthenticationConstants.email_dict['form_number'].get(index)).send_keys(self.user_data['value'])
+        driver.find_element(*EmailAuthenticationConstants.email_dict['email'].get(index)).send_keys(email)
+        driver.find_element(*EmailAuthenticationConstants.email_dict['send_message_button'].get(index)).send_keys(Keys.PAGE_DOWN)
         WebDriverWait(driver, 30).until(
-            EC.element_to_be_clickable(GeneralLocators.send_message_button_new))
+            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['send_message_button'].get(index)))
         time.sleep(1)
-        driver.find_element(*GeneralLocators.send_message_button_new).click()
+        driver.find_element(*EmailAuthenticationConstants.email_dict['send_message_button'].get(index)).click()
 
     def set_pin(self, driver, current_page):
         password = \
-            self.user_data['email_body'].split('סיסמתך לכניסה חד פעמית לשירות הדיגיטלי של עיריית ירושלים היא ')[1].split(
+            self.user_data['email_body'].split(EmailAuthenticationConstants.email_dict['email_body_split_message'])[1].split(
                 '</div>')[0]
         WebDriverWait(driver, 30).until(
-            EC.visibility_of_element_located((By.XPATH, '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input')))
-        driver.find_element(By.XPATH, '//label[contains(text(),"קוד ההזדהות")]/following-sibling::input').send_keys(
-        password)
+            EC.visibility_of_element_located(EmailAuthenticationConstants.email_dict['pin_code']))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['pin_code']).send_keys(password)
         click_continue = WebDriverWait(driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, '//lib-input-text/following-sibling::button')))
+            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['continue_to_step']))
         current = current_page.widgets.get('page_steps').get_current_step
         while True:
             if current != current_page.widgets.get('page_steps').get_current_step:
@@ -120,10 +121,11 @@ class EmailAuthentication(BaseWidget):
                 WebDriverWait(driver, 5).until(EC.alert_is_present())
                 alert = driver.switch_to.alert
                 alert.accept()
+                raise KeyError('incorrect pin code alert window appeared although the pin code is correct')
             except:
                 log.info('No alert found')
 
-    def wait_for_second_email(self, driver, mailbox, current_page):
+    def wait_for_second_email(self, driver, mailbox, current_page, index):
         if self.user_data['email_body'] == None:
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email recieved')
@@ -133,19 +135,17 @@ class EmailAuthentication(BaseWidget):
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email received')
         # value2 = email_body2.split('קוד האימות שלך הוא: ')[1].split('<br />')[0]
-        value2 = email_body2.split('סיסמתך לכניסה חד פעמית לשירות דיגיטלי של עיריית ירושלים היא ')[1].split('<br />')[0]
+        value2 = email_body2.split(EmailAuthenticationConstants.email_dict['pin_code_second_time'].get(index))[1].split('<br />')[0]
         if value2 is None:
             rep.add_label_to_step("No pin code", "pin code is not received from email")
-        # WebDriverWait(self._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.fill_code_field))
         WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located(GeneralLocators.fill_code_field_new))
-        # self._config.driver.find_element(*GeneralLocators.fill_code_field).send_keys(value2)
-        driver.find_element(*GeneralLocators.fill_code_field_new).send_keys(value2)
-        # self._config.driver.find_element(*GeneralLocators.click_link_request).click()
-        driver.find_element(*GeneralLocators.click_link_request_new).click()
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable(GeneralLocators.see_form_new))
-        driver.find_element(*GeneralLocators.see_form_new).click()
+            EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['fill_code_field'].get(index)))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['fill_code_field'].get(index)).send_keys(value2)
+        driver.find_element(*EmailAuthenticationConstants.email_dict['click_link_request'].get(index)).click()
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['see_form'].get(index)))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['see_form'].get(index)).click()
         time.sleep(3)
+        #Todo:
         # WebDriverWait(driver, 10).until(EC.new_window_is_opened(2))
         driver.switch_to.window(driver.window_handles[-1])
         WebDriverWait(driver, 30).until(
@@ -162,7 +162,7 @@ class EmailAuthentication(BaseWidget):
         else:
             self.user_data['validate'] = checkId.is_displayed()
 
-    def close_all_tabs(self, driver):
+    def close_all_tabs(self, driver, index):
         if self.user_data['email_body'] == None:
             rep.add_label_to_step("No email received", "E-mail is not received")
             self.user_data['validate'] = None
@@ -170,10 +170,10 @@ class EmailAuthentication(BaseWidget):
         for i in range(1, num_tabs):
             driver.close()
             driver.switch_to.window(driver.window_handles[-1])
-            WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['email_body_html']))
         driver.switch_to.window(driver.window_handles[0])
-        WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//body")))
-        driver.find_element(*GeneralLocators.click_continue_button_new).click()
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['email_body_html']))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['click_continue_button'].get(index)).click()
         num_tabs = len(driver.window_handles)
         if num_tabs == 1:
             rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
@@ -182,7 +182,7 @@ class EmailAuthentication(BaseWidget):
             raise Exception(f"{num_tabs - 1} unused tabs still open")
 
 
-    def vlidate_form(self, driver, current_page):
+    def vlidate_form(self, current_page):
         if self.user_data['validate'] == None:
             rep.add_label_to_step('No e-mail recieved', 'couldnt reach desiered page to make validation')
             raise ValueError("No email received, couldn't make validation")
@@ -200,8 +200,8 @@ class EmailAuthentication(BaseWidget):
             return True
 
     def click_email_option(self, driver):
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(),'הודעה במייל')]")))
-        driver.find_element(By.XPATH, "//span[contains(text(),'הודעה במייל')]").click()
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['select_email_option']))
+        driver.find_element(*EmailAuthenticationConstants.email_dict['select_email_option']).click()
 
 
     def go_to_next_step(self, driver, mailbox, current_page):

@@ -10,9 +10,9 @@ Feature: testing feature to help me creat the new widget in step 3
     #    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"
     #    And fill "058-8078687" as valid value in "טלפון נייד"
     #    When click on "המשך" button
-    When click on email option
-    When 1st wait for email that contains pin code and link
-    When set pin code
+     When click on "email" option
+    When 1st wait for "email" that contains pin code and link
+    When set pin code "email"
 
 #todo: make a way to make pycharm know the different between  דוא"ל and דוא''ל
   Scenario:

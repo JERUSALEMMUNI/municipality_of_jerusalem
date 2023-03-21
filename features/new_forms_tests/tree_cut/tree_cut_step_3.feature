@@ -21,7 +21,6 @@ Feature: TreeCut form - scenarios step 3
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload "png_to_upload.png" file in "אחר"
     When click on "המשך" button
-
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 

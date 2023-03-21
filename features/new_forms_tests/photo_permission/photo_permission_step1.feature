@@ -64,12 +64,3 @@ Feature: PhotoPermission form - scenarios step 1
     When write an invalid value "876543456" in "דוא"ל"
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
 #    When clear fields
-
-
-
-
-
-
-
-
-

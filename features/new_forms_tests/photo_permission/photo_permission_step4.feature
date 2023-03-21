@@ -18,10 +18,10 @@ Feature: PhotoPermission form - scenarios step 3
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When click on "שמור" button
-    When click on "שמור טיוטה" button tyota
+    And click on "שמור טיוטה" button tyota
     When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
     When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות"
-    When 4th close all tabs "email"
+    When 3rd wait for second "email" to get "קוד האימות" index "2"
+    When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form

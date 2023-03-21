@@ -1,4 +1,3 @@
-@test_darweesh1
 Feature: EmailRegistration form - scenarios step 1
 
   - Form name: קבלת חשבון ארנונה באימייל
@@ -6,7 +5,7 @@ Feature: EmailRegistration form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/EmailRegistration
   - Number of Pages is : 2, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
-
+  @test_darweesh1
   Scenario: TC_EMAILREG_01 - Entering correct values for personal details fields when the thesis identification type is selected
     Given Navigate to "EmailRegistration" form
     When I wait for "3" seconds
@@ -24,10 +23,10 @@ Feature: EmailRegistration form - scenarios step 1
     When click on "שמור" button
     When click on "שמור טיוטה" button tyota
     When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
     When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות"
-    When 4th close all tabs "email"
+    When 3rd wait for second "email" to get "קוד האימות" index "2"
+    When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
 
   Scenario: TC_EMAILREG_02 - Entering valid values for personal details fields when the passport identification type is selected
@@ -47,10 +46,10 @@ Feature: EmailRegistration form - scenarios step 1
     When click on "שמור" button
     When click on "שמור טיוטה" button tyota
     When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
     When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות"
-    When 4th close all tabs "email"
+    When 3rd wait for second "email" to get "קוד האימות" index "2"
+    When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
 
   Scenario: TC_EMAILREG_03 - Entering incorrect values for personal private fields
