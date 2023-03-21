@@ -44,6 +44,13 @@ class AccordionRow(BaseWidget):
         self.click_on_current_tab()
         return self.get_current_tab().text
 
+    def make_element_ready_to_action(self,widget_type,label):
+        self.open_current_tab()
+        widget = self.create_widget(widget_type, label=label)
+        element = self.web_element.find_element(widget.locator['By'],'.'+widget.locator['Value'])
+        self.set_widget_web_element(widget, element)
+        return widget
+
     def removeItem(self):
         self.trash_button = self.create_widget('ButtonIcon', label='trash')
         element = self.web_element.find_element(*AccordionRowLocators.trash)
@@ -52,79 +59,45 @@ class AccordionRow(BaseWidget):
             self.trash_button.click_button()
 
     def set_text(self, label, text):
-        self.open_current_tab()
-        text_field = self.create_widget('TextField', label=label)
-        element = self.web_element.find_element(text_field.locator['By'],'.'+text_field.locator['Value'])
-        self.set_widget_web_element(text_field, element)
+        text_field = self.make_element_ready_to_action('TextField',label)
         text_field.set_text(text)
 
     def upload_file(self, label, file, driver):
-        self.open_current_tab()
-        upload = self.create_widget('UploadFile', label=label)
-        element = self.web_element.find_element(upload.locator['By'],'.'+upload.locator['Value'])
-        # element = self.web_element.find_element(*AccordionRowLocators.get_field_from_locator(label))
-        self.set_widget_web_element(upload, element)
+        upload = self.make_element_ready_to_action('UploadFile',label)
         upload.upload_file(file, driver)
 
     def choose_item(self, label, txt):
-        self.open_current_tab()
-        select = self.create_widget('DropdownSearch', label=label)
-        element = self.web_element.find_element(select.locator['By'],'.'+select.locator['Value'])
-        self.set_widget_web_element(select, element)
+        select = self.make_element_ready_to_action('UploadFile',label)
         select.search_element(txt)
 
     def validate_text_is_valid(self, label):
-        self.open_current_tab()
-        text_field = self.create_widget('TextField', label=label)
-        element = self.web_element.find_element(text_field.locator['By'],'.'+text_field.locator['Value'])
-        self.set_widget_web_element(text_field, element)
+        text_field = self.make_element_ready_to_action('TextField',label)
         return text_field.is_valid
 
     def validate_text_is_invalid(self, label):
-        self.open_current_tab()
-        text_field = self.create_widget('TextField', label=label)
-        element = self.web_element.find_element(text_field.locator['By'],'.'+text_field.locator['Value'])
-        self.set_widget_web_element(text_field, element)
+        text_field = self.make_element_ready_to_action('TextField',label)
         return text_field.is_invalid
 
     def validate_error_message(self, label, error_expectation):
-        self.open_current_tab()
-        text_field = self.create_widget('TextField', label=label)
-        element = self.web_element.find_element(text_field.locator['By'],'.'+text_field.locator['Value'])
-        self.set_widget_web_element(text_field, element)
+        text_field = self.make_element_ready_to_action('TextField',label)
         return text_field.validate_error_message(error_expectation)
 
     def set_time_text(self, label, text):
-        self.open_current_tab()
-        time_field = self.create_widget('TimeField', label=label)
-        element = self.web_element.find_element(time_field.locator['By'],'.'+time_field.locator['Value'])
-        self.set_widget_web_element(time_field, element)
+        time_field = self.make_element_ready_to_action('TimeField',label)
         time_field.set_text(text)
 
     def select_time(self, label, text):
-        self.open_current_tab()
-        time_field = self.create_widget('TimeField', label=label)
-        element = self.web_element.find_element(time_field.locator['By'],'.'+time_field.locator['Value'])
-        self.set_widget_web_element(time_field, element)
+        time_field = self.make_element_ready_to_action('TimeField',label)
         time_field.select_time(text)
 
     def choose_button_from_value(self, label, value_name):
-        self.open_current_tab()
-        big_button = self.create_widget('ButtonGroup', label=label)
-        element = self.web_element.find_element(big_button.locator['By'],'.'+big_button.locator['Value'])
-        self.set_widget_web_element(big_button, element)
+        big_button = self.make_element_ready_to_action('ButtonGroup',label)
         big_button.choose_value(value_name)
 
     def is_value_button_chosen(self, label, value_name):
-        self.open_current_tab()
-        big_button = self.create_widget('ButtonGroup', label=label)
-        element = self.web_element.find_element(big_button.locator['By'],'.'+big_button.locator['Value'])
-        self.set_widget_web_element(big_button, element)
+        big_button = self.make_element_ready_to_action('ButtonGroup',label)
         return big_button.is_chosen(value_name)
 
     def is_button_valid(self, label):
-        self.open_current_tab()
-        big_button = self.create_widget('ButtonGroup', label=label)
-        element = self.web_element.find_element(big_button.locator['By'],'.'+big_button.locator['Value'])
-        self.set_widget_web_element(big_button, element)
+        big_button = self.make_element_ready_to_action('ButtonGroup',label)
         return big_button.is_valid
