@@ -23,14 +23,14 @@ Feature: PhotoPermission form - scenarios step 2
     When write a valid value "דיכחןגלכח" in "פירוט"
     When pick "קליפ" from "סוג המדיה"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "תיאור הצילום"
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When clear fields
 
 

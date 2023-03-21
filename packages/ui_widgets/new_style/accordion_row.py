@@ -67,7 +67,7 @@ class AccordionRow(BaseWidget):
         upload.upload_file(file, driver)
 
     def choose_item(self, label, txt):
-        select = self.make_element_ready_to_action('UploadFile',label)
+        select = self.make_element_ready_to_action('DropdownSearch',label)
         select.search_element(txt)
 
     def validate_text_is_valid(self, label):
