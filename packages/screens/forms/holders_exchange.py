@@ -148,6 +148,8 @@ class HoldersExchange(BasePage):
         self.widgets['האם היורש הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style,
                                                                      label="האם היורש הוא המחזיק הנוכחי?")
         self.widgets['יפוי כח'] = create_widget('UploadFile', style=self.style, label='יפוי כח')
+        self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
+        self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי נכס":

@@ -101,6 +101,8 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
         self.widgets['דרוב אחרי החיוב אינו שלי'] = create_widget('Dropdown', style=self.style, label="סיבת ההשגה", path_locator="/../../../following-sibling::more-info-objection//p-dropdown")
+        self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
+        self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס וסיבת ההשגה":

@@ -41,13 +41,13 @@ class ContractorEmpRights(BasePage):
         self.widgets['שלח'] = create_widget('ButtonIcon', style=self.style, label='שלח')
         self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver,current_page):
+    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "צרופות והצהרה":
             self.widgets['מספר זהות'].set_text('332796184')
             self.widgets['שם פרטי'].set_text('דני')
             self.widgets['שם משפחה'].set_text('גלעד')
             self.widgets['מספר טלפון נייד'].set_full_phone('058-8078687')
-            self.widgets['אימייל'].set_text(mailbox)
+            self.widgets['אימייל'].set_text(mailbox.address)
             self.widgets['ענף'].select_element('ניקיון')
             self.widgets['שם חברה'].select_element('מוקד יסעור נקיון ותחזוקה בע"מ')
             self.widgets['תאריך תחילת העבודה בחברה'].select_all_date('8/1/2019')

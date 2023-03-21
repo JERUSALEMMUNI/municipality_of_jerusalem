@@ -1,4 +1,3 @@
-
 Feature: ObjectionPropertyTaxes form - scenarios step 2
 
   - Form name: השגה על חיוב בארנונה

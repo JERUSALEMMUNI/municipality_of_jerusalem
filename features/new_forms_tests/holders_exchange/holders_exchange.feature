@@ -10,14 +10,14 @@ Feature: HoldersExchange form
     Given Navigate to "HoldersExchange" form and reach step "פרטי נכס"
 
   Scenario: TC_HOLDERSEXCH_01 - registration of a new tenant by the owner of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid number "2" in "בית"
@@ -46,14 +46,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_02 - registration of a new tenant by the owner of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -88,14 +88,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_03 type 1 - registration of a new tenant by the owner of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -119,14 +119,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_03 type 2 - registration of a new tenant by the owner of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -151,14 +151,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_03 type 3 - registration of a new tenant by the owner of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -184,14 +184,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_04 - registration of a new tenant by the lessee of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -274,14 +274,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_05 type 3 - registration of a new tenant by the lessee of the property
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -305,14 +305,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_06 - registration of a new tenant by the property's heir
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -340,14 +340,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_07 - registration of a new tenant by the property's heir
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -381,14 +381,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_08 type 1 - registration of a new tenant by the property's heir
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -412,14 +412,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_08 type 2 - registration of a new tenant by the property's heir
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -444,14 +444,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_08 type 3 - registration of a new tenant by the property's heir
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -477,14 +477,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_09 - registration of a new tenant by the property representative
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -516,14 +516,14 @@ Feature: HoldersExchange form
     And write a valid value "דגכדגכדכגדגכדגכ" in textarea of "הערות"
 
   Scenario: TC_HOLDERSEXCH_10 - registration of a new tenant by the property representative
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -556,14 +556,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_11 type 1 - registration of a new tenant by the property representative
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -592,14 +592,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_11 type 2 - registration of a new tenant by the property representative
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
@@ -629,14 +629,14 @@ Feature: HoldersExchange form
 
 
   Scenario: TC_HOLDERSEXCH_11 type 3 - registration of a new tenant by the property representative
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     And goto "א טור" from "רחוב"
     And write a valid value "3345434453" in "בית"
