@@ -1,4 +1,3 @@
-@dog
 Feature: StandingOrderRequest - scenarios step 3
 
   - Form name: בקשה להצטרפות להסדר הוראת קבע ארנונה/ חינוך
@@ -14,6 +13,6 @@ Feature: StandingOrderRequest - scenarios step 3
   Scenario: TC_STANDINGORDEREQ_11 - Checking "personal details" fields with correct details
     When check the box of "הריני מצהיר/ה בזה כי כל"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
-    When I wait for "10" seconds
+
 
 

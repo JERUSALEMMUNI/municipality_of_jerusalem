@@ -87,8 +87,8 @@ class StandingOrderRequest(BasePage):
                                                                label='צילום תעודת זהות + ספח')
         self.widgets["הריני מצהיר/ה בזה כי כל"] = create_widget('CheckBox', style=self.style,
                                                                 label="הריני מצהיר/ה בזה כי כל")
-        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style,
-                                                                label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
+        self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
+                                                                label="אני מודע/ת ומסכים/ה לכך")
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי תשלום":
@@ -109,15 +109,6 @@ class StandingOrderRequest(BasePage):
             self.widgets['אישור הרשאה לחיוב חשבון'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
             self.widgets['אחר'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
             self.widgets["המשך"].click_button()
-
-
-
-
-
-
-
-
-
 
 
 
