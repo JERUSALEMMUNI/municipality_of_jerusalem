@@ -15,7 +15,9 @@ Feature: ConfirmationForStructure form - scenarios step 2
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When click on "המשך" button
-    When test temp
+    When click on "email" option
+    When 1st wait for "email" that contains pin code and link
+    When set pin code "email"
 
   Scenario: fill form
     When goto "א זוהור" from "רחוב"

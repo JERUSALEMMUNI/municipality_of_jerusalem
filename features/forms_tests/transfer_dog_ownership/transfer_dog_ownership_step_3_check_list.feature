@@ -43,15 +43,3 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
     And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
-
-
-
-
-
-
-
-
-
-
-
-

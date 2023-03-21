@@ -43,8 +43,8 @@ class EmailRegistration(BasePage):
         if dst_step == "תצהיר ושליחה":
             self.widgets['שם פרטי'].set_text('דני')
             self.widgets['שם משפחה'].set_text('גלעד')
-            self.widgets['סוג זיהוי'].select_element('דרכון')
-            self.widgets['מספר דרכון'].set_text('332796182')
+            self.widgets['סוג זיהוי'].select_element('ת.ז.')
+            self.widgets['מספר ת.ז.'].set_text('332796184')
             self.widgets['טלפון נייד'].set_full_phone('052-80768343')
             self.widgets['טלפון קווי'].set_full_phone('02-8236343')
             self.widgets['דוא"ל'].set_text(mailbox.address)

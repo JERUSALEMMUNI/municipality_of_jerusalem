@@ -167,8 +167,8 @@ def check_email(context, widget_name):
 
 
 @When('close ')
-@when('2nd click on link and fill email "{email}" pin code')
-def fill_pincode_and_click_link(context, email):
+@when('2nd click on link and fill email "{email}" pin code index "{index}"')
+def fill_pincode_and_click_link(context, email, index):
     # Open the URL in a new window
     if context.user_data['email_body'] == None:
         rep.add_label_to_step("No email received", "E-mail is not received")
@@ -189,28 +189,28 @@ def fill_pincode_and_click_link(context, email):
     context._config.driver.find_element(*GeneralLocators.send_message_button).click()
 
 
-@when('2nda click on link and fill "{widget_name}" "{email}" pin code')
-def fill_pincode_and_click_link(context, widget_name, email):
+@when('2nda click on link and fill "{widget_name}" "{email}" pin code index "{index:d}"')
+def fill_pincode_and_click_link(context, widget_name, email, index):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     mailbox = context.mailbox
-    widget.fill_and_click_link(driver, email)
+    widget.fill_and_click_link(driver, email, index)
 
 
-@when('3rd wait for second "{widget_name}" to get "קוד האימות"')
-def get_second_pin_code(context, widget_name):
+@when('3rd wait for second "{widget_name}" to get "קוד האימות" index "{index:d}"')
+def get_second_pin_code(context, widget_name, index):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     mailbox = context.mailbox
     current_page = context._config.current_page
-    widget.wait_for_second_email(driver, mailbox, current_page)
+    widget.wait_for_second_email(driver, mailbox, current_page, index)
 
 
-@when('4th close all tabs "{widget_name}"')
-def close_tabs(context, widget_name):
+@when('4th close all tabs "{widget_name}" at index "{index:d}"')
+def close_tabs(context, widget_name, index):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
-    widget.close_all_tabs(driver)
+    widget.close_all_tabs(driver, index)
 
 
 @Then('5th Validate if went back to expected "{widget_name}" form')
@@ -218,7 +218,7 @@ def validate_form_email(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     current_page = context._config.current_page
-    assert widget.vlidate_form(driver, current_page), 'The form number is not the same'
+    assert widget.vlidate_form(current_page), 'The form number is not the same'
 
 
 @When('Navigate to original url')

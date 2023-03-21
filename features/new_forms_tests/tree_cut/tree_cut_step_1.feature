@@ -44,20 +44,3 @@ Feature: TreeCut form - scenarios step 1
     When write an invalid value "TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When goto "א נחscdיל" from "רחוב"
     When write an invalid number "dsa1dada" in "מספר בית"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

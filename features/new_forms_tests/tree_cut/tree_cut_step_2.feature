@@ -45,6 +45,3 @@ Feature: TreeCut form - scenarios step 2
     When pick "סCCכנה" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When Upload "xlsx_to_upload.xlsx" file in "אישור לבית משותף"
-
-
-

@@ -33,13 +33,13 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And choose "זכר" from "מין"
     And write a valid value "לבן" in "צבע"
     And write a valid value "982009104328548" in "מספר שבב"
-#    When from header click on "שמור" icon
-#    When 1st wait for email that contains pin code and link
-#    When 2nd click on link and fill email "@TEMP_EMAIL_ADDRESS" pin code
-#    When 3rd wait for second email to get "קוד האימות"
-#    When 4th close all tabs
-#    Then 5th Validate if went back to expected form
-#    Then validate current step is "פרטי הכלב"
+    When from header click on "שמור" icon
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "1"
+    When 3rd wait for second "email" to get "קוד האימות" index "1"
+    When 4th close all tabs "email" at index "1"
+    Then 5th Validate if went back to expected "email" form
+    Then validate current step is "פרטי הכלב"
 
 
   Scenario: Test Explanation of the form
