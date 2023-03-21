@@ -7,10 +7,7 @@ Feature: TreeCut form - scenarios step 3
   - All fields are mandatory of (טלפון קווי)
 
   Background: Background Scenario
-    Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
-
-
-  Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details
+   Given Navigate to "TreeCut" form and reach step "הצהרה"
     When goto "א נחיל" from "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -21,6 +18,8 @@ Feature: TreeCut form - scenarios step 3
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload "png_to_upload.png" file in "אחר"
     When click on "המשך" button
+
+  Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 
