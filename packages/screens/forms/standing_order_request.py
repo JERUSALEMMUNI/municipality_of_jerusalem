@@ -1,3 +1,6 @@
+import os
+
+from infra import config
 from infra.enums import UIStyle, StepNumber
 from screens.forms.base_page import BasePage
 from ui_widgets.widget_factory import create_widget
@@ -90,6 +93,33 @@ class StandingOrderRequest(BasePage):
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי תשלום":
             self.fill_first_page(mailbox, driver, current_page)
+
+        elif dst_step == "תצהיר ושליחה":
+            self.fill_first_page(mailbox, driver, current_page)
+            self.widgets['חשבון / נכס'].set_text('2121212121')
+            self.widgets['כתובת נכס'].set_text('ש')
+            self.widgets['בית'].set_text('101')
+            self.widgets['בעל/ת החשבון שונה ממגיש הבקשה'].choose_value("לא")
+            self.widgets['קוד מוטב להקמת ההרשאה'].select_element("ארנונה (792)")
+            self.widgets['בנק'].search_element("9 - בנק הדואר")
+            self.widgets['סניף'].search_element("1-סניף ראשי")
+            self.widgets['מספר חשבון'].set_text('25783770')
+            self.widgets['יום גביה חודשי'].select_element("10")
+            self.widgets['צילום תעודת זהות + ספח'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            self.widgets['אישור הרשאה לחיוב חשבון'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            self.widgets['אחר'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            self.widgets["המשך"].click_button()
+
+
+
+
+
+
+
+
+
+
+
 
     def fill_first_page(self, mailbox, driver, current_page):
         self.widgets["סוג זיהוי"].select_element('דרכון')
