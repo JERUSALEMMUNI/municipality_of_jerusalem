@@ -38,7 +38,6 @@ class EmailRegistration(BasePage):
         self.widgets['ייפוי כוח'] = create_widget('UploadFile', style=self.style, label='ייפוי כוח')
         self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
-        self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "תצהיר ושליחה":

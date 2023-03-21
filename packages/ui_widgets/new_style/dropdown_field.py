@@ -60,6 +60,23 @@ class Dropdown(BaseWidget):
             self.dropdown_selection = False
             return False
 
+    def select_no_label_dropdown_element(self, pre):
+        self.click_button()
+        WebDriverWait(self.web_element, 30).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")))
+        list_of_items = self.web_element.find_elements(By.XPATH,
+                                                       f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")
+        for i in list_of_items:
+            if i.text == pre:
+                i.click()
+                self.dropdown_selection = True
+                return True
+        else:
+            log.info("Didn't find option to choose")
+            self.dropdown_selection = False
+            return False
+
     def validate_selected(self, option):
         result = self.web_element.text
         returnResult = result.splitlines()[0]

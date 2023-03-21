@@ -9,6 +9,7 @@ Feature: StandingOrderRequest - scenarios step 3
   Background: Background Scenario
     Given Navigate to "StandingOrderRequest" form and reach step "פרטי תשלום"
 
+  @mosa
   Scenario: TC_STANDINGORDEREQ_07 - Checking "personal details" fields with correct details
     When write a valid value "2121212121" in "חשבון / נכס"
     When write a valid value "ש" in "כתובת נכס"
@@ -24,5 +25,6 @@ Feature: StandingOrderRequest - scenarios step 3
     When Upload "png_to_upload.png" file in "אחר"
     When click on "המשך" button
     When check the box of "הריני מצהיר/ה בזה כי כל"
+    When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
 
 

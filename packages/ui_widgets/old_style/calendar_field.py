@@ -37,15 +37,18 @@ class CalendarField(BaseWidget):
             EC.invisibility_of_element(CalenderLocators.day(day)))
 
     def select_all_date(self, date):
-        self.click_on()
-        new_date = date.split("/")
-        day = new_date[0]
-        month = new_date[1]
-        year = new_date[2]
-        select_month = self.web_element.find_element(*CalenderLocators.month)
-        month_selected = Select(select_month)
-        month_selected.select_by_visible_text(config.months[month])
-        self.date_by_select_day_year(day, year)
+        try:
+            self.click_on()
+            new_date = date.split("/")
+            day = new_date[0]
+            month = new_date[1]
+            year = new_date[2]
+            select_month = self.web_element.find_element(*CalenderLocators.month)
+            month_selected = Select(select_month)
+            month_selected.select_by_visible_text(config.months[month])
+            self.date_by_select_day_year(day, year)
+        except:
+            raise AssertionError("Not valid date")
 
     def date_by_write(self, date):
         self.text_widget.set_text(date)

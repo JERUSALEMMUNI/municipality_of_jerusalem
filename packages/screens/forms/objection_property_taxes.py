@@ -1,4 +1,4 @@
-from infra.enums import UIStyle
+from infra.enums import UIStyle, StepNumber
 from screens.forms.base_page import BasePage
 from ui_widgets.widget_factory import create_widget
 
@@ -14,21 +14,64 @@ class ObjectionPropertyTaxes(BasePage):
         self.main_elements_to_wait_when_load = ['שם פרטי']
 
     def create_page_widgets(self):
-        dropDown_no_label = ""
-        self.widgets['שם פרטי'] = create_widget('TextField', style=self.style, label='שם פרטי')
-        self.widgets['שם משפחה'] = create_widget('TextField', style=self.style, label='שם משפחה')
-        self.widgets['סוג זיהוי'] = create_widget('DropdownSearch', style=self.style, label='סוג זיהוי')
-        self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
-        self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
-        self.widgets['מספר ח.פ.'] = create_widget('TextField', style=self.style, label='מספר ח.פ.')
-        self.widgets['מספר עמותה'] = create_widget('TextField', style=self.style, label='מספר עמותה')
-        self.widgets['מספר מוסד'] = create_widget('TextField', style=self.style, label='מספר מוסד')
-        self.widgets['טלפון נייד'] = create_widget('PhoneField', style=self.style, label='טלפון נייד')
-        self.widgets['דוא"ל'] = create_widget('TextField', style=self.style, label='דוא"ל')
+
+        self.widgets['שם פרטי'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.THIRD),
+        }
+        self.widgets['שם משפחה'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.THIRD),
+        }
+        self.widgets['סוג זיהוי'] = {
+            'פרטי מגיש הבקשה': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.THIRD),
+        }
+
+        self.widgets['מספר ת.ז.'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.THIRD),
+        }
+        self.widgets['מספר דרכון'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.THIRD),
+        }
+        self.widgets['מספר ח.פ.'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.THIRD),
+        }
+        self.widgets['מספר עמותה'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.THIRD),
+        }
+        self.widgets['מספר מוסד'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.THIRD),
+        }
+        self.widgets['טלפון נייד'] = {
+            'פרטי מגיש הבקשה': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.THIRD),
+        }
+        self.widgets['טלפון קווי'] = {
+            'פרטי מגיש הבקשה': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.THIRD),
+        }
+        self.widgets['דוא"ל'] = {
+            'פרטי מגיש הבקשה': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.FIRST),
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.THIRD),
+        }
+
+        self.widgets['רחוב'] = {
+            'פרטי הנכס וסיבת ההשגה': create_widget('DropdownSearch', style=self.style, label='רחוב', step_number=StepNumber.THIRD),
+            'תצהיר ושליחה': create_widget('TextField', style=self.style, label='רחוב', step_number=StepNumber.FOURTH),
+        }
+
+        self.widgets['בית'] = {
+            'פרטי הנכס וסיבת ההשגה': create_widget('TextNumberField', style=self.style, label='בית', step_number=StepNumber.THIRD),
+            'תצהיר ושליחה': create_widget('TextNumberField', style=self.style, label='בית', step_number=StepNumber.FOURTH),
+        }
+
         self.widgets['ממלא ההשגה'] = create_widget('DropdownSearch', style=self.style, label='ממלא ההשגה')
-        self.widgets['טלפון קווי'] = create_widget('PhoneField', style=self.style, label='טלפון קווי')
-        self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')
-        self.widgets['בית'] = create_widget('TextNumberField', style=self.style, label='בית')
         self.widgets["עיר"] = create_widget('TextField', style=self.style, label="עיר")
         self.widgets['מיקוד'] = create_widget('TextField', style=self.style, label='מיקוד')
         self.widgets['ת.ד.'] = create_widget('TextField', style=self.style, label='ת.ד.')
@@ -55,19 +98,16 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['תמונות'] = create_widget('UploadFile', style=self.style, label='תמונות')
         self.widgets['ספח תעודת זהות'] = create_widget('UploadFile', style=self.style, label='ספח תעודת זהות')
         self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר')
-        self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
         self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
-
-        # label with no name
-        self.widgets['lab'] = create_widget('DropdownSearch', style=self.style, label="סיבת ההשגה", path_locator=".//ancestor::more-info-objection//p-dropdown//input")
+        self.widgets['דרוב אחרי החיוב אינו שלי'] = create_widget('Dropdown', style=self.style, label="סיבת ההשגה", path_locator="/../../../following-sibling::more-info-objection//p-dropdown")
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס וסיבת ההשגה":
-            self.fill_first_page(mailbox, driver)
+            self.fill_first_page(mailbox, driver, current_page)
 
         elif dst_step == "תצהיר ושליחה":
-            self.fill_first_page(mailbox, driver)
+            self.fill_first_page(mailbox, driver, current_page)
             self.widgets['בעל/ת הנכס שונה ממגיש הבקשה'].choose_value('לא')
             self.widgets['סוג חשבון / נכס'].select_element('מספר חשבון')
             self.widgets['חשבון / נכס'].set_text('3423423432')
@@ -79,7 +119,7 @@ class ObjectionPropertyTaxes(BasePage):
             self.widgets['נא פרט את הטענה'].set_text('שטח')
             self.widgets["המשך"].click_button()
 
-    def fill_first_page(self, mailbox, driver):
+    def fill_first_page(self, mailbox, driver, current_page):
         self.widgets['שם פרטי'].set_text('דני')
         self.widgets['שם משפחה'].set_text('גלעד')
         self.widgets['סוג זיהוי'].select_element('דרכון')
@@ -88,6 +128,4 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets['ממלא ההשגה'].select_element('המחזיק')
         self.widgets["המשך"].click_button()
-        self.widgets["email"].click_email_option(driver)
-        self.widgets["email"].wait_for_email(mailbox)
-        self.widgets["email"].set_pin(driver)
+        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)

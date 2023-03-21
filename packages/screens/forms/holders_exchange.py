@@ -17,74 +17,103 @@ class HoldersExchange(BasePage):
         self.widgets['שם פרטי'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם פרטי', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם פרטי',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם פרטי',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['שם משפחה'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם משפחה', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='שם משפחה',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='שם משפחה',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['סוג זיהוי'] = {
             'פרטי מגיש': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('Dropdown', style=self.style, label='סוג זיהוי', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('Dropdown', style=self.style, label='סוג זיהוי',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('Dropdown', style=self.style, label='סוג זיהוי',
+                                            step_number=StepNumber.FOURTH)
         }
-        #todo: the page accept the id number without doing the dict
+        # todo: the page accept the id number without doing the dict
         self.widgets['מספר ת.ז.'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר ת.ז.',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר ת.ז.',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['מספר דרכון'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר דרכון', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר דרכון',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר דרכון',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['מספר ח.פ.'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר ח.פ.', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר ח.פ.',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר ח.פ.',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['מספר עמותה'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר עמותה', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר עמותה',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר עמותה',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['מספר מוסד'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר מוסד', step_number=StepNumber.FOURTH)
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='מספר מוסד',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='מספר מוסד',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['טלפון נייד'] = {
-            'פרטי מגיש': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.FIRST),
-            'פרטי נכס': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('PhoneField', style=self.style, label='טלפון נייד', step_number=StepNumber.FOURTH)
+            'פרטי מגיש': create_widget('PhoneField', style=self.style, label='טלפון נייד',
+                                       step_number=StepNumber.FIRST),
+            'פרטי נכס': create_widget('PhoneField', style=self.style, label='טלפון נייד',
+                                      step_number=StepNumber.SECOND),
+            'פרטי מחזיק נוכחי': create_widget('PhoneField', style=self.style, label='טלפון נייד',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('PhoneField', style=self.style, label='טלפון נייד',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['טלפון קווי'] = {
-            'פרטי מגיש': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.FIRST),
-            'פרטי נכס': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('PhoneField', style=self.style, label='טלפון קווי', step_number=StepNumber.FOURTH)
+            'פרטי מגיש': create_widget('PhoneField', style=self.style, label='טלפון קווי',
+                                       step_number=StepNumber.FIRST),
+            'פרטי נכס': create_widget('PhoneField', style=self.style, label='טלפון קווי',
+                                      step_number=StepNumber.SECOND),
+            'פרטי מחזיק נוכחי': create_widget('PhoneField', style=self.style, label='טלפון קווי',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('PhoneField', style=self.style, label='טלפון קווי',
+                                            step_number=StepNumber.FOURTH)
         }
         self.widgets['דוא"ל'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.SECOND),
-            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.THIRD),
+            'פרטי מחזיק נוכחי': create_widget('TextField', style=self.style, label='דוא"ל',
+                                              step_number=StepNumber.THIRD),
             'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.FOURTH)
         }
         self.widgets['צילום תעודת זהות + ספח של בעל החשבון'] = {
-            'פרטי מגיש': create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח של בעל החשבון', step_number=StepNumber.FIRST),
-            'פרטי מחזיק נוכחי': create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח של בעל החשבון', step_number=StepNumber.THIRD),
-            'פרטי מחזיק חדש': create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח של בעל החשבון', step_number=StepNumber.FOURTH)
+            'פרטי מגיש': create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח של בעל החשבון',
+                                       step_number=StepNumber.FIRST),
+            'פרטי מחזיק נוכחי': create_widget('UploadFile', style=self.style,
+                                              label='צילום תעודת זהות + ספח של בעל החשבון',
+                                              step_number=StepNumber.THIRD),
+            'פרטי מחזיק חדש': create_widget('UploadFile', style=self.style,
+                                            label='צילום תעודת זהות + ספח של בעל החשבון', step_number=StepNumber.FOURTH)
         }
 
         self.widgets['חשבון תושב בארנונה'] = create_widget('TextField', style=self.style, label='חשבון תושב בארנונה')
@@ -94,26 +123,37 @@ class HoldersExchange(BasePage):
         self.widgets['הערות'] = create_widget('TextAreaField', style=self.style, label='הערות', index=2)
         self.widgets['סוג הנכס'] = create_widget('ButtonGroup', style=self.style, label="סוג הנכס")
         self.widgets['מי מגיש הבקשה?'] = create_widget('ButtonGroup', style=self.style, label="מי מגיש הבקשה?")
-        self.widgets['מהי הפעולה המבוקשת?'] = create_widget('ButtonGroup', style=self.style, label="מהי הפעולה המבוקשת?")
-        self.widgets['האם בעל הנכס הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style, label="האם בעל הנכס הוא המחזיק הנוכחי?")
-        self.widgets['חוזה שבו מופיע תאריך כניסה לדירה'] = create_widget('UploadFile', style=self.style, label='חוזה שבו מופיע תאריך כניסה לדירה')
-        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
-        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
+        self.widgets['מהי הפעולה המבוקשת?'] = create_widget('ButtonGroup', style=self.style,
+                                                            label="מהי הפעולה המבוקשת?")
+        self.widgets['האם בעל הנכס הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style,
+                                                                        label="האם בעל הנכס הוא המחזיק הנוכחי?")
+        self.widgets['חוזה שבו מופיע תאריך כניסה לדירה'] = create_widget('UploadFile', style=self.style,
+                                                                         label='חוזה שבו מופיע תאריך כניסה לדירה')
+        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget(
+            'CheckBox', style=self.style,
+            label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
+        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox',
+                                                                                                 style=self.style,
+                                                                                                 label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
         self.widgets['דירת שותפים'] = create_widget('ButtonGroup', style=self.style, label="דירת שותפים")
-        self.widgets['האם כל השותפים עוזבים'] = create_widget('ButtonGroup', style=self.style, label="האם כל השותפים עוזבים")
-        self.widgets['שמות השותפים שעוזבים'] = create_widget('TextAreaField', style=self.style, label='שמות השותפים שעוזבים')
-        self.widgets['צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות'] = create_widget('UploadFile', style=self.style, label='צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות')
-        self.widgets['האם היורש הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style, label="האם היורש הוא המחזיק הנוכחי?")
+        self.widgets['האם כל השותפים עוזבים'] = create_widget('ButtonGroup', style=self.style,
+                                                              label="האם כל השותפים עוזבים")
+        self.widgets['שמות השותפים שעוזבים'] = create_widget('TextAreaField', style=self.style,
+                                                             label='שמות השותפים שעוזבים')
+        self.widgets['צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות'] = create_widget('UploadFile',
+                                                                                           style=self.style,
+                                                                                           label='צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות')
+        self.widgets['האם היורש הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style,
+                                                                     label="האם היורש הוא המחזיק הנוכחי?")
         self.widgets['יפוי כח'] = create_widget('UploadFile', style=self.style, label='יפוי כח')
-
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי נכס":
-            self.fill_first_page(mailbox, driver)
+            self.fill_first_page(mailbox, driver, current_page)
 
-    def fill_first_page(self, mailbox, driver):
+    def fill_first_page(self, mailbox, driver, current_page):
         self.widgets['שם פרטי'].set_text('דני')
         self.widgets['שם משפחה'].set_text('גלעד')
         self.widgets['סוג זיהוי'].select_element('דרכון')
@@ -121,4 +161,4 @@ class HoldersExchange(BasePage):
         self.widgets['טלפון נייד'].set_full_phone('052-80768343')
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox)
+        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)

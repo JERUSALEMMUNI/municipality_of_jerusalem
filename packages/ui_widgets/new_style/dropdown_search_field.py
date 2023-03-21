@@ -19,6 +19,7 @@ class DropdownSearch(Dropdown):
         if dropDown_open in ('false', None):
             self.web_element.click()
         try:
+            self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label)).clear()
             self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label)).send_keys(value_selected)
             drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()

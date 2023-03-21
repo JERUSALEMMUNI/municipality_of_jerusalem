@@ -1,4 +1,4 @@
-Feature: objectionPropertyTaxes form - scenarios step 1
+Feature: ObjectionPropertyTaxes form - scenarios step 1
 
   - Form name: השגה על חיוב בארנונה
   - Feature file name: objection_property_taxes.feature
@@ -93,7 +93,7 @@ Feature: objectionPropertyTaxes form - scenarios step 1
     When write an invalid value "sda" in "שם פרטי"
     And write an invalid value "asdsad" in "שם משפחה"
     And pick "ח.פ." from "סוג זיהוי"
-    And write a valid value "sdaasdasd" in "מספר ח.פ."
+    And write an invalid value "sdaasdasd" in "מספר ח.פ."
     And fill "058-807d68r" as invalid value in "טלפון נייד"
     And fill "02-80s86t7" as invalid value in "טלפון קווי"
     And write an invalid value "גכעיחלעיח" in "דוא"ל"
@@ -104,7 +104,7 @@ Feature: objectionPropertyTaxes form - scenarios step 1
     When write an invalid value "sda" in "שם פרטי"
     And write an invalid value "asdsad" in "שם משפחה"
     And pick "מוסד" from "סוג זיהוי"
-    And write a valid value "fdsdfsdf" in "מספר מוסד"
+    And write an invalid value "fdsdfsdf" in "מספר מוסד"
     And fill "058-807d68r" as invalid value in "טלפון נייד"
     And fill "02-80s86t7" as invalid value in "טלפון קווי"
     And write an invalid value "גכעיחלעיח" in "דוא"ל"
@@ -115,7 +115,7 @@ Feature: objectionPropertyTaxes form - scenarios step 1
     When write an invalid value "sda" in "שם פרטי"
     And write an invalid value "asdsad" in "שם משפחה"
     And pick "עמותה" from "סוג זיהוי"
-    And write a valid value "sfdssdf" in "מספר עמותה"
+    And write an invalid value "sfdssdf" in "מספר עמותה"
     And fill "058-807d68r" as invalid value in "טלפון נייד"
     And fill "02-80s86t7" as invalid value in "טלפון קווי"
     And write an invalid value "גכעיחלעיח" in "דוא"ל"

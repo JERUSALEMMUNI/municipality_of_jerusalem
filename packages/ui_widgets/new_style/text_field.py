@@ -35,8 +35,6 @@ class TextField(BaseWidget):
         return self.web_element.get_attribute('value') == text
 
     def set_text(self, text):
-        WebDriverWait(self.web_element, 30).until(
-            EC.element_to_be_clickable((By.XPATH, f"//label[contains(text(),'{self.label}')]")))
         self.clear()
         self.web_element.send_keys(text)
 

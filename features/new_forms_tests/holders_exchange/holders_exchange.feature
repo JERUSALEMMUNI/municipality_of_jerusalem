@@ -43,6 +43,7 @@ Feature: HoldersExchange form
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
+    And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
 
 
   Scenario: TC_HOLDERSEXCH_02 - registration of a new tenant by the owner of the property
