@@ -9,12 +9,13 @@ Feature: PhotoPermission form - scenarios step 3
 
   Background: Background Scenario
     Given Navigate to "PhotoPermission" form and reach step "צרופות"
+
   @abd
   Scenario: TC_PHOTOPERMIT_08 - "upload files" integrity check
-    When Upload "png_to_upload.png" file in "צילום ת.ז. / דרכון"
-    When Upload "png_to_upload.png" file in "כתב התחייבות"
-    When Upload "png_to_upload.png" file in "העתק ביטוח צד ג"
-    When Upload "png_to_upload.png" file in "סינופסיס קצר"
+    When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
+    When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
+    When Upload a valid "png_to_upload.png" file in "העתק ביטוח צד ג"
+    When Upload a valid "png_to_upload.png" file in "סינופסיס קצר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When click on "שמור" button

@@ -11,15 +11,15 @@ Feature: ContractorEmpRights form - scenarios step 2
     Given Navigate to "ContractorEmpRights" form and reach step "צרופות והצהרה"
 
 
-@firas
+  @firas
   Scenario: TC_EMPCOMP_10 - Upload one file to each section
     Then validate current step is "צרופות והצהרה"
-    When Upload "png_to_upload.png" file in "תלושי שכר"
-    And Upload "word_to_upload.docx" file in "תלושי שכר"
-    And Upload "excel_to_upload.xlsx" file in "תלושי שכר"
-    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
-    And Upload "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
-    And Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "תלושי שכר"
+    And Upload a valid "word_to_upload.docx" file in "תלושי שכר"
+    And Upload a valid "excel_to_upload.xlsx" file in "תלושי שכר"
+    And Upload a valid "word_to_upload.docx" file in "דוחו"ת נוכחות"
+    And Upload a valid "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+    And Upload a valid "png_to_upload.png" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
     Then validate name of file "1" is "png_to_upload.png" in "תלושי שכר"
     Then validate name of file "3" is "excel_to_upload.xlsx" in "תלושי שכר"
@@ -31,16 +31,16 @@ Feature: ContractorEmpRights form - scenarios step 2
     When delete file "1" in "אסמכתאות לתשלום שכר"
     When delete file "1" in "אחר"
 
-@this_to_test
+  @this_to_test
   Scenario: TC_EMPCOMP_11 - Upload several files to each section
     Then validate current step is "צרופות והצהרה"
-    When Upload "png_to_upload.png" file in "תלושי שכר"
-    When Upload "word_to_upload.docx" file in "תלושי שכר"
-    And Upload "word_to_upload.docx" file in "דוחו"ת נוכחות"
-    When Upload "png_to_upload.png" file in "דוחו"ת נוכחות"
-    And Upload "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
-    And Upload "png_to_upload.png" file in "אסמכתאות לתשלום שכר"
-    And Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "תלושי שכר"
+    When Upload a valid "word_to_upload.docx" file in "תלושי שכר"
+    And Upload a valid "word_to_upload.docx" file in "דוחו"ת נוכחות"
+    When Upload a valid "png_to_upload.png" file in "דוחו"ת נוכחות"
+    And Upload a valid "excel_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+    And Upload a valid "png_to_upload.png" file in "אסמכתאות לתשלום שכר"
+    And Upload a valid "png_to_upload.png" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
     When delete file "1" in "תלושי שכר"
     When delete file "1" in "תלושי שכר"
@@ -50,26 +50,26 @@ Feature: ContractorEmpRights form - scenarios step 2
     When delete file "1" in "אסמכתאות לתשלום שכר"
     When delete file "1" in "אחר"
 
-@this_to_test
+  @this_to_test
   Scenario: Uploading files with unapproved names test
     Then validate current step is "צרופות והצהרה"
-    When Upload "!@#$%^&file_to_upload.xlsx" file in "תלושי שכר"
-    And Upload "!@#$%^&file_to_upload.xlsx" file in "דוחו"ת נוכחות"
-    And Upload "!@#$%^&file_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
-    And Upload "!@#$%^&file_to_upload.xlsx" file in "אחר"
+    When Upload a valid "!@#$%^&file_to_upload.xlsx" file in "תלושי שכר"
+    And Upload a valid "!@#$%^&file_to_upload.xlsx" file in "דוחו"ת נוכחות"
+    And Upload a valid "!@#$%^&file_to_upload.xlsx" file in "אסמכתאות לתשלום שכר"
+    And Upload a valid "!@#$%^&file_to_upload.xlsx" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
     When delete file "1" in "תלושי שכר"
     When delete file "1" in "דוחו"ת נוכחות"
     When delete file "1" in "אסמכתאות לתשלום שכר"
     When delete file "1" in "אחר"
 
-@this_to_test
+  @this_to_test
   Scenario: Uploading files above 6 MB size test
     Then validate current step is "צרופות והצהרה"
-    When Upload "10MB_file_to_upload.pdf" file in "תלושי שכר"
-    And Upload "10MB_file_to_upload.pdf" file in "דוחו"ת נוכחות"
-    When Upload "10MB_file_to_upload.pdf" file in "אסמכתאות לתשלום שכר"
-    And Upload "10MB_file_to_upload.pdf" file in "אחר"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "תלושי שכר"
+    And Upload an invalid "10MB_file_to_upload.pdf" file in "דוחו"ת נוכחות"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "אסמכתאות לתשלום שכר"
+    And Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים."
     When delete file "1" in "תלושי שכר"
     When delete file "1" in "דוחו"ת נוכחות"

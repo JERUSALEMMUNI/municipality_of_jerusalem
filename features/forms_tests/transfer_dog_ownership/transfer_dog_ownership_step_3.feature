@@ -13,10 +13,10 @@ Feature: TransferDogOwnership form - scenarios step 3
 
   Scenario: TC_DOGOWNER_07 - Upload files with approved format test
     Then validate current step is "צרופות והצהרה"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
-    And Upload "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
-    And Upload "excel_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
-    And Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload a valid "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
+    And Upload a valid "excel_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
+    And Upload a valid "png_to_upload.png" file in "אחר"
     And check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."

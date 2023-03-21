@@ -58,6 +58,11 @@ class UploadFile(BaseWidget):
         error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
         return error_msg.text == error_expected
 
+    def validate_warning_message(self):
+        warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+        if ('סוג הקובץ אינו חוקי') in warning_msg.text:
+            return True
+
     def get_list(self):
         return self.web_element.find_elements(*UploadFilesLocators.list)
 
@@ -68,3 +73,15 @@ class UploadFile(BaseWidget):
         for i in range(self.get_list_length() - 1):
             self.delete_file(1)
             pass
+
+    @property
+    def is_invalid(self):
+        if 'ng-invalid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+                'class'):
+            return True
+
+    @property
+    def is_valid(self):
+        if 'ng-valid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+                'class'):
+            return True

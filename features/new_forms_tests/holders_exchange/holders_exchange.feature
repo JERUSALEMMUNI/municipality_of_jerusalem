@@ -27,7 +27,7 @@ Feature: HoldersExchange form
     And click on "המשך" button
     And choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid number "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -37,8 +37,8 @@ Feature: HoldersExchange form
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid number "12042024" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
@@ -70,7 +70,7 @@ Feature: HoldersExchange form
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -80,8 +80,8 @@ Feature: HoldersExchange form
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042024" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגכגכגכג" in textarea of "הערות"
@@ -112,7 +112,7 @@ Feature: HoldersExchange form
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "לא" from "דירת שותפים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגככג" in textarea of "הערות"
@@ -144,7 +144,7 @@ Feature: HoldersExchange form
     And choose "כן" from "דירת שותפים"
     And choose "כן" from "האם כל השותפים עוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכגדכ" in textarea of "הערות"
@@ -177,7 +177,7 @@ Feature: HoldersExchange form
     And choose "לא" from "האם כל השותפים עוזבים"
     And write a valid value "שמעון ואבי" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדכגדגכ" in textarea of "הערות"
@@ -207,8 +207,8 @@ Feature: HoldersExchange form
     And choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
     And click on "המשך" button
     And write a valid value "12042023" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכגכ" in textarea of "הערות"
@@ -237,7 +237,7 @@ Feature: HoldersExchange form
     And click on "המשך" button
     And choose "לא" from "דירת שותפים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגככגד" in textarea of "הערות"
@@ -267,7 +267,7 @@ Feature: HoldersExchange form
     And choose "כן" from "דירת שותפים"
     And choose "כן" from "האם כל השותפים עוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכגד" in textarea of "הערות"
@@ -298,7 +298,7 @@ Feature: HoldersExchange form
     And choose "לא" from "האם כל השותפים עוזבים"
     And write a valid value "שלום ואבי" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "הערות"
@@ -319,11 +319,11 @@ Feature: HoldersExchange form
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And click on "המשך" button
     And choose "כן" from "האם היורש הוא המחזיק הנוכחי?"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -332,8 +332,8 @@ Feature: HoldersExchange form
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
@@ -354,7 +354,7 @@ Feature: HoldersExchange form
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And click on "המשך" button
     And choose "לא" from "האם היורש הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
@@ -364,7 +364,7 @@ Feature: HoldersExchange form
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -373,8 +373,8 @@ Feature: HoldersExchange form
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכגדכ" in textarea of "הערות"
@@ -395,7 +395,7 @@ Feature: HoldersExchange form
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -405,7 +405,7 @@ Feature: HoldersExchange form
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "לא" from "דירת שותפים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
@@ -426,7 +426,7 @@ Feature: HoldersExchange form
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -437,7 +437,7 @@ Feature: HoldersExchange form
     And choose "כן" from "דירת שותפים"
     And choose "כן" from "האם כל השותפים עוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכ" in textarea of "הערות"
@@ -458,7 +458,7 @@ Feature: HoldersExchange form
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -470,7 +470,7 @@ Feature: HoldersExchange form
     And choose "לא" from "האם כל השותפים עוזבים"
     And write a valid value "אבי ואני" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדכג" in textarea of "הערות"
@@ -496,11 +496,11 @@ Feature: HoldersExchange form
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And choose "רישום שוכר חדש" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "יפוי כח"
+    And Upload a valid "png_to_upload.png" file in "יפוי כח"
     And click on "המשך" button
     And choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -509,8 +509,8 @@ Feature: HoldersExchange form
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדכגדגכדגכ" in textarea of "הערות"
@@ -535,11 +535,11 @@ Feature: HoldersExchange form
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "יפוי כח"
+    And Upload a valid "png_to_upload.png" file in "יפוי כח"
     And click on "המשך" button
     And choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -548,8 +548,8 @@ Feature: HoldersExchange form
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid value "12042023" in "תאריך כניסה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכדכג" in textarea of "הערות"
@@ -575,7 +575,7 @@ Feature: HoldersExchange form
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "יפוי כח"
+    And Upload a valid "png_to_upload.png" file in "יפוי כח"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -585,7 +585,7 @@ Feature: HoldersExchange form
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "לא" from "דירת שותפים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
@@ -611,7 +611,7 @@ Feature: HoldersExchange form
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "יפוי כח"
+    And Upload a valid "png_to_upload.png" file in "יפוי כח"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -622,7 +622,7 @@ Feature: HoldersExchange form
     And choose "כן" from "דירת שותפים"
     And choose "כן" from "האם כל השותפים עוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגדכגדגכדגכ" in textarea of "הערות"
@@ -648,7 +648,7 @@ Feature: HoldersExchange form
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload "png_to_upload.png" file in "יפוי כח"
+    And Upload a valid "png_to_upload.png" file in "יפוי כח"
     And click on "המשך" button
     And write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -660,7 +660,7 @@ Feature: HoldersExchange form
     And choose "לא" from "האם כל השותפים עוזבים"
     And write a valid value "שמעון ואבי" in textarea of "שמות השותפים שעוזבים"
     And write a valid value "12042023" in "תאריך עזיבה"
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And click on "המשך" button
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "כדגכדגכדגכ" in textarea of "הערות"

@@ -64,3 +64,26 @@ class UploadFile(BaseWidget):
     def clear(self, file_index=None):
         for i in range(self.get_list_length() - 1):
             self.delete_file(1)
+
+    def validate_warning_message(self):
+        warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+        if ('סוג קובץ אינו חוקי') in warning_msg.text:
+            return True
+
+    @property
+    def is_invalid(self):
+        msg = self.web_element.find_elements(By.XPATH, f"./ancestor::core-file-upload//p-messages[not(div)]")
+        if len(msg) == 0:
+            return False
+
+    @property
+    def is_valid(self):
+        file_types = ["bmp", "gif", "png", "jpg", "jpeg", "doc", "docx", "pdf", "xlsx", "xls"]
+        element = self.web_element.find_elements(By.XPATH,
+                                                 f"./ancestor::core-file-upload//p-messages/following-sibling::div/div/div")
+        for i in element:
+            log.info(i.text)
+            log.info(((i.text).split(".")[1]).split(" ")[0])
+            if (((i.text).split(".")[1]).split(" ")[0]) in file_types:
+                return True
+        return False

@@ -6,6 +6,8 @@ class UploadFilesLocators:
                  "./ancestor::div/parent::core-file-upload/parent::div/following-sibling::span")
 
     list = (By.XPATH, "./../../following-sibling::div")
+    warning_msg = (
+        By.XPATH, "./../../following-sibling::div/p-messages//ul/..//span[contains(@class,'ui-messages-summary')]")
 
     @staticmethod
     def check_file_size_locator(file_index):

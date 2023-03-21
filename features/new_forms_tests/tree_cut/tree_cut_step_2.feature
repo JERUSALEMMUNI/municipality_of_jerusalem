@@ -19,7 +19,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_TREECUT_05 - Checking "personal details" fields with correct details
@@ -31,8 +31,8 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
-    When Upload "png_to_upload.png" file in "אישור לבית משותף"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_TREECUT_06 - Checking "personal details" fields with correct details
@@ -44,4 +44,4 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
     When pick "סCCכנה" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
-    When Upload "xlsx_to_upload.xlsx" file in "אישור לבית משותף"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "אישור לבית משותף"

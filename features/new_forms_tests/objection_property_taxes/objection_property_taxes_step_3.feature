@@ -16,7 +16,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     And write a valid value "2" in "בית"
     And write a valid value "3222" in "מיקוד"
     And write a valid value "23344" in "ת.ד."
-    And Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
 
@@ -27,5 +27,5 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     And write an invalid value "ירוsdfdsשלים" in "בית"
     And write an invalid value "ירוsdfשלים" in "מיקוד"
     And write an invalid value "sdf" in "ת.ד."
-    And Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    And Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
 

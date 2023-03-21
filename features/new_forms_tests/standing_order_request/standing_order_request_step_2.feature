@@ -20,10 +20,11 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
-
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+#    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+#    When Upload a valid "word_to_upload.docx" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "README.md" file in "אישור הרשאה לחיוב חשבון"
+    When Upload an invalid "README.md" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
@@ -43,9 +44,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with correct details
@@ -65,9 +66,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_07 - Checking "personal details" fields with correct details
@@ -87,9 +88,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_08 - Checking "personal details" fields with correct details
@@ -109,9 +110,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
   Scenario: TC_STANDINGORDEREQ_09 - Checking "personal details" fields with correct details
     When write a valid value "2121212121" in "חשבון / נכס"
@@ -130,10 +131,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
-
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_10 - Checking "personal details" fields with correct details
@@ -163,10 +163,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write an invalid number "2ssddsa70" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
-    When Upload "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "xlsx_to_upload.xlsx" file in "אחר"
-
+    When Upload a valid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
@@ -186,9 +185,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with correct details
@@ -208,9 +207,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_07 - Checking "personal details" fields with correct details
@@ -230,9 +229,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_08 - Checking "personal details" fields with correct details
@@ -252,9 +251,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
   Scenario: TC_STANDINGORDEREQ_09 - Checking "personal details" fields with correct details
     When write a valid value "2121212121" in "חשבון / נכס"
@@ -273,10 +272,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write a valid number "25783770" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "png_to_upload.png" file in "אחר"
-
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "png_to_upload.png" file in "אחר"
 
 
   Scenario: TC_STANDINGORDEREQ_10 - Checking "personal details" fields with correct details
@@ -306,9 +304,9 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write an invalid number "2ssddsa70" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
-    When Upload "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
-    When Upload "xlsx_to_upload.xlsx" file in "אחר"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+    When Upload a valid "xlsx_to_upload.xlsx" file in "אחר"
 
 
 

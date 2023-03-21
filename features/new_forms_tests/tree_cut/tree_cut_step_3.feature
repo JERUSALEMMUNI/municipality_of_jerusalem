@@ -16,7 +16,7 @@ Feature: TreeCut form - scenarios step 3
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
-    When Upload "png_to_upload.png" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "אחר"
     When click on "המשך" button
 
   Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details

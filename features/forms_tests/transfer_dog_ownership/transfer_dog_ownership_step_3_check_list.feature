@@ -1,4 +1,3 @@
-
 Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   - Form name: בקשה להחזקת כלב - העברת בעלות
@@ -14,10 +13,10 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   Scenario: Upload files with approved names test
     Then validate current step is "צרופות והצהרה"
-    When Upload "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
-    And Upload "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
-    When Upload "png_to_upload.png" file in "רישיון אחרון להחזקת כלב"
-    And Upload "excel_to_upload.xlsx" file in "אחר"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload a valid "word_to_upload.docx" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload a valid "png_to_upload.png" file in "רישיון אחרון להחזקת כלב"
+    And Upload a valid "excel_to_upload.xlsx" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
@@ -25,10 +24,10 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   Scenario: Uploading files with unapproved names test
     Then validate current step is "צרופות והצהרה"
-    When Upload "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מוסר הכלב"
-    And Upload "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מקבל הכלב"
-    When Upload "!@#$%^&file_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
-    And Upload "!@#$%^&file_to_upload.xlsx" file in "אחר"
+    When Upload a valid "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload a valid "!@#$%^&file_to_upload.xlsx" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload a valid "!@#$%^&file_to_upload.xlsx" file in "רישיון אחרון להחזקת כלב"
+    And Upload a valid "!@#$%^&file_to_upload.xlsx" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."
@@ -36,10 +35,10 @@ Feature: TransferDogOwnership form - CheckList scenarios step 3
 
   Scenario: Uploading files above 6 MB size test
     Then validate current step is "צרופות והצהרה"
-    When Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מוסר הכלב"
-    And Upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מקבל הכלב"
-    When Upload "10MB_file_to_upload.pdf" file in "רישיון אחרון להחזקת כלב"
-    And Upload "10MB_file_to_upload.pdf" file in "אחר"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מוסר הכלב"
+    And Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות מקבל הכלב"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "רישיון אחרון להחזקת כלב"
+    And Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
     And Check the box of "הנני מצהיר/ה בזה כי החל מתאריך"
     And Check the box of "הנני מצהיר/ה בזה כי אני מקבל על עצמי את החזקת הכלב וכל חובת בעלותו לפי דרישות החוק."
     And Check the box of "הנני מצהיר/ה בזה כי כל הפרטים בטופס הבקשה המקוון נכונים, שלמים ומדוייקים."

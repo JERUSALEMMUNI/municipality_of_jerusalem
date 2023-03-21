@@ -27,13 +27,17 @@ class ContractorEmpRights(BasePage):
         self.widgets['ענף'] = create_widget('DropdownSearch', style=self.style, label='ענף')
         self.widgets['שם חברה'] = create_widget('DropdownSearch', style=self.style, label='שם חברה')
         self.widgets['שם אתר עירוני'] = create_widget('TextField', style=self.style, label='שם אתר עירוני')
-        self.widgets['תאריך תחילת העבודה בחברה'] = create_widget('CalendarField', style=self.style, label='תאריך תחילת העבודה בחברה')
+        self.widgets['תאריך תחילת העבודה בחברה'] = create_widget('CalendarField', style=self.style,
+                                                                 label='תאריך תחילת העבודה בחברה')
         self.widgets['נושא התלונה'] = create_widget('DropdownSearchSelectBox', style=self.style, label='נושא התלונה')
         self.widgets['פרטי התלונה'] = create_widget('TextAreaField', style=self.style, label='פרטי התלונה')
         self.widgets['חודשים לבדיקה'] = create_widget('MonthYearList', style=self.style, label='חודשים לבדיקה')
-        self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'] = create_widget('RadioButtonField', style=self.style, label='האם היתה פניה למעסיק קודם הגשת תלונה זו?')
+        self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'] = create_widget('RadioButtonField', style=self.style,
+                                                                                 label='האם היתה פניה למעסיק קודם הגשת תלונה זו?')
         self.widgets['התשובה שקיבלתי'] = create_widget('TextField', style=self.style, label='התשובה שקיבלתי')
-        self.widgets['הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים.'] = create_widget('CheckBox', style=self.style, label='הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים.')
+        self.widgets['הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים.'] = create_widget(
+            'CheckBox', style=self.style,
+            label='הנני מצהיר/ה בזה כי כל הפרטים בטופס התלונה המקוון נכונים, שלמים ומדוייקים.')
         self.widgets['אחר'] = create_widget('UploadFile', style=self.style, label='אחר')
         self.widgets['אסמכתאות לתשלום שכר'] = create_widget('UploadFile', style=self.style, label='אסמכתאות לתשלום שכר')
         self.widgets['דוחו"ת נוכחות'] = create_widget('UploadFile', style=self.style, label='דוחו"ת נוכחות')
@@ -53,8 +57,7 @@ class ContractorEmpRights(BasePage):
             self.widgets['תאריך תחילת העבודה בחברה'].select_all_date('8/1/2019')
             self.widgets['נושא התלונה'].select_element('אי צבירה נאותה - ימי חופשה')
             self.widgets['פרטי התלונה'].set_text('א טור')
-            self.widgets["חודשים לבדיקה"].set_year(2018, '1')
+            self.widgets["חודשים לבדיקה"].set_year('2018', '1')
             self.widgets["חודשים לבדיקה"].set_month('1', '1')
             self.widgets['האם היתה פניה למעסיק קודם הגשת תלונה זו?'].choose_value('כן')
             self.widgets["המשך"].click_button()
-
