@@ -2,7 +2,7 @@
 Feature: PhotoPermission form - scenarios step 1
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים
-  - Feature file name: photo_permission.feature
+  - Feature file name: photo_permission_step1.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/PhotoPermission
   - Number of Pages is : 4, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
@@ -16,9 +16,9 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When close "email" dialog
-    When clear fields
+#    When click on "המשך" button
+#    When close "email" dialog
+#    When clear fields
 #  @in_dev
   Scenario: TC_PHOTOPERMIT_02 - Checking "personal details" fields with correct details
     Given Navigate to "PhotoPermission" form
@@ -29,8 +29,8 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When click on "המשך" button
-    When close "email" dialog
+#    When click on "המשך" button
+#    When close "email" dialog
     When clear fields
 
   Scenario: TC_PHOTOPERMIT_03 - Checking "personal details" fields with incorrect details
@@ -63,7 +63,7 @@ Feature: PhotoPermission form - scenarios step 1
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
     When write an invalid value "876543456" in "דוא"ל"
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
-    When clear fields
+#    When clear fields
 
 
 

@@ -19,7 +19,6 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון נייד'] = create_widget('PhoneField', style=self.style, label='טלפון נייד')
         self.widgets['טלפון קווי'] = create_widget('PhoneField', style=self.style, label='טלפון קווי')
         self.widgets['דוא"ל'] = create_widget('TextField', style=self.style, label='דוא"ל')
-        # todo:check change it to dropdown or keep it as dropdownsearch
         self.widgets['סוג זיהוי'] = create_widget('Dropdown', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
@@ -40,17 +39,28 @@ class PhotoPermission(BasePage):
         self.widgets["דוא''ל"] = create_widget('TextField', style=self.style, label="דוא''ל")
         self.widgets["פירוט"] = create_widget('TextField', style=self.style, label="פירוט")
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
-        self.widgets["פירוט השימוש בחשמל"] = create_widget('TextAreaField', style=self.style, label="פירוט השימוש בחשמל")
+        self.widgets["פירוט השימוש בחשמל"] = create_widget('TextAreaField', style=self.style,
+                                                           label="פירוט השימוש בחשמל")
         self.widgets["פירוט ציוד צילום"] = create_widget('TextAreaField', style=self.style, label="פירוט ציוד צילום")
-        self.widgets["פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"] = create_widget('TextAreaField', style=self.style, label="פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)")
+        self.widgets["פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"] = create_widget('TextAreaField',
+                                                                                               style=self.style,
+                                                                                               label="פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)")
+        self.widgets['צילום ת.ז. / דרכון'] = create_widget('UploadFile', style=self.style, label='צילום ת.ז. / דרכון')
+        self.widgets['כתב התחייבות'] = create_widget('UploadFile', style=self.style, label='כתב התחייבות')
+        self.widgets['העתק ביטוח צד ג'] = create_widget('UploadFile', style=self.style, label='העתק ביטוח צד ג')
+        self.widgets['סינופסיס קצר'] = create_widget('UploadFile', style=self.style, label='סינופסיס קצר')
+        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
+        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox', style=self.style, label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
+        self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
+        self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי ההפקה":
-            self.navigate_first_page(mailbox, driver)
+            self.navigate_first_page(mailbox, driver, current_page)
         elif dst_step == "פרטי המיקום ומועדי הצילומים":
-            self.navigate_first_page(mailbox, driver)
+            self.navigate_first_page(mailbox, driver, current_page)
             self.navigate_to_second_page(mailbox)
         elif dst_step == "צרופות":
-            self.navigate_first_page(mailbox, driver)
+            self.navigate_first_page(mailbox, driver, current_page)
             self.navigate_to_second_page(mailbox)
             self.navigate_to_third_page()
 
@@ -78,8 +88,8 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון מתאם ההפקה'].set_full_phone('058-8078687')
         self.widgets["דוא''ל"].set_text(mailbox.address)
         self.widgets["שם הגורם עבורו מתבצע הצילום"].set_text("ככגדכגד")
-        self.widgets["סוג המדיה"].select_element('אחר')
-        self.widgets["פירוט"].set_text("דיכחןגלכח")
+        # self.widgets["סוג המדיה"].select_element('אחר')
+        # self.widgets["פירוט"].set_text("דיכחןגלכח")
         self.widgets["סוג המדיה"].select_element('קליפ')
         self.widgets["תיאור הצילום"].set_text("גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
         self.widgets["המשך"].click_button()

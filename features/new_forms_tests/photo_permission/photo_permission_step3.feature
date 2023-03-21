@@ -1,8 +1,7 @@
-
 Feature: PhotoPermission form - scenarios step 3
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים
-  - Feature file name: photo_permission.feature
+  - Feature file name: photo_permission_step3.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/PhotoPermission
   - Number of Pages is : 4, We are at step: 3
   - All fields are mandatory
@@ -24,9 +23,9 @@ Feature: PhotoPermission form - scenarios step 3
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט השימוש בחשמל"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט ציוד צילום"
-    When clear fields
+#    When clear fields
 
-  Scenario: TC_PHOTOPERMIT_07 - Checking "location details and shooting dates" fields
+    Scenario: TC_PHOTOPERMIT_07 - Checking "location details and shooting dates" fields
     Given Navigate to "PhotoPermission" form
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "11112023" in "תאריך"
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" pick time "11:11" in "שעת התחלה"
@@ -44,8 +43,8 @@ Feature: PhotoPermission form - scenarios step 3
     When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "ירושלים" in "שם האתר"
     When from table "פרטי המיקום ומועדי הצילומים" at row "2" write a valid value "גדגדכ" in "כתובת"
     When from table "פרטי המיקום ומועדי הצילומים" at row "2" choose "נושמת" in "חסימת כביש"
-    When click on "המשך" button
-    When clear fields
+#    When click on "המשך" button
+#    When clear fields
 
 
 

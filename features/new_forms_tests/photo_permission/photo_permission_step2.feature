@@ -2,7 +2,7 @@
 Feature: PhotoPermission form - scenarios step 2
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים
-  - Feature file name: photo_permission.feature
+  - Feature file name: photo_permission_step2.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/PhotoPermission
   - Number of Pages is : 4, We are at step: 2
   - All fields are mandatory
@@ -23,7 +23,15 @@ Feature: PhotoPermission form - scenarios step 2
     When write a valid value "דיכחןגלכח" in "פירוט"
     When pick "קליפ" from "סוג המדיה"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "תיאור הצילום"
-    When clear fields
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    And 1st wait for "email" that contains pin code and link
+#    And 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code
+#    And click on "email" option
+#    And 3rd wait for second "email" to get "קוד האימות"
+#    And 4th close all tabs "email"
+#    Then 5th Validate if went back to expected "email" form
+#    When clear fields
 
 
 

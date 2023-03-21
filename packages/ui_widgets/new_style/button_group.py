@@ -6,9 +6,6 @@ from ui_widgets.old_style.radio_button_field import RadioButtonField
 log = logger.get_logger(__name__)
 
 
-# Todo: change big button file name to buttonset
-
-
 class ButtonGroup(RadioButtonField):
     def __init__(self, label, index):
         super().__init__(label, index)
