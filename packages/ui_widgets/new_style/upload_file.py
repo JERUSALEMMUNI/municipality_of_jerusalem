@@ -59,9 +59,13 @@ class UploadFile(BaseWidget):
         return error_msg.text == error_expected
 
     def validate_warning_message(self):
-        warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
-        if ('סוג הקובץ אינו חוקי') in warning_msg.text:
-            return True
+        try:
+            warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+            if ('סוג הקובץ אינו חוקי') in warning_msg.text:
+                return True
+        except:
+            log.info("this is error the field dont have a warning message")
+            raise AssertionError("This file is considered an invalid file and this accepted file ")
 
     def get_list(self):
         return self.web_element.find_elements(*UploadFilesLocators.list)
