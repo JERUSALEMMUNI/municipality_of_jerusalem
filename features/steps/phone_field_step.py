@@ -17,7 +17,7 @@ def write_phone_number(context, phone_number, widget_name):
         if not widget.is_valid[1]:
             log.info(f"Couldn't find this value {prefix} is not a valid option to select")
             rep.add_label_to_step("wrong_value", f"This value {prefix} at field not a valid value to select")
-            raise AssertionError("This is not a valid value to select from list")
+            raise KeyError("This is not a valid value to select from list")
         if not widget.is_valid[0]:
             log.info(f"This value {suffix} at field {widget_name} is considered "
                      f"a valid value but it appeared as invalid")
@@ -41,7 +41,7 @@ def write_phone_number_invalid_value(context, phone_number, widget_name):
         if not widget.is_invalid[1]:
             log.info(f"Couldn't find this value {prefix} is not a valid option to select")
             rep.add_label_to_step("wrong_value", f"This value {prefix} at field not a valid value to select")
-            raise AssertionError("This is not a valid value to select from list")
+            raise KeyError("This is not a valid value to select from list")
         if not widget.is_invalid[0]:
             log.info(f"This value {suffix} at field {widget_name} is considered "
                      f"as invalid")
