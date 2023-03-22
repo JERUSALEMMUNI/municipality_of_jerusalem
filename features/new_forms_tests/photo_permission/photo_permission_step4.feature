@@ -1,4 +1,4 @@
-Feature: PhotoPermission form - scenarios step 3
+Feature: PhotoPermission form - scenarios step 4
 
   - Form name: קבלת חשבון ארנונה באימייל
   - Feature file name: photo_permission_step4.feature
@@ -10,7 +10,6 @@ Feature: PhotoPermission form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "PhotoPermission" form and reach step "צרופות"
 
-  @abd
   Scenario: TC_PHOTOPERMIT_08 - "upload files" integrity check
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
