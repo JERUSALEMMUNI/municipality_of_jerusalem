@@ -61,6 +61,18 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         widget.upload_file(label, file, driver)
 
+    def is_invalid(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_invalid(label)
+
+    def is_valid(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_valid(label)
+
+    def validate_warning_message(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.validate_warning_message(label)
+
     def choose_item(self, row, label, txt):
         widget = self.create_widget_table_row(row)
         widget.choose_item(label, txt)

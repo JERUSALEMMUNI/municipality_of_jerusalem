@@ -276,7 +276,7 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
     When Upload a valid "png_to_upload.png" file in "אחר"
 
-
+  @wisam
   Scenario: TC_STANDINGORDEREQ_10 - Checking "personal details" fields with correct details
     When write an invalid value "21reser1121" in "חשבון / נכס"
     When write an invalid value "ש77626" in "כתובת נכס"
@@ -304,9 +304,10 @@ Feature: StandingOrderRequest - scenarios step 2
     When goto "1-סניף ראשי" from "סניף"
     When write an invalid number "2ssddsa70" in "מספר חשבון"
     When pick "10" from "יום גביה חודשי"
-    When Upload a valid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
-    When Upload a valid "xlsx_to_upload.xlsx" file in "אחר"
+    When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+    When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+    #ToDo : every time its valid in the site with valid and invalid files field "אחר"
+    When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
 
 
 

@@ -197,11 +197,32 @@ def remove_item_from_table(context, table_name, items):
     widget.remove_item(items)
 
 
-@when('from table "{table_name}" at row "{row}" upload file "{text}" in "{widget_name}"')
+@when('from table "{table_name}" at row "{row}" upload a valid file "{text}" in "{widget_name}"')
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
     widget.upload_file(row, widget_name, file, context._config.driver)
+    if widget.is_valid(row, widget_name):
+        log.info("we don't have a warning message")
+        rep.add_label_to_step("File type is accepted", "File type is accepted")
+    elif widget.validate_warning_message(row, widget_name):
+        log.info(f"This file is considered a valid file but it appeared as invalid")
+        rep.add_label_to_step("failure reason", f"This file is considered a valid file but it appeared as invalid")
+        raise AssertionError("File type is not accepted")
+
+
+@when('from table "{table_name}" at row "{row}" upload an invalid file "{text}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
+    widget.upload_file(row, widget_name, file, context._config.driver)
+    if widget.is_invalid(row, widget_name):
+        log.info(f"This file is considered an invalid file and this correct")
+        rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
+    elif widget.validate_warning_message(row, widget_name):
+        log.info(f"This file is considered an invalid file but it appeared as valid")
+        rep.add_label_to_step("File type is not accepted", "File type is not accepted")
+        raise AssertionError("File type is not accepted")
 
 
 @when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')

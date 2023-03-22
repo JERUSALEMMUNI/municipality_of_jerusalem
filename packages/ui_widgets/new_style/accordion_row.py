@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.accordion_row_locators import AccordionRowLocators
@@ -44,10 +45,10 @@ class AccordionRow(BaseWidget):
         self.click_on_current_tab()
         return self.get_current_tab().text
 
-    def make_element_ready_to_action(self,widget_type,label):
+    def make_element_ready_to_action(self, widget_type, label):
         self.open_current_tab()
         widget = self.create_widget(widget_type, label=label)
-        element = self.web_element.find_element(widget.locator['By'],'.'+widget.locator['Value'])
+        element = self.web_element.find_element(widget.locator['By'], '.' + widget.locator['Value'])
         self.set_widget_web_element(widget, element)
         return widget
 
@@ -59,45 +60,57 @@ class AccordionRow(BaseWidget):
             self.trash_button.click_button()
 
     def set_text(self, label, text):
-        text_field = self.make_element_ready_to_action('TextField',label)
+        text_field = self.make_element_ready_to_action('TextField', label)
         text_field.set_text(text)
 
     def upload_file(self, label, file, driver):
-        upload = self.make_element_ready_to_action('UploadFile',label)
+        upload = self.make_element_ready_to_action('UploadFile', label)
         upload.upload_file(file, driver)
 
+    def is_invalid(self, label):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.is_invalid
+
+    def is_valid(self, label):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.is_valid
+
+    def validate_warning_message(self, label):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.validate_warning_message()
+
     def choose_item(self, label, txt):
-        select = self.make_element_ready_to_action('DropdownSearch',label)
+        select = self.make_element_ready_to_action('DropdownSearch', label)
         select.search_element(txt)
 
     def validate_text_is_valid(self, label):
-        text_field = self.make_element_ready_to_action('TextField',label)
+        text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.is_valid
 
     def validate_text_is_invalid(self, label):
-        text_field = self.make_element_ready_to_action('TextField',label)
+        text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.is_invalid
 
     def validate_error_message(self, label, error_expectation):
-        text_field = self.make_element_ready_to_action('TextField',label)
+        text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.validate_error_message(error_expectation)
 
     def set_time_text(self, label, text):
-        time_field = self.make_element_ready_to_action('TimeField',label)
+        time_field = self.make_element_ready_to_action('TimeField', label)
         time_field.set_text(text)
 
     def select_time(self, label, text):
-        time_field = self.make_element_ready_to_action('TimeField',label)
+        time_field = self.make_element_ready_to_action('TimeField', label)
         time_field.select_time(text)
 
     def choose_button_from_value(self, label, value_name):
-        big_button = self.make_element_ready_to_action('ButtonGroup',label)
+        big_button = self.make_element_ready_to_action('ButtonGroup', label)
         big_button.choose_value(value_name)
 
     def is_value_button_chosen(self, label, value_name):
-        big_button = self.make_element_ready_to_action('ButtonGroup',label)
+        big_button = self.make_element_ready_to_action('ButtonGroup', label)
         return big_button.is_chosen(value_name)
 
     def is_button_valid(self, label):
-        big_button = self.make_element_ready_to_action('ButtonGroup',label)
+        big_button = self.make_element_ready_to_action('ButtonGroup', label)
         return big_button.is_valid
