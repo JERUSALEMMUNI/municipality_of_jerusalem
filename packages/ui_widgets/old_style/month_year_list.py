@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
-from infra.enums import UIStyle
 
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
+from ui_widgets.old_style.button_icon_widget import ButtonIcon
+from ui_widgets.old_style.month_year_widget import MonthYear
 from ui_widgets.old_style.widget_locators.month_year_list_locator import MonthYearListLocators
 
 log = logger.get_logger(__name__)
@@ -11,6 +12,7 @@ log = logger.get_logger(__name__)
 class MonthYearList(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
+        self.addItemButton = ButtonIcon('הוסף', index)
 
     @property
     def locator(self):
@@ -26,27 +28,29 @@ class MonthYearList(BaseWidget):
         return len(self.get_list())
 
     def create_widget_from_index(self, index):
-        widget = self.create_widget('MonthYear', label=index)
-        self.set_widget_web_element(widget)
+        widget = MonthYear(index, self.index)
+        widget.set_web_element(self.web_element)
         return widget
 
-    def set_web_element(self, web_element):
-        self.web_element = web_element
-        self.add_item_button = self.create_widget('ButtonIcon',style=UIStyle.OLD, label= 'הוסף')
-        self.set_widget_web_element(self.add_item_button)
+    def init_widget(self):
+        add_item_button = self.web_element.find_element(self.addItemButton.locator['By'],
+                                                        self.addItemButton.locator['Value'])
+        self.addItemButton.set_web_element(add_item_button)
 
     def add_item(self):
-        self.add_item_button.click_button()
+        self.addItemButton.click_button()
 
     def remove_item(self, index):
         widget = self.create_widget_from_index(index)
         widget.removeItem(self.locator['Value'])
 
     def set_year(self, year, index):
+        self.init_widget()
         widget = self.create_widget_from_index(index)
         widget.set_year(self.locator['Value'], year)
 
     def set_month(self, month, index):
+        self.init_widget()
         widget = self.create_widget_from_index(index)
         widget.set_month(self.locator['Value'], month)
 
@@ -63,9 +67,9 @@ class MonthYearList(BaseWidget):
         return error_msg.text == error_expected
 
     def close(self):
-        drop_down_open = self.web_element.find_element(By.XPATH, "./..//input").get_attribute(
+        dropDown_open = self.web_element.find_element(By.XPATH, "./..//input").get_attribute(
             'aria-expanded')
-        if drop_down_open in ('true', "True"):
+        if dropDown_open in ('true', "True"):
             self.web_element.click()
             return True
         return False

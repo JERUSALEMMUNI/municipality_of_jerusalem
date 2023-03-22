@@ -15,6 +15,7 @@ def date_select(context, date, widget_name):
 @when('write date "{date}" in "{widget_name}"')
 def date_write(context, date, widget_name):
     widget = context._config.current_page.widgets[widget_name]
+    widget.initial_widgets()
     widget.date_by_write(date)
 
 

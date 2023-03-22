@@ -7,7 +7,7 @@ from ui_widgets.new_style import button_field, header_field, footer_field, text_
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
     footer_field as old_footer_field, button_icon_widget as old_button_icon, calender_time, check_box_field, \
     calendar_field, month_year_list, \
-    radio_button_field, application_steps_field as old_application_steps_field, dialog_widget, upload_file as old_upload_file , month_year_widget,multiselect
+    radio_button_field, application_steps_field as old_application_steps_field, dialog_widget, upload_file as old_upload_file
 
 
 log = logger.get_logger(__name__)
@@ -68,9 +68,6 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
         'MonthYearList': {
             UIStyle.OLD: month_year_list.MonthYearList
         },
-        'MonthYear': {
-            UIStyle.OLD: month_year_widget.MonthYear
-        },
         'RadioButtonField': {
             UIStyle.OLD: radio_button_field.RadioButtonField
         },
@@ -104,10 +101,6 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
         },
         'EmailAuthentication': {
             UIStyle.NEW: email_authentication.EmailAuthentication
-        },
-        'MultiSelect':{
-            UIStyle.OLD: multiselect.MultiSelect
-
         }
     }
 

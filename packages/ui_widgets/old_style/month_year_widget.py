@@ -2,6 +2,9 @@ from selenium.webdriver.common.by import By
 from infra import logger, config
 from ui_widgets.base_widget import BaseWidget
 import re
+from ui_widgets.new_style.dropdown_field import Dropdown
+from ui_widgets.old_style.button_icon_widget import ButtonIcon
+from ui_widgets.old_style.multiselect import MultiSelect
 from ui_widgets.old_style.widget_locators.month_year_widget_locator import MonthYearWidgetLocators
 
 log = logger.get_logger(__name__)
@@ -10,6 +13,9 @@ log = logger.get_logger(__name__)
 class MonthYear(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
+        self.removeItemButton = ButtonIcon('הסר', index)
+        self.year_dropdown = Dropdown('חודשים לבדיקה', index)
+        self.month_multiselect = MultiSelect('חודשים לבדיקה',index)
 
     @property
     def locator(self):
@@ -26,9 +32,8 @@ class MonthYear(BaseWidget):
         remove_button.click()
 
     def set_year(self, path, year):
-        self.year_dropdown = self.create_widget('Dropdown', label='חודשים לבדיקה')
         dropdown = self.web_element.find_element(*MonthYearWidgetLocators.set_year(path, self.label))
-        self.set_widget_web_element(self.year_dropdown,dropdown)
+        self.year_dropdown.set_web_element(dropdown)
         self.year_dropdown.web_element.click()
         self.year_dropdown.select_element(year)
 
@@ -36,13 +41,11 @@ class MonthYear(BaseWidget):
         return self.web_element.find_element(*MonthYearWidgetLocators.set_month(path, self.label))
 
     def set_month(self, path, month):
-        self.month_multiselect = self.create_widget('MultiSelect', label='חודשים לבדיקה')
-        self.set_widget_web_element(self.month_multiselect,self.get_month_element(path))
+        self.month_multiselect.set_custom_multiselect(self.get_month_element(path))
         self.month_multiselect.set_month(config.months[month])
 
     def set_months(self, path, months, driver):
-        self.month_multiselect = self.create_widget('MultiSelect', label='חודשים לבדיקה')
-        self.set_widget_web_element(self.month_multiselect,self.get_month_element(path))
+        self.month_multiselect.set_custom_multiselect(self.get_month_element(path))
         month_list = []
         for num in months.split(","):
             month_list.append(config.months[num])

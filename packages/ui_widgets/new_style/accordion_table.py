@@ -18,6 +18,10 @@ class AccordionTable(BaseWidget):
             'Value': f"//div[contains(text(),'{self.label}')]"
         }
 
+    def init_widget(self):
+        # todo: when we git rid of this init_widget function it remove it form here !
+        pass
+
     def get_list(self):
         return self.web_element.find_elements(*AccordionTableLocators.list)
 
