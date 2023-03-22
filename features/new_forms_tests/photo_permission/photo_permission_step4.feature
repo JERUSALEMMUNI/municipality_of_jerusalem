@@ -10,7 +10,6 @@ Feature: PhotoPermission form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "PhotoPermission" form and reach step "צרופות"
 
-  @abd
   Scenario: TC_PHOTOPERMIT_08 - "upload files" integrity check
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
