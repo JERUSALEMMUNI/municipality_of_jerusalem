@@ -22,6 +22,7 @@ class EmailAuthentication(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
         self.user_data = {}
+        self.set_pin_error = None
 
     @property
     def get_text(self):
@@ -118,11 +119,12 @@ class EmailAuthentication(BaseWidget):
         pop_up_appear_times = 0
         while True:
             if current != current_page.widgets.get('page_steps').get_current_step:
-                break
+                return True
             click_continue.click()
             pop_up_appear_times = pop_up_appear_times + 1
             if pop_up_appear_times == 25:
-                break
+                self.set_pin_error = True
+                return False
             try:
                 WebDriverWait(driver, 5).until(EC.alert_is_present())
                 alert = driver.switch_to.alert
@@ -134,6 +136,9 @@ class EmailAuthentication(BaseWidget):
                 log.info('No alert found')
 
     def wait_for_second_email(self, driver, mailbox, current_page, index):
+        if self.set_pin_error == True:
+            rep.add_label_to_step("alert message appeared", "Pin code is correct but there was an alert message")
+            raise AssertionError('alert message appeared')
         if self.user_data['email_body'] == None:
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email recieved')

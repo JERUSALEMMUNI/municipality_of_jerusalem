@@ -47,7 +47,6 @@ class PhoneField(BaseWidget):
         rest_phone = new_text[1]
         self.initial_widgets()
         self.text_widget.set_text(rest_phone)
-        # self.dropdown_widget.click_button()
         self.dropdown_widget.select_element(start_phone)
 
     @property

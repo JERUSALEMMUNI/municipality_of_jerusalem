@@ -33,8 +33,8 @@ def navigate_to_screen(context, screen_name):
                         "click here to see the link of tested step")
 
     try:
+        #Todo: it takes a long time in pages that doesn't have dialog
         driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
-
     except:
         pass
 
@@ -107,7 +107,11 @@ def set_pin_code(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     current_page = context._config.current_page
-    widget.set_pin(driver, current_page)
+    if not widget.set_pin(driver, current_page):
+        rep.add_label_to_step('alert message appeared','pin code is correct but alert message appeared and '
+                                                       'couldnt reach the next step')
+        raise AssertionError('pin code is correct but alert message appeared and '
+                                                       'couldnt reach the next step')
 
 
 @then('check if "{widget_name}" error is "{error_expectation}"')

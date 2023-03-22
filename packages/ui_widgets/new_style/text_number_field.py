@@ -1,4 +1,5 @@
 from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
 
 from infra import logger
 from ui_widgets.new_style.text_field import TextField
@@ -11,11 +12,11 @@ class TextNumberField(TextField):
         super().__init__(label, index, path_locator, step_number)
 
     def get_element(self):
-        try:
-            return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
-
-        except:
+        if 'תאריך' in self.label:
+            pass
             return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
+        else:
+            return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
 
     def set_text(self, text):
         self.clear()
