@@ -64,7 +64,8 @@ class Dropdown(BaseWidget):
         self.click_button()
         WebDriverWait(self.web_element, 30).until(
             EC.element_to_be_clickable(
-                (By.XPATH, f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")))
+                (By.XPATH,
+                 f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")))
         list_of_items = self.web_element.find_elements(By.XPATH,
                                                        f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")
         for i in list_of_items:
@@ -117,9 +118,6 @@ class Dropdown(BaseWidget):
         dropDown_open = self.web_element.find_element(By.XPATH, ".//..//input").get_attribute('aria-expanded')
         if dropDown_open in ('true', "True"):
             self.web_element.click()
-            # ToDo: find good wait for that
-            WebDriverWait(self.web_element, 1).until(
-                EC.invisibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
             return True
         return False
 

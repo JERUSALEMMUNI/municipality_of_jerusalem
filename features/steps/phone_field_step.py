@@ -25,8 +25,7 @@ def write_phone_number(context, phone_number, widget_name):
                                                  f" a valid value but it appeared as invalid")
             raise AssertionError("valid value and considered as invalid")
     finally:
-        # Todo: the close is not working correctly
-        # widget.close()
+        widget.close()
         pass
 
 
@@ -49,8 +48,7 @@ def write_phone_number_invalid_value(context, phone_number, widget_name):
                                                  f" an invalid value but it appeared as valid")
             raise AssertionError("valid value and considered as invalid")
     finally:
-        # Todo: the close is not working correctly
-        # widget.close()
+        widget.close()
         pass
 
 
