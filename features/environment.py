@@ -71,7 +71,8 @@ def duplicate_scenario_for_stability(context, scenarios_dict):
             new_scenario.feature = scenario.feature
             new_scenario.background = scenario.background
             temp_list.append(scenario)
-            temp_list.append(new_scenario)
+            if context.rerun_broken_scenario:
+                temp_list.append(new_scenario)
         scenarios_dict[feature_name] = temp_list
 
 

@@ -73,6 +73,9 @@ def setup():
     runner.Context.user_data = {}
     files_utils.remove_paths(config.temp_folder)
 
+    # rerun argument in bdd_args used to enable/disable rerun broken scenarios; default enabled
+    runner.Context.rerun_broken_scenario = misc_utils.str_to_bool_int(runner.Context.opt_dict.get('rerun', True))
+
 
 def init_logger_reporter(opt_dict):
     # Init log

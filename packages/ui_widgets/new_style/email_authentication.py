@@ -13,6 +13,7 @@ from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.constants.email_authentication_constants import EmailAuthenticationConstants
 from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
+from utils import misc_utils
 
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
@@ -54,10 +55,10 @@ class EmailAuthentication(BaseWidget):
         return 'ng-valid' in self.web_element.get_attribute('class')
 
     def wait_for_email(self, mailbox):
-        emails = mailbox.get_messages()
+        emails = self.get_temp_email(mailbox)
         self.count_of_emails = len(emails)
         self.wait_for_new_email(self.count_of_emails, mailbox)
-        self.user_data['email_body'] = mailbox.get_messages()[0].html_body
+        self.user_data['email_body'] = self.get_temp_email(mailbox)[0].html_body
         if self.user_data['email_body'] is None:
             raise AssertionError('No email received')
 
@@ -66,7 +67,7 @@ class EmailAuthentication(BaseWidget):
         time_for_total_wait = 0
         for i in range(15):
             start_step = time.time()
-            if len(mailbox.get_messages()) == count_of_emails + 1:
+            if len(self.get_temp_email(mailbox)) == count_of_emails + 1:
                 break
             time.sleep(3)
             end_step = time.time()
@@ -75,6 +76,7 @@ class EmailAuthentication(BaseWidget):
             time_for_total_wait = time_diff_rounded + time_for_total_wait
             log.info(f'wait for email, {time_for_total_wait} seconds passed')
         else:
+            #todo: why not raising exception!
             end_time = time.time()
             difference = end_time - start_time
             log.info(str(difference) + ' seconds passed and no email received')
@@ -143,7 +145,7 @@ class EmailAuthentication(BaseWidget):
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email recieved')
         self.wait_for_new_email(self.count_of_emails + 1, mailbox)
-        email_body2 = mailbox.get_messages()[0].html_body
+        email_body2 = self.get_temp_email(mailbox)[0].html_body
         if email_body2 is None:
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email received')
@@ -176,6 +178,10 @@ class EmailAuthentication(BaseWidget):
             self.user_data['validate'] = False
         else:
             self.user_data['validate'] = checkId.is_displayed()
+
+    def get_temp_email(self, mailbox):
+        return misc_utils.while_timeout(mailbox.get_messages, True, 60, 'Error getting emails from inbox'
+                                        , w_raise_on_error=False, w_comp_func=lambda a, b: type(a) is not list)
 
     def close_all_tabs(self, driver, index):
         if self.user_data['email_body'] == None:
