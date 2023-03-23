@@ -58,6 +58,15 @@ class UploadFile(BaseWidget):
         error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
         return error_msg.text == error_expected
 
+    def validate_error_window_message(self, error_expected):
+        error_window_msg_part1 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
+        error_window_msg_part2 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part2)
+        er = error_window_msg_part1.text + " " + error_window_msg_part2.text
+        log.info(er)
+        log.info(error_expected)
+        log.info(er.strip() == error_expected.strip())
+        return er.strip() == error_expected.strip()
+
     def validate_warning_message(self):
         try:
             warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)

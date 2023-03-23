@@ -126,7 +126,7 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['שם משפחה'].set_text('גלעד')
         self.widgets['סוג זיהוי'].select_element('דרכון')
         self.widgets['מספר דרכון'].set_text('332796182')
-        self.widgets['טלפון נייד'].set_full_phone('052-80768343')
+        self.widgets['טלפון נייד'].set_full_phone('052-8076834')
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets['ממלא ההשגה'].select_element('המחזיק')
         self.widgets["המשך"].click_button()

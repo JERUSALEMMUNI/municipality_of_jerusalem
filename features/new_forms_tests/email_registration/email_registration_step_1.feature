@@ -7,60 +7,51 @@ Feature: EmailRegistration form - scenarios step 1
   - All fields are mandatory expect of (טלפון קווי)
 
 
-  Scenario: TC_EMAILREG_01 - Entering correct values for personal details fields when the thesis identification type is selected
+  Scenario: TC_EMAILREG_01-02 "הזנת ערכים תקינים לשדות "פרטים אישיים
     Given Navigate to "EmailRegistration" form
-    When I wait for "3" seconds
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר ת.ז."
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "02-8078687" as valid value in "טלפון קווי"
+    When write a valid value "2222222" in "מספר ת.ז."
+    And fill number "8078687" as valid value in "טלפון נייד"
+    And fill number "8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
 #    When click on "המשך" button
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות" index "2"
-#    When 4th close all tabs "email" at index "2"
-#    Then 5th Validate if went back to expected "email" form
 
-  Scenario: TC_EMAILREG_02 - Entering valid values for personal details fields when the passport identification type is selected
-    Given Navigate to "EmailRegistration" form
-    When write a valid value "דני" in "שם פרטי"
-    And write a valid value "גלעד" in "שם משפחה"
-    When pick "דרכון" from "סוג זיהוי"
-    When write a valid value "332796184" in "מספר דרכון"
-    And fill "058-8078687" as valid value in "טלפון נייד"
-    And fill "02-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-#    When click on "המשך" button
-#    When click on "email" option
-#    When 1st wait for "email" that contains pin code and link
-#    When set pin code "email"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות" index "2"
-#    When 4th close all tabs "email" at index "2"
-#    Then 5th Validate if went back to expected "email" form
 
-  Scenario: TC_EMAILREG_03 - Entering incorrect values for personal private fields
+  Scenario: TC_EMAILREG_11 "הזנת ערכים שגויים לשדות "פרטים אישיים
     Given Navigate to "EmailRegistration" form
     When write an invalid value "sdsd" in "שם פרטי"
-    And write an invalid value "sdfdf" in "שם משפחה"
+    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    When write an invalid value "zxcz" in "שם משפחה"
+    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
-    When write an invalid value "hello" in "מספר ת.ז."
-    And fill "058-8e7f6s7" as invalid value in "טלפון נייד"
-    And fill "02-80e8687" as invalid value in "טלפון קווי"
+    When write an invalid value "000000018" in "מספר ת.ז."
+    And fill number "807d367" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "כעיחלך" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+
+
+  Scenario: TC_EMAILREG_11 type 2 "הזנת ערכים שגויים לשדות "פרטים אישיים
+    Given Navigate to "EmailRegistration" form
+    When write an invalid value "sdsd" in "שם פרטי"
+    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    When write an invalid value "zxcz" in "שם משפחה"
+    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    When pick "ת.ז." from "סוג זיהוי"
+    When write an invalid value "000000018" in "מספר ת.ז."
+    And fill number "80767" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When write an invalid value "כעיחלך" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+
+
+
+
 
 
 

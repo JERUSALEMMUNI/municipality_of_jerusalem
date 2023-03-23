@@ -6,6 +6,7 @@ Feature: TreeCut form - scenarios step 3
   - Number of Pages is : 3, We are at step: 3
   - All fields are mandatory of (טלפון קווי)
 
+  
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "הצהרה"
     When goto "א נחיל" from "רחוב"
@@ -19,6 +20,8 @@ Feature: TreeCut form - scenarios step 3
     When Upload a valid "png_to_upload.png" file in "אחר"
     When click on "המשך" button
 
+
+  @firas
   Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"

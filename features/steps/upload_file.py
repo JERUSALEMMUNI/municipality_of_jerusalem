@@ -98,3 +98,17 @@ def choose_in_search(context, file_size_index, widget_name):
 def choose_in_search(context, wanted_file_index, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.delete_file(wanted_file_index)
+
+
+@then('check if "{widget_name}" error window message is "{error_expectation}"')
+def error_msg(context, widget_name, error_expectation):
+    widget = context._config.current_page.widgets[widget_name]
+    if not widget.is_invalid:
+        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
+        raise AssertionError("invalid value and considered as valid")
+    if not widget.validate_error_window_message(error_expectation):
+        log.info(f"The error value at field is incorrect")
+        rep.add_label_to_step("incorrect message or missing",
+                              "incorrect or missing error value and considered as valid")
+        raise AssertionError("invalid value and considered as valid")
+    rep.add_label_to_step("message appeared", "red error message appeared correctly")

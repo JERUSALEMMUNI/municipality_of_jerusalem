@@ -52,9 +52,9 @@ class TreeCut(BasePage):
 
         elif dst_step == "הצהרה":
             self.fill_first_page(mailbox, driver, current_page)
-            #todo: when we try to fill house number 2 times in diffrenet steps in the background, is consider them as app-first-step always!
+            # current_page = "פרטי הבקשה"
             # self.widgets['רחוב'].search_element("א נחיל")
-            # self.widgets['מספר בית'].set_text("101")
+            # self.widgets['מספר בית']['פרטי הבקשה'].set_text("101")
             # self.widgets['גוש'].set_text("324")
             # self.widgets['חלקה'].set_text("907")
             # self.widgets['רשימת עצים'].upload_file("1", "תמונה של העץ", os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
