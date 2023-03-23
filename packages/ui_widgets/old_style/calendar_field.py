@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from packages.infra import logger, config
 from packages.ui_widgets.base_widget import BaseWidget
-from ui_widgets.new_style.text_field import TextField
 
 from ui_widgets.old_style.widget_locators.calender_locators import CalenderLocators
 
@@ -14,7 +13,6 @@ log = logger.get_logger(__name__)
 class CalendarField(BaseWidget):
     def __init__(self, label, index):
         super().__init__(label, index)
-        self.text_widget = TextField(label, index)
 
     @property
     def locator(self):
@@ -23,18 +21,20 @@ class CalendarField(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::p-calendar/span/input"
         }
 
-    def initial_widgets(self):
-        self.text_widget.set_web_element(self.web_element)
+    def set_web_element(self, web_element):
+        self.web_element = web_element
+        self.text_widget = self.create_widget('TextField', label=self.label, index=self.index)
+        self.set_widget_web_element(self.text_widget)
 
     def date_by_select_day_year(self, day, year):
         select_year = self.web_element.find_element(*CalenderLocators.year)
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
-        day = WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((CalenderLocators.day(day))))
-        day.click()
         WebDriverWait(self.web_element, 10).until(
-            EC.invisibility_of_element(day))
+            EC.element_to_be_clickable((CalenderLocators.day(day)))).click()
+        # todo check the wait its takes a lot of time
+        WebDriverWait(self.web_element, 10).until(
+            EC.invisibility_of_element(CalenderLocators.day(day)))
 
     def select_all_date(self, date):
         try:

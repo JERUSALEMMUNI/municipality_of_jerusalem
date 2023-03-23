@@ -95,7 +95,7 @@ class PhotoPermission(BasePage):
         self.widgets["שם הגורם עבורו מתבצע הצילום"].set_text("ככגדכגד")
         # self.widgets["סוג המדיה"].select_element('אחר')
         # self.widgets["פירוט"].set_text("דיכחןגלכח")
-        self.widgets["סוג המדיה"].select_element('קליפ')
+        self.widgets["סוג המדיה"].select_element('סרט סטודנטים')
         self.widgets["תיאור הצילום"].set_text("גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
         self.widgets["המשך"].click_button()
 

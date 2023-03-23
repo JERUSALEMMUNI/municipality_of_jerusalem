@@ -122,7 +122,7 @@ class HoldersExchange(BasePage):
         self.widgets['תאריך כניסה'] = create_widget('TextNumberField', style=self.style, label='תאריך כניסה')
         self.widgets['הערות'] = create_widget('TextAreaField', style=self.style, label='הערות', index=2)
         self.widgets['סוג הנכס'] = create_widget('ButtonGroup', style=self.style, label="סוג הנכס")
-        self.widgets['מי מגיש הבקשה?'] = create_widget('ButtonGroup', style=self.style, label="מי מגיש הבקשה?")
+        self.widgets['מי מגיש הבקשה?'] = create_widget('ButtonGroup', style=self.style, label="מגיש הבקשה: ")
         self.widgets['מהי הפעולה המבוקשת?'] = create_widget('ButtonGroup', style=self.style,
                                                             label="מהי הפעולה המבוקשת?")
         self.widgets['האם בעל הנכס הוא המחזיק הנוכחי?'] = create_widget('ButtonGroup', style=self.style,
@@ -150,6 +150,7 @@ class HoldersExchange(BasePage):
         self.widgets['יפוי כח'] = create_widget('UploadFile', style=self.style, label='יפוי כח')
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
         self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
+        self.widgets['מגיש הבקשה'] = create_widget('ButtonGroup', style=self.style, label="מגיש הבקשה")
 
     def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי נכס":

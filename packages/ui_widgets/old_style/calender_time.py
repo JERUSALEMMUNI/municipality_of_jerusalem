@@ -6,7 +6,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger, config
 from ui_widgets.old_style.calendar_field import CalendarField
 from ui_widgets.old_style.widget_locators.calender_clock_locatores import CalenderClockLocators
-from ui_widgets.old_style.widget_locators.calender_locators import CalenderLocators
 
 log = logger.get_logger(__name__)
 
@@ -22,7 +21,7 @@ class CalendarClock(CalendarField):
         year = new_date[2]
 
         for i in range(12):
-            select_month = self.web_element.find_element(*CalenderLocators.month)
+            select_month = self.web_element.find_element(*CalenderClockLocators.click_months)
             if select_month.text != config.months[month]:
                 WebDriverWait(self.web_element, 10).until(
                     EC.presence_of_element_located(CalenderClockLocators.click_months)).click()
