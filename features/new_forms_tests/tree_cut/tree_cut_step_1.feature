@@ -43,4 +43,5 @@ Feature: TreeCut form - scenarios step 1
     When fill "450-ds232" as invalid value in "טלפון קווי"
     When write an invalid value "TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When goto "א נחscdיל" from "רחוב"
-    When write an invalid number "dsa1dada" in "מספר בית"
+    When write a valid number "dsa1dada" in "מספר בית"
+    Then validate if "מספר בית" number is "1"
