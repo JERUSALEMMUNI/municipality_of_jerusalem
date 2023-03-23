@@ -9,9 +9,9 @@ Feature: TreeCut form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
 
-
+  @wisam
   Scenario: TC_TREECUT_04 - Checking "personal details" fields with correct details
-    When goto "א נחיל" from "רחוב"
+    When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
@@ -23,7 +23,7 @@ Feature: TreeCut form - scenarios step 2
 
 
   Scenario: TC_TREECUT_05 - Checking "personal details" fields with correct details
-    When goto "א נחיל" from "רחוב"
+    When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
@@ -34,9 +34,8 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "png_to_upload.png" file in "אחר"
 
-  @wisam
   Scenario: TC_TREECUT_06 - Checking "personal details" fields with correct details
-    When goto "א DSDנחיל" from "רחוב"
+    When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"

@@ -25,10 +25,10 @@ class PhoneField(BaseWidget):
         self.web_element = web_element
         dropdown_element = self.web_element.find_element(*PhoneFieldLocators.drop_down)
         self.dropdown_widget = self.create_widget('Dropdown', label=self.label, index=self.index)
-        self.set_widget_web_element(self.dropdown_widget,dropdown_element)
+        self.set_widget_web_element(self.dropdown_widget, dropdown_element)
         text_element = self.web_element.find_element(*PhoneFieldLocators.text_element)
         self.text_widget = self.create_widget('TextField', label=self.label, index=self.index)
-        self.set_widget_web_element(self.text_widget,text_element)
+        self.set_widget_web_element(self.text_widget, text_element)
 
     def set_prefix_number(self, start_phone):
         self.dropdown_widget.click_button()
@@ -51,6 +51,18 @@ class PhoneField(BaseWidget):
     @property
     def is_valid(self):
         return self.text_widget.is_valid, self.dropdown_widget.option_status
+
+    def is_valid_number(self):
+        return self.text_widget.is_valid
+
+    def is_valid_prefix(self):
+        return self.dropdown_widget.option_status
+
+    def is_invalid_number(self):
+        return self.text_widget.is_invalid
+
+    def is_invalid_prefix(self):
+        return self.dropdown_widget.option_status
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*PhoneFieldLocators.error_msg)

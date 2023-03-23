@@ -110,24 +110,6 @@ def scroll_to_element(context, widget_name):
     assert "No results found" in widget.get_search_result_if_empty()
 
 
-@when('goto "{option_value}" from "{widget_name}"')
-def search_(context, option_value, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    try:
-        widget.search_element(option_value)
-    finally:
-        widget.close()
-
-
-@when('from parent "{parent}" goto "{option_value}" from "{widget_name}"')
-def search_(context, parent, option_value, widget_name):
-    widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    try:
-        widget.search_element(option_value)
-    finally:
-        widget.close()
-
-
 @then('validate "{widget_name}" has "{option_value}" in list')
 def scroll_to_element(context, widget_name, option_value):
     widget = context._config.current_page.widgets[widget_name]
@@ -205,7 +187,7 @@ def validate_if_option_is_selected(context, widget_name):
         raise AssertionError("Selected values doesn't equal the shown list of values under field")
 
 
-@when('search and pick "{option_value}" in search field "{widget_name}"')
+@when('search valid value and pick "{option_value}" in search field "{widget_name}"')
 def search_and_pick_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     try:
@@ -213,10 +195,10 @@ def search_and_pick_in_search_field(context, option_value, widget_name):
             log.info(f'option [{option_value}] is selected correctly')
             rep.add_label_to_step("Chosen option is selected correctly",
                                   f"Chosen option [{option_value}] is selected correctly")
-        if widget.get_search_result_if_empty():
+        elif widget.get_search_result_if_empty():
             rep.add_label_to_step("Chosen option is not in list",
                                   f"Chosen option [{option_value}] is not found in list")
-            raise KeyError('Chosen option is not in list')
+            raise AssertionError('Chosen option is not in list')
     finally:
         widget.close()
 
@@ -226,24 +208,42 @@ def search_and_pick_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     try:
         if widget.search_and_pick_first_element_and_validate(option_value):
-            rep.add_label_to_step('Invalid option is selected',
+            rep.add_label_to_step('Option is selected',
                                   'The chosen value is considered invalid and there was a selection from list')
             raise AssertionError('The chosen value is considered invalid and there was a selection from list')
-        if widget.get_search_result_if_empty():
+        elif widget.get_search_result_if_empty():
             rep.add_label_to_step("Chosen option is not in list",
                                   f"Chosen option [{option_value}] is not found in list")
-        else:
-            rep.add_label_to_step('Invalid option is selected',
-                                  'The chosen value is considered invalid and there was a selection from list')
-            raise AssertionError('The chosen value is considered invalid and there was a selection from list')
     finally:
         widget.close()
 
 
-@when('from parent "{parent}" search and pick "{option_value}" in search field "{widget_name}"')
+@when('from parent "{parent}" search valid value and pick "{option_value}" in search field "{widget_name}"')
 def search_and_pick_in_search_field(context, parent, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.search_and_pick_first_element_and_validate(option_value)
-    if widget.get_search_result_if_empty():
-        rep.add_label_to_step("Chosen option is not in list", f"Chosen option [{option_value}] is not found in list")
-        raise KeyError('Chosen option is not in list')
+    try:
+        if widget.search_and_pick_first_element_and_validate(option_value):
+            log.info(f'option [{option_value}] is selected correctly')
+            rep.add_label_to_step("Chosen option is selected correctly",
+                                  f"Chosen option [{option_value}] is selected correctly")
+        elif widget.get_search_result_if_empty():
+            rep.add_label_to_step("Chosen option is not in list",
+                                  f"Chosen option [{option_value}] is not found in list")
+            raise AssertionError('Chosen option is not in list')
+    finally:
+        widget.close()
+
+
+@when('from parent "{parent}" search invalid value and pick "{option_value}" in search field "{widget_name}"')
+def search_and_pick_in_search_field(context, parent, option_value, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    try:
+        if widget.search_and_pick_first_element_and_validate(option_value):
+            rep.add_label_to_step('Invalid option is selected',
+                                  'The chosen value is considered invalid and there was a selection from list')
+            raise AssertionError('The chosen value is considered invalid and there was a selection from list')
+        elif widget.get_search_result_if_empty():
+            rep.add_label_to_step("Chosen option is not in list",
+                                  f"Chosen option [{option_value}] is not found in list")
+    finally:
+        widget.close()

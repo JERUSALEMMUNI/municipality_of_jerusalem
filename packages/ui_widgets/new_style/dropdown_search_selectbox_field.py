@@ -148,7 +148,7 @@ class DropdownSearchSelectBox(DropdownSearch):
             selection = False
         return prefix.text, selection
 
-    def clear(self):
+    def clear(self, index=None):
         try:
             self.clear_selected_items()
         finally:

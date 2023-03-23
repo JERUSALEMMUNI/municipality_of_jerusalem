@@ -43,5 +43,5 @@ class TextAreaField(BaseWidget):
         error_msg = self.web_element.find_element(*TextAreaLocators.error_msg)
         return error_msg.text == error_expected
 
-    def clear(self):
+    def clear(self, index=None):
         self.web_element.clear()

@@ -71,7 +71,7 @@ class TreeCut(BasePage):
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets['מספר בית'].set_text("2")
-        self.widgets['רחוב'].search_element("א נחיל")
+        self.widgets['רחוב'].search_and_pick_first_element_and_validate("א נחיל")
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
 

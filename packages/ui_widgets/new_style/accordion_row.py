@@ -81,7 +81,7 @@ class AccordionRow(BaseWidget):
 
     def choose_item(self, label, txt):
         select = self.make_element_ready_to_action('DropdownSearch', label)
-        select.search_element(txt)
+        select.search_and_pick_first_element_and_validate(txt)
 
     def validate_text_is_valid(self, label):
         text_field = self.make_element_ready_to_action('TextField', label)

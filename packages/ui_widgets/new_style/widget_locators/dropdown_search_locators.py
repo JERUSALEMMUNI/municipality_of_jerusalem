@@ -8,6 +8,9 @@ class DropdownSearchLocators:
     error_msg = (By.XPATH, "./following-sibling::span")
     write_in_search_field = (By.XPATH, f"./div/div/div/input")
     clear_search_field = (By.XPATH, f"//div/div/div/div/input")
+    no_result = (By.XPATH, f".//..//ul[not(cdk-virtual-scroll-viewport)]")
+
+
 
 
     @staticmethod

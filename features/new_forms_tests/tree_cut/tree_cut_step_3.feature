@@ -9,7 +9,7 @@ Feature: TreeCut form - scenarios step 3
   
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "הצהרה"
-    When goto "א נחיל" from "רחוב"
+    When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"

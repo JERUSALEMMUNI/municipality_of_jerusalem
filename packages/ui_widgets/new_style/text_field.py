@@ -38,7 +38,7 @@ class TextField(BaseWidget):
         self.clear()
         self.web_element.send_keys(text)
 
-    def clear(self):
+    def clear(self, index=None):
         self.web_element.clear()
 
     def has_text(self, text):

@@ -32,11 +32,11 @@ def navigate_to_screen(context, screen_name):
     allure.dynamic.link(f'{context._config.current_page.driver.current_url}', "Step link",
                         "click here to see the link of tested step")
 
-    try:
-        #Todo: it takes a long time in pages that doesn't have dialog
-        driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
-    except:
-        pass
+    # try:
+    #     #Todo: it takes a long time in pages that doesn't have dialog
+    #     driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
+    # except:
+    #     pass
 
 
 @given('Navigate to "{screen_name}" form and reach step "{dst_step}"')

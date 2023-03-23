@@ -101,8 +101,8 @@ class StandingOrderRequest(BasePage):
             self.widgets['בית'].set_text('101')
             self.widgets['בעל/ת החשבון שונה ממגיש הבקשה'].choose_value("לא")
             self.widgets['קוד מוטב להקמת ההרשאה'].select_element("ארנונה (792)")
-            self.widgets['בנק'].search_element("9 - בנק הדואר")
-            self.widgets['סניף'].search_element("1-סניף ראשי")
+            self.widgets['בנק'].search_and_pick_first_element_and_validate("9 - בנק הדואר")
+            self.widgets['סניף'].search_and_pick_first_element_and_validate("1-סניף ראשי")
             self.widgets['מספר חשבון'].set_text('25783770')
             self.widgets['יום גביה חודשי'].select_element("10")
             self.widgets['צילום תעודת זהות + ספח'].upload_file(

@@ -20,7 +20,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
     When set pin code "email"
 
   Scenario: fill form
-    When goto "א זוהור" from "רחוב"
+    When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid value "1" in "מספר בית"
     When write a valid value "1" in "מספר דירה"
     When write a valid value "1" in "גוש"

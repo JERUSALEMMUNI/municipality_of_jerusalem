@@ -14,22 +14,16 @@ class DropdownSearch(Dropdown):
         super().__init__(label, index, path_locator, step_number)
         self.path_locator = path_locator
 
-    def search_element(self, value_selected):
-        dropDown_open = self.web_element.get_attribute('aria-expanded')
-        if dropDown_open in ('false', None):
-            self.web_element.click()
-        try:
-            element = self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label))
-            element.clear()
-            element.send_keys(value_selected)
+    def search_and_pick_first_element_and_validate(self, value_selected):
+        self.write_in_search_field(value_selected)
+        if not self.get_search_result_if_empty():
             drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()
             result = self.web_element.text
             returnResult = result.splitlines()[0]
             return returnResult
-
-        except:
-            raise AssertionError('Desired value is not found in list')
+        else:
+            log.info("No Result Found")
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found
@@ -76,30 +70,10 @@ class DropdownSearch(Dropdown):
 
     def write_in_search_field(self, text):
         self.click_button()
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located(DropdownSearchLocators.write_in_search_field))
+        element = self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label))
         element.click()
         element.clear()
         element.send_keys(text)
-
-    def search_and_pick_first_element_and_validate(self, text):
-        """
-        This function will click the dropdown menu, then it will clear the search field
-        and will set a text value, after that it will search for that option and click the
-        first value in search result, and validate the result
-        """
-        self.click_button()
-        element = WebDriverWait(self.web_element, 30).until(
-            EC.element_to_be_clickable((By.XPATH, f".//div/div/div/input")))
-        element.click()
-        element.clear()
-        element.send_keys(text)
-        try:
-            self.select_first_element()
-            return True
-        except:
-            log.info("Option is not found")
-            return False
 
     def clear_search_field(self):
         element = WebDriverWait(self.web_element, 30).until(

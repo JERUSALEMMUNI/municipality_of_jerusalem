@@ -30,7 +30,7 @@ class Dropdown(BaseWidget):
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
         if dropDown_open in (None, "false"):
-            self.web_element.click()
+            self.web_element.find_element(By.XPATH, "./..//p-dropdown").click()
 
     def item_search_scroll(self, driver, option_value):
         self.click_button()
