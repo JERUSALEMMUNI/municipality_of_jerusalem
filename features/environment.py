@@ -80,6 +80,8 @@ def before_feature(context, feature):
     log.info(f'----- Start Feature - {feature.name} -----')
     context._config.current_feature = feature
     context._config.current_scenario_index = 0
+    context.user_data['counter_per_scenario'] = 0
+    context.user_data['couldnt_reach_next_page'] = None
 
 
 def before_scenario(context, scenario):
@@ -88,9 +90,19 @@ def before_scenario(context, scenario):
     # if there is a failed step in the scenario, the scenario will continue
     scenario.continue_after_failed_step = True
     context._config.current_scenario = scenario
+    if context.user_data['couldnt_reach_next_page'] == True:
+        if context.user_data['counter_per_scenario'] == 0:
+            context.user_data['counter_per_scenario'] += 1
+        else:
+            context.user_data['couldnt_reach_next_page'] = None
+            context.user_data['counter_per_scenario'] = 0
+
 
 
 def before_step(context, step):
+    if context.user_data['counter_per_scenario'] == 0:
+        if context.user_data['couldnt_reach_next_page'] == True:
+            raise AssertionError('Couldnt reach next step')
     log.info(f'----- Start Step - {step.name} -----')
 
 
@@ -122,7 +134,6 @@ def after_step(context, step):
 def after_scenario(context, scenario):
     current_feature = context._config.current_feature
     current_scenario = context._config.current_scenario
-
     current_scenario_index = context._config.current_scenario_index
     scenario_index = current_feature.scenarios.index(current_scenario)
     current_scenario_index = scenario_index if current_scenario_index < scenario_index else current_scenario_index
