@@ -19,7 +19,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid number "2" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
@@ -55,7 +55,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
@@ -97,7 +97,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
@@ -128,7 +128,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
@@ -160,7 +160,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "בעל הנכס" from "מי מגיש הבקשה?"
@@ -193,7 +193,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -224,7 +224,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -253,7 +253,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -283,7 +283,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -314,7 +314,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
@@ -349,7 +349,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
@@ -390,7 +390,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
@@ -421,7 +421,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
@@ -453,7 +453,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
@@ -486,7 +486,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
@@ -525,7 +525,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
@@ -565,7 +565,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
@@ -601,7 +601,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"
@@ -638,7 +638,7 @@ Feature: HoldersExchange form
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
-    And goto "א טור" from "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
     And write a valid value "3345434453" in "בית"
     And choose "למגורים" from "סוג הנכס"
     And choose "מיופה כח" from "מי מגיש הבקשה?"

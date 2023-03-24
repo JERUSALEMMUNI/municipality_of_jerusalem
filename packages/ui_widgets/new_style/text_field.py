@@ -48,6 +48,9 @@ class TextField(BaseWidget):
     def is_invalid(self):
         return 'ng-invalid' in self.web_element.get_attribute('class')
 
+    def is_invalid_txt(self):
+        return self.is_invalid
+
     @property
     def is_valid(self):
         return 'ng-valid' in self.web_element.get_attribute('class')

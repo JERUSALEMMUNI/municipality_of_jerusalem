@@ -52,13 +52,13 @@ class PhoneField(BaseWidget):
     def is_valid(self):
         return self.text_widget.is_valid, self.dropdown_widget.option_status
 
-    def is_valid_number(self):
+    def is_valid_txt(self):
         return self.text_widget.is_valid
 
     def is_valid_prefix(self):
         return self.dropdown_widget.option_status
 
-    def is_invalid_number(self):
+    def is_invalid_txt(self):
         return self.text_widget.is_invalid
 
     def is_invalid_prefix(self):
@@ -76,6 +76,6 @@ class PhoneField(BaseWidget):
             return True
         return False
 
-    def clear(self):
+    def clear(self, index=None):
         self.text_widget.clear()
         self.dropdown_widget.select_first_element()

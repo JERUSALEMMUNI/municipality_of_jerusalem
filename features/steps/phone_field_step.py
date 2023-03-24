@@ -84,9 +84,9 @@ def write_prefix_phone_number_valid(context, three_digits, widget_name):
     try:
         widget.set_prefix_number(three_digits)
         if not widget.is_invalid_prefix():
-            log.info(f"This value {three_digits} at field {widget_name} can't to select it")
-            rep.add_label_to_step("wrong_value", f"This value {three_digits} at field {widget_name} can't to select it")
-            raise KeyError(f"This value {three_digits} at field {widget_name} can't be selected")
+            log.info(f"This Option {three_digits} at field {widget_name} not in list")
+            rep.add_label_to_step("wrong_value", f"This Option {three_digits} at field {widget_name} not in list")
+            raise KeyError(f"This Option {three_digits} at field {widget_name} not in list")
     finally:
         widget.close()
 
@@ -97,9 +97,9 @@ def write_prefix_phone_number_valid(context, parent, three_digits, widget_name):
     try:
         widget.set_prefix_number(three_digits)
         if not widget.is_invalid_prefix():
-            log.info(f"This value {three_digits} at field {widget_name} can't to select it")
-            rep.add_label_to_step("wrong_value", f"This value {three_digits} at field {widget_name} can't to select it")
-            raise KeyError(f"This value {three_digits} at field {widget_name} can't be selected")
+            log.info(f"This Option {three_digits} at field {widget_name} not in list")
+            rep.add_label_to_step("wrong_value", f"This Option {three_digits} at field {widget_name} not in list")
+            raise KeyError(f"This value {three_digits} at field {widget_name} not in list")
     finally:
         widget.close()
 
@@ -108,7 +108,7 @@ def write_prefix_phone_number_valid(context, parent, three_digits, widget_name):
 def write_phone_number_valid(context, phone_number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.set_phone_number(phone_number)
-    if not widget.is_valid_number():
+    if not widget.is_valid_txt():
         log.info(f"This value {phone_number} at field {widget_name} is considered "
                  f" a valid value but it appeared as invalid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} at field {widget_name} is considered "
@@ -121,7 +121,7 @@ def write_phone_number_valid(context, phone_number, widget_name):
 def write_phone_number_invalid(context, phone_number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.set_phone_number(phone_number)
-    if not widget.is_invalid_number():
+    if not widget.is_invalid_txt():
         log.info(f"This value {phone_number} at field {widget_name} is considered "
                  f" an invalid value but it appeared as valid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} at field {widget_name} is considered "
@@ -134,7 +134,7 @@ def write_phone_number_invalid(context, phone_number, widget_name):
 def write_phone_number_valid(context, parent, phone_number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.set_phone_number(phone_number)
-    if not widget.is_valid_number():
+    if not widget.is_valid_txt():
         log.info(f"This value {phone_number} at field {widget_name} is considered "
                  f" a valid value but it appeared as invalid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} at field {widget_name} is considered "
@@ -147,7 +147,7 @@ def write_phone_number_valid(context, parent, phone_number, widget_name):
 def write_phone_number_invalid(context, parent, phone_number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.set_phone_number(phone_number)
-    if not widget.is_invalid_number():
+    if not widget.is_invalid_txt():
         log.info(f"This value {phone_number} at field {widget_name} is considered "
                  f" an invalid value but it appeared as valid")
         rep.add_label_to_step("wrong_value", f"This value {phone_number} at field {widget_name} is considered "

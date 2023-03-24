@@ -117,7 +117,7 @@ def set_pin_code(context, widget_name):
 @then('check if "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
-    if not widget.is_invalid:
+    if not widget.is_invalid_txt:
         rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
         raise AssertionError("invalid value and considered as valid")
     if not widget.validate_error_message(error_expectation):
