@@ -43,7 +43,6 @@ def navigate_to_screen(context, screen_name):
 def navigate_to_screen_specific_step(context, screen_name, dst_step):
     driver = context._config.driver
     current_page = context.screens_manager.create_screen([screen_name], driver=driver)
-
     if context._config.current_page and context._config.current_page.page_title == current_page.page_title:
         widget = context._config.current_page.widgets["page_steps"]
         current_step_name = widget.get_step_name()
@@ -57,7 +56,7 @@ def navigate_to_screen_specific_step(context, screen_name, dst_step):
 def navigate_to_step_in_screen(context, current_page, dst_step):
     context._config.current_page = None
     context.execute_steps(f'''Given Navigate to "{current_page.page_title}" form''')
-    current_page.fill_form_to_reach_step(dst_step, context.mailbox,context._config.driver,context._config.current_page)
+    current_page.fill_form_to_reach_step(context, dst_step, context.mailbox, context._config.driver, context._config.current_page)
 
 
 @when('checked if "{text}" is the text of "{widget_name}"')
@@ -89,7 +88,6 @@ def field_has_valid_value(context, widget_name):
 
 @when('click on "{widget_name}" option')
 def click_email_option(context, widget_name):
-    time.sleep(4)
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     widget.click_email_option(driver)
@@ -107,7 +105,9 @@ def set_pin_code(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     current_page = context._config.current_page
+    context.user_data['counter_per_scenario'] = 0
     if not widget.set_pin(driver, current_page):
+        context.user_data['couldnt_reach_next_page'] = True
         rep.add_label_to_step('alert message appeared','pin code is correct but alert message appeared and '
                                                        'couldnt reach the next step')
         raise AssertionError('pin code is correct but alert message appeared and '
@@ -170,29 +170,6 @@ def check_email(context, widget_name):
     widget.wait_for_email(mailbox)
 
 
-@When('close ')
-@when('2nd click on link and fill email "{email}" pin code index "{index}"')
-def fill_pincode_and_click_link(context, email, index):
-    # Open the URL in a new window
-    if context.user_data['email_body'] == None:
-        rep.add_label_to_step("No email received", "E-mail is not received")
-        raise AssertionError('No email received')
-    soup = BeautifulSoup(context.user_data['email_body'], 'html.parser')
-    value_div = soup.find('div', {
-        'style': 'direction: rtl; text-align: right;font-size: 20px;font-weight: bold;color : #ec9f0a;'})
-    context.user_data['value'] = value_div.text.strip()
-    if context.user_data['value'] is None:
-        rep.add_label_to_step("No pin code", "pin code is not received from email")
-
-    context._config.driver.execute_script("window.open('{}', '_blank');".format(GeneralLocators.validation_link))
-    context._config.driver.switch_to.window(context._config.driver.window_handles[-1])
-    WebDriverWait(context._config.driver, 30).until(EC.presence_of_element_located(GeneralLocators.form_number))
-    context._config.driver.find_element(*GeneralLocators.form_number).send_keys(context.user_data['value'])
-    context._config.driver.find_element(*GeneralLocators.id_number).send_keys("3327")
-    context._config.driver.find_element(*GeneralLocators.email).send_keys(email)
-    context._config.driver.find_element(*GeneralLocators.send_message_button).click()
-
-
 @when('2nda click on link and fill "{widget_name}" "{email}" pin code index "{index:d}"')
 def fill_pincode_and_click_link(context, widget_name, email, index):
     widget = context._config.current_page.widgets[widget_name]
@@ -222,6 +199,10 @@ def validate_form_email(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
     current_page = context._config.current_page
+    try:
+        driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
+    except:
+        pass
     assert widget.vlidate_form(current_page), 'The form number is not the same'
 
 
@@ -229,25 +210,6 @@ def validate_form_email(context, widget_name):
 def return_to_original_url(context):
     context._config.current_page.navigate_to_page_url()
 
-
-# def wait_for_new_email(context, count_of_emails):
-#     start_time = time.time()
-#     time_for_total_wait = 0
-#     for i in range(15):
-#         start_step = time.time()
-#         if len(context.mailbox.get_messages()) == count_of_emails + 1:
-#             break
-#         time.sleep(3)
-#         end_step = time.time()
-#         waiting_time = (end_step - start_step)
-#         time_diff_rounded = round(waiting_time, 2)
-#         time_for_total_wait = time_diff_rounded + time_for_total_wait
-#         log.info(f'wait for email, {time_for_total_wait} seconds passed')
-#     else:
-#         end_time = time.time()
-#         difference = end_time - start_time
-#         rep.add_label_to_step("e-mail is not received", f"{difference} seconds passed without receiving an E-mail")
-#         # raise ce.MJTimeOutError('no new email received')
 
 @When('clear fields')
 def clear_fields(context):

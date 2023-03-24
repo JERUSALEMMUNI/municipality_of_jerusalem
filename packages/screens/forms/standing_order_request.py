@@ -90,12 +90,12 @@ class StandingOrderRequest(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self,context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי תשלום":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
 
         elif dst_step == "תצהיר ושליחה":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
             self.widgets['חשבון / נכס'].set_text('2121212121')
             self.widgets['כתובת נכס'].set_text('ש')
             self.widgets['בית'].set_text('101')
@@ -113,7 +113,7 @@ class StandingOrderRequest(BasePage):
                 os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
             self.widgets["המשך"].click_button()
 
-    def fill_first_page(self, mailbox, driver, current_page):
+    def fill_first_page(self, context, mailbox, driver, current_page):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["שם פרטי"].set_text("סוהייב")
@@ -121,4 +121,4 @@ class StandingOrderRequest(BasePage):
         self.widgets['טלפון נייד'].set_full_phone('058-8078687')
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
+        self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)

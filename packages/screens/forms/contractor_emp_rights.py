@@ -45,7 +45,7 @@ class ContractorEmpRights(BasePage):
         self.widgets['שלח'] = create_widget('ButtonIcon', style=self.style, label='שלח')
         self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "צרופות והצהרה":
             self.widgets['מספר זהות'].set_text('332796184')
             self.widgets['שם פרטי'].set_text('דני')

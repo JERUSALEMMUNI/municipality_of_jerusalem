@@ -58,18 +58,18 @@ class PhotoPermission(BasePage):
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
         self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי ההפקה":
-            self.navigate_first_page(mailbox, driver, current_page)
+            self.navigate_first_page(context, mailbox, driver, current_page)
         elif dst_step == "פרטי המיקום ומועדי הצילומים":
-            self.navigate_first_page(mailbox, driver, current_page)
+            self.navigate_first_page(context, mailbox, driver, current_page)
             self.navigate_to_second_page(mailbox)
         elif dst_step == "צרופות":
-            self.navigate_first_page(mailbox, driver, current_page)
+            self.navigate_first_page(context, mailbox, driver, current_page)
             self.navigate_to_second_page(mailbox)
             self.navigate_to_third_page()
 
-    def navigate_first_page(self, mailbox, driver, current_page):
+    def navigate_first_page(self,context, mailbox, driver, current_page):
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets["סוג זיהוי"].select_element('ת.ז.')
@@ -79,7 +79,7 @@ class PhotoPermission(BasePage):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
+        self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
 
         # self.widgets["email"].click_email_option(driver)
         # self.widgets["email"].wait_for_email(mailbox)

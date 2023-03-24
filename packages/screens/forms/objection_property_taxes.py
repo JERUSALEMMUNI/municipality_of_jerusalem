@@ -104,12 +104,12 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
         self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס וסיבת ההשגה":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
 
         elif dst_step == "תצהיר ושליחה":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
             self.widgets['בעל/ת הנכס שונה ממגיש הבקשה'].choose_value('לא')
             self.widgets['סוג חשבון / נכס'].select_element('מספר חשבון')
             self.widgets['חשבון / נכס'].set_text('3423423432')
@@ -121,7 +121,7 @@ class ObjectionPropertyTaxes(BasePage):
             self.widgets['נא פרט את הטענה'].set_text('שטח')
             self.widgets["המשך"].click_button()
 
-    def fill_first_page(self, mailbox, driver, current_page):
+    def fill_first_page(self,context, mailbox, driver, current_page):
         self.widgets['שם פרטי'].set_text('דני')
         self.widgets['שם משפחה'].set_text('גלעד')
         self.widgets['סוג זיהוי'].select_element('דרכון')
@@ -130,4 +130,4 @@ class ObjectionPropertyTaxes(BasePage):
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets['ממלא ההשגה'].select_element('המחזיק')
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
+        self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)

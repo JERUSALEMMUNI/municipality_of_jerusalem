@@ -68,7 +68,7 @@ class TransferDogOwnership(BasePage):
         self.widgets['שלח'] = create_widget('ButtonIcon', style=self.style, label='שלח')
         self.widgets['המשך'] = create_widget('ButtonIcon', style=self.style, label='המשך')
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הכלב":
             self.navigate(mailbox)
 

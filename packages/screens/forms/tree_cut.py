@@ -46,12 +46,12 @@ class TreeCut(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
 
-    def fill_form_to_reach_step(self, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self,context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הבקשה":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
 
         elif dst_step == "הצהרה":
-            self.fill_first_page(mailbox, driver, current_page)
+            self.fill_first_page(context, mailbox, driver, current_page)
             # current_page = "פרטי הבקשה"
             # self.widgets['רחוב'].search_element("א נחיל")
             # self.widgets['מספר בית']['פרטי הבקשה'].set_text("101")
@@ -63,7 +63,7 @@ class TreeCut(BasePage):
             # self.widgets['האם מדובר בבית משותף?'].choose_value('לא')
             # self.widgets["המשך"].click_button()
 
-    def fill_first_page(self, mailbox, driver, current_page):
+    def fill_first_page(self, context, mailbox, driver, current_page):
         self.widgets["סוג זיהוי"].select_element('דרכון')
         self.widgets["מספר דרכון"].set_text('332796184')
         self.widgets["שם פרטי"].set_text("סוהייב")
@@ -73,5 +73,5 @@ class TreeCut(BasePage):
         self.widgets['מספר בית'].set_text("2")
         self.widgets['רחוב'].search_and_pick_first_element_and_validate("א נחיל")
         self.widgets["המשך"].click_button()
-        self.widgets["email"].go_to_next_step(driver, mailbox, current_page)
+        self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
 
