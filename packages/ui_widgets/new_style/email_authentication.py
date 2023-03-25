@@ -222,12 +222,20 @@ class EmailAuthentication(BaseWidget):
             return True
 
     def click_email_option(self, driver):
-        WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['select_email_option']))
-        driver.find_element(*EmailAuthenticationConstants.email_dict['select_email_option']).click()
+        try:
+            WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
+                EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['select_email_option']))
+            driver.find_element(*EmailAuthenticationConstants.email_dict['select_email_option']).click()
+            return True
+        except:
+            return False
 
     def go_to_next_step(self, context, driver, mailbox, current_page):
-        self.click_email_option(driver)
+        if not self.click_email_option(driver):
+            context.user_data['counter_per_scenario'] = 0
+            context.user_data['couldnt_reach_next_page'] = True
+            rep.add_label_to_step('Didnt click the button', 'Didnt click on email option button')
+            raise AssertionError('Didnt click the button')
         self.wait_for_email(mailbox)
         if not self.set_pin(driver, current_page):
             context.user_data['counter_per_scenario'] = 0

@@ -90,7 +90,11 @@ def field_has_valid_value(context, widget_name):
 def click_email_option(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     driver = context._config.driver
-    widget.click_email_option(driver)
+    if not widget.click_email_option(driver):
+        context.user_data['counter_per_scenario'] = 0
+        context.user_data['couldnt_reach_next_page'] = True
+        rep.add_label_to_step('Didnt click the button', 'Didnt click on email option button')
+        raise AssertionError('Didnt click the button')
 
 
 @when('close "{widget_name}" dialog')
