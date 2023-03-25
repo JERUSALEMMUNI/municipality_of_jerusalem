@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class DropdownSearchLocators:
     drop = (By.XPATH, "//p-dropdownitem")
     item_search_scroll = (By.XPATH, "//div//ul/cdk-virtual-scroll-viewport")
-    get_search_result_if_empty = (By.XPATH, f".//div/div/div//li")
+    get_search_result_if_empty = (By.XPATH, f".//li")
     error_msg = (By.XPATH, "./following-sibling::span")
     write_in_search_field = (By.XPATH, f"./div/div/div/input")
     clear_search_field = (By.XPATH, f"//div/div/div/div/input")

@@ -20,8 +20,8 @@ class DropdownSearch(Dropdown):
             drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()
             result = self.web_element.text
-            returnResult = result.splitlines()[0]
-            return returnResult
+            return_result = result.splitlines()[0]
+            return return_result
         else:
             log.info("No Result Found")
 
@@ -85,7 +85,7 @@ class DropdownSearch(Dropdown):
         # self.click_button()
         element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
-        return element.text == "No results found"
+        return element.text in ("No results found","לא נמצאו תוצאות")
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)
