@@ -153,7 +153,7 @@ def after_scenario(context, scenario):
             log.warning(f'{scenario_log_file} - {e.args[0]}')
 
         for step in scenario.steps:
-            if step.exception and 'assert' not in str(type(step.exception)):
+            if step.exception and type(step.exception) is not AssertionError:
                 context.screens_manager.screens = {}
                 context._config.current_page = None
                 break
