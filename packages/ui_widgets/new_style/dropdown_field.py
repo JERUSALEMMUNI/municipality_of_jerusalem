@@ -86,14 +86,6 @@ class Dropdown(BaseWidget):
         return returnResult == option
 
     @property
-    def read_text_value(self):
-        return self.web_element.find_element(*DropdownLocators.read_text).text
-
-    @property
-    def check_if_open(self):
-        return 'open' in self.web_element.find_element(*DropdownLocators.check_if_open).get_attribute('class')
-
-    @property
     def get_text(self):
         return self.web_element.get_attribute('value')
 
@@ -118,10 +110,12 @@ class Dropdown(BaseWidget):
 
     def close(self):
         dropDown_open = self.web_element.find_element(By.XPATH, ".//..//input").get_attribute('aria-expanded')
-        if dropDown_open in ('true', "True"):
+        if dropDown_open.lower() == 'true':
             self.web_element.click()
+            # WebDriverWait(self.web_element, 10).until(EC.attributeContains(By.xpath(dropDown_open), "aria-expanded", "false"))
             return True
         return False
+
 
     @property
     def option_status(self):

@@ -70,14 +70,14 @@ class DropdownSearch(Dropdown):
 
     def write_in_search_field(self, text):
         self.click_button()
-        element = self.web_element.find_element(*DropdownSearchLocators.dropdown(self.label))
+        element = self.web_element.find_element(*DropdownSearchLocators.search_field)
         element.click()
         element.clear()
         element.send_keys(text)
 
     def clear_search_field(self):
         element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located(DropdownSearchLocators.clear_search_field))
+            EC.visibility_of_element_located(*DropdownSearchLocators.search_field))
         element.click()
         element.clear()
 
@@ -85,7 +85,7 @@ class DropdownSearch(Dropdown):
         # self.click_button()
         element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
-        return element.text in ("No results found","לא נמצאו תוצאות")
+        return element.text in ("No results found", "לא נמצאו תוצאות")
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)

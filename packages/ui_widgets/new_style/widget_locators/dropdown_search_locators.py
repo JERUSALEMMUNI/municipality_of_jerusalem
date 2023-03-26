@@ -2,23 +2,12 @@ from selenium.webdriver.common.by import By
 
 
 class DropdownSearchLocators:
-    drop = (By.XPATH, "//p-dropdownitem")
-    item_search_scroll = (By.XPATH, "//div//ul/cdk-virtual-scroll-viewport")
-    get_search_result_if_empty = (By.XPATH, f".//li")
+    drop = (By.XPATH, ".//p-dropdownitem")
+    item_search_scroll = (By.XPATH, "./..//cdk-virtual-scroll-viewport")
+    get_search_result_if_empty = (By.XPATH, ".//li")
     error_msg = (By.XPATH, "./following-sibling::span")
-    write_in_search_field = (By.XPATH, f"./div/div/div/input")
-    clear_search_field = (By.XPATH, f"//div/div/div/div/input")
-    no_result = (By.XPATH, f".//..//ul[not(cdk-virtual-scroll-viewport)]")
-
-
-
-
-    @staticmethod
-    def dropdown(label):
-        return By.XPATH, f"//label[contains(text(),'{label}')]/following-sibling::p-dropdown//*/*/div/input[@type='text']"
+    search_field = (By.XPATH, ".//input[@role='textbox']")
 
     @staticmethod
     def chosen_element(text):
         return By.XPATH, f"//li[@aria-label='{text}']"
-
-

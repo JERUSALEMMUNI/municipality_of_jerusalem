@@ -33,23 +33,23 @@ class DropdownSearchSelectBox(DropdownSearch):
         else:
             return False
 
-    def validate_option_is_not_selected(self, option):
-        if "highlight" not in self.web_element.find_element(
-                *DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
-            return True
-        else:
-            return False
-
-    def count_selected_options(self):
-        if 'invalid' in self.web_element.find_element(
-                *DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
-            return 0
-        else:
-            WebDriverWait(self.web_element, 1).until(
-                EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.wait_list))
-            list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
-            counter = len(list_under_field)
-            return counter
+    # def validate_option_is_not_selected(self, option):
+    #     if "highlight" not in self.web_element.find_element(
+    #             *DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
+    #         return True
+    #     else:
+    #         return False
+    #
+    # def count_selected_options(self):
+    #     if 'invalid' in self.web_element.find_element(
+    #             *DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
+    #         return 0
+    #     else:
+    #         WebDriverWait(self.web_element, 1).until(
+    #             EC.visibility_of_element_located(*DropdownSearchSelectBoxLocators.list))
+    #         list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
+    #         counter = len(list_under_field)
+    #         return counter
 
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute(
@@ -57,7 +57,7 @@ class DropdownSearchSelectBox(DropdownSearch):
         if dropDown_open in (None, "false"):
             self.web_element.click()
         # ToDo: take 10.9 second in multi select search box , fix it
-        WebDriverWait(self.web_element, 10).until(
+        WebDriverWait(self.web_element, 20).until(
             EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
 
     def select_all_checkbox(self):
@@ -89,7 +89,7 @@ class DropdownSearchSelectBox(DropdownSearch):
         self.click_button()
         # We should clear the search field first, so we can uncheck all the list
         element = WebDriverWait(self.web_element, 30).until(
-            EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.clear_selected_items))
+            EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
         element.click()
         element.clear()
         # If the status of the checkbox is false (unchecked) then we have to check it twice.
@@ -108,7 +108,7 @@ class DropdownSearchSelectBox(DropdownSearch):
     def validate_checked_list_count(self):
 
         self.click_button()
-        list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list_under_field)
+        list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
 
         list = []
         for i in list_under_field:
