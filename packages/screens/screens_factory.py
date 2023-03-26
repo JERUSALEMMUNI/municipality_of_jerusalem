@@ -1,7 +1,7 @@
 from infra import logger, reporter
 from screens.forms import contractor_emp_rights, place_container, collective_life_insurance, transfer_dog_ownership, \
     better_tax_ptor, confirmation_for_structure, photo_permission, email_registration, tree_cut, \
-    objection_property_taxes, holders_exchange, standing_order_request, freedom_info
+    objection_property_taxes, holders_exchange, standing_order_request
 
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
@@ -36,7 +36,7 @@ class ScreensFactory(object):
             'ObjectionPropertyTaxes': objection_property_taxes.ObjectionPropertyTaxes,
             'HoldersExchange': holders_exchange.HoldersExchange,
             'StandingOrderRequest': standing_order_request.StandingOrderRequest,
-            'FreedomInfo': freedom_info.FreedomInfo
+            # 'FreedomInfo': freedom_info.FreedomInfo
         }
 
         screens = []

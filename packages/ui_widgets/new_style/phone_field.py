@@ -71,7 +71,7 @@ class PhoneField(BaseWidget):
     def close(self):
         dropDown_open = self.web_element.find_element(By.XPATH, "./..//p-dropdown//input").get_attribute(
             'aria-expanded')
-        if dropDown_open in ('true', "True"):
+        if dropDown_open.lower() == 'true':
             self.web_element.find_element(By.XPATH, "./..//p-dropdown").click()
             return True
         return False

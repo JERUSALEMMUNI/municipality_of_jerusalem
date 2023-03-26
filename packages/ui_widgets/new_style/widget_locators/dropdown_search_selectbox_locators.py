@@ -2,24 +2,21 @@ from selenium.webdriver.common.by import By
 
 
 class DropdownSearchSelectBoxLocators:
-    error_msg = (By.XPATH, "./following-sibling::div/following-sibling::span")
-    read_text_value = (By.XPATH, "./div/div/span")
-    list = (By.XPATH, "//p-multiselect/following-sibling::div/div")
-    wait_list = (By.XPATH, f"//p-multiselect/following-sibling::div/div")
-    dropdown_open = (By.XPATH, "./div/div/input")
-    element_visibility = (By.XPATH, f"//p-multiselect/div/div/div/div/input")
-    element = (By.XPATH, "//p-multiselect//div[@role='checkbox']")
-    all_elements = (By.XPATH, "//p-multiselect//ul/p-multiselectitem/li")
-    clear_selected_items = (By.XPATH, f"//p-multiselect/div/div/div/div/input")
-    element_clear = (By.XPATH, "//p-multiselect//div[@role='checkbox']")
-    list_under_field = (By.XPATH, "//p-multiselect/following-sibling::div/div")
+    error_msg = (By.XPATH, "./../span")
+    read_text_value = (By.XPATH, "./..//span[contains(@class,'label')]")
+    list = (By.XPATH, "./following-sibling::div/div")
+    dropdown_open = (By.XPATH, ".//input")
+    element_visibility = (By.XPATH, "./..//input[@role='textbox']")
+    element = (By.XPATH, ".//div[@role='checkbox']")
+    all_elements = (By.XPATH, "./..//li")
+    element_clear = (By.XPATH, ".//div[@role='checkbox']")
 
 
 
 
-    @staticmethod
+    @property
     def chosen_option(number):
-        return By.XPATH, f"//p-multiselect/following-sibling::div/div[{number}]"
+        return (By.XPATH, f"./following-sibling::div/div[{number}]")
 
     @staticmethod
     def selected_option(option):

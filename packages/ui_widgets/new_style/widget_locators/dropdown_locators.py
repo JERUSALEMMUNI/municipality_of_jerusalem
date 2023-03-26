@@ -2,11 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class DropdownLocators:
-    # dropDown_open = (By.XPATH, "./div/div/input")
     dropDown_open = (By.XPATH, ".//input")
-    item_search_scroll_element = (By.XPATH, "//div/div/div/ul")
-    read_text = (By.XPATH, "./div/span")
-    check_if_open = (By.XPATH, "./div")
+    item_search_scroll_element = (By.XPATH, "./..//ul")
     error_msg = (By.XPATH, "./following-sibling::span")
 
     @staticmethod
