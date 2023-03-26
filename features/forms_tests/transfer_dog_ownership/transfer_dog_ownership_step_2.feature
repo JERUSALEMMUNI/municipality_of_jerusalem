@@ -20,7 +20,7 @@ Feature: TransferDogOwnership form - scenarios step 2
     And pick "2020" from "שנת לידה"
     And choose "כן" from "הכלב מחוסן כנגד מחלת הכלבת?"
     And pick "8/3/2020" from second type of calendar of "תאריך חיסון כלבת אחרון"
-    And search and pick "אבו גוש" in search field "הכלב רשום ברשות המקומית"
+    And search valid value and pick "אבו גוש" in search field "הכלב רשום ברשות המקומית"
     And pick "8/5/2023" from second type of calendar of "תאריך מסירת הכלב"
 
 
