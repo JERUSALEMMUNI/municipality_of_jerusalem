@@ -14,7 +14,7 @@ Feature: TransferDogOwnership form - CheckList scenarios step 1
     And  from parent "פרטי מגיש הבקשה" write a valid value "דגעחוח" in "שם משפחה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל"
     And  from parent "פרטי מגיש הבקשה" fill "052-3366487" as valid value in "מספר טלפון נייד"
-    And  from parent "פרטי מגיש הבקשה" search and pick "א טור" in search field "רחוב"
+    And  from parent "פרטי מגיש הבקשה" search valid value and pick "א טור" in search field "רחוב"
     And  from parent "פרטי מגיש הבקשה" write a valid value "2" in "מספר בית"
     And  from parent "פרטי מגיש הבקשה" write a valid value "1" in "מספר דירה"
     And  from parent "פרטי מגיש הבקשה" write a valid value "3454" in "ת.ד"

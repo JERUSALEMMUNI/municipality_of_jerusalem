@@ -155,7 +155,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And search and pick "<address>" in search field "רחוב"
+    And search valid value and pick "<address>" in search field "רחוב"
     And  from parent "פרטי הצבת המכולה:" write a valid value "<home_number>" in "מספר בית"
     And write a valid value "<apartment_number>" in "מספר דירה"
     Examples:
@@ -171,7 +171,7 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "עוקה" in "שם משפחה"
     And fill "052-4075877" as valid value in "מספר טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "אימייל:"
-    And search and pick "<address>" in search field "רחוב"
+    And search invalid value and pick "<address>" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write an invalid value "<home_number>" in "מספר בית"
     And write an invalid value "<apartment_number>" in "מספר דירה"
     Examples:
@@ -187,10 +187,10 @@ Feature: Test Scenarios for functionality and validation of PlaceContainer form 
     And write a valid value "<last_name>" in "שם משפחה"
     And fill "<phone_number>" as valid value in "מספר טלפון נייד"
     And write a valid value "<email>" in "אימייל:"
-    And search and pick "<address>" in search field "רחוב"
+    And search valid value and pick "<address>" in search field "רחוב"
     And  from parent "כתובת מקום העבודה:" write a valid value "<home_number>" in "מספר בית"
     And write a valid value "<apartment_number>" in "מספר דירה"
-    And search and pick "<container_address>" in search field "רחוב"
+    And search valid value and pick "<container_address>" in search field "רחוב"
     And  from parent "פרטי הצבת המכולה:" write a valid value "<container_home_number>" in "מספר בית"
     #ToDO: this filed has another xpath with div befor the input like the phone field
     And write a valid value "<container_number>" in "מספר מכולה:"
