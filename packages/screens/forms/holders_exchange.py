@@ -1,6 +1,8 @@
 from infra.enums import UIStyle, StepNumber
 from screens.forms.base_page import BasePage
 from ui_widgets.widget_factory import create_widget
+import os
+from infra import config
 
 
 class HoldersExchange(BasePage):
@@ -107,8 +109,6 @@ class HoldersExchange(BasePage):
             'פרטי מחזיק חדש': create_widget('TextField', style=self.style, label='דוא"ל', step_number=StepNumber.FOURTH)
         }
         self.widgets['צילום תעודת זהות + ספח של בעל החשבון'] = {
-            'פרטי מגיש': create_widget('UploadFile', style=self.style, label='צילום תעודת זהות + ספח של בעל החשבון',
-                                       step_number=StepNumber.FIRST),
             'פרטי מחזיק נוכחי': create_widget('UploadFile', style=self.style,
                                               label='צילום תעודת זהות + ספח של בעל החשבון',
                                               step_number=StepNumber.THIRD),
@@ -150,13 +150,36 @@ class HoldersExchange(BasePage):
         self.widgets['יפוי כח'] = create_widget('UploadFile', style=self.style, label='יפוי כח')
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
         self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
-        self.widgets['מגיש הבקשה'] = create_widget('ButtonGroup', style=self.style, label="מגיש הבקשה")
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי נכס":
             self.fill_first_page(context, mailbox, driver, current_page)
 
-    def fill_first_page(self,context, mailbox, driver, current_page):
+        elif dst_step == "פרטי מחזיק נוכחי":
+            self.fill_first_page(context, mailbox, driver, current_page)
+            self.fill_second_page()
+
+        elif dst_step == "פרטי מחזיק חדש":
+            self.fill_first_page(context, mailbox, driver, current_page)
+            self.fill_second_page()
+            self.fill_third_page(driver)
+
+        elif dst_step == "תצהיר ושליחה":
+            self.fill_first_page(context, mailbox, driver, current_page)
+            self.fill_second_page()
+            self.fill_third_page(driver)
+            # self.widgets['שם פרטי'].set_text('דני')
+            # self.widgets['שם משפחה'].set_text('גלעד')
+            # self.widgets['סוג זיהוי'].select_element('דרכון')
+            # self.widgets['מספר דרכון'].set_text('332796182')
+            # self.widgets['טלפון נייד'].set_full_phone('052-8076834')
+            # self.widgets['דוא"ל'].set_text(mailbox.address)
+            # self.widgets['תאריך כניסה'].set_text('22022023')
+            # self.widgets['צילום תעודת זהות + ספח של בעל החשבון'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            # self.widgets['חוזה שבו מופיע תאריך כניסה לדירה'].upload_file(os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            # self.widgets["המשך"].click_button()
+
+    def fill_first_page(self, context, mailbox, driver, current_page):
         self.widgets['שם פרטי'].set_text('דני')
         self.widgets['שם משפחה'].set_text('גלעד')
         self.widgets['סוג זיהוי'].select_element('דרכון')
@@ -165,3 +188,19 @@ class HoldersExchange(BasePage):
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
+
+    def fill_second_page(self):
+        self.widgets['חשבון תושב בארנונה'].set_text('5434533444')
+        self.widgets['רחוב'].select_element('א טור')
+        self.widgets['בית'].set_text('2')
+        self.widgets['סוג הנכס'].choose_value('למגורים')
+        self.widgets['מי מגיש הבקשה?'].choose_value('בעל הנכס')
+        self.widgets['מהי הפעולה המבוקשת?'].choose_value('רישום שוכר חדש')
+        self.widgets["המשך"].click_button()
+
+    def fill_third_page(self, driver):
+        self.widgets['האם בעל הנכס הוא המחזיק הנוכחי?'].choose_value('כן')
+        self.widgets['תאריך עזיבה'].set_text('22022023')
+        # self.widgets['צילום תעודת זהות + ספח של בעל החשבון'].upload_file(
+        #     os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+        # self.widgets["המשך"].click_button()
