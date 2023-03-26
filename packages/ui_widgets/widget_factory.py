@@ -13,7 +13,6 @@ from ui_widgets.old_style import button_field as old_button_field, header_field 
 log = logger.get_logger(__name__)
 
 
-# Todo: add index as input
 def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index=1, path_locator=None, step_number=None):
     widget_mapping = {
         'ButtonIcon': {

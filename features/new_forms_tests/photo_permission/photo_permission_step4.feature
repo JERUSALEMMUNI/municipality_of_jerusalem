@@ -44,6 +44,10 @@ Feature: PhotoPermission form - scenarios step 4
     Then validate name of file "3" is "gif_to_upload.gif" in "צילום ת.ז. / דרכון"
     Then validate size of file "3" in "צילום ת.ז. / דרכון" in accepted
 
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום ת.ז. / דרכון"
+    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "צילום ת.ז. / דרכון"
+    Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
+
     When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
     Then validate name of file "1" is "png_to_upload.png" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
@@ -156,3 +160,27 @@ Feature: PhotoPermission form - scenarios step 4
     When 3rd wait for second "email" to get "קוד האימות" index "2"
     When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
+
+  @test9
+  Scenario: TC_PHOTOPERMIT_09 - "upload invalid files" integrity check
+    When Upload an invalid "excel_to_upload.xlsx" file in "צילום ת.ז. / דרכון"
+    Then check if "צילום ת.ז. / דרכון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "צילום ת.ז. / דרכון"
+    Then check if "צילום ת.ז. / דרכון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "כתב התחייבות"
+    Then check if "כתב התחייבות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "כתב התחייבות"
+    Then check if "כתב התחייבות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "העתק ביטוח צד ג"
+    Then check if "העתק ביטוח צד ג" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "העתק ביטוח צד ג"
+    Then check if "העתק ביטוח צד ג" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "סינופסיס קצר"
+    Then check if "סינופסיס קצר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "סינופסיס קצר"
+    Then check if "סינופסיס קצר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+

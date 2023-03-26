@@ -69,7 +69,7 @@ class PhotoPermission(BasePage):
             self.navigate_to_second_page(mailbox)
             self.navigate_to_third_page()
 
-    def navigate_first_page(self,context, mailbox, driver, current_page):
+    def navigate_first_page(self, context, mailbox, driver, current_page):
         self.widgets["שם פרטי"].set_text("סוהייב")
         self.widgets["שם משפחה"].set_text("אבו גנאם")
         self.widgets["סוג זיהוי"].select_element('ת.ז.')
@@ -81,10 +81,6 @@ class PhotoPermission(BasePage):
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
 
-        # self.widgets["email"].click_email_option(driver)
-        # self.widgets["email"].wait_for_email(mailbox)
-        # self.widgets["email"].set_pin(driver)
-
     def navigate_to_second_page(self, mailbox):
         self.widgets["שם חברת ההפקה"].set_text("ככגדכגד")
         self.widgets['טלפון חברת ההפקה'].set_full_phone('058-8078687')
@@ -93,8 +89,6 @@ class PhotoPermission(BasePage):
         self.widgets['טלפון מתאם ההפקה'].set_full_phone('058-8078687')
         self.widgets["דוא''ל"].set_text(mailbox.address)
         self.widgets["שם הגורם עבורו מתבצע הצילום"].set_text("ככגדכגד")
-        # self.widgets["סוג המדיה"].select_element('אחר')
-        # self.widgets["פירוט"].set_text("דיכחןגלכח")
         self.widgets["סוג המדיה"].select_element('סרט סטודנטים')
         self.widgets["תיאור הצילום"].set_text("גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ")
         self.widgets["המשך"].click_button()
