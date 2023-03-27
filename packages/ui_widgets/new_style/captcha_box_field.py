@@ -2,7 +2,7 @@ import time
 from selenium.webdriver.common.by import By
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.new_style.widget_locators.captcha_box_locators import CaptchaBoxLocator
+
 
 log = logger.get_logger(__name__)
 

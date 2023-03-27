@@ -1,8 +1,4 @@
-from selenium.webdriver.support import expected_conditions as EC
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.old_style.widget_locators.footer_locators import FooterLocators

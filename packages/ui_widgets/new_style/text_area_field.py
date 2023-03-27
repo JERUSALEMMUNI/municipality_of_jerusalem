@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.text_area_locators import TextAreaLocators
@@ -58,7 +57,7 @@ class TextAreaField(BaseWidget):
         return: true if the 2 texts are equal, false if not
         """
         error_msg = self.web_element.find_element(*TextAreaLocators.error_msg)
-        return error_msg.text == error_expected
+        return error_expected in error_msg.text, error_expected == error_msg.text
 
     def clear(self, index=None):
         self.web_element.clear()
