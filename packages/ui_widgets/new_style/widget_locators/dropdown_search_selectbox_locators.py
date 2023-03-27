@@ -14,9 +14,9 @@ class DropdownSearchSelectBoxLocators:
 
 
 
-    @property
+    @staticmethod
     def chosen_option(number):
-        return (By.XPATH, f"./following-sibling::div/div[{number}]")
+        return By.XPATH, f"./following-sibling::div/div[{number}]"
 
     @staticmethod
     def selected_option(option):

@@ -33,7 +33,7 @@ def navigate_to_screen(context, screen_name):
                         "click here to see the link of tested step")
 
     try:
-        #Todo: it takes a long time in pages that doesn't have dialog
+        # Todo: it takes a long time in pages that doesn't have dialog
         driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
     except:
         pass
@@ -56,7 +56,8 @@ def navigate_to_screen_specific_step(context, screen_name, dst_step):
 def navigate_to_step_in_screen(context, current_page, dst_step):
     context._config.current_page = None
     context.execute_steps(f'''Given Navigate to "{current_page.page_title}" form''')
-    current_page.fill_form_to_reach_step(context, dst_step, context.mailbox, context._config.driver, context._config.current_page)
+    current_page.fill_form_to_reach_step(context, dst_step, context.mailbox, context._config.driver,
+                                         context._config.current_page)
 
 
 @when('checked if "{text}" is the text of "{widget_name}"')
@@ -112,10 +113,10 @@ def set_pin_code(context, widget_name):
     context.user_data['counter_per_scenario'] = 0
     if not widget.set_pin(driver, current_page):
         context.user_data['couldnt_reach_next_page'] = True
-        rep.add_label_to_step('alert message appeared','pin code is correct but alert message appeared and '
-                                                       'couldnt reach the next step')
+        rep.add_label_to_step('alert message appeared', 'pin code is correct but alert message appeared and '
+                                                        'couldnt reach the next step')
         raise AssertionError('pin code is correct but alert message appeared and '
-                                                       'couldnt reach the next step')
+                             'couldnt reach the next step')
 
 
 @then('check if "{widget_name}" error is "{error_expectation}"')
@@ -232,3 +233,11 @@ def clear_fields(context):
         except Exception as e:
             log.exception(e)
             log.info(f"the field {widget_name} is empty")
+
+
+@Then('validate if "{widget_name}" is exist')
+def validate_item_present(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    if not widget.is_enable:
+        rep.add_label_to_step("Item is not exist", "The item should be exist in one of the pages but its not ")
+        raise AssertionError("item is not or will not be exist in any page")

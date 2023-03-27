@@ -9,7 +9,7 @@ Feature: PhotoPermission form - scenarios step 4
 
   Background: Background Scenario
     Given Navigate to "PhotoPermission" form and reach step "צרופות"
-
+  @test5
   Scenario: TC_PHOTOPERMIT_05 - "upload files" integrity check
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "png_to_upload.png" in "צילום ת.ז. / דרכון"
@@ -26,15 +26,15 @@ Feature: PhotoPermission form - scenarios step 4
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
     When delete file "jpg_pic_to_upload.jpg" in "צילום ת.ז. / דרכון"
 
-#    When Upload a valid "pdf_to_upload.pdf" file in "צילום ת.ז. / דרכון"
-#    Then validate name of file "1" is "pdf_to_upload.pdf" in "צילום ת.ז. / דרכון"
-#    Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-#    When delete file "pdf_to_upload.pdf" in "צילום ת.ז. / דרכון"
+    When Upload a valid "pdf_to_upload.pdf" file in "צילום ת.ז. / דרכון"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "צילום ת.ז. / דרכון"
+    Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
+    When delete file "pdf_to_upload.pdf" in "צילום ת.ז. / דרכון"
 
-#    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום ת.ז. / דרכון"
-    #    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "צילום ת.ז. / דרכון"
-#    Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-#    When delete file "jpeg_to_upload.jpeg" in "צילום ת.ז. / דרכון"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום ת.ז. / דרכון"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "צילום ת.ז. / דרכון"
+    Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
+    When delete file "jpeg_to_upload.jpeg" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     Then validate name of file "2" is "png_to_upload.png" in "צילום ת.ז. / דרכון"
@@ -71,15 +71,15 @@ Feature: PhotoPermission form - scenarios step 4
     Then validate name of file "3" is "gif_to_upload.gif" in "כתב התחייבות"
     Then validate size of file "3" in "כתב התחייבות" in accepted
 
-    #    When Upload a valid "pdf_to_upload.pdf" file in "כתב התחייבות"
-#    Then validate name of file "1" is "pdf_to_upload.pdf" in "כתב התחייבות"
-#    Then validate size of file "1" in "כתב התחייבות" in accepted
-#    When delete file "pdf_to_upload.pdf" in "כתב התחייבות"
+    When Upload a valid "pdf_to_upload.pdf" file in "כתב התחייבות"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "כתב התחייבות"
+    Then validate size of file "1" in "כתב התחייבות" in accepted
+    When delete file "pdf_to_upload.pdf" in "כתב התחייבות"
 
-#    When Upload a valid "jpeg_to_upload.jpeg" file in "כתב התחייבות"
-    #    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "כתב התחייבות"
-#    Then validate size of file "1" in "כתב התחייבות" in accepted
-#    When delete file "jpeg_to_upload.jpeg" in "כתב התחייבות"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "כתב התחייבות"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "כתב התחייבות"
+    Then validate size of file "1" in "כתב התחייבות" in accepted
+    When delete file "jpeg_to_upload.jpeg" in "כתב התחייבות"
 
     When Upload a valid "png_to_upload.png" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "png_to_upload.png" in "העתק ביטוח צד ג"
@@ -104,17 +104,17 @@ Feature: PhotoPermission form - scenarios step 4
     Then validate name of file "3" is "gif_to_upload.gif" in "העתק ביטוח צד ג"
     Then validate size of file "3" in "העתק ביטוח צד ג" in accepted
 
-    #    When Upload a valid "pdf_to_upload.pdf" file in "העתק ביטוח צד ג"
-#    Then validate name of file "1" is "pdf_to_upload.pdf" in "העתק ביטוח צד ג"
-#    Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-#    When delete file "pdf_to_upload.pdf" in "העתק ביטוח צד ג"
+    When Upload a valid "pdf_to_upload.pdf" file in "העתק ביטוח צד ג"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "העתק ביטוח צד ג"
+    Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
+    When delete file "pdf_to_upload.pdf" in "העתק ביטוח צד ג"
 
-#    When Upload a valid "jpeg_to_upload.jpeg" file in "העתק ביטוח צד ג"
-    #    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "העתק ביטוח צד ג"
-#    Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-#    When delete file "jpeg_to_upload.jpeg" in "העתק ביטוח צד ג"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "העתק ביטוח צד ג"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "העתק ביטוח צד ג"
+    Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
+    When delete file "jpeg_to_upload.jpeg" in "העתק ביטוח צד ג"
 
-      When Upload a valid "png_to_upload.png" file in "סינופסיס קצר"
+    When Upload a valid "png_to_upload.png" file in "סינופסיס קצר"
     Then validate name of file "1" is "png_to_upload.png" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
     When delete file "png_to_upload.png" in "סינופסיס קצר"
@@ -137,15 +137,15 @@ Feature: PhotoPermission form - scenarios step 4
     Then validate name of file "3" is "gif_to_upload.gif" in "סינופסיס קצר"
     Then validate size of file "3" in "סינופסיס קצר" in accepted
 
-    #    When Upload a valid "pdf_to_upload.pdf" file in "סינופסיס קצר"
-#    Then validate name of file "1" is "pdf_to_upload.pdf" in "סינופסיס קצר"
-#    Then validate size of file "1" in "סינופסיס קצר" in accepted
-#    When delete file "pdf_to_upload.pdf" in "סינופסיס קצר"
+    When Upload a valid "pdf_to_upload.pdf" file in "סינופסיס קצר"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "סינופסיס קצר"
+    Then validate size of file "1" in "סינופסיס קצר" in accepted
+    When delete file "pdf_to_upload.pdf" in "סינופסיס קצר"
 
-#    When Upload a valid "jpeg_to_upload.jpeg" file in "סינופסיס קצר"
-    #    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "סינופסיס קצר"
-#    Then validate size of file "1" in "סינופסיס קצר" in accepted
-#    When delete file "jpeg_to_upload.jpeg" in "סינופסיס קצר"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "סינופסיס קצר"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "סינופסיס קצר"
+    Then validate size of file "1" in "סינופסיס קצר" in accepted
+    When delete file "jpeg_to_upload.jpeg" in "סינופסיס קצר"
 
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     Then validate checkbox of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים" is checked

@@ -12,8 +12,7 @@ log = logger.get_logger(__name__)
 def choose_in_search(context, file_path, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    log.info(file)
-    widget.upload_file(file, context._config.driver)
+    widget.upload_file(file)
     if widget.is_valid:
         log.info("we don't have a warning message")
         rep.add_label_to_step("File type is accepted", "File type is accepted")
@@ -27,7 +26,7 @@ def choose_in_search(context, file_path, widget_name):
 def choose_an_invalid_search(context, file_path, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    widget.upload_file(file, context._config.driver)
+    widget.upload_file(file)
     if widget.is_invalid:
         log.info(f"This file is considered an invalid file and this correct")
         rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
@@ -57,7 +56,7 @@ def choose_in_search(context, parent, file_path, widget_name):
 def choose_an_invalid_search(context, parent, file_path, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    widget.upload_file(file, context._config.driver)
+    widget.upload_file(file)
     if widget.is_invalid:
         log.info(f"This file is considered an invalid file but it appeared as valid")
         rep.add_label_to_step("failure reason",

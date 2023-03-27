@@ -11,9 +11,13 @@ class WidgetsDict(dict):
         widget = super(WidgetsDict, self).__getitem__(key)
         if type(widget) is dict:
             widget = widget.get(self.current_step, list(widget.values())[0])
-
-        web_element = self.driver.find_elements(widget.locator['By'], widget.locator['Value'])[widget.index - 1]
-        widget.set_web_element(web_element)
+        # todo:add error index out of range exception with proper comment on which widget we except error
+        list_of_elements = self.driver.find_elements(widget.locator['By'], widget.locator['Value'])
+        if len(list_of_elements) > 0:
+            web_element = list_of_elements[widget.index - 1]
+            widget.set_web_element(web_element)
+        else:
+            raise KeyError(f"Cannot find widget {key} in page")
         if wait_for_element:
             self.driver.wait_for_presence_of_element(widget.locator['By'], widget.locator['Value'])
         return widget

@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.old_style.widget_locators.upload_file_locators import UploadFilesLocators
@@ -15,11 +14,11 @@ class UploadFile(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/../following-sibling::div//input"
+            'Value': f"//label[contains(text(),'{self.label}')]/ancestor::div[@class='row']"
         }
 
-    def upload_file(self, path, driver):
-        file_input = driver.find_element(self.locator["By"], self.locator["Value"])
+    def upload_file(self, path):
+        file_input = self.web_element.find_element(By.XPATH, './/input')
         file_input.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
@@ -66,21 +65,20 @@ class UploadFile(BaseWidget):
             self.delete_file(1)
 
     def validate_warning_message(self):
-        warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+        warning_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
         if ('סוג קובץ אינו חוקי') in warning_msg.text:
             return True
 
     @property
     def is_invalid(self):
-        msg = self.web_element.find_elements(By.XPATH, f"./ancestor::core-file-upload//p-messages[not(div)]")
+        msg = self.web_element.find_elements(*UploadFilesLocators.is_invalid)
         if len(msg) == 0:
             return False
 
     @property
     def is_valid(self):
         file_types = ["bmp", "gif", "png", "jpg", "jpeg", "doc", "docx", "pdf", "xlsx", "xls"]
-        element = self.web_element.find_elements(By.XPATH,
-                                                 f"./ancestor::core-file-upload//p-messages/following-sibling::div/div/div")
+        element = self.web_element.find_elements(*UploadFilesLocators.is_valid)
         for i in element:
             log.info(i.text)
             log.info(((i.text).split(".")[1]).split(" ")[0])

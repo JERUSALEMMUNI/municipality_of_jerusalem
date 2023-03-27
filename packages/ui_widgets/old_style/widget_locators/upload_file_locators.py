@@ -2,21 +2,19 @@ from selenium.webdriver.common.by import By
 
 
 class UploadFilesLocators:
-    error_msg = (By.XPATH,
-                 "./ancestor::div/parent::core-file-upload/parent::div/following-sibling::span")
-
-    list = (By.XPATH, "./../../following-sibling::div")
-    warning_msg = (
-        By.XPATH, "./../../following-sibling::div/p-messages//ul/..//span[contains(@class,'ui-messages-summary')]")
+    error_msg = (By.XPATH, ".//span[@role='alert']")
+    list = (By.XPATH, ".//div[contains(@class,'ui-fileupload-content')]")
+    is_invalid = (By.XPATH, f"./ancestor::core-file-upload//p-messages[not(div)]")
+    is_valid = (By.XPATH, f"./ancestor::core-file-upload//div[contains(@class,'ui-fileupload-row ng-star-inserted')]")
 
     @staticmethod
     def check_file_size_locator(file_index):
-        return By.XPATH, f"./ancestor::div/following-sibling::div//div[{file_index}]/following-sibling::div[2]"
+        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[3]"
 
     @staticmethod
     def check_file_name_locator(file_index):
-        return By.XPATH, f"./ancestor::div/following-sibling::div//div[{file_index}]/following-sibling::div[1]"
+        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[2]"
 
     @staticmethod
     def delete_file_locator(file_index):
-        return By.XPATH, f"./ancestor::div/following-sibling::div//div[{file_index}]/following-sibling::div[3]/button"
+        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[4]/button"

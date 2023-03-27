@@ -106,11 +106,11 @@ class StandingOrderRequest(BasePage):
             self.widgets['מספר חשבון'].set_text('25783770')
             self.widgets['יום גביה חודשי'].select_element("10")
             self.widgets['צילום תעודת זהות + ספח'].upload_file(
-                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"))
             self.widgets['אישור הרשאה לחיוב חשבון'].upload_file(
-                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"))
             self.widgets['אחר'].upload_file(
-                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+                os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"))
             self.widgets["המשך"].click_button()
 
     def fill_first_page(self, context, mailbox, driver, current_page):

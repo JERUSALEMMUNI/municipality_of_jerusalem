@@ -24,28 +24,63 @@ class FooterField(BaseWidget):
         }
 
     def validate_call_us_is_displayed(self):
+        """
+        validate if call us is displayed
+        return: true if it is displayed, false if not
+        """
         return self.web_element.is_displayed()
 
     def get_call_us(self):
+        """
+        get the call us text
+        return: the text
+        """
         return self.web_element.text
 
     def validate_call_us_text(self, call_us):
+        """
+        validate if call us text equal to the expected text
+        return: true if the 2 texts are equal, false if not
+        """
         return self.get_call_us() == call_us
 
     def validate_call_us_with_default(self):
+        """
+        validate if call us text equal to the default text
+        return: true if the 2 texts are equal, false if not
+        """
         return self.get_call_us() == self.call_us
 
     def validate_privacy_policy_is_displayed(self):
+        """
+        validate if privacy policy is displayed
+        return: true if it is displayed, false if not
+        """
         return self.get_element().is_displayed()
 
     def get_element(self):
+        """
+        get element method
+        """
         return self.web_element.find_element(*FooterLocators.footer_element)
 
     def get_privacy_policy(self):
+        """
+        get the privacy policy text
+        return: the text
+        """
         return self.get_element().text
 
     def validate_privacy_policy(self, privacy_policy):
+        """
+        validate if privacy policy text equal to the expected text
+        return: true if the 2 texts are equal, false if not
+        """
         return self.get_privacy_policy() == privacy_policy
 
     def validate_privacy_policy_with_default(self):
+        """
+        validate if privacy_policy text equal to the default text
+        return: true if the 2 texts are equal, false if not
+        """
         return self.get_privacy_policy() == self.privacy_policy

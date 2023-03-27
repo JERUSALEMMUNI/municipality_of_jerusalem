@@ -21,9 +21,9 @@ Feature: TreeCut form - scenarios step 3
     When click on "המשך" button
 
 
-  @firas
-  Scenario: TC_TREECUT_07 - Checking "personal details" fields with correct details
+  Scenario: TC_TREECUT_06 - Filling out a statement
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
+#    When click on "שמור" button
 
 

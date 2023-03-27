@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.upload_file_locators import UploadFilesLocators
@@ -13,7 +12,7 @@ class UploadFile(BaseWidget):
 
     @property
     def locator(self):
-        value = f"//label[contains(text(),'{self.label}')]/../../span/input"
+        value = f"//label[contains(text(),'{self.label}')]/ancestor::div[contains(@class,'p-field')]"
         if self.step_number:
             value = f"//{self.step_number.value}{value}"
         return {
@@ -21,15 +20,19 @@ class UploadFile(BaseWidget):
             'Value': value
         }
 
-    def upload_file(self, path, driver):
-        file_input = driver.find_element(self.locator["By"], self.locator["Value"])
-        file_input.send_keys(path)
+    def upload_file(self, path):
+        """
+        param path: file name
+        return: upload the file
+        """
+        upload_file = self.web_element.find_element(*UploadFilesLocators.upload_file)
+        upload_file.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
-        allowed_extension_values = ['png', 'pdf']
+        allowed_extension_values = ['png', 'pdf', 'gif', 'jpg']
         if file_extenssion in allowed_extension_values:
             extention = True
         else:
@@ -41,11 +44,10 @@ class UploadFile(BaseWidget):
         return extention, same_uploaded
 
     def check_file_size(self, file_index):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index))
-        file_after = file.text.split(" ")
-        file_size_number = file_after[0]
-        file_size_measuring_unit = file_after[1]
-
+        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index)).text
+        final_file = file[1:-1]
+        file_size_measuring_unit = final_file[-2:]
+        file_size_number = final_file[:-2]
         if file_size_measuring_unit == "MB" and file_size_number > 6:
             return False
         return True
@@ -62,14 +64,11 @@ class UploadFile(BaseWidget):
         error_window_msg_part1 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
         error_window_msg_part2 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part2)
         er = error_window_msg_part1.text + " " + error_window_msg_part2.text
-        log.info(er)
-        log.info(error_expected)
-        log.info(er.strip() == error_expected.strip())
         return er.strip() == error_expected.strip()
 
     def validate_warning_message(self):
         try:
-            warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+            warning_msg = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
             if ('סוג הקובץ אינו חוקי') in warning_msg.text:
                 return True
         except:
@@ -89,12 +88,12 @@ class UploadFile(BaseWidget):
 
     @property
     def is_invalid(self):
-        if 'ng-invalid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+        if 'ng-invalid' in self.web_element.find_element(*UploadFilesLocators.is_invalid).get_attribute(
                 'class'):
             return True
 
     @property
     def is_valid(self):
-        if 'ng-valid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+        if 'ng-valid' in self.web_element.find_element(*UploadFilesLocators.is_valid).get_attribute(
                 'class'):
             return True

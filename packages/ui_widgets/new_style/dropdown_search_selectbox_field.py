@@ -15,13 +15,13 @@ class DropdownSearchSelectBox(DropdownSearch):
         super().__init__(label, index)
         self.path_locator = path_locator
 
-    @property
-    def read_text_value(self):
-        return self.web_element.find_element(*DropdownSearchSelectBoxLocators.read_text_value).text
-
-    def validate_chosen_option(self, number):
-        assert self.value == self.web_element.find_element(
-            *DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
+    # @property
+    # def read_text_value(self):
+    #     return self.web_element.find_element(*DropdownSearchSelectBoxLocators.read_text_value).text
+    #
+    # def validate_chosen_option(self, number):
+    #     assert self.value == self.web_element.find_element(
+    #         *DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
 
     def validate_selected_option(self, option):
 

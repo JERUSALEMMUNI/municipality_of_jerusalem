@@ -12,7 +12,6 @@ class ConfirmationForStructure(BasePage):
 
     def fill_need_to_wait_element(self):
         self.main_elements_to_wait_when_load = ['שם פרטי']
-        self.main_elements_to_wait_when_load = ['המשך']
 
     def create_page_widgets(self):
         self.widgets['המשך'] = create_widget('ButtonField', style=self.style, label='המשך')
@@ -28,3 +27,33 @@ class ConfirmationForStructure(BasePage):
         self.widgets['חלקה'] = create_widget('TextField', style=self.style, label='חלקה')
         self.widgets['תת חלקה'] = create_widget('TextField', style=self.style, label='תת חלקה')
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')
+        self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
+                                                                label="אני מודע/ת ומסכים/ה לכך")
+
+
+    def fill_form_to_reach_step(self,context, dst_step, mailbox, driver, current_page):
+        if dst_step == "פרטי הנכס":
+            self.fill_first_page(context, mailbox, driver, current_page)
+
+        elif dst_step == "הזדהות ושליחה":
+            self.fill_first_page(context, mailbox, driver, current_page)
+            # current_page = "פרטי הבקשה"
+            # self.widgets['רחוב'].search_element("א נחיל")
+            # self.widgets['מספר בית']['פרטי הבקשה'].set_text("101")
+            # self.widgets['גוש'].set_text("324")
+            # self.widgets['חלקה'].set_text("907")
+            # self.widgets['רשימת עצים'].upload_file("1", "תמונה של העץ", os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
+            # self.widgets['רשימת עצים'].choose_item("1", "סוג העץ", "הסלע")
+            # self.widgets['סיבת העקירה'].select_element('סכנה')
+            # self.widgets['האם מדובר בבית משותף?'].choose_value('לא')
+            # self.widgets["המשך"].click_button()
+
+    def fill_first_page(self, context, mailbox, driver, current_page):
+        self.widgets["מספר ת.ז."].set_text('332796184')
+        self.widgets["שם פרטי"].set_text("סוהייב")
+        self.widgets["שם משפחה"].set_text("אבו גנאם")
+        self.widgets['טלפון נייד'].set_full_phone('058-8078687')
+        self.widgets['דוא"ל'].set_text(mailbox.address)
+        self.widgets["המשך"].click_button()
+        self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
+

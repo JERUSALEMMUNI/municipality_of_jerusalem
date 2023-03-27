@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.old_style.widget_locators.check_box_locators import CheckBoxLocator

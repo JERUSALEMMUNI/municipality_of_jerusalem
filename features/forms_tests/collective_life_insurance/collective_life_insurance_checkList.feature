@@ -1,5 +1,4 @@
 @in_dev
-    #ToDo : wait for the popup message
 @test
 
 Feature: CollectiveLifeInsurance form - checklist scenarios

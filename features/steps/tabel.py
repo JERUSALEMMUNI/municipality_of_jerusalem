@@ -195,7 +195,7 @@ def remove_item_from_table(context, table_name, items):
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
-    widget.upload_file(row, widget_name, file, context._config.driver)
+    widget.upload_file(row, widget_name, file)
     if widget.is_valid(row, widget_name):
         log.info("we don't have a warning message")
         rep.add_label_to_step("File type is accepted", "File type is accepted")
@@ -209,7 +209,7 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
-    widget.upload_file(row, widget_name, file, context._config.driver)
+    widget.upload_file(row, widget_name, file)
     if widget.is_invalid(row, widget_name):
         log.info(f"This file is considered an invalid file and this correct")
         rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
