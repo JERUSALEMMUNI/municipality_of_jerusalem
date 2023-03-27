@@ -1,4 +1,3 @@
-@in_dev
 Feature: HoldersExchange form step 3
 
   - Form name: חילופי מחזיקים
@@ -46,7 +45,6 @@ Feature: HoldersExchange form step 3
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
     And click on "המשך" button
-
 
   Scenario: TC_HOLDERSEXCH_12 הזנת ערכים שגוים בשדות "פרטי מחזיק נוכחי"
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"

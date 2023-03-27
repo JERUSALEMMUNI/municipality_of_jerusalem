@@ -1,4 +1,3 @@
-@in_dev
 Feature: HoldersExchange form step 2
 
   - Form name: חילופי מחזיקים

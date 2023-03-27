@@ -94,8 +94,7 @@ def before_scenario(context, scenario):
     if context.user_data['couldnt_reach_next_page'] == True:
         if context.user_data['counter_per_scenario'] == 0:
             context.user_data['counter_per_scenario'] += 1
-            #Todo: if this works, retry doesn't apply
-            # scenario.skip(reason='Email Authentication error')
+            scenario.skip(reason='Email Authentication error')
         else:
             context.user_data['couldnt_reach_next_page'] = None
             context.user_data['counter_per_scenario'] = 0

@@ -14,7 +14,6 @@ class TextNumberField(TextField):
 
     def get_element(self):
         if 'תאריך' in self.label:
-            pass
             return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
         else:
             return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
@@ -37,10 +36,7 @@ class TextNumberField(TextField):
         return 'ng-valid' in self.get_element().get_attribute('class')
 
     def validate_error_message(self, error_expected):
-        try:
-            error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
-            return error_msg.text == error_expected
+        error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
+        return error_expected in error_msg.text, error_expected == error_msg.text
 
-        except:
-            AssertionError("This field has no label error message")
 

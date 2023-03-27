@@ -1,4 +1,3 @@
-
 Feature: HoldersExchange form step 5
 
   - Form name: חילופי מחזיקים
@@ -9,8 +8,6 @@ Feature: HoldersExchange form step 5
 
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "תצהיר ושליחה"
-
-
 
 
   Scenario: TC_HOLDERSEXCH_09 הזנת ערכים תקינים בשדות "תצהיר ושליחה"
