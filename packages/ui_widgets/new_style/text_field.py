@@ -54,4 +54,4 @@ class TextField(BaseWidget):
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*TextFieldLocators.error_msg)
-        return error_msg.text == error_expected
+        return error_expected in error_msg.text, error_expected == error_msg.text

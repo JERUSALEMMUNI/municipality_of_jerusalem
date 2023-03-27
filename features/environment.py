@@ -1,6 +1,7 @@
 import copy
 import uuid
 
+import behave
 from behave.model import Scenario
 from behave.model_core import Status
 from webdriver_manager.chrome import ChromeDriverManager
@@ -93,6 +94,8 @@ def before_scenario(context, scenario):
     if context.user_data['couldnt_reach_next_page'] == True:
         if context.user_data['counter_per_scenario'] == 0:
             context.user_data['counter_per_scenario'] += 1
+            #Todo: if this works, retry doesn't apply
+            # scenario.skip(reason='Email Authentication error')
         else:
             context.user_data['couldnt_reach_next_page'] = None
             context.user_data['counter_per_scenario'] = 0
@@ -102,7 +105,8 @@ def before_scenario(context, scenario):
 def before_step(context, step):
     if context.user_data['counter_per_scenario'] == 0:
         if context.user_data['couldnt_reach_next_page'] == True:
-            raise AssertionError('Couldnt reach next step')
+            raise TimeoutError('Couldnt reach next step')
+
     log.info(f'----- Start Step - {step.name} -----')
 
 

@@ -190,6 +190,7 @@ class EmailAuthentication(BaseWidget):
         for i in range(1, num_tabs):
             driver.close()
             driver.switch_to.window(driver.window_handles[-1])
+            time.sleep(1)
             WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
                 EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['email_body_html']))
         driver.switch_to.window(driver.window_handles[0])
