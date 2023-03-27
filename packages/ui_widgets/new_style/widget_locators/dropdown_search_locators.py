@@ -6,7 +6,7 @@ class DropdownSearchLocators:
     item_search_scroll = (By.XPATH, "./..//cdk-virtual-scroll-viewport")
     get_search_result_if_empty = (By.XPATH, ".//li")
     error_msg = (By.XPATH, "./following-sibling::span")
-    search_field = (By.XPATH, ".//input[@role='textbox']")
+    search_field = (By.XPATH, ".//div[contains(@class,'filter-container')]/input")
 
     @staticmethod
     def chosen_element(text):
