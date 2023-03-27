@@ -1,14 +1,14 @@
-Feature: ObjectionPropertyTaxes form - scenarios step 1
+Feature: PlanningInformation form - scenarios step 1
 
-  - Form name: השגה על חיוב בארנונה
-  - Feature file name: objection_property_taxes.feature
-  - Form link: https://jeronlineforms.jerusalem.muni.il/ObjectionPropertyTaxes
+  - Form name: קבלת מידע תכנוני בתשלום לפי סעיף 119א
+  - Feature file name: planning_information.feature
+  - Form link: https://jeronlineforms.jerusalem.muni.il/PlanningInformation
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
 
-  Scenario: TC_OBJECTIONPRO_01 הזנת ערכים תקינים לשדות "פרטי מגיש הבקשה" ממלא ההשגה המחזיק
-    Given Navigate to "ObjectionPropertyTaxes" form
+  Scenario: TC_PLANNINGINFO_01 "הזנת ערכים תקינים לשדות "פרטים אישיים
+    Given Navigate to "PlanningInformation" form
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
     And pick "ת.ז." from "סוג זיהוי"
@@ -20,8 +20,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And click on "המשך" button
 
 
-  Scenario: TC_OBJECTIONPRO_11 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
-    Given Navigate to "ObjectionPropertyTaxes" form
+    Scenario: TC_PLANNINGINFO_05 "הזנת ערכים שגוים לשדות "פרטים אישיים
+    Given Navigate to "PlanningInformation" form
     When write an invalid value "sda" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "asdsad" in "שם משפחה"
@@ -35,3 +35,5 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
+
+

@@ -174,9 +174,6 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
 
-
-
-
   Scenario: TC_EMAILREG_12 type 2 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"

@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.upload_file_locators import UploadFilesLocators
@@ -13,7 +12,7 @@ class UploadFile(BaseWidget):
 
     @property
     def locator(self):
-        value = f"//label[contains(text(),'{self.label}')]/../../span/input"
+        value = f"//label[contains(text(),'{self.label}')]/ancestor::div[contains(@class,'p-field')]"
         if self.step_number:
             value = f"//{self.step_number.value}{value}"
         return {
@@ -21,9 +20,13 @@ class UploadFile(BaseWidget):
             'Value': value
         }
 
-    def upload_file(self, path, driver):
-        file_input = driver.find_element(self.locator["By"], self.locator["Value"])
-        file_input.send_keys(path)
+    def upload_file(self, path):
+        """
+        param path: file name
+        return: upload the file
+        """
+        upload_file = self.web_element.find_element(*UploadFilesLocators.upload_file)
+        upload_file.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
@@ -69,7 +72,7 @@ class UploadFile(BaseWidget):
 
     def validate_warning_message(self):
         try:
-            warning_msg = self.web_element.find_element(*UploadFilesLocators.warning_msg)
+            warning_msg = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
             if ('סוג הקובץ אינו חוקי') in warning_msg.text:
                 return True
         except:
@@ -89,12 +92,12 @@ class UploadFile(BaseWidget):
 
     @property
     def is_invalid(self):
-        if 'ng-invalid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+        if 'ng-invalid' in self.web_element.find_element(*UploadFilesLocators.is_invalid).get_attribute(
                 'class'):
             return True
 
     @property
     def is_valid(self):
-        if 'ng-valid' in self.web_element.find_element(By.XPATH, "./ancestor::lib-file-upload").get_attribute(
+        if 'ng-valid' in self.web_element.find_element(*UploadFilesLocators.is_valid).get_attribute(
                 'class'):
             return True

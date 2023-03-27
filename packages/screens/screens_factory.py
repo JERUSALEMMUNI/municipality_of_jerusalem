@@ -36,7 +36,9 @@ class ScreensFactory(object):
             'ObjectionPropertyTaxes': objection_property_taxes.ObjectionPropertyTaxes,
             'HoldersExchange': holders_exchange.HoldersExchange,
             'StandingOrderRequest': standing_order_request.StandingOrderRequest,
-            # 'FreedomInfo': freedom_info.FreedomInfo
+            'PermitInformation': permit_information.PermitInformation,
+            'PlanningInformation': planning_information.PlanningInformation
+            'FreedomInfo': freedom_info.FreedomInfo
         }
 
         screens = []

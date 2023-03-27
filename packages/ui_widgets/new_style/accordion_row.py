@@ -63,9 +63,9 @@ class AccordionRow(BaseWidget):
         text_field = self.make_element_ready_to_action('TextField', label)
         text_field.set_text(text)
 
-    def upload_file(self, label, file, driver):
+    def upload_file(self, label, file):
         upload = self.make_element_ready_to_action('UploadFile', label)
-        upload.upload_file(file, driver)
+        upload.upload_file(file)
 
     def is_invalid(self, label):
         upload = self.make_element_ready_to_action('UploadFile', label)

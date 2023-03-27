@@ -19,6 +19,9 @@ class CaptchaBox(BaseWidget):
         }
 
     def check_captcha_box(self):
+        """
+        check if the captcha box is unchecked, if true check it
+        """
         if self.validate_captcha_box_is_unchecked():
             self.click_on()
 
@@ -27,14 +30,23 @@ class CaptchaBox(BaseWidget):
         self.web_element.find_element(self.locator['By'], self.locator['Value']).click()
 
     def uncheck_captcha_box(self):
+        """
+        check if the captcha box is checked, if true check it
+        """
         if self.validate_captcha_box_is_checked():
             self.click_on()
 
     def validate_captcha_box_is_checked(self):
+        """
+        validate if captcha box is checked
+        """
         ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
         return "checked" in ele.get_attribute('class')
 
     def validate_captcha_box_is_unchecked(self):
+        """
+        validate if captcha box is unchecked
+        """
         ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
         return "checked" not in ele.get_attribute('class')
 

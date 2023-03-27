@@ -53,9 +53,9 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         widget.set_text(label, text)
 
-    def upload_file(self, row, label, file, driver):
+    def upload_file(self, row, label, file):
         widget = self.create_widget_table_row(row)
-        widget.upload_file(label, file, driver)
+        widget.upload_file(label, file)
 
     def is_invalid(self, row, label):
         widget = self.create_widget_table_row(row)

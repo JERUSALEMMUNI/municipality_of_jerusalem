@@ -9,8 +9,7 @@ Feature: HoldersExchange form step 4
 
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק חדש"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And click on "המשך" button
+
 
 
 
