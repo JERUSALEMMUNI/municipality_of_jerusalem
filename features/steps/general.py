@@ -124,11 +124,16 @@ def error_msg(context, widget_name, error_expectation):
     if not widget.is_invalid:
         rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
         raise AssertionError("invalid value and considered as valid")
-    if not widget.validate_error_message(error_expectation):
-        log.info(f"The error value at field is incorrect")
-        rep.add_label_to_step("incorrect message or missing",
-                              "incorrect or missing error value and considered as valid")
-        raise AssertionError("invalid value and considered as valid")
+    if not widget.validate_error_message(error_expectation)[0]:
+        log.info(f"Incorrect error message")
+        rep.add_label_to_step("incorrect error message",
+                              "incorrect error value")
+        raise AssertionError("incorrect error message")
+    if not widget.validate_error_message(error_expectation)[1]:
+        log.info(f"Missing part of error message")
+        rep.add_label_to_step("Missing part of error message",
+                              "Error message is not complete")
+        raise AssertionError("Missing part of error message")
     rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
