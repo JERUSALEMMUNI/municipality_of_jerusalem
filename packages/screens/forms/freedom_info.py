@@ -22,8 +22,8 @@ class FreedomInfo(BasePage):
         self.widgets['סוג זיהוי'] = create_widget('Dropdown', style=self.style, label='סוג זיהוי')
         self.widgets['מספר ת.ז.'] = create_widget('TextField', style=self.style, label='מספר ת.ז.')
         self.widgets['מספר דרכון'] = create_widget('TextField', style=self.style, label='מספר דרכון')
-        self.widgets['יישוב'] = create_widget('DropdownSearch',style=self.style,label='יישוב')
-        self.widgets['רחוב'] = create_widget('DropdownSearch',style=self.style,label='רחוב: ')
+        self.widgets['יישוב'] = create_widget('DropdownSearch', style=self.style, label='יישוב')
+        self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב: ')
         self.widgets['מספר בית'] = create_widget('TextField', style=self.style, label='מספר בית')
         self.widgets['מיקוד'] = create_widget('TextField', style=self.style, label='מיקוד')
         self.widgets['סוג המידע המבוקש'] = create_widget('Dropdown', style=self.style, label='סוג המידע המבוקש')
@@ -39,28 +39,32 @@ class FreedomInfo(BasePage):
         self.widgets['צילום תעודה מזהה'] = create_widget('UploadFile', style=self.style, label='צילום תעודה מזהה')
         self.widgets['מסמכים נוספים'] = create_widget('UploadFile', style=self.style, label='מסמכים נוספים')
         self.widgets['הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה'] = create_widget('CheckBox', style=self.style,
-                                                                                       label='הנני מתחייב לשאת באגרת '
-                                                                                             'איתור וטיפול באגרת הפקה')
+                                                                                       label='הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה')
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox',
                                                                                                  style=self.style,
-                                                                                                 label="אני מודע/ת "
-                                                                                                       "ומסכים/ה לכך "
-                                                                                                       "שהעירייה תהיה "
-                                                                                                       "רשאית"
-                                                                                                       "להשתמש במידע")
+                                                                                                 label="אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע")
         self.widgets['שמור'] = create_widget('ButtonField', style=self.style, label='שמור')
         self.widgets['שמור טיוטה'] = create_widget('ButtonField', style=self.style, label='שמור טיוטה')
+        self.widgets['מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה'] = create_widget(
+            'UploadFile', style=self.style,
+            label='מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה')
+        self.widgets['תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות'] = create_widget(
+            'UploadFile', style=self.style,
+            label='תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות')
+        self.widgets['מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור'] = create_widget('UploadFile',
+                                                                                                    style=self.style,
+                                                                                                    label='מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור')
+        self.widgets['צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך'] = create_widget(
+            'UploadFile', style=self.style,
+            label='צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך')
+
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
-        if dst_step == "פרטי המגיש":
+        if dst_step == "סוג המידע":
             self.navigate_first_page(context, mailbox, driver, current_page)
-        elif dst_step == "סוג המידע":
-            self.navigate_first_page(context, mailbox, driver, current_page)
-            self.navigate_to_second_page(mailbox)
         elif dst_step == "פרטי הבקשה":
             self.navigate_first_page(context, mailbox, driver, current_page)
-            self.navigate_to_second_page(mailbox)
-            self.navigate_to_third_page()
+            self.navigate_second_page()
 
     def navigate_first_page(self, context, mailbox, driver, current_page):
         self.widgets["שם פרטי"].set_text("סוהייב")
@@ -72,8 +76,7 @@ class FreedomInfo(BasePage):
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
 
-    def navigate_to_second_page(self, mailbox):
-        pass
-
-    def navigate_to_third_page(self):
-        pass
+    def navigate_second_page(self):
+        self.widgets["סוג המידע המבוקש"].select_element('מידע המבוקש על ידי סטודנט/גוף מחקרי')
+        self.widgets["המידע מבוקש על ידי מקבל קצבה"].choose_value('לא')
+        self.widgets["המשך"].click_button()

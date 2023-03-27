@@ -6,8 +6,7 @@ Feature: FreedomInfo form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/FreedomInfo
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי,יישוב,רחוב,מספר בית, מיקוד)
-  @in_dev
-  @test1
+#  @in_dev
   Scenario: TC_FREEDOMINFO_01 - Checking "Presenter details" fields with correct details
     Given Navigate to "FreedomInfo" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -21,7 +20,7 @@ Feature: FreedomInfo form - scenarios step 1
     When write a valid value "11111" in "מיקוד"
     When search valid value and pick "ירוש" in search field "יישוב"
     #todo: choose element not in list
-    When search valid value and pick "אסטורה" in search field "רחוב"
+    When search valid value and pick "א טור" in search field "רחוב"
 
 #    When click on "המשך" button
 #    When write a valid number "0000" in "email"
