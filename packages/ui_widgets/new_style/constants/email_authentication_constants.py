@@ -26,7 +26,7 @@ class EmailAuthenticationConstants:
                      2: (By.XPATH, "//span[contains(text(),'לעדכון הטופס')]/parent::button")},
 
         "click_continue_button": {1: (By.XPATH, '//div[@class="generalBtn"]'),
-                                  2: (By.XPATH, '//span[contains(text(),"המשך")]/parent::button')},
+                                  2: (By.XPATH, '//span[contains(text(),"הודעת מערכת")]/../..//span[contains(text(),"המשך")]/parent::button')},
 
         "validation_link": {1: "https://jerequestatusapi.jerusalem.muni.il/JerSiteStatusApp/#/status/3",
                             2: "https://jerdigistatusapi.jerusalem.muni.il/Client/#/login"},
