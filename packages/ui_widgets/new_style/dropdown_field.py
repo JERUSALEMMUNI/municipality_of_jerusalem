@@ -47,19 +47,29 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        WebDriverWait(self.web_element, 30).until(
-            EC.element_to_be_clickable(
-                (By.XPATH, f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")))
-        list_of_items = self.web_element.find_elements(By.XPATH,
-                                                       f"//label[contains(text(),'{self.label}')]/parent::div//ul//p-dropdownitem")
+        list_of_items = WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_all_elements_located(
+                (self.locator['By'], "//ul//p-dropdownitem")))
         for i in list_of_items:
             if i.text == pre:
                 i.click()
+                WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element_located(i))
                 self.dropdown_selection = True
                 return True
         else:
             log.info("Didn't find option to choose")
             self.dropdown_selection = False
+            return False
+
+    def new_select_element(self, txt):
+        self.click_button()
+        elements = self.web_element.find_elements(self.locator['By'], "//ul//p-dropdownitem")
+        for option in elements:
+            if option.text == txt:
+                option.click()
+                WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element_located(option))
+                break
+        else:
             return False
 
     def select_no_label_dropdown_element(self, pre):
@@ -115,7 +125,6 @@ class Dropdown(BaseWidget):
             # WebDriverWait(self.web_element, 10).until(EC.attributeContains(By.xpath(dropDown_open), "aria-expanded", "false"))
             return True
         return False
-
 
     @property
     def option_status(self):

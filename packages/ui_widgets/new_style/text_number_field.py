@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 from infra import logger
 from ui_widgets.new_style.text_field import TextField
+from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
 
 log = logger.get_logger(__name__)
 
@@ -23,6 +24,10 @@ class TextNumberField(TextField):
         self.web_element.send_keys(text)
         self.web_element.send_keys(Keys.RETURN)
 
+    def is_invalid_txt(self):
+        return self.is_invalid
+
+
     @property
     def is_invalid(self):
         return 'ng-invalid' in self.get_element().get_attribute('class')
@@ -30,3 +35,12 @@ class TextNumberField(TextField):
     @property
     def is_valid(self):
         return 'ng-valid' in self.get_element().get_attribute('class')
+
+    def validate_error_message(self, error_expected):
+        try:
+            error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
+            return error_msg.text == error_expected
+
+        except:
+            AssertionError("This field has no label error message")
+

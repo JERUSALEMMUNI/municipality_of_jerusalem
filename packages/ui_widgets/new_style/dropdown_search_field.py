@@ -20,6 +20,7 @@ class DropdownSearch(Dropdown):
             drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()
             result = self.web_element.text
+            WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element(drop))
             return_result = result.splitlines()[0]
             return return_result
         else:

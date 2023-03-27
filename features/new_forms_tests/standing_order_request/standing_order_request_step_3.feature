@@ -10,6 +10,6 @@ Feature: StandingOrderRequest - scenarios step 3
     Given Navigate to "StandingOrderRequest" form and reach step "תצהיר ושליחה"
 
 
-  Scenario: TC_STANDINGORDEREQ_11 - Checking "personal details" fields with correct details
+  Scenario: TC_STANDINGORDEREQ_7 - Checking "personal details" fields with correct details
     When check the box of "הריני מצהיר/ה בזה כי כל"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"

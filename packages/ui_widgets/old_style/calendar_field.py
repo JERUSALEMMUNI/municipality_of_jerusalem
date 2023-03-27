@@ -30,11 +30,11 @@ class CalendarField(BaseWidget):
         select_year = self.web_element.find_element(*CalenderLocators.year)
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
+        x = WebDriverWait(self.web_element, 10).until(
+            EC.element_to_be_clickable((CalenderLocators.day(day))))
+        x.click()
         WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((CalenderLocators.day(day)))).click()
-        # todo check the wait its takes a lot of time
-        WebDriverWait(self.web_element, 10).until(
-            EC.invisibility_of_element(CalenderLocators.day(day)))
+            EC.invisibility_of_element(x))
 
     def select_all_date(self, date):
         try:

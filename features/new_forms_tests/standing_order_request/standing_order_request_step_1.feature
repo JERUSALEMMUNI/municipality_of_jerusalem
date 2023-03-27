@@ -30,14 +30,20 @@ Feature: StandingOrderRequest form - scenarios step 1
   Scenario: TC_STANDINGORDEREQ_03 - Checking "personal details" fields with incorrect details
     Given Navigate to "StandingOrderRequest" form
     When write an invalid value "dddd" in "שם פרטי"
+    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "dddd" in "שם משפחה"
+    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
     When write an invalid value "dqd2323" in "מספר ת.ז."
+    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When pick "דרכון" from "סוג זיהוי"
     When write an invalid value "ds2323" in "מספר דרכון"
-    When fill "0jj-ds232" as invalid value in "טלפון נייד"
-    When fill "02-ds232" as invalid value in "טלפון קווי"
-    When write an invalid value "sdfghjk" in "דוא"ל"
+    When fill number "80767" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When write an invalid value "כעיחלך" in "דוא"ל"
+    Then check if "דוא"ל" error is "שדה לא תקין"
+    When fill number "80767" as invalid value in "טלפון קווי"
+    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
 
 
 
