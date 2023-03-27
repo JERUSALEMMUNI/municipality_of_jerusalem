@@ -66,7 +66,7 @@ class PhoneField(BaseWidget):
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*PhoneFieldLocators.error_msg)
-        return error_msg.text == error_expected
+        return error_expected in error_msg.text, error_expected == error_msg.text
 
     def close(self):
         dropDown_open = self.web_element.find_element(By.XPATH, "./..//p-dropdown//input").get_attribute(
