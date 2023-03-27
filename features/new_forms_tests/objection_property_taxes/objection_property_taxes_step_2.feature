@@ -26,8 +26,41 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "3/1/2023" from calendar of "תאריך הריסת הנכס"
     And choose "לא" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    And Upload a valid "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
-    And Upload a valid "png_to_upload.png" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
+    When Upload a valid "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "ניתן לצרף מכתב נלווה"
+    Then validate name of file "1" is "gif_to_upload.gif" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "1" in "ניתן לצרף מכתב נלווה" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "2" in "ניתן לצרף מכתב נלווה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "3" in "ניתן לצרף מכתב נלווה" in accepted
+    When delete file "1" in "ניתן לצרף מכתב נלווה"
+    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "1" in "ניתן לצרף מכתב נלווה" in accepted
+    When delete file "1" in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    When Upload a valid "png_to_upload.png" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate name of file "1" is "gif_to_upload.gif" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate size of file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate size of file "2" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate size of file "3" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
+    When delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    Then validate size of file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
+    When delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -38,7 +71,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
     And click on "המשך" button
 
-
+  @firas
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -60,8 +93,42 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "3/1/2023" from calendar of "מועד תחילת הטענה"
     And choose "שטח החיוב שנקבע לנכס שגוי" from "סיבת ההשגה"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
-    And Upload a valid "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
-    And Upload a valid "png_to_upload.png" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
+
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
+    When Upload a valid "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "ניתן לצרף מכתב נלווה"
+    Then validate name of file "1" is "gif_to_upload.gif" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "1" in "ניתן לצרף מכתב נלווה" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "2" in "ניתן לצרף מכתב נלווה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "3" in "ניתן לצרף מכתב נלווה" in accepted
+    When delete file "1" in "ניתן לצרף מכתב נלווה"
+    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "ניתן לצרף מכתב נלווה"
+    Then validate size of file "1" in "ניתן לצרף מכתב נלווה" in accepted
+    When delete file "1" in "ניתן לצרף מכתב נלווה"
+    And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
+
+    And Upload a valid "gif_to_upload.gif" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    When Upload a valid "png_to_upload.png" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate name of file "1" is "gif_to_upload.gif" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate size of file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate size of file "2" in "מומלץ לצרף תשריט / סקיצה מטעמך" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate size of file "3" in "מומלץ לצרף תשריט / סקיצה מטעמך" in accepted
+    When delete file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    And delete file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    And delete file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    Then validate size of file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך" in accepted
+    When delete file "1" in "מומלץ לצרף תשריט / סקיצה מטעמך"
+    And Upload a valid "gif_to_upload.gif" file in "מומלץ לצרף תשריט / סקיצה מטעמך"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -286,7 +353,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
     And click on "המשך" button
 
-  @firas
+
   Scenario: TC_OBJECTIONPRO_12 הזנת ערכים שגויים לשדות "פרטי הנכס וסיבת ההשגה"
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"
@@ -308,13 +375,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "ds/ds/sdfs" from calendar of "תאריך הריסת הנכס"
     And choose "כן" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     And write an invalid value "sdfasdasd" in textarea of "נא פרט את הטענה"
-    Then check if "נא פרט את הטענה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then check if "נא פרט את הטענה" error is "שפת קלט לא תקינה"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
     Then check if "ניתן לצרף מכתב נלווה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When Upload an invalid "!@#$%^&file_to_upload.xlsx" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    When Upload an invalid "zip_to_upload.zip" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     Then check if "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "דו"ח מהנדס"
     Then check if "דו"ח מהנדס" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When I wait for "5" seconds
 
 
 

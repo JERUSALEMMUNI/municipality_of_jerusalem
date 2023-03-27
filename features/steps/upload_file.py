@@ -12,7 +12,6 @@ log = logger.get_logger(__name__)
 def choose_in_search(context, file_path, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    log.info(file)
     widget.upload_file(file)
     if widget.is_valid:
         log.info("we don't have a warning message")

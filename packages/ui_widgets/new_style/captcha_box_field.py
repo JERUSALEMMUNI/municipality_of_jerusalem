@@ -15,7 +15,7 @@ class CaptchaBox(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//strong[contains(text(),'{self.label}')]/../parent::div/p-checkbox"
+            'Value': f"//strong[contains(text(),'{self.label}')]/ancestor::div/p-checkbox/div"
         }
 
     def check_captcha_box(self):

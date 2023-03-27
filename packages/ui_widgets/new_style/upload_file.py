@@ -32,7 +32,7 @@ class UploadFile(BaseWidget):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
-        allowed_extension_values = ['png', 'pdf']
+        allowed_extension_values = ['png', 'pdf', 'gif', 'jpg']
         if file_extenssion in allowed_extension_values:
             extention = True
         else:
@@ -44,11 +44,10 @@ class UploadFile(BaseWidget):
         return extention, same_uploaded
 
     def check_file_size(self, file_index):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index))
-        file_after = file.text.split(" ")
-        file_size_number = file_after[0]
-        file_size_measuring_unit = file_after[1]
-
+        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index)).text
+        final_file = file[1:-1]
+        file_size_measuring_unit = final_file[-2:]
+        file_size_number = final_file[:-2]
         if file_size_measuring_unit == "MB" and file_size_number > 6:
             return False
         return True
@@ -65,9 +64,6 @@ class UploadFile(BaseWidget):
         error_window_msg_part1 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
         error_window_msg_part2 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part2)
         er = error_window_msg_part1.text + " " + error_window_msg_part2.text
-        log.info(er)
-        log.info(error_expected)
-        log.info(er.strip() == error_expected.strip())
         return er.strip() == error_expected.strip()
 
     def validate_warning_message(self):

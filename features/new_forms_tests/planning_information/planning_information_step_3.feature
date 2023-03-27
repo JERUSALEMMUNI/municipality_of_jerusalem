@@ -7,7 +7,7 @@ Feature: PlanningInformation form - scenarios step 3
 
 
   Background: Background Scenario
-    Given Navigate to "PlanningInformation" form and reach step "תצהיר ושליחה"
+    Given Navigate to "PlanningInformation" form and reach step "הצהרה"
 
 
   Scenario: TC_PLANNINGINFO_04 "הזנת ערכים תקינים לשדות "הצהרה

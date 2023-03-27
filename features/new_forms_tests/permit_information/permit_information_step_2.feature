@@ -42,5 +42,5 @@ Feature: PermitInformation form - scenarios step 2
     Then validate if "כמות חלקות רצופות" number is "11"
     When write a valid number "sd11a" in "כמות חלקות בודדות"
     Then validate if "כמות חלקות בודדות" number is "11"
-    When write an invalid value "דגכדגכדגכדגכדגכ" in textarea of "הערות"
+    When write an invalid value "dsfsdfdsf" in textarea of "הערות"
     Then check if "הערות" error is "שפת קלט לא תקינה"

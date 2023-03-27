@@ -16,8 +16,9 @@ Feature: PermitInformation form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    And pick "המחזיק" from "ממלא ההשגה"
     And click on "המשך" button
+
+
 
   Scenario: PERMITINFO_04 הזנת פרטים שגוים בשדות "פרטים אישיים"
     Given Navigate to "PermitInformation" form

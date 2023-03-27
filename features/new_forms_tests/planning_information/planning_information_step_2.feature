@@ -58,6 +58,7 @@ Feature: PlanningInformation form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
     And click on "המשך" button
 
+
   Scenario: TC_PLANNINGINFO_06 type 1 הזנת ערכים שגוים לשדות "פרטי הבקשה"
     When choose "דואר רגיל" from "הדרך המועדפת לקבלת התשובה ופרטים נוספים הנדרשים לבירור"
     And write an invalid value "afdssdf" in "כתובת"
@@ -67,7 +68,7 @@ Feature: PlanningInformation form - scenarios step 2
     When write an invalid value "234234234234234" in "חלקות בודדות"
     Then check if "חלקות בודדות" error is "שדה לא תקין"
     When write an invalid value "sfdadfadfsd" in textarea of "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות"
-    Then check if "כתובת" error is "שפת קלט לא תקינה"
+    Then check if "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות" error is "שפת קלט לא תקינה"
 
 
   Scenario: TC_PLANNINGINFO_06 type 2 הזנת ערכים שגוים לשדות "פרטי הבקשה"
@@ -79,4 +80,4 @@ Feature: PlanningInformation form - scenarios step 2
     When write an invalid value "234234234234234" in "חלקות בודדות"
     Then check if "חלקות בודדות" error is "שדה לא תקין"
     When write an invalid value "sfdadfadfsd" in textarea of "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות"
-    Then check if "כתובת" error is "שפת קלט לא תקינה"
+    Then check if "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות" error is "שפת קלט לא תקינה"

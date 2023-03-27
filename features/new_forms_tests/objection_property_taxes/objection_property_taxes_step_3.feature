@@ -26,7 +26,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     Then check if "עיר" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "asffsd" in "רחוב"
     Then check if "רחוב" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
-    When write an invalid number "sd11a" in "בית"
+    When write a valid number "sd11a" in "בית"
     Then validate if "בית" number is "11"
     When write an invalid value "afdfs" in "מיקוד"
     Then check if "מיקוד" error is "יש להזין ספרות בלבד"

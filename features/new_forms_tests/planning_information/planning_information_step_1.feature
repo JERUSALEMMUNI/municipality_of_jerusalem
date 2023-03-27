@@ -16,11 +16,10 @@ Feature: PlanningInformation form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    And pick "המחזיק" from "ממלא ההשגה"
     And click on "המשך" button
 
 
-    Scenario: TC_PLANNINGINFO_05 "הזנת ערכים שגוים לשדות "פרטים אישיים
+  Scenario: TC_PLANNINGINFO_05 "הזנת ערכים שגוים לשדות "פרטים אישיים
     Given Navigate to "PlanningInformation" form
     When write an invalid value "sda" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"

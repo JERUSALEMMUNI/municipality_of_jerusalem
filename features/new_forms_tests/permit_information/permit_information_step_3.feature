@@ -6,9 +6,8 @@ Feature: PermitInformation form - scenarios step 3
   - Number of Pages is : 3, We are at step: 3
 
 
-
   Background: Background Scenario
-    Given Navigate to "PlanningInformation" form and reach step "תצהיר ושליחה"
+    Given Navigate to "PermitInformation" form and reach step "הצהרה"
 
 
   Scenario: PERMITINFO_03 הזנת פרטים תקינים בשדות "הצהרה"
