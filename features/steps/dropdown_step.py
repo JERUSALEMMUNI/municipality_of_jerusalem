@@ -26,7 +26,7 @@ def pick_element(context, option_value, widget_name):
             rep.add_label_to_step("selected Value", f"{option_value} is selected")
         else:
             rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found in list")
-            raise KeyError('Desired value is not found in list')
+            raise KeyError("Desired value is not found in list")
     finally:
         widget.close()
 
@@ -47,7 +47,7 @@ def pick_element(context, option_value, widget_name):
             rep.add_label_to_step("selected Value", f"{option_value} is selected")
         else:
             rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found in list")
-            raise KeyError('Desired value is not found in list')
+            raise KeyError("Desired value is not found in list")
     finally:
         widget.close()
 
@@ -59,7 +59,7 @@ def pick_element(context, parent, option_value, widget_name):
         rep.add_label_to_step("selected Value", f"{option_value} is selected")
     else:
         rep.add_label_to_step("Didn't find selected option", f"{option_value} is not found in list")
-        raise KeyError('Desired value is not found in list')
+        raise KeyError("Desired value is not found in list")
 
 
 @when('write "{option_value}" in search field "{widget_name}"')

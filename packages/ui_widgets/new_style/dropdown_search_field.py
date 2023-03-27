@@ -1,10 +1,14 @@
+from time import sleep
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from infra import logger
+from infra import logger, enums
 from ui_widgets.new_style.dropdown_field import Dropdown
 from ui_widgets.new_style.widget_locators.dropdown_search_locators import DropdownSearchLocators
+from utils import misc_utils
 
 log = logger.get_logger(__name__)
 
@@ -16,8 +20,9 @@ class DropdownSearch(Dropdown):
 
     def search_and_pick_first_element_and_validate(self, value_selected):
         self.write_in_search_field(value_selected)
+        drop = self.wait_list_streets()
         if not self.get_search_result_if_empty():
-            drop = self.web_element.find_element(*DropdownSearchLocators.drop)
+            # drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()
             result = self.web_element.text
             WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element(drop))
@@ -25,6 +30,11 @@ class DropdownSearch(Dropdown):
             return return_result
         else:
             log.info("No Result Found")
+
+    def wait_list_streets(self):
+        return misc_utils.while_timeout(self.web_element.find_element, True, enums.WaitInterval.SHORT.value,
+                                        'Error getting streets from server', *DropdownSearchLocators.drop
+                                        , w_raise_on_error=False, w_comp_func=lambda a, b: type(a) is not WebElement)
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found
