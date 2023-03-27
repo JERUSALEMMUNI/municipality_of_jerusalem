@@ -6,6 +6,7 @@ Feature: TreeCut form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory of (טלפון קווי)
 
+
   Scenario: TC_TREECUT_01 - Checking "personal details" fields with correct details
     Given Navigate to "TreeCut" form
     When write a valid value "סוהייב" in "שם פרטי"
