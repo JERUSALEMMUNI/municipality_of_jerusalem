@@ -40,15 +40,13 @@ class CaptchaBox(BaseWidget):
         """
         validate if captcha box is checked
         """
-        ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
-        return "checked" in ele.get_attribute('class')
+        return "checked" in self.web_element.get_attribute('class')
 
     def validate_captcha_box_is_unchecked(self):
         """
         validate if captcha box is unchecked
         """
-        ele = self.web_element.find_element(*CaptchaBoxLocator.valid_checker)
-        return "checked" not in ele.get_attribute('class')
+        return "checked" not in self.web_element.get_attribute('class')
 
     @property
     def is_invalid(self):
