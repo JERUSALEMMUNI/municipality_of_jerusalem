@@ -45,20 +45,20 @@ class PhoneField(BaseWidget):
         self.dropdown_widget.select_element(start_phone)
 
     @property
-    def is_invalid(self):
+    def is_invalid_number(self):
         return self.text_widget.is_invalid, self.dropdown_widget.option_status
 
     @property
-    def is_valid(self):
+    def is_valid_number(self):
         return self.text_widget.is_valid, self.dropdown_widget.option_status
 
-    def is_valid_txt(self):
+    def is_valid(self):
         return self.text_widget.is_valid
 
     def is_valid_prefix(self):
         return self.dropdown_widget.option_status
 
-    def is_invalid_txt(self):
+    def is_invalid(self):
         return self.text_widget.is_invalid
 
     def is_invalid_prefix(self):
