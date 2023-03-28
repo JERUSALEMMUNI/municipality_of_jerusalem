@@ -1,5 +1,5 @@
 @in_dev
-Feature: PlanningInformation form - scenarios step 3
+Feature: improvementTax form - scenarios step 3
 
   - Form name: בירור חבות בהיטל השבחה
   - Feature file name: improvement_tax.feature
@@ -10,7 +10,7 @@ Feature: PlanningInformation form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "ImprovementTax" form and reach step "הצהרה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: IMROVEMENTATX_03 הזנת ערכים תקינים בשדות "הצהרה ושליחת הטופס"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
 #    When clear fields

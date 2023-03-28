@@ -1,4 +1,4 @@
-Feature: PlanningInformation form - scenarios step 2
+Feature: improvementTax form - scenarios step 2
 
   - Form name: בירור חבות בהיטל השבחה
   - Feature file name: improvement_tax.feature
@@ -9,7 +9,7 @@ Feature: PlanningInformation form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "ImprovementTax" form and reach step "פרטי הנכס"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: IMROVEMENTATX_02 הזנת ערכים תקינים בשדות "פרטי הנכס"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -36,12 +36,13 @@ Feature: PlanningInformation form - scenarios step 2
 #    And click on "המשך" button
 #    When clear fields
 
-  @firas
+  @Checked_By_Firas_and_Darweesh
   Scenario: IMROVEMENTATX_05 הזנת ערכים שגוים בשדות "פרטי הנכס"
     When write an invalid value "efdfsdfsfd" in "זיהוי נכס (מתוך חשבון הארנונה)"
     Then check if "זיהוי נכס (מתוך חשבון הארנונה)" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "dsfsdf" in search field "רחוב"
-    When write an invalid number "sfs31" in "מספר בית"
+    #Todo: check if message is "לא נמצא תוצאות"
+    When write a valid number "sfs31" in "מספר בית"
     Then validate if "מספר בית" number is "31"
     When write an invalid value "sdfsdfds" in "גוש"
     Then check if "גוש" error is "יש להזין ספרות בלבד"
