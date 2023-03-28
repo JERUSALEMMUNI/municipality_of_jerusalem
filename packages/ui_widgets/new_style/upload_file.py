@@ -32,7 +32,7 @@ class UploadFile(BaseWidget):
         file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
-        allowed_extension_values = ['png', 'pdf', 'gif', 'jpg']
+        allowed_extension_values = ['png', 'pdf', 'gif', 'jpg', 'jpeg', 'bmp']
         if file_extenssion in allowed_extension_values:
             extention = True
         else:
@@ -73,7 +73,7 @@ class UploadFile(BaseWidget):
                 return True
         except:
             log.info("this is error the field dont have a warning message")
-            raise AssertionError("This file is considered an invalid file and this accepted file ")
+            raise AssertionError("This file is considered an invalid file but it appeared as a valid file")
 
     def get_list(self):
         return self.web_element.find_elements(*UploadFilesLocators.list)
@@ -91,6 +91,7 @@ class UploadFile(BaseWidget):
         if 'ng-invalid' in self.web_element.find_element(*UploadFilesLocators.is_invalid).get_attribute(
                 'class'):
             return True
+        return False
 
     @property
     def is_valid(self):
