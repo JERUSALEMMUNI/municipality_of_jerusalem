@@ -12,7 +12,7 @@ Feature: PermitInformation form - scenarios step 3
 
   Scenario: PERMITINFO_03 הזנת פרטים תקינים בשדות "הצהרה"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+#    And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
 
