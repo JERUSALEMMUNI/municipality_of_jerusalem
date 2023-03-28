@@ -40,7 +40,7 @@ Feature: PhotoPermission form - scenarios step 2
     When click on "המשך" button
 #    When clear fields
 
-  @test7
+
   Scenario: TC_PHOTOPERMIT_07 - Checking "production details" fields with invalid details
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
@@ -80,7 +80,7 @@ Feature: PhotoPermission form - scenarios step 2
     When write an invalid value "876543" in "פירוט"
     Then check if "פירוט" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write a valid value "גחדךגלכןק" in "תיאור הצילום"
-
+    When clear fields
 
 
 
