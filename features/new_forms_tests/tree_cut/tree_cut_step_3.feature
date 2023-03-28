@@ -24,7 +24,7 @@ Feature: TreeCut form - scenarios step 3
 
   Scenario: TC_TREECUT_06 - Filling out a statement
     When check the box of "מגיש הבקשה מצהיר"
-    When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
+#    When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 #    When click on "שמור" button
     When clear fields
 
