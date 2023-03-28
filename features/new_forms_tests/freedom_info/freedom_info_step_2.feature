@@ -10,6 +10,7 @@ Feature: FreedomInfo form - scenarios step 2
   Background:
     Given  Navigate to "FreedomInfo" form and reach step "סוג המידע"
 #  @in_dev
+  @test2
   Scenario: TC_FREEDOMINFO_02 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
@@ -50,16 +51,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
 
     When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
@@ -93,16 +94,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
 
     When Upload a valid "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "2" is "png_to_upload.png" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "2" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "3" is "gif_to_upload.gif" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "3" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "2" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "3" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -136,16 +137,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
 
@@ -189,16 +190,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
 
     When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
@@ -232,16 +233,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
 
     When Upload a valid "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "2" is "png_to_upload.png" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "2" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "3" is "gif_to_upload.gif" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "3" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "2" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
-    Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then validate size of file "3" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -275,16 +276,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
 
@@ -327,16 +328,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
 
     When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -370,16 +371,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
 
@@ -422,16 +423,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
 
     When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -465,16 +466,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "2" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
-    Then validate size of file "1" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
 
@@ -518,16 +519,16 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "2" is "png_to_upload.png" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "2" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "3" is "gif_to_upload.gif" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "3" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "2" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "3" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמכים נוספים"
@@ -561,15 +562,15 @@ Feature: FreedomInfo form - scenarios step 2
     When delete file "1" in "מסמכים נוספים"
 
     When Upload a valid "png_to_upload.png" file in "מסמכים נוספים"
-    Then validate name of file "2" is "png_to_upload.png" in "מסמכים נוספים"
-    Then validate size of file "2" in "מסמכים נוספים" in accepted
+    Then validate name of file "1" is "png_to_upload.png" in "מסמכים נוספים"
+    Then validate size of file "1" in "מסמכים נוספים" in accepted
 
     When Upload a valid "gif_to_upload.gif" file in "מסמכים נוספים"
-    Then validate name of file "3" is "gif_to_upload.gif" in "מסמכים נוספים"
-    Then validate size of file "3" in "מסמכים נוספים" in accepted
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמכים נוספים"
+    Then validate size of file "2" in "מסמכים נוספים" in accepted
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמכים נוספים"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמכים נוספים"
-    Then validate size of file "1" in "מסמכים נוספים" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמכים נוספים"
+    Then validate size of file "3" in "מסמכים נוספים" in accepted
 
     When clear fields
