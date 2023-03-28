@@ -52,16 +52,14 @@ class TreeCut(BasePage):
 
         elif dst_step == "הצהרה":
             self.fill_first_page(context, mailbox, driver, current_page)
-            # current_page = "פרטי הבקשה"
-            # self.widgets['רחוב'].search_element("א נחיל")
-            # self.widgets['מספר בית']['פרטי הבקשה'].set_text("101")
-            # self.widgets['גוש'].set_text("324")
-            # self.widgets['חלקה'].set_text("907")
-            # self.widgets['רשימת עצים'].upload_file("1", "תמונה של העץ", os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
-            # self.widgets['רשימת עצים'].choose_item("1", "סוג העץ", "הסלע")
-            # self.widgets['סיבת העקירה'].select_element('סכנה')
-            # self.widgets['האם מדובר בבית משותף?'].choose_value('לא')
-            # self.widgets["המשך"].click_button()
+            self.widgets.current_step = "פרטי הבקשה"
+            self.widgets['רחוב'].search_and_pick_first_element_and_validate("א נחיל")
+            self.widgets['מספר בית'].set_text("101")
+            self.widgets['רשימת עצים'].choose_item("1", "סוג העץ", "הסלע")
+            self.widgets['רשימת עצים'].upload_file("1", "תמונה של העץ", os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"))
+            self.widgets['סיבת העקירה'].select_element('סכנה')
+            self.widgets['האם מדובר בבית משותף?'].choose_value('לא')
+            self.widgets["המשך"].click_button()
 
     def fill_first_page(self, context, mailbox, driver, current_page):
         self.widgets["סוג זיהוי"].select_element('דרכון')

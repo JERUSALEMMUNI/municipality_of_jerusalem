@@ -1,4 +1,3 @@
-
 Feature: FreedomInfo form - scenarios step 1
 
   - Form name: חופש המידע

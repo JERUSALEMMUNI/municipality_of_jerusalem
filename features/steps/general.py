@@ -36,7 +36,8 @@ def navigate_to_screen(context, screen_name):
         # Todo: it takes a long time in pages that doesn't have dialog
         driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
     except:
-        pass
+        log.info("No dialog appeared")
+
 
 
 @given('Navigate to "{screen_name}" form and reach step "{dst_step}"')

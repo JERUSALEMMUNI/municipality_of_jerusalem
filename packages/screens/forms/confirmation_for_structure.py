@@ -30,23 +30,19 @@ class ConfirmationForStructure(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
 
-
-    def fill_form_to_reach_step(self,context, dst_step, mailbox, driver, current_page):
+    def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס":
             self.fill_first_page(context, mailbox, driver, current_page)
 
         elif dst_step == "הזדהות ושליחה":
             self.fill_first_page(context, mailbox, driver, current_page)
-            # current_page = "פרטי הבקשה"
-            # self.widgets['רחוב'].search_element("א נחיל")
-            # self.widgets['מספר בית']['פרטי הבקשה'].set_text("101")
-            # self.widgets['גוש'].set_text("324")
-            # self.widgets['חלקה'].set_text("907")
-            # self.widgets['רשימת עצים'].upload_file("1", "תמונה של העץ", os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"), driver)
-            # self.widgets['רשימת עצים'].choose_item("1", "סוג העץ", "הסלע")
-            # self.widgets['סיבת העקירה'].select_element('סכנה')
-            # self.widgets['האם מדובר בבית משותף?'].choose_value('לא')
-            # self.widgets["המשך"].click_button()
+            self.widgets['רחוב'].search_and_pick_first_element_and_validate("א נחיל")
+            self.widgets['מספר בית'].set_text("101")
+            self.widgets['גוש'].set_text("324")
+            self.widgets['מספר דירה'].set_text("22")
+            self.widgets['חלקה'].set_text("907")
+            self.widgets['תת חלקה'].set_text("907")
+            self.widgets["המשך"].click_button()
 
     def fill_first_page(self, context, mailbox, driver, current_page):
         self.widgets["מספר ת.ז."].set_text('332796184')
@@ -56,4 +52,3 @@ class ConfirmationForStructure(BasePage):
         self.widgets['דוא"ל'].set_text(mailbox.address)
         self.widgets["המשך"].click_button()
         self.widgets["email"].go_to_next_step(context, driver, mailbox, current_page)
-
