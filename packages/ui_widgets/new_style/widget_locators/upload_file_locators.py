@@ -12,11 +12,11 @@ class UploadFilesLocators:
 
     @staticmethod
     def check_file_size_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[2]"
+        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][2]"
 
     @staticmethod
     def check_file_name_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[1]"
+        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][1]"
 
     @staticmethod
     def delete_file_locator(file_index):
