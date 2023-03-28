@@ -186,7 +186,7 @@ Feature: EmailRegistration form - scenarios step 2
   Scenario: TC_EMAILREG_12 type 2 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
-    When write a valid value "1234567895" in "חשבון ארנונה"
+    When write an invalid value "567895" in "חשבון ארנונה"
     Then check if "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
     When clear fields
 
