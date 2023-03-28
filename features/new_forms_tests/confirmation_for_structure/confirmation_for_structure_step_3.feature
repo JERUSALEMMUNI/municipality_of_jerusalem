@@ -8,7 +8,7 @@ Feature: ConfirmationForStructure form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "ConfirmationForStructure" form and reach step "הזדהות ושליחה"
 
-
+ @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_03 - Filling out a statement
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
     When clear fields

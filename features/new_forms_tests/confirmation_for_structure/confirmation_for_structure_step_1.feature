@@ -5,6 +5,7 @@ Feature: ConfirmationForStructure form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory of (טלפון קווי)
 
+ @Checked_By_Firas_and_Darweesh
  Scenario: CONFIRSTRUCT_01 - Checking "personal details" fields with correct details
     Given Navigate to "ConfirmationForStructure" form
     When write a valid value "332796184" in "מספר ת.ז."
@@ -13,9 +14,10 @@ Feature: ConfirmationForStructure form - scenarios step 1
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill number "8073267" as valid value in "טלפון קווי"
+   #Todo: in Sofia's worksheet, we should add "המשך"
     When clear fields
 
-
+ @Checked_By_Firas_and_Darweesh
  Scenario: CONFIRSTRUCT_04 - Entering incorrect values for the "Details of the applicant" fields
     Given Navigate to "ConfirmationForStructure" form
     When write an invalid value "dddd" in "שם פרטי"
@@ -26,8 +28,13 @@ Feature: ConfirmationForStructure form - scenarios step 1
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill number "80767" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When fill number "חלחמג" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "כעיחלך" in "דוא"ל"
+    #Todo: Email error message as sofia: יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל
     Then check if "דוא"ל" error is "שדה לא תקין"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+   When fill number "חלחמג" as invalid value in "טלפון קווי"
+    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When clear fields

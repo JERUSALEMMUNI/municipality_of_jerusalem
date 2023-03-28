@@ -8,20 +8,24 @@ Feature: ConfirmationForStructure form - scenarios step 2
  Background: Background Scenario
     Given Navigate to "ConfirmationForStructure" form and reach step "פרטי הנכס"
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_02 - Entering correct values for the "request details" fields
+    #Todo: Add "שמור" steps
     When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid value "1" in "מספר בית"
     When write a valid value "1" in "מספר דירה"
     When write a valid value "1" in "גוש"
     When write a valid value "1" in "חלקה"
     When write a valid value "1" in "תת חלקה"
+    #Todo: Add "שמור" steps
 #    When click on "המשך" button
     When clear fields
 
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_05 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א טdssברי" in search field "רחוב"
+    #Todo: check if message is "לא נמצא תוצאות"
     When write an invalid value "54d" in "מספר בית"
     Then check if "מספר בית" error is "יש להזין ספרות בלבד"
     When write an invalid value "1cdc223" in "גוש"
