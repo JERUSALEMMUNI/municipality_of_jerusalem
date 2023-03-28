@@ -242,3 +242,16 @@ def validate_item_present(context, widget_name):
     if not widget.is_enable:
         rep.add_label_to_step("Item is not exist", "The item should be exist in one of the pages but its not ")
         raise AssertionError("item is not or will not be exist in any page")
+
+@When('"{widget_name}" Authentication using email address "{email_address}"')
+def email_authentication(context, widget_name, email_address):
+    widget = context._config.current_page.widgets[widget_name]
+    context.execute_steps(f"""
+        When click on "שמור" button
+        When click on "שמור טיוטה" button tyota
+        When 1st wait for "{widget_name}" that contains pin code and link
+        When 2nda click on link and fill "{widget_name}" "{email_address}" pin code index "2"
+        When click on "{widget_name}" option
+        When 3rd wait for second "{widget_name}" to get "קוד האימות" index "2"
+        When 4th close all tabs "email" at index "2"
+        Then 5th Validate if went back to expected "{widget_name}" form""")

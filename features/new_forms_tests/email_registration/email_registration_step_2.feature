@@ -135,7 +135,9 @@ Feature: EmailRegistration form - scenarios step 2
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
+    @test_darweesh
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
+    When "email" Authentication using email address "@TEMP_EMAIL_ADDRESS"
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -149,13 +151,13 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כח"
+    When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
     #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_10 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ודירת שותפים
