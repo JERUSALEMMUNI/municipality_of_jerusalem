@@ -28,7 +28,8 @@ Feature: HoldersExchange form step 3
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
 
@@ -44,7 +45,8 @@ Feature: HoldersExchange form step 3
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
   Scenario: TC_HOLDERSEXCH_12 הזנת ערכים שגוים בשדות "פרטי מחזיק נוכחי"
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
@@ -65,7 +67,7 @@ Feature: HoldersExchange form step 3
     Then check if "תאריך עזיבה" error is "תאריך לא תקין"
     When Upload a valid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
     Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-
+    When clear fields
 
 
 

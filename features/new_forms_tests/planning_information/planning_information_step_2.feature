@@ -31,7 +31,8 @@ Feature: PlanningInformation form - scenarios step 2
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_PLANNINGINFO_03 הזנת ערכים תקינים לשדות "פרטי הבקשה" דואר רגיל
@@ -56,7 +57,8 @@ Feature: PlanningInformation form - scenarios step 2
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_PLANNINGINFO_06 type 1 הזנת ערכים שגוים לשדות "פרטי הבקשה"
@@ -69,7 +71,7 @@ Feature: PlanningInformation form - scenarios step 2
     Then check if "חלקות בודדות" error is "שדה לא תקין"
     When write an invalid value "sfdadfadfsd" in textarea of "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות"
     Then check if "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות" error is "שפת קלט לא תקינה"
-
+    When clear fields
 
   Scenario: TC_PLANNINGINFO_06 type 2 הזנת ערכים שגוים לשדות "פרטי הבקשה"
     When choose "דואר רגיל" from "הדרך המועדפת לקבלת התשובה ופרטים נוספים הנדרשים לבירור"
@@ -81,3 +83,4 @@ Feature: PlanningInformation form - scenarios step 2
     Then check if "חלקות בודדות" error is "שדה לא תקין"
     When write an invalid value "sfdadfadfsd" in textarea of "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות"
     Then check if "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות" error is "שפת קלט לא תקינה"
+    When clear fields

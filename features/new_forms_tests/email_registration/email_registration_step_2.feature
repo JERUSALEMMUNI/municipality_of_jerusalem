@@ -26,6 +26,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_04 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ולא דירת שותפים
@@ -44,6 +45,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_05 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ולא דירת שותפים
@@ -64,6 +66,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_06 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ולא דירת שותפים
@@ -84,6 +87,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_07 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ודירת שותפים
@@ -102,6 +106,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_08 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ודירת שותפים
@@ -121,6 +126,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
@@ -142,6 +148,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_10 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ודירת שותפים
@@ -163,6 +170,7 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_12 תצהיר ושליחה עם ערכים שגויים
@@ -172,6 +180,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
     Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_12 type 2 תצהיר ושליחה עם ערכים שגויים
@@ -179,6 +188,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "1234567895" in "חשבון ארנונה"
     Then check if "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_12 type 3 תצהיר ושליחה עם ערכים שגויים
@@ -186,6 +196,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "שגדDCSגשגד" in "חשבון ארנונה"
     Then check if "חשבון ארנונה" error is "יש להזין ספרות בלבד"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_12 type 4 תצהיר ושליחה עם ערכים שגויים
@@ -200,6 +211,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_12 type 5 תצהיר ושליחה עם ערכים שגויים
@@ -214,6 +226,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When clear fields
 
 
 

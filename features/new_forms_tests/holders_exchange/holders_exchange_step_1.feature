@@ -20,6 +20,7 @@ Feature: HoldersExchange form step 1
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
+    When clear fields
 
 
   Scenario: TC_HOLDERSEXCH_10 הזנת ערכים שגוים בשדות "פרטי מגיש"
@@ -36,3 +37,4 @@ Feature: HoldersExchange form step 1
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "dfghj" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
+    When clear fields

@@ -13,6 +13,7 @@ Feature: ConfirmationForStructure form - scenarios step 1
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill number "8073267" as valid value in "טלפון קווי"
+    When clear fields
 
 
  Scenario: CONFIRSTRUCT_04 - Entering incorrect values for the "Details of the applicant" fields
@@ -29,3 +30,4 @@ Feature: ConfirmationForStructure form - scenarios step 1
     Then check if "דוא"ל" error is "שדה לא תקין"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When clear fields

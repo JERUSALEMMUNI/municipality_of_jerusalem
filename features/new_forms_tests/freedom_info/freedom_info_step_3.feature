@@ -16,5 +16,6 @@ Feature: FreedomInfo form - scenarios step 3
     Then validate checkbox of "הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה" is checked
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     Then validate captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע" is checked
+    When clear fields
 
 

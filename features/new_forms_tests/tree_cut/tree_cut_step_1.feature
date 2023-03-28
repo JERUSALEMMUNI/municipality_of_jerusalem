@@ -19,6 +19,7 @@ Feature: TreeCut form - scenarios step 1
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "10215" in "מספר בית"
 #    When click on "המשך" button
+    When clear fields
 
   Scenario: TC_TREECUT_07 - Entering incorrect values for the "Details of the applicant" fields
     Given Navigate to "TreeCut" form
@@ -39,4 +40,5 @@ Feature: TreeCut form - scenarios step 1
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54332326" in "מספר בית"
+    When clear fields
 

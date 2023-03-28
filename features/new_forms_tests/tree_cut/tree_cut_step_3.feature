@@ -18,12 +18,14 @@ Feature: TreeCut form - scenarios step 3
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    When click on "המשך" button
+#    When click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_TREECUT_06 - Filling out a statement
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 #    When click on "שמור" button
+    When clear fields
 
 

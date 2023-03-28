@@ -17,7 +17,8 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And pick "המחזיק" from "ממלא ההשגה"
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_OBJECTIONPRO_11 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
@@ -35,3 +36,4 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
+    When clear fields

@@ -26,6 +26,7 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "המשך" button
+    When clear fields
 
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
     When search valid value and pick "א טור" in search field "רחוב"
@@ -49,6 +50,7 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
@@ -76,6 +78,7 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "המשך" button
+    When clear fields
 
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
@@ -109,6 +112,8 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "המשך" button
+    When clear fields
+
   @suhaib
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
@@ -124,3 +129,4 @@ Feature: TreeCut form - scenarios step 2
     When Upload an invalid "doc_to_upload.doc" file in "אחר"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
     When Upload a valid "xlsx_to_upload.xlsx" file in "אחר"
+    When clear fields

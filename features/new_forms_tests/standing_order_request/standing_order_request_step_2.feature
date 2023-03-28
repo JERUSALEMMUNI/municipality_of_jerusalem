@@ -25,6 +25,7 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    When clear fields
 
 
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
@@ -47,6 +48,7 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    When clear fields
 
 
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
@@ -64,6 +66,7 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
+    When clear fields
 
 
 

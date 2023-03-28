@@ -32,7 +32,8 @@ Feature: HoldersExchange form step 4
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
   Scenario: TC_HOLDERSEXCH_13 הזנת ערכים שגוים בשדות "פרטי מחזיק חדש"
@@ -55,7 +56,7 @@ Feature: HoldersExchange form step 4
     Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload a valid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     Then check if "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-
+    When clear fields
 
 
 

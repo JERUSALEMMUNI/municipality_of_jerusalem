@@ -20,6 +20,7 @@ Feature: EmailRegistration form - scenarios step 1
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_11 "הזנת ערכים שגויים לשדות "פרטים אישיים
@@ -34,6 +35,7 @@ Feature: EmailRegistration form - scenarios step 1
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "כעיחלך" in "דוא"ל"
     Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When clear fields
 
 
   Scenario: TC_EMAILREG_11 type 2 "הזנת ערכים שגויים לשדות "פרטים אישיים
@@ -48,6 +50,7 @@ Feature: EmailRegistration form - scenarios step 1
     Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When write an invalid value "כעיחלך" in "דוא"ל"
     Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When clear fields
 
 
 

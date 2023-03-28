@@ -13,10 +13,12 @@ Feature: ConfirmationForStructure form - scenarios step 3
     When write a valid value "1" in "גוש"
     When write a valid value "1" in "חלקה"
     When write a valid value "1" in "תת חלקה"
-    When click on "המשך" button
+#    When click on "המשך" button
+    When clear fields
 
   Scenario: CONFIRSTRUCT_03 - Filling out a statement
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 #    When click on "שמור" button
+    When clear fields
 
 

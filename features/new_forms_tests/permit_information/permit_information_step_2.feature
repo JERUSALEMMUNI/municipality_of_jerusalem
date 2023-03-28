@@ -32,7 +32,8 @@ Feature: PermitInformation form - scenarios step 2
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-    And click on "המשך" button
+#    And click on "המשך" button
+    When clear fields
 
 
   Scenario: PERMITINFO_05 הזנת פרטים שגוים בשדות "פרטי בקשה"
@@ -44,3 +45,4 @@ Feature: PermitInformation form - scenarios step 2
     Then validate if "כמות חלקות בודדות" number is "11"
     When write an invalid value "dsfsdfdsf" in textarea of "הערות"
     Then check if "הערות" error is "שפת קלט לא תקינה"
+    When clear fields

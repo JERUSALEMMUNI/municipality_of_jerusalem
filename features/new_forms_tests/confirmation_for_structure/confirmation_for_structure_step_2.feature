@@ -16,7 +16,8 @@ Feature: ConfirmationForStructure form - scenarios step 2
     When write a valid value "1" in "חלקה"
     When write a valid value "1" in "תת חלקה"
 #    When click on "המשך" button
-#    When click on "שמור" button
+    When clear fields
+
 
 
   Scenario: CONFIRSTRUCT_05 - Entering incorrect values for the "Details of the applicant" fields
@@ -31,5 +32,6 @@ Feature: ConfirmationForStructure form - scenarios step 2
     Then check if "חלקה" error is "יש להזין ספרות בלבד"
     When write an invalid value "4jk5981" in "תת חלקה"
     Then check if "תת חלקה" error is "יש להזין ספרות בלבד"
+    When clear fields
 
 
