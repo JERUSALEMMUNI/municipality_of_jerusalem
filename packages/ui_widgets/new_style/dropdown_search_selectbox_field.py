@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from infra import logger
+from infra import logger, enums
 from ui_widgets.new_style.dropdown_search_field import DropdownSearch
 from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
 from ui_widgets.new_style.widget_locators.dropdown_search_selectbox_locators import DropdownSearchSelectBoxLocators
@@ -83,26 +83,26 @@ class DropdownSearchSelectBox(DropdownSearch):
             self.list.append(i.text)
         log.info(self.list)
 
-    # ToDo: check
     def clear_selected_items(self):
         self.click_button()
-        # We should clear the search field first, so we can uncheck all the list
-        element = WebDriverWait(self.web_element, 30).until(
+        # We should clear the search field first, so we can uncheck all the list.
+        element = WebDriverWait(self.web_element, enums.WaitInterval.MEDIUM.value).until(
             EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.element_visibility))
         element.click()
         element.clear()
-        # If the status of the checkbox is false (unchecked) then we have to check it twice.
+        # If the status of the checkbox is false (unchecked) then we have to check it twice
         element = self.web_element.find_element(*DropdownSearchSelectBoxLocators.element_clear)
         if element.get_attribute('aria-checked') in (None, "false"):
             element.click()
             element.click()
 
-        elif "true" == element.get_attribute('aria-checked'):
+        elif "true" == element.get_attribute('aria-checked').lower():
             element.click()
-        all_elements = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.all_elements)
-        for i in all_elements:
-            self.list.remove(i.text)
-        log.info(self.list)
+        log.info(f"list: {self.list}")
+        check_elements = self.list
+        for i in range(0, len(check_elements)):
+            self.list.remove(check_elements[0])
+        log.info(f"list: {self.list}")
 
     def validate_checked_list_count(self):
 
