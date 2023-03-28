@@ -10,7 +10,7 @@ Feature: EmailRegistration form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_03 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -24,11 +24,12 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "האם דירת שותפים?"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_04 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -43,11 +44,12 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "האם דירת שותפים?"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_05 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -64,11 +66,12 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_06 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -82,14 +85,15 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
+    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_07 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -104,11 +108,12 @@ Feature: EmailRegistration form - scenarios step 2
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_08 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -124,11 +129,12 @@ Feature: EmailRegistration form - scenarios step 2
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -143,14 +149,15 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
+    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כח"
+    When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_10 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -165,15 +172,16 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
+    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
+    When Upload a valid "png_to_upload.png" file in "ייפוי כח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "אחר"
+    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
-  Scenario: TC_EMAILREG_12 תצהיר ושליחה עם ערכים שגויים
+  @Checked_By_Firas_and_Darweesh
+  Scenario: TC_EMAILREG_12 typr 1 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
@@ -182,7 +190,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_12 type 2 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
@@ -190,7 +198,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_12 type 3 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
@@ -198,7 +206,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "חשבון ארנונה" error is "יש להזין ספרות בלבד"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_12 type 4 תצהיר ושליחה עם ערכים שגויים
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
@@ -213,7 +221,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_12 type 5 תצהיר ושליחה עם ערכים שגויים
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
@@ -227,6 +235,3 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
-
-
-
