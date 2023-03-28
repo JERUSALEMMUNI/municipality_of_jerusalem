@@ -10,6 +10,7 @@ class DropdownSearchSelectBoxLocators:
     element = (By.XPATH, ".//div[@role='checkbox']")
     all_elements = (By.XPATH, "./..//li")
     element_clear = (By.XPATH, ".//div[@role='checkbox']")
+    check_list_open = (By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")
 
 
 

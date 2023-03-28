@@ -69,10 +69,10 @@ class PhoneField(BaseWidget):
         return error_expected in error_msg.text, error_expected == error_msg.text
 
     def close(self):
-        dropDown_open = self.web_element.find_element(By.XPATH, "./..//p-dropdown//input").get_attribute(
+        dropDown_open = self.web_element.find_element(*PhoneFieldLocators.dropDown_open).get_attribute(
             'aria-expanded')
         if dropDown_open.lower() == 'true':
-            self.web_element.find_element(By.XPATH, "./..//p-dropdown").click()
+            self.web_element.find_element(*PhoneFieldLocators.click_list).click()
             return True
         return False
 

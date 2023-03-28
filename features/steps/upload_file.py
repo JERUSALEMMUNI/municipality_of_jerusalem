@@ -29,11 +29,11 @@ def choose_an_invalid_search(context, file_path, widget_name):
     widget.upload_file(file)
     if widget.is_invalid:
         log.info(f"This file is considered an invalid file and this correct")
-        rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
-    elif widget.validate_warning_message():
+        rep.add_label_to_step("status", f"This file is considered an invalid file and this correct")
+    else:
         log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("File type is not accepted", "File type is not accepted")
-        raise AssertionError("File type is not accepted")
+        rep.add_label_to_step("failure reason", "File type considered an invalid file but it appeared as valid")
+        raise AssertionError("File type considered an invalid file but it appeared as valid")
 
 
 @when('from parent "{parent}" Upload a valid "{file_path}" file in "{widget_name}"')
@@ -58,13 +58,12 @@ def choose_an_invalid_search(context, parent, file_path, widget_name):
     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
     widget.upload_file(file)
     if widget.is_invalid:
+        log.info(f"This file is considered an invalid file and this correct")
+        rep.add_label_to_step("status", f"This file is considered an invalid file and this correct")
+    else:
         log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("failure reason",
-                              f"This file is considered an invalid file but it appeared as valid")
-        raise AssertionError("File type is not accepted")
-    elif widget.validate_warning_message():
-        log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("File type is not accepted", "File type is not accepted")
+        rep.add_label_to_step("failure reason", "File type considered an invalid file but it appeared as valid")
+        raise AssertionError("File type considered an invalid file but it appeared as valid")
 
 
 @then('validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')

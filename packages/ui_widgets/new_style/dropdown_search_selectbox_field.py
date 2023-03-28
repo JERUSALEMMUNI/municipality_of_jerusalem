@@ -56,9 +56,8 @@ class DropdownSearchSelectBox(DropdownSearch):
             'aria-expanded')
         if dropDown_open in (None, "false"):
             self.web_element.click()
-        # ToDo: take 10.9 second in multi select search box , fix it
         WebDriverWait(self.web_element, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")))
+            EC.visibility_of_element_located(DropdownSearchSelectBoxLocators.check_list_open))
 
     def select_all_checkbox(self):
         """
