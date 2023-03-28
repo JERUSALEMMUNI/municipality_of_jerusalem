@@ -36,7 +36,7 @@ Feature: improvementTax form - scenarios step 1
     Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-80s86t7" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
-    When fill "058-1234" as invalid value in "טלפון קווי"
+    When fill "02-1234" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     #Todo: Email error message as sofia: יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל
