@@ -6,6 +6,7 @@ Feature: FreedomInfo form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי,יישוב,רחוב,מספר בית, מיקוד)
 #  @in_dev
+
   Scenario: TC_FREEDOMINFO_01 - Checking "Presenter details" fields with correct details
     Given Navigate to "FreedomInfo" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -25,9 +26,9 @@ Feature: FreedomInfo form - scenarios step 1
 #    Then validate current step name is "פרטי ההפקה"
 #    When close "email" dialog
     When clear fields
-  @test8
+
   Scenario: TC_FREEDOMINFO_08  - Checking "Presenter details" fields with incorrect details
-    Given Navigate to "PhotoPermission" form
+    Given Navigate to "FreedomInfo" form
     When write an invalid value "dddd" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "dddd" in "שם משפחה"
