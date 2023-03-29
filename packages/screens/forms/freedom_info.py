@@ -57,6 +57,12 @@ class FreedomInfo(BasePage):
         self.widgets['צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך'] = create_widget(
             'UploadFile', style=self.style,
             label='צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך')
+        self.widgets['מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי'] = create_widget(
+            'UploadFile', style=self.style,
+            label='מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי')
+        self.widgets['צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך'] = create_widget(
+            'UploadFile', style=self.style,
+            label='צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך')
 
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):

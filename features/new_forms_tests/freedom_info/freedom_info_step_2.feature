@@ -10,7 +10,7 @@ Feature: FreedomInfo form - scenarios step 2
   Background:
     Given  Navigate to "FreedomInfo" form and reach step "סוג המידע"
 #  @in_dev
-  @test2
+
   Scenario: TC_FREEDOMINFO_02 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
@@ -227,7 +227,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
     When delete file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
 
-    When Upload a valid "1" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    When Upload a valid "bmp_to_upload.bmp" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate size of file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" in accepted
     When delete file "1" in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
@@ -291,53 +291,52 @@ Feature: FreedomInfo form - scenarios step 2
 
   Scenario: TC_FREEDOMINFO_04 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי סטודנט/גוף מחקרי" from "סוג המידע המבוקש"
-    Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
-    When choose "לא" from "המידע מבוקש על ידי מקבל קצבה"
+    Then validate if "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" is exist
     When choose "כן" from "המידע מבוקש על ידי מקבל קצבה"
     Then validate if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" is exist
     When click on "המשך" button
 
-    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "gif_to_upload.gif" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "pdf_to_upload.pdf" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "pdf_to_upload.pdf" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "pdf_to_upload.pdf" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "jpeg_to_upload.jpeg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "bmp_to_upload.bmp" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "bmp_to_upload.bmp" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "bmp_to_upload.bmp" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "bmp_to_upload.bmp" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
-    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "2" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "3" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -386,53 +385,52 @@ Feature: FreedomInfo form - scenarios step 2
 
   Scenario: TC_FREEDOMINFO_05 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי סטודנט/גוף מחקרי" from "סוג המידע המבוקש"
-    Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
-    When choose "לא" from "המידע מבוקש על ידי מקבל קצבה"
+    Then validate if "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" is exist
     When choose "כן" from "המידע מבוקש על ידי מקבל קצבה"
     Then validate if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" is exist
     When click on "המשך" button
 
-    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "gif_to_upload.gif" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "pdf_to_upload.pdf" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "pdf_to_upload.pdf" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "pdf_to_upload.pdf" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "jpeg_to_upload.jpeg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "bmp_to_upload.bmp" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "bmp_to_upload.bmp" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
-    When delete file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    When Upload a valid "bmp_to_upload.bmp" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "bmp_to_upload.bmp" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
+    When delete file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
 
-    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "1" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "png_to_upload.png" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "1" is "png_to_upload.png" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "1" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
-    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "2" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "gif_to_upload.gif" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "2" is "gif_to_upload.gif" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "2" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
-    Then validate size of file "3" in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" in accepted
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
+    Then validate size of file "3" in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -484,8 +482,9 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate if "המידע מבוקש" is exist
     When choose "לא" from "המידע מבוקש על ידי מקבל קצבה"
     When choose "אודותי" from "המידע מבוקש"
-    Then validate if "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
+    Then validate if "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
     When choose "אחר" from "המידע מבוקש"
+    Then validate if "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
     When click on "המשך" button
 
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
@@ -574,3 +573,35 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate size of file "3" in "מסמכים נוספים" in accepted
 
     When clear fields
+
+
+  Scenario: TC_FREEDOMINFO_09 - Checking "The type of information" fields with incorrect details
+    When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
+    Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
+    Then validate if "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" is exist
+    When choose "כן" from "המידע מבוקש על ידי מקבל קצבה"
+    Then validate if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" is exist
+    When click on "המשך" button
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then check if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
+    Then check if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then check if "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
+    Then check if "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then check if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
+    Then check if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When Upload an invalid "excel_to_upload.xlsx" file in "צילום תעודה מזהה"
+    Then check if "צילום תעודה מזהה" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload a valid "10MB_file_to_upload.pdf" file in "צילום תעודה מזהה"
+    Then check if "צילום תעודה מזהה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+    When clear fields
+

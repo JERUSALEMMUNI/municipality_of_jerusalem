@@ -22,19 +22,23 @@ class DropdownSearch(Dropdown):
         self.write_in_search_field(value_selected)
         drop = self.wait_list_streets()
         if not self.get_search_result_if_empty():
-            # drop = self.web_element.find_element(*DropdownSearchLocators.drop)
             drop.click()
             result = self.web_element.text
-            WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element(drop))
+            WebDriverWait(self.web_element, enums.WaitInterval.MEDIUM.value).until(EC.invisibility_of_element(drop))
             return_result = result.splitlines()[0]
             return return_result
         else:
             log.info("No Result Found")
 
+    #ToDo: its take a 10 second for check or broken without the try except
     def wait_list_streets(self):
-        return misc_utils.while_timeout(self.web_element.find_element, True, enums.WaitInterval.SHORT.value,
-                                        'Error getting streets from server', *DropdownSearchLocators.drop
-                                        , w_raise_on_error=False, w_comp_func=lambda a, b: type(a) is not WebElement)
+        try:
+            return misc_utils.while_timeout(self.web_element.find_element, True, enums.WaitInterval.SHORT.value,
+                                            'Error getting streets from server', *DropdownSearchLocators.drop
+                                            , w_raise_on_error=False,
+                                            w_comp_func=lambda a, b: type(a) is not WebElement)
+        except:
+            pass
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found
