@@ -30,7 +30,6 @@ class DropdownSearch(Dropdown):
         else:
             log.info("No Result Found")
 
-    # ToDo: its take a 10 second for check or broken without the try except
     def wait_list_streets(self):
         try:
             return misc_utils.while_timeout(self.web_element.find_element, True, enums.WaitInterval.SHORT.value,
@@ -39,6 +38,7 @@ class DropdownSearch(Dropdown):
                                             w_comp_func=lambda a, b: type(a) is not WebElement)
         except:
             log.info("no results found label not appeared")
+            return None
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found
@@ -108,3 +108,6 @@ class DropdownSearch(Dropdown):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)
         return error_msg.text == error_expected
+
+    def clear(self, index=None):
+        return

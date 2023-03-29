@@ -221,11 +221,14 @@ def return_to_original_url(context):
 
 
 @When('clear fields')
-def clear_fields(context):
-    widgets = context._config.current_page.widgets
+def clear_fields(context, widgets=None):
+    widgets = context._config.current_page.widgets if widgets is None else widgets
     for widget_name, widget_obj in widgets.items():
         try:
-            if widget_obj.get_web_element() is not None:
+            if type(widget_obj) is dict:
+                clear_fields(context, widget_obj)
+
+            elif widget_obj.get_web_element() is not None:
                 widget_obj.clear()
                 log.info(f"the field {widget_name} is cleared")
 
@@ -260,6 +263,7 @@ def email_authentication(context, widget_name, email_address):
 def navigate_to_screen(context):
     driver = context._config.driver
     try:
-        driver.find_element(By.XPATH, "//span[contains(@class,'p-dialog-header-close-icon ng-tns-c56-10 pi pi-times')]").click()
+        driver.find_element(By.XPATH,
+                            "//span[contains(@class,'p-dialog-header-close-icon ng-tns-c56-10 pi pi-times')]").click()
     except:
         log.info("No dialog appeared")

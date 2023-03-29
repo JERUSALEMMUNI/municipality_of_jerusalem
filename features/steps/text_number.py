@@ -9,7 +9,6 @@ log = logger.get_logger(__name__)
 @when('write a valid number "{number}" in "{widget_name}"')
 def write_into_field(context, number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.clear()
     widget.set_text(number)
     if not widget.is_valid:
         log.info(f"This value {number} at field {widget_name} is considered "

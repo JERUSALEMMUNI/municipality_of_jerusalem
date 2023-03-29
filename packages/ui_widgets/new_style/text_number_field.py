@@ -23,6 +23,13 @@ class TextNumberField(TextField):
         self.web_element.send_keys(text)
         self.web_element.send_keys(Keys.RETURN)
 
+    def get_text(self):
+        get_value_number = self.web_element.get_attribute('aria-valuenow')
+        if get_value_number not in (None, "null"):
+            return self.web_element.get_attribute('aria-valuenow')
+
+        return "no value"
+
     def is_invalid_txt(self):
         return self.is_invalid
 
@@ -38,3 +45,7 @@ class TextNumberField(TextField):
         error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
         return error_expected in error_msg.text, error_expected == error_msg.text
 
+    def clear(self, index=None):
+        number_digits = self.web_element.get_attribute('aria-valuenow')
+        for i in range(0, len(number_digits)):
+            self.web_element.send_keys(Keys.BACKSPACE)
