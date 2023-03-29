@@ -6,3 +6,4 @@ class TextFieldLocators:
     #Todo: i have commented out this locator and made the one bellow
     # err_num_msg = (By.XPATH, "./../../following-sibling::span")
     err_num_msg = (By.XPATH, "//../div")
+    error_message = (By.XPATH, "./..//div/div")

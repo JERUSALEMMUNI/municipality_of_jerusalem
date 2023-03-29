@@ -45,6 +45,11 @@ class TextNumberField(TextField):
         error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
         return error_expected in error_msg.text, error_expected == error_msg.text
 
+    @property
+    def get_error_message(self):
+        return self.web_element.find_element(*TextFieldLocators.err_num_msg).text
+
+
     def clear(self, index=None):
         number_digits = self.web_element.get_attribute('aria-valuenow')
         for i in range(0, len(number_digits)):

@@ -14,9 +14,9 @@ def write_into_field(context, text, widget_name):
     widget.set_text(text)
     if not widget.is_valid:
         log.info(f"This value {text} at field {widget_name} is considered "
-                 f" an valid value but it appeared as invalid")
+                 f"a valid value but it appeared as invalid")
         rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} is considered "
-                                                f" an valid value but it appeared as invalid")
+                                                f"a valid value but it appeared as invalid")
         raise AssertionError("valid value and considered as invalid")
 
 
@@ -85,7 +85,7 @@ def append_text_field(context, widget_name, text):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.validate_text(text):
         log.info(f"This value {text} at field {widget_name} is not "
-                 f" the same written value")
+                 f"the same written value")
         rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} is not "
                                                 " the same written value")
         raise AssertionError("Written correctly but appeared incorrectly")

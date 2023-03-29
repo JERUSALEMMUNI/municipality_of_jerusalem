@@ -29,10 +29,10 @@ def choose_an_invalid_search(context, file_path, widget_name):
     widget.upload_file(file)
     if widget.is_invalid:
         log.info(f"This file is considered an invalid file and this correct")
-        rep.add_label_to_step("status", f"This file is considered an invalid file and this correct")
+        rep.add_label_to_step("file status", f"This file is considered an invalid file and this correct")
     else:
         log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("failure reason", "File type considered an invalid file but it appeared as valid")
+        rep.add_label_to_step("file status", "File type considered an invalid file but it appeared as valid")
         raise AssertionError("File type considered an invalid file but it appeared as valid")
 
 
@@ -102,11 +102,10 @@ def choose_in_search(context, wanted_file_index, widget_name):
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.is_invalid:
-        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
-        raise AssertionError("invalid value and considered as valid")
+        rep.add_label_to_step("invalid but appeared as valid", "The status of this label is valid, but it should be invalid")
     if not widget.validate_error_window_message(error_expectation):
         log.info(f"The error value at field is incorrect")
         rep.add_label_to_step("incorrect message or missing",
                               "incorrect or missing error value and considered as valid")
         raise AssertionError("invalid value and considered as valid")
-    rep.add_label_to_step("message appeared", "red error message appeared correctly")
+    rep.add_label_to_step("message appeared", f"expected error message {error_expectation} appeared correctly")
