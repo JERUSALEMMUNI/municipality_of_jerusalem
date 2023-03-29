@@ -127,13 +127,13 @@ def error_msg(context, widget_name, error_expectation):
     if not widget.validate_error_message(error_expectation)[0]:
         log.info(f"Incorrect error message")
         rep.add_label_to_step("incorrect error message",
-                              "incorrect error value")
+                              f"expected error message is {error_expectation}, what appeared is {widget.get_error_message}")
         raise AssertionError("incorrect error message")
     if not widget.validate_error_message(error_expectation)[1]:
-        log.info(f"Missing part of error message")
-        rep.add_label_to_step("Missing part of error message",
-                              "Error message is not complete")
-        raise AssertionError("Missing part of error message")
+        log.info(f"error message is incorrect")
+        rep.add_label_to_step("More than one error message appeared",
+                              f"expected error message is {error_expectation}, what appeared is {widget.get_error_message}")
+        raise AssertionError("error message is incorrect")
     rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
