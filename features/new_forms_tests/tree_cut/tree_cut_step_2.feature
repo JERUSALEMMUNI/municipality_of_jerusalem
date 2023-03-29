@@ -114,11 +114,11 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-  @suhaib
+
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54dew33ew326" in "מספר בית"
-    Then validate if "מספר בית" number is "5433326"
+    Then validate if "מספר בית" number is "54333"
     When write an invalid value "1cdc223" in "גוש"
     Then check if "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"

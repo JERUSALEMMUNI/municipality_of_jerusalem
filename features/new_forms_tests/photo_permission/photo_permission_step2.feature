@@ -1,4 +1,3 @@
-
 Feature: PhotoPermission form - scenarios step 2
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים

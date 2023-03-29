@@ -8,7 +8,9 @@ Feature: PhotoPermission form - scenarios step 3
 
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי המיקום ומועדי הצילומים"
-#  @in_dev
+
+
+
   Scenario: TC_PHOTOPERMIT_03 - Checking "location details and shooting dates" fields with valid values
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
@@ -39,6 +41,8 @@ Feature: PhotoPermission form - scenarios step 3
     Then 5th Validate if went back to expected "email" form
     When click on "המשך" button
 #    When clear fields
+
+
   Scenario: TC_PHOTOPERMIT_04 - Checking "location details and shooting dates" fields with valid values
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button

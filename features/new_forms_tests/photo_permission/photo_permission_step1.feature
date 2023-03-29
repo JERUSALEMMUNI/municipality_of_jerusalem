@@ -1,4 +1,3 @@
-
 Feature: PhotoPermission form - scenarios step 1
 
   - Form name: בקשה לקבלת היתר צילומים בירושלים
@@ -6,7 +5,8 @@ Feature: PhotoPermission form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/PhotoPermission
   - Number of Pages is : 4, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
-#  @in_dev
+
+
   Scenario: TC_PHOTOPERMIT_01 - Checking "personal details" fields with correct details
     Given Navigate to "PhotoPermission" form
     When write a valid value "סוהייב" in "שם פרטי"
