@@ -33,11 +33,9 @@ def navigate_to_screen(context, screen_name):
                         "click here to see the link of tested step")
 
     try:
-        # Todo: it takes a long time in pages that doesn't have dialog
         driver.find_element(By.XPATH, "//span[contains(text(),'X')]").click()
     except:
         log.info("No dialog appeared")
-
 
 
 @given('Navigate to "{screen_name}" form and reach step "{dst_step}"')
@@ -243,6 +241,7 @@ def validate_item_present(context, widget_name):
         rep.add_label_to_step("Item is not exist", "The item should be exist in one of the pages but its not ")
         raise AssertionError("item is not or will not be exist in any page")
 
+
 @When('"{widget_name}" Authentication using email address "{email_address}"')
 def email_authentication(context, widget_name, email_address):
     widget = context._config.current_page.widgets[widget_name]
@@ -255,3 +254,12 @@ def email_authentication(context, widget_name, email_address):
         When 3rd wait for second "{widget_name}" to get "קוד האימות" index "2"
         When 4th close all tabs "email" at index "2"
         Then 5th Validate if went back to expected "{widget_name}" form""")
+
+
+@Then('close the website message dialog')
+def navigate_to_screen(context):
+    driver = context._config.driver
+    try:
+        driver.find_element(By.XPATH, "//span[contains(@class,'p-dialog-header-close-icon ng-tns-c56-10 pi pi-times')]").click()
+    except:
+        log.info("No dialog appeared")

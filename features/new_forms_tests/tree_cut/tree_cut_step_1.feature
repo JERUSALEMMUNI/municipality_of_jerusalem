@@ -7,12 +7,11 @@ Feature: TreeCut form - scenarios step 1
   - All fields are mandatory of (טלפון קווי)
 
   @Checked_By_Firas_and_Darweesh
-    #Todo: scenario names should be in English or Hebrew?
   Scenario: TC_TREECUT_01 - Checking "personal details" fields with correct details
     Given Navigate to "TreeCut" form
     When write a valid value "סוהייב" in "שם פרטי"
     When write a valid value "אבו גנאם" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
+    And pick a valid "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
     When fill number "8078687" as valid value in "טלפון נייד"
     When fill number "8078687" as valid value in "טלפון קווי"
@@ -29,10 +28,10 @@ Feature: TreeCut form - scenarios step 1
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "dddd" in "שם משפחה"
     Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
-    When pick "ת.ז." from "סוג זיהוי"
+    When pick a valid "ת.ז." from "סוג זיהוי"
     When write an invalid value "000000018" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
-    When pick "דרכון" from "סוג זיהוי"
+    When pick a valid "דרכון" from "סוג זיהוי"
     When write an invalid value "ds2jk323" in "מספר דרכון"
     When fill number "80767" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"

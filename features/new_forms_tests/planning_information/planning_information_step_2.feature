@@ -67,11 +67,11 @@ Feature: PlanningInformation form - scenarios step 2
     Then check if "כתובת" error is "שפת הקלט לא תקינה"
     When write an invalid value "דגכדגכדגכדגכגדכדגכדקכקדקכגדכדגכדשגכגדכשדכשדגכדשגכגדשכשדגכגדשכשדגכדגשכגדכדשגכדשגכגדכדגכדשגכגדכגדשכדגכדגכדשגערשעדכגדכגדכשדגכגדשכדשגכדשגכגדכשדגכדשגכגדשכדגכשכקדכדקכדקכדקכקדכדקכקדכקדכ" in "כתובת"
     Then check if "כתובת" error is "ניתן להזין עד 50 תווים"
+    #todo: error message should be יש להזין מספר מעל/עד X תווים
     When write an invalid value "234234234234" in "חלקות רצופות"
     Then check if "חלקות רצופות" error is "שדה לא תקין"
-    #Todo: error message should be יש להזין מספר מעל/עד X תווים
+    #todo: error message should be יש להזין מספר עד X תווים
     When write an invalid value "234234234234234" in "חלקות בודדות"
-    #Todo: error message should be יש להזין מספר עד X תווים
     Then check if "חלקות בודדות" error is "שדה לא תקין"
     When write an invalid value "sfdadfadfsd" in textarea of "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות"
     Then check if "נא מלא את את בקשתך, יש לציין גוש וחלקה ו/או תוכנית ומגרש ו/או כתובת ו/או קורדינאטות" error is "שפת קלט לא תקינה"

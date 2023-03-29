@@ -41,7 +41,7 @@ Feature: improvementTax form - scenarios step 2
     When write an invalid value "efdfsdfsfd" in "זיהוי נכס (מתוך חשבון הארנונה)"
     Then check if "זיהוי נכס (מתוך חשבון הארנונה)" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "dsfsdf" in search field "רחוב"
-    #Todo: check if message is "לא נמצא תוצאות"
+    Then check if "רחוב" no results found appeared
     When write a valid number "sfs31" in "מספר בית"
     Then validate if "מספר בית" number is "31"
     When write an invalid value "sdfsdfds" in "גוש"

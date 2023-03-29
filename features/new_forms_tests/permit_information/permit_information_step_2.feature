@@ -37,16 +37,17 @@ Feature: PermitInformation form - scenarios step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: PERMITINFO_05 הזנת פרטים שגוים בשדות "פרטי בקשה"
+    #todo: error message as sofia יש להזין מספר תיק רישוי תקי
     When write an invalid value "000000" in "מספר תיק רישוי זמין"
     Then check if "מספר תיק רישוי זמין" error is "שדה לא תקין"
-    #todo: error message as sofia יש להזין מספר תיק רישוי תקי
     When write a valid number "sd11a" in "כמות חלקות רצופות"
-    #todo: write more than 8 numbers and check error message ניתן להזין עד X תווים
     Then validate if "כמות חלקות רצופות" number is "11"
-    #todo: write more than 8 numbers and check error message ניתן להזין עד X תווים
+    When write an invalid number "1212121212" in "כמות חלקות רצופות"
+    Then check if "כמות חלקות רצופות" error is "ניתן להזין עד 8 תווים"
     When write a valid number "sd11a" in "כמות חלקות בודדות"
-    #todo: write more than 8 numbers and check error message ניתן להזין עד X תווים
     Then validate if "כמות חלקות בודדות" number is "11"
+    When write an invalid number "1212121212" in "כמות חלקות בודדות"
+    Then check if "כמות חלקות בודדות" error is "ניתן להזין עד 8 תווים"
     When write an invalid value "dsfsdfdsf" in textarea of "הערות"
     Then check if "הערות" error is "שפת קלט לא תקינה"
     When clear fields

@@ -7,12 +7,11 @@ Feature: improvementTax form - scenarios step 1
   - All fields are mandatory expect of (טלפון קווי)
 
   @Checked_By_Firas_and_Darweesh
-  #Todo: Note: there is a mistake in scenario names
   Scenario: IMROVEMENTATX_01 הזנת ערכים תקינים בשדות "פרטי בעל הנכס"
     Given Navigate to "ImprovementTax" form
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
-    And pick "ת.ז." from "סוג זיהוי"
+    When pick a valid "ת.ז." from "סוג זיהוי"
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And fill "02-8078687" as valid value in "טלפון קווי"
@@ -27,7 +26,7 @@ Feature: improvementTax form - scenarios step 1
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "asdsad" in "שם משפחה"
     Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
-    When pick "ת.ז." from "סוג זיהוי"
+    When pick a valid "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdadw" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-807d68r" as invalid value in "טלפון נייד"

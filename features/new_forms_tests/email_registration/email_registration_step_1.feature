@@ -11,7 +11,7 @@ Feature: EmailRegistration form - scenarios step 1
     Given Navigate to "EmailRegistration" form
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
-    When pick "ת.ז." from "סוג זיהוי"
+    When pick a valid "ת.ז." from "סוג זיהוי"
     When write a valid value "2222222" in "מספר ת.ז."
     And fill number "8078687" as valid value in "טלפון נייד"
     And fill number "8078687" as valid value in "טלפון קווי"
@@ -29,15 +29,15 @@ Feature: EmailRegistration form - scenarios step 1
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "zxcz" in "שם משפחה"
     Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
-    When pick "ת.ז." from "סוג זיהוי"
+    When pick a valid "ת.ז." from "סוג זיהוי"
     When write an invalid value "000000018" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill number "807d367" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill number "80767" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
-    When write an invalid value "כעיחלך" in "דוא"ל"
     #Todo: Email error message as sofia: יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל
+    When write an invalid value "כעיחלך" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
     When clear fields
 

@@ -25,14 +25,16 @@ class ImprovementTax(BasePage):
         self.widgets['מספר מוסד'] = create_widget('TextField', style=self.style, label='מספר מוסד')
         self.widgets['מספר ח.פ.'] = create_widget('TextField', style=self.style, label='מספר ח.פ.')
         self.widgets['מספר עמותה'] = create_widget('TextField', style=self.style, label='מספר עמותה')
-        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget('CheckBox', style=self.style, label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
-        self.widgets['זיהוי נכס (מתוך חשבון הארנונה)'] = create_widget('TextField', style=self.style, label='זיהוי נכס (מתוך חשבון הארנונה)')
+        self.widgets['הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים'] = create_widget(
+            'CheckBox', style=self.style,
+            label='הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים')
+        self.widgets['זיהוי נכס (מתוך חשבון הארנונה)'] = create_widget('TextField', style=self.style,
+                                                                       label='זיהוי נכס (מתוך חשבון הארנונה)')
         self.widgets['רחוב'] = create_widget('DropdownSearch', style=self.style, label='רחוב')
         self.widgets['מספר בית'] = create_widget('TextNumberField', style=self.style, label='מספר בית')
         self.widgets['גוש'] = create_widget('TextField', style=self.style, label='גוש')
         self.widgets['חלקה'] = create_widget('TextField', style=self.style, label='חלקה')
         self.widgets['מהות נכס'] = create_widget('DropdownSearch', style=self.style, label='מהות נכס')
-
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס":
@@ -41,6 +43,7 @@ class ImprovementTax(BasePage):
         elif dst_step == "הצהרה":
             self.fill_first_page(context, mailbox, driver, current_page)
             self.widgets['רחוב'].search_and_pick_first_element_and_validate("א טור")
+            self.widgets['זיהוי נכס (מתוך חשבון הארנונה)'].set_text('2332432433')
             self.widgets['מספר בית'].set_text('232')
             self.widgets['גוש'].set_text('223')
             self.widgets['חלקה'].set_text('123')

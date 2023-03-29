@@ -47,15 +47,6 @@ def pick_invalid_option(context, option_value, widget_name):
         widget.close()
 
 
-@when('Select "{option_value}" from "{widget_name}"')
-def select_element(context, option_value, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    try:
-        widget.new_select_element(option_value)
-    finally:
-        widget.close()
-
-
 @when('pick "{option_value}" from no label dropdown of "{widget_name}"')
 def pick_element(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]

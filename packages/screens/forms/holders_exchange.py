@@ -40,7 +40,6 @@ class HoldersExchange(BasePage):
             'פרטי מחזיק חדש': create_widget('Dropdown', style=self.style, label='סוג זיהוי',
                                             step_number=StepNumber.FOURTH)
         }
-        # todo: the page accept the id number without doing the dict
         self.widgets['מספר ת.ז.'] = {
             'פרטי מגיש': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.FIRST),
             'פרטי נכס': create_widget('TextField', style=self.style, label='מספר ת.ז.', step_number=StepNumber.SECOND),

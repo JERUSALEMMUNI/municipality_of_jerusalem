@@ -26,7 +26,6 @@ class TextNumberField(TextField):
     def is_invalid_txt(self):
         return self.is_invalid
 
-
     @property
     def is_invalid(self):
         return 'ng-invalid' in self.get_element().get_attribute('class')
@@ -38,5 +37,4 @@ class TextNumberField(TextField):
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
         return error_expected in error_msg.text, error_expected == error_msg.text
-
 

@@ -22,9 +22,60 @@ Feature: EmailRegistration form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
+
+    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
+    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
+    Then validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "צילום תעודת זהות + ספח"
+    Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
+    Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
+    When delete file "1" in "צילום תעודת זהות + ספח"
+    And delete file "1" in "צילום תעודת זהות + ספח"
+    And delete file "1" in "צילום תעודת זהות + ספח"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
+    And Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
+    Then validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
+    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
+    Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
+    Then validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
+    Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
+    When delete file "1" in "צילום תעודת זהות + ספח"
+    And delete file "1" in "צילום תעודת זהות + ספח"
+    And delete file "1" in "צילום תעודת זהות + ספח"
+    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
+
+     And Upload a valid "gif_to_upload.gif" file in "אחר"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate name of file "1" is "gif_to_upload.gif" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
+    When delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
+    And Upload a valid "bmp_to_upload.bmp" file in "אחר"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
+    When delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And Upload a valid "gif_to_upload.gif" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -44,7 +95,6 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "האם דירת שותפים?"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -66,7 +116,6 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -88,7 +137,6 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -108,7 +156,6 @@ Feature: EmailRegistration form - scenarios step 2
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -129,13 +176,11 @@ Feature: EmailRegistration form - scenarios step 2
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
-    @test_darweesh
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
     When "email" Authentication using email address "@TEMP_EMAIL_ADDRESS"
 #    When click on "שמור" button
@@ -154,7 +199,6 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
 #    When clear fields
@@ -177,7 +221,6 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
     When Upload a valid "png_to_upload.png" file in "ייפוי כח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    #Todo: Add all types of files
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields

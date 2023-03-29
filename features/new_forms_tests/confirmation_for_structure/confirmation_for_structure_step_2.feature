@@ -39,7 +39,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
   @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_05 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א טdssברי" in search field "רחוב"
-    #Todo: check if message is "לא נמצא תוצאות"
+    Then check if "רחוב" no results found appeared
     When write an invalid value "54d" in "מספר בית"
     Then check if "מספר בית" error is "יש להזין ספרות בלבד"
     When write an invalid value "1cdc223" in "גוש"

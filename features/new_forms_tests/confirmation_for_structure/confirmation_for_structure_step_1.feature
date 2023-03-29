@@ -34,7 +34,7 @@ Feature: ConfirmationForStructure form - scenarios step 1
     When fill number "חלחמג" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "כעיחלך" in "דוא"ל"
-    #Todo: Email error message as sofia: יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל
+    #todo: Email error message as sofia: יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל
     Then check if "דוא"ל" error is "שדה לא תקין"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"

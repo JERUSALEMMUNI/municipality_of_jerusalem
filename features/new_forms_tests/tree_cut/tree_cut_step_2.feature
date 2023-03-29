@@ -11,30 +11,92 @@ Feature: TreeCut form - scenarios step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_02 - Entering correct values for the "request details" fields when tree 1 and a non-shared house are selected
-#   When click on "שמור" button
+#    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
-    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload a valid file "pdf_file_to_upload.pdf" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "pdf_file_to_upload.pdf" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload a valid file "jpeg_to_upload.jpeg" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "jpeg_to_upload.jpeg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload a valid file "bmp_to_upload.bmp" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "bmp_to_upload.bmp" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
-    #Todo: check all kids of accepted files
     When pick "בטיחות" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
-    When Upload a valid "png_to_upload.png" file in "אחר"
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
-    When Upload a valid "gif_to_upload.gif" file in "אחר"
-    #Todo: check all kids of accepted files
+    And Upload a valid "gif_to_upload.gif" file in "אחר"
+    And Upload a valid "png_to_upload.png" file in "אחר"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate name of file "1" is "gif_to_upload.gif" in "אחר"
+    And validate size of file "1" in "אחר" in accepted
+    And validate name of file "2" is "png_to_upload.png" in "אחר"
+    And validate size of file "2" in "אחר" in accepted
+    And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
+    And validate size of file "3" in "אחר" in accepted
+    When delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
+    And Upload a valid "bmp_to_upload.bmp" file in "אחר"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
+    When delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And delete file "1" in "אחר"
+    And Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
-  @test
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
-    # When click on "שמור" button
+#    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -42,31 +104,51 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    #todo: validate number of trees
+    Then validate if "מספר העצים" number is "1"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "2" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
+    Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
-    #Todo: check all kids of accepted files
+    Then validate name of file "1" is "png_to_upload.png" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "jpg_pic_to_upload.jpg" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "gif_to_upload.gif" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -74,32 +156,67 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "2" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    Then validate if "מספר העצים" number is "1"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "2" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    Then validate if "מספר העצים" number is "2"
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"
     When Upload a valid "gif_to_upload.gif" file in "אישור לבית משותף"
+    Then validate name of file "1" is "png_to_upload.png" in "אישור לבית משותף"
+    Then validate size of file "1" in "אישור לבית משותף" in accepted
+    Then validate name of file "2" is "jpg_pic_to_upload.jpg" in "אישור לבית משותף"
+    Then validate size of file "2" in "אישור לבית משותף" in accepted
+    Then validate name of file "3" is "gif_to_upload.gif" in "אישור לבית משותף"
+    Then validate size of file "3" in "אישור לבית משותף" in accepted
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
-    #Todo: check all kids of accepted files
+    Then validate name of file "1" is "png_to_upload.png" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "jpg_pic_to_upload.jpg" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "gif_to_upload.gif" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -107,40 +224,66 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "2" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    Then validate if "מספר העצים" number is "1"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "2" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    Then validate if "מספר העצים" number is "2"
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When from table "רשימת עצים" remove "1"
-    #todo check the number of trees is one
+    Then validate if "מספר העצים" number is "1"
     When from table "רשימת עצים" add "1"
-    #todo check the all field in new row not fill
+    Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" remove "1"
-    #todo check the number of trees is one
+    Then validate if "מספר העצים" number is "1"
     #Todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
-    #todo check the number of trees is one
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"
     When Upload a valid "gif_to_upload.gif" file in "אישור לבית משותף"
+    Then validate name of file "1" is "png_to_upload.png" in "אישור לבית משותף"
+    Then validate size of file "1" in "אישור לבית משותף" in accepted
+    Then validate name of file "2" is "jpg_pic_to_upload.jpg" in "אישור לבית משותף"
+    Then validate size of file "2" in "אישור לבית משותף" in accepted
+    Then validate name of file "3" is "gif_to_upload.gif" in "אישור לבית משותף"
+    Then validate size of file "3" in "אישור לבית משותף" in accepted
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
-    #todo: validate number of trees
-    #Todo: check all kids of accepted files
+    Then validate name of file "1" is "png_to_upload.png" in "אחר"
+    Then validate size of file "1" in "אחר" in accepted
+    Then validate name of file "2" is "jpg_pic_to_upload.jpg" in "אחר"
+    Then validate size of file "2" in "אחר" in accepted
+    Then validate name of file "3" is "gif_to_upload.gif" in "אחר"
+    Then validate size of file "3" in "אחר" in accepted
+    Then validate if "מספר העצים" number is "1"
 #    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
 
-    
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
