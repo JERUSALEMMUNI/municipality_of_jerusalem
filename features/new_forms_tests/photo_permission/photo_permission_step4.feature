@@ -113,7 +113,7 @@ Feature: PhotoPermission form - scenarios step 4
 
     When Upload a valid "bmp_to_upload.bmp" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "העתק ביטוח צד ג"
-    Then validate size of file "1" in "העתק ביטוח צד ג"" in accepted
+    Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
     When delete file "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "pdf_to_upload.pdf" file in "העתק ביטוח צד ג"
