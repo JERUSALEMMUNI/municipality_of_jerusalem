@@ -24,6 +24,9 @@ class MultiSelect(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]"
         }
 
+    def get_locator(self):
+        return DropdownLocators()
+
     def set_select_all_button(self):
         self.select_all = self.web_element.find_element(*MulltiSelectLocators.select_all)
 
@@ -61,8 +64,8 @@ class MultiSelect(BaseWidget):
         if not self.is_open():
             self.click()
         WebDriverWait(self.web_element, 5).until(
-            EC.presence_of_element_located((DropdownLocators.select(txt))))
-        prefix = self.web_element.find_element(*DropdownLocators.select(txt))
+            EC.presence_of_element_located((self.get_locator().select(txt))))
+        prefix = self.web_element.find_element(*self.get_locator().select(txt))
         prefix.click()
         self.close_button()
 

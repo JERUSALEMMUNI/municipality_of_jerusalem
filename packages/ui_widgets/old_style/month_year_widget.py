@@ -24,21 +24,24 @@ class MonthYear(BaseWidget):
             'Value': f"following-sibling::div/div[{self.label}]"
         }
 
+    def get_locator(self):
+        return MonthYearWidgetLocators()
+
     def get_validation_text(self, path):
-        return self.web_element.find_element(*MonthYearWidgetLocators.valid_text(path, self.label))
+        return self.web_element.find_element(*self.get_locator().valid_text(path, self.label))
 
     def removeItem(self, path):
-        remove_button = self.web_element.find_element(*MonthYearWidgetLocators.remove_item(path, self.label))
+        remove_button = self.web_element.find_element(*self.get_locator().remove_item(path, self.label))
         remove_button.click()
 
     def set_year(self, path, year):
-        dropdown = self.web_element.find_element(*MonthYearWidgetLocators.set_year(path, self.label))
+        dropdown = self.web_element.find_element(*self.get_locator().set_year(path, self.label))
         self.year_dropdown.set_web_element(dropdown)
         self.year_dropdown.web_element.click()
         self.year_dropdown.select_element(year)
 
     def get_month_element(self, path):
-        return self.web_element.find_element(*MonthYearWidgetLocators.set_month(path, self.label))
+        return self.web_element.find_element(*self.get_locator().set_month(path, self.label))
 
     def set_month(self, path, month):
         self.month_multiselect.set_custom_multiselect(self.get_month_element(path))

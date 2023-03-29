@@ -10,19 +10,28 @@ class MonthYearWidgetLocators:
     accept_alert = (By.XPATH, "//div[@class='generalBtn']")
 
 
-    @staticmethod
-    def valid_text(path, label):
-        return By.XPATH, f"{path}//following-sibling::div/div[{label}]/div/div[2]"
+    @property
+    def valid_text(self):
+        def _valid_text(path, label):
+            return By.XPATH, f"{path}//following-sibling::div/div[{label}]/div/div[2]"
+        return _valid_text
 
-    @staticmethod
-    def remove_item(path, label):
-        return By.XPATH, f"{path}//following-sibling::div/div[{label}]//button[@title='הסר']//i[@class='pi pi-times-circle']"
+    @property
+    def remove_item(self):
+        def _remove_item(path, label):
+            return By.XPATH, f"{path}//following-sibling::div/div[{label}]//button[@title='הסר']//i[@class='pi pi-times-circle']"
+        return _remove_item
 
-    @staticmethod
-    def set_year(path, label):
-        return By.XPATH, f"{path}//following-sibling::div/div[{label}]//p-dropdown[@formcontrolname='year']"
+    @property
+    def set_year(self):
+        def _set_year(path, label):
+            return By.XPATH, f"{path}//following-sibling::div/div[{label}]//p-dropdown[@formcontrolname='year']"
+        return _set_year
 
-    @staticmethod
-    def set_month(path, label):
-        return By.XPATH, f"{path}//following-sibling::div/div[{label}]//p-multiselect[@formcontrolname='months']"
+
+    @property
+    def set_month(self):
+        def _set_month(path, label):
+            return By.XPATH, f"{path}//following-sibling::div/div[{label}]//p-multiselect[@formcontrolname='months']"
+        return _set_month
 

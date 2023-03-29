@@ -6,6 +6,10 @@ class ButtonGroupLocators:
     is_invalid = (By.XPATH, "./parent::div//p-selectbutton")
     list = (By.XPATH, "./parent::div//div[@role='group']/div[@role='button']")
 
-    @staticmethod
-    def get_item(selected_item):
-        return By.XPATH, f"./parent::div//div[@role='group']/div[@aria-labelledby='{selected_item}']"
+    @property
+    def get_item(self):
+        def _get_item(selected_item):
+            return By.XPATH, f"./parent::div//div[@role='group']/div[@aria-labelledby='{selected_item}']"
+        return _get_item
+
+

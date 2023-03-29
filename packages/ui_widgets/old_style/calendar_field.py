@@ -21,6 +21,9 @@ class CalendarField(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::p-calendar/span/input"
         }
 
+    def get_locator(self):
+        return CalenderLocators()
+
     def set_web_element(self, web_element):
         self.web_element = web_element
         self.text_widget = self.create_widget('TextField', label=self.label, index=self.index)
@@ -31,7 +34,8 @@ class CalendarField(BaseWidget):
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
         x = WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((CalenderLocators.day(day))))
+            EC.element_to_be_clickable((self.get_locator().day(day))))
+
         x.click()
         WebDriverWait(self.web_element, 10).until(
             EC.invisibility_of_element(x))

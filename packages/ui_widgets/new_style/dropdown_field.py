@@ -27,6 +27,9 @@ class Dropdown(BaseWidget):
             'Value': value
         }
 
+    def get_locator(self):
+        return DropdownLocators()
+
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
         if dropDown_open in (None, "false"):
@@ -42,7 +45,7 @@ class Dropdown(BaseWidget):
             elements_list = element.text
             log.info(elements_list)
             if option_value in elements_list:
-                chosenElement = driver.find_element(*DropdownLocators.chosen_element(option_value))
+                chosenElement = driver.find_element(*self.get_locator().chosen_element(option_value))
                 return chosenElement.text, elements_list
 
     def select_element(self, pre):

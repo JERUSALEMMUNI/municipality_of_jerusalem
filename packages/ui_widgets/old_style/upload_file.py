@@ -17,12 +17,15 @@ class UploadFile(BaseWidget):
             'Value': f"//label[contains(text(),'{self.label}')]/ancestor::div[@class='row']"
         }
 
+    def get_locator(self):
+        return UploadFilesLocators()
+
     def upload_file(self, path):
         file_input = self.web_element.find_element(By.XPATH, './/input')
         file_input.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
+        file = self.web_element.find_element(*self.get_locator().check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
         allowed_extension_values = ['png', 'pdf']
@@ -37,7 +40,7 @@ class UploadFile(BaseWidget):
         return extention, same_uploaded
 
     def check_file_size(self, file_index):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index))
+        file = self.web_element.find_element(*self.get_locator().check_file_size_locator(file_index))
         file_after = file.text.split(" ")
         file_size_number = file_after[0]
         file_size_measuring_unit = file_after[1]
@@ -47,7 +50,7 @@ class UploadFile(BaseWidget):
         return True
 
     def delete_file(self, file_index):
-        delete_button = self.web_element.find_element(*UploadFilesLocators.delete_file_locator(file_index))
+        delete_button = self.web_element.find_element(*self.get_locator().delete_file_locator(file_index))
         delete_button.click()
 
     def validate_error_message(self, error_expected):

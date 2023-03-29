@@ -20,6 +20,9 @@ class UploadFile(BaseWidget):
             'Value': value
         }
 
+    def get_locator(self):
+        return UploadFilesLocators()
+
     def upload_file(self, path):
         """
         param path: file name
@@ -29,7 +32,7 @@ class UploadFile(BaseWidget):
         upload_file.send_keys(path)
 
     def check_file_name(self, file_index, expected_file_name):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_name_locator(file_index))
+        file = self.web_element.find_element(*self.get_locator().check_file_name_locator(file_index))
         file_extension_list = file.text.split('.')
         file_extenssion = file_extension_list[-1]
         allowed_extension_values = ['png', 'pdf', 'gif', 'jpg', 'jpeg', 'bmp']
@@ -44,7 +47,7 @@ class UploadFile(BaseWidget):
         return extention, same_uploaded
 
     def check_file_size(self, file_index):
-        file = self.web_element.find_element(*UploadFilesLocators.check_file_size_locator(file_index)).text
+        file = self.web_element.find_element(*self.get_locator().check_file_size_locator(file_index)).text
         final_file = file[1:-1]
         file_size_measuring_unit = final_file[-2:]
         file_size_number = final_file[:-2]
@@ -53,7 +56,7 @@ class UploadFile(BaseWidget):
         return True
 
     def delete_file(self, file_index):
-        delete_button = self.web_element.find_element(*UploadFilesLocators.delete_file_locator(file_index))
+        delete_button = self.web_element.find_element(*self.get_locator().delete_file_locator(file_index))
         delete_button.click()
 
     def validate_error_message(self, error_expected):
