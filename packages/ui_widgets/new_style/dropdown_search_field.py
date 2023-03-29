@@ -30,7 +30,7 @@ class DropdownSearch(Dropdown):
         else:
             log.info("No Result Found")
 
-    #ToDo: its take a 10 second for check or broken without the try except
+    # ToDo: its take a 10 second for check or broken without the try except
     def wait_list_streets(self):
         try:
             return misc_utils.while_timeout(self.web_element.find_element, True, enums.WaitInterval.SHORT.value,
@@ -38,7 +38,7 @@ class DropdownSearch(Dropdown):
                                             , w_raise_on_error=False,
                                             w_comp_func=lambda a, b: type(a) is not WebElement)
         except:
-            pass
+            log.info("no results found label not appeared")
 
     # Todo: function is not ready yet
     # loop should be stopped if an element is not found
@@ -97,7 +97,7 @@ class DropdownSearch(Dropdown):
         element.clear()
 
     def get_search_result_if_empty(self):
-        # self.click_button()
+        self.click_button()
         element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
         return element.text in ("No results found", "לא נמצאו תוצאות")
