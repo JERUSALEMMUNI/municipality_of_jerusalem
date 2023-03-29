@@ -8,7 +8,8 @@ Feature: PhotoPermission form - scenarios step 3
 
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי המיקום ומועדי הצילומים"
-#  @in_dev
+
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_03 - Checking "location details and shooting dates" fields with valid values
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
@@ -25,10 +26,10 @@ Feature: PhotoPermission form - scenarios step 3
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "111" in "מספר אנשי צוות"
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "ירושלים" in "שם האתר"
     When from table "פרטי המיקום ומועדי הצילומים" at row "1" write a valid value "גדגדכ" in "כתובת"
-    When from table "פרטי המיקום ומועדי הצילומים" at row "1" choose "נושמת" in "חסימת כביש"
+    When from table "פרטי המיקום ומועדי הצילומים" at row "1" choose "לא קיימת חסימה" in "חסימת כביש"
     When choose "לא" from "האם יש חיבור לחשמל/גנרטור"
-    When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"
-    When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט ציוד צילום"
+    When write a valid value "גחדךגלכן ךגלכןגךג חלכןכךגלכןכ םגךכלכ" in "פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"
+    When write a valid value "גחדךגלכן קךגלכןגךגח לכןכךגלכןכםגךכלכ" in "פירוט ציוד צילום"
     When click on "שמור" button
     And click on "שמור טיוטה" button tyota
     When 1st wait for "email" that contains pin code and link
@@ -38,7 +39,9 @@ Feature: PhotoPermission form - scenarios step 3
     When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
     When click on "המשך" button
-#    When clear fields
+    When clear fields
+
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_04 - Checking "location details and shooting dates" fields with valid values
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button

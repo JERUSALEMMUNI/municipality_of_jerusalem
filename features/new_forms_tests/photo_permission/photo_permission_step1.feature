@@ -6,7 +6,8 @@ Feature: PhotoPermission form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/PhotoPermission
   - Number of Pages is : 4, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
-#  @in_dev
+
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_01 - Checking "personal details" fields with correct details
     Given Navigate to "PhotoPermission" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -16,12 +17,14 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-#    When click on "המשך" button
-#    When write a valid number "0000" in "email"
-#    Then validate current step name is "פרטי ההפקה"
-#    When close "email" dialog
+  # When click on "המשך" button
+  # When click on "email" option
+  # When 1st wait for "email" that contains pin code and link
+  # When set pin code "email"
+  # When close "email" dialog
     When clear fields
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_06 - Checking "personal details" fields with incorrect details
     Given Navigate to "PhotoPermission" form
     When write an invalid value "dddd" in "שם פרטי"

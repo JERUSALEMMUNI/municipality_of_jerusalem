@@ -10,6 +10,7 @@ Feature: PhotoPermission form - scenarios step 4
   Background: Background Scenario
     Given Navigate to "PhotoPermission" form and reach step "צרופות"
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_05 - "upload files" integrity check
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "png_to_upload.png" in "צילום ת.ז. / דרכון"
@@ -193,7 +194,9 @@ Feature: PhotoPermission form - scenarios step 4
     When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
 
+  #Todo: Scenario TC_PHOTOPERMIT_08 is missing הזנת ערכים שגויים לשדות "פרטי מיקום ומועדי הצילומים" מועד אחד
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_09 - "upload invalid files" integrity check
     When Upload an invalid "excel_to_upload.xlsx" file in "צילום ת.ז. / דרכון"
     Then check if "צילום ת.ז. / דרכון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
