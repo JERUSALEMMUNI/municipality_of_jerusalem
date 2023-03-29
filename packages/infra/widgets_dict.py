@@ -16,9 +16,10 @@ class WidgetsDict(dict):
             web_element = list_of_elements[widget.index - 1]
             widget.set_web_element(web_element)
         else:
-            raise KeyError(f"Cannot find widget {key} in page")
+            raise KeyError("Cannot find widget in page")
         if wait_for_element:
             self.driver.wait_for_presence_of_element(widget.locator['By'], widget.locator['Value'])
+        self.driver.scroll_to_element(web_element)
         return widget
 
     def get_without_set_element(self, key):
