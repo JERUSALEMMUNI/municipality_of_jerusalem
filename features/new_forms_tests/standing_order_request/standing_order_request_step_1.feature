@@ -7,29 +7,19 @@ Feature: StandingOrderRequest form - scenarios step 1
   - All fields are mandatory expect of (טלפון קווי)
 
   @Checked_By_Firas_and_Darweesh
-  Scenario: TC_STANDINGORDEREQ_01 type 1- Checking "personal details" fields with correct details
+  Scenario: TC_STANDINGORDEREQ_01 - Checking "personal details" fields with correct details
     Given Navigate to "StandingOrderRequest" form
     When write a valid value "סוהייב" in "שם פרטי"
     When write a valid value "אבו גנאם" in "שם משפחה"
     When pick "ת.ז." from "סוג זיהוי"
     When write a valid value "332796184" in "מספר ת.ז."
-    When fill "058-8078687" as valid value in "טלפון נייד"
-    When fill "02-8078687" as valid value in "טלפון קווי"
-    When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    When clear fields
-
-  @Checked_By_Firas_and_Darweesh
-  #Todo: Question: instead of repeating the whole scenario, why dont we re test the field with different inputs?
-  Scenario: TC_STANDINGORDEREQ_01 type 2 - Checking "personal details" fields with correct details
-    Given Navigate to "StandingOrderRequest" form
-    When write a valid value "סוהייב" in "שם פרטי"
-    When write a valid value "אבו גנאם" in "שם משפחה"
     When pick "דרכון" from "סוג זיהוי"
     When write a valid value "332796184" in "מספר דרכון"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When clear fields
+
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_03 - Checking "personal details" fields with incorrect details

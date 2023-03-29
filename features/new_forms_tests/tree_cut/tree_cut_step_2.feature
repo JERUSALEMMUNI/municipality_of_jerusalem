@@ -136,6 +136,8 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
+    
+
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"

@@ -10,14 +10,28 @@ Feature: ConfirmationForStructure form - scenarios step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_02 - Entering correct values for the "request details" fields
-    #Todo: Add "שמור" steps
+#    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When search valid value and pick "א טברי" in search field "רחוב"
     When write a valid value "1" in "מספר בית"
     When write a valid value "1" in "מספר דירה"
     When write a valid value "1" in "גוש"
     When write a valid value "1" in "חלקה"
     When write a valid value "1" in "תת חלקה"
-    #Todo: Add "שמור" steps
+#    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
 

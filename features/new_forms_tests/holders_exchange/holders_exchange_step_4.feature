@@ -50,11 +50,11 @@ Feature: HoldersExchange form step 4
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
-    When write a valid number "12142023" in "תאריך כניסה"
+    When write an invalid number "12142023" in "תאריך כניסה"
     Then check if "תאריך כניסה" error is "תאריך לא תקין"
-    When Upload a valid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
     Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When Upload a valid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    When Upload an invalid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     Then check if "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 

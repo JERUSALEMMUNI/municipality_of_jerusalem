@@ -125,7 +125,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-  Scenario: TC_HOLDERSEXCH_11 type 1 הזנת ערכים שגוים בשדות "פרטי נכס"
+  Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
     When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
     When search invalid value and pick "asdads" in search field "רחוב"
     And write a valid number "s2da" in "בית"
@@ -145,26 +145,12 @@ Feature: HoldersExchange form step 2
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
-    When clear fields
-
-  Scenario: TC_HOLDERSEXCH_11 type 2 הזנת ערכים שגוים בשדות "פרטי נכס"
-    When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
-    When search invalid value and pick "asdads" in search field "רחוב"
-    And write a valid number "sd11a" in "בית"
-    Then validate if "בית" number is "11"
-    When choose "למגורים" from "סוג הנכס"
-    And choose "יורש" from "מי מגיש הבקשה?"
+    #-------------------------------------------------------------------------------------------------------------------
+    When choose "יורש" from "מי מגיש הבקשה?"
     And Upload an invalid "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     Then check if "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When clear fields
-
-  Scenario: TC_HOLDERSEXCH_11 type 3 הזנת ערכים שגוים בשדות "פרטי נכס"
-    When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
-    When search invalid value and pick "asdads" in search field "רחוב"
-    And write a valid number "sda22" in "בית"
-    Then validate if "בית" number is "22"
-    When choose "למגורים" from "סוג הנכס"
-    And choose "מיופה כח" from "מי מגיש הבקשה?"
+   #--------------------------------------------------------------------------------------------------------------------
+    When choose "מיופה כח" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "sdf" in "שם משפחה"
@@ -181,4 +167,8 @@ Feature: HoldersExchange form step 2
     When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then check if "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
+
+
+
+
 

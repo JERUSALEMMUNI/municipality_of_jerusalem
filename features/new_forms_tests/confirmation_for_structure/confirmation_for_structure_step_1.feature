@@ -14,7 +14,10 @@ Feature: ConfirmationForStructure form - scenarios step 1
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill number "8073267" as valid value in "טלפון קווי"
-   #Todo: in Sofia's worksheet, we should add "המשך"
+#    When click on "המשך" button
+#    When click on "email" option
+#    When 1st wait for "email" that contains pin code and link
+#    When set pin code "email"
     When clear fields
 
  @Checked_By_Firas_and_Darweesh

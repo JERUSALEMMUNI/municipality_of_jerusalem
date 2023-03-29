@@ -85,7 +85,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
+    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
     When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
     When Upload a valid "png_to_upload.png" file in "אחר"
     #Todo: Add all types of files
@@ -174,7 +174,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
+    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
     When Upload a valid "png_to_upload.png" file in "ייפוי כח לקבלת מידע בשם התאגיד"
     When Upload a valid "png_to_upload.png" file in "אחר"
     #Todo: Add all types of files
@@ -183,33 +183,24 @@ Feature: EmailRegistration form - scenarios step 2
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
-  Scenario: TC_EMAILREG_12 typr 1 תצהיר ושליחה עם ערכים שגויים
+  Scenario: TC_EMAILREG_12 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
     Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When clear fields
-
-  @Checked_By_Firas_and_Darweesh
-  Scenario: TC_EMAILREG_12 type 2 תצהיר ושליחה עם ערכים שגויים
+    #-------------------------------------------------------------------------------------------------------------------
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "567895" in "חשבון ארנונה"
     Then check if "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
-    When clear fields
-
-  @Checked_By_Firas_and_Darweesh
-  Scenario: TC_EMAILREG_12 type 3 תצהיר ושליחה עם ערכים שגויים
+    #-------------------------------------------------------------------------------------------------------------------
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "שגדDCSגשגד" in "חשבון ארנונה"
     Then check if "חשבון ארנונה" error is "יש להזין ספרות בלבד"
-    When clear fields
-
-  @Checked_By_Firas_and_Darweesh
-  Scenario: TC_EMAILREG_12 type 4 תצהיר ושליחה עם ערכים שגויים
+    #-------------------------------------------------------------------------------------------------------------------
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
@@ -221,10 +212,7 @@ Feature: EmailRegistration form - scenarios step 2
     Then check if "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When clear fields
-
-  @Checked_By_Firas_and_Darweesh
-  Scenario: TC_EMAILREG_12 type 5 תצהיר ושליחה עם ערכים שגויים
+    #-------------------------------------------------------------------------------------------------------------------
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
@@ -237,3 +225,6 @@ Feature: EmailRegistration form - scenarios step 2
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
+
+
+
