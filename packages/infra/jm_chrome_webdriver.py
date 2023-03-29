@@ -28,7 +28,6 @@ class JMChromeWebDriver(ChromeDriver):
         self.maximize_window()
         self.implicitly_wait(WaitInterval.MEDIUM.value)
 
-    # todo: add find elements with same handling as find element
     def find_elements(self, by=By.XPATH, value=None):
         try:
             log.debug(f"Finding elements by {by}: {value}")

@@ -32,6 +32,7 @@ Feature: TreeCut form - scenarios step 2
     When clear fields
 
   @Checked_By_Firas_and_Darweesh
+  @test
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
     # When click on "שמור" button
     When search valid value and pick "א טור" in search field "רחוב"
@@ -39,6 +40,9 @@ Feature: TreeCut form - scenarios step 2
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"

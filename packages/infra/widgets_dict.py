@@ -11,7 +11,6 @@ class WidgetsDict(dict):
         widget = super(WidgetsDict, self).__getitem__(key)
         if type(widget) is dict:
             widget = widget.get(self.current_step, list(widget.values())[0])
-        # todo:add error index out of range exception with proper comment on which widget we except error
         list_of_elements = self.driver.find_elements(widget.locator['By'], widget.locator['Value'])
         if len(list_of_elements) > 0:
             web_element = list_of_elements[widget.index - 1]

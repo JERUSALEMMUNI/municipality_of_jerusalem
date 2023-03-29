@@ -9,7 +9,7 @@ Feature: PhotoPermission form - scenarios step 2
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי ההפקה"
   @Checked_By_Firas_and_Darweesh
-  Scenario: TC_PHOTOPERMIT_02 - Checking "production details" fields with correct details
+  Scenario: TC_PHOTOPERMIT_02 הזנת ערכים תקינים לשדות "פרטי ההפקה"
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -40,7 +40,7 @@ Feature: PhotoPermission form - scenarios step 2
 #    When clear fields
 
   @Checked_By_Firas_and_Darweesh
-  Scenario: TC_PHOTOPERMIT_07 - Checking "production details" fields with invalid details
+  Scenario: TC_PHOTOPERMIT_07 הזנת ערכים שגויים לשדות "פרטי ההפקה"
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota

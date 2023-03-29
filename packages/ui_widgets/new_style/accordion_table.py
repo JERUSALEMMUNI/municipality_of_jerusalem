@@ -112,3 +112,15 @@ class AccordionTable(BaseWidget):
     def clear(self, index=None):
         for i in range(self.get_list_length()):
             self.remove_item(1)
+
+    def check_file_name(self, row, label, file_name_index, file_name):
+        widget = self.create_widget_table_row(row)
+        return widget.check_file_name(label, file_name_index, file_name)
+
+    def check_file_size(self, row, label, file_size_index):
+        widget = self.create_widget_table_row(row)
+        return widget.check_file_size(label, file_size_index)
+
+    def delete_file(self, row, label, wanted_file_index):
+        widget = self.create_widget_table_row(row)
+        return widget.delete_file(label, wanted_file_index)

@@ -114,3 +114,15 @@ class AccordionRow(BaseWidget):
     def is_button_valid(self, label):
         big_button = self.make_element_ready_to_action('ButtonGroup', label)
         return big_button.is_valid
+
+    def check_file_name(self, label, file_name_index, file_name):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.check_file_name(file_name_index, file_name)
+
+    def check_file_size(self, label, file_size_index):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.check_file_size(file_size_index)
+
+    def delete_file(self, label, wanted_file_index):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.delete_file(wanted_file_index)

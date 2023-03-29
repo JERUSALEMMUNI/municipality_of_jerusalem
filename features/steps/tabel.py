@@ -219,6 +219,31 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
         raise AssertionError("File type is not accepted")
 
 
+@when('from table "{table_name}" at row "{row}" validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
+def validate_uploaded_files_name(context, table_name, row, file_name_index, file_name, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if not widget.check_file_name(row, widget_name, file_name_index, file_name)[0]:
+        rep.add_label_to_step("File extension is not allowed",
+                              "File extension is not accepted, Only two formats are allowed pdf and jpg")
+        raise AssertionError("File extension is not accepted")
+    if not widget.check_file_name(row, widget_name, file_name_index, file_name)[1]:
+        rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
+
+
+@then('from table "{table_name}" at row "{row}" validate size of file "{file_size_index}" in "{widget_name}" in accepted')
+def check_file_size(context, table_name, row, file_size_index, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if not widget.check_file_size(row, widget_name, file_size_index):
+        rep.add_label_to_step("Wrong file size", "File size is not accepted, it is bigger than 6MB")
+        raise AssertionError("File size is not accepted")
+
+
+@when('from table "{table_name}" at row "{row}" delete file "{wanted_file_index}" in "{widget_name}"')
+def choose_in_search(context, table_name, row, wanted_file_index, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    widget.delete_file(row, widget_name, wanted_file_index)
+
+
 @when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
