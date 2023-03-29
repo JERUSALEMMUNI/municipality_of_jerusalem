@@ -10,14 +10,20 @@ class UploadFilesLocators:
     is_invalid = (By.XPATH, "./ancestor::lib-file-upload")
     is_valid = (By.XPATH, "./ancestor::lib-file-upload")
 
-    @staticmethod
-    def check_file_size_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][2]"
+    @property
+    def check_file_size_locator(self):
+        def _check_file_size_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][2]"
+        return _check_file_size_locator
 
-    @staticmethod
-    def check_file_name_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][1]"
+    @property
+    def check_file_name_locator(self):
+        def _check_file_name_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][1]"
+        return _check_file_name_locator
 
-    @staticmethod
-    def delete_file_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//button"
+    @property
+    def delete_file_locator(self):
+        def _delete_file_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//button"
+        return _delete_file_locator

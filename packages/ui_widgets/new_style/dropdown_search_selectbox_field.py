@@ -23,11 +23,13 @@ class DropdownSearchSelectBox(DropdownSearch):
     #     assert self.value == self.web_element.find_element(
     #         *DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
 
+
     def validate_selected_option(self, option):
+        obj = DropdownSearchSelectBoxLocators()
 
         self.click_button()
         if "highlight" in self.web_element.find_element(
-                *DropdownSearchSelectBoxLocators.selected_option(option)).get_attribute('class'):
+                *obj.selected_option(option)).get_attribute('class'):
 
             return True
         else:
@@ -128,8 +130,8 @@ class DropdownSearchSelectBox(DropdownSearch):
         self.click_button()
         try:
             WebDriverWait(self.web_element, 30).until(
-                EC.element_to_be_clickable(DropdownLocators.select(pre)))
-            prefix = self.web_element.find_element(*DropdownLocators.select(pre))
+                EC.element_to_be_clickable(self.get_locator().select(pre)))
+            prefix = self.web_element.find_element(*self.get_locator().select(pre))
             prefix.click()
         except:
             log.info("Didn't find option to choose")

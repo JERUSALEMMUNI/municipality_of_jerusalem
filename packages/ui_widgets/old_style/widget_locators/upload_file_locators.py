@@ -7,14 +7,21 @@ class UploadFilesLocators:
     is_invalid = (By.XPATH, f"./ancestor::core-file-upload//p-messages[not(div)]")
     is_valid = (By.XPATH, f"./ancestor::core-file-upload//div[contains(@class,'ui-fileupload-row ng-star-inserted')]")
 
-    @staticmethod
-    def check_file_size_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[3]"
+    @property
+    def check_file_size_locator(self):
+        def _check_file_size_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[3]"
+        return _check_file_size_locator
 
-    @staticmethod
-    def check_file_name_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[2]"
+    @property
+    def check_file_name_locator(self):
+        def _check_file_name_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[2]"
+        return _check_file_name_locator
 
-    @staticmethod
+
+    @property
     def delete_file_locator(file_index):
-        return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[4]/button"
+        def _delete_file_locator(file_index):
+            return By.XPATH, f".//div[contains(@class,'ui-fileupload-row ng-star-inserted')][{file_index}]/div[4]/button"
+        return _delete_file_locator

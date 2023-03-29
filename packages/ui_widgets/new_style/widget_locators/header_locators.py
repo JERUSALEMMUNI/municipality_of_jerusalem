@@ -11,12 +11,13 @@ class HeaderLocators:
     language_parent = (By.XPATH, "//parent::li[contains(@class,'active')]")
 
 
-
-    @staticmethod
-    def language(language):
-        if language == 'ar':
-            return By.XPATH, f"//a[contains(text(),'العربية')]"
-        else:
-            return By.XPATH, f"//a[contains(text(),'עברית')]"
+    @property
+    def language(self):
+        def _language(language):
+            if language == 'ar':
+                return By.XPATH, f"//a[contains(text(),'العربية')]"
+            else:
+                return By.XPATH, f"//a[contains(text(),'עברית')]"
+        return _language
 
 

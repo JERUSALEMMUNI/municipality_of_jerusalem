@@ -11,10 +11,9 @@ class CalenderLocators:
     error_msg = (By.XPATH, "./parent::span/parent::p-calendar/following-sibling::span")
     valid_checker = (By.XPATH, "./parent::span/parent::p-calendar")
 
-    @staticmethod
-    def day(day):
-        """
-        to support two caleder fields old and new
-        """
-        return By.XPATH, f"//a[text()='{day}']|//span[text()='{day}']"
+    @property
+    def day(self):
+        def _day(day):
+            return By.XPATH, f"//a[text()='{day}']|//span[text()='{day}']"
+        return _day
 

@@ -6,7 +6,7 @@ Feature: PlanningInformation form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PLANNINGINFO_01 "הזנת ערכים תקינים לשדות "פרטים אישיים
     Given Navigate to "PlanningInformation" form
     When write a valid value "דני" in "שם פרטי"
@@ -19,7 +19,7 @@ Feature: PlanningInformation form - scenarios step 1
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_PLANNINGINFO_05 "הזנת ערכים שגוים לשדות "פרטים אישיים
     Given Navigate to "PlanningInformation" form
     When write an invalid value "sda" in "שם פרטי"
@@ -31,10 +31,13 @@ Feature: PlanningInformation form - scenarios step 1
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-807d68r" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    #Todo: once leters, and once numbers
     When fill "02-80s86t7" as invalid value in "טלפון קווי"
+    #Todo: once leters, and once numbers
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
+    #Todo: Email error label
     When clear fields
 
 

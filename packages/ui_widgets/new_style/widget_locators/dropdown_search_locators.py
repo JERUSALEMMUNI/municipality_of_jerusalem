@@ -8,6 +8,8 @@ class DropdownSearchLocators:
     error_msg = (By.XPATH, "./following-sibling::span")
     search_field = (By.XPATH, ".//div[contains(@class,'filter-container')]/input")
 
-    @staticmethod
-    def chosen_element(text):
-        return By.XPATH, f"//li[@aria-label='{text}']"
+    @property
+    def chosen_element(self):
+        def _chosen_element(text):
+            return By.XPATH, f"//li[@aria-label='{text}']"
+        return _chosen_element

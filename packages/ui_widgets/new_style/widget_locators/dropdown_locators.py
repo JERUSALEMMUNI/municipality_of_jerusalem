@@ -9,13 +9,17 @@ class DropdownLocators:
     select_item = (By.XPATH, "//ul//p-dropdownitem")
     list_items = (By.XPATH, ".//p-dropdownitem")
 
-    @staticmethod
-    def chosen_element(option_value):
-        return By.XPATH, f"//li[@aria-label='{option_value}']"
+    @property
+    def chosen_element(self):
+        def _chosen_element(option_value):
+            return By.XPATH, f"//li[@aria-label='{option_value}']"
+        return _chosen_element
 
-    @staticmethod
-    def select(pre):
-        return By.XPATH, f"//li[@aria-label='{pre}']"
+    @property
+    def select(self):
+        def _select(pre):
+            return By.XPATH, f"//li[@aria-label='{pre}']"
+        return _select
 
     # @staticmethod
     # def select_no_label_dropdown(label):
