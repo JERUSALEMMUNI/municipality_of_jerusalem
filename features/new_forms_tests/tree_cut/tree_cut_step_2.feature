@@ -9,8 +9,9 @@ Feature: TreeCut form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_02 - Entering correct values for the "request details" fields when tree 1 and a non-shared house are selected
+#   When click on "שמור" button
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -19,16 +20,20 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
+    #Todo: check all kids of accepted files
     When pick "בטיחות" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
+    #Todo: check all kids of accepted files
 #    When click on "שמור" button
 #    When click on "המשך" button
     When clear fields
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
+    # When click on "שמור" button
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
@@ -38,21 +43,24 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
+    #todo: validate number of trees
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
-
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
+    #Todo: check all kids of accepted files
 #    When click on "שמור" button
 #    When click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
 #    When click on "שמור" button
     When search valid value and pick "א טור" in search field "רחוב"
@@ -64,10 +72,14 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
@@ -76,10 +88,12 @@ Feature: TreeCut form - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
+    #Todo: check all kids of accepted files
 #    When click on "שמור" button
 #    When click on "המשך" button
     When clear fields
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
     When search valid value and pick "א טור" in search field "רחוב"
@@ -92,10 +106,14 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When from table "רשימת עצים" remove "1"
@@ -104,21 +122,25 @@ Feature: TreeCut form - scenarios step 2
     #todo check the all field in new row not fill
     When from table "רשימת עצים" remove "1"
     #todo check the number of trees is one
+    #Todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
+    #todo check the number of trees is one
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"
     When Upload a valid "gif_to_upload.gif" file in "אישור לבית משותף"
     When Upload a valid "png_to_upload.png" file in "אחר"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     When Upload a valid "gif_to_upload.gif" file in "אחר"
+    #todo: validate number of trees
+    #Todo: check all kids of accepted files
 #    When click on "שמור" button
 #    When click on "המשך" button
     When clear fields
 
-  @suhaib
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
-    When write a valid number "54dew33ew326" in "מספר בית"
-    Then validate if "מספר בית" number is "5433326"
+    When write a valid number "54dew33ew3" in "מספר בית"
+    Then validate if "מספר בית" number is "54333"
     When write an invalid value "1cdc223" in "גוש"
     Then check if "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"
