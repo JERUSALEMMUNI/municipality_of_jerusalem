@@ -26,7 +26,6 @@ class TextNumberField(TextField):
         get_value_number = self.web_element.get_attribute('aria-valuenow')
         if get_value_number not in (None, "null"):
             return self.web_element.get_attribute('aria-valuenow')
-
         return "no value"
 
     def is_invalid_txt(self):
@@ -47,7 +46,6 @@ class TextNumberField(TextField):
     @property
     def get_error_message(self):
         return self.web_element.find_element(*TextFieldLocators.err_num_msg).text
-
 
     def clear(self, index=None):
         number_digits = self.web_element.get_attribute('aria-valuenow')

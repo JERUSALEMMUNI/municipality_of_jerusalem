@@ -21,7 +21,6 @@ def write_into_field(context, number, widget_name):
 @when('from parent "{parent}" write a valid number "{number}" in "{widget_name}"')
 def write_into_field_valid_value(context, parent, number, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    widget.clear()
     widget.set_text(number)
     if not widget.is_valid:
         log.info(f"This value {number} from parent {parent} at field {widget_name} is considered "
@@ -35,7 +34,6 @@ def write_into_field_valid_value(context, parent, number, widget_name):
 @when('from parent "{parent}" write an invalid number "{number}" in "{widget_name}"')
 def write_into_field_invalid_value(context, parent, number, widget_name):
     widget = context._config.current_page.widgets[f"{parent}_{widget_name}"]
-    widget.clear()
     widget.set_text(number)
     if not widget.is_invalid:
         log.info(f"This value {number} from parent {parent} at field {widget_name} is considered "
@@ -49,7 +47,6 @@ def write_into_field_invalid_value(context, parent, number, widget_name):
 @when('write an invalid number "{number}" in "{widget_name}"')
 def write_into_field(context, number, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.clear()
     widget.set_text(number)
     if not widget.is_invalid:
         log.info(f"This value {number} at field {widget_name} is considered "
