@@ -242,7 +242,7 @@ def check_file_size(context, table_name, row, file_size_index, widget_name):
 @when('from table "{table_name}" at row "{row}" delete file "{wanted_file_index}" in "{widget_name}"')
 def choose_in_search(context, table_name, row, wanted_file_index, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    widget.delete_file_by_index(row, widget_name, wanted_file_index)
+    widget.delete_file(row, widget_name, wanted_file_index)
 
 
 @when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
