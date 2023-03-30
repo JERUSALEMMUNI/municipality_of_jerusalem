@@ -23,7 +23,6 @@ class DropdownSearchSelectBox(DropdownSearch):
     #     assert self.value == self.web_element.find_element(
     #         *DropdownSearchSelectBoxLocators.chosen_option(number)).text, 'The selected item is not in the list'
 
-
     def validate_selected_option(self, option):
         obj = DropdownSearchSelectBoxLocators()
 
@@ -35,23 +34,6 @@ class DropdownSearchSelectBox(DropdownSearch):
         else:
             return False
 
-    # def validate_option_is_not_selected(self, option):
-    #     if "highlight" not in self.web_element.find_element(
-    #             *DropdownSearchSelectBoxLocators.option_is_not_selected(option)).get_attribute('class'):
-    #         return True
-    #     else:
-    #         return False
-    #
-    # def count_selected_options(self):
-    #     if 'invalid' in self.web_element.find_element(
-    #             *DropdownSearchSelectBoxLocators.selected_options(self.label)).get_attribute('class'):
-    #         return 0
-    #     else:
-    #         WebDriverWait(self.web_element, 1).until(
-    #             EC.visibility_of_element_located(*DropdownSearchSelectBoxLocators.list))
-    #         list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
-    #         counter = len(list_under_field)
-    #         return counter
 
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownSearchSelectBoxLocators.dropdown_open).get_attribute(
@@ -107,10 +89,8 @@ class DropdownSearchSelectBox(DropdownSearch):
         log.info(f"list: {self.list}")
 
     def validate_checked_list_count(self):
-
         self.click_button()
         list_under_field = self.web_element.find_elements(*DropdownSearchSelectBoxLocators.list)
-
         list = []
         for i in list_under_field:
             list.append(i.text)
@@ -150,7 +130,5 @@ class DropdownSearchSelectBox(DropdownSearch):
         return prefix.text, selection
 
     def clear(self, index=None):
-        try:
-            self.clear_selected_items()
-        finally:
-            self.close()
+        self.clear_selected_items()
+        self.close()

@@ -1,5 +1,5 @@
 from time import sleep
-
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
@@ -40,8 +40,6 @@ class DropdownSearch(Dropdown):
             log.info("no results found label not appeared")
             return None
 
-    # Todo: function is not ready yet
-    # loop should be stopped if an element is not found
     def item_search_scroll(self, driver, text):
         """
               This function will click first, then start scrolling down until it finds the option
@@ -50,9 +48,9 @@ class DropdownSearch(Dropdown):
               it will return the
         """
         self.click_button()
-        element = None
         i = 0
-        while True:
+        start_time = time.time()
+        while time.time()-start_time > 120:
             WebDriverWait(self.web_element, 30).until(
                 EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
             element = driver.find_element(*DropdownSearchLocators.item_search_scroll)

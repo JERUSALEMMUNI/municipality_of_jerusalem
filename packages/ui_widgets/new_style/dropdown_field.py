@@ -124,7 +124,7 @@ class Dropdown(BaseWidget):
         dropDown_open = self.web_element.find_element(By.XPATH, ".//..//input").get_attribute('aria-expanded')
         if dropDown_open.lower() == 'true':
             self.web_element.click()
-            # TODO : wait to close
+            # TODO : wait to close (Amr)
             # if WebDriverWait(self.web_element, 10).until(
             #         EC.visibility_of_element_located(By.XPATH(dropDown_open))) == 'false':
             return True

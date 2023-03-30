@@ -80,8 +80,7 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
         raise AssertionError("File extension is not accepted")
     if not widget.check_file_name(file_name_index, file_name)[1]:
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
-        # Todo: if we make AssertionError, all steps in Scenario will be broken
-        # raise AssertionError("File name is different")
+
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')
