@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.phone_field_locator import PhoneFieldLocators
+from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
 
 log = logger.get_logger(__name__)
 
@@ -79,3 +80,7 @@ class PhoneField(BaseWidget):
     def clear(self, index=None):
         self.text_widget.clear()
         self.dropdown_widget.select_first_element()
+
+    @property
+    def get_error_message(self):
+        return self.web_element.find_element(*TextFieldLocators.error_message_phone).text
