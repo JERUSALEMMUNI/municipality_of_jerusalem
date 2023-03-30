@@ -10,7 +10,7 @@ Feature: FreedomInfo form - scenarios step 2
   Background:
     Given  Navigate to "FreedomInfo" form and reach step "סוג המידע"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_02 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
@@ -149,7 +149,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_03 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי עמותה" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
@@ -288,10 +288,11 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_04 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי סטודנט/גוף מחקרי" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" is exist
+    When choose "לא" from "המידע מבוקש על ידי מקבל קצבה"
     When choose "כן" from "המידע מבוקש על ידי מקבל קצבה"
     Then validate if "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" is exist
     When click on "המשך" button
@@ -476,15 +477,15 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
     When clear fields
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_06 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי גורם פרטי" from "סוג המידע המבוקש"
     Then validate if "המידע מבוקש" is exist
     When choose "לא" from "המידע מבוקש על ידי מקבל קצבה"
-    When choose "אודותי" from "המידע מבוקש"
-    Then validate if "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
     When choose "אחר" from "המידע מבוקש"
     Then validate if "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
+    When choose "אודותי" from "המידע מבוקש"
+    Then validate if "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
     When click on "המשך" button
 
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
@@ -571,10 +572,9 @@ Feature: FreedomInfo form - scenarios step 2
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמכים נוספים"
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמכים נוספים"
     Then validate size of file "3" in "מסמכים נוספים" in accepted
-
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_09 - Checking "The type of information" fields with incorrect details
     When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist

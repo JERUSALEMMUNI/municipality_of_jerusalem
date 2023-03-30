@@ -6,7 +6,7 @@ Feature: FreedomInfo form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי,יישוב,רחוב,מספר בית, מיקוד)
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_01 - Checking "Presenter details" fields with correct details
     Given Navigate to "FreedomInfo" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -22,6 +22,7 @@ Feature: FreedomInfo form - scenarios step 1
     When search valid value and pick "א טור" in search field "רחוב"
     When clear fields
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_08  - Checking "Presenter details" fields with incorrect details
     Given Navigate to "FreedomInfo" form
     When write an invalid value "dddd" in "שם פרטי"
@@ -46,6 +47,7 @@ Feature: FreedomInfo form - scenarios step 1
     When write an invalid value "TEMP_EMAIL_ADDRESS" in "דוא"ל"
     Then check if "דוא"ל" error is "יש להשלים את כתובת דוא"ל"
     When write an invalid value "דגכגדכגדכ" in "דוא"ל"
+    #todo: email error message
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
     When write an invalid value "876543456" in "דוא"ל"
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
@@ -58,7 +60,8 @@ Feature: FreedomInfo form - scenarios step 1
     Then check if "מיקוד" error is "יש להזין ספרות בלבד"
     When write an invalid value "ךלחגדכךל" in "מיקוד"
     Then check if "מיקוד" error is "יש להזין ספרות בלבד"
-    When write an invalid value "1234567" in "מיקוד"
+    When write an invalid value "1234567890" in "מיקוד"
+    Then validate if "מיקוד" number is "1234567"
     When search valid value and pick "לוס אנגלוס" in search field "יישוב"
     When search valid value and pick "לוס אנגלוס" in search field "רחוב"
     When clear fields
