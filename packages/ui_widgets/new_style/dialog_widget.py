@@ -6,8 +6,8 @@ log = logger.get_logger(__name__)
 
 
 class Dialog(BaseWidget):
-    def __init__(self,index):
-        super().__init__(self,index)
+    def __init__(self, index):
+        super().__init__(self, index)
         self.text = None
 
     @property

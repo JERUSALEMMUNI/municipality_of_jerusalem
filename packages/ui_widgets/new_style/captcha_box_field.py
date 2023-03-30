@@ -27,7 +27,7 @@ class CaptchaBox(BaseWidget):
 
     def click_on(self):
         time.sleep(3)
-        self.web_element.find_element(self.locator['By'], self.locator['Value']).click()
+        self.web_element.click()
 
     def uncheck_captcha_box(self):
         """
@@ -50,13 +50,11 @@ class CaptchaBox(BaseWidget):
 
     @property
     def is_invalid(self):
-        x = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        return 'invalid' in x.get_attribute('class')
+        return 'invalid' in self.web_element.get_attribute('class')
 
     @property
     def is_valid(self):
-        x = self.web_element.find_element(self.locator['By'], self.locator['Value'])
-        return 'valid' in x.get_attribute('class')
+        return 'valid' in self.web_element.get_attribute('class')
 
     def clear(self, index=None):
         self.uncheck_captcha_box()

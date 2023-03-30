@@ -199,7 +199,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @firas
   Scenario: TC_OBJECTIONPRO_06 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והחיוב אינו שלי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
