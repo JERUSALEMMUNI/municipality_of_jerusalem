@@ -123,4 +123,4 @@ class AccordionTable(BaseWidget):
 
     def delete_file(self, row, label, wanted_file_index):
         widget = self.create_widget_table_row(row)
-        return widget.delete_file(label, wanted_file_index)
+        return widget.delete_file_by_index(label, wanted_file_index)

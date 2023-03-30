@@ -10,6 +10,7 @@ Feature: EmailRegistration form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
 
+
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_EMAILREG_03 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ולא דירת שותפים
 #    When click on "שמור" button
@@ -32,9 +33,9 @@ Feature: EmailRegistration form - scenarios step 2
     Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
     Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
+    When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
+    And delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
+    And delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
     And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
     And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
     When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
@@ -45,12 +46,11 @@ Feature: EmailRegistration form - scenarios step 2
     Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
     Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
+    When delete file by name "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
+    And delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
+    And delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
     And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-
-     And Upload a valid "gif_to_upload.gif" file in "אחר"
+    And Upload a valid "gif_to_upload.gif" file in "אחר"
     When Upload a valid "png_to_upload.png" file in "אחר"
     And Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
     Then validate name of file "1" is "gif_to_upload.gif" in "אחר"
@@ -59,9 +59,9 @@ Feature: EmailRegistration form - scenarios step 2
     Then validate size of file "2" in "אחר" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
     Then validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by name "gif_to_upload.gif" in "אחר"
+    And delete file by name "png_to_upload.png" in "אחר"
+    And delete file by name "jpg_pic_to_upload.jpg" in "אחר"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
     When Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
@@ -72,9 +72,9 @@ Feature: EmailRegistration form - scenarios step 2
     Then validate size of file "2" in "אחר" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
     Then validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by name "pdf_file_to_upload.pdf" in "אחר"
+    And delete file by name "jpeg_to_upload.jpeg" in "אחר"
+    And delete file by name "bmp_to_upload.bmp" in "אחר"
     And Upload a valid "gif_to_upload.gif" file in "אחר"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"

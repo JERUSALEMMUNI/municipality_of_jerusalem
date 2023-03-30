@@ -15,32 +15,32 @@ Feature: PhotoPermission form - scenarios step 4
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "png_to_upload.png" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "gif_to_upload.gif" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "gif_to_upload.gif" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "pdf_to_upload.pdf" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "pdf_to_upload.pdf" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "jpeg_to_upload.jpeg" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "jpeg_to_upload.jpeg" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "bmp_to_upload.bmp" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "צילום ת.ז. / דרכון"
     Then validate size of file "1" in "צילום ת.ז. / דרכון" in accepted
-    When delete file "1" in "צילום ת.ז. / דרכון"
+    When delete file by index "1" in "צילום ת.ז. / דרכון"
 
     When Upload a valid "png_to_upload.png" file in "צילום ת.ז. / דרכון"
     Then validate name of file "1" is "png_to_upload.png" in "צילום ת.ז. / דרכון"
@@ -57,32 +57,32 @@ Feature: PhotoPermission form - scenarios step 4
     When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
     Then validate name of file "1" is "png_to_upload.png" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "gif_to_upload.gif" file in "כתב התחייבות"
     Then validate name of file "1" is "gif_to_upload.gif" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "כתב התחייבות"
     Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "bmp_to_upload.bmp" file in "כתב התחייבות"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "jpeg_to_upload.jpeg" file in "כתב התחייבות"
     Then validate name of file "1" is "jpeg_to_upload.jpeg" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "pdf_to_upload.pdf" file in "כתב התחייבות"
     Then validate name of file "1" is "pdf_to_upload.pdf" in "כתב התחייבות"
     Then validate size of file "1" in "כתב התחייבות" in accepted
-    When delete file "1" in "כתב התחייבות"
+    When delete file by index "1" in "כתב התחייבות"
 
     When Upload a valid "png_to_upload.png" file in "כתב התחייבות"
     Then validate name of file "1" is "png_to_upload.png" in "כתב התחייבות"
@@ -99,32 +99,32 @@ Feature: PhotoPermission form - scenarios step 4
     When Upload a valid "png_to_upload.png" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "png_to_upload.png" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "gif_to_upload.gif" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "gif_to_upload.gif" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "bmp_to_upload.bmp" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "pdf_to_upload.pdf" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "pdf_to_upload.pdf" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "jpeg_to_upload.jpeg" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "jpeg_to_upload.jpeg" in "העתק ביטוח צד ג"
     Then validate size of file "1" in "העתק ביטוח צד ג" in accepted
-    When delete file "1" in "העתק ביטוח צד ג"
+    When delete file by index "1" in "העתק ביטוח צד ג"
 
     When Upload a valid "png_to_upload.png" file in "העתק ביטוח צד ג"
     Then validate name of file "1" is "png_to_upload.png" in "העתק ביטוח צד ג"
@@ -141,32 +141,32 @@ Feature: PhotoPermission form - scenarios step 4
     When Upload a valid "png_to_upload.png" file in "סינופסיס קצר"
     Then validate name of file "1" is "png_to_upload.png" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
     When Upload a valid "gif_to_upload.gif" file in "סינופסיס קצר"
     Then validate name of file "1" is "gif_to_upload.gif" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
     When Upload a valid "jpg_pic_to_upload.jpg" file in "סינופסיס קצר"
     Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
      When Upload a valid "pdf_to_upload.pdf" file in "סינופסיס קצר"
     Then validate name of file "1" is "pdf_to_upload.pdf" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
     When Upload a valid "jpeg_to_upload.jpeg" file in "סינופסיס קצר"
     Then validate name of file "1" is "jpeg_to_upload.jpeg" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
     When Upload a valid "bmp_to_upload.bmp" file in "סינופסיס קצר"
     Then validate name of file "1" is "bmp_to_upload.bmp" in "סינופסיס קצר"
     Then validate size of file "1" in "סינופסיס קצר" in accepted
-    When delete file "1" in "סינופסיס קצר"
+    When delete file by index "1" in "סינופסיס קצר"
 
     When Upload a valid "png_to_upload.png" file in "סינופסיס קצר"
     Then validate name of file "1" is "png_to_upload.png" in "סינופסיס קצר"

@@ -59,9 +59,9 @@ Feature: TreeCut form - scenarios step 2
     And validate size of file "2" in "אחר" in accepted
     And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
     And validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
     When Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
@@ -72,9 +72,9 @@ Feature: TreeCut form - scenarios step 2
     Then validate size of file "2" in "אחר" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
     Then validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
     And Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota

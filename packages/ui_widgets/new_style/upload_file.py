@@ -55,8 +55,12 @@ class UploadFile(BaseWidget):
             return False
         return True
 
-    def delete_file(self, file_index):
+    def delete_file_by_index(self, file_index):
         delete_button = self.web_element.find_element(*self.get_locator().delete_file_locator(file_index))
+        delete_button.click()
+
+    def delete_file_by_name(self, file_name):
+        delete_button = self.web_element.find_element(*self.get_locator().delete_file_by_name_locator(file_name))
         delete_button.click()
 
     def validate_error_message(self, error_expected):
@@ -86,7 +90,7 @@ class UploadFile(BaseWidget):
 
     def clear(self, file_index=None):
         for i in range(self.get_list_length() - 1):
-            self.delete_file(1)
+            self.delete_file_by_index(1)
             pass
 
     @property

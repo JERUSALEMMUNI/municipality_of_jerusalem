@@ -28,9 +28,9 @@ Feature: HoldersExchange form step 3
     Then validate size of file "2" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח של בעל החשבון"
     Then validate size of file "3" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    When delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
     And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
 
     And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
@@ -42,9 +42,9 @@ Feature: HoldersExchange form step 3
     Then validate size of file "2" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח של בעל החשבון"
     Then validate size of file "3" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    When delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
+    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
     And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota

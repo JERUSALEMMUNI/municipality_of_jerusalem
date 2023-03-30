@@ -82,7 +82,6 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
 
 
-
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')
 def choose_in_search(context, file_size_index, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -91,17 +90,24 @@ def choose_in_search(context, file_size_index, widget_name):
         raise AssertionError("File size is not accepted")
 
 
-@when('delete file "{wanted_file_index}" in "{widget_name}"')
+@when('delete file by index "{wanted_file_index}" in "{widget_name}"')
 def choose_in_search(context, wanted_file_index, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    widget.delete_file(wanted_file_index)
+    widget.delete_file_by_index(wanted_file_index)
+
+
+@when('delete file by name "{wanted_file_index}" in "{widget_name}"')
+def choose_in_search(context, wanted_file_index, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.delete_file_by_name(wanted_file_index)
 
 
 @then('check if "{widget_name}" error window message is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.is_invalid:
-        rep.add_label_to_step("invalid but appeared as valid", "The status of this label is valid, but it should be invalid")
+        rep.add_label_to_step("invalid but appeared as valid",
+                              "The status of this label is valid, but it should be invalid")
     if not widget.validate_error_window_message(error_expectation):
         log.info(f"The error value at field is incorrect")
         rep.add_label_to_step("incorrect message or missing",

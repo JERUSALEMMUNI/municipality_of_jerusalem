@@ -40,9 +40,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
     And validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
     And validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
+    When delete file by index "1" in "צילום תעודת זהות + ספח"
+    And delete file by index "1" in "צילום תעודת זהות + ספח"
+    And delete file by index "1" in "צילום תעודת זהות + ספח"
     And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
     And Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
     And Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
@@ -52,9 +52,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
     And validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
     And validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
-    And delete file "1" in "צילום תעודת זהות + ספח"
+    When delete file by index "1" in "צילום תעודת זהות + ספח"
+    And delete file by index "1" in "צילום תעודת זהות + ספח"
+    And delete file by index "1" in "צילום תעודת זהות + ספח"
     And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
 
     And Upload a valid "gif_to_upload.gif" file in "אישור הרשאה לחיוב חשבון"
@@ -66,9 +66,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "אישור הרשאה לחיוב חשבון" in accepted
     And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אישור הרשאה לחיוב חשבון"
     And validate size of file "3" in "אישור הרשאה לחיוב חשבון" in accepted
-    When delete file "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file "1" in "אישור הרשאה לחיוב חשבון"
+    When delete file by index "1" in "אישור הרשאה לחיוב חשבון"
+    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
+    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אישור הרשאה לחיוב חשבון"
     And Upload a valid "jpeg_to_upload.jpeg" file in "אישור הרשאה לחיוב חשבון"
     And Upload a valid "bmp_to_upload.bmp" file in "אישור הרשאה לחיוב חשבון"
@@ -78,9 +78,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "אישור הרשאה לחיוב חשבון" in accepted
     And validate name of file "3" is "bmp_to_upload.bmp" in "אישור הרשאה לחיוב חשבון"
     And validate size of file "3" in "אישור הרשאה לחיוב חשבון" in accepted
-    When delete file "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file "1" in "אישור הרשאה לחיוב חשבון"
+    When delete file by index "1" in "אישור הרשאה לחיוב חשבון"
+    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
+    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
     And Upload a valid "gif_to_upload.gif" file in "אישור הרשאה לחיוב חשבון"
 
     And Upload a valid "gif_to_upload.gif" file in "אחר"
@@ -92,9 +92,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "אחר" in accepted
     And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
     And validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
     And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
     And Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
     And Upload a valid "bmp_to_upload.bmp" file in "אחר"
@@ -104,9 +104,9 @@ Feature: StandingOrderRequest - scenarios step 2
     And validate size of file "2" in "אחר" in accepted
     And validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
     And validate size of file "3" in "אחר" in accepted
-    When delete file "1" in "אחר"
-    And delete file "1" in "אחר"
-    And delete file "1" in "אחר"
+    When delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
+    And delete file by index "1" in "אחר"
     And Upload a valid "gif_to_upload.gif" file in "אחר"
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota

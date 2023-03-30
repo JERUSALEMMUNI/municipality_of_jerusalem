@@ -125,4 +125,4 @@ class AccordionRow(BaseWidget):
 
     def delete_file(self, label, wanted_file_index):
         upload = self.make_element_ready_to_action('UploadFile', label)
-        return upload.delete_file(wanted_file_index)
+        return upload.delete_file_by_index(wanted_file_index)

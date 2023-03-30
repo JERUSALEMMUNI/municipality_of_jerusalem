@@ -87,11 +87,10 @@ Feature: HoldersExchange form step 2
     Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    When delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    When delete file by name "gif_to_upload.gif" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file by name "png_to_upload.png" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file by name "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-
     And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     When Upload a valid "jpeg_to_upload.jpeg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And Upload a valid "bmp_to_upload.bmp" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
@@ -101,9 +100,9 @@ Feature: HoldersExchange form step 2
     Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    When delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    When delete file by name "pdf_file_to_upload.pdf" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file by name "jpeg_to_upload.jpeg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file by name "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     And Upload a valid "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota

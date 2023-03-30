@@ -44,9 +44,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then validate size of file "2" in "ניתן לצרף מכתב נלווה" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "ניתן לצרף מכתב נלווה"
     Then validate size of file "3" in "ניתן לצרף מכתב נלווה" in accepted
-    When delete file "1" in "ניתן לצרף מכתב נלווה"
-    And delete file "1" in "ניתן לצרף מכתב נלווה"
-    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    When delete file by index "1" in "ניתן לצרף מכתב נלווה"
+    And delete file by index "1" in "ניתן לצרף מכתב נלווה"
+    And delete file by index "1" in "ניתן לצרף מכתב נלווה"
     And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
 
     And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
@@ -58,9 +58,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then validate size of file "2" in "ניתן לצרף מכתב נלווה" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "ניתן לצרף מכתב נלווה"
     Then validate size of file "3" in "ניתן לצרף מכתב נלווה" in accepted
-    When delete file "1" in "ניתן לצרף מכתב נלווה"
-    And delete file "1" in "ניתן לצרף מכתב נלווה"
-    And delete file "1" in "ניתן לצרף מכתב נלווה"
+    When delete file by index "1" in "ניתן לצרף מכתב נלווה"
+    And delete file by index "1" in "ניתן לצרף מכתב נלווה"
+    And delete file by index "1" in "ניתן לצרף מכתב נלווה"
     And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
 
     And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
@@ -72,9 +72,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then validate size of file "2" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     Then validate size of file "3" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
-    When delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    When delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
 
     And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
@@ -86,9 +86,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then validate size of file "2" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
     Then validate name of file "3" is "bmp_to_upload.bmp" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     Then validate size of file "3" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" in accepted
-    When delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    And delete file "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    When delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
+    And delete file by index "1" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
