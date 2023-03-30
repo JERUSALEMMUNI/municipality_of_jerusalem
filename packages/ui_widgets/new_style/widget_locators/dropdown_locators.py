@@ -8,19 +8,12 @@ class DropdownLocators:
     error_msg = (By.XPATH, "./following-sibling::span")
     select_item = (By.XPATH, "//ul//p-dropdownitem")
     list_items = (By.XPATH, ".//p-dropdownitem")
-
-    @property
-    def chosen_element(self):
-        def _chosen_element(option_value):
-            return By.XPATH, f"//li[@aria-label='{option_value}']"
-        return _chosen_element
+    close = (By.XPATH, ".//..//input")
+    no_label = "/../../../following-sibling::more-info-objection//p-dropdownitem"
 
     @property
     def select(self):
         def _select(pre):
             return By.XPATH, f"//li[@aria-label='{pre}']"
-        return _select
 
-    # @staticmethod
-    # def select_no_label_dropdown(label):
-    #     return By.XPATH, f"//label[contains(text(),'{label}')]/../../../following-sibling::more-info-objection//p-dropdownitem"
+        return _select

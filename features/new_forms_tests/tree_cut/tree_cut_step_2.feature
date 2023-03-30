@@ -299,6 +299,9 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload an invalid file "10MB_file_to_upload.pdf" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "xlsx_to_upload.xlsx" in "תמונה של העץ"
     When Upload an invalid "doc_to_upload.doc" file in "אחר"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
-    When Upload a valid "xlsx_to_upload.xlsx" file in "אחר"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields

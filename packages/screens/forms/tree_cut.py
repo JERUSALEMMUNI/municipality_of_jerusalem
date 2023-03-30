@@ -45,6 +45,7 @@ class TreeCut(BasePage):
         self.widgets["מגיש הבקשה מצהיר"] = create_widget('CheckBox', style=self.style, label="מגיש הבקשה מצהיר")
         self.widgets["אני מודע/ת ומסכים/ה לכך"] = create_widget('CaptchaBox', style=self.style,
                                                                 label="אני מודע/ת ומסכים/ה לכך")
+        self.widgets['מספר העצים']: create_widget('TextNumberField', style=self.style, label='מספר העצים')
 
     def fill_form_to_reach_step(self,context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הבקשה":

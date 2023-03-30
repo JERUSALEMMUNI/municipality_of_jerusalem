@@ -18,7 +18,7 @@ Feature: HoldersExchange form step 3
     And write a valid value "332796184" in "מספר ת.ז."
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    And write a valid value "12042023" in "תאריך עזיבה"
+    And write a valid number "12042023" in "תאריך עזיבה"
     And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
     And Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח של בעל החשבון"
@@ -59,6 +59,7 @@ Feature: HoldersExchange form step 3
 
 
   @Checked_By_Firas_and_Darweesh
+  @firas
   Scenario: TC_HOLDERSEXCH_07 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס הוא המחזיק הנוכחי
     When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid number "12042023" in "תאריך עזיבה"
@@ -76,6 +77,7 @@ Feature: HoldersExchange form step 3
 
 
   @Checked_By_Firas_and_Darweesh
+    #todo check the error message in date
   Scenario: TC_HOLDERSEXCH_12 הזנת ערכים שגוים בשדות "פרטי מחזיק נוכחי"
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write an invalid value "dsdf" in "שם פרטי"

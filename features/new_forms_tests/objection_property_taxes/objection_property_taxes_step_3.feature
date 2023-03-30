@@ -13,7 +13,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
   Scenario: TC_OBJECTIONPRO_10 הזנת ערכים תקינים לשדות "תצהיר ושליחה"
     When write a valid value "ירושלים" in "עיר"
     And write a valid value "א טור" in "רחוב"
-    And write a valid value "2" in "בית"
+    And write a valid number "2" in "בית"
     And write a valid value "3222" in "מיקוד"
     And write a valid value "23344" in "ת.ד."
     And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"

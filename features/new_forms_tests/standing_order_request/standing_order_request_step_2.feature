@@ -146,13 +146,14 @@ Feature: StandingOrderRequest - scenarios step 2
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
     When write an invalid value "21reser1121" in "חשבון / נכס"
+    #todo (darweesh)
     Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When write an invalid value "234" in "חשבון / נכס"
     Then check if "חשבון / נכס" error is "יש להשלים ספרות חסרות"
     When write an invalid value "ש77626" in "כתובת נכס"
     Then check if "כתובת נכס" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
-    When write an invalid number "1273gg783" in "בית"
-    Then validate if "בית" number is "1273783"
+    When write a valid number "1273gg783" in "בית"
+    Then validate if "בית" number is "12737"
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When pick "ארנונה (792)" from "קוד מוטב להקמת ההרשאה"
     When search invalid value and pick "9 - בנק הדuewואר" in search field "בנק"
@@ -161,8 +162,11 @@ Feature: StandingOrderRequest - scenarios step 2
     Then validate if "מספר חשבון" number is "1233"
     When pick "140" from "יום גביה חודשי"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+    Then check if "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
 
 

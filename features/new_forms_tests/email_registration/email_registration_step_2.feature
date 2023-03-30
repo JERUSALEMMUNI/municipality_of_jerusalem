@@ -247,6 +247,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
+    #todo its appears as valid here
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "תעודת התאגדות"
@@ -261,6 +262,7 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "האם דירת שותפים?"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
     When Upload an invalid "zip_to_upload.zip" file in "תעודת זהות מיופה כוח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "ייפוי כוח"

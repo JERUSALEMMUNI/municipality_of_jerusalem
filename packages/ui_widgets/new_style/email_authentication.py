@@ -81,6 +81,7 @@ class EmailAuthentication(BaseWidget):
             difference = end_time - start_time
             log.info(str(difference) + ' seconds passed and no email received')
             return False
+
     def fill_and_click_link(self, driver, email, index):
         if self.user_data['email_body'] == None:
             raise AssertionError('No email received')
@@ -124,7 +125,7 @@ class EmailAuthentication(BaseWidget):
             pop_up_appear_times = pop_up_appear_times + 1
             if pop_up_appear_times == 6:
                 self.set_pin_error = True
-                self.web_element.find_element(By.XPATH,"//button[contains(@class, 'p-dialog')]").click()
+                self.web_element.find_element(By.XPATH, "//button[contains(@class, 'p-dialog')]").click()
                 return False
             try:
                 click_continue.click()

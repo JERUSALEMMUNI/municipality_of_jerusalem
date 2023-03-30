@@ -1,9 +1,6 @@
-import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
 from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
@@ -45,7 +42,7 @@ class Dropdown(BaseWidget):
             elements_list = element.text
             log.info(elements_list)
             if option_value in elements_list:
-                chosenElement = driver.find_element(*self.get_locator().chosen_element(option_value))
+                chosenElement = driver.find_element(*self.get_locator().select(option_value))
                 return chosenElement.text, elements_list
 
     def select_element(self, pre):
@@ -75,13 +72,11 @@ class Dropdown(BaseWidget):
             return False
 
     def select_no_label_dropdown_element(self, pre):
+        self.path_locator = DropdownLocators.no_label
         self.click_button()
-        WebDriverWait(self.web_element, 30).until(
-            EC.element_to_be_clickable(
-                (By.XPATH,
-                 f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")))
-        list_of_items = self.web_element.find_elements(By.XPATH,
-                                                       f"//label[contains(text(),'{self.label}')]/../../../following-sibling::more-info-objection//p-dropdownitem")
+        list_of_items = WebDriverWait(self.web_element, 30).until(
+            EC.visibility_of_all_elements_located(
+                (self.locator['By'], self.locator['Value'])))
         for i in list_of_items:
             if i.text == pre:
                 i.click()
@@ -121,7 +116,7 @@ class Dropdown(BaseWidget):
         return error_msg.text == error_expected
 
     def close(self):
-        dropDown_open = self.web_element.find_element(By.XPATH, ".//..//input").get_attribute('aria-expanded')
+        dropDown_open = self.web_element.find_element(*DropdownLocators.close).get_attribute('aria-expanded')
         if dropDown_open.lower() == 'true':
             self.web_element.click()
             # TODO : wait to close (Amr)
