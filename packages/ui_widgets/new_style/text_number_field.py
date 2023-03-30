@@ -19,7 +19,6 @@ class TextNumberField(TextField):
             return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
 
     def set_text(self, text):
-        self.clear()
         self.web_element.send_keys(text)
         self.web_element.send_keys(Keys.RETURN)
 
