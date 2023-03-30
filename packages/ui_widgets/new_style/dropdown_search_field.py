@@ -7,6 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from infra import logger, enums
 from ui_widgets.new_style.dropdown_field import Dropdown
+from ui_widgets.new_style.widget_locators.dropdown_locators import DropdownLocators
 from ui_widgets.new_style.widget_locators.dropdown_search_locators import DropdownSearchLocators
 from utils import misc_utils
 
@@ -14,7 +15,7 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearch(Dropdown):
-    def __init__(self, label, index, path_locator="/..//p-dropdown", step_number=None):
+    def __init__(self, label, index, path_locator=DropdownLocators.dropDown, step_number=None):
         super().__init__(label, index, path_locator, step_number)
         self.path_locator = path_locator
 

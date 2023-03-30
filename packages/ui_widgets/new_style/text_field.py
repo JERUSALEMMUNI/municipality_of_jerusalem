@@ -10,7 +10,7 @@ log = logger.get_logger(__name__)
 
 
 class TextField(BaseWidget):
-    def __init__(self, label, index, path_locator="parent::div//input", step_number=None):
+    def __init__(self, label, index, path_locator=TextFieldLocators.text_input, step_number=None):
         super().__init__(label, index, step_number)
         self.path_locator = path_locator
 

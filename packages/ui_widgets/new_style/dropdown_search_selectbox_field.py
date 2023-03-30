@@ -11,7 +11,7 @@ log = logger.get_logger(__name__)
 
 
 class DropdownSearchSelectBox(DropdownSearch):
-    def __init__(self, label, index, path_locator="/following-sibling::p-multiselect"):
+    def __init__(self, label, index, path_locator=DropdownSearchSelectBoxLocators.multi):
         super().__init__(label, index)
         self.path_locator = path_locator
 

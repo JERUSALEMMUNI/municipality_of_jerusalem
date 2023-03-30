@@ -1,6 +1,4 @@
 from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-
 from infra import logger
 from ui_widgets.new_style.text_field import TextField
 from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
@@ -9,14 +7,14 @@ log = logger.get_logger(__name__)
 
 
 class TextNumberField(TextField):
-    def __init__(self, label, index, path_locator="parent::div//input", step_number=None):
+    def __init__(self, label, index, path_locator=TextFieldLocators.text_input, step_number=None):
         super().__init__(label, index, path_locator, step_number)
 
     def get_element(self):
         if 'תאריך' in self.label:
-            return self.web_element.find_element(self.locator['By'], './parent::p-inputmask')
+            return self.web_element.find_element(*TextFieldLocators.date)
         else:
-            return self.web_element.find_element(self.locator['By'], './parent::*/parent::p-inputnumber')
+            return self.web_element.find_element(*TextFieldLocators.number)
 
     def set_text(self, text):
         self.web_element.send_keys(text)
@@ -40,12 +38,15 @@ class TextNumberField(TextField):
         return 'ng-valid' in self.get_element().get_attribute('class')
 
     def validate_error_message(self, error_expected):
-        error_msg = self.web_element.find_element(*TextFieldLocators.err_num_msg)
-        return error_expected in error_msg.text, error_expected == error_msg.text
+
+        return error_expected in self.get_error_message, error_expected == self.get_error_message
 
     @property
     def get_error_message(self):
-        return self.web_element.find_element(*TextFieldLocators.err_num_msg).text
+        if 'תאריך' in self.label:
+            return self.web_element.find_element(*TextFieldLocators.err_num_date).text
+        else:
+            return self.web_element.find_element(*TextFieldLocators.err_num_msg).text
 
     def clear(self, index=None):
         number_digits = self.web_element.get_attribute('aria-valuenow')

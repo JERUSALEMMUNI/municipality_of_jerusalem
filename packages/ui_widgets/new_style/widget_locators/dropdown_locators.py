@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class DropdownLocators:
+    dropDown = "/..//p-dropdown"
     dropDown_open = (By.XPATH, ".//input")
     dropDown_click = (By.XPATH, "./..//p-dropdown")
     item_search_scroll_element = (By.XPATH, "./..//ul")

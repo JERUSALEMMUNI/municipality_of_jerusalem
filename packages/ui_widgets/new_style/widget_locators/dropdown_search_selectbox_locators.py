@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class DropdownSearchSelectBoxLocators:
+    multi = "/following-sibling::p-multiselect"
     error_msg = (By.XPATH, "./../span")
     read_text_value = (By.XPATH, "./..//span[contains(@class,'label')]")
     list = (By.XPATH, "./following-sibling::div/div")
