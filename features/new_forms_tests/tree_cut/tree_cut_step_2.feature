@@ -253,7 +253,7 @@ Feature: TreeCut form - scenarios step 2
     Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" remove "1"
     Then validate if "מספר העצים" number is "1"
-    #Todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
+    #todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"
     When Upload a valid "gif_to_upload.gif" file in "אישור לבית משותף"

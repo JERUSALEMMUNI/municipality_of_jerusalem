@@ -14,7 +14,7 @@ Feature: BetterTaxPtor form - checklist scenarios
     When write a valid value "111" in "מספר תיק בנין"
     When click on "בדיקת אופציה לפטור" button
 
-#TODO: check this
+
   Scenario: TC_IDENT_05 checklist - Enter an incorrect file number to the "מספר תיק בנין" field
     Given Navigate to "BetterTaxPtor" form
     When write a valid value "111" in "מספר תיק בנין"

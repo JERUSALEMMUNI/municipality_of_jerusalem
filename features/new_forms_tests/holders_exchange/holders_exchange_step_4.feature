@@ -41,12 +41,17 @@ Feature: HoldersExchange form step 4
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
-    When fill "058-80e8d87" as invalid value in "טלפון נייד"
-    #todo: add another validation
+    When fill "050-שדגדש" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
-    When fill "02-8s7s687" as invalid value in "טלפון קווי"
-    #todo: add another validation
+    When fill "050-sdfdsf" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    When fill "050-233" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When fill "02-232" as invalid value in "טלפון קווי"
+    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "sdfsdf" in "דוא"ל"
     #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"

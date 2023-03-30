@@ -78,7 +78,33 @@ Feature: HoldersExchange form step 2
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    When Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "jpg_pic_to_upload.jpg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate name of file "1" is "gif_to_upload.gif" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    Then validate name of file "2" is "png_to_upload.png" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    When delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "bmp_to_upload.bmp" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    Then validate name of file "3" is "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    When delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And delete file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    And Upload a valid "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -127,11 +153,14 @@ Feature: HoldersExchange form step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
+    #todo: #todo: sofiya error message for the short number is different from the web  יש להשלים מספר חשבון/נכס
     When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
-    #todo: "יש להשלים מספר חשבון/נכס", בעת הזנת ערכים טקסטואליים הופיעה הודעת שגיאה: "יש להזין ספרות בלבד
+    Then check if "חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
+    When write an invalid value "332" in "חשבון תושב בארנונה"
+    Then check if "חשבון תושב בארנונה" error is "שדה לא תקין"
     When search invalid value and pick "asdads" in search field "רחוב"
-    And write a valid number "s2da" in "בית"
-    #todo: no results found or לא נמצא
+    Then check if "רחוב" no results found appeared
+    When write a valid number "s2da" in "בית"
     Then validate if "בית" number is "2"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -142,12 +171,17 @@ Feature: HoldersExchange form step 2
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
-    When fill "058-80e8d87" as invalid value in "טלפון נייד"
-    #todo: add another validation
+    When fill "050-שדגדש" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
-    When fill "02-8s7s687" as invalid value in "טלפון קווי"
-    #todo: add another validation
+    When fill "050-sdfdsf" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    When fill "050-233" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When fill "02-232" as invalid value in "טלפון קווי"
+    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "sdfsdf" in "דוא"ל"
     #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"
@@ -164,12 +198,17 @@ Feature: HoldersExchange form step 2
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
-    When fill "058-80e8d87" as invalid value in "טלפון נייד"
-    #todo: add another validation
+    When fill "050-שדגדש" as invalid value in "טלפון נייד"
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
-    When fill "02-8s7s687" as invalid value in "טלפון קווי"
-    #todo: add another validation
+    When fill "050-sdfdsf" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    When fill "050-233" as invalid value in "טלפון נייד"
+    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When fill "02-232" as invalid value in "טלפון קווי"
+    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "sdfsdf" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
     #todo: email message

@@ -8,6 +8,8 @@ Feature: FreedomInfo form - scenarios step 3
 
   Background:
     Given  Navigate to "FreedomInfo" form and reach step "פרטי הבקשה"
+
+
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_07 - Checking "request details" fields with correct details
     When write a valid value "חלןלחכיעטאוחכיגמהנעירןםקךגצמבנסהשכדגקראטוןםפ" in "נושא הבקשה"

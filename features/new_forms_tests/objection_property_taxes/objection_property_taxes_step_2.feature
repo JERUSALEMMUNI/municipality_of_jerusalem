@@ -11,7 +11,14 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_02 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכנס לא רואי לשימוש
-    #todo: add שמור
+#    When click on "שמור" button
+#    When click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"
     And write a valid value "2432434323" in "חשבון / נכס"
