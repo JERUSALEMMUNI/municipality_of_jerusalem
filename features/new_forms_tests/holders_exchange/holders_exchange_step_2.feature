@@ -9,7 +9,7 @@ Feature: HoldersExchange form step 2
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי נכס"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_02 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים ומגיש בקשה: בעל הנכס
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
@@ -28,7 +28,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_03 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: שוכר
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -62,7 +62,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_04 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: יורש
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -90,7 +90,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_05 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: מיפה כח
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -125,10 +125,13 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
     When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
+    #todo: "יש להשלים מספר חשבון/נכס", בעת הזנת ערכים טקסטואליים הופיעה הודעת שגיאה: "יש להזין ספרות בלבד
     When search invalid value and pick "asdads" in search field "רחוב"
     And write a valid number "s2da" in "בית"
+    #todo: no results found or לא נמצא
     Then validate if "בית" number is "2"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
@@ -140,10 +143,13 @@ Feature: HoldersExchange form step 2
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-80e8d87" as invalid value in "טלפון נייד"
+    #todo: add another validation
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "02-8s7s687" as invalid value in "טלפון קווי"
+    #todo: add another validation
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "דוא"ל"
+    #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "יורש" from "מי מגיש הבקשה?"
@@ -159,11 +165,14 @@ Feature: HoldersExchange form step 2
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-80e8d87" as invalid value in "טלפון נייד"
+    #todo: add another validation
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "02-8s7s687" as invalid value in "טלפון קווי"
+    #todo: add another validation
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
+    #todo: email message
     When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then check if "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

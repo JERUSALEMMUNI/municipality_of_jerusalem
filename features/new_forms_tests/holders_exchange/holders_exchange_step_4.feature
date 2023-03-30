@@ -9,10 +9,7 @@ Feature: HoldersExchange form step 4
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק חדש"
 
-
-
-
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_08 הזנת ערכים תקינים בשדות "פרטי מחזיק חדש"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -35,7 +32,7 @@ Feature: HoldersExchange form step 4
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_13 הזנת ערכים שגוים בשדות "פרטי מחזיק חדש"
     When write an invalid value "dsdf" in "שם פרטי"
     Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -45,10 +42,13 @@ Feature: HoldersExchange form step 4
     And write an invalid value "sdfsdf" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-80e8d87" as invalid value in "טלפון נייד"
+    #todo: add another validation
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "02-8s7s687" as invalid value in "טלפון קווי"
+    #todo: add another validation
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "דוא"ל"
+    #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"
     When write an invalid number "12142023" in "תאריך כניסה"
     Then check if "תאריך כניסה" error is "תאריך לא תקין"
@@ -57,9 +57,3 @@ Feature: HoldersExchange form step 4
     When Upload an invalid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
     Then check if "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
-
-
-
-
-
-
