@@ -30,7 +30,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-#    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
@@ -38,16 +38,15 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "pdf_file_to_upload.pdf" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "pdf_file_to_upload.pdf" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-    #todo add delete file to accordion
-#    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "jpeg_to_upload.jpeg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "jpeg_to_upload.jpeg" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-#    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload a valid file "bmp_to_upload.bmp" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "bmp_to_upload.bmp" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-#    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
     When pick "בטיחות" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
