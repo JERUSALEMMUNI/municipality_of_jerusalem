@@ -9,7 +9,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "תצהיר ושליחה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_10 הזנת ערכים תקינים לשדות "תצהיר ושליחה"
     When write a valid value "ירושלים" in "עיר"
     And write a valid value "א טור" in "רחוב"
@@ -21,7 +21,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_13 הזנת ערכים שגויים לשדות "תצהיר ושליחה"
     When write an invalid value "fdssdf" in "עיר"
     Then check if "עיר" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"

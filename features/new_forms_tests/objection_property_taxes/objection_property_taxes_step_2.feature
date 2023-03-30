@@ -9,8 +9,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_02 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכנס לא רואי לשימוש
+    #todo: add שמור
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"
     And write a valid value "2432434323" in "חשבון / נכס"
@@ -93,7 +94,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -128,7 +129,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_04 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והשימוש בפועל שונה מהחיוב הקיים
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -163,7 +164,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_05 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והנכס פוצל למס יחידות
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -199,7 +200,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @firas
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_06 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והחיוב אינו שלי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -221,6 +222,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "3/1/2023" from calendar of "מועד תחילת הטענה"
     And choose "החיוב אינו שלי" from "סיבת ההשגה"
     And pick "אני לא בעל השליטה בחברה" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
+    And pick "איני "מחזיק" ומעולם לא החזקתי בנכס" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
     And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
     And Upload a valid "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
@@ -235,7 +237,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_07 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ואזור בחיוב ארנונה שגוי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -269,7 +271,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_08 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכתובת הנכס לא נכונה
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -305,7 +307,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_09 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס שונה ממגיש הבקשה והכנס לא רואי לשימוש
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -350,7 +352,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_12 הזנת ערכים שגויים לשדות "פרטי הנכס וסיבת ההשגה"
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"

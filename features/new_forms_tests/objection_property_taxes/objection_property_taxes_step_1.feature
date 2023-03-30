@@ -6,7 +6,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_01 הזנת ערכים תקינים לשדות "פרטי מגיש הבקשה" ממלא ההשגה המחזיק
     Given Navigate to "ObjectionPropertyTaxes" form
     When write a valid value "דני" in "שם פרטי"
@@ -20,7 +20,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
 #    And click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_11 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
     Given Navigate to "ObjectionPropertyTaxes" form
     When write an invalid value "sda" in "שם פרטי"
@@ -31,9 +31,12 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And write an invalid value "sdadw" in "מספר ת.ז."
     Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-807d68r" as invalid value in "טלפון נייד"
+    #Todo: another option
     Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "02-80s86t7" as invalid value in "טלפון קווי"
+    #todo: another option
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"
     When clear fields
