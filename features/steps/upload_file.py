@@ -76,7 +76,8 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
 
     if not widget.check_file_name(file_name_index, file_name)[0]:
         rep.add_label_to_step("File extension is not allowed",
-                              "File extension is not accepted, Only two formats are allowed pdf and jpg")
+                              "File extension is not accepted, Only two formats are allowed ['png', 'pdf', 'gif', "
+                              "'jpg', 'jpeg', 'bmp']")
         raise AssertionError("File extension is not accepted")
     if not widget.check_file_name(file_name_index, file_name)[1]:
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")

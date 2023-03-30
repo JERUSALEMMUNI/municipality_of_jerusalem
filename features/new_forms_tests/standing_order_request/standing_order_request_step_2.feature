@@ -117,7 +117,7 @@ Feature: StandingOrderRequest - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
@@ -141,12 +141,11 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
     When Upload a valid "png_to_upload.png" file in "אחר"
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
     When write an invalid value "21reser1121" in "חשבון / נכס"
-    #todo (darweesh)
     Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When write an invalid value "234" in "חשבון / נכס"
     Then check if "חשבון / נכס" error is "יש להשלים ספרות חסרות"
@@ -160,14 +159,14 @@ Feature: StandingOrderRequest - scenarios step 2
     When search invalid value and pick "1-סניף eweראשי" in search field "סניף"
     When write a valid number "asdas1233" in "מספר חשבון"
     Then validate if "מספר חשבון" number is "1233"
-    When pick "140" from "יום גביה חודשי"
+    When pick an invalid "140" from "יום גביה חודשי"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
     Then check if "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When clear fields
+#    When clear fields
 
 
 

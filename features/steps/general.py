@@ -50,6 +50,8 @@ def navigate_to_screen_specific_step(context, screen_name, dst_step):
     elif (context._config.current_page and context._config.current_page.page_title != current_page.page_title) \
             or (context._config.current_page is None):
         navigate_to_step_in_screen(context, current_page, dst_step)
+    allure.dynamic.link(f'{driver.current_url}', "Step link",
+                        "click here to see the link of tested step")
 
 
 def navigate_to_step_in_screen(context, current_page, dst_step):

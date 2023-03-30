@@ -492,47 +492,47 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate if "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" is exist
     When click on "המשך" button
 
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "png_to_upload.png" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "png_to_upload.png" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "png_to_upload.png" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "png_to_upload.png" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "pdf_to_upload.pdf" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "pdf_to_upload.pdf" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "pdf_to_upload.pdf" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "pdf_to_upload.pdf" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "pdf_to_upload.pdf" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "pdf_to_upload.pdf" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "bmp_to_upload.bmp" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
-    When delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    When Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "bmp_to_upload.bmp" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
 
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "1" is "png_to_upload.png" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "1" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "1" is "png_to_upload.png" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "1" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
-    When Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "2" is "gif_to_upload.gif" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "2" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "2" is "gif_to_upload.gif" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "2" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
-    When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
-    Then validate size of file "3" in "צילום תעודת זהות של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
+    When Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך"
+    Then validate size of file "3" in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" in accepted
 
 
     When Upload a valid "png_to_upload.png" file in "מסמכים נוספים"
