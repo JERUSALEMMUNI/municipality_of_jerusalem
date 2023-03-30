@@ -86,7 +86,7 @@ Feature: TreeCut form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
     When clear fields
-
+  @darweesh
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
 #    When click on "שמור" button
@@ -105,7 +105,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
@@ -137,7 +137,7 @@ Feature: TreeCut form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
