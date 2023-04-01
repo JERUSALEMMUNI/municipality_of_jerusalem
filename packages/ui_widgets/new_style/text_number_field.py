@@ -22,9 +22,7 @@ class TextNumberField(TextField):
 
     def get_text(self):
         get_value_number = self.web_element.get_attribute('aria-valuenow')
-        if get_value_number not in (None, "null"):
-            return self.web_element.get_attribute('aria-valuenow')
-        return "no value"
+        return get_value_number if get_value_number not in (None, "null") else ""
 
     def is_invalid_txt(self):
         return self.is_invalid
