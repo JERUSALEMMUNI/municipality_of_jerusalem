@@ -49,19 +49,18 @@ class DropdownSearch(Dropdown):
               it will return the
         """
         self.click_button()
-        i = 0
+        element_appearance = 0
         start_time = time.time()
         while time.time()-start_time > 120:
-            WebDriverWait(self.web_element, 30).until(
+            element = WebDriverWait(self.web_element, 30).until(
                 EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
-            element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             element = element.text
             if text in element:
-                i = i + 1
-            if text in element and i == 4:
-                chosenElement = driver.find_element(*self.get_locator().chosen_element(text))
-                return chosenElement.text, element
+                element_appearance += 1
+                if element_appearance == 4:
+                    chosenElement = driver.find_element(*self.get_locator().chosen_element(text))
+                    return chosenElement.text, element
 
     def get_locator(self):
         return DropdownSearchLocators()
