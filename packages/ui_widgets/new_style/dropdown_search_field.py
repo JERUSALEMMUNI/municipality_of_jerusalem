@@ -1,4 +1,6 @@
+from time import sleep
 import time
+from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -47,19 +49,18 @@ class DropdownSearch(Dropdown):
               it will return the
         """
         self.click_button()
-        i = 0
+        element_appearance = 0
         start_time = time.time()
-        while time.time() - start_time > 120:
-            WebDriverWait(self.web_element, 30).until(
+        while time.time()-start_time > 120:
+            element = WebDriverWait(self.web_element, 30).until(
                 EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
-            element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
             driver.execute_script("arguments[0].scrollBy(0,70);", element)
             element = element.text
             if text in element:
-                i = i + 1
-            if text in element and i == 4:
-                chosenElement = driver.find_element(*self.get_locator().chosen_element(text))
-                return chosenElement.text, element
+                element_appearance += 1
+                if element_appearance == 4:
+                    chosenElement = driver.find_element(*self.get_locator().chosen_element(text))
+                    return chosenElement.text, element
 
     def get_locator(self):
         return DropdownSearchLocators()
@@ -101,11 +102,6 @@ class DropdownSearch(Dropdown):
         element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
         return element.text in ("No results found", "לא נמצאו תוצאות")
-
-    @property
-    def is_default(self):
-        em = self.web_element.find_element(*self.get_locator().empty)
-        return em.text == 'בחר'
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)

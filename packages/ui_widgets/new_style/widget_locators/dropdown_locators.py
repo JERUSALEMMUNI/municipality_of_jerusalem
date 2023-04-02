@@ -16,5 +16,4 @@ class DropdownLocators:
     def select(self):
         def _select(pre):
             return By.XPATH, f"//li[@aria-label='{pre}']"
-
         return _select

@@ -61,17 +61,6 @@ class Dropdown(BaseWidget):
             self.dropdown_selection = False
             return False
 
-    def new_select_element(self, txt):
-        self.click_button()
-        elements = self.web_element.find_elements(DropdownLocators.select_item)
-        for option in elements:
-            if option.text == txt:
-                option.click()
-                WebDriverWait(self.web_element, 30).until(EC.invisibility_of_element_located(option))
-                break
-        else:
-            return False
-
     def select_no_label_dropdown_element(self, pre):
         self.path_locator = DropdownLocators.no_label
         self.click_button()
@@ -135,7 +124,7 @@ class Dropdown(BaseWidget):
         return self.dropdown_selection
 
     def select_first_element(self):
+        """ Selects first element after writing in search field at dropdown search widget"""
         self.click_button()
-        WebDriverWait(self.web_element, 10).until(EC.presence_of_element_located(DropdownLocators.list_items))
-        list_of_items = self.web_element.find_elements(*DropdownLocators.list_items)
+        list_of_items = WebDriverWait(self.web_element, 10).until(EC.presence_of_element_located(DropdownLocators.list_items))
         list_of_items[0].click()
