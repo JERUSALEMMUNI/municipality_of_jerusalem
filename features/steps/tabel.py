@@ -32,6 +32,10 @@ def add_items_month_year_list(context, year, widget_name, number):
         widget.close()
 
 
+# @when('pick month "{month}" in widget "{widget_name}" at index "{number}"')
+# def add_items_month_year_list(context, month, widget_name, number):
+#     widget = context._config.current_page.widgets[widget_name]
+#     widget.set_month(month, number)
 @when('pick month "{month}" in widget "{widget_name}" at index "{number}"')
 def add_items_month_year_list(context, month, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
@@ -68,7 +72,7 @@ def check_months_are_chosen(context, widget_name, number):
 @when('from table "{table_name}" at row "{row}" write a valid value "{text}" in "{widget_name}"')
 def write_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    widget.set_text_field(row, widget_name, text)
+    widget.set_text(row, widget_name, text)
     if widget.validate_text_is_invalid(row, widget_name):
         log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
                  f" an valid value but it appeared as invalid")
@@ -81,34 +85,8 @@ def write_in_table_from_column(context, table_name, row, text, widget_name):
 @when('from table "{table_name}" at row "{row}" write an invalid value "{text}" in "{widget_name}"')
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    widget.set_text_field(row, widget_name, text)
+    widget.set_text(row, widget_name, text)
     if not widget.validate_text_is_invalid(row, widget_name):
-        log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
-                 f" an invalid value but it appeared as valid")
-        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} from table {table_name} at "
-                                                f"row {row} is considered"
-                                                f" an invalid value but it appeared as valid")
-        raise AssertionError("invalid value and considered as valid")
-
-
-@when('from table "{table_name}" at row "{row}" write a valid value "{text}" in textarea of "{widget_name}"')
-def write_in_table_from_column(context, table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    widget.set_textarea_field(row, widget_name, text)
-    if widget.validate_textarea_is_invalid(row, widget_name):
-        log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
-                 f" an valid value but it appeared as invalid")
-        rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} from table {table_name} at "
-                                                f"row {row} is considered"
-                                                f" an valid value but it appeared as invalid")
-        raise AssertionError("valid value and considered as invalid")
-
-
-@when('from table "{table_name}" at row "{row}" write an invalid value "{text}" in textarea of "{widget_name}"')
-def write_time_in_table_from_column(context, table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    widget.set_textarea_field(row, widget_name, text)
-    if not widget.validate_textarea_is_invalid(row, widget_name):
         log.info(f"This value {text} at field {widget_name} from table {table_name} at row {row} is considered "
                  f" an invalid value but it appeared as valid")
         rep.add_label_to_step("failure reason", f"This value {text} at field {widget_name} from table {table_name} at "
@@ -241,8 +219,7 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
         raise AssertionError("File type is not accepted")
 
 
-@when(
-    'from table "{table_name}" at row "{row}" validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
+@when('from table "{table_name}" at row "{row}" validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
 def validate_uploaded_files_name(context, table_name, row, file_name_index, file_name, widget_name):
     widget = context._config.current_page.widgets[table_name]
     if not widget.check_file_name(row, widget_name, file_name_index, file_name)[0]:
@@ -254,8 +231,7 @@ def validate_uploaded_files_name(context, table_name, row, file_name_index, file
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
 
 
-@then(
-    'from table "{table_name}" at row "{row}" validate size of file "{file_size_index}" in "{widget_name}" in accepted')
+@then('from table "{table_name}" at row "{row}" validate size of file "{file_size_index}" in "{widget_name}" in accepted')
 def check_file_size(context, table_name, row, file_size_index, widget_name):
     widget = context._config.current_page.widgets[table_name]
     if not widget.check_file_size(row, widget_name, file_size_index):
@@ -273,189 +249,3 @@ def choose_in_search(context, table_name, row, wanted_file_index, widget_name):
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     widget.choose_item(row, widget_name, text)
-
-
-@when('from table "{table_name}" at row "{row}" pick "{option_value}" from "{widget_name}"')
-@when('from table "{table_name}" at row "{row}" pick a valid "{option_value}" from "{widget_name}"')
-def pick_element(context, table_name, row, option_value, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    try:
-        if widget.select_element(row, widget_name, option_value):
-            rep.add_label_to_step("selected Option",
-                                  f'from table "{table_name}" at row "{row}"{option_value} is selected')
-        else:
-            rep.add_label_to_step("Didn't find selected option",
-                                  f'from table "{table_name}" at row "{row}" {option_value} is not found in list')
-            raise AssertionError("Desired Option is not found in list")
-    finally:
-        widget.close_dropdown(row, widget_name)
-
-
-@when('from table "{table_name}" at row "{row}" pick an invalid "{option_value}" from "{widget_name}"')
-def pick_invalid_option(context, table_name, row, option_value, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    try:
-        if widget.select_element(row, widget_name, option_value):
-            rep.add_label_to_step('Option is selected',
-                                  'The Option is considered invalid and there was a selection from list')
-            raise AssertionError('The Option is considered invalid and there was a selection from list')
-        else:
-            rep.add_label_to_step("Chosen option is not in list",
-                                  f'from table "{table_name}" at row "{row}" [{option_value}] is not found in list')
-    finally:
-        widget.close_dropdown(row, widget_name)
-
-
-@Then('from table "{table_name}" at row "{row}" validate if "{widget_name}" text is "{text}"')
-def validate_text(context, table_name, row, widget_name, text):
-    widget = context._config.current_page.widgets[table_name]
-    if not widget.validate_text(row, widget_name, text):
-        log.info(f"This value {text} at table {table_name} at row {row} at field {widget_name} is not "
-                 f"the same written value")
-        rep.add_label_to_step("failure reason",
-                              f"This value {text} at table {table_name} at row {row} at field {widget_name} is not "
-                              " the same written value")
-        raise AssertionError("Written correctly but appeared incorrectly")
-
-
-@Then(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" validate if "{widget_name}" text is "{text}"')
-def validate_text(context, table_name, sub_table_name, row, widget_name, text):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    if not widget.validate_text(row, widget_name, text, table_index=int(table_index)):
-        log.info(
-            f'This value {text} from parent "{table_name}" at table "{sub_table_name}" at row "{row}" at field {widget_name} is not '
-            f"the same written value")
-        rep.add_label_to_step("failure reason",
-                              f'This value {text} from parent "{table_name}" at table "{sub_table_name}" at row "{row}" at field {widget_name} is not '
-                              " the same written value")
-        raise AssertionError("Written correctly but appeared incorrectly")
-
-
-@when('from parent "{table_name}" at table "{sub_table_name}" add "{items}" row')
-def add_items_in_table(context, table_name, sub_table_name, items):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    for item in range(int(items)):
-        widget.add_item(int(table_index))
-
-
-@when('from parent "{table_name}" at table "{sub_table_name}" remove row "{items}"')
-def remove_item_from_table(context, table_name, sub_table_name, items):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    widget.remove_item(items, int(table_index))
-
-
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" write a valid value "{text}" in "{widget_name}"')
-def write_in_table_from_column(context, table_name, sub_table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    widget.set_text_field(row, widget_name, text, table_index=int(table_index))
-    if widget.validate_text_is_invalid(row, widget_name, table_index=int(table_index)):
-        log.info(
-            f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-            f" an valid value but it appeared as invalid")
-        rep.add_label_to_step("failure reason",
-                              f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name}"
-                              f" at row {row} is considered"
-                              f" an valid value but it appeared as invalid")
-        raise AssertionError("valid value and considered as invalid")
-
-
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" write an invalid value "{text}" in "{widget_name}"')
-def write_in_table_from_column(context, table_name, sub_table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    widget.set_text_field(row, widget_name, text, table_index=int(table_index))
-    if widget.validate_text_is_valid(row, widget_name, table_index=int(table_index)):
-        log.info(
-            f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-            f" an invalid value but it appeared as valid")
-        rep.add_label_to_step("failure reason",
-                              f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-                              f" an invalid value but it appeared as valid")
-        raise AssertionError("invalid value and considered as valid")
-
-@then('from parent "{table_name}" at table "{sub_table_name}" at row "{row}" check if "{widget_name}" error is "{error_expectation}"')
-def error_msg(context, table_name,sub_table_name, row, widget_name, error_expectation):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    if not widget.validate_text_is_invalid(row, widget_name,table_index=int(table_index)):
-        rep.add_label_to_step("No label appeared", "There should be an error message but it didnt appear at all")
-        raise AssertionError("invalid value and considered as valid")
-    if not widget.validate_error_message(row, widget_name, error_expectation):
-        log.info(f"The error value in table {table_name} in row {row} at field {widget_name} is incorrect")
-        rep.add_label_to_step("incorrect message or missing",
-                              f"The error value in table {table_name} in row {row} at field {widget_name} is not "
-                              f"equal to {error_expectation}")
-        raise AssertionError("invalid value and considered as valid")
-    rep.add_label_to_step("message appeared", "red error message appeared correctly")
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" pick a valid value "{option_value}" from "{widget_name}"')
-def pick_element(context, table_name, sub_table_name, row, option_value, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    try:
-        if widget.select_element(row, widget_name, option_value, table_index=int(table_index)):
-            rep.add_label_to_step("selected Option",
-                                  f'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" "{option_value} is selected')
-        else:
-            rep.add_label_to_step("Didn't find selected option",
-                                  f'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" {option_value} is not found in list')
-            raise AssertionError("Desired Option is not found in list")
-    finally:
-        widget.close_dropdown(row, widget_name, table_index=int(table_index))
-
-
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" pick an invalid value "{option_value}" from "{widget_name}"')
-def pick_invalid_option(context, table_name, sub_table_name, row, option_value, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    try:
-        if widget.select_element(row, widget_name, option_value, table_index=int(table_index)):
-            rep.add_label_to_step('Option is selected',
-                                  'The Option is considered invalid and there was a selection from list')
-            raise AssertionError('The Option is considered invalid and there was a selection from list')
-        else:
-            rep.add_label_to_step("Chosen option is not in list",
-                                  f'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" [{option_value}] is not found in list')
-    finally:
-        widget.close_dropdown(row, widget_name, table_index=int(table_index))
-
-
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" write a valid value "{text}" in textarea of "{widget_name}"')
-def write_in_table_from_column(context, table_name, sub_table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    widget.set_textarea_field(row, widget_name, text, table_index=int(table_index))
-    if widget.validate_textarea_is_invalid(row, widget_name, table_index=int(table_index)):
-        log.info(
-            f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-            f" an valid value but it appeared as invalid")
-        rep.add_label_to_step("failure reason",
-                              f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name}"
-                              f" at row {row} is considered"
-                              f" an valid value but it appeared as invalid")
-        raise AssertionError("valid value and considered as invalid")
-
-
-@when(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" write an invalid value "{text}" in textarea of "{widget_name}"')
-def write_in_table_from_column(context, table_name, sub_table_name, row, text, widget_name):
-    widget = context._config.current_page.widgets[table_name]
-    table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    widget.set_textarea_field(row, widget_name, text, table_index=int(table_index))
-    if widget.validate_textarea_is_valid(row, widget_name, table_index=int(table_index)):
-        log.info(
-            f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-            f" an invalid value but it appeared as valid")
-        rep.add_label_to_step("failure reason",
-                              f"This value {text} at field {widget_name} from parent {table_name} at table {sub_table_name} at row {row} is considered "
-                              f" an invalid value but it appeared as valid")
-        raise AssertionError("invalid value and considered as valid")

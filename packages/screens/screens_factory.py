@@ -2,7 +2,7 @@ from infra import logger, reporter
 from screens.forms import contractor_emp_rights, place_container, collective_life_insurance, transfer_dog_ownership, \
     better_tax_ptor, confirmation_for_structure, photo_permission, email_registration, tree_cut, \
     objection_property_taxes, holders_exchange, standing_order_request, permit_information, planning_information, \
-    freedom_info, improvement_tax, tabo_online
+    freedom_info, improvement_tax
 
 log = logger.get_logger(__name__)
 rep = reporter.get_reporter()
@@ -40,8 +40,7 @@ class ScreensFactory(object):
             'PermitInformation': permit_information.PermitInformation,
             'PlanningInformation': planning_information.PlanningInformation,
             'FreedomInfo': freedom_info.FreedomInfo,
-            'ImprovementTax': improvement_tax.ImprovementTax,
-            'TaboOnline':tabo_online.TaboOnline
+            'ImprovementTax': improvement_tax.ImprovementTax
         }
 
         screens = []

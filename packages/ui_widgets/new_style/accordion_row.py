@@ -15,7 +15,7 @@ class AccordionRow(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f".//p-accordiontab[{self.label}]"
+            'Value': f"//following-sibling::div//p-accordiontab[{self.label}]"
         }
 
     def get_current_tab(self):
@@ -59,13 +59,9 @@ class AccordionRow(BaseWidget):
         if self.trash_button.is_clickable:
             self.trash_button.click_button()
 
-    def set_text_field(self, label, text):
+    def set_text(self, label, text):
         text_field = self.make_element_ready_to_action('TextField', label)
         text_field.set_text(text)
-
-    def set_textarea_field(self, label, text):
-        textarea_field = self.make_element_ready_to_action('TextArea', label)
-        textarea_field.set_text(text)
 
     def upload_file(self, label, file):
         upload = self.make_element_ready_to_action('UploadFile', label)
@@ -94,19 +90,6 @@ class AccordionRow(BaseWidget):
     def validate_text_is_invalid(self, label):
         text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.is_invalid
-
-    def validate_textarea_is_valid(self, label):
-        textarea_field = self.make_element_ready_to_action('TextArea', label)
-        return textarea_field.is_valid
-
-    def validate_textarea_is_invalid(self, label):
-        textarea_field = self.make_element_ready_to_action('TextArea', label)
-        return textarea_field.is_invalid
-
-    def validate_text(self,label, text):
-        text_field = self.make_element_ready_to_action('TextField', label)
-        return text_field.validate_text(text)
-
 
     def validate_error_message(self, label, error_expectation):
         text_field = self.make_element_ready_to_action('TextField', label)
@@ -143,11 +126,3 @@ class AccordionRow(BaseWidget):
     def delete_file(self, label, wanted_file_index):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.delete_file_by_index(wanted_file_index)
-
-    def select_element(self, label, text):
-        dropdown = self.make_element_ready_to_action('Dropdown', label)
-        return dropdown.select_element(text)
-
-    def close_dropdown(self, label):
-        dropdown = self.make_element_ready_to_action('Dropdown', label)
-        dropdown.close()
