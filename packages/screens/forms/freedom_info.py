@@ -12,6 +12,8 @@ class FreedomInfo(BasePage):
 
     def fill_need_to_wait_element(self):
         self.main_elements_to_wait_when_load = ['שם פרטי']
+        self.main_elements_to_wait_when_load = ['שם משפחה']
+        self.main_elements_to_wait_when_load = ['דוא"ל']
 
     def create_page_widgets(self):
         self.widgets['שם פרטי'] = create_widget('TextField', style=self.style, label='שם פרטי')

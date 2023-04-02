@@ -99,7 +99,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
@@ -134,7 +134,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_04 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והשימוש בפועל שונה מהחיוב הקיים
@@ -169,7 +169,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_05 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והנכס פוצל למס יחידות
@@ -205,7 +205,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_06 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והחיוב אינו שלי
@@ -243,7 +243,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_07 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ואזור בחיוב ארנונה שגוי
@@ -277,7 +277,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_08 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכתובת הנכס לא נכונה
@@ -313,7 +313,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_09 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס שונה ממגיש הבקשה והכנס לא רואי לשימוש
@@ -358,14 +358,13 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_12 הזנת ערכים שגויים לשדות "פרטי הנכס וסיבת ההשגה"
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"
     And write an invalid value "דדגשדגשדג" in "חשבון / נכס"
-    #todo check the message here(darweesh)
     Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "sfdf" in search field "רחוב"
     And write a valid number "sd11a" in "בית"
@@ -391,7 +390,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then check if "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "דו"ח מהנדס"
     Then check if "דו"ח מהנדס" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When clear fields
+#    When clear fields
 
 
 

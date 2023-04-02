@@ -17,7 +17,7 @@ Feature: improvementTax form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: IMROVEMENTATX_04 הזנת ערכים שגוים בשדות "פרטי בעל הנכס"

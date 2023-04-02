@@ -1,8 +1,12 @@
 from selenium.webdriver.common.by import By
 
 
-class EmailAuthenticationConstants:
+class EmailAuthenticationLocators:
     # 1 is old form, 2 is new form
+
+    click = (By.XPATH, "//button[contains(@class, 'p-dialog')]")
+    dialog = (By.XPATH, "//button[contains(@class, 'p-dialog')]")
+
     email_dict = {
         "form_number": {1: (By.XPATH, '//*[contains(text(),"מספר אסמכתא")]//preceding-sibling::input'),
                         2: (By.XPATH, '//*[contains(text(),"בקשה")]/..//input')},

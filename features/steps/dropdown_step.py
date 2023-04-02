@@ -235,6 +235,17 @@ def search_and_pick_in_search_field(context, option_value, widget_name):
         widget.close()
 
 
+@Then('validate if "{widget_name}" is default')
+def pick_default(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    if widget.is_default:
+        log.info(f'its by defult')
+        rep.add_label_to_step("nothing was selected", "(default)")
+    else:
+        rep.add_label_to_step("there is already value", "(not default)")
+        raise AssertionError('its not the default there is element was selected')
+
+
 @when('search invalid value and pick "{option_value}" in search field "{widget_name}"')
 def search_and_pick_in_search_field(context, option_value, widget_name):
     widget = context._config.current_page.widgets[widget_name]

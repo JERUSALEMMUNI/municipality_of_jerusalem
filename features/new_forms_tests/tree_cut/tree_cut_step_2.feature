@@ -208,6 +208,7 @@ Feature: TreeCut form - scenarios step 2
 #    When clear fields
 
   @Checked_By_Firas_and_Darweesh
+  @suhaib
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -231,9 +232,8 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
-    When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
@@ -253,6 +253,8 @@ Feature: TreeCut form - scenarios step 2
     Then validate if "מספר העצים" number is "2"
     When from table "רשימת עצים" remove "1"
     Then validate if "מספר העצים" number is "1"
+    Then from table "רשימת עצים" at row "1" validate the file "תמונה של העץ" is default
+    Then from table "רשימת עצים" at row "1" validate the drop "סוג העץ" is default
     #todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"

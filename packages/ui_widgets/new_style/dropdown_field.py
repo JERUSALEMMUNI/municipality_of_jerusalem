@@ -47,8 +47,9 @@ class Dropdown(BaseWidget):
 
     def select_element(self, pre):
         self.click_button()
-        list_of_items = WebDriverWait(self.web_element, 30).until(
+        WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_all_elements_located(DropdownLocators.select_item))
+        list_of_items = self.web_element.find_elements(*DropdownLocators.select_item)
         for i in list_of_items:
             if i.text == pre:
                 i.click()
@@ -74,9 +75,10 @@ class Dropdown(BaseWidget):
     def select_no_label_dropdown_element(self, pre):
         self.path_locator = DropdownLocators.no_label
         self.click_button()
-        list_of_items = WebDriverWait(self.web_element, 30).until(
+        WebDriverWait(self.web_element, 30).until(
             EC.visibility_of_all_elements_located(
                 (self.locator['By'], self.locator['Value'])))
+        list_of_items = self.web_element.find_elements(self.locator['By'], self.locator['Value'])
         for i in list_of_items:
             if i.text == pre:
                 i.click()

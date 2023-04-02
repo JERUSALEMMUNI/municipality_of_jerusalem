@@ -76,7 +76,7 @@ class UploadFile(BaseWidget):
     def validate_warning_message(self):
         try:
             warning_msg = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)
-            if ('סוג הקובץ אינו חוקי') in warning_msg.text:
+            if 'סוג הקובץ אינו חוקי' in warning_msg.text:
                 return True
         except:
             log.info("this is error the field dont have a warning message")
@@ -95,13 +95,14 @@ class UploadFile(BaseWidget):
 
     @property
     def is_invalid(self):
-        if 'ng-invalid' in self.web_element.find_element(*UploadFilesLocators.is_invalid).get_attribute(
-                'class'):
-            return True
-        return False
+        return 'ng-invalid' in self.web_element.find_element(*UploadFilesLocators.is_invalid).get_attribute(
+            'class')
 
     @property
     def is_valid(self):
-        if 'ng-valid' in self.web_element.find_element(*UploadFilesLocators.is_valid).get_attribute(
-                'class'):
-            return True
+        return 'ng-valid' in self.web_element.find_element(*UploadFilesLocators.is_valid).get_attribute(
+            'class')
+
+    @property
+    def is_default(self):
+        return self.is_invalid

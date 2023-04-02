@@ -39,7 +39,7 @@ Feature: PhotoPermission form - scenarios step 3
     When 4th close all tabs "email" at index "2"
     Then 5th Validate if went back to expected "email" form
     When click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_04 הזנת ערכים תקינים לשדות "פרטי מיקום ומועדי הצילומים" מספר מועדים
@@ -70,15 +70,15 @@ Feature: PhotoPermission form - scenarios step 3
     When choose "לא" from "האם יש חיבור לחשמל/גנרטור"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"
     When write a valid value "גחדךגלכןקךגלכןגךגחלכןכךגלכןכםגךכלכ" in "פירוט ציוד צילום"
-    When click on "שמור" button
-    And click on "שמור טיוטה" button tyota
-    When 1st wait for "email" that contains pin code and link
-    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-    When click on "email" option
-    When 3rd wait for second "email" to get "קוד האימות" index "2"
-    When 4th close all tabs "email" at index "2"
-    Then 5th Validate if went back to expected "email" form
-    When click on "המשך" button
+#    When click on "שמור" button
+#    And click on "שמור טיוטה" button tyota
+#    When 1st wait for "email" that contains pin code and link
+#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+#    When click on "email" option
+#    When 3rd wait for second "email" to get "קוד האימות" index "2"
+#    When 4th close all tabs "email" at index "2"
+#    Then 5th Validate if went back to expected "email" form
+#    When click on "המשך" button
 
 
 

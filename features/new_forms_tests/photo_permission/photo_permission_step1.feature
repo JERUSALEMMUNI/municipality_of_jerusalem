@@ -22,7 +22,7 @@ Feature: PhotoPermission form - scenarios step 1
   # When 1st wait for "email" that contains pin code and link
   # When set pin code "email"
   # When close "email" dialog
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_06 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
@@ -52,4 +52,4 @@ Feature: PhotoPermission form - scenarios step 1
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
     When write an invalid value "876543456" in "דוא"ל"
     Then check if "דוא"ל" error is "הוזן ערך לא תקין, יש להזין דואר אלקטרוני"
-    When clear fields
+#    When clear fields

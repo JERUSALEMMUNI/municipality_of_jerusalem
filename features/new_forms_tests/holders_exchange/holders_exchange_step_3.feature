@@ -55,11 +55,10 @@ Feature: HoldersExchange form step 3
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
-  @firas
   Scenario: TC_HOLDERSEXCH_07 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס הוא המחזיק הנוכחי
     When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid number "12042023" in "תאריך עזיבה"
@@ -73,11 +72,10 @@ Feature: HoldersExchange form step 3
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
-    #todo check the error message in date
   Scenario: TC_HOLDERSEXCH_12 הזנת ערכים שגוים בשדות "פרטי מחזיק נוכחי"
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write an invalid value "dsdf" in "שם פרטי"
@@ -102,11 +100,11 @@ Feature: HoldersExchange form step 3
     #todo: email message
     Then check if "דוא"ל" error is "שדה לא תקין"
     When write an invalid number "12142023" in "תאריך עזיבה"
-    #todo: after typing an invalid date, it will be deleted and get error message שדה חובה instead of "תאריך לא תקין"
+    #todo: after typing an invalid date, it will be deleted and get error message שדה חובה instead of "תאריך לא תקין"(amro)
     Then check if "תאריך עזיבה" error is "שדה חובה"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
     Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When clear fields
+#    When clear fields
 
 
 

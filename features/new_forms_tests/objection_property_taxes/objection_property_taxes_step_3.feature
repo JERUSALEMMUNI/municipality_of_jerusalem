@@ -19,7 +19,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_13 הזנת ערכים שגויים לשדות "תצהיר ושליחה"
@@ -35,4 +35,4 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     Then check if "ת.ד." error is "יש להזין ספרות בלבד"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When clear fields
+#    When clear fields

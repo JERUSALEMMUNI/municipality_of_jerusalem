@@ -1,6 +1,4 @@
-from time import sleep
 import time
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -51,7 +49,7 @@ class DropdownSearch(Dropdown):
         self.click_button()
         i = 0
         start_time = time.time()
-        while time.time()-start_time > 120:
+        while time.time() - start_time > 120:
             WebDriverWait(self.web_element, 30).until(
                 EC.presence_of_element_located(DropdownSearchLocators.item_search_scroll))
             element = driver.find_element(*DropdownSearchLocators.item_search_scroll)
@@ -103,6 +101,11 @@ class DropdownSearch(Dropdown):
         element = WebDriverWait(self.web_element, 3).until(
             EC.visibility_of_element_located(DropdownSearchLocators.get_search_result_if_empty))
         return element.text in ("No results found", "לא נמצאו תוצאות")
+
+    @property
+    def is_default(self):
+        em = self.web_element.find_element(*self.get_locator().empty)
+        return em.text == 'בחר'
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*DropdownSearchLocators.error_msg)

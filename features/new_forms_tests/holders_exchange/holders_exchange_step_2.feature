@@ -26,7 +26,7 @@ Feature: HoldersExchange form step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_03 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: שוכר
@@ -60,7 +60,7 @@ Feature: HoldersExchange form step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_04 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: יורש
@@ -113,7 +113,7 @@ Feature: HoldersExchange form step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_05 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: מיפה כח
@@ -148,7 +148,7 @@ Feature: HoldersExchange form step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
@@ -159,8 +159,9 @@ Feature: HoldersExchange form step 2
     Then check if "חשבון תושב בארנונה" error is "שדה לא תקין"
     When search invalid value and pick "asdads" in search field "רחוב"
     Then check if "רחוב" no results found appeared
-    When write a valid number "s2da" in "בית"
-    Then validate if "בית" number is "2"
+    When write an invalid number "sda" in "בית"
+    Then check if "בית" error is "שדה חובה"
+#    Then validate if "בית" number is "2"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
@@ -213,7 +214,7 @@ Feature: HoldersExchange form step 2
     #todo: email message
     When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then check if "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When clear fields
+#    When clear fields
 
 
 

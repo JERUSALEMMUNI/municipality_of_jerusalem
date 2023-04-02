@@ -12,5 +12,5 @@ Feature: PlanningInformation form - scenarios step 3
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_PLANNINGINFO_04 "הזנת ערכים תקינים לשדות "הצהרה
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    When clear fields
+#    When clear fields
 

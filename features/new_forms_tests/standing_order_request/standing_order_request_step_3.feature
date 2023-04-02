@@ -21,4 +21,4 @@ Feature: StandingOrderRequest - scenarios step 3
 #    Then 5th Validate if went back to expected "email" form
     When check the box of "הריני מצהיר/ה בזה כי כל"
 #    When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
-    When clear fields
+#    When clear fields

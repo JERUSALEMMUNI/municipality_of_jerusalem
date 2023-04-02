@@ -1,19 +1,17 @@
 import time
 
 import infra.enums as enums
-from infra import logger, reporter
+from infra import reporter
 from bs4 import BeautifulSoup
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from features.steps.steps_locators.general_locators import GeneralLocators
 from infra import logger
-from infra.custom_exceptions import MJTimeOutError
 from ui_widgets.base_widget import BaseWidget
-from ui_widgets.new_style.constants.email_authentication_constants import EmailAuthenticationConstants
-from ui_widgets.new_style.widget_locators.text_field_locators import TextFieldLocators
+from ui_widgets.new_style.widget_locators.email_authentication_localors import EmailAuthenticationLocators
+from ui_widgets.new_style.widget_locators.email_authentication_localors import EmailAuthenticationLocators
 from utils import misc_utils
 
 log = logger.get_logger(__name__)
@@ -59,7 +57,7 @@ class EmailAuthentication(BaseWidget):
         emails = self.get_temp_email(mailbox)
         self.count_of_emails = len(emails)
         if not self.wait_for_new_email(self.count_of_emails, mailbox):
-            self.web_element.find_element(By.XPATH, "//button[contains(@class, 'p-dialog')]").click()
+            self.web_element.find_element(*EmailAuthenticationLocators.click).click()
             raise AssertionError('No email received')
         self.user_data['email_body'] = self.get_temp_email(mailbox)[0].html_body
 
@@ -91,29 +89,32 @@ class EmailAuthentication(BaseWidget):
         self.user_data['value'] = value_div.text.strip()
         driver.execute_script(
             "window.open('{}', '_blank');".format(
-                EmailAuthenticationConstants.email_dict['validation_link'].get(index)))
+                EmailAuthenticationLocators.email_dict['validation_link'].get(index)))
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(2)
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['id_number'].get(index))).send_keys("332796184")
-        driver.find_element(*EmailAuthenticationConstants.email_dict['form_number'].get(index)).send_keys(
+            EC.presence_of_element_located(EmailAuthenticationLocators.email_dict['id_number'].get(index)))
+        driver.find_element(*EmailAuthenticationLocators.email_dict['id_number'].get(index)).send_keys("332796184")
+        driver.find_element(*EmailAuthenticationLocators.email_dict['form_number'].get(index)).send_keys(
             self.user_data['value'])
-        driver.find_element(*EmailAuthenticationConstants.email_dict['email'].get(index)).send_keys(email)
-        driver.find_element(*EmailAuthenticationConstants.email_dict['send_message_button'].get(index)).send_keys(
+        driver.find_element(*EmailAuthenticationLocators.email_dict['email'].get(index)).send_keys(email)
+        driver.find_element(*EmailAuthenticationLocators.email_dict['send_message_button'].get(index)).send_keys(
             Keys.PAGE_DOWN)
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['send_message_button'].get(index)))
+            EC.element_to_be_clickable(EmailAuthenticationLocators.email_dict['send_message_button'].get(index)))
         time.sleep(1)
-        driver.find_element(*EmailAuthenticationConstants.email_dict['send_message_button'].get(index)).click()
+        driver.find_element(*EmailAuthenticationLocators.email_dict['send_message_button'].get(index)).click()
 
     def set_pin(self, driver, current_page):
         password = \
-            self.user_data['email_body'].split(EmailAuthenticationConstants.email_dict['email_body_split_message'])[
-                1].split('</div>')[0]
+            self.user_data['email_body'].split(EmailAuthenticationLocators.email_dict['email_body_split_message'])[
+                1].split(
+                '</div>')[0]
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.visibility_of_element_located(EmailAuthenticationConstants.email_dict['pin_code'])).send_keys(password)
+            EC.visibility_of_element_located(EmailAuthenticationLocators.email_dict['pin_code']))
+        driver.find_element(*EmailAuthenticationLocators.email_dict['pin_code']).send_keys(password)
         click_continue = WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['continue_to_step']))
+            EC.element_to_be_clickable(EmailAuthenticationLocators.email_dict['continue_to_step']))
         current = current_page.widgets.get('page_steps').get_current_step
         pop_up_appear_times = 0
         while True:
@@ -122,7 +123,7 @@ class EmailAuthentication(BaseWidget):
             pop_up_appear_times = pop_up_appear_times + 1
             if pop_up_appear_times == 6:
                 self.set_pin_error = True
-                self.web_element.find_element(By.XPATH, "//button[contains(@class, 'p-dialog')]").click()
+                self.web_element.find_element(*EmailAuthenticationLocators.dialog).click()
                 return False
             try:
                 click_continue.click()
@@ -147,15 +148,17 @@ class EmailAuthentication(BaseWidget):
         if email_body2 is None:
             rep.add_label_to_step("No email received", "E-mail is not received")
             raise AssertionError('No email received')
-        value2 = email_body2.split(EmailAuthenticationConstants.email_dict['pin_code_second_time'].get(index))[1].split(
+        value2 = email_body2.split(EmailAuthenticationLocators.email_dict['pin_code_second_time'].get(index))[1].split(
             '<br />')[0]
         if value2 is None:
             rep.add_label_to_step("No pin code", "pin code is not received from email")
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['fill_code_field'].get(index))).send_keys(value2)
-        driver.find_element(*EmailAuthenticationConstants.email_dict['click_link_request'].get(index)).click()
+            EC.presence_of_element_located(EmailAuthenticationLocators.email_dict['fill_code_field'].get(index)))
+        driver.find_element(*EmailAuthenticationLocators.email_dict['fill_code_field'].get(index)).send_keys(value2)
+        driver.find_element(*EmailAuthenticationLocators.email_dict['click_link_request'].get(index)).click()
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['see_form'].get(index))).click()
+            EC.element_to_be_clickable(EmailAuthenticationLocators.email_dict['see_form'].get(index)))
+        driver.find_element(*EmailAuthenticationLocators.email_dict['see_form'].get(index)).click()
         time.sleep(3)
         # Todo:
         # WebDriverWait(driver, 10).until(EC.new_window_is_opened(2))
@@ -188,11 +191,11 @@ class EmailAuthentication(BaseWidget):
             driver.switch_to.window(driver.window_handles[-1])
             time.sleep(1)
             WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-                EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['email_body_html']))
+                EC.presence_of_element_located(EmailAuthenticationLocators.email_dict['email_body_html']))
         driver.switch_to.window(driver.window_handles[0])
         WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-            EC.presence_of_element_located(EmailAuthenticationConstants.email_dict['email_body_html']))
-        driver.find_element(*EmailAuthenticationConstants.email_dict['click_continue_button'].get(index)).click()
+            EC.presence_of_element_located(EmailAuthenticationLocators.email_dict['email_body_html']))
+        driver.find_element(*EmailAuthenticationLocators.email_dict['click_continue_button'].get(index)).click()
         num_tabs = len(driver.window_handles)
         if num_tabs == 1:
             rep.add_label_to_step("tabs are closed", "All unused tabs are closed correctly")
@@ -221,7 +224,8 @@ class EmailAuthentication(BaseWidget):
     def click_email_option(self, driver):
         try:
             WebDriverWait(driver, enums.WaitInterval.LONG.value).until(
-                EC.element_to_be_clickable(EmailAuthenticationConstants.email_dict['select_email_option'])).click()
+                EC.element_to_be_clickable(EmailAuthenticationLocators.email_dict['select_email_option']))
+            driver.find_element(*EmailAuthenticationLocators.email_dict['select_email_option']).click()
             return True
         except:
             return False

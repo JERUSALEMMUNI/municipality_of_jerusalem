@@ -9,6 +9,8 @@ class UploadFilesLocators:
     upload_file = (By.XPATH, ".//input")
     is_invalid = (By.XPATH, "./ancestor::lib-file-upload")
     is_valid = (By.XPATH, "./ancestor::lib-file-upload")
+    wrong_file = (By.XPATH, ".//p-messages//button")
+    right_file = (By.XPATH, ".//p-progressbar")
 
     @property
     def check_file_size_locator(self):

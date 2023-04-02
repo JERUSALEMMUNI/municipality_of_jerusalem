@@ -219,7 +219,8 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
         raise AssertionError("File type is not accepted")
 
 
-@when('from table "{table_name}" at row "{row}" validate name of file "{file_name_index}" is "{file_name}" in "{widget_name}"')
+@when('from table "{table_name}" at row "{row}" validate name of file "{file_name_index}" is "{file_name}" in "{'
+      'widget_name}"')
 def validate_uploaded_files_name(context, table_name, row, file_name_index, file_name, widget_name):
     widget = context._config.current_page.widgets[table_name]
     if not widget.check_file_name(row, widget_name, file_name_index, file_name)[0]:
@@ -231,7 +232,8 @@ def validate_uploaded_files_name(context, table_name, row, file_name_index, file
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
 
 
-@then('from table "{table_name}" at row "{row}" validate size of file "{file_size_index}" in "{widget_name}" in accepted')
+@then('from table "{table_name}" at row "{row}" validate size of file "{file_size_index}" in "{widget_name}" in '
+      'accepted')
 def check_file_size(context, table_name, row, file_size_index, widget_name):
     widget = context._config.current_page.widgets[table_name]
     if not widget.check_file_size(row, widget_name, file_size_index):
@@ -249,3 +251,25 @@ def choose_in_search(context, table_name, row, wanted_file_index, widget_name):
 def write_time_in_table_from_column(context, table_name, row, text, widget_name):
     widget = context._config.current_page.widgets[table_name]
     widget.choose_item(row, widget_name, text)
+
+
+@Then('from table "{table_name}" at row "{row}" validate the drop "{widget_name}" is default')
+def validate_is_empty(context, table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if widget.is_default_drop(row, widget_name):
+        log.info(f'its by default')
+        rep.add_label_to_step("nothing was selected", "(default)")
+    else:
+        rep.add_label_to_step("there is already value", "(not default)")
+        raise AssertionError('its not the default there is element was selected')
+
+
+@Then('from table "{table_name}" at row "{row}" validate the file "{widget_name}" is default')
+def validate_is_default(context, table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if widget.is_default_upload(row, widget_name):
+        log.info(f'its by default')
+        rep.add_label_to_step("nothing was selected", "(default)")
+    else:
+        rep.add_label_to_step("there is already value", "(not default)")
+        raise AssertionError('its not the default there is element was selected')

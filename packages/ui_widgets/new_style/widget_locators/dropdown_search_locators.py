@@ -7,6 +7,7 @@ class DropdownSearchLocators:
     get_search_result_if_empty = (By.XPATH, ".//li")
     error_msg = (By.XPATH, "./following-sibling::span")
     search_field = (By.XPATH, ".//div[contains(@class,'filter-container')]/input")
+    empty = (By.XPATH, "./div/div/following-sibling::span")
 
     @property
     def chosen_element(self):

@@ -18,7 +18,7 @@ Feature: ConfirmationForStructure form - scenarios step 1
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
-    When clear fields
+#    When clear fields
 
  @Checked_By_Firas_and_Darweesh
  Scenario: CONFIRSTRUCT_04 - Entering incorrect values for the "Details of the applicant" fields
@@ -40,4 +40,4 @@ Feature: ConfirmationForStructure form - scenarios step 1
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
    When fill number "חלחמג" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
-    When clear fields
+#    When clear fields

@@ -33,7 +33,7 @@ Feature: PermitInformation form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: PERMITINFO_05 הזנת פרטים שגוים בשדות "פרטי בקשה"
@@ -50,4 +50,4 @@ Feature: PermitInformation form - scenarios step 2
     Then check if "כמות חלקות בודדות" error is "ניתן להזין עד 8 תווים"
     When write an invalid value "dsfsdfdsf" in textarea of "הערות"
     Then check if "הערות" error is "שפת קלט לא תקינה"
-    When clear fields
+#    When clear fields

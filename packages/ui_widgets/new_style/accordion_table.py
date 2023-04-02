@@ -117,6 +117,14 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row)
         return widget.check_file_name(label, file_name_index, file_name)
 
+    def is_default_drop(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_default_drop(label)
+
+    def is_default_upload(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_default_upload(label)
+
     def check_file_size(self, row, label, file_size_index):
         widget = self.create_widget_table_row(row)
         return widget.check_file_size(label, file_size_index)
