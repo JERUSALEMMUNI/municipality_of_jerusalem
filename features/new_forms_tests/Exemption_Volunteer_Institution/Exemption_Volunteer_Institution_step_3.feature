@@ -29,3 +29,27 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 3
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך"
+
+
+  Scenario: EXCEPTVOLUNT_10 הזנת ערכים שגויים ב"בעלי תפקידים"
+    When from table "בעלי תפקידים" at row "1" choose "כן" in "האם בעל התפקיד שונה ממגיש הבקשה?"
+
+    When from table "בעלי תפקידים" at row "1" write an invalid value "asdasd" in "שם פרטי"
+    Then from table "בעלי תפקידים" at row "1" check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    When from table "בעלי תפקידים" at row "1" write an invalid value "asdf" in "שם משפחה"
+    Then from table "בעלי תפקידים" at row "1" check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    When from table "בעלי תפקידים" at row "1" pick a valid "ת.ז." from "סוג זיהוי"
+    When from table "בעלי תפקידים" at row "1" write an invalid value "000000018" in "מספר ת.ז."
+    Then from table "בעלי תפקידים" at row "1" check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    When from table "בעלי תפקידים" at row "1" fill "050-sdfdsf" as invalid value in "טלפון נייד"
+    Then from table "בעלי תפקידים" at row "1" check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    When from table "בעלי תפקידים" at row "1" fill "050-233" as invalid value in "טלפון נייד"
+    Then from table "בעלי תפקידים" at row "1" check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    When from table "בעלי תפקידים" at row "1" fill "02-232" as invalid value in "טלפון קווי"
+    Then from table "בעלי תפקידים" at row "1" check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When from table "בעלי תפקידים" at row "1" fill "02-שדגדש" as invalid value in "טלפון קווי"
+    Then from table "בעלי תפקידים" at row "1" check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    When from table "בעלי תפקידים" at row "1" fill "02-sdfdsf" as invalid value in "טלפון קווי"
+    Then from table "בעלי תפקידים" at row "1" check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    When from table "בעלי תפקידים" at row "1" write an invalid value "dfghj" in "דוא"ל"
+    Then from table "בעלי תפקידים" at row "1" check if "דוא"ל" error is "שדה לא תקין"
