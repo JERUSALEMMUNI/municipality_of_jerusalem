@@ -11,6 +11,6 @@ Feature: ConfirmationForStructure form - scenarios step 3
  @Checked_By_Firas_and_Darweesh
   Scenario: CONFIRSTRUCT_03 - Filling out a statement
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
-#    When clear fields
+    When clear fields
 
 

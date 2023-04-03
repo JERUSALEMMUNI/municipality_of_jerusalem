@@ -148,8 +148,8 @@ Feature: FreedomInfo form - scenarios step 2
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
+    When clear fields
 
-#    When clear fields
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_03 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי עמותה" from "סוג המידע המבוקש"
@@ -288,7 +288,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
-#    When clear fields
+    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
@@ -384,7 +384,7 @@ Feature: FreedomInfo form - scenarios step 2
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
-#    When clear fields
+    When clear fields
 
   Scenario: TC_FREEDOMINFO_05 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי סטודנט/גוף מחקרי" from "סוג המידע המבוקש"
@@ -478,7 +478,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate size of file "3" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" in accepted
 
-#    When clear fields
+    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
@@ -577,7 +577,7 @@ Feature: FreedomInfo form - scenarios step 2
     When Upload a valid "jpg_pic_to_upload.jpg" file in "מסמכים נוספים"
     Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "מסמכים נוספים"
     Then validate size of file "3" in "מסמכים נוספים" in accepted
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_09 - Checking "The type of information" fields with incorrect details
@@ -607,5 +607,5 @@ Feature: FreedomInfo form - scenarios step 2
     Then check if "צילום תעודה מזהה" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודה מזהה"
     Then check if "צילום תעודה מזהה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-#    When clear fields
+    When clear fields
 

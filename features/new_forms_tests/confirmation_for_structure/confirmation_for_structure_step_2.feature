@@ -33,7 +33,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
@@ -50,6 +50,6 @@ Feature: ConfirmationForStructure form - scenarios step 2
     Then check if "חלקה" error is "יש להזין ספרות בלבד"
     When write an invalid value "4jk5981" in "תת חלקה"
     Then check if "תת חלקה" error is "יש להזין ספרות בלבד"
-#    When clear fields
+    When clear fields
 
 

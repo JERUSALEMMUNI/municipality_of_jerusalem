@@ -37,7 +37,7 @@ Feature: PhotoPermission form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_PHOTOPERMIT_07 הזנת ערכים שגויים לשדות "פרטי ההפקה"
@@ -78,7 +78,7 @@ Feature: PhotoPermission form - scenarios step 2
     When write an invalid value "876543" in "פירוט"
     Then check if "פירוט" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "abcdef" in "תיאור הצילום"
-#    When clear fields
+    When clear fields
 
 
 

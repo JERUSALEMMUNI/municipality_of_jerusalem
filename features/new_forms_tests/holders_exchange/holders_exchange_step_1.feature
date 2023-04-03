@@ -20,7 +20,7 @@ Feature: HoldersExchange form step 1
 #    When click on "email" option
 #    When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_HOLDERSEXCH_10 הזנת ערכים שגוים בשדות "פרטי מגיש"
@@ -44,4 +44,4 @@ Feature: HoldersExchange form step 1
     When write an invalid value "dfghj" in "דוא"ל"
     #todo: email error message
     Then check if "דוא"ל" error is "שדה לא תקין"
-#    When clear fields
+    When clear fields

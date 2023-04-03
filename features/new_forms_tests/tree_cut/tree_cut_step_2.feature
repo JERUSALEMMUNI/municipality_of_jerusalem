@@ -85,7 +85,7 @@ Feature: TreeCut form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
@@ -137,7 +137,7 @@ Feature: TreeCut form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
@@ -205,10 +205,9 @@ Feature: TreeCut form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
-  @suhaib
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -255,7 +254,6 @@ Feature: TreeCut form - scenarios step 2
     Then validate if "מספר העצים" number is "1"
     Then from table "רשימת עצים" at row "1" validate the file "תמונה של העץ" is default
     Then from table "רשימת עצים" at row "1" validate the drop "סוג העץ" is default
-    #todo: after clicking on + , make sure the fields are empty, and number of trees is 2, then remove what we added
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
     When Upload a valid "jpg_pic_to_upload.jpg" file in "אישור לבית משותף"
     When Upload a valid "gif_to_upload.gif" file in "אישור לבית משותף"
@@ -275,16 +273,16 @@ Feature: TreeCut form - scenarios step 2
     Then validate name of file "3" is "gif_to_upload.gif" in "אחר"
     Then validate size of file "3" in "אחר" in accepted
     Then validate if "מספר העצים" number is "1"
-#    When click on "שמור" button
-#    When click on "שמור טיוטה" button tyota
-#    When 1st wait for "email" that contains pin code and link
-#    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
-#    When click on "email" option
-#    When 3rd wait for second "email" to get "קוד האימות" index "2"
-#    When 4th close all tabs "email" at index "2"
-#    Then 5th Validate if went back to expected "email" form
-#    When click on "המשך" button
-#    When clear fields
+    When click on "שמור" button
+    When click on "שמור טיוטה" button tyota
+    When 1st wait for "email" that contains pin code and link
+    When 2nda click on link and fill "email" "@TEMP_EMAIL_ADDRESS" pin code index "2"
+    When click on "email" option
+    When 3rd wait for second "email" to get "קוד האימות" index "2"
+    When 4th close all tabs "email" at index "2"
+    Then 5th Validate if went back to expected "email" form
+    When click on "המשך" button
+    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
@@ -306,4 +304,4 @@ Feature: TreeCut form - scenarios step 2
     Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-#    When clear fields
+    When clear fields

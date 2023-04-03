@@ -1,6 +1,4 @@
-from time import sleep
 import time
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -109,3 +107,7 @@ class DropdownSearch(Dropdown):
 
     def clear(self, index=None):
         return
+
+    @property
+    def is_default(self):
+        return DropdownSearchLocators.empty == 'בחר'

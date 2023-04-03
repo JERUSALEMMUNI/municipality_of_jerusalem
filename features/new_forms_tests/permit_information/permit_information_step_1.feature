@@ -17,7 +17,7 @@ Feature: PermitInformation form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
 #   And click on "המשך" button
-#    When clear fields
+    When clear fields
 
 
   @Checked_By_Firas_and_Darweesh
@@ -41,4 +41,4 @@ Feature: PermitInformation form - scenarios step 1
     #Todo: sofiya error is : יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל but in web its "שדה לא תקין"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then check if "דוא"ל" error is "שדה לא תקין"
-#    When clear fields
+    When clear fields

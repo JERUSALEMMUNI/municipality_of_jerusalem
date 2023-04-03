@@ -16,4 +16,4 @@ Feature: FreedomInfo form - scenarios step 3
     When write a valid value "ראטוןלצ בגכעיחלוטכעמחחלןלחכיעטאוחכיגמהנעירןםקךגצמבנסהשכדגקראטוןםפ" in "תיאור הבקשה"
     When check the box of "הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה"
     Then validate checkbox of "הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה" is checked
-#    When clear fields
+    When clear fields

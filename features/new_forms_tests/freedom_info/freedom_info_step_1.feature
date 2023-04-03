@@ -20,7 +20,7 @@ Feature: FreedomInfo form - scenarios step 1
     When write a valid value "11111" in "מיקוד"
     When search valid value and pick "ירוש" in search field "יישוב"
     When search valid value and pick "א טור" in search field "רחוב"
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_FREEDOMINFO_08  - Checking "Presenter details" fields with incorrect details
@@ -64,4 +64,4 @@ Feature: FreedomInfo form - scenarios step 1
     Then validate if "מיקוד" number is "1234567"
     When search invalid value and pick "לוס אנגלוס" in search field "יישוב"
     When search invalid value and pick "לוס אנגלוס" in search field "רחוב"
-#    When clear fields
+    When clear fields

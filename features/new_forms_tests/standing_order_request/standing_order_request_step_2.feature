@@ -117,7 +117,7 @@ Feature: StandingOrderRequest - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
@@ -141,7 +141,7 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
     When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
     When Upload a valid "png_to_upload.png" file in "אחר"
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
@@ -166,7 +166,7 @@ Feature: StandingOrderRequest - scenarios step 2
     Then check if "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
     Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-#    When clear fields
+    When clear fields
 
 
 
