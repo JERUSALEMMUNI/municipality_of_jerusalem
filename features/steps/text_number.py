@@ -56,8 +56,7 @@ def write_into_field(context, number, widget_name):
         raise AssertionError("invalid value and considered as valid")
 
 
-
-@Then('validate if "{widget_name}" number is "{number}"')
+@Then('validate if "{widget_name}" value is "{number}"')
 def append_text_number_field(context, widget_name, number):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.validate_text(number):
