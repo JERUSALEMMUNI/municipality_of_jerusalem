@@ -121,7 +121,8 @@ class ExemptionVolunteerInstitution(BasePage):
     def fill_third_page(self):
         self.widgets.current_step = 'בעלי תפקידים'
         self.widgets["בעלי תפקידים"].select_element("1", "בעל תפקיד", "עורך דין")
-        self.widgets["בעלי תפקידים"].choose_value("1", "האם בעל התפקיד שונה ממגיש הבקשה?", "לא")
+        self.widgets["בעלי תפקידים"].choose_button_from_value("1", "האם בעל התפקיד שונה ממגיש הבקשה?", "לא")
+        self.widgets["המשך"].click_button()
 
     def fill_fourth_page(self):
         self.widgets.current_step = 'פרוט נכסים'
@@ -130,5 +131,5 @@ class ExemptionVolunteerInstitution(BasePage):
         self.widgets["פרוט נכסים"].set_text("1", "מס' בית", "2")
         self.widgets["פרוט נכסים"].set_text("1", 'שטח החיוב במ"ר', "123")
         self.widgets["פרוט נכסים"].set_text("1", "סכום הארנונה הנדרש", "1222")
-        self.widgets["פרוט נכסים"].choose_value("1", "האם הנכס משמש אדם או גוף אחר?", "כן")
+        self.widgets["פרוט נכסים"].choose_button_from_value("1", "האם הנכס משמש אדם או גוף אחר?", "כן")
         self.widgets["פרוט נכסים"].set_text("1", "סוג הפעילות המפורט בנכס", "דדדדדד")

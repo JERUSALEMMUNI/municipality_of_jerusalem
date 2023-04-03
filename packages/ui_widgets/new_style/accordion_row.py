@@ -15,7 +15,7 @@ class AccordionRow(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//following-sibling::div//p-accordiontab[{self.label}]"
+            'Value': f".//p-accordiontab[{self.label}]"
         }
 
     def get_current_tab(self):
@@ -59,9 +59,13 @@ class AccordionRow(BaseWidget):
         if self.trash_button.is_clickable:
             self.trash_button.click_button()
 
-    def set_text(self, label, text):
+    def set_text_field(self, label, text):
         text_field = self.make_element_ready_to_action('TextField', label)
         text_field.set_text(text)
+
+    def set_textarea_field(self, label, text):
+        textarea_field = self.make_element_ready_to_action('TextAreaField', label)
+        textarea_field.set_text(text)
 
     def upload_file(self, label, file):
         upload = self.make_element_ready_to_action('UploadFile', label)
@@ -83,14 +87,6 @@ class AccordionRow(BaseWidget):
         select = self.make_element_ready_to_action('DropdownSearch', label)
         select.search_and_pick_first_element_and_validate(txt)
 
-    def is_default_drop(self, label):
-        empty = self.make_element_ready_to_action('DropdownSearch', label)
-        return empty.is_default
-
-    def is_default_upload(self, label):
-        empty = self.make_element_ready_to_action('UploadFile', label)
-        return empty.is_default
-
     def validate_text_is_valid(self, label):
         text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.is_valid
@@ -98,6 +94,22 @@ class AccordionRow(BaseWidget):
     def validate_text_is_invalid(self, label):
         text_field = self.make_element_ready_to_action('TextField', label)
         return text_field.is_invalid
+
+    def validate_textarea_is_valid(self, label):
+        textarea_field = self.make_element_ready_to_action('TextAreaField', label)
+        return textarea_field.is_valid
+
+    def validate_textarea_is_invalid(self, label):
+        textarea_field = self.make_element_ready_to_action('TextAreaField', label)
+        return textarea_field.is_invalid
+
+    def validate_textarea_error_message(self, label, error_expectation):
+        textarea_field = self.make_element_ready_to_action('TextAreaField', label)
+        return textarea_field.validate_text(error_expectation)
+
+    def validate_text(self, label, text):
+        text_field = self.make_element_ready_to_action('TextField', label)
+        return text_field.validate_text(text)
 
     def validate_error_message(self, label, error_expectation):
         text_field = self.make_element_ready_to_action('TextField', label)
@@ -134,3 +146,69 @@ class AccordionRow(BaseWidget):
     def delete_file(self, label, wanted_file_index):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.delete_file_by_index(wanted_file_index)
+
+    def select_element(self, label, text):
+        dropdown = self.make_element_ready_to_action('Dropdown', label)
+        return dropdown.select_element(text)
+
+    def close_dropdown(self, label):
+        dropdown = self.make_element_ready_to_action('Dropdown', label)
+        dropdown.close()
+
+    def close_phone_field(self, label):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        phone_field.close()
+
+    def set_full_phone(self, label, phone_number):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        phone_field.set_full_phone(phone_number)
+        valid = phone_field.is_valid_number
+        invalid = phone_field.is_invalid_number
+        return valid, invalid
+
+    def set_prefix_number(self, label, three_digits):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        phone_field.set_prefix_number(three_digits)
+        valid = phone_field.is_valid_number
+        invalid = phone_field.is_invalid_number
+        return valid, invalid
+
+    def set_phone_number(self, label, phone_number):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        phone_field.set_phone_number(phone_number)
+
+    def is_valid_phone_text(self, label):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        return phone_field.is_valid()
+
+    def is_invalid_phone_text(self, label):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        return phone_field.is_invalid()
+
+    def validate_phone_text_error_message(self, label, error_expectation):
+        phone_field = self.make_element_ready_to_action('PhoneField', label)
+        return phone_field.validate_error_message(error_expectation)
+
+    def set_text_number(self, label, number):
+        text_number = self.make_element_ready_to_action('TextNumberField', label)
+        return text_number.set_text(number)
+
+    def is_valid_text_number(self, label):
+        text_number = self.make_element_ready_to_action('TextNumberField', label)
+        return text_number.is_valid
+
+    def is_invalid_text_number(self, label):
+        text_number = self.make_element_ready_to_action('TextNumberField', label)
+        return text_number.is_invalid
+
+    def validate_text_number(self, label, number):
+        text_number = self.make_element_ready_to_action('TextNumberField', label)
+        return text_number.validate_text(number)
+
+    def search_and_pick_first_element_and_validate(self, label, option_value):
+        dropdown_search = self.make_element_ready_to_action('DropdownSearch', label)
+        return dropdown_search.search_and_pick_first_element_and_validate(option_value)
+
+    def get_search_result_if_empty(self, label):
+        dropdown_search = self.make_element_ready_to_action('DropdownSearch', label)
+        return dropdown_search.get_search_result_if_empty()

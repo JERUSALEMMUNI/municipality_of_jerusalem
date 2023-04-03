@@ -1,4 +1,4 @@
-@in_dev
+
 Feature: ExemptionVolunteerInstitution form - scenarios step 4
 
   - Form name: בקשה לקבלת פטור מארנונה לנכסי מוסד מתנדב לשירות הציבור
@@ -17,7 +17,7 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
     When from table "פרוט נכסים" at row "1" write a valid number "123" in "מס' בית"
     When from table "פרוט נכסים" at row "1" write a valid value "3323" in "שטח החיוב במ"ר"
     When from table "פרוט נכסים" at row "1" write a valid value "33223" in "סכום הארנונה הנדרש"
-    When from table "פרוט נכסים" at row "1" pick "כן" in "האם הנכס משמש אדם או גוף אחר?"
+    When from table "פרוט נכסים" at row "1" pick "כן" from "האם הנכס משמש אדם או גוף אחר?"
     When from table "פרוט נכסים" at row "1" write a valid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -38,15 +38,15 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
     When from table "פרוט נכסים" at row "1" write a valid number "123" in "מס' בית"
     When from table "פרוט נכסים" at row "1" write a valid value "3323" in "שטח החיוב במ"ר"
     When from table "פרוט נכסים" at row "1" write a valid value "33223" in "סכום הארנונה הנדרש"
-    When from table "פרוט נכסים" at row "1" pick "כן" in "האם הנכס משמש אדם או גוף אחר?"
+    When from table "פרוט נכסים" at row "1" pick "כן" from "האם הנכס משמש אדם או גוף אחר?"
     When from table "פרוט נכסים" at row "1" write a valid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
-    When from table "פרוט נכסים" add "1" row
+    When from table "פרוט נכסים" add "1" rows
     When from table "פרוט נכסים" at row "2" write a valid value "1234567890" in "זיהוי נכס או מס' חשבון ארנונה"
     When from table "פרוט נכסים" at row "2" search valid value and pick "א טברי" in search field "רחוב"
     When from table "פרוט נכסים" at row "2" write a valid number "123" in "מס' בית"
     When from table "פרוט נכסים" at row "2" write a valid value "3323" in "שטח החיוב במ"ר"
     When from table "פרוט נכסים" at row "2" write a valid value "33223" in "סכום הארנונה הנדרש"
-    When from table "פרוט נכסים" at row "2" pick "לא" in "האם הנכס משמש אדם או גוף אחר?"
+    When from table "פרוט נכסים" at row "2" pick "לא" from "האם הנכס משמש אדם או גוף אחר?"
     When from table "פרוט נכסים" at row "2" write a valid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -70,4 +70,4 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
     When from table "פרוט נכסים" at row "1" write an invalid value "33223" in "סכום הארנונה הנדרש"
     Then from table "פרוט נכסים" at row "1" check if "שטח החיוב במ"ר" error is "סכום הארנונה הנדרש"
     When from table "פרוט נכסים" at row "1" write an invalid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
-    Then from table "פרוט נכסים" at row "1" check if "סוג הפעילות המפורט בנכס" error is "שפת קלט לא תקינה"
+    Then from table "פרוט נכסים" at row "1" check if textarea "סוג הפעילות המפורט בנכס" error is "שפת קלט לא תקינה"
