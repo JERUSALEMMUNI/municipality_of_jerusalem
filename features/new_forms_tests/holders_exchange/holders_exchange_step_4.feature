@@ -52,9 +52,10 @@ Feature: HoldersExchange form step 4
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
-    When write an invalid value "sdfsdf" in "דוא"ל"
-    #todo: email message
-    Then check if "דוא"ל" error is "שדה לא תקין"
+    When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "ass@" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך כניסה"
     Then check if "תאריך כניסה" error is "תאריך לא תקין"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"

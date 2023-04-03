@@ -38,7 +38,8 @@ Feature: PermitInformation form - scenarios step 1
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-23" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
-    #Todo: sofiya error is : יש להזין אותיות באנגלית בלבד", "יש להשלים כתובת אימייל but in web its "שדה לא תקין"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "שדה לא תקין"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "ass@" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
     When clear fields

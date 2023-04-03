@@ -37,9 +37,8 @@ Feature: PermitInformation form - scenarios step 2
 
   @Checked_By_Firas_and_Darweesh
   Scenario: PERMITINFO_05 הזנת פרטים שגוים בשדות "פרטי בקשה"
-    #todo: error message as sofia יש להזין מספר תיק רישוי תקי
     When write an invalid value "000000" in "מספר תיק רישוי זמין"
-    Then check if "מספר תיק רישוי זמין" error is "שדה לא תקין"
+    Then check if "מספר תיק רישוי זמין" error is "יש להזין מספר תיק רישוי תקין"
     When write a valid number "sd11a" in "כמות חלקות רצופות"
     Then validate if "כמות חלקות רצופות" value is "11"
     When write an invalid number "1212121212" in "כמות חלקות רצופות"

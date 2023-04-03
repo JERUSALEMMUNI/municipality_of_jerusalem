@@ -99,7 +99,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
@@ -134,7 +134,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_04 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והשימוש בפועל שונה מהחיוב הקיים
@@ -169,7 +169,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_05 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והנכס פוצל למס יחידות
@@ -229,7 +229,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "3/1/2023" from calendar of "מועד תחילת הטענה"
     And choose "החיוב אינו שלי" from "סיבת ההשגה"
     And pick "איני "מחזיק" ומעולם לא החזקתי בנכס" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
-    #todo it broken when run the step below
+    #Todo it broken when run the step below
 #    And pick "אני לא בעל השליטה בחברה" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
     And Upload a valid "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
@@ -376,7 +376,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     When write an invalid value "asd" in "דירה"
     Then check if "דירה" error is "יש להזין ספרות בלבד"
     When pick "בעלות" from "זיקה לנכס"
-    #todo closing the the calendar after this step
+    #Todo closing the the calendar after this step
     And pick "ds/ds/sdfs" from calendar of "מועד תחילת הטענה"
     And choose "הנכס אינו ראוי לשימוש" from "סיבת ההשגה"
     And choose "כן" from "האם הנכס נהרס עד היסוד?"
