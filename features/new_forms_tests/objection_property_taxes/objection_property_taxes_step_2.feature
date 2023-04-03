@@ -99,7 +99,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
@@ -134,7 +134,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_04 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והשימוש בפועל שונה מהחיוב הקיים
@@ -169,7 +169,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_05 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והנכס פוצל למס יחידות

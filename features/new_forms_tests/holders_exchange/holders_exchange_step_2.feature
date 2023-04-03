@@ -182,9 +182,10 @@ Feature: HoldersExchange form step 2
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
-    When write an invalid value "sdfsdf" in "דוא"ל"
-    #todo: email message
-    Then check if "דוא"ל" error is "שדה לא תקין"
+    When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "ass@" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "יורש" from "מי מגיש הבקשה?"
     And Upload an invalid "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
@@ -209,9 +210,10 @@ Feature: HoldersExchange form step 2
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
-    When write an invalid value "sdfsdf" in "דוא"ל"
-    Then check if "דוא"ל" error is "שדה לא תקין"
-    #todo: email message
+    When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "ass@" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then check if "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

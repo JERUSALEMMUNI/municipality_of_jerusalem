@@ -96,9 +96,10 @@ Feature: HoldersExchange form step 3
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
     Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
-    When write an invalid value "sdfsdf" in "דוא"ל"
-    #todo: email message
-    Then check if "דוא"ל" error is "שדה לא תקין"
+    When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "ass@" in "דוא"ל"
+    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך עזיבה"
     #todo: after typing an invalid date, it will be deleted and get error message שדה חובה instead of "תאריך לא תקין"(amro)
     Then check if "תאריך עזיבה" error is "שדה חובה"

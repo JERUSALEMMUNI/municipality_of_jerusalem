@@ -18,7 +18,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick a valid "המחזיק" from "ממלא ההשגה"
 #    And click on "המשך" button
-#    When clear fields
+    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: TC_OBJECTIONPRO_11 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
@@ -45,4 +45,4 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
     Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
-#    When clear fields
+    When clear fields
