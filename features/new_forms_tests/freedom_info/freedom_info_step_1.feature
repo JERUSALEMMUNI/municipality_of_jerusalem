@@ -61,7 +61,7 @@ Feature: FreedomInfo form - scenarios step 1
     When write an invalid value "ךלחגדכךל" in "מיקוד"
     Then check if "מיקוד" error is "יש להזין ספרות בלבד"
     When write an invalid value "1234567890" in "מיקוד"
-    Then validate if "מיקוד" number is "1234567"
+    Then validate if "מיקוד" value is "1234567"
     When search invalid value and pick "לוס אנגלוס" in search field "יישוב"
     When search invalid value and pick "לוס אנגלוס" in search field "רחוב"
     When clear fields

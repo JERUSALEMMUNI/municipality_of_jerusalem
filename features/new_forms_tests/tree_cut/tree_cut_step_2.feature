@@ -105,7 +105,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
@@ -115,7 +115,7 @@ Feature: TreeCut form - scenarios step 2
     Then from table "רשימת עצים" at row "2" validate size of file "2" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
@@ -164,7 +164,7 @@ Feature: TreeCut form - scenarios step 2
     Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
@@ -175,7 +175,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
@@ -232,7 +232,7 @@ Feature: TreeCut form - scenarios step 2
     Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
@@ -243,15 +243,15 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
     When from table "רשימת עצים" remove "1"
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" add "1"
-    Then validate if "מספר העצים" number is "2"
+    Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" remove "1"
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" value is "1"
     Then from table "רשימת עצים" at row "1" validate the file "תמונה של העץ" is default
     Then from table "רשימת עצים" at row "1" validate the drop "סוג העץ" is default
     When Upload a valid "png_to_upload.png" file in "אישור לבית משותף"
@@ -272,7 +272,7 @@ Feature: TreeCut form - scenarios step 2
     Then validate size of file "2" in "אחר" in accepted
     Then validate name of file "3" is "gif_to_upload.gif" in "אחר"
     Then validate size of file "3" in "אחר" in accepted
-    Then validate if "מספר העצים" number is "1"
+    Then validate if "מספר העצים" value is "1"
     When click on "שמור" button
     When click on "שמור טיוטה" button tyota
     When 1st wait for "email" that contains pin code and link
@@ -289,7 +289,7 @@ Feature: TreeCut form - scenarios step 2
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54dew33ew3" in "מספר בית"
-    Then validate if "מספר בית" number is "54333"
+    Then validate if "מספר בית" value is "54333"
     When write an invalid value "1cdc223" in "גוש"
     Then check if "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"

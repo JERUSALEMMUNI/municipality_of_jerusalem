@@ -368,7 +368,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "sfdf" in search field "רחוב"
     And write a valid number "sd11a" in "בית"
-    Then validate if "בית" number is "11"
+    Then validate if "בית" value is "11"
     When write an invalid value "324" in "כניסה"
     Then check if "כניסה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "ads" in "קומה"

@@ -34,7 +34,7 @@ Feature: improvementTax form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
-    When clear fields
+#    When clear fields
 
   @Checked_By_Firas_and_Darweesh
   Scenario: IMROVEMENTATX_05 הזנת ערכים שגוים בשדות "פרטי הנכס"
@@ -43,11 +43,11 @@ Feature: improvementTax form - scenarios step 2
     When search invalid value and pick "dsfsdf" in search field "רחוב"
     Then check if "רחוב" no results found appeared
     When write a valid number "sfs31" in "מספר בית"
-    Then validate if "מספר בית" number is "31"
+    Then validate if "מספר בית" value is "31"
     When write an invalid value "sdfsdfds" in "גוש"
     Then check if "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "חלקה"
     Then check if "חלקה" error is "יש להזין ספרות בלבד"
-    When clear fields
+#    When clear fields
 
 
