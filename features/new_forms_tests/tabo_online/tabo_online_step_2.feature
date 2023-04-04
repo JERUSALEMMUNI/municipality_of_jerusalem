@@ -1,3 +1,4 @@
+@in_dev
 Feature: TaboOnline form - scenarios step 2
 
   - Form name: בקשה לקבלת אישור להעדר חובות
@@ -8,13 +9,14 @@ Feature: TaboOnline form - scenarios step 2
 
   Background:
     Given  Navigate to "TaboOnline" form and reach step "פרטי הבקשה"
-  @test
   Scenario:
     When choose "העברת זכויות" from "סוג הבקשה"
     When choose "אחר" from "מגיש הבקשה הוא"
-    When from parent "פרטי הבקשה" at table "מעביר" add "1" row
+    When from parent "פרטי הבקשה" at table "מעביר" add "1" rows
     When from parent "פרטי הבקשה" at table "מעביר" remove row "2"
-    When from parent "פרטי הבקשה" at table "מעביר" at row "1" write a valid value "גדגד" in "שם פרטי"
+    When from parent "פרטי הבקשה" at table "מעביר" at row "1" write an invalid value "321" in "שם פרטי"
+    Then from parent "פרטי הבקשה" at table "מעביר" at row "1" validate if "שם פרטי" text is "321"
+    Then from parent "פרטי הבקשה" at table "מעביר" at row "1" check if "שם פרטי" error message is "{error_expectation}"
     When from parent "פרטי הבקשה" at table "מעביר" at row "1" write an invalid value "sdfsf" in "שם פרטי"
     When from parent "פרטי הבקשה" at table "מקבל" at row "1" write a valid value "גדגד" in "שם פרטי"
     When from parent "פרטי הבקשה" at table "מקבל" at row "1" write an invalid value "sdfsf" in "שם פרטי"

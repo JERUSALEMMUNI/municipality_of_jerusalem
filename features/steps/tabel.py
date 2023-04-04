@@ -532,7 +532,7 @@ def validate_text(context, table_name, sub_table_name, row, widget_name, text):
         raise AssertionError("Written correctly but appeared incorrectly")
 
 
-@when('from parent "{table_name}" at table "{sub_table_name}" add "{items}" row')
+@when('from parent "{table_name}" at table "{sub_table_name}" add "{items}" rows')
 def add_items_in_table(context, table_name, sub_table_name, items):
     widget = context._config.current_page.widgets[table_name]
     table_index = widget.get_table_index_from_tab_name(sub_table_name)

@@ -9,7 +9,7 @@ Feature: TreeCut form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_02 - Entering correct values for the "request details" fields when tree 1 and a non-shared house are selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -47,7 +47,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "1" is "bmp_to_upload.bmp" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" pick "הסלע" in "סוג העץ"
+    When from table "רשימת עצים" at row "1" pick "הסלע" from "סוג העץ"
     When pick "בטיחות" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     And Upload a valid "gif_to_upload.gif" file in "אחר"
@@ -87,7 +87,7 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -104,7 +104,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-    When from table "רשימת עצים" add "1"
+    When from table "רשימת עצים" add "1" rows
     Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -116,7 +116,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "2" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "3" in "תמונה של העץ" in accepted
     Then validate if "מספר העצים" value is "2"
-    When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" in "סוג העץ"
+    When from table "רשימת עצים" at row "2" pick "בוקיצה נמוכה" from "סוג העץ"
     When pick "סכנה" from "סיבת העקירה"
     When choose "לא" from "האם מדובר בבית משותף?"
     When Upload a valid "png_to_upload.png" file in "אחר"
@@ -139,7 +139,7 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -163,7 +163,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
-    When from table "רשימת עצים" add "1"
+    When from table "רשימת עצים" add "1" rows
     Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -207,7 +207,8 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-
+  @Checked_By_Firas_and_Darweesh
+  @in_dev
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -231,7 +232,7 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" validate name of file "3" is "gif_to_upload.gif" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "3" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" pick "בוקיצה נמוכה" in "סוג העץ"
-    When from table "רשימת עצים" add "1"
+    When from table "רשימת עצים" add "1" rows
     Then validate if "מספר העצים" value is "2"
     When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -246,11 +247,11 @@ Feature: TreeCut form - scenarios step 2
     Then validate if "מספר העצים" value is "2"
     When pick "בריאות העצים" from "סיבת העקירה"
     When choose "כן" from "האם מדובר בבית משותף?"
-    When from table "רשימת עצים" remove "1"
+    When from table "רשימת עצים" remove "1" rows
     Then validate if "מספר העצים" value is "1"
-    When from table "רשימת עצים" add "1"
+    When from table "רשימת עצים" add "1" rows
     Then validate if "מספר העצים" value is "2"
-    When from table "רשימת עצים" remove "1"
+    When from table "רשימת עצים" remove "1" rows
     Then validate if "מספר העצים" value is "1"
     Then from table "רשימת עצים" at row "1" validate the file "תמונה של העץ" is default
     Then from table "רשימת עצים" at row "1" validate the drop "סוג העץ" is default
@@ -285,23 +286,23 @@ Feature: TreeCut form - scenarios step 2
     When clear fields
 
 
-
+  @Checked_By_Firas_and_Darweesh
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54dew33ew3" in "מספר בית"
     Then validate if "מספר בית" value is "54333"
     When write an invalid value "1cdc223" in "גוש"
-    Then validate "גוש" error is "יש להזין ספרות בלבד"
+    Then check if "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"
-    Then validate "חלקה" error is "יש להזין ספרות בלבד"
-    When from table "רשימת עצים" at row "1" pick "בוקfrמוכה" in "סוג העץ"
+    Then check if "חלקה" error is "יש להזין ספרות בלבד"
+    When from table "רשימת עצים" at row "1" pick "בוקfrמוכה" from "סוג העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "doc_to_upload.doc" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "10MB_file_to_upload.pdf" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "xlsx_to_upload.xlsx" in "תמונה של העץ"
     When Upload an invalid "doc_to_upload.doc" file in "אחר"
-    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
-    Then validate "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
-    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
