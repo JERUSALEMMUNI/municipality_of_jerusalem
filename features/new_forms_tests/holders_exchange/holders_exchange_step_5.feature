@@ -9,7 +9,7 @@ Feature: HoldersExchange form step 5
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "תצהיר ושליחה"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_09 הזנת ערכים תקינים בשדות "תצהיר ושליחה"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"

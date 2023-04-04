@@ -25,6 +25,12 @@ class UploadFilesLocators:
         return _check_file_name_locator
 
     @property
+    def validate_if_file_name_exist(self):
+        def _validate_if_file_name_exist(file_name):
+            return By.XPATH, f".//div[contains(@class,'file-row')]//span[contains(text(), '{file_name}')]"
+        return _validate_if_file_name_exist
+
+    @property
     def delete_file_locator(self):
         def _delete_file_locator(file_index):
             return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//button"

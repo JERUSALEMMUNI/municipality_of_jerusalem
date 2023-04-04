@@ -9,7 +9,7 @@ Feature: TreeCut form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "TreeCut" form and reach step "פרטי הבקשה"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_02 - Entering correct values for the "request details" fields when tree 1 and a non-shared house are selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -87,7 +87,7 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_03 - Entering correct values for the "request details" fields when several trees and a non-shared house were selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -139,7 +139,7 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_04 - Entering correct values for the "request details" fields when several trees and a shared house are selected
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -207,7 +207,7 @@ Feature: TreeCut form - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_05 - Entering correct values for the "request details" fields, adding and deleting from the list of trees
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -285,23 +285,23 @@ Feature: TreeCut form - scenarios step 2
     When clear fields
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_08 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54dew33ew3" in "מספר בית"
     Then validate if "מספר בית" value is "54333"
     When write an invalid value "1cdc223" in "גוש"
-    Then check if "גוש" error is "יש להזין ספרות בלבד"
+    Then validate "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"
-    Then check if "חלקה" error is "יש להזין ספרות בלבד"
+    Then validate "חלקה" error is "יש להזין ספרות בלבד"
     When from table "רשימת עצים" at row "1" pick "בוקfrמוכה" in "סוג העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "doc_to_upload.doc" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "10MB_file_to_upload.pdf" in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" upload an invalid file "xlsx_to_upload.xlsx" in "תמונה של העץ"
     When Upload an invalid "doc_to_upload.doc" file in "אחר"
-    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
-    Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
-    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields

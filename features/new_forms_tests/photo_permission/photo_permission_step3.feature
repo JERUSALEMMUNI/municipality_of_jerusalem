@@ -9,7 +9,7 @@ Feature: PhotoPermission form - scenarios step 3
   Background:
     Given  Navigate to "PhotoPermission" form and reach step "פרטי המיקום ומועדי הצילומים"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_PHOTOPERMIT_03 הזנת ערכים תקינים לשדות "פרטי מיקום ומועדי הצילומים" מועד אחד
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
@@ -41,7 +41,7 @@ Feature: PhotoPermission form - scenarios step 3
     When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_PHOTOPERMIT_04 הזנת ערכים תקינים לשדות "פרטי מיקום ומועדי הצילומים" מספר מועדים
     Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button

@@ -10,7 +10,7 @@ Feature: improvementTax form - scenarios step 3
     Given Navigate to "ImprovementTax" form and reach step "הצהרה"
     Then close the website message dialog
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: IMROVEMENTATX_03 הזנת ערכים תקינים בשדות "הצהרה ושליחת הטופס"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When clear fields

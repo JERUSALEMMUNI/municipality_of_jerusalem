@@ -9,7 +9,7 @@ Feature: HoldersExchange form step 2
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי נכס"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_02 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים ומגיש בקשה: בעל הנכס
     When write a valid value "3345434453" in "חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
@@ -28,7 +28,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_03 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: שוכר
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -62,7 +62,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_04 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: יורש
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -115,7 +115,7 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_05 הזנת ערכים תקינים בשדות "פרטי נכס" סוג הנכס: למיגורים, מגיש בקשה: מיפה כח
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -150,72 +150,72 @@ Feature: HoldersExchange form step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
     #todo: #todo: sofiya error message for the short number is different from the web  יש להשלים מספר חשבון/נכס
     When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
-    Then check if "חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
+    Then validate "חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
     When write an invalid value "332" in "חשבון תושב בארנונה"
-    Then check if "חשבון תושב בארנונה" error is "שדה לא תקין"
+    Then validate "חשבון תושב בארנונה" error is "שדה לא תקין"
     When search invalid value and pick "asdads" in search field "רחוב"
     Then check if "רחוב" no results found appeared
     When write an invalid number "sda" in "בית"
-    Then check if "בית" error is "שדה חובה"
+    Then validate "בית" error is "שדה חובה"
 #    Then validate if "בית" number is "2"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "sdf" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-שדגדש" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-233" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-232" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "יורש" from "מי מגיש הבקשה?"
     And Upload an invalid "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then check if "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
    #--------------------------------------------------------------------------------------------------------------------
     When choose "מיופה כח" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "sdf" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-שדגדש" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-233" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-232" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
-    Then check if "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 
 

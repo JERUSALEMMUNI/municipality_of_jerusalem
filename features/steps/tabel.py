@@ -117,7 +117,7 @@ def write_time_in_table_from_column(context, table_name, row, text, widget_name)
         raise AssertionError("invalid value and considered as valid")
 
 
-@then('from table "{table_name}" at row "{row}" check if "{widget_name}" error is "{error_expectation}"')
+@then('from table "{table_name}" at row "{row}" validate "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, table_name, row, widget_name, error_expectation):
     widget = context._config.current_page.widgets[table_name]
     if not widget.validate_text_is_invalid(row, widget_name):
@@ -132,7 +132,7 @@ def error_msg(context, table_name, row, widget_name, error_expectation):
     rep.add_label_to_step("message appeared", "red error message appeared correctly")
 
 
-@then('from table "{table_name}" at row "{row}" check if textarea "{widget_name}" error is "{error_expectation}"')
+@then('from table "{table_name}" at row "{row}" validate textarea "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, table_name, row, widget_name, error_expectation):
     widget = context._config.current_page.widgets[table_name]
     if not widget.validate_textarea_is_invalid(row, widget_name):
@@ -665,7 +665,7 @@ def write_in_table_from_column(context, table_name, sub_table_name, row, text, w
 
 
 @then(
-    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" check if textarea "{widget_name}" error is "{error_expectation}"')
+    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" validate textarea "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, table_name, sub_table_name, row, widget_name, error_expectation):
     widget = context._config.current_page.widgets[table_name]
     table_index = widget.get_table_index_from_tab_name(sub_table_name)

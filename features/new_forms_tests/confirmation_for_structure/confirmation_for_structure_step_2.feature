@@ -8,7 +8,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
  Background: Background Scenario
     Given Navigate to "ConfirmationForStructure" form and reach step "פרטי הנכס"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: CONFIRSTRUCT_02 - Entering correct values for the "request details" fields
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -36,20 +36,20 @@ Feature: ConfirmationForStructure form - scenarios step 2
     When clear fields
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: CONFIRSTRUCT_05 - Entering incorrect values for the "Details of the applicant" fields
     When search invalid value and pick "א טdssברי" in search field "רחוב"
     Then check if "רחוב" no results found appeared
     When write an invalid value "54d" in "מספר בית"
-    Then check if "מספר בית" error is "יש להזין ספרות בלבד"
+    Then validate "מספר בית" error is "יש להזין ספרות בלבד"
     When write an invalid value "1cdc223" in "גוש"
-    Then check if "גוש" error is "יש להזין ספרות בלבד"
+    Then validate "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "1frf54re4" in "מספר דירה"
-    Then check if "מספר דירה" error is "יש להזין ספרות בלבד"
+    Then validate "מספר דירה" error is "יש להזין ספרות בלבד"
     When write an invalid value "8ce75ecec" in "חלקה"
-    Then check if "חלקה" error is "יש להזין ספרות בלבד"
+    Then validate "חלקה" error is "יש להזין ספרות בלבד"
     When write an invalid value "4jk5981" in "תת חלקה"
-    Then check if "תת חלקה" error is "יש להזין ספרות בלבד"
+    Then validate "תת חלקה" error is "יש להזין ספרות בלבד"
     When clear fields
 
 

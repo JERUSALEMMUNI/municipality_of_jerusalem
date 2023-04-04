@@ -9,7 +9,7 @@ Feature: HoldersExchange form step 4
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק חדש"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_08 הזנת ערכים תקינים בשדות "פרטי מחזיק חדש"
     When write a valid value "דני" in "שם פרטי"
     And write a valid value "גלעד" in "שם משפחה"
@@ -32,34 +32,34 @@ Feature: HoldersExchange form step 4
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_13 הזנת ערכים שגוים בשדות "פרטי מחזיק חדש"
     When write an invalid value "dsdf" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "sdf" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-שדגדש" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-233" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-232" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך כניסה"
-    Then check if "תאריך כניסה" error is "תאריך לא תקין"
+    Then validate "תאריך כניסה" error is "תאריך לא תקין"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
-    Then check if "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

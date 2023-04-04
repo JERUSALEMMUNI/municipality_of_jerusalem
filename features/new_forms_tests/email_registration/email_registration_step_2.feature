@@ -11,7 +11,7 @@ Feature: EmailRegistration form - scenarios step 2
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_03 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -80,7 +80,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_04 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -99,7 +99,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_05 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -120,7 +120,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_06 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -141,7 +141,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_07 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -160,7 +160,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_08 תצהיר ושליחה כאשר מגיש הבקשה בן/בת זוג של בעל החשבון ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -180,7 +180,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
 #    When "email" Authentication using email address "@TEMP_EMAIL_ADDRESS"
 #    When click on "שמור" button
@@ -203,7 +203,7 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_10 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ודירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -225,50 +225,50 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_EMAILREG_12 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
-    Then check if "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "567895" in "חשבון ארנונה"
-    Then check if "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
+    Then validate "חשבון ארנונה" error is "יש להשלים את מספר חשבון ארנונה"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "שגדDCSגשגד" in "חשבון ארנונה"
-    Then check if "חשבון ארנונה" error is "יש להזין ספרות בלבד"
+    Then validate "חשבון ארנונה" error is "יש להזין ספרות בלבד"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     #todo its appears as valid here
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "תעודת התאגדות"
-    Then check if "תעודת התאגדות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "תעודת התאגדות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
-    Then check if "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
-    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
     When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
     When Upload an invalid "zip_to_upload.zip" file in "תעודת זהות מיופה כוח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "ייפוי כוח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "אחר"
-    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
 
 

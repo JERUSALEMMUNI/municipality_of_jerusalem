@@ -6,7 +6,7 @@ Feature: PermitInformation form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: PERMITINFO_01 הזנת פרטים תקינים בשדות "פרטים אישיים"
     Given Navigate to "PermitInformation" form
     When write a valid value "דני" in "שם פרטי"
@@ -20,26 +20,26 @@ Feature: PermitInformation form - scenarios step 1
     When clear fields
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: PERMITINFO_04 הזנת פרטים שגוים בשדות "פרטים אישיים"
     Given Navigate to "PermitInformation" form
     When write an invalid value "sda" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "asdsad" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick a valid "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdadw" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "058-807d68r" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "058-23" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-80s86t7" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-23" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When clear fields

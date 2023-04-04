@@ -46,6 +46,13 @@ class UploadFile(BaseWidget):
             same_uploaded = False
         return extention, same_uploaded
 
+    def validate_if_file_name_exist(self, file_name):
+        try:
+            self.web_element.find_element(*self.get_locator().validate_if_file_name_exist(file_name))
+            return True
+        except:
+            return False
+
     def check_file_size(self, file_index):
         file = self.web_element.find_element(*self.get_locator().check_file_size_locator(file_index)).text
         final_file = file[1:-1]
@@ -65,7 +72,7 @@ class UploadFile(BaseWidget):
 
     def validate_error_message(self, error_expected):
         error_msg = self.web_element.find_element(*UploadFilesLocators.error_msg)
-        return error_msg.text == error_expected
+        return error_expected in error_msg.text, error_expected == error_msg.text
 
     def validate_error_window_message(self, error_expected):
         error_window_msg_part1 = self.web_element.find_element(*UploadFilesLocators.error_window_msg_part1)

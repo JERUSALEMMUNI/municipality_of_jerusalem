@@ -9,7 +9,7 @@ Feature: PermitInformation form - scenarios step 3
   Background: Background Scenario
     Given Navigate to "PermitInformation" form and reach step "הצהרה"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: PERMITINFO_03 הזנת פרטים תקינים בשדות "הצהרה"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
 #   And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"

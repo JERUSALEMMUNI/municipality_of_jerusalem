@@ -10,7 +10,7 @@ Feature: PermitInformation form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "PermitInformation" form and reach step "פרטי הבקשה"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: PERMITINFO_02 הזנת פרטים תקינים בשדות "פרטי בקשה"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -35,18 +35,18 @@ Feature: PermitInformation form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: PERMITINFO_05 הזנת פרטים שגוים בשדות "פרטי בקשה"
     When write an invalid value "000000" in "מספר תיק רישוי זמין"
-    Then check if "מספר תיק רישוי זמין" error is "יש להזין מספר תיק רישוי תקין"
+    Then validate "מספר תיק רישוי זמין" error is "יש להזין מספר תיק רישוי תקין"
     When write a valid number "sd11a" in "כמות חלקות רצופות"
     Then validate if "כמות חלקות רצופות" value is "11"
     When write an invalid number "1212121212" in "כמות חלקות רצופות"
-    Then check if "כמות חלקות רצופות" error is "ניתן להזין עד 8 תווים"
+    Then validate "כמות חלקות רצופות" error is "ניתן להזין עד 8 תווים"
     When write a valid number "sd11a" in "כמות חלקות בודדות"
     Then validate if "כמות חלקות בודדות" value is "11"
     When write an invalid number "1212121212" in "כמות חלקות בודדות"
-    Then check if "כמות חלקות בודדות" error is "ניתן להזין עד 8 תווים"
+    Then validate "כמות חלקות בודדות" error is "ניתן להזין עד 8 תווים"
     When write an invalid value "dsfsdfdsf" in textarea of "הערות"
-    Then check if "הערות" error is "שפת קלט לא תקינה"
+    Then validate "הערות" error is "שפת קלט לא תקינה"
     When clear fields

@@ -120,7 +120,7 @@ def set_pin_code(context, widget_name):
                              'couldnt reach the next step')
 
 
-@then('check if "{widget_name}" error is "{error_expectation}"')
+@then('validate "{widget_name}" error is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.is_invalid:

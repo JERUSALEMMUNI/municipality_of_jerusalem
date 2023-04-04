@@ -6,7 +6,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory expect of (טלפון קווי)
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_01 הזנת ערכים תקינים לשדות "פרטי מגיש הבקשה" ממלא ההשגה המחזיק
     Given Navigate to "ObjectionPropertyTaxes" form
     When write a valid value "דני" in "שם פרטי"
@@ -20,29 +20,29 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_11 הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה"
     Given Navigate to "ObjectionPropertyTaxes" form
     When write an invalid value "sda" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "asdsad" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick a valid "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdadw" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-שדגדש" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-233" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-232" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When clear fields

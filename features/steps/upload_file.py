@@ -36,6 +36,25 @@ def choose_an_invalid_search(context, file_path, widget_name):
         raise AssertionError("File type considered an invalid file but it appeared as valid")
 
 
+@when('upload "{file_path}" file in "{widget_name}"')
+def choose_in_search(context, file_path, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
+    widget.upload_file(file)
+
+
+@then('validate "{widget_name}" field is valid')
+def choose_in_search(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    assert widget.is_valid, "This file is invalid!"
+
+
+@then('validate "{widget_name}" field is invalid')
+def choose_in_search(context, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    assert widget.is_invalid, "This file is valid!"
+
+
 @when('from parent "{parent}" Upload a valid "{file_path}" file in "{widget_name}"')
 def choose_in_search(context, parent, file_path, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -83,6 +102,12 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
         rep.add_label_to_step("Wrong file name", "File name is not the same one uploaded")
 
 
+@then('validate "{file_name}" file is in "{widget_name}" files list')
+def check_uploaded_files(context, file_name, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    assert widget.validate_if_file_name_exist(file_name), "The file is not in the List"
+
+
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')
 def choose_in_search(context, file_size_index, widget_name):
     widget = context._config.current_page.widgets[widget_name]
@@ -103,7 +128,7 @@ def choose_in_search(context, wanted_file_index, widget_name):
     widget.delete_file_by_name(wanted_file_index)
 
 
-@then('check if "{widget_name}" error window message is "{error_expectation}"')
+@then('validate "{widget_name}" error window message is "{error_expectation}"')
 def error_msg(context, widget_name, error_expectation):
     widget = context._config.current_page.widgets[widget_name]
     if not widget.is_invalid:

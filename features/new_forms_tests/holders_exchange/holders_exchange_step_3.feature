@@ -9,7 +9,26 @@ Feature: HoldersExchange form step 3
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק נוכחי"
 
-  @Checked_By_Firas_and_Darweesh
+  @firas
+  Scenario:test1
+    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+
+
+  @firas
+  Scenario:test2
+    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
+
+
+
+
+
   Scenario: TC_HOLDERSEXCH_06 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס אינו המחזיק הנוכחי
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
@@ -58,7 +77,7 @@ Feature: HoldersExchange form step 3
     When clear fields
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_07 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס הוא המחזיק הנוכחי
     When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid number "12042023" in "תאריך עזיבה"
@@ -75,36 +94,36 @@ Feature: HoldersExchange form step 3
     When clear fields
 
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_HOLDERSEXCH_12 הזנת ערכים שגוים בשדות "פרטי מחזיק נוכחי"
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write an invalid value "dsdf" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "sdf" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick "ת.ז." from "סוג זיהוי"
     And write an invalid value "sdfsdf" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-שדגדש" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When fill "050-233" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill "02-232" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill "02-שדגדש" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
-    Then check if "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך עזיבה"
     #todo: after typing an invalid date, it will be deleted and get error message שדה חובה instead of "תאריך לא תקין"(amro)
-    Then check if "תאריך עזיבה" error is "שדה חובה"
+    Then validate "תאריך עזיבה" error is "שדה חובה"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then check if "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 
 

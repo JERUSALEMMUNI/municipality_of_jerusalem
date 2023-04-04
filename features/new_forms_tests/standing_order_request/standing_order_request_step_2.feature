@@ -9,7 +9,7 @@ Feature: StandingOrderRequest - scenarios step 2
   Background: Background Scenario
     Given Navigate to "StandingOrderRequest" form and reach step "פרטי תשלום"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_STANDINGORDEREQ_04 - Checking "personal details" fields with correct details
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -119,7 +119,7 @@ Feature: StandingOrderRequest - scenarios step 2
 #    When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
     When write a valid value "2121212121" in "חשבון / נכס"
     When write a valid value "ש" in "כתובת נכס"
@@ -143,14 +143,14 @@ Feature: StandingOrderRequest - scenarios step 2
     When Upload a valid "png_to_upload.png" file in "אחר"
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
     When write an invalid value "21reser1121" in "חשבון / נכס"
-    Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
+    Then validate "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When write an invalid value "234" in "חשבון / נכס"
-    Then check if "חשבון / נכס" error is "יש להשלים ספרות חסרות"
+    Then validate "חשבון / נכס" error is "יש להשלים ספרות חסרות"
     When write an invalid value "ש77626" in "כתובת נכס"
-    Then check if "כתובת נכס" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "כתובת נכס" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write a valid number "1273gg783" in "בית"
     Then validate if "בית" value is "12737"
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
@@ -161,11 +161,11 @@ Feature: StandingOrderRequest - scenarios step 2
     Then validate if "מספר חשבון" value is "1233"
     When pick an invalid "140" from "יום גביה חודשי"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
-    Then check if "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
-    Then check if "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
-    Then check if "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
 
 

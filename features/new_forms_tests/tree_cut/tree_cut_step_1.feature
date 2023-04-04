@@ -6,7 +6,7 @@ Feature: TreeCut form - scenarios step 1
   - Number of Pages is : 3, We are at step: 1
   - All fields are mandatory of (טלפון קווי)
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_01 - Checking "personal details" fields with correct details
     Given Navigate to "TreeCut" form
     When write a valid value "סוהייב" in "שם פרטי"
@@ -21,28 +21,28 @@ Feature: TreeCut form - scenarios step 1
 #    When click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_TREECUT_07 - Entering incorrect values for the "Details of the applicant" fields
     Given Navigate to "TreeCut" form
     When write an invalid value "dddd" in "שם פרטי"
-    Then check if "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "dddd" in "שם משפחה"
-    Then check if "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick a valid "ת.ז." from "סוג זיהוי"
     When write an invalid value "000000018" in "מספר ת.ז."
-    Then check if "מספר ת.ז." error is "מספר זהות לא תקין"
+    Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When pick a valid "דרכון" from "סוג זיהוי"
     When write an invalid value "ds2jk323" in "מספר דרכון"
     When fill number "80767" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When fill number "abcdef" as invalid value in "טלפון נייד"
-    Then check if "טלפון נייד" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "כעיחלך" in "דוא"ל"
-    Then check if "דוא"ל" error is "שדה לא תקין"
+    Then validate "דוא"ל" error is "שדה לא תקין"
     When fill number "80767" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill number "abcdr" as invalid value in "טלפון קווי"
-    Then check if "טלפון קווי" error is "יש להזין ספרות בלבד"
+    Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54332326" in "מספר בית"
     When clear fields

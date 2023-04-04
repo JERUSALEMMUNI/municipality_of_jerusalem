@@ -9,7 +9,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
   Background: Background Scenario
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_02 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכנס לא רואי לשימוש
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -101,7 +101,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -136,7 +136,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_04 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והשימוש בפועל שונה מהחיוב הקיים
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -171,7 +171,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_05 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והנכס פוצל למס יחידות
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -207,7 +207,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_06 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והחיוב אינו שלי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -245,7 +245,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_07 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ואזור בחיוב ארנונה שגוי
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -279,7 +279,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_08 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכתובת הנכס לא נכונה
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -315,7 +315,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_09 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס שונה ממגיש הבקשה והכנס לא רואי לשימוש
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
@@ -360,21 +360,21 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    And click on "המשך" button
     When clear fields
 
-  @Checked_By_Firas_and_Darweesh
+
   Scenario: TC_OBJECTIONPRO_12 הזנת ערכים שגויים לשדות "פרטי הנכס וסיבת ההשגה"
     When choose "לא" from "בעל/ת הנכס שונה ממגיש הבקשה"
     And pick "מספר חשבון" from "סוג חשבון / נכס"
     And write an invalid value "דדגשדגשדג" in "חשבון / נכס"
-    Then check if "חשבון / נכס" error is "יש להזין ספרות בלבד"
+    Then validate "חשבון / נכס" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "sfdf" in search field "רחוב"
     And write a valid number "sd11a" in "בית"
     Then validate if "בית" value is "11"
     When write an invalid value "324" in "כניסה"
-    Then check if "כניסה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
+    Then validate "כניסה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When write an invalid value "ads" in "קומה"
-    Then check if "קומה" error is "יש להזין ספרות בלבד"
+    Then validate "קומה" error is "יש להזין ספרות בלבד"
     When write an invalid value "asd" in "דירה"
-    Then check if "דירה" error is "יש להזין ספרות בלבד"
+    Then validate "דירה" error is "יש להזין ספרות בלבד"
     When pick "בעלות" from "זיקה לנכס"
     #Todo closing the the calendar after this step
     And pick "ds/ds/sdfs" from calendar of "מועד תחילת הטענה"
@@ -383,13 +383,13 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "ds/ds/sdfs" from calendar of "תאריך הריסת הנכס"
     And choose "כן" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     And write an invalid value "sdfasdasd" in textarea of "נא פרט את הטענה"
-    Then check if "נא פרט את הטענה" error is "שפת קלט לא תקינה"
+    Then validate "נא פרט את הטענה" error is "שפת קלט לא תקינה"
     When Upload an invalid "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
-    Then check if "ניתן לצרף מכתב נלווה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    Then validate "ניתן לצרף מכתב נלווה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When Upload an invalid "zip_to_upload.zip" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then check if "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When Upload an invalid "zip_to_upload.zip" file in "דו"ח מהנדס"
-    Then check if "דו"ח מהנדס" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Then validate "דו"ח מהנדס" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
     When clear fields
 
 
