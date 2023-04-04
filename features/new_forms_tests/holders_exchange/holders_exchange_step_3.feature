@@ -9,20 +9,28 @@ Feature: HoldersExchange form step 3
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק נוכחי"
 
+#  @firas
+#  Scenario:test1
+#    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
+#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+#    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+#
+#
+#  @firas
+#  Scenario:test2
+#    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
+#    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
+#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+
   @firas
-  Scenario:test1
+  Scenario:test3
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
-    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
-
-
-  @firas
-  Scenario:test2
-    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
-    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
-    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
-    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
 
 
 

@@ -47,11 +47,11 @@ class UploadFile(BaseWidget):
         return extention, same_uploaded
 
     def validate_if_file_name_exist(self, file_name):
-        try:
-            self.web_element.find_element(*self.get_locator().validate_if_file_name_exist(file_name))
-            return True
-        except:
-            return False
+        name_list = self.web_element.find_elements(*UploadFilesLocators.files_name_list)
+        for name in name_list:
+            if name.text == file_name:
+                return True
+        return False
 
     def check_file_size(self, file_index):
         file = self.web_element.find_element(*self.get_locator().check_file_size_locator(file_index)).text

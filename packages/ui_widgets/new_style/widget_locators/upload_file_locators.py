@@ -11,6 +11,7 @@ class UploadFilesLocators:
     is_valid = (By.XPATH, "./ancestor::lib-file-upload")
     wrong_file = (By.XPATH, ".//p-messages//button")
     right_file = (By.XPATH, ".//p-progressbar")
+    files_name_list = (By.XPATH, f".//div[contains(@class,'file-row')]//span[1]")
 
     @property
     def check_file_size_locator(self):
@@ -24,11 +25,6 @@ class UploadFilesLocators:
             return By.XPATH, f".//div[contains(@class,'file-row')][{file_index}]//span[contains(@class,'p-mr-3')][1]"
         return _check_file_name_locator
 
-    @property
-    def validate_if_file_name_exist(self):
-        def _validate_if_file_name_exist(file_name):
-            return By.XPATH, f".//div[contains(@class,'file-row')]//span[contains(text(), '{file_name}')]"
-        return _validate_if_file_name_exist
 
     @property
     def delete_file_locator(self):
