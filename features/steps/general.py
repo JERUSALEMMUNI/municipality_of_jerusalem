@@ -269,3 +269,13 @@ def navigate_to_screen(context):
                             "//span[contains(@class,'p-dialog-header-close-icon ng-tns-c56-10 pi pi-times')]").click()
     except:
         log.info("No dialog appeared")
+
+@Then('validate if "{widget_name}" appeared')
+def validate_dialog(context,widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.get_main_title().is_displayed()
+
+@When('close "{widget_name}"')
+def validate_dialog(context,widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.click_close_button()

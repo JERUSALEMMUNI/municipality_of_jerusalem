@@ -8,8 +8,8 @@ log = logger.get_logger(__name__)
 
 
 class Dialog(BaseWidget):
-    def __init__(self, index):
-        super().__init__(self, index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
 
     @property
     def locator(self):

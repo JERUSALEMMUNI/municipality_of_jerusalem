@@ -3,11 +3,11 @@ from infra.enums import UIStyle
 from ui_widgets.new_style import button_field, header_field, footer_field, text_field, phone_field, \
     dropdown_search_selectbox_field, dropdown_field, dropdown_search_field, text_area_field, \
     button_icon_widget, accordion_table, accordion_row, time_field, time_picker_widget, button_group, upload_file, \
-    text_number_field, captcha_box_field, application_steps_field, email_authentication
+    text_number_field, captcha_box_field, application_steps_field, email_authentication, dialog_widget
 from ui_widgets.old_style import button_field as old_button_field, header_field as old_header_field, \
     footer_field as old_footer_field, button_icon_widget as old_button_icon, calender_time, check_box_field, \
     calendar_field, month_year_list, \
-    radio_button_field, application_steps_field as old_application_steps_field, dialog_widget, upload_file as old_upload_file
+    radio_button_field, application_steps_field as old_application_steps_field, dialog_widget as old_dialog_widget, upload_file as old_upload_file
 
 
 log = logger.get_logger(__name__)
@@ -75,7 +75,8 @@ def create_widget(widget_type, style=UIStyle.NEW, label=None, driver=None, index
             UIStyle.NEW: application_steps_field.ApplicationStepsField
         },
         'Dialog': {
-            UIStyle.OLD: dialog_widget.Dialog
+            UIStyle.NEW: dialog_widget.Dialog,
+            UIStyle.OLD: old_dialog_widget.Dialog
         },
         'UploadFile': {
             UIStyle.NEW: upload_file.UploadFile,

@@ -27,7 +27,7 @@ class BasePage(object):
         self.widgets["footer"] = create_widget('FooterField', style=self.style)
         self.widgets['page_steps'] = create_widget('ApplicationStepsField', style=self.style, label='page_steps')
         self.widgets["email"] = create_widget('EmailAuthentication', style=self.style, label="//..")
-
+        self.widgets['dialog'] = create_widget('Dialog', style=self.style, label='//..')
     def navigate_to_page_url(self):
         self.driver.get(self.main_url + self.url_postfix)
 
