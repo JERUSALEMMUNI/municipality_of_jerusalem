@@ -11,7 +11,6 @@ Feature: EmailRegistration form - scenarios step 2
     Given Navigate to "EmailRegistration" form and reach step "תצהיר ושליחה"
 
 
-
   Scenario: TC_EMAILREG_03 תצהיר ושליחה כאשר בעל חשבון זהה למגיש הבקשה ולא דירת שותפים
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -24,58 +23,64 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
 
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
-    Then validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
-    Then validate name of file "2" is "png_to_upload.png" in "צילום תעודת זהות + ספח"
-    Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
-    Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
+    When upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
+
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
+
+    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
     When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
-    And delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
-    And delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
-    Then validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
-    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
-    Then validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
-    Then validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
-    Then validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
+
+    When upload "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
     When delete file by name "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
-    And delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
-    And delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "gif_to_upload.gif" file in "אחר"
-    When Upload a valid "png_to_upload.png" file in "אחר"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
-    Then validate name of file "1" is "gif_to_upload.gif" in "אחר"
-    Then validate size of file "1" in "אחר" in accepted
-    Then validate name of file "2" is "png_to_upload.png" in "אחר"
-    Then validate size of file "2" in "אחר" in accepted
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
-    Then validate size of file "3" in "אחר" in accepted
+
+    When upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
+    When upload "png_to_upload.png" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "png_to_upload.png" file is in "אחר" files list
+    When delete file by name "png_to_upload.png" in "אחר"
+
+    When upload "gif_to_upload.gif" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "gif_to_upload.gif" file is in "אחר" files list
     When delete file by name "gif_to_upload.gif" in "אחר"
-    And delete file by name "png_to_upload.png" in "אחר"
-    And delete file by name "jpg_pic_to_upload.jpg" in "אחר"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
-    When Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
-    And Upload a valid "bmp_to_upload.bmp" file in "אחר"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "אחר"
-    Then validate size of file "1" in "אחר" in accepted
-    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "אחר"
-    Then validate size of file "2" in "אחר" in accepted
-    Then validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
-    Then validate size of file "3" in "אחר" in accepted
+
+    When upload "pdf_file_to_upload.pdf" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "אחר" files list
     When delete file by name "pdf_file_to_upload.pdf" in "אחר"
-    And delete file by name "jpeg_to_upload.jpeg" in "אחר"
-    And delete file by name "bmp_to_upload.bmp" in "אחר"
-    And Upload a valid "gif_to_upload.gif" file in "אחר"
+
+    When upload "jpeg_to_upload.jpeg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "אחר" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "אחר"
+
+    When upload "bmp_to_upload.bmp" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "אחר" files list
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -93,8 +98,16 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בן/בת זוג של בעל החשבון" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -112,14 +125,28 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת התאגדות"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "png_to_upload.png" file in "תעודת התאגדות"
+    Then validate "תעודת התאגדות" field is valid
+    Then validate "png_to_upload.png" file is in "תעודת התאגדות" files list
+
+    When upload "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
+    Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" field is valid
+    Then validate "png_to_upload.png" file is in "ייפוי כוח לקבלת מידע בשם התאגיד" files list
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
-
 
   Scenario: TC_EMAILREG_06 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ולא דירת שותפים
 #    When click on "שמור" button
@@ -133,10 +160,24 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "png_to_upload.png" file in "תעודת זהות מיופה כוח"
+    Then validate "תעודת זהות מיופה כוח" field is valid
+    Then validate "png_to_upload.png" file is in "תעודת זהות מיופה כוח" files list
+
+    When upload "png_to_upload.png" file in "ייפוי כוח"
+    Then validate "ייפוי כוח" field is valid
+    Then validate "png_to_upload.png" file is in "ייפוי כוח" files list
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -154,8 +195,16 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -174,13 +223,21 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "בן/בת זוג של בעל החשבון" from "מגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-
+  @darweesh
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
 #    When "email" Authentication using email address "@TEMP_EMAIL_ADDRESS"
 #    When click on "שמור" button
@@ -195,14 +252,31 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
-    When Upload a valid "png_to_upload.png" file in "ייפוי כוח"
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
+    When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
+    When choose "לא" from "האם דירת שותפים?"
+
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "png_to_upload.png" file in "תעודת זהות מיופה כוח"
+    Then validate "תעודת זהות מיופה כוח" field is valid
+    Then validate "png_to_upload.png" file is in "תעודת זהות מיופה כוח" files list
+
+    When upload "png_to_upload.png" file in "ייפוי כוח"
+    Then validate "ייפוי כוח" field is valid
+    Then validate "png_to_upload.png" file is in "ייפוי כוח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
-
 
   Scenario: TC_EMAILREG_10 תצהיר ושליחה כאשר מגיש הבקשה בעל תפקיד בתאגיד ודירת שותפים
 #    When click on "שמור" button
@@ -217,10 +291,21 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write a valid value "3422344233" in "חשבון ארנונה"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "תעודת זהות מיופה כוח"
-#    When Upload a valid "png_to_upload.png" file in "ייפוי כח לקבלת מידע בשם התאגיד" (*** broken ***)
-    When Upload a valid "png_to_upload.png" file in "אחר"
+
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "png_to_upload.png" file in "תעודת זהות מיופה כוח"
+    Then validate "תעודת זהות מיופה כוח" field is valid
+    Then validate "png_to_upload.png" file is in "תעודת זהות מיופה כוח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
+
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
@@ -229,11 +314,19 @@ Feature: EmailRegistration form - scenarios step 2
   Scenario: TC_EMAILREG_12 תצהיר ושליחה עם ערכים שגויים
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+
+    When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "אחר"
+
+    When upload "10MB_file_to_upload.pdf" file in "אחר"
+    Then validate "אחר" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "אחר" files list
+    Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    #-------------------------------------------------------------------------------------------------------------------
+      #-------------------------------------------------------------------------------------------------------------------
     When choose "לא" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "כן" from "האם דירת שותפים?"
     When write an invalid value "567895" in "חשבון ארנונה"
@@ -247,28 +340,64 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    #todo its appears as valid here
-    When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+    #its appears as valid here
+
+    When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "zip_to_upload.zip" file in "תעודת התאגדות"
+
+
+    When upload "zip_to_upload.zip" file in "תעודת התאגדות"
+    Then validate "תעודת התאגדות" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "תעודת התאגדות" error is "חובה לצרף קובץ"
     Then validate "תעודת התאגדות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
+
+    When upload "10MB_file_to_upload.pdf" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
+    Then validate "אחר" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "ייפוי כוח לקבלת מידע בשם התאגיד" files list
+    Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" error is "חובה לצרף קובץ"
     Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When Upload an invalid "zip_to_upload.zip" file in "אחר"
+
+
+    When upload "zip_to_upload.zip" file in "אחר"
+    Then validate "אחר" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
     #-------------------------------------------------------------------------------------------------------------------
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "בעל תפקיד בתאגיד" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+
+    When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
-    When Upload an invalid "zip_to_upload.zip" file in "תעודת זהות מיופה כוח"
-    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "zip_to_upload.zip" file in "ייפוי כוח"
-    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "zip_to_upload.zip" file in "אחר"
+    When upload "zip_to_upload.zip" file in "תעודת זהות מיופה כוח"
+    Then validate "תעודת זהות מיופה כוח" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "תעודת זהות מיופה כוח" error is "חובה לצרף קובץ"
+    Then validate "תעודת זהות מיופה כוח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
+
+    When upload "zip_to_upload.zip" file in "ייפוי כוח"
+    Then validate "ייפוי כוח" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "ייפוי כוח" error is "חובה לצרף קובץ"
+    Then validate "ייפוי כוח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
+    When upload "zip_to_upload.zip" file in "אחר"
+    Then validate "אחר" field is invalid
+    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
     When clear fields
 
 

@@ -41,6 +41,9 @@ Feature: EmailRegistration form - scenarios step 1
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
+    When click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 
