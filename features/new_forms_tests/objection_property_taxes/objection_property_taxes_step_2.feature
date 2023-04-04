@@ -461,19 +461,19 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 
     When upload "10MB_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
     Then validate "ניתן לצרף מכתב נלווה" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "ניתן לצרף מכתב נלווה" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "ניתן לצרף מכתב נלווה" files list
     Then validate "ניתן לצרף מכתב נלווה" error is "חובה לצרף קובץ"
     Then validate "ניתן לצרף מכתב נלווה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
     When upload "10MB_file_to_upload.pdf" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
     Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
     Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error is "חובה לצרף קובץ"
     Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
     When upload "10MB_file_to_upload.pdf" file in "דו"ח מהנדס"
     Then validate "דו"ח מהנדס" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "דו"ח מהנדס" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "דו"ח מהנדס" files list
     Then validate "דו"ח מהנדס" error is "חובה לצרף קובץ"
     Then validate "דו"ח מהנדס" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

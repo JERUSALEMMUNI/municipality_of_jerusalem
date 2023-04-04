@@ -197,7 +197,7 @@ Feature: HoldersExchange form step 2
     When choose "יורש" from "מי מגיש הבקשה?"
     When upload "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
     Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
     Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error is "חובה לצרף קובץ"
     Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     #--------------------------------------------------------------------------------------------------------------------
@@ -226,7 +226,7 @@ Feature: HoldersExchange form step 2
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When upload "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then validate "יפוי כח" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "יפוי כח" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "יפוי כח" files list
     Then validate "יפוי כח" error is "חובה לצרף קובץ"
     Then validate "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

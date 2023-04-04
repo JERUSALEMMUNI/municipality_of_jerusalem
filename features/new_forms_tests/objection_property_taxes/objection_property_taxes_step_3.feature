@@ -37,7 +37,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     Then validate "ת.ד." error is "יש להזין ספרות בלבד"
     When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
     Then validate "צילום תעודת זהות + ספח" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

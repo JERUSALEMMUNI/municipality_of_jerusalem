@@ -7,6 +7,7 @@ from infra import logger, reporter, config
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
+
 #
 # @when('Upload a valid "{file_path}" file in "{widget_name}"')
 # def choose_in_search(context, file_path, widget_name):
@@ -106,6 +107,12 @@ def check_uploaded_files(context, file_name_index, file_name, widget_name):
 def check_uploaded_files(context, file_name, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     assert widget.validate_if_file_name_exist(file_name), "The file is not in the List"
+
+
+@then('validate "{file_name}" file is not in "{widget_name}" files list')
+def check_uploaded_files(context, file_name, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    assert not widget.validate_if_file_name_exist(file_name), "The file is not in the List"
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')

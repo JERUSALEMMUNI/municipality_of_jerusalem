@@ -109,7 +109,7 @@ Feature: HoldersExchange form step 3
     Then validate "תאריך עזיבה" error is "שדה חובה"
     When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
     Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "צילום תעודת זהות + ספח של בעל החשבון" files list
     Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
