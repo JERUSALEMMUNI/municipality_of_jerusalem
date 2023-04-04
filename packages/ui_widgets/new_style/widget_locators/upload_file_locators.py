@@ -35,7 +35,7 @@ class UploadFilesLocators:
     @property
     def delete_file_by_name_locator(self):
         def _delete_file_by_name_locator(file_name):
-            return By.XPATH, f".//div[contains(@class,'file-row')]//span[contains(text(), '{file_name}')]/ancestor::div//button"
+            return By.XPATH, f".//span[contains(text(), '{file_name}')]/../following-sibling::button"
 
         return _delete_file_by_name_locator
 
