@@ -17,7 +17,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When pick a valid "המחזיק" from "ממלא ההשגה"
-#    And click on "המשך" button
+    And click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 

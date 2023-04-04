@@ -16,7 +16,9 @@ Feature: improvementTax form - scenarios step 1
     And fill "058-8078687" as valid value in "טלפון נייד"
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-#    And click on "המשך" button
+    And click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 
