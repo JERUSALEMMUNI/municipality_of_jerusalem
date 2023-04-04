@@ -18,7 +18,7 @@ class TextAreaField(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': f"//label[contains(text(),'{self.label}')]/following-sibling::textarea"
+            'Value': f"//label[text()='{self.label}']/following-sibling::textarea"
         }
 
     def validate_text(self, text):
@@ -33,6 +33,7 @@ class TextAreaField(BaseWidget):
         """
         set element text
         """
+        self.clear()
         self.web_element.send_keys(text)
 
     def has_text(self, text):

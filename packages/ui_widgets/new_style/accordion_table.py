@@ -213,14 +213,14 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row, table_index)
         return widget.is_invalid_text_number(widget_name)
 
-    def validate_text_number(self, widget_name, row, number, table_index=1):
+    def validate_text_number(self, row, widget_name, number, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
         return widget.validate_text_number(widget_name, number)
 
-    def search_and_pick_first_element_and_validate(self, widget_name, row, option_value, table_index=1):
+    def search_and_pick_first_element_and_validate(self, row, widget_name, option_value, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
         return widget.search_and_pick_first_element_and_validate(widget_name, option_value)
 
-    def get_search_result_if_empty(self, widget_name, row, table_index=1):
+    def get_search_result_if_empty(self, row, widget_name, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
         return widget.get_search_result_if_empty(widget_name)

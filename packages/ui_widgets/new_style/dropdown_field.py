@@ -108,6 +108,7 @@ class Dropdown(BaseWidget):
 
     def close(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.close).get_attribute('aria-expanded')
+        # ToDo : when the list is not open , that return null , when try to do the lower for the null its make a broken
         if dropDown_open.lower() == 'true':
             self.web_element.click()
             # TODO : wait to close (Amr)
@@ -126,5 +127,6 @@ class Dropdown(BaseWidget):
     def select_first_element(self):
         """ Selects first element after writing in search field at dropdown search widget"""
         self.click_button()
-        list_of_items = WebDriverWait(self.web_element, 10).until(EC.presence_of_element_located(DropdownLocators.list_items))
+        list_of_items = WebDriverWait(self.web_element, 10).until(
+            EC.presence_of_element_located(DropdownLocators.list_items))
         list_of_items[0].click()

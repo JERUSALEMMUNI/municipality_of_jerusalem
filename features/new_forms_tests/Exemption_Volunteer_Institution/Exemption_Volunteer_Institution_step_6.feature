@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 Feature: ExemptionVolunteerInstitution form - scenarios step 6
 
   - Form name: בקשה לקבלת פטור מארנונה לנכסי מוסד מתנדב לשירות הציבור
@@ -9,11 +9,13 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 6
 
 
   Background:
-    Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "מסמכים"
+    Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "תצהיר ושליחה"
 
+  @wisam
   Scenario: EXCEPTVOLUNT_07 "תצהיר ושליחת הטופס"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-    And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
+  #ToDo: we have another textarea hiden with the same name and same prameters
+#    And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     #When click on "שמור" button
     #When click on "שמור טיוטה" button tyota

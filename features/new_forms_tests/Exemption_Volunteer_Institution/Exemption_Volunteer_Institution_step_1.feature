@@ -17,10 +17,12 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 1
     And fill number "8078687" as valid value in "טלפון נייד"
     And fill number "8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-    # When click on "המשך"
+     When click on "המשך"
     # button # When click on "email" option
     # When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 

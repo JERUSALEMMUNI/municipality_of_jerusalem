@@ -1,4 +1,3 @@
-
 Feature: ExemptionVolunteerInstitution form - scenarios step 4
 
   - Form name: בקשה לקבלת פטור מארנונה לנכסי מוסד מתנדב לשירות הציבור
@@ -27,9 +26,10 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-#    When click on "המשך"
-
-
+    When click on "המשך"
+    Then validate current step name is "מסמכים"
+    When click on "חזור"
+    Then Validate current step name is "פרוט נכסים"
 
 
   Scenario: EXCEPTVOLUNT_05 הזנת ערכים תקינים ב"פירוט נכסים" מספר נכסים
@@ -61,13 +61,13 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
 
   Scenario: EXCEPTVOLUNT_11 הזנת ערכים שגויים ב"פירוט נכסים"
     When from table "פרוט נכסים" at row "1" write an invalid value "qwertyuio" in "זיהוי נכס או מס' חשבון ארנונה"
-    Then from table "פרוט נכסים" at row "1" check if "זיהוי נכס או מס' חשבון ארנונה" error is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "זיהוי נכס או מס' חשבון ארנונה" value is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" search invalid value and pick "zz" in search field "רחוב"
     When from table "פרוט נכסים" at row "1" write an invalid number "tt" in "מס' בית"
-    Then from table "פרוט נכסים" at row "1" check if "מס' בית" error is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "מס' בית" value is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" write an invalid value "3323" in "שטח החיוב במ"ר"
-    Then from table "פרוט נכסים" at row "1" check if "שטח החיוב במ"ר" error is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" value is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" write an invalid value "33223" in "סכום הארנונה הנדרש"
-    Then from table "פרוט נכסים" at row "1" check if "שטח החיוב במ"ר" error is "סכום הארנונה הנדרש"
+    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" value is "סכום הארנונה הנדרש"
     When from table "פרוט נכסים" at row "1" write an invalid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
-    Then from table "פרוט נכסים" at row "1" check if textarea "סוג הפעילות המפורט בנכס" error is "שפת קלט לא תקינה"
+    Then from table "פרוט נכסים" at row "1" validate textarea "סוג הפעילות המפורט בנכס" error is "שפת קלט לא תקינה"

@@ -34,8 +34,10 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 2
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-#    When click on "המשך"
-
+    When click on "המשך"
+    Then validate current step name is "בעלי תפקידים"
+    When click on "חזור"
+    Then Validate current step name is "פרטי מוסד"
 
 
   Scenario: EXCEPTVOLUNT_09 הזנת ערכים שגויים ב"פרטי מוסד"
