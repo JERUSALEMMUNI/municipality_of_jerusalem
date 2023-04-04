@@ -78,32 +78,37 @@ Feature: HoldersExchange form step 2
     And choose "למגורים" from "סוג הנכס"
     And choose "יורש" from "מי מגיש הבקשה?"
     And choose "הודעה על שוכר שעזב" from "מהי הפעולה המבוקשת?"
-    And Upload a valid "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    When Upload a valid "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate name of file "1" is "gif_to_upload.gif" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    Then validate name of file "2" is "png_to_upload.png" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+    When upload "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "gif_to_upload.gif" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
     When delete file by name "gif_to_upload.gif" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file by name "png_to_upload.png" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file by name "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    When Upload a valid "jpeg_to_upload.jpeg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And Upload a valid "bmp_to_upload.bmp" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "1" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "2" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
-    Then validate name of file "3" is "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    Then validate size of file "3" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" in accepted
+
+    When upload "png_to_upload.png" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "png_to_upload.png" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    When delete file by name "png_to_upload.png" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    When upload "jpg_pic_to_upload.jpg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    When upload "pdf_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
     When delete file by name "pdf_file_to_upload.pdf" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file by name "jpeg_to_upload.jpeg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And delete file by name "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
-    And Upload a valid "gif_to_upload.gif" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    When upload "jpeg_to_upload.jpeg" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    When upload "bmp_to_upload.bmp" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    When delete file by name "bmp_to_upload.bmp" in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+
+    When upload "bmp_to_upload.bmp" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -138,7 +143,9 @@ Feature: HoldersExchange form step 2
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And choose "רישום בעלים אחרים (הנכס נמכר)" from "מהי הפעולה המבוקשת?"
-    And Upload a valid "png_to_upload.png" file in "יפוי כח"
+    When upload "gif_to_upload.gif" file in "יפוי כח"
+    Then validate "יפוי כח" field is valid
+    Then validate "gif_to_upload.gif" file is in "יפוי כח" files list
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -188,9 +195,12 @@ Feature: HoldersExchange form step 2
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "יורש" from "מי מגיש הבקשה?"
-    And Upload an invalid "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    When upload "10MB_file_to_upload.pdf" file in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות"
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" files list
+    Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error is "חובה לצרף קובץ"
     Then validate "צו ירושה / צו קיום צוואה / מסמך אחר המעיד על בעלות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-   #--------------------------------------------------------------------------------------------------------------------
+    #--------------------------------------------------------------------------------------------------------------------
     When choose "מיופה כח" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
     Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -214,7 +224,10 @@ Feature: HoldersExchange form step 2
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
     When write an invalid value "ass@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "יפוי כח"
+    When upload "10MB_file_to_upload.pdf" file in "יפוי כח"
+    Then validate "יפוי כח" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "יפוי כח" files list
+    Then validate "יפוי כח" error is "חובה לצרף קובץ"
     Then validate "יפוי כח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 

@@ -9,34 +9,6 @@ Feature: HoldersExchange form step 3
   Background: Background Scenario
     Given Navigate to "HoldersExchange" form and reach step "פרטי מחזיק נוכחי"
 
-#  @firas
-#  Scenario:test1
-#    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
-#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
-#    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
-#
-#
-#  @firas
-#  Scenario:test2
-#    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
-#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
-#    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
-#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
-#    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-
-  @firas
-  Scenario:test3
-    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    When upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
-
-
-
-
-
-
   Scenario: TC_HOLDERSEXCH_06 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס אינו המחזיק הנוכחי
     When choose "לא" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid value "דני" in "שם פרטי"
@@ -46,33 +18,36 @@ Feature: HoldersExchange form step 3
     And fill "058-8078687" as valid value in "טלפון נייד"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid number "12042023" in "תאריך עזיבה"
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "1" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    Then validate name of file "2" is "png_to_upload.png" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "2" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    Then validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "3" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    When delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח של בעל החשבון"
 
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    When Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "1" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    Then validate name of file "2" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "2" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    Then validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח של בעל החשבון"
-    Then validate size of file "3" in "צילום תעודת זהות + ספח של בעל החשבון" in accepted
-    When delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And delete file by index "1" in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח של בעל החשבון"
+
+    When upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח של בעל החשבון"
+
+    When upload "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח של בעל החשבון"
+
+    When upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח של בעל החשבון"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -89,7 +64,9 @@ Feature: HoldersExchange form step 3
   Scenario: TC_HOLDERSEXCH_07 הזנת ערכים תקינים בשדות "פרטי מחזיק נוכחי" בעל הנכס הוא המחזיק הנוכחי
     When choose "כן" from "האם בעל הנכס הוא המחזיק הנוכחי?"
     And write a valid number "12042023" in "תאריך עזיבה"
-    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -130,7 +107,10 @@ Feature: HoldersExchange form step 3
     When write an invalid number "12142023" in "תאריך עזיבה"
     #todo: after typing an invalid date, it will be deleted and get error message שדה חובה instead of "תאריך לא תקין"(amro)
     Then validate "תאריך עזיבה" error is "שדה חובה"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
 

@@ -7,33 +7,33 @@ from infra import logger, reporter, config
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
-
-@when('Upload a valid "{file_path}" file in "{widget_name}"')
-def choose_in_search(context, file_path, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    widget.upload_file(file)
-    if widget.is_valid:
-        log.info("we don't have a warning message")
-        rep.add_label_to_step("File type is accepted", "File type is accepted")
-    elif widget.validate_warning_message():
-        log.info(f"This file is considered a valid file but it appeared as invalid")
-        rep.add_label_to_step("failure reason", f"This file is considered a valid file but it appeared as invalid")
-        raise AssertionError("File type is not accepted")
-
-
-@when('Upload an invalid "{file_path}" file in "{widget_name}"')
-def choose_an_invalid_search(context, file_path, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    widget.upload_file(file)
-    if widget.is_invalid:
-        log.info(f"This file is considered an invalid file and this correct")
-        rep.add_label_to_step("file status", f"This file is considered an invalid file and this correct")
-    else:
-        log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("file status", "File type considered an invalid file but it appeared as valid")
-        raise AssertionError("File type considered an invalid file but it appeared as valid")
+#
+# @when('Upload a valid "{file_path}" file in "{widget_name}"')
+# def choose_in_search(context, file_path, widget_name):
+#     widget = context._config.current_page.widgets[widget_name]
+#     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
+#     widget.upload_file(file)
+#     if widget.is_valid:
+#         log.info("we don't have a warning message")
+#         rep.add_label_to_step("File type is accepted", "File type is accepted")
+#     elif widget.validate_warning_message():
+#         log.info(f"This file is considered a valid file but it appeared as invalid")
+#         rep.add_label_to_step("failure reason", f"This file is considered a valid file but it appeared as invalid")
+#         raise AssertionError("File type is not accepted")
+#
+#
+# @when('Upload an invalid "{file_path}" file in "{widget_name}"')
+# def choose_an_invalid_search(context, file_path, widget_name):
+#     widget = context._config.current_page.widgets[widget_name]
+#     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
+#     widget.upload_file(file)
+#     if widget.is_invalid:
+#         log.info(f"This file is considered an invalid file and this correct")
+#         rep.add_label_to_step("file status", f"This file is considered an invalid file and this correct")
+#     else:
+#         log.info(f"This file is considered an invalid file but it appeared as valid")
+#         rep.add_label_to_step("file status", "File type considered an invalid file but it appeared as valid")
+#         raise AssertionError("File type considered an invalid file but it appeared as valid")
 
 
 @when('upload "{file_path}" file in "{widget_name}"')

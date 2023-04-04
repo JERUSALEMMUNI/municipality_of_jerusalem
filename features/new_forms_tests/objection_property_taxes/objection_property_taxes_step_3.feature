@@ -16,8 +16,10 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     And write a valid number "2" in "בית"
     And write a valid value "3222" in "מיקוד"
     And write a valid value "23344" in "ת.ד."
-    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    And check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
+    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
+    When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
@@ -33,6 +35,9 @@ Feature: ObjectionPropertyTaxes form - scenarios step 3
     Then validate "מיקוד" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfdfs" in "ת.ד."
     Then validate "ת.ד." error is "יש להזין ספרות בלבד"
-    When Upload an invalid "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
-    Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
+    Then validate "צילום תעודת זהות + ספח" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields

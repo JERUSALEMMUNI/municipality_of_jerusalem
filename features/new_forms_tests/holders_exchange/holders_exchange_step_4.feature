@@ -19,8 +19,12 @@ Feature: HoldersExchange form step 4
     And fill "02-8078687" as valid value in "טלפון קווי"
     And write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     And write a valid number "12042024" in "תאריך כניסה"
-    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
-    And Upload a valid "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    When upload "png_to_upload.png" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    Then validate "חוזה שבו מופיע תאריך כניסה לדירה" field is valid
+    Then validate "png_to_upload.png" file is in "חוזה שבו מופיע תאריך כניסה לדירה" files list
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -58,8 +62,14 @@ Feature: HoldersExchange form step 4
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך כניסה"
     Then validate "תאריך כניסה" error is "תאריך לא תקין"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    When upload "10MB_file_to_upload.pdf" file in "צילום תעודת זהות + ספח של בעל החשבון"
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח של בעל החשבון" files list
+    Then validate "צילום תעודת זהות + ספח של בעל החשבון" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח של בעל החשבון" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-    When Upload an invalid "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    When upload "10MB_file_to_upload.pdf" file in "חוזה שבו מופיע תאריך כניסה לדירה"
+    Then validate "חוזה שבו מופיע תאריך כניסה לדירה" field is invalid
+    Then validate "10MB_file_to_upload.pdf" file is in "חוזה שבו מופיע תאריך כניסה לדירה" files list
+    Then validate "חוזה שבו מופיע תאריך כניסה לדירה" error is "חובה לצרף קובץ"
     Then validate "חוזה שבו מופיע תאריך כניסה לדירה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     When clear fields
