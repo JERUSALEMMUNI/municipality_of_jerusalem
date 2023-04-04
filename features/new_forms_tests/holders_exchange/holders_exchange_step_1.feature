@@ -16,10 +16,9 @@ Feature: HoldersExchange form step 1
     And fill number "8078687" as valid value in "טלפון נייד"
     And fill number "8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-#    When click on "המשך" button
-#    When click on "email" option
-#    When 1st wait for "email" that contains pin code and link
-#    When set pin code "email"
+    When click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 
