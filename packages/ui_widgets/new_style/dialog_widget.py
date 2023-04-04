@@ -6,8 +6,8 @@ log = logger.get_logger(__name__)
 
 
 class Dialog(BaseWidget):
-    def __init__(self, index):
-        super().__init__(self, index)
+    def __init__(self, label, index):
+        super().__init__(label, index)
         self.text = None
 
     @property
@@ -24,7 +24,7 @@ class Dialog(BaseWidget):
         return self.web_element.find_element(*DialogLocators.picture)
 
     def get_close_button(self):
-        return self.web_element.find_element(*DialogLocators.close_button)
+        return self.web_element.find_element(*DialogLocators.close_button_new)
 
     def click_close_button(self):
         button = self.get_close_button()
@@ -42,3 +42,6 @@ class Dialog(BaseWidget):
 
     def dialog_is_not_display(self, txt):
         return not self.check_dialog_is_displayed(txt)
+
+    def clear(self, index=None):
+        pass
