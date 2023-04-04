@@ -23,6 +23,7 @@ class JMChromeWebDriver(ChromeDriver):
     def __init__(self, *args, **kwargs):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument(f'download.default_directory={config.temp_folder}')
+        # chrome_options.add_argument('--headless')
         kwargs['chrome_options'] = chrome_options
         super().__init__(*args, **kwargs)
         self.maximize_window()

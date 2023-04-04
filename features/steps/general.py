@@ -10,6 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from features.steps.steps_locators.general_locators import GeneralLocators
 from infra import logger, reporter
+from infra.enums import WaitInterval
 
 rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
@@ -225,6 +226,7 @@ def return_to_original_url(context):
 @When('clear fields')
 def clear_fields(context, widgets=None):
     widgets = context._config.current_page.widgets if widgets is None else widgets
+    context._config.driver.implicitly_wait(WaitInterval.FAST.value)
     for widget_name, widget_obj in widgets.items():
         try:
             if type(widget_obj) is dict:
@@ -237,6 +239,7 @@ def clear_fields(context, widgets=None):
         except Exception as e:
             log.exception(e)
             log.info(f"the field {widget_name} is empty")
+    context._config.driver.implicitly_wait(WaitInterval.MEDIUM.value)
 
 
 @Then('validate if "{widget_name}" is exist')

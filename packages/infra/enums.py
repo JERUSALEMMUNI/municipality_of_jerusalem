@@ -13,6 +13,7 @@ class SystemUnderTest(Enum):
 
 
 class WaitInterval(Enum):
+    FAST = 1
     SHORT = 5
     MEDIUM = 10
     LONG = 30
