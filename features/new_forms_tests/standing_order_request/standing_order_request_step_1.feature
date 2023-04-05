@@ -18,6 +18,9 @@ Feature: StandingOrderRequest form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
+    When click on "המשך"
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 
@@ -42,6 +45,9 @@ Feature: StandingOrderRequest form - scenarios step 1
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
+    When click on "המשך"
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 

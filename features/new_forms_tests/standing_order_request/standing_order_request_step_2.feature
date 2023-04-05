@@ -9,7 +9,6 @@ Feature: StandingOrderRequest - scenarios step 2
   Background: Background Scenario
     Given Navigate to "StandingOrderRequest" form and reach step "פרטי תשלום"
 
-
   Scenario: TC_STANDINGORDEREQ_04 - Checking "personal details" fields with correct details
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
@@ -31,83 +30,94 @@ Feature: StandingOrderRequest - scenarios step 2
     When pick "1" from "יום גביה חודשי"
     When pick "10" from "יום גביה חודשי"
 
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then validate name of file "1" is "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
-    And validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
-    And validate name of file "2" is "png_to_upload.png" in "צילום תעודת זהות + ספח"
-    And validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
-    And validate name of file "3" is "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
-    And validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file by index "1" in "צילום תעודת זהות + ספח"
-    And delete file by index "1" in "צילום תעודת זהות + ספח"
-    And delete file by index "1" in "צילום תעודת זהות + ספח"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
-    And Upload a valid "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
-    And validate size of file "1" in "צילום תעודת זהות + ספח" in accepted
-    And validate name of file "2" is "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
-    And validate size of file "2" in "צילום תעודת זהות + ספח" in accepted
-    And validate name of file "3" is "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
-    And validate size of file "3" in "צילום תעודת זהות + ספח" in accepted
-    When delete file by index "1" in "צילום תעודת זהות + ספח"
-    And delete file by index "1" in "צילום תעודת זהות + ספח"
-    And delete file by index "1" in "צילום תעודת זהות + ספח"
-    And Upload a valid "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
+    When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
 
-    And Upload a valid "gif_to_upload.gif" file in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "אישור הרשאה לחיוב חשבון"
-    Then validate name of file "1" is "gif_to_upload.gif" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "1" in "אישור הרשאה לחיוב חשבון" in accepted
-    And validate name of file "2" is "png_to_upload.png" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "2" in "אישור הרשאה לחיוב חשבון" in accepted
-    And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "3" in "אישור הרשאה לחיוב חשבון" in accepted
-    When delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "jpeg_to_upload.jpeg" file in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "bmp_to_upload.bmp" file in "אישור הרשאה לחיוב חשבון"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "1" in "אישור הרשאה לחיוב חשבון" in accepted
-    And validate name of file "2" is "jpeg_to_upload.jpeg" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "2" in "אישור הרשאה לחיוב חשבון" in accepted
-    And validate name of file "3" is "bmp_to_upload.bmp" in "אישור הרשאה לחיוב חשבון"
-    And validate size of file "3" in "אישור הרשאה לחיוב חשבון" in accepted
-    When delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And delete file by index "1" in "אישור הרשאה לחיוב חשבון"
-    And Upload a valid "gif_to_upload.gif" file in "אישור הרשאה לחיוב חשבון"
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
 
-    And Upload a valid "gif_to_upload.gif" file in "אחר"
-    And Upload a valid "png_to_upload.png" file in "אחר"
-    And Upload a valid "jpg_pic_to_upload.jpg" file in "אחר"
-    Then validate name of file "1" is "gif_to_upload.gif" in "אחר"
-    And validate size of file "1" in "אחר" in accepted
-    And validate name of file "2" is "png_to_upload.png" in "אחר"
-    And validate size of file "2" in "אחר" in accepted
-    And validate name of file "3" is "jpg_pic_to_upload.jpg" in "אחר"
-    And validate size of file "3" in "אחר" in accepted
-    When delete file by index "1" in "אחר"
-    And delete file by index "1" in "אחר"
-    And delete file by index "1" in "אחר"
-    And Upload a valid "pdf_file_to_upload.pdf" file in "אחר"
-    And Upload a valid "jpeg_to_upload.jpeg" file in "אחר"
-    And Upload a valid "bmp_to_upload.bmp" file in "אחר"
-    Then validate name of file "1" is "pdf_file_to_upload.pdf" in "אחר"
-    And validate size of file "1" in "אחר" in accepted
-    And validate name of file "2" is "jpeg_to_upload.jpeg" in "אחר"
-    And validate size of file "2" in "אחר" in accepted
-    And validate name of file "3" is "bmp_to_upload.bmp" in "אחר"
-    And validate size of file "3" in "אחר" in accepted
-    When delete file by index "1" in "אחר"
-    And delete file by index "1" in "אחר"
-    And delete file by index "1" in "אחר"
-    And Upload a valid "gif_to_upload.gif" file in "אחר"
+    When upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
+
+    When upload "pdf_file_to_upload.pdf" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "pdf_file_to_upload.pdf" in "צילום תעודת זהות + ספח"
+
+    When upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
+
+    When upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "gif_to_upload.gif" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "gif_to_upload.gif" file is in "אישור הרשאה לחיוב חשבון" files list
+    When delete file by name "gif_to_upload.gif" in "אישור הרשאה לחיוב חשבון"
+
+    When upload "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "png_to_upload.png" file is in "אישור הרשאה לחיוב חשבון" files list
+    When delete file by name "png_to_upload.png" in "אישור הרשאה לחיוב חשבון"
+
+    When upload "jpeg_to_upload.jpeg" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "אישור הרשאה לחיוב חשבון" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "אישור הרשאה לחיוב חשבון"
+
+    When upload "pdf_file_to_upload.pdf" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "אישור הרשאה לחיוב חשבון" files list
+    When delete file by name "pdf_file_to_upload.pdf" in "אישור הרשאה לחיוב חשבון"
+
+    When upload "jpg_pic_to_upload.jpg" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אישור הרשאה לחיוב חשבון" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אישור הרשאה לחיוב חשבון"
+
+    When upload "bmp_to_upload.bmp" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "אישור הרשאה לחיוב חשבון" files list
+
+    When upload "gif_to_upload.gif" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "gif_to_upload.gif" file is in "אחר" files list
+    When delete file by name "gif_to_upload.gif" in "אחר"
+
+    When upload "png_to_upload.png" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "png_to_upload.png" file is in "אחר" files list
+    When delete file by name "png_to_upload.png" in "אחר"
+
+    When upload "jpg_pic_to_upload.jpg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אחר" files list
+    When delete file by name "jpg_pic_to_upload.jpg" in "אחר"
+
+    When upload "pdf_file_to_upload.pdf" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "pdf_file_to_upload.pdf" file is in "אחר" files list
+    When delete file by name "pdf_file_to_upload.pdf" in "אחר"
+
+    When upload "jpeg_to_upload.jpeg" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "jpeg_to_upload.jpeg" file is in "אחר" files list
+    When delete file by name "jpeg_to_upload.jpeg" in "אחר"
+
+    When upload "bmp_to_upload.bmp" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "אחר" files list
+    When delete file by name "bmp_to_upload.bmp" in "אחר"
+
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -116,9 +126,11 @@ Feature: StandingOrderRequest - scenarios step 2
 #    When 3rd wait for second "email" to get "קוד האימות" index "2"
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
-#    When click on "המשך" button
+    When click on "המשך" button
+    Then validate current step name is "תצהיר ושליחה"
+    When click on "חזור"
+    Then Validate current step name is "פרטי תשלום"
     When clear fields
-
 
   Scenario: TC_STANDINGORDEREQ_05 - Checking "personal details" fields with correct details
     When write a valid value "2121212121" in "חשבון / נכס"
@@ -138,10 +150,25 @@ Feature: StandingOrderRequest - scenarios step 2
     When write a valid number "25783770" in "מספר חשבון"
     When pick "1" from "יום גביה חודשי"
     When pick "10" from "יום גביה חודשי"
-    When Upload a valid "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    When Upload a valid "png_to_upload.png" file in "אישור הרשאה לחיוב חשבון"
-    When Upload a valid "png_to_upload.png" file in "אחר"
-    When clear fields
+
+    When upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is valid
+    Then validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
+
+    When upload "jpg_pic_to_upload.jpg" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is valid
+    Then validate "jpg_pic_to_upload.jpg" file is in "אישור הרשאה לחיוב חשבון" files list
+
+    When upload "bmp_to_upload.bmp" file in "אחר"
+    Then validate "אחר" field is valid
+    Then validate "bmp_to_upload.bmp" file is in "אחר" files list
+    When delete file by name "bmp_to_upload.bmp" in "אחר"
+
+    When click on "המשך" button
+    Then validate current step name is "תצהיר ושליחה"
+    When click on "חזור"
+    Then Validate current step name is "פרטי תשלום"
+
 
 
   Scenario: TC_STANDINGORDEREQ_06 - Checking "personal details" fields with incorrect details
@@ -160,15 +187,27 @@ Feature: StandingOrderRequest - scenarios step 2
     When write a valid number "asdas1233" in "מספר חשבון"
     Then validate if "מספר חשבון" value is "1233"
     When pick an invalid "140" from "יום גביה חודשי"
-    When Upload an invalid "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+
+    When upload "xlsx_to_upload.xlsx" file in "צילום תעודת זהות + ספח"
+    Then validate "צילום תעודת זהות + ספח" field is invalid
+    Then validate "xlsx_to_upload.xlsx" file is not in "צילום תעודת זהות + ספח" files list
+    Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+
+    When upload "xlsx_to_upload.xlsx" file in "אישור הרשאה לחיוב חשבון"
+    Then validate "אישור הרשאה לחיוב חשבון" field is invalid
+    Then validate "xlsx_to_upload.xlsx" file is not in "אישור הרשאה לחיוב חשבון" files list
+    Then validate "אישור הרשאה לחיוב חשבון" error is "חובה לצרף קובץ"
     Then validate "אישור הרשאה לחיוב חשבון" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
-    When Upload an invalid "xlsx_to_upload.xlsx" file in "אחר"
+
+    When upload "xlsx_to_upload.xlsx" file in "אחר"
+    Then validate "אחר" field is invalid
+    Then validate "xlsx_to_upload.xlsx" file is not in "אחר" files list
+    Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+
+    When click on "המשך" button
+    Then validate current step name is "תצהיר ושליחה"
+    When click on "חזור"
+    Then Validate current step name is "פרטי תשלום"
     When clear fields
-
-
-
-
-
