@@ -98,7 +98,7 @@ class ExemptionVolunteerInstitution(BasePage):
             label='תצהיר מבעל תפקיד בכיר בעמותה, חתום על ידי עו"ד, כי דירות המגורים עומדות בתנאים שנקבעו בחוזר המנכ"ל משרד הפנים 01/2012 לגבי מתן פטור ביחס לדירות מגורים')
         self.widgets['הצהרה חתומה של ממלא הבקשה חתומה ומאושרת ע"י עו"ד'] = create_widget('UploadFile', style=self.style,
                                                                                          label='הצהרה חתומה של ממלא הבקשה חתומה ומאושרת ע"י עו"ד')
-        self.widgets["אחר"] = create_widget('UploadFile', style=self.style, label="אחר")
+        self.widgets["אחר"] = create_widget('UploadFile', style=self.style, label="אחר", index=4)
 
         # step6
         self.widgets["הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"] = create_widget(

@@ -12,7 +12,7 @@ class UploadFile(BaseWidget):
 
     @property
     def locator(self):
-        value = f"//label[text()='{self.label}']/ancestor::div[contains(@class,'p-field')]"
+        value = f"//label[contains(text(),'{self.label}')]/ancestor::div[contains(@class,'p-field')]"
         if self.step_number:
             value = f"//{self.step_number.value}{value}"
         return {
