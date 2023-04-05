@@ -284,10 +284,33 @@ def delete_file_from_accordion(context, table_name, row, wanted_file_index, widg
     widget.delete_file(row, widget_name, wanted_file_index)
 
 
-@when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
-def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+@when('from table "{table_name}" at row "{row}" search valid value and pick "{option_value}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, option_value, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    widget.choose_item(row, widget_name, text)
+    if widget.choose_item(row, widget_name, option_value):
+        log.info(f'option [{option_value}] is selected correctly')
+        rep.add_label_to_step("Chosen option is selected correctly",
+                              f"Chosen option [{option_value}] is selected correctly")
+    else:
+
+        rep.add_label_to_step('Option is not selected',
+                              'there was not a selection from list')
+        raise AssertionError('not in list')
+
+
+@when('from table "{table_name}" at row "{row}" search invalid value and pick "{option_value}" in "{widget_name}"')
+def write_invalid_in_table_from_column(context, table_name, row, option_value, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+
+    if not widget.choose_item(row, widget_name, option_value):
+        log.info(f'option [{option_value}] is not selected')
+        rep.add_label_to_step("Chosen option is not in the list",
+                              f"Chosen option [{option_value}] is not selected")
+    else:
+        rep.add_label_to_step('Option is in the list',
+                              'there was  a selection from list')
+        raise AssertionError('the option valid')
+
 
 
 @when('from table "{table_name}" at row "{row}" pick "{option_value}" from "{widget_name}"')

@@ -273,12 +273,35 @@ def navigate_to_screen(context):
     except:
         log.info("No dialog appeared")
 
+
 @Then('validate if "{widget_name}" appeared')
-def validate_dialog(context,widget_name):
+def validate_dialog(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.get_main_title().is_displayed()
 
+
 @When('close "{widget_name}"')
-def validate_dialog(context,widget_name):
+def validate_dialog(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_close_button()
+
+@Then('from table "{table_name}" at row "{row}" validate the drop "{widget_name}" is default')
+def validate_is_empty(context, table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if not widget.is_default_drop(row, widget_name):
+        log.info(f'its default')
+        rep.add_label_to_step("nothing was selected", "(default)")
+    else:
+        rep.add_label_to_step("there is already value", "(not default)")
+        raise AssertionError('its not the default there is element was selected')
+
+
+@Then('from table "{table_name}" at row "{row}" validate the file "{widget_name}" is default')
+def validate_is_default(context, table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    if widget.is_default_upload(row, widget_name):
+        log.info(f'its default')
+        rep.add_label_to_step("nothing was selected", "(default)")
+    else:
+        rep.add_label_to_step("there is already value", "(not default)")
+        raise AssertionError('its not the default there is element was selected')

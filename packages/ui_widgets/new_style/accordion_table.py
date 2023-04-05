@@ -95,7 +95,7 @@ class AccordionTable(BaseWidget):
 
     def choose_item(self, row, label, txt, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
-        widget.choose_item(label, txt)
+        return widget.choose_item(label, txt)
 
     def validate_text_is_valid(self, row, label, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
@@ -224,3 +224,11 @@ class AccordionTable(BaseWidget):
     def get_search_result_if_empty(self, widget_name, row, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
         return widget.get_search_result_if_empty(widget_name)
+
+    def is_default_drop(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_default_drop(label)
+
+    def is_default_upload(self, row, label):
+        widget = self.create_widget_table_row(row)
+        return widget.is_default_upload(label)

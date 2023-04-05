@@ -17,6 +17,7 @@ class TextNumberField(TextField):
             return self.web_element.find_element(*TextFieldLocators.number)
 
     def set_text(self, text):
+        super().clear()
         self.web_element.send_keys(text)
         self.web_element.send_keys(Keys.RETURN)
 
