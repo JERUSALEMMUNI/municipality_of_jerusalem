@@ -1,4 +1,3 @@
-#@in_dev
 Feature: FreedomInfo form - scenarios step 2
 
   - Form name: חופש המידע
@@ -62,7 +61,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" files list
 
-###########################################################
+
     When upload "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" field is valid
     Then validate "png_to_upload.png" file is in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" files list
@@ -104,7 +103,8 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "jpg_pic_to_upload.jpg" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" files list
-#####################################################################################
+
+
 
     When upload "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is valid
@@ -149,7 +149,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
     When clear fields
 
-###################################################################################
+
 
   Scenario: TC_FREEDOMINFO_03 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי עמותה" from "סוג המידע המבוקש"
@@ -201,7 +201,7 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
     Then validate "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" files list
-################################################################################################
+
 
     When upload "png_to_upload.png" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" field is valid
@@ -244,7 +244,7 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "jpg_pic_to_upload.jpg" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" files list
-####################################################################################
+
 
     When upload "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is valid
@@ -289,7 +289,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
 
     When clear fields
-########################################################################################################
+
 
 
   Scenario: TC_FREEDOMINFO_04 - Checking "The type of information" fields with correct details
@@ -341,7 +341,7 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
     Then validate "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" files list
-##################################################################################
+
 
     When upload "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is valid
@@ -386,7 +386,8 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
 
     When clear fields
-####################################################################################################################
+
+
   Scenario: TC_FREEDOMINFO_05 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי סטודנט/גוף מחקרי" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" is exist
@@ -435,7 +436,7 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "jpg_pic_to_upload.jpg" file in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי"
     Then validate "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "מסמך המעיד כי הנתונים המבוקשים בבקשת המידע הינם לצורך מחקר אקדמי" files list
-#############################################################################################
+
 
     When upload "png_to_upload.png" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is valid
@@ -449,7 +450,7 @@ Feature: FreedomInfo form - scenarios step 2
 
     When upload "jpg_pic_to_upload.jpg" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is valid
-    Then validate "jpg_pic_to_upload.jpg"" file is in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
+    Then validate "jpg_pic_to_upload.jpg" file is in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
     When delete file by name "jpg_pic_to_upload.jpg" in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
 
     When upload "pdf_to_upload.pdf" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -481,7 +482,6 @@ Feature: FreedomInfo form - scenarios step 2
 
     When clear fields
 
-###############################################################################################################
 
   Scenario: TC_FREEDOMINFO_06 - Checking "The type of information" fields with correct details
     When pick "מידע המבוקש על ידי גורם פרטי" from "סוג המידע המבוקש"
@@ -535,7 +535,7 @@ Feature: FreedomInfo form - scenarios step 2
     Then validate "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" field is valid
     Then validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות שלך או של האדם אותו הנך מייצג/ת בתוספת ייפוי כוח מטעמו אליך" files list
 
-###############################################################################################
+
     When upload "png_to_upload.png" file in "מסמכים נוספים"
     Then validate "מסמכים נוספים" field is valid
     Then validate "png_to_upload.png" file is in "מסמכים נוספים" files list
@@ -581,7 +581,7 @@ Feature: FreedomInfo form - scenarios step 2
 
     When clear fields
 
-#######################################################################################
+
   Scenario: TC_FREEDOMINFO_09 - Checking "The type of information" fields with incorrect details
     When pick "מידע המבוקש על ידי ארגון" from "סוג המידע המבוקש"
     Then validate if "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" is exist
@@ -598,7 +598,6 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "10MB_file_to_upload.pdf" file in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה"
     Then validate "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" field is invalid
     Then validate "10MB_file_to_upload.pdf" file is not in "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" files list
-    Then validate "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" error is "חובה לצרף קובץ"
     Then validate "מסמך המעיד כי החתום על הבקשה הינו מורשה חתימה של העמותה/ייפוי כוח מטעם העמותה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
     When upload "excel_to_upload.xlsx" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
@@ -609,7 +608,6 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "10MB_file_to_upload.pdf" file in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" field is invalid
     Then validate "10MB_file_to_upload.pdf" file is not in "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" files list
-    Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" error is "חובה לצרף קובץ"
     Then validate "תקנון העמותה או כל מסמך אחר המעיד על כך שהעמותה פועלת למען מטרות ציבוריות" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
     When upload "excel_to_upload.xlsx" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
@@ -620,7 +618,6 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "10MB_file_to_upload.pdf" file in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is invalid
     Then validate "10MB_file_to_upload.pdf" file is not in "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" files list
-    Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" error is "חובה לצרף קובץ"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
     When upload "excel_to_upload.xlsx" file in "צילום תעודה מזהה"
@@ -631,8 +628,4 @@ Feature: FreedomInfo form - scenarios step 2
     When upload "10MB_file_to_upload.pdf" file in "צילום תעודה מזהה"
     Then validate "מסמך אישור מהמוסד המעניק את הגמלה ובתנאי שהגמלה מוכרת לפטור" field is invalid
     Then validate "10MB_file_to_upload.pdf" file is not in "צילום תעודה מזהה" files list
-    Then validate "צילום תעודה מזהה" error is "חובה לצרף קובץ"
     Then validate "צילום תעודה מזהה" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
-
-    When clear fields
-

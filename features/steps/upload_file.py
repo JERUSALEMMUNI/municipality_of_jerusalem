@@ -112,7 +112,7 @@ def check_uploaded_files(context, file_name, widget_name):
 @then('validate "{file_name}" file is not in "{widget_name}" files list')
 def check_uploaded_files(context, file_name, widget_name):
     widget = context._config.current_page.widgets[widget_name]
-    assert not widget.validate_if_file_name_exist(file_name), "The file is not in the List"
+    assert not widget.validate_if_file_name_exist(file_name), "The file is in the List"
 
 
 @then('validate size of file "{file_size_index}" in "{widget_name}" in accepted')

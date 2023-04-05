@@ -81,13 +81,17 @@ class AccordionTable(BaseWidget):
         widget = self.create_widget_table_row(row, table_index)
         widget.upload_file(label, file)
 
-    def is_invalid(self, row, label, table_index=1):
+    def is_upload_invalid(self, row, label, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
-        return widget.is_invalid(label)
+        return widget.is_upload_invalid(label)
 
-    def is_valid(self, row, label, table_index=1):
+    def is_upload_valid(self, row, label, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
-        return widget.is_valid(label)
+        return widget.is_upload_valid(label)
+
+    def validate_if_file_name_exist(self, row, label, file_name, table_index=1):
+        widget = self.create_widget_table_row(row, table_index)
+        return widget.validate_if_file_name_exist(label, file_name)
 
     def validate_warning_message(self, row, label, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
@@ -164,6 +168,10 @@ class AccordionTable(BaseWidget):
     def delete_file(self, row, label, wanted_file_index, table_index=1):
         widget = self.create_widget_table_row(row, table_index)
         return widget.delete_file(label, wanted_file_index)
+
+    def delete_file_by_name(self, row, label, wanted_file_index, table_index=1):
+        widget = self.create_widget_table_row(row, table_index)
+        return widget.delete_file_by_name(label, wanted_file_index)
 
     def select_element(self, row, label, text, table_index=1):
         widget = self.create_widget_table_row(row, table_index)

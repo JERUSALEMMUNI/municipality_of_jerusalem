@@ -71,11 +71,15 @@ class AccordionRow(BaseWidget):
         upload = self.make_element_ready_to_action('UploadFile', label)
         upload.upload_file(file)
 
-    def is_invalid(self, label):
+    def is_upload_invalid(self, label):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.is_invalid
 
-    def is_valid(self, label):
+    def validate_if_file_name_exist(self, label, file_name):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.validate_if_file_name_exist(file_name)
+
+    def is_upload_valid(self, label):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.is_valid
 
@@ -146,6 +150,10 @@ class AccordionRow(BaseWidget):
     def delete_file(self, label, wanted_file_index):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.delete_file_by_index(wanted_file_index)
+
+    def delete_file_by_name(self, label, wanted_file_index):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.delete_file_by_name(wanted_file_index)
 
     def select_element(self, label, text):
         dropdown = self.make_element_ready_to_action('Dropdown', label)

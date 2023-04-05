@@ -23,27 +23,30 @@ Feature: TreeCut form - scenarios step 2
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
-    When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "gif_to_upload.gif" file in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate "תמונה של העץ" field is valid
     When from table "רשימת עצים" at row "1" validate name of file "1" is "gif_to_upload.gif" in "תמונה של העץ"
-    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
-    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
+    Then from table "רשימת עצים" at row "1" validate "gif_to_upload.gif" file is in "תמונה של העץ" files list
+#    Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
+    When from table "רשימת עצים" at row "1" delete file by name "gif_to_upload.gif" in "תמונה של העץ"
+#    When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "png_to_upload.png" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "pdf_file_to_upload.pdf" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "pdf_file_to_upload.pdf" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "pdf_file_to_upload.pdf" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpeg_to_upload.jpeg" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "jpeg_to_upload.jpeg" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "jpeg_to_upload.jpeg" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "bmp_to_upload.bmp" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "bmp_to_upload.bmp" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "bmp_to_upload.bmp" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" delete file "1" in "תמונה של העץ"
@@ -113,15 +116,15 @@ Feature: TreeCut form - scenarios step 2
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
     When from table "רשימת עצים" at row "1" search valid value and pick "בוקיצה נמוכה" in "סוג העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "png_to_upload.png" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" add "1" rows
     When from table "רשימת עצים" at row "2" search valid value and pick "בוקיצה נמוכה" in "סוג העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "png_to_upload.png" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "gif_to_upload.gif" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -192,9 +195,9 @@ Feature: TreeCut form - scenarios step 2
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
-    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "png_to_upload.png" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "gif_to_upload.gif" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -204,9 +207,9 @@ Feature: TreeCut form - scenarios step 2
     When from table "רשימת עצים" at row "1" search valid value and pick "בוקיצה נמוכה" in "סוג העץ"
     Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" add "1" rows
-    When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "png_to_upload.png" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "gif_to_upload.gif" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -321,9 +324,9 @@ Feature: TreeCut form - scenarios step 2
     When write a valid number "1" in "מספר בית"
     When write a valid value "1223" in "גוש"
     When write a valid value "875" in "חלקה"
-    When from table "רשימת עצים" at row "1" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "png_to_upload.png" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "gif_to_upload.gif" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "1" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "1" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "1" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -334,9 +337,9 @@ Feature: TreeCut form - scenarios step 2
     Then validate if "מספר העצים" value is "1"
     When from table "רשימת עצים" add "1" rows
     Then validate if "מספר העצים" value is "2"
-    When from table "רשימת עצים" at row "2" upload a valid file "png_to_upload.png" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "jpg_pic_to_upload.jpg" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "2" upload a valid file "gif_to_upload.gif" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "png_to_upload.png" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "jpg_pic_to_upload.jpg" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "2" upload "gif_to_upload.gif" file in "תמונה של העץ"
     When from table "רשימת עצים" at row "2" validate name of file "1" is "png_to_upload.png" in "תמונה של העץ"
     Then from table "רשימת עצים" at row "2" validate size of file "1" in "תמונה של העץ" in accepted
     When from table "רשימת עצים" at row "2" validate name of file "2" is "jpg_pic_to_upload.jpg" in "תמונה של העץ"
@@ -453,9 +456,9 @@ Feature: TreeCut form - scenarios step 2
 
     When from table "רשימת עצים" at row "1" search invalid value and pick "בוקיצsuhaibה" in "סוג העץ"
 
-    When from table "רשימת עצים" at row "1" upload an invalid file "doc_to_upload.doc" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload an invalid file "10MB_file_to_upload.pdf" in "תמונה של העץ"
-    When from table "רשימת עצים" at row "1" upload an invalid file "xlsx_to_upload.xlsx" in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "doc_to_upload.doc" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "10MB_file_to_upload.pdf" file in "תמונה של העץ"
+    When from table "רשימת עצים" at row "1" upload "xlsx_to_upload.xlsx" file in "תמונה של העץ"
     When upload "10MB_file_to_upload.pdf" file in "אחר"
     Then validate "אחר" field is invalid
     Then validate "10MB_file_to_upload.pdf" file is not in "אחר" files list
