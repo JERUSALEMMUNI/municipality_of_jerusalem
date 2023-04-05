@@ -326,31 +326,34 @@ def delete_file_from_accordion(context, table_name, row, wanted_file_index, widg
 @when('from table "{table_name}" at row "{row}" search valid value and pick "{option_value}" in "{widget_name}"')
 def write_time_in_table_from_column(context, table_name, row, option_value, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    if widget.choose_item(row, widget_name, option_value):
-        log.info(f'option [{option_value}] is selected correctly')
-        rep.add_label_to_step("Chosen option is selected correctly",
-                              f"Chosen option [{option_value}] is selected correctly")
-    else:
+    try:
+        if widget.choose_item(row, widget_name, option_value):
+            log.info(f'option [{option_value}] is selected correctly')
+            rep.add_label_to_step("Chosen option is selected correctly",
+                                  f"Chosen option [{option_value}] is selected correctly")
+        else:
 
-        rep.add_label_to_step('Option is not selected',
-                              'there was not a selection from list')
-        raise AssertionError('not in list')
+            rep.add_label_to_step('Option is not selected',
+                                  'there was not a selection from list')
+            raise AssertionError('not in list')
+    finally:
+        widget.close_dropdown_search(row, widget_name)
 
 
 @when('from table "{table_name}" at row "{row}" search invalid value and pick "{option_value}" in "{widget_name}"')
 def write_invalid_in_table_from_column(context, table_name, row, option_value, widget_name):
     widget = context._config.current_page.widgets[table_name]
-
-    if not widget.choose_item(row, widget_name, option_value):
-        log.info(f'option [{option_value}] is not selected')
-        rep.add_label_to_step("Chosen option is not in the list",
-                              f"Chosen option [{option_value}] is not selected")
-    else:
-        rep.add_label_to_step('Option is in the list',
-                              'there was  a selection from list')
-        raise AssertionError('the option valid')
-
-
+    try:
+        if not widget.choose_item(row, widget_name, option_value):
+            log.info(f'option [{option_value}] is not selected')
+            rep.add_label_to_step("Chosen option is not in the list",
+                                  f"Chosen option [{option_value}] is not selected")
+        else:
+            rep.add_label_to_step('Option is in the list',
+                                  'there was  a selection from list')
+            raise AssertionError('the option valid')
+    finally:
+        widget.close_dropdown_search(row, widget_name)
 
 @when('from table "{table_name}" at row "{row}" pick "{option_value}" from "{widget_name}"')
 @when('from table "{table_name}" at row "{row}" pick a valid "{option_value}" from "{widget_name}"')
@@ -553,9 +556,7 @@ def search_and_pick_in_search_field(context, table_name, row, option_value, widg
                                   f"Chosen option [{option_value}] from table {table_name} at row {row} is not found in list")
             raise AssertionError('Chosen option is not in list')
     finally:
-        pass
-        # todo : make a close function for dropdown search inside drpdownsearch widget
-        # widget.close()
+        widget.close_dropdown_search(row, widget_name)
 
 
 @when(
@@ -571,9 +572,7 @@ def search_and_pick_in_search_field(context, table_name, row, option_value, widg
             rep.add_label_to_step("Chosen Option is not in list",
                                   f"Chosen Option [{option_value}] from table {table_name} at row {row} is not found in list")
     finally:
-        pass
-        # todo : make a close function for dropdown search inside drpdownsearch widget
-        # widget.close()
+        widget.close_dropdown_search(row, widget_name)
 
 
 ''' ### multiple tables accordion steps ### '''
@@ -924,9 +923,7 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
                                   f"Chosen option [{option_value}] from parent {table_name} at table {sub_table_name} at row {row} is not found in list")
             raise AssertionError('Chosen option is not in list')
     finally:
-        pass
-        # todo : make a close function for dropdown search inside drpdownsearch widget
-        # widget.close()
+        widget.close_dropdown_search(row, widget_name)
 
 
 @when(
@@ -944,6 +941,4 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
             rep.add_label_to_step("Chosen Option is not in list",
                                   f"Chosen Option [{option_value}] from parent {table_name} at table {sub_table_name} at row {row} is not found in list")
     finally:
-        pass
-        # todo : make a close function for dropdown search inside drpdownsearch widget
-        # widget.close()
+        widget.close_dropdown_search(row, widget_name)

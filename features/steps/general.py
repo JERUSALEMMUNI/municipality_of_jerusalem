@@ -288,7 +288,7 @@ def validate_dialog(context, widget_name):
 @Then('from table "{table_name}" at row "{row}" validate the drop "{widget_name}" is default')
 def validate_is_empty(context, table_name, row, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    if not widget.is_default_drop(row, widget_name):
+    if widget.is_default_drop(row, widget_name):
         log.info(f'its default')
         rep.add_label_to_step("nothing was selected", "(default)")
     else:

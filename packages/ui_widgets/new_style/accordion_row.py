@@ -228,3 +228,7 @@ class AccordionRow(BaseWidget):
     def is_default_upload(self, label):
         empty = self.make_element_ready_to_action('UploadFile', label)
         return empty.is_default
+
+    def close_dropdown_search(self, label):
+        dropdown_search = self.make_element_ready_to_action('DropdownSearch', label)
+        dropdown_search.close()

@@ -240,3 +240,7 @@ class AccordionTable(BaseWidget):
     def is_default_upload(self, row, label):
         widget = self.create_widget_table_row(row)
         return widget.is_default_upload(label)
+
+    def close_dropdown_search(self, row, label):
+        widget = self.create_widget_table_row(row)
+        widget.close_dropdown_search(label)
