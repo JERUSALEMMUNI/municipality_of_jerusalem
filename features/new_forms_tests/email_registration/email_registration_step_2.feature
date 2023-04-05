@@ -237,7 +237,6 @@ Feature: EmailRegistration form - scenarios step 2
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     When clear fields
 
-  @darweesh
   Scenario: TC_EMAILREG_09 תצהיר ושליחה כאשר מגיש הבקשה מיופה כח ודירת שותפים
 #    When "email" Authentication using email address "@TEMP_EMAIL_ADDRESS"
 #    When click on "שמור" button
@@ -344,27 +343,27 @@ Feature: EmailRegistration form - scenarios step 2
 
     When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then validate "צילום תעודת זהות + ספח" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
 
     When upload "zip_to_upload.zip" file in "תעודת התאגדות"
     Then validate "תעודת התאגדות" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "תעודת התאגדות" error is "חובה לצרף קובץ"
     Then validate "תעודת התאגדות" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
     When upload "10MB_file_to_upload.pdf" file in "ייפוי כוח לקבלת מידע בשם התאגיד"
     Then validate "אחר" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "ייפוי כוח לקבלת מידע בשם התאגיד" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "ייפוי כוח לקבלת מידע בשם התאגיד" files list
     Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" error is "חובה לצרף קובץ"
     Then validate "ייפוי כוח לקבלת מידע בשם התאגיד" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
 
 
     When upload "zip_to_upload.zip" file in "אחר"
     Then validate "אחר" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
@@ -375,26 +374,26 @@ Feature: EmailRegistration form - scenarios step 2
 
     When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then validate "צילום תעודת זהות + ספח" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "צילום תעודת זהות + ספח" error is "חובה לצרף קובץ"
     Then validate "צילום תעודת זהות + ספח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
     When upload "zip_to_upload.zip" file in "תעודת זהות מיופה כוח"
     Then validate "תעודת זהות מיופה כוח" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "תעודת זהות מיופה כוח" error is "חובה לצרף קובץ"
     Then validate "תעודת זהות מיופה כוח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
 
     When upload "zip_to_upload.zip" file in "ייפוי כוח"
     Then validate "ייפוי כוח" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "ייפוי כוח" error is "חובה לצרף קובץ"
     Then validate "ייפוי כוח" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
     When upload "zip_to_upload.zip" file in "אחר"
     Then validate "אחר" field is invalid
-    Then validate "zip_to_upload.zip" file is in "צילום תעודת זהות + ספח" files list
+    Then validate "zip_to_upload.zip" file is not in "צילום תעודת זהות + ספח" files list
     Then validate "אחר" error is "חובה לצרף קובץ"
     Then validate "אחר" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
 
