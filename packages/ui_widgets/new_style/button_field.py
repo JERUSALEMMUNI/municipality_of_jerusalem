@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -29,8 +31,7 @@ class ButtonField(BaseWidget):
             EC.element_to_be_clickable(self.web_element))
 
     def click_button(self):
-        self.get_element()
-        self.web_element.click()
+        self.get_element().click()
         log.debug(f'{self.label} button clicked')
 
     def click_button_tyota(self):
