@@ -109,15 +109,17 @@ class Dropdown(BaseWidget):
     def close(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.close).get_attribute('aria-expanded')
         # ToDo : when the list is not open , that return null , when try to do the lower for the null its make a broken
-        if dropDown_open.lower() == 'true':
-            self.web_element.click()
-            # TODO : wait to close (Amr)
-            # if WebDriverWait(self.web_element, 10).until(
-            #         EC.visibility_of_element_located(By.XPATH(dropDown_open))) == 'false':
-            return True
-            # else:
-            #     log.info("the list not closed")
-            #     return False
+        if dropDown_open is not None:
+            if dropDown_open.lower() == 'true':
+                self.web_element.click()
+                # TODO : wait to close (Amr)
+                # if WebDriverWait(self.web_element, 10).until(
+                #         EC.visibility_of_element_located(By.XPATH(dropDown_open))) == 'false':
+                return True
+                # else:
+                #     log.info("the list not closed")
+                #     return False
+            return False
         return False
 
     @property

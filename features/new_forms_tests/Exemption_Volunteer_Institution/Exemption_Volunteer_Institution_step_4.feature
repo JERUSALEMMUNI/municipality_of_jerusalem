@@ -9,7 +9,7 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
 
   Background:
     Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "פרוט נכסים"
-
+@wisam
   Scenario: EXCEPTVOLUNT_04 הזנת ערכים תקינים ב"פירוט נכסים" נכס יחיד
     When from table "פרוט נכסים" at row "1" write a valid value "1234567890" in "זיהוי נכס או מס' חשבון ארנונה"
     When from table "פרוט נכסים" at row "1" search valid value and pick "א טברי" in search field "רחוב"
@@ -61,13 +61,13 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 4
 
   Scenario: EXCEPTVOLUNT_11 הזנת ערכים שגויים ב"פירוט נכסים"
     When from table "פרוט נכסים" at row "1" write an invalid value "qwertyuio" in "זיהוי נכס או מס' חשבון ארנונה"
-    Then from table "פרוט נכסים" at row "1" validate if "זיהוי נכס או מס' חשבון ארנונה" value is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "זיהוי נכס או מס' חשבון ארנונה" text is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" search invalid value and pick "zz" in search field "רחוב"
     When from table "פרוט נכסים" at row "1" write an invalid number "tt" in "מס' בית"
-    Then from table "פרוט נכסים" at row "1" validate if "מס' בית" value is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "מס' בית" text is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" write an invalid value "3323" in "שטח החיוב במ"ר"
-    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" value is "יש להזין ספרות בלבד"
+    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" text is "יש להזין ספרות בלבד"
     When from table "פרוט נכסים" at row "1" write an invalid value "33223" in "סכום הארנונה הנדרש"
-    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" value is "סכום הארנונה הנדרש"
+    Then from table "פרוט נכסים" at row "1" validate if "שטח החיוב במ"ר" text is "סכום הארנונה הנדרש"
     When from table "פרוט נכסים" at row "1" write an invalid value "דדד" in textarea of "סוג הפעילות המפורט בנכס"
     Then from table "פרוט נכסים" at row "1" validate textarea "סוג הפעילות המפורט בנכס" error is "שפת קלט לא תקינה"

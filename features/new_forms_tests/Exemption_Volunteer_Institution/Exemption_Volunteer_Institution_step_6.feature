@@ -14,8 +14,7 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 6
   @wisam
   Scenario: EXCEPTVOLUNT_07 "תצהיר ושליחת הטופס"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
-  #ToDo: we have another textarea hiden with the same name and same prameters
-#    And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
+    And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"
     And check the captcha box of "אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"
     #When click on "שמור" button
     #When click on "שמור טיוטה" button tyota

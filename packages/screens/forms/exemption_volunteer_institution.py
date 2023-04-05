@@ -107,12 +107,7 @@ class ExemptionVolunteerInstitution(BasePage):
         self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox',
                                                                                                  style=self.style,
                                                                                                  label="אני מודע/ת ומסכים/ה לכך")
-        self.widgets['הערות'] = create_widget('TextAreaField', style=self.style, label='הערות')
-
-        # self.widgets['הערות'] = {
-        #     'תצהיר ושליחה': create_widget('TextAreaField', style=self.style, label='הערות',
-        #                                   step_number=StepNumber.SIXTH),
-        # }
+        self.widgets['הערות'] = create_widget('TextAreaField', style=self.style, label='הערות', index=2)
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי מוסד":
@@ -178,7 +173,7 @@ class ExemptionVolunteerInstitution(BasePage):
     def fill_fourth_page(self):
         self.widgets.current_step = 'פרוט נכסים'
         self.widgets["פרוט נכסים"].set_text_field("1", "זיהוי נכס או מס' חשבון ארנונה", "1234567890")
-        self.widgets["פרוט נכסים"].search_and_pick_first_element_and_validate("1", "רחוב", "א טברי")
+        self.widgets["פרוט נכסים"].search_and_pick_first_element_and_validate("רחוב", "1", "א טברי")
         self.widgets["פרוט נכסים"].set_text_field("1", "מס' בית", "2")
         self.widgets["פרוט נכסים"].set_text_field("1", 'שטח החיוב במ"ר', "123")
         self.widgets["פרוט נכסים"].set_text_field("1", "סכום הארנונה הנדרש", "1222")
