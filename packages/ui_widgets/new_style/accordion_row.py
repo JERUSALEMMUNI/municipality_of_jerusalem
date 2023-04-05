@@ -71,11 +71,15 @@ class AccordionRow(BaseWidget):
         upload = self.make_element_ready_to_action('UploadFile', label)
         upload.upload_file(file)
 
-    def is_invalid(self, label):
+    def is_upload_invalid(self, label):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.is_invalid
 
-    def is_valid(self, label):
+    def validate_if_file_name_exist(self, label, file_name):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.validate_if_file_name_exist(file_name)
+
+    def is_upload_valid(self, label):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.is_valid
 
@@ -85,7 +89,7 @@ class AccordionRow(BaseWidget):
 
     def choose_item(self, label, txt):
         select = self.make_element_ready_to_action('DropdownSearch', label)
-        select.search_and_pick_first_element_and_validate(txt)
+        return select.search_and_pick_first_element_and_validate(txt)
 
     def validate_text_is_valid(self, label):
         text_field = self.make_element_ready_to_action('TextField', label)
@@ -146,6 +150,10 @@ class AccordionRow(BaseWidget):
     def delete_file(self, label, wanted_file_index):
         upload = self.make_element_ready_to_action('UploadFile', label)
         return upload.delete_file_by_index(wanted_file_index)
+
+    def delete_file_by_name(self, label, wanted_file_index):
+        upload = self.make_element_ready_to_action('UploadFile', label)
+        return upload.delete_file_by_name(wanted_file_index)
 
     def select_element(self, label, text):
         dropdown = self.make_element_ready_to_action('Dropdown', label)
@@ -212,3 +220,11 @@ class AccordionRow(BaseWidget):
     def get_search_result_if_empty(self, label):
         dropdown_search = self.make_element_ready_to_action('DropdownSearch', label)
         return dropdown_search.get_search_result_if_empty()
+
+    def is_default_drop(self, label):
+        empty = self.make_element_ready_to_action('DropdownSearch', label)
+        return empty.is_default
+
+    def is_default_upload(self, label):
+        empty = self.make_element_ready_to_action('UploadFile', label)
+        return empty.is_default

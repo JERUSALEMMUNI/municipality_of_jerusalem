@@ -18,8 +18,10 @@ Feature: TreeCut form - scenarios step 1
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "10215" in "מספר בית"
-#    When click on "המשך" button
-    When clear fields
+    When click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
+#    When clear fields
 
 
   Scenario: TC_TREECUT_07 - Entering incorrect values for the "Details of the applicant" fields
@@ -45,5 +47,5 @@ Feature: TreeCut form - scenarios step 1
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
     When write a valid number "54332326" in "מספר בית"
-    When clear fields
+#    When clear fields
 

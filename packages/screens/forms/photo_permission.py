@@ -94,12 +94,12 @@ class PhotoPermission(BasePage):
         self.widgets["המשך"].click_button()
 
     def navigate_to_third_page(self):
-        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "תאריך", "11112023")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text_field("1", "תאריך", "11112023")
         self.widgets["פרטי המיקום ומועדי הצילומים"].select_time("1", "שעת התחלה", "11:11")
         self.widgets["פרטי המיקום ומועדי הצילומים"].select_time("1", "שעת סיום", "22:11")
-        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "מספר אנשי צוות", "111")
-        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "שם האתר", "ירושלים")
-        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text("1", "כתובת", "גדגדכ")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text_field("1", "מספר אנשי צוות", "111")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text_field("1", "שם האתר", "ירושלים")
+        self.widgets["פרטי המיקום ומועדי הצילומים"].set_text_field("1", "כתובת", "גדגדכ")
         self.widgets["פרטי המיקום ומועדי הצילומים"].choose_button_from_value("1", "חסימת כביש", "נושמת")
         self.widgets["האם יש חיבור לחשמל/גנרטור"].choose_value("לא")
         self.widgets["פירוט שימוש באמצעי הפקה, אפקטים שונים (כגון ירי/פיצוץ)"].set_text(

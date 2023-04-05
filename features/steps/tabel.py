@@ -228,32 +228,71 @@ def remove_item_from_table(context, table_name, items):
     widget.remove_item(items)
 
 
-@when('from table "{table_name}" at row "{row}" upload a valid file "{text}" in "{widget_name}"')
-def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+@when('from table "{table_name}" at row "{row}" upload "{file_path}" file in "{widget_name}"')
+def upload_file_in_table(context, table_name, row, file_path, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
+    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
     widget.upload_file(row, widget_name, file)
-    if widget.is_valid(row, widget_name):
-        log.info("we don't have a warning message")
-        rep.add_label_to_step("File type is accepted", "File type is accepted")
-    elif widget.validate_warning_message(row, widget_name):
-        log.info(f"This file is considered a valid file but it appeared as invalid")
-        rep.add_label_to_step("failure reason", f"This file is considered a valid file but it appeared as invalid")
-        raise AssertionError("File type is not accepted")
 
 
-@when('from table "{table_name}" at row "{row}" upload an invalid file "{text}" in "{widget_name}"')
-def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+@then('from table "{table_name}" at row "{row}" validate "{widget_name}" field is valid')
+def choose_in_search(context, table_name, row, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
-    widget.upload_file(row, widget_name, file)
-    if widget.is_invalid(row, widget_name):
-        log.info(f"This file is considered an invalid file and this correct")
-        rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
-    elif widget.validate_warning_message(row, widget_name):
-        log.info(f"This file is considered an invalid file but it appeared as valid")
-        rep.add_label_to_step("File type is not accepted", "File type is not accepted")
-        raise AssertionError("File type is not accepted")
+    assert widget.is_upload_valid(row, widget_name), f"This file from table {table_name} at row {row} is invalid!"
+
+
+@then('from table "{table_name}" at row "{row}" validate "{widget_name}" field is invalid')
+def choose_in_search(context, table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    assert widget.is_upload_invalid(row, widget_name), f"This file from table {table_name} at row {row} is valid!"
+
+
+@then('from table "{table_name}" at row "{row}" validate "{file_name}" file is in "{widget_name}" files list')
+def check_uploaded_files(context, table_name, row, file_name, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    assert widget.validate_if_file_name_exist(row, widget_name,
+                                              file_name), f"The file from table {table_name} at row {row} is not in the List"
+
+
+@then('from table "{table_name}" at row "{row}" validate "{file_name}" file is not in "{widget_name}" files list')
+def check_uploaded_files(context, table_name, row, file_name, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    assert not widget.validate_if_file_name_exist(row, widget_name,
+                                                  file_name), f"The file from table {table_name} at row {row} in the List"
+
+
+@when('from table "{table_name}" at row "{row}" delete file by name "{wanted_file_index}" in "{widget_name}"')
+def choose_in_search(context, table_name, row, wanted_file_index, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    widget.delete_file_by_name(row, widget_name, wanted_file_index)
+
+
+# @when('from table "{table_name}" at row "{row}" upload a valid file "{text}" in "{widget_name}"')
+# def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+#     widget = context._config.current_page.widgets[table_name]
+#     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
+#     widget.upload_file(row, widget_name, file)
+#     if widget.is_valid(row, widget_name):
+#         log.info("we don't have a warning message")
+#         rep.add_label_to_step("File type is accepted", "File type is accepted")
+#     elif widget.validate_warning_message(row, widget_name):
+#         log.info(f"This file is considered a valid file but it appeared as invalid")
+#         rep.add_label_to_step("failure reason", f"This file is considered a valid file but it appeared as invalid")
+#         raise AssertionError("File type is not accepted")
+
+
+# @when('from table "{table_name}" at row "{row}" upload an invalid file "{text}" in "{widget_name}"')
+# def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+#     widget = context._config.current_page.widgets[table_name]
+#     file = os.path.join(config.utilities_folder, 'files_to_upload', f'{text}')
+#     widget.upload_file(row, widget_name, file)
+#     if widget.is_invalid(row, widget_name):
+#         log.info(f"This file is considered an invalid file and this correct")
+#         rep.add_label_to_step("failure reason", f"This file is considered an invalid file and this correct")
+#     elif widget.validate_warning_message(row, widget_name):
+#         log.info(f"This file is considered an invalid file but it appeared as valid")
+#         rep.add_label_to_step("File type is not accepted", "File type is not accepted")
+#         raise AssertionError("File type is not accepted")
 
 
 @when(
@@ -284,10 +323,33 @@ def delete_file_from_accordion(context, table_name, row, wanted_file_index, widg
     widget.delete_file(row, widget_name, wanted_file_index)
 
 
-@when('from table "{table_name}" at row "{row}" pick "{text}" in "{widget_name}"')
-def write_time_in_table_from_column(context, table_name, row, text, widget_name):
+@when('from table "{table_name}" at row "{row}" search valid value and pick "{option_value}" in "{widget_name}"')
+def write_time_in_table_from_column(context, table_name, row, option_value, widget_name):
     widget = context._config.current_page.widgets[table_name]
-    widget.choose_item(row, widget_name, text)
+    if widget.choose_item(row, widget_name, option_value):
+        log.info(f'option [{option_value}] is selected correctly')
+        rep.add_label_to_step("Chosen option is selected correctly",
+                              f"Chosen option [{option_value}] is selected correctly")
+    else:
+
+        rep.add_label_to_step('Option is not selected',
+                              'there was not a selection from list')
+        raise AssertionError('not in list')
+
+
+@when('from table "{table_name}" at row "{row}" search invalid value and pick "{option_value}" in "{widget_name}"')
+def write_invalid_in_table_from_column(context, table_name, row, option_value, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+
+    if not widget.choose_item(row, widget_name, option_value):
+        log.info(f'option [{option_value}] is not selected')
+        rep.add_label_to_step("Chosen option is not in the list",
+                              f"Chosen option [{option_value}] is not selected")
+    else:
+        rep.add_label_to_step('Option is in the list',
+                              'there was  a selection from list')
+        raise AssertionError('the option valid')
+
 
 
 @when('from table "{table_name}" at row "{row}" pick "{option_value}" from "{widget_name}"')

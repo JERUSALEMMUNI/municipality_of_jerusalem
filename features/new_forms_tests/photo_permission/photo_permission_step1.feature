@@ -17,7 +17,7 @@ Feature: PhotoPermission form - scenarios step 1
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill "02-8078687" as valid value in "טלפון קווי"
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
-  # When click on "המשך" button
+#   When click on "המשך" button
   # When click on "email" option
   # When 1st wait for "email" that contains pin code and link
   # When set pin code "email"

@@ -28,6 +28,7 @@ class DropdownSearch(Dropdown):
             return return_result
         else:
             log.info("No Result Found")
+            return False
 
     def wait_list_streets(self):
         try:
@@ -110,4 +111,4 @@ class DropdownSearch(Dropdown):
 
     @property
     def is_default(self):
-        return DropdownSearchLocators.empty == 'בחר'
+        return self.web_element.find_element(*DropdownSearchLocators.empty).text == 'בחר'
