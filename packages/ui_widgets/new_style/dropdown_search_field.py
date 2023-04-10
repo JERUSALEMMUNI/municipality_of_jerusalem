@@ -58,7 +58,7 @@ class DropdownSearch(Dropdown):
             if text in element:
                 element_appearance += 1
                 if element_appearance == 4:
-                    chosenElement = driver.find_element(*self.get_locator().chosen_element(text))
+                    chosenElement = driver.find_element(*DropdownSearchLocators.chosen_element(text))
                     return chosenElement.text, element
 
     def get_locator(self):

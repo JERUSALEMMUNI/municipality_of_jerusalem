@@ -9,8 +9,6 @@ class DropdownSearchLocators:
     search_field = (By.XPATH, ".//div[contains(@class,'filter-container')]/input")
     empty = (By.XPATH, "./div/div/following-sibling::span")
 
-    @property
-    def chosen_element(self):
-        def _chosen_element(text):
-            return By.XPATH, f"//li[@aria-label='{text}']"
-        return _chosen_element
+    @staticmethod
+    def chosen_element(text):
+        return By.XPATH, f"//li[@aria-label='{text}']"

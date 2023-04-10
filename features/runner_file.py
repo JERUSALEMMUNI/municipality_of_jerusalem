@@ -52,7 +52,7 @@ def setup():
     feature_path = opt_dict['feature_file_path'].replace('\\', '/')
     runner.Context.feature_file_path = feature_path
     runner.Context.feature_file_name = Path(runner.Context.feature_file_path).stem
-    runner.Context.result_folder_path = runner.Context.opt_dict['results_path']
+    runner.Context.result_folder_path = Path(runner.Context.opt_dict['results_path'])
     runner.Context.failure_screenshot = f'{runner.Context.result_folder_path}/screenshot_after_failure.png'
 
     copy_history_aside_if_exist(runner.Context.result_folder_path)
@@ -79,28 +79,29 @@ def setup():
 
 def init_logger_reporter(opt_dict):
     # Init log
+    res_path = runner.Context.result_folder_path
     log_files = [
         {'levelname': 'DEBUG',
-         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_debug.txt'),
+         'path': res_path / f'{runner.Context.feature_file_name}_debug.txt',
          'summary': False},
         {'levelname': 'INFO',
-         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_info.txt'),
+         'path': res_path / f'{runner.Context.feature_file_name}_info.txt',
          'summary': False, 'use_for_collect': True},
         {'levelname': 'ERROR',
-         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_error.txt'),
+         'path': res_path / f'{runner.Context.feature_file_name}_error.txt',
          'tempfile': True, 'log_same_level': True},
         {'levelname': 'WARNING',
-         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_warning.txt'),
+         'path': res_path / f'{runner.Context.feature_file_name}_warning.txt',
          'tempfile': True, 'log_same_level': True},
         {'levelname': 'CRITICAL',
-         'path': os.path.join(runner.Context.result_folder_path, f'{runner.Context.feature_file_name}_critical.txt'),
+         'path': res_path / f'{runner.Context.feature_file_name}_critical.txt',
          'tempfile': True, 'log_same_level': True}]
 
     logger.set_logger(log_files, debug_to_stdout=opt_dict.get('verbose', False))
     log.info('Starting - Logger created - start logging...')
     runner.Context.log_files = log_files
 
-    rep.set_hdlr(runner.Context.result_folder_path, runner.Context.feature_file_name, create_fail_report=True)
+    rep.set_hdlr(res_path, runner.Context.feature_file_name, create_fail_report=True)
     rep.set_headers_title(runner.Context.feature_file_name)
 
 

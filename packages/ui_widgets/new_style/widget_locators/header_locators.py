@@ -10,14 +10,9 @@ class HeaderLocators:
     rules = (By.XPATH, "//div[contains(@class,'lib-header__form-explanation')]/div/div[2]")
     language_parent = (By.XPATH, "//parent::li[contains(@class,'active')]")
 
-
-    @property
-    def language(self):
-        def _language(language):
-            if language == 'ar':
-                return By.XPATH, f"//a[contains(text(),'العربية')]"
-            else:
-                return By.XPATH, f"//a[contains(text(),'עברית')]"
-        return _language
-
-
+    @staticmethod
+    def language(language):
+        if language == 'ar':
+            return By.XPATH, f"//a[contains(text(),'العربية')]"
+        else:
+            return By.XPATH, f"//a[contains(text(),'עברית')]"

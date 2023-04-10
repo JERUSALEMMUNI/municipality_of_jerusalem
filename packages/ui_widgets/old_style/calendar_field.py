@@ -34,7 +34,7 @@ class CalendarField(BaseWidget):
         year_selected = Select(select_year)
         year_selected.select_by_visible_text(year)
         x = WebDriverWait(self.web_element, 10).until(
-            EC.element_to_be_clickable((self.get_locator().day(day))))
+            EC.element_to_be_clickable((CalenderLocators.day(day))))
 
         x.click()
         WebDriverWait(self.web_element, 10).until(

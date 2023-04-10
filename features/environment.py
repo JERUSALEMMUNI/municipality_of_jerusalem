@@ -91,21 +91,9 @@ def before_scenario(context, scenario):
     # if there is a failed step in the scenario, the scenario will continue
     scenario.continue_after_failed_step = True
     context._config.current_scenario = scenario
-    if context.user_data['couldnt_reach_next_page'] == True:
-        if context.user_data['counter_per_scenario'] == 0:
-            context.user_data['counter_per_scenario'] += 1
-            scenario.skip(reason='Email Authentication error')
-        else:
-            context.user_data['couldnt_reach_next_page'] = None
-            context.user_data['counter_per_scenario'] = 0
-
 
 
 def before_step(context, step):
-    if context.user_data['counter_per_scenario'] == 0:
-        if context.user_data['couldnt_reach_next_page'] == True:
-            raise TimeoutError('Couldnt reach next step')
-
     log.info(f'----- Start Step - {step.name} -----')
 
 
@@ -115,23 +103,34 @@ def after_step(context, step):
             context._config.current_page.widgets.current_step = context._config.current_page.widgets.get('page_steps').get_step_name()
         except:
             context._config.current_page.widgets.current_step = ''
-    step_pass = True
-    if step.status == Status.failed:
-        step_pass = False
+
+    if step.status != Status.passed:
         log.exception(f'Exception type: {type(step.exception)}\n'
                       f'Exception: {step.exception}\n'
                       f'Exc_Traceback: {step.exc_traceback.tb_frame.f_locals["error"]}')
+        take_screenshot_of_failure(context, step)
+        skip_if_prereq_failed(context, step)
 
-    if not step_pass:
-        log.debug(f'Take ScreenShot after failure for step {step.name}')
-        screenshot = context.failure_screenshot
-        if context.user_data.get('screenshot'):
-            screenshot = context.user_data.get('screenshot')
-            context.user_data['screenshot'] = None
-        else:
-            context._config.driver.save_screenshot(screenshot)
-        rep.add_image_to_step(screenshot, "ScreenShot After Failure")
     log.info(f'----- End Step - {step.name} -----')
+
+
+def skip_if_prereq_failed(context, step):
+    if step.keyword.lower() == 'given' and 'and reach step' in step.name:
+        log.info('skip the rest of scenario')
+        rep.add_label_to_step('skip scenario', 'cannot continue with this scenario with failed prerequisite')
+        context._config.current_scenario.should_skip = True
+        context._config.current_scenario.skip(reason='Given Prerequisite step failed')
+
+
+def take_screenshot_of_failure(context, step):
+    log.debug(f'Take ScreenShot after failure for step {step.name}')
+    screenshot = context.failure_screenshot
+    if context.user_data.get('screenshot'):
+        screenshot = context.user_data.get('screenshot')
+        context.user_data['screenshot'] = None
+    else:
+        context._config.driver.save_screenshot(screenshot)
+    rep.add_image_to_step(screenshot, "ScreenShot After Failure")
 
 
 def after_scenario(context, scenario):
@@ -140,37 +139,44 @@ def after_scenario(context, scenario):
     current_scenario_index = context._config.current_scenario_index
     scenario_index = current_feature.scenarios.index(current_scenario)
     current_scenario_index = scenario_index if current_scenario_index < scenario_index else current_scenario_index
-    if scenario.status.name != 'passed':
-        log_debug_file = [f['path'] for f in context.log_files if f['levelname'] == 'DEBUG'][0]
-        with open(log_debug_file, 'r', encoding='utf-16') as e:
-            scenario_log = e.readlines()
-        log_start_index = scenario_log.index(
-            [i for i in reversed(scenario_log) if scenario.starting_scenario_msg in i][0])
 
-        scenario_log_file = log_debug_file.replace('.txt', f'{uuid.uuid4().hex}.txt')
-        with open(scenario_log_file, 'w', encoding='utf-16') as e:
-            e.write('\n'.join(scenario_log[log_start_index:-1]))
-        try:
-            rep.add_text_file_to_step(scenario_log_file, 'scenario log')
-        except PermissionError as e:
-            log.warning(f'{scenario_log_file} - {e.args[0]}')
+    if scenario.status != Status.passed:
+        attach_log_file_in_failure(context, scenario)
 
         for step in scenario.steps:
+            # if one of steps end with exception, a rerun will be requested with refresh to page
             if step.exception and type(step.exception) is not AssertionError:
                 context.screens_manager.screens = {}
                 context._config.current_page = None
                 break
         else:
-            if (current_scenario_index + 1) < len(current_feature.scenarios) and current_scenario.name == \
-                    current_feature.scenarios[current_scenario_index + 1].name:
-                current_feature.scenarios.pop(current_scenario_index + 1)
+            clear_duplicated_scenario(current_feature, current_scenario, current_scenario_index)
     else:
-        if (current_scenario_index + 1) < len(current_feature.scenarios) \
-                and current_scenario.name == current_feature.scenarios[current_scenario_index + 1].name:
-            current_feature.scenarios.pop(current_scenario_index + 1)
+        clear_duplicated_scenario(current_feature, current_scenario, current_scenario_index)
 
     context._config.current_scenario_index = current_scenario_index + 1
     log.info(f'----- End Scenario - {scenario.name} -----')
+
+
+def clear_duplicated_scenario(current_feature, current_scenario, current_scenario_index):
+    if (current_scenario_index + 1) < len(current_feature.scenarios) \
+            and current_scenario.name == current_feature.scenarios[current_scenario_index + 1].name:
+        current_feature.scenarios.pop(current_scenario_index + 1)
+
+
+def attach_log_file_in_failure(context, scenario):
+    log_debug_file = [f['path'] for f in context.log_files if f['levelname'] == 'DEBUG'][0]
+    with open(log_debug_file, 'r', encoding='utf-16') as e:
+        scenario_log = e.readlines()
+    log_start_index = scenario_log.index(
+        [i for i in reversed(scenario_log) if scenario.starting_scenario_msg in i][0])
+    scenario_log_file = log_debug_file.replace('.txt', f'{uuid.uuid4().hex}.txt')
+    with open(scenario_log_file, 'w', encoding='utf-16') as e:
+        e.write('\n'.join(scenario_log[log_start_index:-1]))
+    try:
+        rep.add_text_file_to_step(scenario_log_file, 'scenario log')
+    except PermissionError as e:
+        log.warning(f'{scenario_log_file} - {e.args[0]}')
 
 
 def after_all(context):

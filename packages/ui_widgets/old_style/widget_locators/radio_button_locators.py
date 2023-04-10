@@ -6,8 +6,6 @@ class RadioButtonLocators:
     is_invalid = (By.XPATH, "./p-radiobutton")
     list = (By.XPATH, "./p-radiobutton/label")
 
-    @property
-    def get_item(self):
-        def _get_item(selected_item):
-            return By.XPATH, f"./p-radiobutton//label[contains(text(),'{selected_item}')]"
-        return _get_item
+    @staticmethod
+    def get_item(selected_item):
+        return By.XPATH, f"./p-radiobutton//label[contains(text(),'{selected_item}')]"

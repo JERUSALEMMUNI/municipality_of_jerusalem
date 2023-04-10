@@ -12,8 +12,6 @@ class DropdownLocators:
     close = (By.XPATH, ".//..//input")
     no_label = "/../../../following-sibling::more-info-objection//p-dropdownitem"
 
-    @property
-    def select(self):
-        def _select(pre):
-            return By.XPATH, f"//li[@aria-label='{pre}']"
-        return _select
+    @staticmethod
+    def select(pre):
+        return By.XPATH, f"//li[@aria-label='{pre}']"

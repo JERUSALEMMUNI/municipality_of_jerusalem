@@ -13,29 +13,18 @@ class DropdownSearchSelectBoxLocators:
     element_clear = (By.XPATH, ".//div[@role='checkbox']")
     check_list_open = (By.XPATH, "//div[contains(@class,'ui-multiselect-items')]")
 
+    @staticmethod
+    def chosen_option(number):
+        return By.XPATH, f"./following-sibling::div/div[{number}]"
+
+    @staticmethod
+    def selected_option(option):
+        return By.XPATH, f"//li[@aria-label='{option}']"
+
+    @staticmethod
+    def selected_options(label):
+        return By.XPATH, f"//label[contains(text(),'{label}')]/following-sibling::p-multiselect"
 
     @property
-    def chosen_option(self):
-        def _chosen_option(number):
-            return By.XPATH, f"./following-sibling::div/div[{number}]"
-        return _chosen_option
-
-    @property
-    def selected_option(self):
-        def _selected_option(option):
-            return By.XPATH, f"//li[@aria-label='{option}']"
-        return _selected_option
-
-
-    @property
-    def selected_options(self):
-        def _selected_options(label):
-            return By.XPATH, f"//label[contains(text(),'{label}')]/following-sibling::p-multiselect"
-        return _selected_options
-
-    @property
-    def click_value(self):
-        def _click_value(text):
-            return By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]"
-        return _click_value
-
+    def click_value(text):
+        return By.XPATH, f"(.//li/span[contains(text(),'{text}')]/parent::li)[1]"

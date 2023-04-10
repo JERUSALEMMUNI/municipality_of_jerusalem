@@ -25,14 +25,14 @@ class JMChromeWebDriver(ChromeDriver):
         chrome_options.add_argument(f'download.default_directory={config.temp_folder}')
         # chrome_options.add_argument('--headless')
         kwargs['chrome_options'] = chrome_options
-        super().__init__(*args, **kwargs)
+        super(JMChromeWebDriver, self).__init__(*args, **kwargs)
         self.maximize_window()
-        self.implicitly_wait(WaitInterval.MEDIUM.value)
+        self.implicitly_wait(WaitInterval.SHORT.value)
 
     def find_elements(self, by=By.XPATH, value=None):
         try:
             log.debug(f"Finding elements by {by}: {value}")
-            return super().find_elements(by, value)
+            return super(JMChromeWebDriver, self).find_elements(by, value)
         except NoSuchElementException as e:
             log.exception(e)
             raise ce.MJRunTimeError("Cannot Find Widgets in Page")
@@ -47,7 +47,7 @@ class JMChromeWebDriver(ChromeDriver):
         try:
             log.debug(f"Finding element by {by}: {value}")
             # Call the superclass's find_element method to actually find the element on the page
-            return super().find_element(by, value)
+            return super(JMChromeWebDriver, self).find_element(by, value)
         except NoSuchElementException as e:
             log.exception(e)
             raise ce.MJRunTimeError("Cannot Find Widget in Page")

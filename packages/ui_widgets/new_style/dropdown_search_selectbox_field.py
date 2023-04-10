@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from infra import logger, enums
 from ui_widgets.new_style.dropdown_search_field import DropdownSearch
+from ui_widgets.new_style.widget_locators.dropdown_search_locators import DropdownSearchLocators
 from ui_widgets.new_style.widget_locators.dropdown_search_selectbox_locators import DropdownSearchSelectBoxLocators
 
 log = logger.get_logger(__name__)
@@ -13,9 +14,8 @@ class DropdownSearchSelectBox(DropdownSearch):
         self.path_locator = path_locator
 
     def validate_selected_option(self, option):
-        obj = DropdownSearchSelectBoxLocators()
         self.click_button()
-        if "highlight" in self.web_element.find_element(*obj.selected_option(option)).get_attribute('class'):
+        if "highlight" in self.web_element.find_element(*DropdownSearchSelectBoxLocators.selected_option(option)).get_attribute('class'):
             return True
         else:
             return False
@@ -105,8 +105,8 @@ class DropdownSearchSelectBox(DropdownSearch):
         self.click_button()
         try:
             WebDriverWait(self.web_element, 30).until(
-                EC.element_to_be_clickable(self.get_locator().chosen_element(pre)))
-            prefix = self.web_element.find_element(*self.get_locator().chosen_element(pre))
+                EC.element_to_be_clickable(DropdownSearchLocators.chosen_element(pre)))
+            prefix = self.web_element.find_element(*DropdownSearchLocators.chosen_element(pre))
             prefix.click()
         except:
             log.info("Didn't find option to choose")

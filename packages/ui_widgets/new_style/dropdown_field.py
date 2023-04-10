@@ -24,9 +24,6 @@ class Dropdown(BaseWidget):
             'Value': value
         }
 
-    def get_locator(self):
-        return DropdownLocators()
-
     def click_button(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.dropDown_open).get_attribute('aria-expanded')
         if dropDown_open in (None, "false"):
@@ -42,7 +39,7 @@ class Dropdown(BaseWidget):
             elements_list = element.text
             log.info(elements_list)
             if option_value in elements_list:
-                chosenElement = driver.find_element(*self.get_locator().select(option_value))
+                chosenElement = driver.find_element(*DropdownLocators.select(option_value))
                 return chosenElement.text, elements_list
 
     def select_element(self, pre):
@@ -108,18 +105,11 @@ class Dropdown(BaseWidget):
 
     def close(self):
         dropDown_open = self.web_element.find_element(*DropdownLocators.close).get_attribute('aria-expanded')
-        # ToDo : when the list is not open , that return null , when try to do the lower for the null its make a broken
-        if dropDown_open is not None:
-            if dropDown_open.lower() == 'true':
-                self.web_element.click()
-                # TODO : wait to close (Amr)
-                # if WebDriverWait(self.web_element, 10).until(
-                #         EC.visibility_of_element_located(By.XPATH(dropDown_open))) == 'false':
-                return True
-                # else:
-                #     log.info("the list not closed")
-                #     return False
-            return False
+        if dropDown_open == 'true':
+            self.web_element.click()
+            WebDriverWait(self.web_element, 10).until(
+                EC.text_to_be_present_in_element_attribute(DropdownLocators.close, 'aria-expanded', 'false'))
+            return True
         return False
 
     @property
@@ -131,4 +121,4 @@ class Dropdown(BaseWidget):
         self.click_button()
         list_of_items = WebDriverWait(self.web_element, 10).until(
             EC.presence_of_element_located(DropdownLocators.list_items))
-        list_of_items[0].click()
+        list_of_items.click()

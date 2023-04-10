@@ -43,15 +43,12 @@ class HeaderField(BaseWidget):
         log.info("validating if header title is the default title")
         return self.get_header_title().text == self.main_title
 
-    def get_locator(self):
-        return HeaderLocators()
-
     def get_language_button(self, language='he'):
         """
         :return: web element of button language
         """
         log.info("get language button as web element")
-        return self.web_element.find_element(*self.get_locator().language(language))
+        return self.web_element.find_element(*HeaderLocators.language(language))
 
     def validate_header_language_button_is_displayed(self, language: str) -> bool:
         """

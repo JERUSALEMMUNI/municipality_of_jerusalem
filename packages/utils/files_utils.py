@@ -67,6 +67,7 @@ def walk_level(some_dir, level=1):
 
 def get_relative_path(file_path, relative_folder):
     """Returns relative path of a file compared to a folder."""
+    relative_folder = str(relative_folder)
     if not file_path.startswith(relative_folder):
         raise ce.MJIOError('File path is not related - %s, %s' % (file_path, relative_folder))
     return file_path[len(relative_folder) + 1:]
