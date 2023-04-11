@@ -11,7 +11,7 @@ Feature: FreedomInfo form - scenarios step 3
 
 
 
-  Scenario: TC_FREEDOMINFO_07 - Checking "request details" fields with correct details
+  Scenario: TC_FREEDOMINFO_07 הזנת ערכים תקינים לשדות "פרטי הבקשה"
     When write a valid value "חלןלחכיעטאוחכיגמהנעירןםקךגצמבנסהשכדגקראטוןםפ" in "נושא הבקשה"
     When write a valid value "ראטוןלצ בגכעיחלוטכעמחחלןלחכיעטאוחכיגמהנעירןםקךגצמבנסהשכדגקראטוןםפ" in "תיאור הבקשה"
     When check the box of "הנני מתחייב לשאת באגרת איתור וטיפול באגרת הפקה"

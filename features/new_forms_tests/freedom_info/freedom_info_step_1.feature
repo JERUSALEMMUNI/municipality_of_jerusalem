@@ -7,7 +7,7 @@ Feature: FreedomInfo form - scenarios step 1
   - All fields are mandatory expect of (טלפון קווי,יישוב,רחוב,מספר בית, מיקוד)
 
 
-  Scenario: TC_FREEDOMINFO_01 - Checking "Presenter details" fields with correct details
+  Scenario: TC_FREEDOMINFO_01 "הזנת ערכים תקינים לשדות "פרטי המגיש
     Given Navigate to "FreedomInfo" form
     When write a valid value "סוהייב" in "שם פרטי"
     When write a valid value "אבו גנאם" in "שם משפחה"
@@ -23,7 +23,7 @@ Feature: FreedomInfo form - scenarios step 1
     When clear fields
 
 
-  Scenario: TC_FREEDOMINFO_08  - Checking "Presenter details" fields with incorrect details
+  Scenario: TC_FREEDOMINFO_08 "הזנת ערכים שגויים לשדות "פרטי המגיש
     Given Navigate to "FreedomInfo" form
     When write an invalid value "dddd" in "שם פרטי"
     Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
