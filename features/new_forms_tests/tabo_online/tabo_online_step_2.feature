@@ -11,9 +11,12 @@ Feature: TaboOnline form - scenarios step 2
     Given  Navigate to "TaboOnline" form and reach step "פרטי הבקשה"
   Scenario:
     When choose "העברת זכויות" from "סוג הבקשה"
-    When choose "אחר" from "מגיש הבקשה הוא"
-    When from parent "פרטי הבקשה" at table "מעביר" add "1" rows
-    When from parent "פרטי הבקשה" at table "מעביר" remove row "2"
+    When pick a valid "טאבו" from "מנהל הרישום"
+    When pick a valid "למגורים" from "סוג הנכס"
+    When pick a valid "בעלות" from "סוג הזכות"
+    When pick a valid "מכירה או חכירה" from "סוג הפעולה המבוקשת"
+    When write a valid value "11122022" in "תאריך מסירת חזקה לקונה"
+    When choose "מעביר" from "מגיש הבקשה הוא"
     When from parent "פרטי הבקשה" at table "מעביר" at row "1" write an invalid value "321" in "שם פרטי"
     Then from parent "פרטי הבקשה" at table "מעביר" at row "1" validate if "שם פרטי" text is "321"
     Then from parent "פרטי הבקשה" at table "מעביר" at row "1" check if "שם פרטי" error message is "{error_expectation}"

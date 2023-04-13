@@ -11,7 +11,6 @@ Feature: PhotoPermission form - scenarios step 3
 
 
   Scenario: TC_PHOTOPERMIT_03 הזנת ערכים תקינים לשדות "פרטי מיקום ומועדי הצילומים" מועד אחד
-    Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -43,7 +42,6 @@ Feature: PhotoPermission form - scenarios step 3
 
 
   Scenario: TC_PHOTOPERMIT_04 הזנת ערכים תקינים לשדות "פרטי מיקום ומועדי הצילומים" מספר מועדים
-    Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
