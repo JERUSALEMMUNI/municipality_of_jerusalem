@@ -41,7 +41,7 @@ Feature: PlanningInformation form - scenarios step 1
     Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "sdfg@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When clear fields
 

@@ -45,6 +45,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 1
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "dfgh@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When clear fields

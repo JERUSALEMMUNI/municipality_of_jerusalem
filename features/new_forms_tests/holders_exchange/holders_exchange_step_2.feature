@@ -173,7 +173,7 @@ Feature: HoldersExchange form step 2
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "sdfgh@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     #-------------------------------------------------------------------------------------------------------------------
     When choose "יורש" from "מי מגיש הבקשה?"
@@ -204,7 +204,7 @@ Feature: HoldersExchange form step 2
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "dfg@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When upload "10MB_file_to_upload.pdf" file in "יפוי כח"
     Then validate "יפוי כח" field is invalid

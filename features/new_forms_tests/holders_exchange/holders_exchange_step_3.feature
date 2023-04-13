@@ -84,7 +84,7 @@ Feature: HoldersExchange form step 3
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "dfg@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When write an invalid number "12142023" in "תאריך עזיבה"
     Then validate "תאריך עזיבה" error is "שדה חובה"
