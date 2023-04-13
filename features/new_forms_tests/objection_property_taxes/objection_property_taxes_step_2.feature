@@ -10,7 +10,7 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     Given Navigate to "ObjectionPropertyTaxes" form and reach step "פרטי הנכס וסיבת ההשגה"
 
 
-  Scenario: TC_OBJECTIONPRO_02 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכנס לא רואי לשימוש
+  Scenario Outline: TC_OBJECTIONPRO_02 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה והכנס לא רואי לשימוש
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -35,97 +35,11 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And choose "לא" from "האם הנכס הוגדר על ידי מהנדס כמבנה מסוכן?"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
 
-    When upload "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "gif_to_upload.gif" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "gif_to_upload.gif" in "ניתן לצרף מכתב נלווה"
+    When upload "<file_name>" file in "<widget_name>"
+    Then validate "<widget_name>" field is valid
+    Then validate "<file_name>" file is in "<widget_name>" files list
+    When delete file by name "<file_name>" in "<widget_name>"
 
-    When upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "png_to_upload.png" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "png_to_upload.png" in "ניתן לצרף מכתב נלווה"
-
-    When upload "jpg_pic_to_upload.jpg" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "jpg_pic_to_upload.jpg" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "jpg_pic_to_upload.jpg" in "ניתן לצרף מכתב נלווה"
-
-    When upload "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "pdf_file_to_upload.pdf" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "pdf_file_to_upload.pdf" in "ניתן לצרף מכתב נלווה"
-
-    When upload "jpeg_to_upload.jpeg" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "jpeg_to_upload.jpeg" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "jpeg_to_upload.jpeg" in "ניתן לצרף מכתב נלווה"
-
-    When upload "bmp_to_upload.bmp" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "bmp_to_upload.bmp" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "bmp_to_upload.bmp" in "ניתן לצרף מכתב נלווה"
-
-    When upload "gif_to_upload.gif" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "gif_to_upload.gif" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "gif_to_upload.gif" in "ניתן לצרף מכתב נלווה"
-
-    When upload "png_to_upload.png" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "png_to_upload.png" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "png_to_upload.png" in "ניתן לצרף מכתב נלווה"
-
-    When upload "jpg_pic_to_upload.jpg" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "jpg_pic_to_upload.jpg" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "jpg_pic_to_upload.jpg" in "ניתן לצרף מכתב נלווה"
-
-    When upload "pdf_file_to_upload.pdf" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "pdf_file_to_upload.pdf" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "pdf_file_to_upload.pdf" in "ניתן לצרף מכתב נלווה"
-
-    When upload "jpeg_to_upload.jpeg" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "jpeg_to_upload.jpeg" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "jpeg_to_upload.jpeg" in "ניתן לצרף מכתב נלווה"
-
-    When upload "bmp_to_upload.bmp" file in "ניתן לצרף מכתב נלווה"
-    Then validate "ניתן לצרף מכתב נלווה" field is valid
-    Then validate "bmp_to_upload.bmp" file is in "ניתן לצרף מכתב נלווה" files list
-    When delete file by name "bmp_to_upload.bmp" in "ניתן לצרף מכתב נלווה"
-    When upload "bmp_to_upload.bmp" file in "ניתן לצרף מכתב נלווה"
-
-    When upload "gif_to_upload.gif" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "gif_to_upload.gif" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "gif_to_upload.gif" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-
-    When upload "png_to_upload.png" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "png_to_upload.png" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "png_to_upload.png" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-
-    When upload "jpg_pic_to_upload.jpg" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "jpg_pic_to_upload.jpg" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "jpg_pic_to_upload.jpg" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-
-    When upload "pdf_file_to_upload.pdf" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "pdf_file_to_upload.pdf" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "pdf_file_to_upload.pdf" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-
-    When upload "jpeg_to_upload.jpeg" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "jpeg_to_upload.jpeg" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "jpeg_to_upload.jpeg" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-
-    When upload "bmp_to_upload.bmp" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    Then validate "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" field is valid
-    Then validate "bmp_to_upload.bmp" file is in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)" files list
-    When delete file by name "bmp_to_upload.bmp" in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
-    When upload "bmp_to_upload.bmp" file in "ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)"
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -136,6 +50,21 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
 #    And click on "המשך" button
     When clear fields
+    Examples:
+      | file_name               |  widget_name          |
+      | gif_to_upload.gif       |  ניתן לצרף מכתב נלווה  |
+      | png_to_upload.png       |  ניתן לצרף מכתב נלווה  |
+      | jpg_pic_to_upload.jpg   |  ניתן לצרף מכתב נלווה  |
+      | pdf_file_to_upload.pdf  |  ניתן לצרף מכתב נלווה  |
+      | jpeg_to_upload.jpeg     |  ניתן לצרף מכתב נלווה  |
+      | bmp_to_upload.bmp       |  ניתן לצרף מכתב נלווה  |
+
+      | gif_to_upload.gif       |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
+      | png_to_upload.png       |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
+      | jpg_pic_to_upload.jpg   |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
+      | pdf_file_to_upload.pdf  |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
+      | jpeg_to_upload.jpeg     |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
+      | bmp_to_upload.bmp       |  ניתן לצרף אסמכתאות התומכות בטענה (תמונות, אישורים שונים וכיו"ב)  |
 
 
   Scenario: TC_OBJECTIONPRO_03 הזנת ערכים תקינים לשדות "פרטי הנכס וסיבת ההשגה" בעל הנכס זהה למגיש הבקשה ושטח החיוב שנקבע לנכס שגוי
