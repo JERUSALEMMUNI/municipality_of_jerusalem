@@ -11,7 +11,6 @@ Feature: PhotoPermission form - scenarios step 2
 
 
   Scenario: TC_PHOTOPERMIT_02 הזנת ערכים תקינים לשדות "פרטי ההפקה"
-    Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -42,7 +41,6 @@ Feature: PhotoPermission form - scenarios step 2
 
 
   Scenario: TC_PHOTOPERMIT_07 הזנת ערכים שגויים לשדות "פרטי ההפקה"
-    Given Navigate to "PhotoPermission" form
 #    When click on "שמור" button
 #    And click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link

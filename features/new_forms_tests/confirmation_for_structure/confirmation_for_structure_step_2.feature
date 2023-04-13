@@ -9,7 +9,7 @@ Feature: ConfirmationForStructure form - scenarios step 2
     Given Navigate to "ConfirmationForStructure" form and reach step "פרטי הנכס"
 
 
-  Scenario: CONFIRSTRUCT_02 - Entering correct values for the "request details" fields
+  Scenario: CONFIRSTRUCT_02 "הזנת ערכים תקינים בשדות "פרטי הנכס
 #    When click on "שמור" button
 #    When click on "שמור טיוטה" button tyota
 #    When 1st wait for "email" that contains pin code and link
@@ -33,15 +33,15 @@ Feature: ConfirmationForStructure form - scenarios step 2
 #    When 4th close all tabs "email" at index "2"
 #    Then 5th Validate if went back to expected "email" form
 #    When click on "המשך" button
-    When clear fields
+#    When clear fields
 
 
 
-  Scenario: CONFIRSTRUCT_05 - Entering incorrect values for the "Details of the applicant" fields
+  Scenario: CONFIRSTRUCT_05 "הזנת ערכים שגוים בשדות "פרטי הנכס
     When search invalid value and pick "א טdssברי" in search field "רחוב"
     Then check if "רחוב" no results found appeared
-    When write an invalid value "54d" in "מספר בית"
-    Then validate "מספר בית" error is "יש להזין ספרות בלבד"
+    When write a number "543jhj323kk26" in "מספר בית"
+    Then validate if "מספר בית" value is "54332"
     When write an invalid value "1cdc223" in "גוש"
     Then validate "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "1frf54re4" in "מספר דירה"
@@ -50,6 +50,6 @@ Feature: ConfirmationForStructure form - scenarios step 2
     Then validate "חלקה" error is "יש להזין ספרות בלבד"
     When write an invalid value "4jk5981" in "תת חלקה"
     Then validate "תת חלקה" error is "יש להזין ספרות בלבד"
-    When clear fields
+#    When clear fields
 
 
