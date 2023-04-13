@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from ui_widgets.base_widget import BaseWidget
 from infra import logger
 from ui_widgets.new_style.widget_locators.application_steps_locators import ApplicationStepsLocators
@@ -19,6 +21,8 @@ class ApplicationStepsField(BaseWidget):
         }
 
     def get_steps_list(self):
+        WebDriverWait(self.web_element, 10).until(
+            EC.presence_of_element_located(ApplicationStepsLocators.step_list))
         return self.web_element.find_elements(*ApplicationStepsLocators.step_list)
 
 
@@ -49,3 +53,7 @@ class ApplicationStepsField(BaseWidget):
     @property
     def get_current_step(self):
         return self.get_current_step_info()[0]
+
+    def wait_until_aria_selected(self, step_name):
+        WebDriverWait(self.web_element, 10).until(
+            EC.text_to_be_present_in_element_attribute((ApplicationStepsLocators.wait_current_page(step_name)),'aria-selected','true'))
