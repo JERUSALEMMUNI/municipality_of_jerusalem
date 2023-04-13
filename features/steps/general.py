@@ -269,14 +269,28 @@ def navigate_to_screen(context):
 
 @Then('validate if "{widget_name}" appeared')
 def validate_dialog(context, widget_name):
-    widget = context._config.current_page.widgets[widget_name]
-    widget.get_main_title().is_displayed()
+    try:
+        widget = context._config.current_page.widgets[widget_name]
+        if widget.get_main_title().is_displayed():
+            rep.add_label_to_step('Dialog appeared', 'Dialog appeared after clicking on continue button')
+    except:
+        raise AssertionError('Dialog didnt appear')
+
+@Then("validate if '{widget_name}' didn't appear")
+def validate_dialog(context, widget_name):
+    try:
+        widget = context._config.current_page.widgets[widget_name]
+        if widget.get_main_title().is_displayed():
+            raise AssertionError('Dialog didnt appear')
+    except:
+        rep.add_label_to_step('Dialog didnt appear', 'Dialog didnt appear after clicking on continue button')
 
 
 @When('close "{widget_name}"')
 def validate_dialog(context, widget_name):
     widget = context._config.current_page.widgets[widget_name]
     widget.click_close_button()
+
 
 @Then('from table "{table_name}" at row "{row}" validate the drop "{widget_name}" is default')
 def validate_is_empty(context, table_name, row, widget_name):

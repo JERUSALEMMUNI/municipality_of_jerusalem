@@ -23,7 +23,6 @@ Feature: EmailRegistration form - scenarios step 1
 #    When set pin code "email"
     When clear fields
 
-
   Scenario: TC_EMAILREG_11 "הזנת ערכים שגויים לשדות "פרטים אישיים
     Given Navigate to "EmailRegistration" form
     When write an invalid value "sdsd" in "שם פרטי"
@@ -42,8 +41,7 @@ Feature: EmailRegistration form - scenarios step 1
     When write an invalid value "ass@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When click on "המשך" button
-    Then validate if "dialog" appeared
-    When close "dialog"
+    Then validate if 'dialog' didn't appear
     When clear fields
 
 
