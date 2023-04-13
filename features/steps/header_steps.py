@@ -38,6 +38,7 @@ def validate_languages_buttons_is_displayed(context):
 @then('validate current step name is "{current_step}"')
 def validate_current_step_number(context, current_step):
     widget = context._config.current_page.widgets["page_steps"]
+    widget.wait_until_aria_selected(current_step)
     assert widget.validate_current_step_name(current_step), "Wrong step name"
 
 
