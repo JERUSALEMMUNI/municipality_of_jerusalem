@@ -9,8 +9,8 @@ Feature: ConfirmationForStructure form - scenarios step 3
     Given Navigate to "ConfirmationForStructure" form and reach step "הזדהות ושליחה"
 
 
-  Scenario: CONFIRSTRUCT_03 - Filling out a statement
+  Scenario: CONFIRSTRUCT_03 "הזנת ערכים תקינים בשדות "הצהרות ושליחת הטופס
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
-    When clear fields
+#    When clear fields
 
 

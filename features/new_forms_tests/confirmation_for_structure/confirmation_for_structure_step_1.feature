@@ -6,7 +6,7 @@ Feature: ConfirmationForStructure form - scenarios step 1
   - All fields are mandatory of (טלפון קווי)
 
 
- Scenario: CONFIRSTRUCT_01 - Checking "personal details" fields with correct details
+ Scenario: CONFIRSTRUCT_01 "הזנת ערכים תקינים בשדות "פרטי מגיש הבקשה
     Given Navigate to "ConfirmationForStructure" form
     When write a valid value "332796184" in "מספר ת.ז."
     When write a valid value "סוהייב" in "שם פרטי"
@@ -14,14 +14,13 @@ Feature: ConfirmationForStructure form - scenarios step 1
     When write a valid value "@TEMP_EMAIL_ADDRESS" in "דוא"ל"
     When fill "058-8078687" as valid value in "טלפון נייד"
     When fill number "8073267" as valid value in "טלפון קווי"
-#    When click on "המשך" button
-#    When click on "email" option
-#    When 1st wait for "email" that contains pin code and link
-#    When set pin code "email"
-    When clear fields
+    When click on "המשך" button
+    Then validate if "dialog" appeared
+    When close "dialog"
+#    When clear fields
 
 
- Scenario: CONFIRSTRUCT_04 - Entering incorrect values for the "Details of the applicant" fields
+ Scenario: CONFIRSTRUCT_04 "הזנת ערכים שגוים בשדות "פרטי מגיש הבקשה
     Given Navigate to "ConfirmationForStructure" form
     When write an invalid value "dddd" in "שם פרטי"
     Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -39,6 +38,8 @@ Feature: ConfirmationForStructure form - scenarios step 1
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
-   When fill number "חלחמג" as invalid value in "טלפון קווי"
+    When fill number "חלחמג" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
-    When clear fields
+    When click on "המשך" button
+    Then validate if "dialog" didn't appear
+#    When clear fields

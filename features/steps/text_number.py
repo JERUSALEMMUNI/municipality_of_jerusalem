@@ -6,6 +6,12 @@ rep = reporter.get_reporter()
 log = logger.get_logger(__name__)
 
 
+@when('write a number "{number}" in "{widget_name}"')
+def write_into_field(context, number, widget_name):
+    widget = context._config.current_page.widgets[widget_name]
+    widget.set_text(number)
+
+
 @when('write a valid number "{number}" in "{widget_name}"')
 def write_into_field(context, number, widget_name):
     widget = context._config.current_page.widgets[widget_name]

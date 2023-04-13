@@ -11,7 +11,7 @@ Feature: TreeCut form - scenarios step 3
     Given Navigate to "TreeCut" form and reach step "הצהרה"
 
 
-  Scenario: TC_TREECUT_06 - Filling out a statement
+  Scenario: TTC_TREECUT_06 מילוי הצהרה
     When check the box of "מגיש הבקשה מצהיר"
     When check the captcha box of "אני מודע/ת ומסכים/ה לכך"
 #    When clear fields

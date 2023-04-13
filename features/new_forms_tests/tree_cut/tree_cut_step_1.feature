@@ -7,7 +7,7 @@ Feature: TreeCut form - scenarios step 1
   - All fields are mandatory of (טלפון קווי)
 
 
-  Scenario: TC_TREECUT_01 - Checking "personal details" fields with correct details
+  Scenario: TC_TREECUT_01 "הזנת ערכים תקינים לשדות "פרטי מגיש הבקשה
     Given Navigate to "TreeCut" form
     When write a valid value "סוהייב" in "שם פרטי"
     When write a valid value "אבו גנאם" in "שם משפחה"
@@ -24,7 +24,7 @@ Feature: TreeCut form - scenarios step 1
 #    When clear fields
 
 
-  Scenario: TC_TREECUT_07 - Entering incorrect values for the "Details of the applicant" fields
+  Scenario: TC_TREECUT_07 "הזנת ערכים שגויים לשדות "פרטי מגיש הבקשה
     Given Navigate to "TreeCut" form
     When write an invalid value "dddd" in "שם פרטי"
     Then validate "שם פרטי" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
@@ -46,6 +46,9 @@ Feature: TreeCut form - scenarios step 1
     When fill number "abcdr" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "א DSDנחיל" in search field "רחוב"
-    When write a valid number "54332326" in "מספר בית"
+    When write a number "543jhj323kk26" in "מספר בית"
+    Then validate if "מספר בית" value is "54332"
+    When click on "המשך" button
+    Then validate if "dialog" didn't appear
 #    When clear fields
 
