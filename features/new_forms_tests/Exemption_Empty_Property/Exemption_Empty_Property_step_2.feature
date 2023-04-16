@@ -1,5 +1,4 @@
-@in_dev
-
+#@in_dev
 Feature: ExemptionEmptyProperty form - scenarios step 2
 
   - Form name:  פטור לנכס ריק וחדש וריק
@@ -7,10 +6,11 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
   - Form link: https://jeronlineforms.jerusalem.muni.il/ExemptionEmptyProperty
   - Number of Pages is : 3, We are at step: 2
   - All fields are mandatory
+
   Background: Background Scenario
     Given Navigate to "ExemptionEmptyProperty" form and reach step "פרטי הנכס"
 
-@wisam
+
   Scenario: EMPTYPROPERTY_02 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, העדר שוכר/קונה
     Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
@@ -23,7 +23,8 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
     When choose "העדר שוכר/קונה" from "סיבת היות הנכס ריק"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים בנכס"
+    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
+    When I wait for "5" seconds
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -40,6 +41,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When upload "gif_to_upload.gif" file in "הסבר מה נעשה עם החפצים בנכס"
     Then validate "הסבר מה נעשה עם החפצים בנכס" field is valid
     Then validate "gif_to_upload.gif" file is in "הסבר מה נעשה עם החפצים בנכס" files list
+    When I wait for "5" seconds
 
     When upload "gif_to_upload.gif" file in "תמונות של הנכס המעידות על היותו ריק מחפצים"
     Then validate "תמונות של הנכס המעידות על היותו ריק מחפצים" field is valid
@@ -74,8 +76,8 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
     When choose "הנכס שופץ" from "סיבת היות הנכס ריק"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in "הסבר היכן התגורר"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים בנכס"
+    When write a valid value "דדדדד" in "הסבר היכן התגורר"
+    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -113,6 +115,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     #When 4th close all tabs "email" at index "2"
     #Then 5th Validate if went back to expected "email" form
     When click on "המשך"
+    When I wait for "4" seconds
     Then validate current step name is "תצהיר ושליחה"
     When click on "חזור"
     Then Validate current step name is "פרטי הנכס"
@@ -128,7 +131,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
     When choose "מוחזק ע"י כונס" from "סיבת היות הנכס ריק"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים בנכס"
+    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -182,7 +185,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
     When choose "פטירת בעל הנכס" from "סיבת היות הנכס ריק"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים בנכס"
+    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -221,7 +224,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     Then Validate current step name is "פרטי הנכס"
 
 
-  Scenario:EMPTYPROPERTY_03 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, הנכס שופץ
+  Scenario:EMPTYPROPERTY_06 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, אחר
     Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
@@ -233,8 +236,9 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
     When choose "אחר" from "סיבת היות הנכס ריק"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in "הסבר היכן התגורר"
-    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים בנכס"
+    When write a valid value "ססס" in "הסבר להיות הנכס ריק"
+
+    When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -289,7 +293,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When choose "לא למגורים" from "שימוש בנכס"
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
     When write a valid number "10042023" in "תאריך סיום"
-    When choose "שוכר/קונה" from "סיבת היות הנכס ריק"
+    When choose "העדר שוכר/קונה" from "סיבת היות הנכס ריק"
 
     When upload "gif_to_upload.gif" file in "תצהיר מעו"ד בגין נכס לא למגורים"
     Then validate "תצהיר מעו"ד בגין נכס לא למגורים" field is valid
@@ -526,7 +530,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "2" in "מס' בית"
     When write a valid value "123" in "שטח החיוב במ"ר"
     When choose "לא" from "האם הארנונה רשומה על שם מבקש ההנחה?"
-    When pick "יזם/קבלן" from "זיקה לנכס"
+    When pick "יזם / קבלן" from "זיקה לנכס"
     When choose "חדש וריק" from "מצב הנכס"
     When choose "לא למגורים" from "שימוש בנכס"
     When write a valid number "01/03/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
@@ -583,29 +587,47 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     Given Navigate to "ExemptionEmptyProperty" form
     When write an invalid value "asdasd" in "מס' חשבון תושב בארנונה"
     Then validate "מס' חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
+    When write an invalid value "דדד" in "מס' חשבון תושב בארנונה"
+    Then validate "מס' חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
+    When write an invalid value "111" in "מס' חשבון תושב בארנונה"
+    Then validate "מס' חשבון תושב בארנונה" error is "יש להשלים מספר חשבון/נכס"
 
     When search invalid value and pick "zz" in search field "רחוב"
-    When write an invalid value "z" in "מס' בית"
-    When write an invalid value "z" in "שטח החיוב במ"ר"
+
+    When write a number "1234567" in "מס' בית"
+    Then validate if "מס' בית" value is "12345"
+    When write a number "543jhj323kk26" in "מס' בית"
+    Then validate if "מס' בית" value is "54332"
+    When write a number "543דגכ323ככ26" in "מס' בית"
+    Then validate if "מס' בית" value is "54326"
+
+    When write a number "1234567" in "שטח החיוב במ"ר"
+    Then validate if "שטח החיוב במ"ר" value is "12345"
+    When write an invalid value "zsss" in "שטח החיוב במ"ר"
+    Then validate "שטח החיוב במ"ר" error is "יש להזין ספרות בלבד"
+    When write an invalid value "דדדדד" in "שטח החיוב במ"ר"
     Then validate "שטח החיוב במ"ר" error is "יש להזין ספרות בלבד"
 
     When choose "כן" from "האם הארנונה רשומה על שם מבקש ההנחה?"
     When choose "ריק" from "מצב הנכס"
     When choose "מגורים" from "שימוש בנכס"
-    When write a valid number "01/04/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
-    Then validate "תאריך התחלה (לפני 30 ימים לפחות)" error is "התאריך חייב להיות לפני"
 
+    #ToDo : sofia asks for specific date alert between 29 day and not less than 2 years
+    When write a valid number "01/04/2023" in "תאריך התחלה (לפני 30 ימים לפחות)"
+    Then validate "תאריך התחלה (לפני 30 ימים לפחות)" error is "יש להזין תאריך לפני"
+
+    #ToDo : sofia asks for specific date alert between 0 day and not less than 1.5 years
     When write a valid number "10/04/2025" in "תאריך סיום"
-    Then validate "תאריך סיום" error is "התאריך חייב להיות לפני"
+    Then validate "תאריך סיום" error is "יש להזין תאריך לפני"
 
     When choose "העדר שוכר/קונה" from "סיבת היות הנכס ריק"
-    When write an invalid value "fdsdsdsdsd" in textarea of "הסבר מה נעשה עם החפצים בנכס"
-    Then validate "הסבר מה נעשה עם החפצים בנכס" error is "שפת קלט לא תקינה"
+    When write an invalid value "fdsdsdsdsd" in textarea of "הסבר מה נעשה עם החפצים"
+    Then validate "הסבר מה נעשה עם החפצים" error is "שפת קלט לא תקינה"
 
 
     When upload "10MB_file_to_upload.pdf" file in "<widget_name>"
     Then validate "<widget_name>" field is invalid
-    Then validate "10MB_file_to_upload.pdf" file is in "<widget_name>" files list
+    Then validate "10MB_file_to_upload.pdf" file is not in "<widget_name>" files list
     Then validate "<widget_name>" error is "חובה לצרף קובץ"
     Then validate "<widget_name>" error window message is "גודל הקובץ אינו חוקי גודל הקובץ המצורף לא יכול לעלות על 6MB"
     Examples:
@@ -618,6 +640,20 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
       | אחר                                        |
 
 
+
+    When upload "zip_to_upload.zip" file in "<widget_name>"
+    Then validate "<widget_name>" field is invalid
+    Then validate "zip_to_upload.zip" file is not in "<widget_name>" files list
+    Then validate "<widget_name>" error is "חובה לצרף קובץ"
+    Then validate "<widget_name>" error window message is "סוג הקובץ אינו חוקי מותרים קבצים מסוג זה בלבד: .bmp, .gif, .png, .jpg, .jpeg, .pdf"
+    Examples:
+      | widget_name                                |
+      | צילום תעודת זהות + ספח של מגיש הבקשה       |
+      | חשבונות חשמל לתקופה בה הנכס עמד ריק        |
+      | חשבונות המים לתקופה בה הנכס עמד ריק        |
+      | הסבר מה נעשה עם החפצים בנכס                |
+      | תמונות של הנכס המעידות על היותו ריק מחפצים |
+      | אחר                                        |
 
 
 

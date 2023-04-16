@@ -276,7 +276,7 @@ def validate_dialog(context, widget_name):
     except:
         raise AssertionError('Dialog didnt appear')
 
-@Then("validate if '{widget_name}' didn't appear")
+@Then('validate if "{widget_name}" did not appear')
 def validate_dialog(context, widget_name):
     try:
         widget = context._config.current_page.widgets[widget_name]

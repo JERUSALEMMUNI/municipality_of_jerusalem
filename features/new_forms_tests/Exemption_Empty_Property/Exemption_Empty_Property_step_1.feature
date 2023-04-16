@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 
 Feature: ExemptionEmptyProperty form - scenarios step 1
 
@@ -21,8 +21,8 @@ Feature: ExemptionEmptyProperty form - scenarios step 1
     # button # When click on "email" option
     # When 1st wait for "email" that contains pin code and link
 #    When set pin code "email"
-#    Then validate if "dialog" appeared
-#    When close "dialog"
+    Then validate if "dialog" appeared
+    When close "dialog"
     When clear fields
 
 
@@ -32,7 +32,7 @@ Feature: ExemptionEmptyProperty form - scenarios step 1
     When write an invalid value "asdf" in "שם משפחה"
     Then validate "שם משפחה" error is "יש להזין אותיות בעברית בלבד ותווים מיוחדים " / () ' . , _ -"
     When pick a valid "ת.ז." from "סוג זיהוי"
-    And write an invalid value "000000018" in "מספר ת.ז."
+    When write an invalid value "000000018" in "מספר ת.ז."
     Then validate "מספר ת.ז." error is "מספר זהות לא תקין"
     When fill "050-sdfdsf" as invalid value in "טלפון נייד"
     Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
@@ -44,7 +44,9 @@ Feature: ExemptionEmptyProperty form - scenarios step 1
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When fill "02-sdfdsf" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
-    When write an invalid value "dfghj" in "דוא"ל"
-    Then validate "דוא"ל" error is "שדה לא תקין"
-    Then validate if 'dialog' didn't appear
+    When write an invalid value "גכעיחלעיח" in "דוא"ל"
+    Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
+    When write an invalid value "www@" in "דוא"ל"
+    Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
+    Then validate if "dialog" did not appear
     When clear fields

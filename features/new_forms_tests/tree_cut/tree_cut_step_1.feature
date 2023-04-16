@@ -49,6 +49,6 @@ Feature: TreeCut form - scenarios step 1
     When write a number "543jhj323kk26" in "מספר בית"
     Then validate if "מספר בית" value is "54332"
     When click on "המשך" button
-    Then validate if "dialog" didn't appear
+    Then validate if "dialog" did not appear
 #    When clear fields
 

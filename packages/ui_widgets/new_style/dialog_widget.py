@@ -14,7 +14,7 @@ class Dialog(BaseWidget):
     def locator(self):
         return {
             'By': By.XPATH,
-            'Value': "//div[@role='dialog' and @aria-labelledby='pr_id_1-label']",
+            'Value': "//div[@role='dialog' and contains(@class,'p-dialog-draggable')]",
         }
 
     def get_main_title(self):

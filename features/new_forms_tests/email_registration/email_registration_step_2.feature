@@ -339,7 +339,6 @@ Feature: EmailRegistration form - scenarios step 2
     When choose "כן" from "בעל/ת החשבון שונה ממגיש הבקשה"
     When choose "מיופה כח" from "מגיש הבקשה"
     When choose "לא" from "האם דירת שותפים?"
-    #its appears as valid here
 
     When upload "zip_to_upload.zip" file in "צילום תעודת זהות + ספח"
     Then validate "צילום תעודת זהות + ספח" field is invalid

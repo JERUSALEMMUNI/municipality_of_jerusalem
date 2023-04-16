@@ -11,7 +11,6 @@ Feature: ExemptionVolunteerInstitution form - scenarios step 6
   Background:
     Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "תצהיר ושליחה"
 
-  @wisam
   Scenario: EXCEPTVOLUNT_07 "תצהיר ושליחת הטופס"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"

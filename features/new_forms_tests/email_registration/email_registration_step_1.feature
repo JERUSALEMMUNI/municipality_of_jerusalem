@@ -38,10 +38,10 @@ Feature: EmailRegistration form - scenarios step 1
     Then validate "טלפון נייד" error is "יש להשלים את הספרות החסרות"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "www@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When click on "המשך" button
-    Then validate if 'dialog' didn't appear
+    Then validate if "dialog" did not appear
     When clear fields
 
 

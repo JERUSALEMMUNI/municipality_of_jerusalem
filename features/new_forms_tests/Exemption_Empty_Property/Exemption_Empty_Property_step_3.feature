@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 
 Feature: ExemptionEmptyProperty form - scenarios step 3
 
@@ -11,7 +11,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 3
   Background:
     Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "תצהיר ושליחה"
 
-  @wisam
   Scenario: EMPTYPROPERTY_12 "תצהיר ושליחת הבקשה"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"

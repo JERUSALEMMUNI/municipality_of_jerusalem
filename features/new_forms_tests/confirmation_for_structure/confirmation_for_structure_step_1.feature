@@ -1,5 +1,5 @@
 Feature: ConfirmationForStructure form - scenarios step 1
-  - Form name: בקשה לעקירת עצים
+  - Form name:  בקשה לאישור העדר סכנה למבנה
   - Feature file name: tree_cut.feature
   - Form link: https://jeronlineforms.jerusalem.muni.il/ConfirmationForStructure
   - Number of Pages is : 3, We are at step: 1
@@ -34,12 +34,12 @@ Feature: ConfirmationForStructure form - scenarios step 1
     Then validate "טלפון נייד" error is "יש להזין ספרות בלבד"
     When write an invalid value "גכעיחלעיח" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להזין אותיות באנגלית בלבד"
-    When write an invalid value "ass@" in "דוא"ל"
+    When write an invalid value "wwws@" in "דוא"ל"
     Then validate "דוא"ל" error is "יש להשלים כתובת אימייל"
     When fill number "80767" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להשלים את הספרות החסרות"
     When fill number "חלחמג" as invalid value in "טלפון קווי"
     Then validate "טלפון קווי" error is "יש להזין ספרות בלבד"
     When click on "המשך" button
-    Then validate if "dialog" didn't appear
+    Then validate if "dialog" did not appear
 #    When clear fields
