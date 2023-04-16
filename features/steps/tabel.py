@@ -355,6 +355,7 @@ def write_invalid_in_table_from_column(context, table_name, row, option_value, w
     finally:
         widget.close_dropdown_search(row, widget_name)
 
+
 @when('from table "{table_name}" at row "{row}" pick "{option_value}" from "{widget_name}"')
 @when('from table "{table_name}" at row "{row}" pick a valid "{option_value}" from "{widget_name}"')
 def pick_element(context, table_name, row, option_value, widget_name):
@@ -942,3 +943,35 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
                                   f"Chosen Option [{option_value}] from parent {table_name} at table {sub_table_name} at row {row} is not found in list")
     finally:
         widget.close_dropdown_search(row, widget_name)
+
+
+@when(
+    'from parent "{table_name}" at table "{sub_table_name}" at row "{row}" upload "{file_path}" file in "{widget_name}"')
+def upload_file(context, table_name, sub_table_name, row, file_path, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    table_index = widget.get_table_index_from_tab_name(sub_table_name)
+    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
+    widget.upload_file(row, widget_name, file, table_index=int(table_index))
+
+
+@then('from parent "{table_name}" at table "{sub_table_name}" at row "{row}" validate "{widget_name}" field is valid')
+def validate_file_is_valid(context, table_name, sub_table_name, row, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    table_index = widget.get_table_index_from_tab_name(sub_table_name)
+    assert widget.is_upload_valid(row, widget_name, table_index=int(
+        table_index)), f"This file from parent {table_name} at table {sub_table_name} at row {row} is invalid!"
+
+
+@then('from parent "{table_name}" at table "{sub_table_name}" at row "{row}" validate "{file_name}" file is in "{widget_name}" files list')
+def check_uploaded_files(context, table_name, sub_table_name, row, file_name, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    table_index = widget.get_table_index_from_tab_name(sub_table_name)
+    assert widget.validate_if_file_name_exist(row, widget_name,
+                                              file_name, table_index=int(table_index)), f"The file from parent {table_name} at table {sub_table_name} at row {row} is not in the List"
+
+
+@when('from parent "{table_name}" at table "{sub_table_name}" at row "{row}" delete file by name "{wanted_file_index}" in "{widget_name}"')
+def choose_in_search(context, table_name,sub_table_name, row, wanted_file_index, widget_name):
+    widget = context._config.current_page.widgets[table_name]
+    table_index = widget.get_table_index_from_tab_name(sub_table_name)
+    widget.delete_file_by_name(row, widget_name, wanted_file_index, table_index=int(table_index))
