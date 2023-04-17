@@ -9,8 +9,8 @@ Feature: ExemptionEmptyProperty form - scenarios step 3
   - All fields are mandatory
 
   Background:
-    Given  Navigate to "ExemptionVolunteerInstitution" form and reach step "תצהיר ושליחה"
-
+    Given  Navigate to "ExemptionEmptyProperty" form and reach step "תצהיר ושליחה"
+@W
   Scenario: EMPTYPROPERTY_12 "תצהיר ושליחת הבקשה"
     When check the box of "הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"
     And write a valid value "דגכדגכדגכדגכ" in textarea of "הערות"

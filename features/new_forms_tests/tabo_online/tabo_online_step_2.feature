@@ -1,4 +1,3 @@
-@in_dev
 Feature: TaboOnline form - scenarios step 2
 
   - Form name: בקשה לקבלת אישור להעדר חובות
@@ -9,15 +8,14 @@ Feature: TaboOnline form - scenarios step 2
 
   Background:
     Given  Navigate to "TaboOnline" form and reach step "פרטי הבקשה"
-  @test
+
   Scenario: TABONLINE_02 הזנת ערכים תקינים "פרטי הבקשה" העברת זכויות, למיגורים, מגיש הבקשה הוא המעביר
     When choose "העברת זכויות" from "סוג הבקשה"
     When pick a valid "טאבו" from "מנהל הרישום"
     When pick a valid "למגורים" from "סוג הנכס"
     When pick a valid "בעלות" from "סוג הזכות"
     When pick a valid "מכירה או חכירה" from "סוג הפעולה המבוקשת"
-    #todo: date shows invalid value because of the xpath is different fix it
-#    When write a valid value "11122022" in "תאריך מסירת חזקה לקונה"
+    When write a valid number "11122022" in "תאריך מסירת חזקה לקונה"
     When choose "מעביר" from "מגיש הבקשה הוא"
 
     When from parent "פרטי הבקשה" at table "מעביר" at row "1" upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"

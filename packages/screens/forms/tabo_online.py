@@ -43,7 +43,7 @@ class TaboOnline(BasePage):
         self.widgets['סוג הנכס'] = create_widget('Dropdown', style=self.style, label='סוג הנכס')
         self.widgets['סוג הזכות'] = create_widget('Dropdown', style=self.style, label='סוג הזכות')
         self.widgets['סוג הפעולה המבוקשת'] = create_widget('Dropdown', style=self.style, label='סוג הפעולה המבוקשת')
-        self.widgets['תאריך מסירת חזקה לקונה'] = create_widget('TextField', style=self.style, label='תאריך מסירת חזקה לקונה')
+        self.widgets['תאריך מסירת חזקה לקונה'] = create_widget('TextNumberField', style=self.style, label='תאריך מסירת חזקה לקונה')
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הבקשה":

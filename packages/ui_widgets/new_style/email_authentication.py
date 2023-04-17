@@ -159,8 +159,6 @@ class EmailAuthentication(BaseWidget):
         WebDriverWait(driver, WaitInterval.LONG.value).until(
             EC.element_to_be_clickable(EmailAuthenticationLocators.email_dict['see_form'].get(index)))
         driver.find_element(*EmailAuthenticationLocators.email_dict['see_form'].get(index)).click()
-        # time.sleep(3)
-        # Todo:
         WebDriverWait(driver, 10).until(EC.new_window_is_opened(driver.window_handles))
         driver.switch_to.window(driver.window_handles[-1])
         WebDriverWait(driver, WaitInterval.LONG.value).until(

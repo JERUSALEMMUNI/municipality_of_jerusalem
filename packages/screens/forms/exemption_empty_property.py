@@ -125,12 +125,22 @@ class ExemptionEmptyProperty(BasePage):
         self.widgets["חוזה שכירות"] = create_widget('UploadFile', style=self.style, label="חוזה שכירות")
         self.widgets["צו ירושה"] = create_widget('UploadFile', style=self.style, label="צו ירושה")
         self.widgets["ייפוי כח"] = create_widget('UploadFile', style=self.style, label="ייפוי כח")
-        self.widgets['תצהיר עו"ד על רשימת נכסים חדשים שנבנו'] = create_widget('UploadFile', style=self.style, label='תצהיר עו"ד על רשימת נכסים חדשים שנבנו')
+        self.widgets['תצהיר עו"ד על רשימת נכסים חדשים שנבנו'] = create_widget('UploadFile', style=self.style,
+                                                                              label='תצהיר עו"ד על רשימת נכסים חדשים שנבנו')
         self.widgets["מסמך מבעל הנכס על אישור היות הנכס ריק בזמן השכרתו"] = create_widget('UploadFile',
                                                                                           style=self.style,
                                                                                           label="מסמך מבעל הנכס על אישור היות הנכס ריק בזמן השכרתו")
         self.widgets["אישור על מינוי ככונס"] = create_widget('UploadFile', style=self.style,
                                                              label="אישור על מינוי ככונס")
+
+        #STEP3
+        self.widgets["הריני מצהיר/ה בזה כי כל הפרטים הרשומים בבקשתי זו הם נכונים, מדויקים ומלאים"] = create_widget(
+            'CheckBox', style=self.style,
+            label="הריני מצהיר/ה בזה כי כל")
+        self.widgets["אני מודע/ת ומסכים/ה לכך שהעירייה תהיה רשאית להשתמש במידע"] = create_widget('CaptchaBox',
+                                                                                                 style=self.style,
+                                                                                                 label="אני מודע/ת ומסכים/ה לכך")
+        self.widgets['הערות'] = create_widget('TextAreaField', style=self.style, label='הערות', index=2)
 
     def fill_form_to_reach_step(self, context, dst_step, mailbox, driver, current_page):
         if dst_step == "פרטי הנכס":
@@ -162,7 +172,7 @@ class ExemptionEmptyProperty(BasePage):
         self.widgets["תאריך התחלה (לפני 30 ימים לפחות)"].set_text('01032023')
         self.widgets["תאריך סיום"].set_text('10042023')
         self.widgets['סיבת היות הנכס ריק'].choose_value('העדר שוכר/קונה')
-        self.widgets['הסבר מה נעשה עם החפצים בנכס'].set_text('1')
+        self.widgets['הסבר מה נעשה עם החפצים'].set_text('1')
         self.widgets['צילום תעודת זהות + ספח של מגיש הבקשה'].upload_file(
             os.path.join(config.utilities_folder, 'files_to_upload', "png_to_upload.png"))
         self.widgets['חשבונות חשמל לתקופה בה הנכס עמד ריק'].upload_file(
