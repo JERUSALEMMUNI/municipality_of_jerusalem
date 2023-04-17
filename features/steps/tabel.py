@@ -765,7 +765,7 @@ def write_phone_number_valid_value(context, table_name, sub_table_name, row, pho
                                                  f" a valid value but it appeared as invalid")
             raise AssertionError("valid value and considered as invalid")
     finally:
-        widget.close_phone_field(row, widget_name)
+        widget.close_phone_field(row, widget_name, table_index=int(table_index))
 
 
 @when(
@@ -789,7 +789,7 @@ def write_phone_number_invalid_value(context, table_name, sub_table_name, row, p
                                                  f" an invalid value but it appeared as valid")
             raise AssertionError("valid value and considered as invalid")
     finally:
-        widget.close_phone_field(row, widget_name)
+        widget.close_phone_field(row, widget_name, table_index=int(table_index))
 
 
 @when(
@@ -807,7 +807,7 @@ def write_prefix_phone_number_valid(context, table_name, sub_table_name, row, th
             raise KeyError(
                 f"This Option {three_digits} from parent {table_name} at table {table_name} at row {row} at field {widget_name} not in list")
     finally:
-        widget.close_phone_field(row, widget_name)
+        widget.close_phone_field(row, widget_name, table_index=int(table_index))
 
 
 @when(
@@ -924,7 +924,7 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
                                   f"Chosen option [{option_value}] from parent {table_name} at table {sub_table_name} at row {row} is not found in list")
             raise AssertionError('Chosen option is not in list')
     finally:
-        widget.close_dropdown_search(row, widget_name)
+        widget.close_dropdown_search(row, widget_name, table_index=int(table_index))
 
 
 @when(
@@ -942,7 +942,7 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
             rep.add_label_to_step("Chosen Option is not in list",
                                   f"Chosen Option [{option_value}] from parent {table_name} at table {sub_table_name} at row {row} is not found in list")
     finally:
-        widget.close_dropdown_search(row, widget_name)
+        widget.close_dropdown_search(row, widget_name, table_index=int(table_index))
 
 
 @when(

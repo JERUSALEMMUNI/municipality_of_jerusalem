@@ -6,7 +6,7 @@ Feature: TaboOnline form - scenarios step 1
   - Form link: https://jeronlineforms.jerusalem.muni.il/TableOnline
   - Number of Pages is : 5, We are at step: 1
   - All fields are mandatory
-@test
+
   Scenario: TABONLINE_01 הזנת ערכים תקינים בשדות "פרטי מגיש הבקשה"
     Given Navigate to "TaboOnline" form
     When write a valid value "סוהייב" in "שם פרטי"
