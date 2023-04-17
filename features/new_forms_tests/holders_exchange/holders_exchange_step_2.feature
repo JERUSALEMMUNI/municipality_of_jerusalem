@@ -149,8 +149,8 @@ Feature: HoldersExchange form step 2
     Then validate "חשבון תושב בארנונה" error is "שדה לא תקין"
     When search invalid value and pick "asdads" in search field "רחוב"
     Then check if "רחוב" no results found appeared
-    When write an invalid number "sda" in "בית"
-    Then validate "בית" error is "שדה חובה"
+    When write an invalid number "sda23432" in "בית"
+    Then validate if "בית" value is "23432"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"

@@ -21,7 +21,7 @@ Feature: improvementTax form - scenarios step 2
 #    Then 5th Validate if went back to expected "email" form
     When write a valid value "123123123321223" in "זיהוי נכס (מתוך חשבון הארנונה)"
     And search valid value and pick "א טור" in search field "רחוב"
-    And write a valid number "1" in "מספר בית"
+    And write a valid number "23432" in "מספר בית"
     And write a valid value "1223" in "גוש"
     And write a valid value "875" in "חלקה"
     And pick "למגורים" from "מהות נכס"
@@ -42,8 +42,8 @@ Feature: improvementTax form - scenarios step 2
     Then validate "זיהוי נכס (מתוך חשבון הארנונה)" error is "יש להזין ספרות בלבד"
     When search invalid value and pick "dsfsdf" in search field "רחוב"
     Then check if "רחוב" no results found appeared
-    When write a valid number "sfs31" in "מספר בית"
-    Then validate if "מספר בית" value is "31"
+    When write a valid number "sfs23432" in "מספר בית"
+    Then validate if "מספר בית" value is "23432"
     When write an invalid value "sdfsdfds" in "גוש"
     Then validate "גוש" error is "יש להזין ספרות בלבד"
     When write an invalid value "sdfsdf" in "חלקה"
