@@ -208,8 +208,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     And pick "3/1/2023" from calendar of "מועד תחילת הטענה"
     And choose "החיוב אינו שלי" from "סיבת ההשגה"
     And pick "איני "מחזיק" ומעולם לא החזקתי בנכס" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
-    #Todo it broken when run the step below
-#    And pick "אני לא בעל השליטה בחברה" from no label dropdown of "דרוב אחרי החיוב אינו שלי"
     And write a valid value "דגכדגכדגכדגכדגכ" in textarea of "נא פרט את הטענה"
     When upload "jpeg_to_upload.jpeg" file in "ניתן לצרף מכתב נלווה"
     Then validate "ניתן לצרף מכתב נלווה" field is valid
@@ -379,7 +377,6 @@ Feature: ObjectionPropertyTaxes form - scenarios step 2
     When write an invalid value "asd" in "דירה"
     Then validate "דירה" error is "יש להזין ספרות בלבד"
     When pick "בעלות" from "זיקה לנכס"
-    #Todo closing the the calendar after this step
     And pick "ds/ds/sdfs" from calendar of "מועד תחילת הטענה"
     And choose "הנכס אינו ראוי לשימוש" from "סיבת ההשגה"
     And choose "כן" from "האם הנכס נהרס עד היסוד?"

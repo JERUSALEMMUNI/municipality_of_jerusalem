@@ -141,16 +141,16 @@ Feature: HoldersExchange form step 2
 
 
   Scenario: TC_HOLDERSEXCH_11 הזנת ערכים שגוים בשדות "פרטי נכס"
-    #todo: #todo: sofiya error message for the short number is different from the web  יש להשלים מספר חשבון/נכס
     When write an invalid value "3345sd45r" in "חשבון תושב בארנונה"
     Then validate "חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
+    When write an invalid value "3324" in "חשבון תושב בארנונה"
+    Then validate "חשבון תושב בארנונה" error is "יש להשלים מספר חשבון/נכס"
     When write an invalid value "332" in "חשבון תושב בארנונה"
     Then validate "חשבון תושב בארנונה" error is "שדה לא תקין"
     When search invalid value and pick "asdads" in search field "רחוב"
     Then check if "רחוב" no results found appeared
     When write an invalid number "sda" in "בית"
     Then validate "בית" error is "שדה חובה"
-#    Then validate if "בית" number is "2"
     When choose "למגורים" from "סוג הנכס"
     And choose "שוכר" from "מי מגיש הבקשה?"
     And write an invalid value "dsdf" in "שם פרטי"
