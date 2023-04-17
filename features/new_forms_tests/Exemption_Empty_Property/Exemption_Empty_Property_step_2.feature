@@ -12,7 +12,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario: EMPTYPROPERTY_02 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, העדר שוכר/קונה
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -24,7 +23,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When write a valid number "10042023" in "תאריך סיום"
     When choose "העדר שוכר/קונה" from "סיבת היות הנכס ריק"
     When write a valid value "גכדגדגדגדגדגדגדגדגדגדגדגגג" in textarea of "הסבר מה נעשה עם החפצים"
-    When I wait for "5" seconds
 
     When upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח של מגיש הבקשה"
     Then validate "צילום תעודת זהות + ספח של מגיש הבקשה" field is valid
@@ -41,7 +39,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     When upload "gif_to_upload.gif" file in "הסבר מה נעשה עם החפצים בנכס"
     Then validate "הסבר מה נעשה עם החפצים בנכס" field is valid
     Then validate "gif_to_upload.gif" file is in "הסבר מה נעשה עם החפצים בנכס" files list
-    When I wait for "5" seconds
 
     When upload "gif_to_upload.gif" file in "תמונות של הנכס המעידות על היותו ריק מחפצים"
     Then validate "תמונות של הנכס המעידות על היותו ריק מחפצים" field is valid
@@ -65,7 +62,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_03 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, הנכס שופץ
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -115,7 +111,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
     #When 4th close all tabs "email" at index "2"
     #Then 5th Validate if went back to expected "email" form
     When click on "המשך"
-    When I wait for "4" seconds
     Then validate current step name is "תצהיר ושליחה"
     When click on "חזור"
     Then Validate current step name is "פרטי הנכס"
@@ -225,7 +220,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_06 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה על שם המבקש, נכס ריק, אחר
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -282,7 +276,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_07 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה לא על שם המבקש, זיקה: בעל הנכס, נכס חדש וריק
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -334,7 +327,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_08 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה לא על שם המבקש, זיקה: שוכר, נכס חדש וריק
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -403,7 +395,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_09 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה לא על שם המבקש, זיקה: יורש, נכס חדש וריק
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -459,7 +450,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_10 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה לא על שם המבקש, זיקה: מיופה כח, נכס חדש וריק
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -524,7 +514,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 
 
   Scenario:EMPTYPROPERTY_11 הזנת ערכים תקינים בשדות "פרטי הנכס" ארנונה לא על שם המבקש, זיקה: יזם/קבלן, נכס חדש וריק
-    Given Navigate to "ExemptionEmptyProperty" form
     When write a valid value "2432434323" in "מס' חשבון תושב בארנונה"
     When search valid value and pick "א טור" in search field "רחוב"
     When write a valid number "2" in "מס' בית"
@@ -584,7 +573,6 @@ Feature: ExemptionEmptyProperty form - scenarios step 2
 #-----------------------------------------------------
 
   Scenario Outline: EMPTYPROPERTY_14 הזנת ערכים שגוים בשדות "פרטי הנכס"
-    Given Navigate to "ExemptionEmptyProperty" form
     When write an invalid value "asdasd" in "מס' חשבון תושב בארנונה"
     Then validate "מס' חשבון תושב בארנונה" error is "יש להזין ספרות בלבד"
     When write an invalid value "דדד" in "מס' חשבון תושב בארנונה"
