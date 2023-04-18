@@ -950,8 +950,8 @@ def search_and_pick_in_search_field(context, table_name, sub_table_name, row, op
 def upload_file(context, table_name, sub_table_name, row, file_path, widget_name):
     widget = context._config.current_page.widgets[table_name]
     table_index = widget.get_table_index_from_tab_name(sub_table_name)
-    file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
-    widget.upload_file(row, widget_name, file, table_index=int(table_index))
+    # file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file_path}')
+    widget.upload_file(row, widget_name, file_path, table_index=int(table_index))
 
 
 @then('from parent "{table_name}" at table "{sub_table_name}" at row "{row}" validate "{widget_name}" field is valid')

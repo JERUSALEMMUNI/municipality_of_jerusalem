@@ -1,8 +1,10 @@
 from selenium.webdriver.common.by import By
 
-from infra import logger
 from ui_widgets.base_widget import BaseWidget
 from ui_widgets.new_style.widget_locators.accordion_table_locators import AccordionTableLocators
+import os
+from behave import *
+from infra import logger, reporter, config
 
 log = logger.get_logger(__name__)
 
@@ -78,6 +80,7 @@ class AccordionTable(BaseWidget):
         widget.set_textarea_field(label, text)
 
     def upload_file(self, row, label, file, table_index=1):
+        file = os.path.join(config.utilities_folder, 'files_to_upload', f'{file}')
         widget = self.create_widget_table_row(row, table_index)
         widget.upload_file(label, file)
 

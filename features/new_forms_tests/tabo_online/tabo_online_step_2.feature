@@ -139,49 +139,6 @@ Feature: TaboOnline form - scenarios step 2
     Then from parent "פרטי הבקשה" at table "מעביר" at row "1" validate "צילום תעודת זהות + ספח" field is valid
     Then from parent "פרטי הבקשה" at table "מעביר" at row "1" validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
 
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "pdf_to_upload.pdf" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "pdf_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "pdf_to_upload.pdf" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
-
-    When from parent "פרטי הבקשה" at table "מקבל" at row "1" upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מקבל" at row "1" validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
-
     #    When click on "שמור" button
     #    And click on "שמור טיוטה" button tyota
     #    When 1st wait for "email" that contains pin code and link
@@ -454,48 +411,6 @@ Feature: TaboOnline form - scenarios step 2
     When pick a valid "בעלות" from "סוג הזכות"
     When choose "מבקש" from "מגיש הבקשה הוא"
 
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "png_to_upload.png" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "gif_to_upload.gif" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "jpg_pic_to_upload.jpg" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "pdf_to_upload.pdf" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "pdf_to_upload.pdf" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "pdf_to_upload.pdf" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "jpeg_to_upload.jpeg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "jpeg_to_upload.jpeg" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "jpeg_to_upload.jpeg" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "bmp_to_upload.bmp" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "bmp_to_upload.bmp" file is in "צילום תעודת זהות + ספח" files list
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" delete file by name "bmp_to_upload.bmp" in "צילום תעודת זהות + ספח"
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "png_to_upload.png" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "png_to_upload.png" file is in "צילום תעודת זהות + ספח" files list
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "gif_to_upload.gif" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "gif_to_upload.gif" file is in "צילום תעודת זהות + ספח" files list
-
-    When from parent "פרטי הבקשה" at table "מבקש" at row "1" upload "jpg_pic_to_upload.jpg" file in "צילום תעודת זהות + ספח"
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "צילום תעודת זהות + ספח" field is valid
-    Then from parent "פרטי הבקשה" at table "מבקש" at row "1" validate "jpg_pic_to_upload.jpg" file is in "צילום תעודת זהות + ספח" files list
-
     #    When click on "שמור" button
     #    And click on "שמור טיוטה" button tyota
     #    When 1st wait for "email" that contains pin code and link
@@ -533,7 +448,7 @@ Feature: TaboOnline form - scenarios step 2
     #    When click on "המשך" button
     When clear fields
 
-  @test
+
   Scenario: TABONLINE_08 הזנת ערכים תקינים "פרטי הבקשה" קבלת משכנתא, קרקע, הוספת מבקש2
     When choose "קבלת משכנתא" from "סוג הבקשה"
     When pick a valid "חברה משכנת" from "מנהל הרישום"

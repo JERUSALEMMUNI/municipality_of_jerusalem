@@ -1,4 +1,4 @@
-@in_dev
+#@in_dev
 Feature: TaboOnline form - scenarios step 1
 
   - Form name: בקשה לקבלת אישור להעדר חובות
