@@ -232,7 +232,7 @@ def clear_fields(context, widgets=None):
         except Exception as e:
             log.exception(e)
             log.info(f"the field {widget_name} is empty")
-    context._config.driver.implicitly_wait(WaitInterval.MEDIUM.value)
+    context._config.driver.implicitly_wait(WaitInterval.SHORT.value)
 
 
 @Then('validate if "{widget_name}" is exist')

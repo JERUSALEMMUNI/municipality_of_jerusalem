@@ -170,7 +170,7 @@ def attach_log_file_in_failure(context, scenario):
         scenario_log = e.readlines()
     log_start_index = scenario_log.index(
         [i for i in reversed(scenario_log) if scenario.starting_scenario_msg in i][0])
-    scenario_log_file = log_debug_file.replace('.txt', f'{uuid.uuid4().hex}.txt')
+    scenario_log_file = str(log_debug_file).replace('.txt', f'{uuid.uuid4().hex}.txt')
     with open(scenario_log_file, 'w', encoding='utf-16') as e:
         e.write('\n'.join(scenario_log[log_start_index:-1]))
     try:
